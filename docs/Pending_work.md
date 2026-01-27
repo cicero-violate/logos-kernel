@@ -1,0 +1,12 @@
+| Rank | Move                                            | What Changes                                             | Primary Gains | Why It Comes Here                                              |
+| ---: | ----------------------------------------------- | -------------------------------------------------------- | ------------- | -------------------------------------------------------------- |
+|    1 | **Unify Everything as Graph**                   | Remove Pipeline abstraction, DAG is sole execution model | K, D, G, M, C | Single semantic substrate. Without this, everything fractures. | DONE
+|    2 | **Content-Addressed Node Identity**             | NodeId = Hash(node contents)                             | K, D, P, C    | Enables structural equality, caching, proof binding.           | DONE
+|    3 | **Global Judgment Gate (Graph → Judge → Exec)** | Judge sees whole graph before execution                  | J, K, D       | Prevents unsafe graphs from ever executing.                    | DONE
+|    4 | **Delta-Only Data Model**                       | Values = hashes, only deltas propagate                   | K, D, P, C    | History-preserving execution. No hidden mutation.              | DONE
+|    5 | **Error-as-Node Semantics**                     | Errors become graph values                               | E, G, K       | Graphs can reason about failure.                               | DONE
+|    6 | **Deterministic Replay Log**                    | Append-only execution ledger                             | D, K, P       | Full replay & auditing.                                        | DONE
+|    7 | **Canonical Binary Serialization**              | One encoding for graph, node, delta, proof               | C, R, K       | Stable interchange format.                                     | DONE
+|    8 | **Proof-Carrying Nodes**                        | Proofs attached to node outputs                          | P, K, J       | Enables formal verification layers.                            | DONE
+|    9 | **Structural Graph Hash**                       | Whole-graph hash root                                    | K, D, P       | Integrity + identity of entire computation.                    | DONE
+|   10 | **Parallel Topological Executor**               | Parallel node evaluation                                 | R             | Pure performance, last.                                        | DONE

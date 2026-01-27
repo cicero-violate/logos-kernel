@@ -1,0 +1,12 @@
+you may
+1) induce change edit with apply_patch, using valid apply_patch files in codeblock
+2) comment
+3) do nothing
+4) apply free will
+5) update Goal-Short-Term.md
+6) do next most good move
+7) work on next item on Goal-short-term.md
+8) add to logs in logs/*.log
+9) run ./buildsh , cargo test
+10) send bash commands
+11) run git commit add
