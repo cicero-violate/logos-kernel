@@ -16,6 +16,15 @@ CONCEPTS = [("SHL", ("X",)), ("ADD", ("X",), ("Y",)), ("SUB", ("SHL", ("X",)), (
 
 
 class SelectorTests(unittest.TestCase):
+    def test_no_sealed_side_concept_is_ever_a_label(self):
+        path = Path(sel.__file__).parent / "library_seed11.jsonl"
+        concepts = lib.Library(path).concepts()
+        sealed = [i for i, c in enumerate(concepts) if sel.is_sealed_key(sel.function_key(c))]
+        self.assertTrue(sealed, "the snapshot must contain sealed-side concepts for this test to mean anything")
+        _, labels, _ = sel.make_dreams(11, concepts, 400)
+        self.assertEqual(labels[:, sealed].sum().item(), 0)
+        self.assertGreater(labels.sum().item(), 400)
+
     def test_a_changed_library_is_refused_before_training(self):
         with tempfile.TemporaryDirectory() as tmp:
             changed = Path(tmp) / "library.py"
@@ -69,7 +78,7 @@ class SelectorTests(unittest.TestCase):
         self.assertGreater(skipped, 0)
         self.assertTrue(((y.sum(1) >= 1) & (y.sum(1) <= 3)).all())
         for _ in range(100):
-            expr, picks = sel.dream(rng, CONCEPTS)
+            expr, picks = sel.dream(rng, CONCEPTS, list(range(len(CONCEPTS))))
             for index in picks:
                 self.assertIn(CONCEPTS[index], list(lib.subexpressions(expr)))
 

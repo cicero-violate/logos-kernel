@@ -96,10 +96,15 @@ class Selector(nn.Module):
         return self.head(torch.cat((h.mean(1), h.max(1).values), 1))
 
 
-def dream(rng, concepts):
-    """A function built from 1 to 3 concepts, with those concepts as labels."""
+def training_side(concepts):
+    """Indices of concepts whose own function is not on the sealed side. Only these may appear in a dream or be a label."""
+    return [i for i, concept in enumerate(concepts) if not is_sealed_key(function_key(concept))]
+
+
+def dream(rng, concepts, allowed):
+    """A function built from 1 to 3 training-side concepts, with those concepts as labels."""
     count = rng.choice((1, 2, 2, 3))
-    picks = rng.sample(range(len(concepts)), min(count, len(concepts)))
+    picks = rng.sample(allowed, min(count, len(allowed)))
     expr = concepts[picks[0]]
     for index in picks[1:]:
         expr = (rng.choice(lib.BINARY), expr, concepts[index])
@@ -113,9 +118,10 @@ def dream(rng, concepts):
 def make_dreams(seed, concepts, count):
     rng = random.Random(f"NC-081/dreams/{seed}")
     x, y = np.array(XS16[0]), np.array(XS16[1])
+    allowed = training_side(concepts)
     inputs, labels, skipped = [], [], 0
     while len(inputs) < count:
-        expr, picks = dream(rng, concepts)
+        expr, picks = dream(rng, concepts, allowed)
         if is_sealed_key(function_key(expr)):
             skipped += 1  # Sealed-side functions never enter training.
             continue
