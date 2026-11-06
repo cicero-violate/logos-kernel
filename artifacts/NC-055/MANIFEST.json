@@ -1,0 +1,100 @@
+{
+  "cases": 99,
+  "checkpoints": "none; benchmark definition and CPU baselines only; existing champion preserved",
+  "commands": [
+    {
+      "command": "PYTHONPATH=artifacts/NC-055 python -m unittest -q test_benchmark",
+      "exit_code": 0,
+      "tests": 13
+    },
+    {
+      "command": "python -m unittest -q test_dag",
+      "exit_code": 0,
+      "tests": 19
+    },
+    {
+      "command": "python -m unittest -q test_pull",
+      "exit_code": 0,
+      "tests": 17
+    },
+    {
+      "command": "python dag.py validate",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "PYTHONPATH=artifacts/NC-055 python artifacts/NC-055/benchmark.py",
+      "exit_code": 0,
+      "expected": "deterministic splits/counts; runtime CPU seconds measured separately"
+    }
+  ],
+  "evidence_sha256": {
+    "artifacts/NC-055/invariant_benchmark_contract.json": "ba3a97ee0ec7df90f868332d943e7b1233d08e9da447fc9cfc2f382321d2cc3a",
+    "artifacts/NC-055/split_and_negative_control_report.json": "45577ec206d350ebfe1b6fc15a69a51f8988eb81fa49c8ab092c38e4516dcd93"
+  },
+  "families": 12,
+  "input_encodings": {
+    "test": "first_delta",
+    "train": "float64",
+    "validation": "decimal_text"
+  },
+  "known_failures": [
+    "A single short prefix may admit an arbitrary high-degree polynomial; extrapolation and private law checks are required.",
+    "Finite-difference and low training error are not formal invariance. Switching regimes and nonuniform sampling falsify simple delta assumptions.",
+    "Six baseline variants are not trained models and cannot claim discovered recurrence laws; no standalone model performance claimed.",
+    "Oracle and future target generator live in the same readable repository: API separation is NOT tamper-proof oracle sealing. A future authorized evaluator must isolate the test process to prevent source inspection and label leakage.",
+    "Fresh unpublished seeds and withheld generations are needed before generalization or anti-memorization claims.",
+    "Checker code, identity labels and Git commits are unauthenticated. Pending independent reviewer must inspect before task closure.",
+    "No upstream champion change, model weights, GPU, network use, or auto-running service."
+  ],
+  "module_dependencies": [
+    "artifacts/NC-055/oracle.py",
+    "artifacts/NC-055/benchmark.py",
+    "artifacts/NC-055/test_benchmark.py"
+  ],
+  "oracle_target_commitments": {
+    "test": "171cce4f94eb22d7cdbb13b71c1ff02b426d0bbd12dc41641744d1778379d8a7",
+    "train": "4e0c4b6f4eb76b46ede8f2677ad9ef942333d6e9073c1e2a5a9fab3352b9cb96",
+    "validation": "9c1ac4593e4b7fb4c860aae61cee12bb69091f57696e5c71bb043a5f7e563b96"
+  },
+  "owner": "turn-b53e292ee3e44b38882cd02b26e4cd27",
+  "proof_scope": "Reproducible finite CPU benchmark. Exact rational oracle for 11 families, Decimal(78) logistic family with float64 observations. Bounded heldout predictive/structural identification only, NOT a mathematical theorem, genuine model invention, scientific causal proof or OS security guarantee.",
+  "review_output_path": "artifacts/NC-055/independent_verification.json",
+  "runtime_dependencies": [
+    "Python 3 standard library",
+    "Git CLI"
+  ],
+  "schema_version": 1,
+  "seed": 55061,
+  "source_commit": "a9761c13a59bec1dd615d7a92d06627083ac66f6",
+  "source_sha256": {
+    "artifacts/NC-055/benchmark.py": "1c32b2ed5dc80cc75df741c8f2cdb26c07835b715d226ecf95f7fc2fe024f936",
+    "artifacts/NC-055/oracle.py": "ed310cb20260bab39f6ec92d7b72c036d80fd153af04bd44e0b24826d7adafb1",
+    "artifacts/NC-055/test_benchmark.py": "63080e50099db08c0c23cc5b6b7459bd5d947fc24149c6c608a878af87d12d04"
+  },
+  "split_counts": {
+    "test": 36,
+    "train": 27,
+    "validation": 36
+  },
+  "task": "NC-055",
+  "title": "Construct falsifiable invariant-discovery benchmark across dynamical families",
+  "verdict": "PENDING_INDEPENDENT_REVIEW",
+  "verification_targets": {
+    "baseline_empirical_discovery_pass_count": 0,
+    "family_generation": "recompute oracle cases and exact/Decimal reference values from committed sources",
+    "heldout_separation": "check public views omit truth/family/params; verify no future samples read by baselines",
+    "independent_receipt": "artifacts/NC-055/independent_verification.json",
+    "negative_controls": {
+      "constant_collapse_nontrivial_rejected": 27,
+      "oracle_only_positive_nontrivial": 27,
+      "short_prefix_interpolation": {
+        "bounded_discovery_pass": 0,
+        "failed_extrapolation": 15,
+        "tested": 18
+      },
+      "wrong_law_rejected": 36
+    },
+    "oracle_only_positive_nontrivial": 27
+  }
+}
