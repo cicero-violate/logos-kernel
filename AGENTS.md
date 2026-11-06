@@ -11,19 +11,20 @@ This repository is a task DAG for progressive neural learning, operation composi
 - Instructions: `instructions.jsonl`, a hash-chained, **append-only** JSONL event log
 - Only ledger writer: `python dag.py`; do not edit, truncate, reorder or reconstruct earlier records
 - Task specification: full `kind=task` records in `instructions.jsonl` including `depends_on`, `instruction`, `acceptance`, `outputs`, `avoid`
-- There is **no automatic worker**, implicit owner, heartbeat, lease, timer or abandoned-claim cleanup.
+- There is **no automatic worker** or heartbeat. Abandoned claims are only reassigned when a later `pull` finds their 2-hour lease expired.
 - A task being *claimed* does **not** prove its agent is alive or working.
 
 ## Pull-based tickets: mandatory dispatch
 
-**Deployment topology:** 3 stateless ChatGPT tabs dedicated to this repository (6 across the two isolated repositories). All tabs run the same pull command; no permanent verifier/implementer roles. Each requires a distinct actual Event Lab session identity. This DAG does not create browser tabs or authenticate session strings.
+**Deployment topology:** 3 stateless ChatGPT tabs dedicated to this repository (6 across the two isolated repositories). All tabs run the same pull command; no permanent verifier/implementer roles. All tabs use the same generic prompt. Every stateless turn creates its own agent ID; no Event Lab session, registration or per-tab setup is required. This DAG does not create browser tabs or authenticate session strings.
 
 
 
 **Never decide the role manually.** The single assignment entry point for both repositories is:
 
 ```bash
-# AGENT_ID must come from the actual Event Lab runtime, never from a prompt.
+# Stateless: create AGENT_ID once per turn with: python3 -c 'import uuid; print("turn-" + uuid.uuid4().hex)'
+# Reuse that exact value for the rest of the turn. Never reuse an ID from the ledger or an earlier turn.
 python dag.py validate
 python -m unittest -q test_dag
 python -m unittest -q test_pull
@@ -53,17 +54,17 @@ python dag.py review-result TASK_ID --reviewer "$AGENT_ID" --verdict FAIL --note
 python dag.py review-result TASK_ID --reviewer "$AGENT_ID" --verdict PASS --evidence artifacts/TASK_ID/DECLARED_RECEIPT.json
 ```
 
-A verifier does not claim/release/reopen the implementation or append its final PASS. The legitimate implementer can PASS only after matching completed review (and an authorized reopen/claim if blocked). Reviewer IDs remain unauthenticated strings at this software layer, not identity attestation. Incomplete provenance or a changed candidate requires HOLD.
+A verifier does not claim/release/reopen the implementation or append its final PASS. Ownership belongs to the ledger, not to a turn: after a closed review, `pull` gives the next turn a `takeover` event, once per verdict, as FINALIZER (PASS, then run `dag.py pass` with the returned verifier and evidence) or IMPLEMENTER (FAIL or HOLD, returned with the review note to fix). A turn cannot take over a task it just reviewed. A claim with no closed review is taken over only after its 2-hour lease expires, because it may still be in progress. A reviewer that disappears after claiming a review still blocks that task; nothing reassigns claimed reviews. Reviewer IDs remain unauthenticated strings at this software layer, not identity attestation. Incomplete provenance or a changed candidate requires HOLD.
 
 ### HOLD and boundaries
 
-If no pending review is independently eligible and no task is claimable, report HOLD with the exact blocker, then end the turn. HOLD is final for the turn, however many times it repeats: do not reopen or claim tasks, repair or harden code, add tests or tasks, or pull again. If an IMPLEMENTER pull returns a task whose `python dag.py list` entry shows `review_state` pending or claimed, the candidate is frozen: treat the turn as HOLD. An owner may reopen its own blocked or failed task only when that entry shows `review_state` closed with `review_verdict` FAIL or HOLD, and only to address the reviewer's findings; a bug found while waiting is reported, not grounds to reopen. Review tickets have exclusive claims; a second agent cannot pull the same review. This is a synchronous ticket queue, **not** an automatic scheduler or a running verifier. Preserve original RLT champion, task dependencies, bounded scientific proof scope and other agents' staged/untracked files. Never fabricate a reviewer, force-release another claim, rewrite instructions.jsonl, promote a champion without independent evidence or assume Git hash-chain integrity authenticates reviewers.
+If no pending review is independently eligible and no task is claimable, report HOLD with the exact blocker, then end the turn. HOLD is final for the turn, however many times it repeats: do not reopen or claim tasks, repair or harden code, add tests or tasks, or pull again. If an IMPLEMENTER pull returns a task whose `python dag.py list` entry shows `review_state` pending or claimed, the candidate is frozen: treat the turn as HOLD. Rework comes from `pull` after a closed FAIL or HOLD review; do not reopen tasks manually. A bug found while waiting is reported, not grounds to reopen. Review tickets have exclusive claims; a second agent cannot pull the same review. This is a synchronous ticket queue, **not** an automatic scheduler or a running verifier. Preserve original RLT champion, task dependencies, bounded scientific proof scope and other agents' staged/untracked files. Never fabricate a reviewer, force-release another claim, rewrite instructions.jsonl, promote a champion without independent evidence or assume Git hash-chain integrity authenticates reviewers.
 
-Output: `Assigned role | Actual session | Ticket | Candidate/hash | Changed files | Tests | Independent verdict | Blocker/next action`.
+Output: `Assigned role | Agent ID | Ticket | Candidate/hash | Changed files | Tests | Independent verdict | Blocker/next action`.
 
 ## Operational cycle (all three stateless tabs)
 
-Each tab recovers Git and JSONL state every turn, obtains its **actual** Event Lab identity, validates ledger/tests, then runs the **only normal dispatch command**:
+Each tab recovers Git and JSONL state every turn, creates its agent ID for the turn, validates ledger/tests, then runs the **only normal dispatch command**:
 
 ```bash
 cd /workspace/experiments/logos-kernel
@@ -77,8 +78,8 @@ python dag.py pull --agent "$AGENT_ID"
 - VERIFIER: independently reproduce the returned candidate; record `review-result` with the task's declared receipt and exact verdict.
 - IMPLEMENTER: implement the pulled task; commit owned evidence; record `request-review` with a complete pinned candidate.
 - HOLD: report the exact blocker. Never bypass role assignment, fabricate a second identity or self-approve.
-- Owner records task PASS only after genuine independent reviewer PASS. Blocked/failed tasks require an authorized reopen before a new owner claim.
-- Admin recovery (`sync`, `reopen`, `release`) is exceptional, not part of normal tab assignment. `--force` does not authenticate an operator. No worker lease or automatic stale-claim cleanup exists.
+- The current owner records task PASS only after genuine independent reviewer PASS. `pull` assigns that final step, and any rework, to a later turn.
+- Admin recovery (`sync`, `reopen`, `release`) is exceptional, not part of normal tab assignment. `--force` does not authenticate an operator. Claims are not renewed: the 2-hour lease counts from the claim or takeover.
 
 ## New instructions and concurrency
 

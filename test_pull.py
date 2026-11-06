@@ -215,5 +215,140 @@ class PullTests(unittest.TestCase):
                 self.assertEqual((root/"instructions.jsonl").read_bytes(), before)
 
 
+class StatelessContinuationTests(unittest.TestCase):
+    """Each pull uses a new ID, as a stateless turn does."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        repo(self.root)
+        for patcher in (patch.object(dag, "ROOT", self.root),
+                        patch.object(dag, "LOG", self.root / "instructions.jsonl")):
+            patcher.start()
+            self.addCleanup(patcher.stop)
+
+    def reviewed(self, verdict):
+        """author claims and submits; reviewer records the verdict."""
+        dag.pull("author")
+        digest = event_request(self.root, "author")
+        dag.pull("reviewer")
+        event = {"kind": "review_result", "id": "t", "reviewer": "reviewer",
+                 "candidate_sha256": digest, "verdict": verdict, "note": "the finding"}
+        if verdict == "PASS":
+            receipt = self.root / "artifacts" / "t" / "verification.json"
+            receipt.write_text(json.dumps({"task": "t", "owner": "author", "verifier": "reviewer",
+                                           "verdict": "PASS", "proof_scope": "bounded"}))
+            event.update(evidence="artifacts/t/verification.json",
+                         evidence_sha256=hashlib.sha256(receipt.read_bytes()).hexdigest())
+        dag.append(event)
+
+    def state(self):
+        return dag.audit((self.root / "instructions.jsonl").read_text())[0]["t"]
+
+    def test_new_turn_finalizes_after_review_pass(self):
+        self.reviewed("PASS")
+        turn = dag.pull("turn-2")
+        self.assertEqual((turn["role"], turn["task"], turn["verifier"], turn["evidence"]),
+                         ("FINALIZER", "t", "reviewer", "artifacts/t/verification.json"))
+        self.assertEqual(dag.pull("turn-2")["role"], "FINALIZER")
+        data = (self.root / turn["evidence"]).read_bytes()
+        dag.append({"kind": "status", "id": "t", "status": "passed", "agent": "turn-2",
+                    "verifier": "reviewer", "evidence": turn["evidence"],
+                    "evidence_sha256": hashlib.sha256(data).hexdigest()})
+        self.assertEqual(self.state()["status"], "passed")
+        self.assertEqual(dag.pull("turn-3")["role"], "HOLD")
+
+    def test_new_turn_reworks_after_fail_with_the_finding_then_review_repeats(self):
+        self.reviewed("FAIL")
+        turn = dag.pull("turn-2")
+        self.assertEqual((turn["role"], turn["review_verdict"], turn["review_note"]),
+                         ("IMPLEMENTER", "FAIL", "the finding"))
+        event_request(self.root, "turn-2")
+        again = dag.pull("turn-3")
+        self.assertEqual(again["role"], "VERIFIER")
+        self.assertEqual(self.state()["review"]["owner"], "turn-2")
+
+    def test_blocked_task_with_hold_verdict_is_reworked(self):
+        dag.pull("author")
+        digest = event_request(self.root, "author")
+        dag.append({"kind": "status", "id": "t", "status": "blocked", "agent": "author"})
+        dag.pull("reviewer")
+        dag.append({"kind": "review_result", "id": "t", "reviewer": "reviewer",
+                    "candidate_sha256": digest, "verdict": "HOLD", "note": "missing"})
+        self.assertEqual(dag.pull("turn-2")["review_verdict"], "HOLD")
+        self.assertEqual((self.state()["status"], self.state()["owner"]), ("planned", "turn-2"))
+
+    def test_verdict_is_taken_over_only_once(self):
+        self.reviewed("FAIL")
+        dag.pull("turn-2")
+        self.assertEqual(dag.pull("turn-3")["role"], "HOLD")
+        self.assertEqual(self.state()["owner"], "turn-2")
+
+    def test_reviewer_cannot_continue_what_it_judged(self):
+        self.reviewed("PASS")
+        self.assertEqual(dag.pull("reviewer")["role"], "HOLD")
+        self.assertEqual(self.state()["owner"], "author")
+        with self.assertRaisesRegex(ValueError, "reviewer cannot take over"):
+            dag.append({"kind": "takeover", "id": "t", "owner": "reviewer",
+                        "reason": "finalize", "previous_owner": "author", "at": 5})
+
+    def test_live_claim_is_not_taken_before_lease_then_is(self):
+        dag.pull("author")
+        self.assertEqual(dag.pull("turn-2")["role"], "HOLD")
+        start = self.state()["claimed_at"]
+        with patch.object(dag, "_now", lambda: start + dag.CLAIM_LEASE_SECONDS - 1):
+            self.assertEqual(dag.pull("turn-2")["role"], "HOLD")
+        with patch.object(dag, "_now", lambda: start + dag.CLAIM_LEASE_SECONDS):
+            turn = dag.pull("turn-2")
+        self.assertEqual((turn["role"], self.state()["owner"]), ("IMPLEMENTER", "turn-2"))
+
+    def test_early_takeover_is_refused_by_the_validator(self):
+        dag.pull("author")
+        with self.assertRaisesRegex(ValueError, "lease has not expired"):
+            dag.append({"kind": "takeover", "id": "t", "owner": "thief", "reason": "stale_claim",
+                        "previous_owner": "author", "at": self.state()["claimed_at"] + 1})
+
+    def test_rework_claim_is_protected_by_its_own_lease(self):
+        self.reviewed("FAIL")
+        dag.pull("turn-2")
+        start = self.state()["claimed_at"]
+        with patch.object(dag, "_now", lambda: start + dag.CLAIM_LEASE_SECONDS):
+            self.assertEqual(dag.pull("turn-3")["role"], "IMPLEMENTER")
+        self.assertEqual(self.state()["owner"], "turn-3")
+
+    def test_no_takeover_while_review_is_open(self):
+        dag.pull("author")
+        event_request(self.root, "author")
+        dag.pull("reviewer")
+        with patch.object(dag, "_now", lambda: dag.CLAIM_LEASE_SECONDS * 10 ** 6):
+            self.assertEqual(dag.pull("turn-2")["role"], "HOLD")
+        with self.assertRaisesRegex(ValueError, "during review"):
+            dag.append({"kind": "takeover", "id": "t", "owner": "turn-2", "reason": "rework",
+                        "previous_owner": "author", "at": 5})
+
+    def test_unstamped_claim_ages_from_its_git_commit(self):
+        dag.append({"kind": "claim", "id": "t", "owner": "old"})
+        self.assertIsNotNone(self.state()["claimed_at"])
+        # A claim written before timestamps existed has only its commit time.
+        task_state = self.state()
+        del task_state["claimed_at"]
+        now = dag._now()
+        self.assertIsNone(dag._takeover_reason("t", task_state, "turn-2", now))
+        self.assertEqual(dag._takeover_reason("t", task_state, "turn-2",
+                                              now + dag.CLAIM_LEASE_SECONDS + 60), "stale_claim")
+
+    def test_finished_task_cannot_be_taken_over(self):
+        self.reviewed("PASS")
+        turn = dag.pull("turn-2")
+        data = (self.root / turn["evidence"]).read_bytes()
+        dag.append({"kind": "status", "id": "t", "status": "passed", "agent": "turn-2",
+                    "verifier": "reviewer", "evidence": turn["evidence"],
+                    "evidence_sha256": hashlib.sha256(data).hexdigest()})
+        with self.assertRaisesRegex(ValueError, "finished task"):
+            dag.append({"kind": "takeover", "id": "t", "owner": "turn-3", "reason": "rework",
+                        "previous_owner": None, "at": 5})
+
+
 if __name__=="__main__":
     unittest.main()

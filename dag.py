@@ -12,6 +12,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -27,6 +28,8 @@ TRANS = {
     "archived": set(),
 }
 PLACEHOLDERS = {"YOUR_AGENT_ID", "INDEPENDENT_VERIFIER_ID", "worker-1", "agent-name"}
+# A claim with no published candidate is presumed live for this long.
+CLAIM_LEASE_SECONDS = 2 * 3600
 
 
 def canon(obj):
@@ -120,6 +123,64 @@ def ticket_order(pair):
     return (item["rank"] is None, item["rank"] if item["rank"] is not None else 999999, task_id)
 
 
+def _now():
+    return int(time.time())
+
+
+def _legacy_claim_time(task_id):
+    """Commit time of a claim recorded before claims carried a timestamp."""
+    pattern = "^DAG event [0-9]+: claim " + re.escape(task_id[:48]) + "$"
+    try:
+        value = _git("log", "-1", "--format=%ct", "--extended-regexp", "--grep=" + pattern)
+        return int(value) if value else None
+    except (OSError, RuntimeError, ValueError):
+        return None
+
+
+def _takeover_reason(task_id, item, principal, now):
+    """Why a stateless turn may continue this task, or None.
+
+    Ownership belongs to the ledger, because a turn's ID ends with the turn. A
+    finished review can be picked up at once, exactly once per verdict. Any other
+    claim may still be in progress, so it is only taken after the lease expires.
+    """
+    if item["status"] not in ("planned", "working", "blocked", "failed"):
+        return None
+    if item["owner"] is not None and _review_principal(item["owner"]) == principal:
+        return None
+    review = item["review"]
+    if review and review["state"] in ("pending", "claimed"):
+        return None
+    if review and _review_principal(review["reviewer"]) == principal:
+        return None  # A reviewer must not finish or rework what it just judged.
+    if review and not review.get("taken_over"):
+        return "finalize" if review["verdict"] == "PASS" else "rework"
+    if item["owner"] is None or item["status"] not in ("planned", "working"):
+        return None
+    claimed = item.get("claimed_at")
+    if claimed is None:
+        claimed = _legacy_claim_time(task_id)
+    if claimed is None or now - claimed < CLAIM_LEASE_SECONDS:
+        return None
+    return "stale_claim"
+
+
+def _work_role(item):
+    review = item["review"]
+    closed_pass = review and review["state"] == "closed" and review["verdict"] == "PASS"
+    return "FINALIZER" if closed_pass else "IMPLEMENTER"
+
+
+def _work_details(item):
+    """What the next turn needs from a finished review, since it has no memory."""
+    review = item["review"]
+    if not review or review["state"] != "closed":
+        return {}
+    if review["verdict"] == "PASS":
+        return {"verifier": review["reviewer"], "evidence": review.get("evidence")}
+    return {"review_verdict": review["verdict"], "review_note": review.get("note", "")}
+
+
 def choose_pull_event(tasks, agent):
     """Choose under the ledger append lock. Never equate a role string with independence."""
     agent = _review_id(agent)
@@ -137,7 +198,14 @@ def choose_pull_event(tasks, agent):
     for task_id, item in ordered:
         if item["owner"] is not None and _review_principal(item["owner"]) == principal and item["status"] in ("planned", "working"):
             # Later writes match the ledger label exactly, so report it.
-            return {"role": "IMPLEMENTER", "task": task_id, "reused": True, "owner": item["owner"]}
+            return {"role": _work_role(item), "task": task_id, "reused": True, "owner": item["owner"],
+                    **_work_details(item)}
+    now = _now()
+    for wanted in ("finalize", "rework", "stale_claim"):
+        for task_id, item in ordered:
+            if _takeover_reason(task_id, item, principal, now) == wanted:
+                return {"kind": "takeover", "id": task_id, "owner": agent, "reason": wanted,
+                        "previous_owner": item["owner"], "at": now}
     for task_id, item in ordered:
         if item["status"] == "planned" and item["owner"] is None and dependencies_passed(item, tasks):
             return {"kind": "claim", "id": task_id, "owner": agent}
@@ -149,11 +217,14 @@ def pull(agent):
     if "role" in result:
         return result
     event = result["event"]
-    outcome = {"role": "VERIFIER" if event["kind"] == "review_claim" else "IMPLEMENTER",
+    raw = read_ledger_bytes().decode("utf-8") if "read_ledger_bytes" in globals() else LOG.read_text()
+    item = audit(raw)[0][event["id"]]
+    outcome = {"role": "VERIFIER" if event["kind"] == "review_claim" else _work_role(item),
                "task": event["id"], "reused": False, "git_commit": result["git_commit"]}
+    if event["kind"] != "review_claim":
+        outcome.update(_work_details(item))
     if outcome["role"] == "VERIFIER":
-        raw = read_ledger_bytes().decode("utf-8") if "read_ledger_bytes" in globals() else LOG.read_text()
-        review = audit(raw)[0][event["id"]]["review"]
+        review = item["review"]
         outcome.update({"candidate_path": review["candidate_path"],
                         "candidate_sha256": review["candidate_sha256"],
                         "candidate_revision": review["revision"],
@@ -266,7 +337,45 @@ def validate_event(ev, tasks):
             review["evidence"] = evidence
             review["evidence_sha256"] = ev["evidence_sha256"]
         review["verdict"] = verdict
+        review["note"] = note
         review["state"] = "closed"
+        return
+
+    if kind == "takeover":
+        owner = real_id(ev.get("owner"), "owner")
+        principal = _review_principal(owner)
+        reason = ev.get("reason")
+        at = ev.get("at")
+        review = item["review"]
+        if reason not in ("finalize", "rework", "stale_claim") or type(at) is not int or at <= 0:
+            raise ValueError("takeover requires a known reason and integer time")
+        if item["status"] not in ("planned", "working", "blocked", "failed"):
+            raise ValueError(f"{task_id}: finished task cannot be taken over")
+        if ev.get("previous_owner") != item["owner"]:
+            raise ValueError(f"{task_id}: previous_owner mismatch")
+        if item["owner"] is not None and _review_principal(item["owner"]) == principal:
+            raise ValueError(f"{task_id}: already owned by this agent")
+        if review and review["state"] in ("pending", "claimed"):
+            raise ValueError(f"{task_id}: cannot take over during review")
+        if review and _review_principal(review["reviewer"]) == principal:
+            raise ValueError("reviewer cannot take over the task it reviewed")
+        if reason == "stale_claim":
+            if (item["owner"] is None or item["status"] not in ("planned", "working")
+                    or (review and not review.get("taken_over"))):
+                raise ValueError(f"{task_id}: no stale claim to take over")
+            claimed = item.get("claimed_at")
+            if claimed is not None and at - claimed < CLAIM_LEASE_SECONDS:
+                raise ValueError(f"{task_id}: claim lease has not expired")
+        elif (not review or review.get("taken_over")
+                or (review["verdict"] == "PASS") != (reason == "finalize")):
+            raise ValueError(f"{task_id}: no finished review to continue from")
+        item["owner"] = owner
+        item["last_owner"] = owner
+        item["claimed_at"] = at
+        if item["status"] in ("blocked", "failed"):
+            item["status"] = "planned"
+        if review:
+            review["taken_over"] = True
         return
 
     if kind == "claim":
@@ -277,6 +386,7 @@ def validate_event(ev, tasks):
             raise ValueError(f"{task_id}: dependencies not passed")
         item["owner"] = owner
         item["last_owner"] = owner
+        item["claimed_at"] = ev.get("at")
         return
 
     if kind == "release":
@@ -449,6 +559,8 @@ def append(ev):
             if choice.get("kind") is None:
                 return choice
             ev = choice
+        if isinstance(ev, dict) and ev.get("kind") == "claim" and "at" not in ev:
+            ev = {**ev, "at": _now()}
         if isinstance(ev, dict) and ev.get("kind") == "review_request":
             source = review_candidate_bytes(ev["candidate_path"])
             if hashlib.sha256(source).hexdigest() != ev.get("candidate_sha256"):

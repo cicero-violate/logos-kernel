@@ -12,14 +12,14 @@ Canonical path: `/workspace/experiments/logos-kernel/`
 - This is a **local commit**, not a Git push, cloud backup, or signed/remote tamper-proof record.
 - `AGENTS.md` is the mandatory entry point and complete agent protocol.
 - A claim records an **exclusive current owner**, not an alive worker or a job execution state.
-- No scheduler, heartbeat, lease, auto-timeout, fake workers or automatic reassignment.
+- No scheduler, heartbeat or fake workers. `pull` reassigns a claim only after a closed review or an expired 2-hour lease.
 - The task DAG is acyclic; generated runtime instruction programs may contain CFG cycles.
 
 ## Pull-based ticket selection
 
 **Target topology: three stateless ChatGPT tabs per repository; two isolated repositories, six tabs total.** The DAG does not launch tabs or authenticate identities.
 
-Use `python dag.py pull --agent "$AGENT_ID"` (actual Event Lab identity required). The command atomically selects VERIFIER first from explicit review-request events, else IMPLEMENTER, else HOLD; see AGENTS.md and TAB_PROMPT.md. Owners publish `request-review` and reviewers finish with `review-result`. A Git record is not verifier authentication.
+Use `python dag.py pull --agent "$AGENT_ID"` (a new ID created each turn; no Event Lab session required). The command atomically selects VERIFIER first from explicit review-request events, else IMPLEMENTER, else HOLD; see AGENTS.md and TAB_PROMPT.md. Owners publish `request-review` and reviewers finish with `review-result`. A Git record is not verifier authentication.
 
 ## Agent commands
 
@@ -40,7 +40,7 @@ python dag.py review-result TASK_ID --reviewer "$AGENT_ID" --verdict HOLD --note
 python dag.py review-result TASK_ID --reviewer "$AGENT_ID" --verdict PASS --evidence artifacts/TASK_ID/DECLARED_RECEIPT.json
 ```
 
-Replace placeholders with actual task IDs and existing artifact paths. Each tab follows the returned role; no manual `claim` first. A verified task's legitimate owner separately records final PASS. Admin `reopen`/`release` and `sync` are recovery operations; no forced release is authenticated by this script.
+Replace placeholders with actual task IDs and existing artifact paths. Each tab follows the returned role; no manual `claim` first. A later turn's `pull` assigns the final PASS as FINALIZER. Admin `reopen`/`release` and `sync` are recovery operations; no forced release is authenticated by this script.
 
 ## Git commit rules and failure modes
 
