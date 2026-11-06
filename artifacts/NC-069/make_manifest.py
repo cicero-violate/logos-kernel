@@ -68,7 +68,7 @@ def main(owner):
     comparison = verdict(summary, results["baselines"])
     (HERE / "results_summary.json").write_text(json.dumps({"summary": summary, "comparison": comparison,
         "baselines_heldout_combo": results["baselines"]["heldout_combo"]}, indent=1))
-    sources = ["causal_benchmark.py", "train_eval.py", "test_causal_benchmark.py", "make_manifest.py", "README.md"]
+    sources = ["causal_benchmark.py", "train_eval.py", "test_causal_benchmark.py", "make_manifest.py", "recompute_baselines.py", "README.md"]
     evidence = ["results.json", "results_summary.json", "intervention_benchmark.json"]
     manifest = {"schema_version": 1, "task": "NC-069", "owner": owner,
         "source_sha256": {f: sha(HERE / f) for f in sources},

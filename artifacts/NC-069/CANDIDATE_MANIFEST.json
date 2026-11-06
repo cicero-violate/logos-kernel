@@ -4,9 +4,10 @@
  "owner": "claude-code-turn-1de8687a60a64400aaf5c097afeb5213",
  "source_sha256": {
   "causal_benchmark.py": "f992952e8cf5f989bc3ade546fed08b44494c58815807c4d334f7f1385706cb9",
-  "train_eval.py": "4637eb4e6d3760c762ee32b36cf71db9ccd355c367b755b6c2a72277f0e505e1",
-  "test_causal_benchmark.py": "7519c51172e74b0f08b680955b149219abb33afa026f31fab40523016dcb8091",
-  "make_manifest.py": "f9f4f811b1dfd94dd4df3230e56c1678e1bd8cba5b93c4310178692d2ee45cc6",
+  "train_eval.py": "1731aec1b682109d9bf45ec51920bda2acb274efd4d0728cf938317ef4e7ebdb",
+  "test_causal_benchmark.py": "94ff1f4c904b13e45f2fb6122e8d7f4db76f91c36a0f86248dc67ec38a0fc85c",
+  "make_manifest.py": "76a4850355697a24bd8962f40819a71c24651b4f85e1f7bbd542f78dae36a936",
+  "recompute_baselines.py": "2d50202604bbed2f0803c1d5e8f991e9cf5961f96c0f3a1cb7be90e845d59a35",
   "README.md": "f2c0266b286db522940b2785df8b9d09802ea9e994237316ebdbfc2232bd826e"
  },
  "canonical_isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
@@ -79,5 +80,13 @@
   "CPU is measured under shared load with tabs running, so CPU seconds are approximate, while steps and samples are exactly equal",
   "Finite sampled held-out sets, not every program or intervention",
   "The passive_rewrite arm is given the rewriting rule, so it does not test discovering that rule"
- ]
+ ],
+ "rework_of_review": {
+  "verdict": "FAIL",
+  "fixed": [
+   "majority baseline now comes from training data"
+  ],
+  "note": "Only fixed baselines were recomputed; model checkpoints and arm results are unchanged, and the reviewer's receipt stays in place."
+ },
+ "review_output_path": "artifacts/NC-069/independent_verification.json"
 }

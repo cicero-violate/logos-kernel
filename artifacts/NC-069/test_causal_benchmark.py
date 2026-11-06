@@ -112,6 +112,26 @@ class BenchmarkTests(unittest.TestCase):
         self.assertGreater(changed, 80)
         self.assertLess(changed, 790)
 
+    def test_majority_baseline_ignores_heldout_labels(self):
+        # Reviewer counterexample: changing held-out targets changed the majority answer.
+        import train_eval
+        train = cb.generate(0, 200, "train")
+        tests = {"heldout_combo": cb.generate(0, 40, "heldout_combo")}
+        first = train_eval.baselines(tests, train)["heldout_combo"]["majority"]["correct"]
+        forced = train_eval.baselines(tests, train)["heldout_combo"]
+        mutated = [{**s, "target": [7, 7, 7, 7]} for s in tests["heldout_combo"]]
+        majority_after = train_eval.baselines({"heldout_combo": mutated}, train)["heldout_combo"]["majority"]["correct"]
+        self.assertEqual(forced["majority"]["correct"], first)
+        wanted = [torch_majority(train, i) for i in range(4)]
+        self.assertEqual(majority_after, 40 if wanted == [7, 7, 7, 7] else 0)
+
+
+def torch_majority(samples, index):
+    counts = {}
+    for sample in samples:
+        counts[sample["target"][index]] = counts.get(sample["target"][index], 0) + 1
+    return max(sorted(counts), key=counts.get)
+
 
 if __name__ == "__main__":
     unittest.main()

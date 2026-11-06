@@ -153,17 +153,16 @@ def train_arm(arm, seed, train, tests, args, out):
             "buckets": results}
 
 
-def baselines(tests):
-    def majority(samples):
-        counts = [torch.bincount(torch.tensor([s["target"][i] for s in samples]), minlength=cb.VALUES).argmax().item()
-                  for i in range(len(REGS))]
-        return counts
+def baselines(tests, train):
+    """The majority answer comes from training data only, so held-out labels cannot leak into it."""
+    majority = [torch.bincount(torch.tensor([s["target"][i] for s in train]), minlength=cb.VALUES).argmax().item()
+                for i in range(len(REGS))]
     out = {}
     for bucket, samples in tests.items():
         out[bucket] = {
             "copy_input": score([[s["inputs"][n] for n in REGS] for s in samples], samples),
             "factual_oracle": score([s["factual"] for s in samples], samples),
-            "majority": score([majority(samples)] * len(samples), samples)}
+            "majority": score([majority] * len(samples), samples)}
     return out
 
 
@@ -182,7 +181,7 @@ def main():
     tests = {b: cb.generate(1000, a.test_samples, b) for b in BUCKETS}
     report = {"schema": "logos.nc069.results/1", "config": {k: (str(v) if isinstance(v, Path) else v) for k, v in vars(a).items()},
               "held_out_combinations": sorted({s["combo"] for s in tests["heldout_combo"]}),
-              "baselines": baselines(tests), "runs": []}
+              "baselines": baselines(tests, cb.generate(a.seeds[0], a.train_samples, "train")), "runs": []}
     target = a.out / "results.json"
     for seed in a.seeds:
         train = {"mixed": cb.generate(seed, a.train_samples, "train"),
