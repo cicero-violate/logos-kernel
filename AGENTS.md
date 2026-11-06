@@ -1,10 +1,10 @@
-# AGENTS.md — Neural Computer Task-DAG Execution Protocol
+# AGENTS.md — Logos Kernel Agent Protocol
 
 ## Mandatory entry point
 
-You are an agent working on the Neural Computer learning program. **Read this file first. Then obey the canonical append-only task ledger.**
+You are an agent working on Logos Kernel, the neural computer learning program. **Read this file first. Then obey the canonical append-only task ledger.**
 
-- **Repository:** `/workspace/experiments/neural_computer_dag_v1`
+- **Repository:** `/workspace/experiments/logos-kernel`
 - **Source of truth:** `instructions.jsonl` (task definitions, dependencies, status events, hash chain)
 - **Only approved ledger writer:** `python dag.py ...`
 - **Specification and CLI help:** `README.md`, `python dag.py --help`
@@ -15,7 +15,7 @@ You are an agent working on the Neural Computer learning program. **Read this fi
 ## First command sequence — every new agent session
 
 ```bash
-cd /workspace/experiments/neural_computer_dag_v1
+cd /workspace/experiments/logos-kernel
 python dag.py validate
 python -m unittest -q test_dag
 python dag.py ready

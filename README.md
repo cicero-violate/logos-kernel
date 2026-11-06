@@ -1,6 +1,6 @@
-# Neural Computer - append-only task DAG
+# Logos Kernel - append-only task DAG
 
-Canonical path: /workspace/experiments/neural_computer_dag_v1/
+Canonical path: /workspace/experiments/logos-kernel/
 
 ## Source of truth
 
@@ -12,7 +12,7 @@ Canonical path: /workspace/experiments/neural_computer_dag_v1/
 
 ## Agent workflow
 
-    cd /workspace/experiments/neural_computer_dag_v1
+    cd /workspace/experiments/logos-kernel
     python dag.py validate
     python dag.py ready
     python dag.py list
