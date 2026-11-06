@@ -1,0 +1,54 @@
+{
+ "schema": "logos.nc082.audit/1",
+ "held_out_per_group": {
+  "concept": 120,
+  "multiply": 1,
+  "other_loops": 4,
+  "multiply_variant": 14,
+  "fresh_random": 200
+ },
+ "seeds": {
+  "11": {
+   "occurrences_by_group": {
+    "fresh_random": 35
+   },
+   "distinct_held_out_seen_in_training": {
+    "fresh_random": 3
+   },
+   "lengths_seen": {
+    "fresh_random": [
+     3
+    ]
+   },
+   "training_programs_checked": 1024000
+  },
+  "19": {
+   "occurrences_by_group": {
+    "fresh_random": 33
+   },
+   "distinct_held_out_seen_in_training": {
+    "fresh_random": 2
+   },
+   "lengths_seen": {
+    "fresh_random": [
+     3
+    ]
+   },
+   "training_programs_checked": 1024000
+  },
+  "29": {
+   "occurrences_by_group": {
+    "fresh_random": 25
+   },
+   "distinct_held_out_seen_in_training": {
+    "fresh_random": 2
+   },
+   "lengths_seen": {
+    "fresh_random": [
+     3
+    ]
+   },
+   "training_programs_checked": 1024000
+  }
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "schema_version": 1,
+ "task": "NC-082",
+ "owner": "claude-code-turn-569b017511984f57abf6faa490df2b47",
+ "source_sha256": {
+  "controller.py": "d1dbb71ef6e14b80adbcfc401f7dc44fc654068ea25d1a24ce97fb1d9e0a6bbe",
+  "test_controller.py": "32de27c5f41845923cc97dc79c3fc7c5e0451bb35716611e5de44076606724c7",
+  "extended_eval.py": "85ca35e4fd5ffaa688a5c26d12d1f0ac04c2d6a533edeed97e580a36df0c11e6",
+  "audit_by_category.py": "c28d3c4fd234ea3d2819eac920814c8f1f574706f51bd37ef2bbab4f651ec71a",
+  "README.md": "b4f5519b0d072eb901ccf0b23a5391b17657ea3d4ca4c38569bbdb7df6050a64"
+ },
+ "evidence_sha256": {
+  "controller_results.json": "7217180ca62e8ce3f4a358556762d439cf4b4c16815a06ca670a4955f66e565e",
+  "extended_results.json": "a0593e944e7e4789c570b326d5fbbf0cc1ce8ee35b8bd4460a67299ff0474405",
+  "training_audit_by_group.json": "e40696a6f9069fd59d100523c7c3d8d8b944fa9071b292ac5ac869dcc0709892",
+  "first_run_results_no_branch_curriculum.json": "ac69a6f4e87aac93c86f5e6f09272b0498ae0ba2bcee01e19be36f399f578452",
+  "library_snapshot.jsonl": "700faee6a29f79cbd2036d14ab51fee530958e399202b95826dec9ddf8359180"
+ },
+ "checkpoint_sha256": {
+  "controller_seed11.pt": "d7140f783a059425cc86ed4a1cb731f6aa13b1d747d04a503e36a94bddf25b38",
+  "controller_seed19.pt": "f7e4ac1611cfaad85032a73f96e7b499c987d6136d82e7f1b808054a54252d2d",
+  "controller_seed29.pt": "a02c68413116ddd51cfbdfbedbd601928e9eadac2729a441caf2212b04665985"
+ },
+ "nc080_operators_sha256": {
+  "operators_seed11.pt": "8552f68d115b804398e6442fba4fb7e7fa9419847af55086cda13d300342087c",
+  "operators_seed19.pt": "a10d2b37e13e1be52c2aaccf34fa68d23c2549b915e6d95d921d6e7176ce8536",
+  "operators_seed29.pt": "7abd17b1436d03b18dc6525e42333895001eae7fd92f25762f0224c2c4ea6417"
+ },
+ "results_all_three_seeds": {
+  "multiply_256_sampled": "256/256",
+  "multiply_all_4bit_pairs": "256/256",
+  "multiply_4217_pairs": "4217/4217",
+  "other_loop_programs_all_4bit_pairs": "256/256 on each of 4",
+  "multiply_register_and_position_variants": "14/14 programs on 256 inputs",
+  "concept_programs": "120/120 on 32 inputs",
+  "fresh_random_programs": "200/200 on 32 inputs, 71 with a backward jump",
+  "multiply_teacher_forced_step_errors": 0,
+  "blank_program_control": "0 concepts, 0 fresh programs, 0 of 64 on each loop and multiply"
+ },
+ "review_output_path": "artifacts/NC-082/independent_verification.json",
+ "reproduction": [
+  "See README.md."
+ ],
+ "negative_controls": [
+  "program tokens blanked",
+  "the pre-curriculum first run, kept as evidence",
+  "a model that always predicts HALT halts at once whatever the program says, so rollout follows only the model",
+  "regeneration of all 1,024,000 training programs per seed compared with every held-out program"
+ ],
+ "dependencies": [
+  "Python 3",
+  "NumPy",
+  "PyTorch CPU",
+  "artifacts/NC-080"
+ ],
+ "limitations": [
+  "Fresh random programs: 2 or 3 of the 200 per seed, all 3 instructions long, also appeared in training by chance, so the unseen count is 197 or 198. No concept, multiply, loop or variant program appeared in training.",
+  "controller_results.json's held_out_collisions field sampled a stream without the branch curriculum and is not meaningful; training_audit_by_group.json replaces it.",
+  "Multiplication results wrap at 8 bits. Inputs are all 4-bit pairs and 4,217 8-bit pairs, not all 65,536.",
+  "Programs fit in 24 instructions and 8 registers, and rollouts here took at most 60 steps. Longer programs are untested.",
+  "This instruction set is small, and each field is copied from a program token, so much of the task is a learned lookup plus a zero test. It shows general execution of this ISA, not of arbitrary languages.",
+  "Executing a program is not inventing it, and the host still holds registers, feeds predictions forward, iterates bits and dispatches.",
+  "A fresh program screened as halting on 4 inputs could in principle not halt on others; none failed.",
+  "Controller and operators are separate models, not one shared-weight Transformer.",
+  "The test set grew after the first run's diagnosis: the curriculum and other loop programs were added in response to that failure, and were written by the implementer."
+ ]
+}
