@@ -5,7 +5,7 @@
     {
       "command": "PYTHONPATH=artifacts/NC-055 python -m unittest -q test_benchmark",
       "exit_code": 0,
-      "tests": 13
+      "tests": 16
     },
     {
       "command": "python -m unittest -q test_dag",
@@ -29,8 +29,8 @@
     }
   ],
   "evidence_sha256": {
-    "artifacts/NC-055/invariant_benchmark_contract.json": "ba3a97ee0ec7df90f868332d943e7b1233d08e9da447fc9cfc2f382321d2cc3a",
-    "artifacts/NC-055/split_and_negative_control_report.json": "45577ec206d350ebfe1b6fc15a69a51f8988eb81fa49c8ab092c38e4516dcd93"
+    "artifacts/NC-055/invariant_benchmark_contract.json": "a5dc7a75ccd8ad2f13d1b31498d2349cf6228dcb0a5586dc1d0f0acd1e4ad81b",
+    "artifacts/NC-055/split_and_negative_control_report.json": "7acd5f2f58946b3ca2c17ff2e7a9709ab7215bb3c7c92e2d1826a9fefa11029a"
   },
   "families": 12,
   "input_encodings": {
@@ -52,25 +52,32 @@
     "artifacts/NC-055/benchmark.py",
     "artifacts/NC-055/test_benchmark.py"
   ],
+  "oracle_target_commitment_method": "SHA256 UTF-8 compact sorted-key JSON array of {case_id,reference_exact} entries in oracle.cases(split) order",
   "oracle_target_commitments": {
-    "test": "171cce4f94eb22d7cdbb13b71c1ff02b426d0bbd12dc41641744d1778379d8a7",
-    "train": "4e0c4b6f4eb76b46ede8f2677ad9ef942333d6e9073c1e2a5a9fab3352b9cb96",
-    "validation": "9c1ac4593e4b7fb4c860aae61cee12bb69091f57696e5c71bb043a5f7e563b96"
+    "test": "b9d9e3c8dc4822f00c7dbd4e8b65c37def2a539960fcd4854934ee2b663e6fc0",
+    "train": "1d8f46af0fc46607de5497f44f60ccc8dbb9b47368164a6b5d2fe89c40d68069",
+    "validation": "b107afd78f8f6800227b0c32a51b87e61f3d40f119087584d834d925d079553d"
   },
-  "owner": "turn-b53e292ee3e44b38882cd02b26e4cd27",
-  "proof_scope": "Reproducible finite CPU benchmark. Exact rational oracle for 11 families, Decimal(78) logistic family with float64 observations. Bounded heldout predictive/structural identification only, NOT a mathematical theorem, genuine model invention, scientific causal proof or OS security guarantee.",
+  "owner": "turn-30467f9ce04840009251d73b10165cc7",
+  "proof_scope": "Finite reproducible 99-case CPU-only forecast/structural benchmark. Hidden-law matching plus demonstrably varying held-out truth; flat fixed-point horizon forecasts may pass accuracy but never discovery. No formal theorem, neural learning, unseen-seed generalization, authenticated identity or sealed evaluator.",
   "review_output_path": "artifacts/NC-055/independent_verification.json",
+  "rework_of_review": {
+    "finding": "periodic validation rep=1 all-zero alias allowed constant forecast + law to pass; wider audit also found constant modular fixed-point test rep=0",
+    "fix": "odd periodic validation stride; grader excludes uninformative held-out trajectories; zero and first-future-value constant forecasts tested on all 72 nontrivial cases",
+    "reviewer": "turn-8bc0afcebd164e1e98d721c254e7df53",
+    "verdict": "FAIL"
+  },
   "runtime_dependencies": [
     "Python 3 standard library",
     "Git CLI"
   ],
   "schema_version": 1,
   "seed": 55061,
-  "source_commit": "a9761c13a59bec1dd615d7a92d06627083ac66f6",
+  "source_commit": "8c7f9b1193c82cf6b30d44870a98736a69bec725",
   "source_sha256": {
-    "artifacts/NC-055/benchmark.py": "1c32b2ed5dc80cc75df741c8f2cdb26c07835b715d226ecf95f7fc2fe024f936",
-    "artifacts/NC-055/oracle.py": "ed310cb20260bab39f6ec92d7b72c036d80fd153af04bd44e0b24826d7adafb1",
-    "artifacts/NC-055/test_benchmark.py": "63080e50099db08c0c23cc5b6b7459bd5d947fc24149c6c608a878af87d12d04"
+    "artifacts/NC-055/benchmark.py": "d559d8ad847fd4970f139ad0fa02967b3633dbae10c1d103b4baa0f98cf1ec34",
+    "artifacts/NC-055/oracle.py": "898dd83bd45d4b9cab0001bf53563cc59d974d25f9b34b08ea075e13c8335816",
+    "artifacts/NC-055/test_benchmark.py": "c22cdbcb0d346e0c2ee5d9ad64ddeaefe4134e6e7465cfd30e16d51badbcc70d"
   },
   "split_counts": {
     "test": 36,
@@ -79,15 +86,33 @@
   },
   "task": "NC-055",
   "title": "Construct falsifiable invariant-discovery benchmark across dynamical families",
-  "verdict": "PENDING_INDEPENDENT_REVIEW",
+  "verdict": "PENDING_NEW_INDEPENDENT_REVIEW",
   "verification_targets": {
     "baseline_empirical_discovery_pass_count": 0,
     "family_generation": "recompute oracle cases and exact/Decimal reference values from committed sources",
     "heldout_separation": "check public views omit truth/family/params; verify no future samples read by baselines",
     "independent_receipt": "artifacts/NC-055/independent_verification.json",
     "negative_controls": {
+      "constant_collapse_all_splits": {
+        "test": {
+          "oracle_assisted_constant_rejected": 27,
+          "rejected": 27,
+          "tested": 27
+        },
+        "train": {
+          "oracle_assisted_constant_rejected": 18,
+          "rejected": 18,
+          "tested": 18
+        },
+        "validation": {
+          "oracle_assisted_constant_rejected": 27,
+          "rejected": 27,
+          "tested": 27
+        }
+      },
       "constant_collapse_nontrivial_rejected": 27,
-      "oracle_only_positive_nontrivial": 27,
+      "oracle_only_nonidentifying_nontrivial": 1,
+      "oracle_only_positive_nontrivial": 26,
       "short_prefix_interpolation": {
         "bounded_discovery_pass": 0,
         "failed_extrapolation": 15,
@@ -95,6 +120,7 @@
       },
       "wrong_law_rejected": 36
     },
-    "oracle_only_positive_nontrivial": 27
+    "oracle_only_nonidentifying_nontrivial": 1,
+    "oracle_only_positive_nontrivial": 26
   }
 }
