@@ -43,7 +43,6 @@
   ],
   "compiled_by": "agent-event-lab:1db9edb983ff4df9933612e7c826e55f",
   "created_utc": "2026-11-06T05:49:41.841353+00:00",
-  "failed_cases": [],
   "full_checkpoint_hashes_in_manifest": true,
   "independent_checkpoint_integrity": {
     "adamw_state_nonempty_checkpoints": 36,
@@ -419,6 +418,10 @@
     ],
     "updates_per_seed_arm": 144
   },
+  "model_prediction_failures_are_preserved_in_raw_traces": true,
+  "model_predictions_correct": 62237,
+  "model_predictions_incorrect": 16963,
+  "model_predictions_tested": 79200,
   "negative_controls": {
     "benchmark_answer_substitution_found": false,
     "deterministic_random_regeneration_stable": true,
@@ -451,6 +454,16 @@
   "raw_verifier_trace_file": "artifacts/NC-022/codex_verifier_trace.jsonl",
   "raw_verifier_trace_sha256": "75929316cf8a27fb14cd3db1a8378cc286e178745763f7c3f9cc212403e79781",
   "receipt_is": "Implementer-assembled SHA256 binding to distinct read-only Codex scientific verdict, NOT implementer self-approval",
+  "representative_neural_counterexample": {
+    "a": 188,
+    "arm": "new_only",
+    "b": 158,
+    "expected": 8,
+    "observed": 252,
+    "operation": "mul",
+    "seed": 11,
+    "width": 8
+  },
   "research_comparison": {
     "comparisons": [
       {
@@ -536,5 +549,6 @@
     "Scientific controls pass while the preregistered strict rehearsal claim remains NO_GAIN."
   ],
   "task": "NC-022",
+  "verification_failures": [],
   "verifier_runtime_id": "codex-cli:01a1af63-1343-7ed3-a7d4-2f15f714ee80"
 }
