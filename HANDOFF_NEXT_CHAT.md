@@ -62,6 +62,8 @@ recurrence or invariant explains observations across unseen domains.
 
 ## New stateless tab: pull instead of manual role selection
 
+**Target: 3 stateless tabs for Logos Kernel; 3 for Logos Autonomy (6 total).** All roles are dynamically pulled within each isolated repo; none are assigned permanently. This handoff is historical: recompute events, status, ranks and claims from current JSONL.
+
 Use TAB_PROMPT.md. Verify actual Event Lab session ID, run DAG validation and tests, then run `python dag.py pull --agent "$AGENT_ID"`. The writer atomically assigns a pending independent review first, otherwise a legitimately owned/ready implementation, else HOLD. Implementers use `request-review` to queue pinned manifests; reviewers use `review-result` to close their ticket. Do not infer role from `ready`, another tab, or an invented identity. Task rankings above are informational snapshots; preserve staged/untracked files and the original champion.
 
 ## File and tooling dependencies

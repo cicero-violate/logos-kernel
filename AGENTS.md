@@ -61,77 +61,24 @@ If no pending review is independently eligible and no task is claimable, report 
 
 Output: `Assigned role | Actual session | Ticket | Candidate/hash | Changed files | Tests | Independent verdict | Blocker/next action`.
 
-## At the beginning of each actual agent session
+## Operational cycle (all three stateless tabs)
+
+Each tab recovers Git and JSONL state every turn, obtains its **actual** Event Lab identity, validates ledger/tests, then runs the **only normal dispatch command**:
 
 ```bash
 cd /workspace/experiments/logos-kernel
 python dag.py validate
 python -m unittest -q test_dag
-python dag.py ready
-python dag.py list
-```
-
-Stop and report a ledger-integrity failure; never "fix" it by rewriting historical JSONL. Read the complete task specification before execution.
-
-## Exclusive task ownership — claims, not imaginary workers
-
-Only a task with `status=planned`, `owner=null` and **all dependencies passed** appears in `ready`.
-
-Set the shell variable `AGENT_ID` to the **actual identity assigned by your agent runtime**. No placeholder, fabricated worker name or guessed identity is permitted.
-
-```bash
-test -n "$AGENT_ID" || { echo 'Real AGENT_ID required'; exit 2; }
-python dag.py claim NC-000 --owner "$AGENT_ID"
-python dag.py list
-```
-
-Replace `NC-000` with a task **currently** listed by `ready`. An exclusive claim adds a `kind=claim` event and sets the current owner; its task status stays `planned`. A second claim on the same task is rejected atomically, even if two agents saw it ready.
-
-If already claimed by your exact agent identity, resume the task rather than claiming twice. If claimed by another owner, do not take it. If you stop or hand off before completion, **release your claim**:
-
-```bash
-python dag.py release NC-000 --by "$AGENT_ID" --reason "handoff"
-python dag.py ready
-```
-
-The owning agent should release a claim it no longer needs; then a different agent can claim it. A human/operator can clear a provably invalid, abandoned or mistaken claim:
-
-```bash
-test -n "$OPERATOR_ID" || { echo 'Real OPERATOR_ID required'; exit 2; }
-python dag.py release NC-000 --by "$OPERATOR_ID" --force --reason "confirmed stale claim"
-```
-
-Forced releases append an audit record with the old owner and reason. **`--force` is an administrative protocol flag, not an authenticated access control.** Before release, check that the actual owner isn't working. There is deliberately no heartbeat, auto-expiration, auto-reassignment, synthetic worker or background execution.
-
-## Execute and verify a claimed task
-
-1. Inventory existing work, lock task contracts and preserve the original RLT champion/checkpoints.
-2. Implement only the claimed task's instructions in the appropriate external project, with exact source/commit/config/checkpoint hashes.
-3. Save full trained model topology, weights, architecture, vocabulary, optimizer and random state when training must resume; isolated neuron values are insufficient.
-4. Run bounded acceptance tests, clean-process inference, held-out/counterexample tests and prior-skill retention gates.
-5. Obtain **independent verification by a different, real agent**. The verifier produces a receipt at the task's declared repository-relative evidence path.
-6. The owning agent records PASS only after actual independent verification. Keep every result traceable, then inspect the next `ready` task.
-
-Verification receipts must record task ID, implementer, distinct verifier, exact repo/commit and checkpoint SHA-256, commands, environment, splits, seed/run information, measured inputs/denominators, failed cases, proof scope, neural-versus-symbolic execution boundary, result and limits.
-
-```bash
+python -m unittest -q test_pull
 test -n "$AGENT_ID" || exit 2
-test -n "$VERIFIER_ID" || exit 2
-
-# After a real independent verifier writes this file:
-python dag.py pass NC-000 --owner "$AGENT_ID" --verifier "$VERIFIER_ID" --evidence artifacts/NC-000/baseline_receipt.json
-
-# Alternative outcomes (do NOT run after PASS):
-python dag.py fail NC-000 --owner "$AGENT_ID" --note "acceptance test failure"
-python dag.py block NC-000 --owner "$AGENT_ID" --note "specific blocker"
-
-# Operator reopens a previously failed/blocked task:
-python dag.py reopen NC-000 --by "$OPERATOR_ID" --reason "blocker addressed"
+python dag.py pull --agent "$AGENT_ID"
 ```
 
-**A file existing and a verifier ID being supplied do not constitute proof of independent verification.** The script checks event invariants and evidence-file existence, but not identity authentication or scientific validity.
-
-New claims leave a task `planned` until one of `passed`, `failed`, or `blocked` is recorded. Each of these statuses clears ownership. Failed/blocked tasks require explicit `reopen` before a new claim. The historical `working` status is replayed for ledger compatibility only; new tasks use `claim`, not `start`.
+- VERIFIER: independently reproduce the returned candidate; record `review-result` with the task's declared receipt and exact verdict.
+- IMPLEMENTER: implement the pulled task; commit owned evidence; record `request-review` with a complete pinned candidate.
+- HOLD: report the exact blocker. Never bypass role assignment, fabricate a second identity or self-approve.
+- Owner records task PASS only after genuine independent reviewer PASS. Blocked/failed tasks require an authorized reopen before a new owner claim.
+- Admin recovery (`sync`, `reopen`, `release`) is exceptional, not part of normal tab assignment. `--force` does not authenticate an operator. No worker lease or automatic stale-claim cleanup exists.
 
 ## New instructions and concurrency
 

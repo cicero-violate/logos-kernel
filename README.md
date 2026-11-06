@@ -5,7 +5,7 @@ Canonical path: `/workspace/experiments/logos-kernel/`
 ## Source of truth and ownership
 
 - `instructions.jsonl` is a SHA-256 hash-chained, append-only event log. Existing events are never rewritten.
-- `dag.py` validates the task DAG and appends atomic `task`, `claim`, `release`, `status` and `reopen` events.
+- `dag.py` validates the task DAG and appends atomic task, claim, review-request, review-claim, review-result, status and recovery events.
 - **Every successfully appended event is immediately committed to local Git** as a ledger-only commit, while the append lock is held. Other staged and unstaged files are excluded.
 - Before appending, the CLI verifies that committed history is an exact byte-prefix of the current ledger; the ledger must match Git HEAD or the append stops and requests `python dag.py sync`.
 - If Git commit fails after an event is fsynced, the event **remains appended** and the CLI exits nonzero. Run `python dag.py sync`; never re-add the same event or rewrite the ledger.
@@ -17,6 +17,8 @@ Canonical path: `/workspace/experiments/logos-kernel/`
 
 ## Pull-based ticket selection
 
+**Target topology: three stateless ChatGPT tabs per repository; two isolated repositories, six tabs total.** The DAG does not launch tabs or authenticate identities.
+
 Use `python dag.py pull --agent "$AGENT_ID"` (actual Event Lab identity required). The command atomically selects VERIFIER first from explicit review-request events, else IMPLEMENTER, else HOLD; see AGENTS.md and TAB_PROMPT.md. Owners publish `request-review` and reviewers finish with `review-result`. A Git record is not verifier authentication.
 
 ## Agent commands
@@ -25,34 +27,20 @@ Use `python dag.py pull --agent "$AGENT_ID"` (actual Event Lab identity required
 cd /workspace/experiments/logos-kernel
 python dag.py validate
 python -m unittest -q test_dag
-python dag.py ready
-python dag.py list
-# Commit a complete append-only rank/priority snapshot:
-python dag.py priority-plan --file /path/to/plan.json
-# Commit preexisting valid uncommitted ledger append(s) after an interrupted Git operation:
-python dag.py sync
-
-# Set AGENT_ID from your actual connected agent identity.
+python -m unittest -q test_pull
 test -n "$AGENT_ID" || exit 2
-python dag.py claim NC-000 --owner "$AGENT_ID"
-# If leaving a task unfinished:
-python dag.py release NC-000 --by "$AGENT_ID" --reason "handoff"
+python dag.py pull --agent "$AGENT_ID"
 
-# Only after an independent verifier wrote the receipt:
-python dag.py pass NC-000 --owner "$AGENT_ID" --verifier "$VERIFIER_ID" --evidence artifacts/NC-000/baseline_receipt.json
-# Alternatives to PASS:
-python dag.py fail NC-000 --owner "$AGENT_ID" --note "failed acceptance"
-python dag.py block NC-000 --owner "$AGENT_ID" --note "external blocker"
-# Operator-only correction of invalid ownership:
-python dag.py release NC-000 --by "$OPERATOR_ID" --force --reason "confirmed abandoned claim"
-# Retry failed/blocked tasks after review:
-python dag.py reopen NC-000 --by "$OPERATOR_ID" --reason "blocker resolved"
+# IMPLEMENTER after producing real, committed, pinned candidate evidence:
+python dag.py request-review TASK_ID --owner "$AGENT_ID" --candidate-path artifacts/TASK_ID/CANDIDATE_MANIFEST.json
 
-# Expand DAG: new_task_event.json must be a full kind=task object.
-python dag.py add-task --file /path/to/new_task_event.json
+# VERIFIER after independent checks:
+python dag.py review-result TASK_ID --reviewer "$AGENT_ID" --verdict HOLD --note "specific blocker"
+# Or, with actual independently supported PASS and declared receipt:
+python dag.py review-result TASK_ID --reviewer "$AGENT_ID" --verdict PASS --evidence artifacts/TASK_ID/DECLARED_RECEIPT.json
 ```
 
-These are **command examples for alternative outcomes**, not one sequence to execute. Task `NC-000` must be ready; `AGENT_ID`, `VERIFIER_ID` and `OPERATOR_ID` must refer to real identities. Claim ownership cannot itself prove that the agent is running or that PASS evidence is correct.
+Replace placeholders with actual task IDs and existing artifact paths. Each tab follows the returned role; no manual `claim` first. A verified task's legitimate owner separately records final PASS. Admin `reopen`/`release` and `sync` are recovery operations; no forced release is authenticated by this script.
 
 ## Git commit rules and failure modes
 
