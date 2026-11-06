@@ -1,0 +1,540 @@
+{
+  "audited_implementation_commit": "6d20b0183a8c081ad0ebb292fef08e6406786f3e",
+  "auditor_commands": [
+    {
+      "command": "python dag.py validate",
+      "exit_code": 0,
+      "result": "PASS; 29 nodes, 59 events"
+    },
+    {
+      "command": "TMPDIR=/dev/shm python -m unittest -q test_dag",
+      "exit_code": 0,
+      "result": "19 tests passed"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-022 -p test_rlt_retention.py",
+      "exit_code": 0,
+      "result": "11 tests passed"
+    },
+    {
+      "command": "independent read-only Python audit through stdin in a separate process",
+      "exit_code": 0,
+      "result": "45 checkpoints and traces, 1845 result cells, 79200 saved predictions, exposure reconstruction, retention reconstruction, fresh inference, and negative controls passed"
+    },
+    {
+      "command": "git diff --quiet 6d20b0183a8c081ad0ebb292fef08e6406786f3e -- audited NC-022 paths",
+      "exit_code": 0,
+      "result": "audited files remained identical to commit"
+    }
+  ],
+  "checkpoint_manifest_file": "artifacts/NC-022/checkpoint_manifest.json",
+  "checkpoints": 45,
+  "code_dependencies": [
+    "Python 3",
+    "PyTorch",
+    "NumPy",
+    "artifacts/NC-022/PROTOCOL.json",
+    "artifacts/NC-022/rlt_rehearsal.py",
+    "artifacts/NC-022/test_rlt_retention.py",
+    "/workspace/experiments/rlt_split_algorithms_ablation_v1/task_conditioned_rlt.py",
+    "/workspace/experiments/rlt_split_algorithms_ablation_v1/rlt_core.py",
+    "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+    "artifacts/NC-000/inventory.json"
+  ],
+  "compiled_by": "agent-event-lab:1db9edb983ff4df9933612e7c826e55f",
+  "created_utc": "2026-11-06T05:49:41.841353+00:00",
+  "failed_cases": [],
+  "full_checkpoint_hashes_in_manifest": true,
+  "independent_checkpoint_integrity": {
+    "adamw_state_nonempty_checkpoints": 36,
+    "checkpoint_files_hashed": 45,
+    "identity_and_update_metadata_consistent": true,
+    "manifest_hash_matches": true,
+    "model_parameters": 25089,
+    "raw_evaluation_files_hashed": 45,
+    "stage0_empty_optimizer_checkpoints": 9,
+    "strict_TaskConditionedRLT_loads": 45,
+    "torch_python_numpy_rng_packages": 45,
+    "trained_state_changes_after_stages_2_3_4": true
+  },
+  "independent_math_neural": {
+    "fresh_process": {
+      "checkpoints": "stage4 for every seed-arm combination",
+      "denominator": 4032,
+      "operation_token_changed_logits": 126,
+      "operation_token_comparisons": 126,
+      "pairs_per_seed_arm_operation_width": 32,
+      "reported_pair_overlap": 0,
+      "representative_counterexample": {
+        "a": 188,
+        "arm": "new_only",
+        "b": 158,
+        "expected": 8,
+        "observed": 252,
+        "operation": "mul",
+        "seed": 11,
+        "width": 8
+      },
+      "scores_correct_tested": {
+        "11:blocked_replay": {
+          "add": [
+            64,
+            64
+          ],
+          "compound": [
+            64,
+            64
+          ],
+          "lt": [
+            64,
+            64
+          ],
+          "mul": [
+            1,
+            64
+          ],
+          "parity_and": [
+            43,
+            64
+          ],
+          "sub": [
+            63,
+            64
+          ],
+          "xor": [
+            64,
+            64
+          ]
+        },
+        "11:new_only": {
+          "add": [
+            64,
+            64
+          ],
+          "compound": [
+            64,
+            64
+          ],
+          "lt": [
+            64,
+            64
+          ],
+          "mul": [
+            2,
+            64
+          ],
+          "parity_and": [
+            36,
+            64
+          ],
+          "sub": [
+            64,
+            64
+          ],
+          "xor": [
+            64,
+            64
+          ]
+        },
+        "11:rehearsal": {
+          "add": [
+            64,
+            64
+          ],
+          "compound": [
+            62,
+            64
+          ],
+          "lt": [
+            64,
+            64
+          ],
+          "mul": [
+            1,
+            64
+          ],
+          "parity_and": [
+            42,
+            64
+          ],
+          "sub": [
+            64,
+            64
+          ],
+          "xor": [
+            64,
+            64
+          ]
+        },
+        "19:blocked_replay": {
+          "add": [
+            64,
+            64
+          ],
+          "compound": [
+            64,
+            64
+          ],
+          "lt": [
+            64,
+            64
+          ],
+          "mul": [
+            3,
+            64
+          ],
+          "parity_and": [
+            30,
+            64
+          ],
+          "sub": [
+            64,
+            64
+          ],
+          "xor": [
+            64,
+            64
+          ]
+        },
+        "19:new_only": {
+          "add": [
+            64,
+            64
+          ],
+          "compound": [
+            61,
+            64
+          ],
+          "lt": [
+            63,
+            64
+          ],
+          "mul": [
+            1,
+            64
+          ],
+          "parity_and": [
+            33,
+            64
+          ],
+          "sub": [
+            63,
+            64
+          ],
+          "xor": [
+            64,
+            64
+          ]
+        },
+        "19:rehearsal": {
+          "add": [
+            64,
+            64
+          ],
+          "compound": [
+            64,
+            64
+          ],
+          "lt": [
+            64,
+            64
+          ],
+          "mul": [
+            2,
+            64
+          ],
+          "parity_and": [
+            34,
+            64
+          ],
+          "sub": [
+            64,
+            64
+          ],
+          "xor": [
+            64,
+            64
+          ]
+        },
+        "29:blocked_replay": {
+          "add": [
+            64,
+            64
+          ],
+          "compound": [
+            64,
+            64
+          ],
+          "lt": [
+            64,
+            64
+          ],
+          "mul": [
+            1,
+            64
+          ],
+          "parity_and": [
+            31,
+            64
+          ],
+          "sub": [
+            64,
+            64
+          ],
+          "xor": [
+            64,
+            64
+          ]
+        },
+        "29:new_only": {
+          "add": [
+            63,
+            64
+          ],
+          "compound": [
+            62,
+            64
+          ],
+          "lt": [
+            64,
+            64
+          ],
+          "mul": [
+            1,
+            64
+          ],
+          "parity_and": [
+            25,
+            64
+          ],
+          "sub": [
+            64,
+            64
+          ],
+          "xor": [
+            64,
+            64
+          ]
+        },
+        "29:rehearsal": {
+          "add": [
+            64,
+            64
+          ],
+          "compound": [
+            64,
+            64
+          ],
+          "lt": [
+            64,
+            64
+          ],
+          "mul": [
+            3,
+            64
+          ],
+          "parity_and": [
+            36,
+            64
+          ],
+          "sub": [
+            64,
+            64
+          ],
+          "xor": [
+            64,
+            64
+          ]
+        }
+      },
+      "symbolic_answer_fallback_found": false,
+      "widths": [
+        8,
+        16
+      ]
+    },
+    "heldout_case_hashes_verified": 1845,
+    "host_composition_probe": {
+      "correct": 32,
+      "label": "host control, not learned composition control",
+      "tested": 32,
+      "wiring": "neural xor(x,y) output supplied by host as first input to neural add(mid,y)"
+    },
+    "operations": [
+      "add",
+      "xor",
+      "sub",
+      "mul",
+      "lt",
+      "parity_and",
+      "compound"
+    ],
+    "oracle": "separately implemented unsigned width-masked arithmetic/bitwise oracle; no experiment truth, labels, or source truth helper used",
+    "saved_micro_accuracy": 0.7858207070707071,
+    "saved_predictions_correct": 62237,
+    "saved_predictions_verified": 79200,
+    "saved_result_cells_verified": 1845
+  },
+  "independent_training_and_exposure": {
+    "arms": [
+      "new_only",
+      "rehearsal",
+      "blocked_replay"
+    ],
+    "duplicate_holdouts": 0,
+    "holdout_pairs_per_seed": 224,
+    "new_only": {
+      "prior_task_allocation_intentionally_different": true,
+      "same_total_samples": true,
+      "same_updates": true,
+      "symmetric_exposure_difference_per_seed": 5760
+    },
+    "prior_640_step_training_disjointness_claimed": false,
+    "rehearsal_vs_blocked_replay": {
+      "exact_cells_per_seed": 6336,
+      "exact_equality": true,
+      "key": "stage,width,ordered operand pair,operation"
+    },
+    "samples_per_seed_arm": 6912,
+    "seeds": [
+      11,
+      19,
+      29
+    ],
+    "stages": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "train_eval_unordered_or_reverse_pair_overlap": 0,
+    "train_pairs_per_seed": 3456,
+    "updates_by_stage": [
+      0,
+      24,
+      72,
+      120,
+      144
+    ],
+    "updates_per_seed_arm": 144
+  },
+  "negative_controls": {
+    "benchmark_answer_substitution_found": false,
+    "deterministic_random_regeneration_stable": true,
+    "falsified_truth_detected": true,
+    "modified_task_or_width_exposure_breaks_exact_match": true,
+    "silent_repository_mutation_detected": false,
+    "tampered_checkpoint_breaks_manifest_sha256": true,
+    "wrong_operation_token_changed_logits": true
+  },
+  "neural_training": "Task-local copies of the actual 25,089-param RLT only; original champion frozen",
+  "no_champion_promotion": true,
+  "provenance": {
+    "exposure_matched_ablation_sha256": "e18fa1d03ad336cc0f333c7c7d4cc7ac3af71c6fc6f233c744ee5edb7eb44cec",
+    "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "protocol_commit": "01a1eb2fdf143e9344026518949b8d8c379af3d9",
+    "retention_matrix_sha256": "870f744cf2695025623c05b4d84287c86499e598a318744f4ba441d36169de55",
+    "rlt_checkpoint_manifest_sha256": "e3096747853754d7609452b5b68ef2ee6dd3eb45f880c4c215a36e6bc9529a98",
+    "source_sha256": {
+      "architecture": "99f70b03e2e864d1635ffdbd3ce56598d915bcc1673e1492964d3322714335fb",
+      "backbone": "3c4abc18752236d3118487213fcfa1cf4a18e52e2ceb17ad52a0cdec141013c7",
+      "experiment": "2d07d82b1659320356addd8a0f54e130ad200891b6a1990fbed073ce79f96ded",
+      "inventory": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+      "protocol": "152a2435601083c663c8c4ec3c25caf0d3bcb5f3a977cb19f9cf4dddaf690a9f",
+      "snapshot": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    "train_holdout_ledger_sha256": "1c60767d692e09587293cdb964e0b40919905ac78b1c47aaf7eafaa042da94a3"
+  },
+  "raw_verifier_final_file": "artifacts/NC-022/codex_verifier_final.json",
+  "raw_verifier_final_sha256": "d5914f494a46dc60415291bbd2685c02cca4d9147078b0a46ecdff225da88716",
+  "raw_verifier_trace_file": "artifacts/NC-022/codex_verifier_trace.jsonl",
+  "raw_verifier_trace_sha256": "75929316cf8a27fb14cd3db1a8378cc286e178745763f7c3f9cc212403e79781",
+  "receipt_is": "Implementer-assembled SHA256 binding to distinct read-only Codex scientific verdict, NOT implementer self-approval",
+  "research_comparison": {
+    "comparisons": [
+      {
+        "rehearsal_minus_blocked_replay": 0.0010416666666666075,
+        "rehearsal_minus_new_only": 0.2677083333333333,
+        "seed": 11,
+        "stage": 2
+      },
+      {
+        "rehearsal_minus_blocked_replay": 0.0012499999999999734,
+        "rehearsal_minus_new_only": 0.04125000000000001,
+        "seed": 11,
+        "stage": 3
+      },
+      {
+        "rehearsal_minus_blocked_replay": -0.0007812499999999556,
+        "rehearsal_minus_new_only": 0.0390625,
+        "seed": 11,
+        "stage": 4
+      },
+      {
+        "rehearsal_minus_blocked_replay": 0.0010416666666667185,
+        "rehearsal_minus_new_only": 0.018750000000000044,
+        "seed": 19,
+        "stage": 2
+      },
+      {
+        "rehearsal_minus_blocked_replay": 0.0,
+        "rehearsal_minus_new_only": 0.156875,
+        "seed": 19,
+        "stage": 3
+      },
+      {
+        "rehearsal_minus_blocked_replay": -0.017968749999999978,
+        "rehearsal_minus_new_only": 0.046093750000000044,
+        "seed": 19,
+        "stage": 4
+      },
+      {
+        "rehearsal_minus_blocked_replay": -0.012500000000000067,
+        "rehearsal_minus_new_only": 0.3427083333333333,
+        "seed": 29,
+        "stage": 2
+      },
+      {
+        "rehearsal_minus_blocked_replay": -0.020625000000000004,
+        "rehearsal_minus_new_only": 0.007499999999999951,
+        "seed": 29,
+        "stage": 3
+      },
+      {
+        "rehearsal_minus_blocked_replay": 0.01171875,
+        "rehearsal_minus_new_only": 0.05625000000000002,
+        "seed": 29,
+        "stage": 4
+      }
+    ],
+    "reason": "Matched blocked replay tied or exceeded rehearsal in several seed-stage comparisons; replay exposure benefited retention relative to new-only, but interleaving superiority was not consistently demonstrated.",
+    "regression_threshold_percentage_points": 5,
+    "restoration_deltas": {
+      "11:blocked_replay": 0.0,
+      "11:new_only": 0.03541666666666676,
+      "11:rehearsal": 0.0,
+      "19:blocked_replay": -0.0010416666666668295,
+      "19:new_only": 0.2020833333333334,
+      "19:rehearsal": 0.002083333333333437,
+      "29:blocked_replay": 0.0,
+      "29:new_only": 0.012500000000000178,
+      "29:rehearsal": 0.006249999999999978
+    },
+    "strict_finding": "NO_GAIN"
+  },
+  "research_outcome": "NO_GAIN",
+  "schema": "logos.nc022.independent-evidence/1",
+  "scientific_verdict": "PASS",
+  "scopes_and_limits": [
+    "All seven operation IDs were already present in the pretrained model; this is re-exposure, not novel-operation learning.",
+    "Fresh and saved results are sampled accuracy, not exhaustive global arithmetic correctness.",
+    "No disjointness from the earlier 640-step RLT training ledger is established.",
+    "The architecture depends on the immutable TaskConditionedRLT source, rlt_core decoding, PyTorch, NumPy, host-provided task IDs, and host register/data routing.",
+    "The host composition probe uses two genuine neural calls but fixed host wiring; it does not establish learned program invention or learned host execution.",
+    "The audit supports neither autonomous architecture, natural-language ability, global mathematical generalization, nor AGI.",
+    "Scientific controls pass while the preregistered strict rehearsal claim remains NO_GAIN."
+  ],
+  "task": "NC-022",
+  "verifier_runtime_id": "codex-cli:01a1af63-1343-7ed3-a7d4-2f15f714ee80"
+}

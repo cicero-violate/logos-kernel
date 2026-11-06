@@ -1,0 +1,85 @@
+NC-022 INDEPENDENT SCIENTIFIC VERIFIER — separate REAL Codex CLI session.
+Repository: /workspace/experiments/logos-kernel.
+Exact implementation commit: 6d20b0183a8c081ad0ebb292fef08e6406786f3e.
+Actual implementer/Event Lab session: 1db9edb983ff4df9933612e7c826e55f.
+Your REAL Codex thread.started runtime ID is your identity; do not invent one.
+READ-ONLY source/project/checkpoints/ledger/history. No training, Git commit,
+staging, approvals, DAG pass, source edits, experiment rewrite, checkpoint
+replacement, temporary files inside repository, or promotions. Temporary Python
+in /dev/shm is allowed. The wrapper captures raw trace+final JSON separately.
+
+Scope: NC-022 transferred 3-stage rehearsal and restoration to ACTUAL
+25,089-parameter task-conditioned recurrent Transformer, not the prior
+5,981-param NC005 MLP. Three seeds (11,19,29), arms new_only, rehearsal,
+blocked_replay; five stages 0..4; 45 full checkpoints. Source scientific
+claim is explicitly NO_GAIN under the STRICT matched replay gate.
+
+Mandatory checks, NO SKIPS:
+1. Read AGENTS.md, README.md, NC022 full task record in instructions.jsonl,
+artifacts/NC-022/PROTOCOL.json, README.md, rlt_rehearsal.py, test_rlt_retention.py,
+checkpoint_manifest.json, rlt_retention_matrix.json,
+exposure_matched_ablation.json and train_and_holdout_ledger.json. Verify
+preregistration commit 01a1eb2fdf143e9344026518949b8d8c379af3d9
+precedes 6d20b01 and matches protocol bytes. Validate unchanged original
+snapshot/config/source, no unauthorized champion promotion, untracked files
+from unrelated tasks not your task's fault.
+2. Execute python dag.py validate, TMPDIR=/dev/shm python -m unittest -q test_dag,
+PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q
+-s artifacts/NC-022 -p test_rlt_retention.py. Record actual 19 DAG and 11
+experiment tests and exit codes. Project must remain unmodified.
+3. Independently hash all 45 stage checkpoint files AND 45 raw evaluation
+JSONL files, and verify manifest SHA256, source files and original champion
+SHA256. Load multiple checkpoints from seed11, seed19, seed29 and all three
+arms, verify strict original TaskConditionedRLT state loading, 25,089 model
+parameters, true trained model differences after stages 2/3/4, full AdamW
+state and torch/python/numpy RNG packages, stage/seed/arm identity and
+consistent training updates 0,24,72,120,144.
+4. Independently reconstruct EXACT operand-task-width exposure multisets from
+raw preregistered train_and_holdout_ledger.json, not merely trusting
+rlt_rehearsal.matched_exposure_check. Show rehearsal vs blocked_replay exact
+equality at every stage, width, operand pair and operation; new_only has
+same 144 updates / 6912 samples but intentionally different prior-task
+allocation. Test no train-vs-eval pair or reverse-pair overlap and no
+duplicate holdout pair. No claim of disjointness from prior 640-step RLT
+training ledger. Check code did not change after preregistration.
+5. Independently build arithmetic/bitwise truth over exact unsigned
+width8/16/32 for seven operations: add,xor,sub,mul,lt,parity_and,
+compound. Do NOT use rlt_rehearsal.truth, training_labels, reference oracle
+or any existing source truth helper as the audit oracle. For ALL 1845
+evaluation records recompute label equality and exact counts using
+separately implemented arithmetic, including all saved raw predictions and
+heldout case SHA256; verify result tables and score averaging.
+6. Load real frozen RLT-backed candidate checkpoints in DIFFERENT process
+and generate fresh previously unreported operand pairs for at least 3 seeds
+x 3 arms x 7 original tasks x >=32 pairs at widths8/16. Score via your
+own separate oracle and report exact denominators/counterexamples. Verify
+op token causes model changes, no hidden symbolic answer fallback.
+Additionally verify at least one host-composition probe from two actual
+neural calls with explicit wiring, accurately labelled host control.
+7. Independently recompute stagewise old-skill retention matrix:
+baseline, stage-prev, regression count threshold >=5pp,
+rehearsal-minus-new_only and rehearsal-minus_blocked_replay per seed stages
+2,3,4, and restoration deltas. Confirm strict NO_GAIN is true because
+at least some matched blocked replay comparisons tie or are better.
+Never cherry-pick one arm or seed. Explicitly distinguish replay exposure
+benefit vs interleaving superiority.
+8. Negative controls: demonstrate scoring catches falsified truth on at
+least one case, wrong model op token gives different logits/results,
+modified task or width exposure would break exact exposure match,
+tampered checkpoint SHA breaks manifest integrity, regenerated random
+data is stable; no silent mutation or benchmark answer substitution.
+9. Scope: all seven tasks already present in prior trained model. No
+learning of novel operation IDs, program invention, learned host execution,
+natural-language capabilities, autonomous architecture, global math
+generalization or AGI. Sampled accuracy only. State architecture dependencies
+and unrepaired limitations plainly. Scientific controls may be PASS while
+rehearsal strict finding is NO_GAIN.
+
+If any mandatory check incomplete, verdict HOLD not PASS. Any contradiction
+in source/case/frozen checkpoint is FAIL. Return exactly ONE JSON object:
+task, verdict (PASS|HOLD|FAIL), verifier_type ("codex-cli"),
+actual_runtime_thread_id, implementer_id, audited_commit, commands,
+training_and_exposure_independent_checks, original_source_integrity,
+stage_checkpoint_integrity, independent_math_oracle_and_fresh_neural,
+retention_and_comparison, negative_controls, limitations, failures.
+This verdict is a read-only scientific audit, never a DAG PASS event.
