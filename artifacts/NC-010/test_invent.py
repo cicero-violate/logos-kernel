@@ -71,6 +71,14 @@ class InventTests(unittest.TestCase):
         self.assertEqual(fooled["fit_but_wrong"], 3)
         self.assertTrue(n.search(lambda: [goal], examples, table, 3)["solved"])
 
+    def test_random_control_programs_always_run(self):
+        """Regression: cutting programs to length once stranded a jump past the end and crashed the control."""
+        rng = random.Random(9)
+        for _ in range(8):
+            for program in n.random_batch(rng):
+                self.assertLessEqual(len(program), n.MAX_INSTRUCTIONS)
+                n.behaviour(program)
+
     def test_sampling_obeys_the_token_types_and_budget(self):
         torch.manual_seed(1)
         model = n.Writer(dim=16, layers=1, heads=2).eval()

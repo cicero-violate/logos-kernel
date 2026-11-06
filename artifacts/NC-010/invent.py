@@ -297,12 +297,29 @@ def clean(result):
     return {**result, "program": [list(i) for i in result["program"]] if result["program"] else None}
 
 
+def random_batch(rng):
+    """Whole random programs within the length limit. Cutting one short could strand a jump past its end."""
+    out = []
+    while len(out) < ROUND:
+        program = c.random_program(rng)
+        if len(program) <= MAX_INSTRUCTIONS:
+            out.append(program)
+    return out
+
+
 def run_seed(seed, a, goals, tables, held_tables):
     report = {}
     for arm, use_skeletons in (("skeletons", True), ("random_programs_only", False)):
         source, target, info = make_data(seed, a.programs, use_skeletons, held_tables)
-        model, trained = train(seed, (source, target), a.steps, a.batch)
-        torch.save({"state": model.state_dict(), "seed": seed}, a.out / f"writer_{arm}_seed{seed}.pt")
+        checkpoint = a.out / f"writer_{arm}_seed{seed}.pt"
+        if a.reuse_checkpoints:
+            model = Writer()
+            model.load_state_dict(torch.load(checkpoint, weights_only=True)["state"])
+            model.eval()
+            trained = {"reused_checkpoint": True, "steps": a.steps, "parameters": sum(p.numel() for p in model.parameters())}
+        else:
+            model, trained = train(seed, (source, target), a.steps, a.batch)
+            torch.save({"state": model.state_dict(), "seed": seed}, checkpoint)
         gen = torch.Generator().manual_seed(seed)
         rows = {}
         for name, program in goals.items():
@@ -314,7 +331,7 @@ def run_seed(seed, a, goals, tables, held_tables):
                 return out
             rows[name] = clean(search(propose, examples, tables[name], a.budget))
             print(seed, arm, name, rows[name]["solved"], rows[name]["candidates"], "fit-wrong", rows[name]["fit_but_wrong"], flush=True)
-        row = {"data": info, "training": trained, "goals": rows, "checkpoint_sha256": hashlib.sha256((a.out / f"writer_{arm}_seed{seed}.pt").read_bytes()).hexdigest()}
+        row = {"data": info, "training": trained, "goals": rows, "checkpoint_sha256": hashlib.sha256(checkpoint.read_bytes()).hexdigest()}
         if arm == "skeletons":
             controls = {}
             others = list(goals)
@@ -327,10 +344,9 @@ def run_seed(seed, a, goals, tables, held_tables):
             row["neural_machine"] = {name: run_on_neural_machine([tuple(i) for i in rows[name]["program"]], seed) for name in held_out_goals() if rows[name]["solved"]}
             print(seed, "neural machine", row["neural_machine"], flush=True)
         report[arm] = row
+        (a.out / f"invention_receipt_seed{seed}.json").write_text(json.dumps(report, indent=1))  # A later failure must not lose this arm.
     rng = random.Random(f"NC-010/random/{seed}")
-    def random_batch():
-        return [c.random_program(rng)[:MAX_INSTRUCTIONS] for _ in range(ROUND)]
-    report["random_programs_control"] = {name: clean(search(random_batch, behaviour(goals[name]), tables[name], a.budget)) for name in held_out_goals()}
+    report["random_programs_control"] = {name: clean(search(lambda: random_batch(rng), behaviour(goals[name]), tables[name], a.budget)) for name in held_out_goals()}
     return report
 
 
@@ -341,6 +357,7 @@ def main():
     p.add_argument("--steps", type=int, default=6000)
     p.add_argument("--batch", type=int, default=64)
     p.add_argument("--budget", type=int, default=BUDGET)
+    p.add_argument("--reuse-checkpoints", action="store_true", help="Evaluate saved writers instead of training.")
     p.add_argument("--out", type=Path, default=HERE)
     a = p.parse_args()
     torch.set_num_threads(2)
