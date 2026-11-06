@@ -96,7 +96,7 @@
     "altering one recorded correctness metric causes validate_results.py to reject it"
   ],
   "original_champion_bundle_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
-  "owner": "turn-52f50baa098341bf8440910c8f98b79e",
+  "owner": "turn-1067d5804d9f4f05a322cb4f06ec8bb0",
   "previous_review": {
     "event_seq": 168,
     "reason": "Previously undeclared independent receipt path was refused by DAG. No scientific failure was found in the reviewer replay.",
@@ -122,6 +122,14 @@
     "standard_independent_receipt": "artifacts/NC-029/independent_verification.json"
   },
   "reviewer_receipt_present": false,
+  "rework_note": {
+    "previous_review_reason": "The previous reviewing turn ran in the same ChatGPT conversation that authored the candidate; separate reviewer context is required.",
+    "previous_review_verdict": "HOLD",
+    "prior_hold_is_not_pass": true,
+    "required_reviewer": "A different real agent or conversation that has NOT authored any NC-029 candidate revision must audit the pinned measurements, the model/checkpoint identity, independent negative controls and exact scope; self-signing is forbidden.",
+    "scientific_baseline_changed": false,
+    "source_and_evidence_hashes_rechecked": 8
+  },
   "schema_version": 1,
   "source_dependency_provenance": {
     "checkpoints": {
@@ -196,7 +204,7 @@
     }
   },
   "source_scope": "read_only_original_models_and_frozen_checkpoints",
-  "status": "REWORK_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+  "status": "REQUEST_INDEPENDENT_REVIEW_SEPARATE_CONVERSATION",
   "suggested_independent_reviewer_receipt": "artifacts/NC-029/independent_verification.json",
   "task": "NC-029",
   "tasks": {
