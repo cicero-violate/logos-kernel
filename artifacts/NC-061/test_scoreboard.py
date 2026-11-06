@@ -9,8 +9,9 @@ import controls  # noqa: E402
 import scoreboard as sb  # noqa: E402
 
 
-def row(rate, used=100, retention=1.0, overlap=0.0, over=0):
-    return {"solve_rate": rate, "candidates_used": used, "retention": retention, "training_overlap": overlap, "over_budget_goals": over}
+def row(rate, used=100, retention=1.0, overlap=0.0, over=0, cpu=10.0):
+    return {"solve_rate": rate, "candidates_used": used, "retention": retention, "training_overlap": overlap,
+            "over_budget_goals": over, "cpu_seconds": cpu}
 
 
 class CommitmentTests(unittest.TestCase):
@@ -65,6 +66,21 @@ class ScoringTests(unittest.TestCase):
             report = sb.score_candidate(lambda e, b: (bad, 1), self.goals[:1], 8)
             self.assertEqual((report["solved"], report["invalid_programs"]), (0, 1), bad)
 
+    def test_forged_or_malformed_usage_cannot_pass(self):
+        # Reviewer counterexample: spent of -1 or 0 solved everything with no budget used.
+        good = controls.known_good(self.goals)
+        for spent in (-1, 0, 9, True, 1.5, None, "1"):
+            report = sb.score_candidate(lambda e, b: (good(e, b)[0], spent), self.goals, 8)
+            self.assertEqual((report["solved"], report["over_budget_goals"], report["candidates_used"]), (0, 4, 0), spent)
+
+    def test_cpu_is_measured_by_the_scoreboard_and_covers_the_candidate(self):
+        def slow(examples, budget):
+            end = sb.time.process_time() + 0.05
+            while sb.time.process_time() < end:
+                pass
+            return controls.constant(examples, budget)
+        self.assertGreaterEqual(sb.score_candidate(slow, self.goals, 8)["cpu_seconds"], 0.2)
+
     def test_unseen_solves_exclude_functions_in_training_data(self):
         good = controls.known_good(self.goals)
         keys = [sb.table_key(self.goals[0]["table"])]
@@ -96,7 +112,23 @@ class CompareTests(unittest.TestCase):
         self.assertEqual(sb.compare(self.previous, [row(1.0, over=1)] * 3)["verdict"], "INVALID")
         self.assertEqual(sb.compare(self.previous, [row(1.0)] * 2)["verdict"], "NOT_ESTABLISHED")
 
-    def test_compounding_needs_consecutive_non_shrinking_gains(self):
+    def test_unmatched_cpu_is_not_an_improvement(self):
+        # Reviewer counterexample: equal candidate counts while using 360,000 times the CPU.
+        cheap = [row(0.0, used=3, cpu=0.01)] * 3
+        self.assertEqual(sb.compare(cheap, [row(1.0, used=3, cpu=3600.0)] * 3)["verdict"], "NO_IMPROVEMENT")
+        self.assertEqual(sb.compare(self.previous, [row(0.5, cpu=12.4)] * 3)["verdict"], "IMPROVEMENT")
+        self.assertEqual(sb.compare(self.previous, [row(0.5, cpu=20.0)] * 3)["verdict"], "NO_IMPROVEMENT")
+        unmeasured = row(0.5)
+        del unmeasured["cpu_seconds"]
+        self.assertEqual(sb.compare(self.previous, [unmeasured] * 3)["verdict"], "NO_IMPROVEMENT")
+
+    def test_flat_or_tiny_gain_growth_is_not_compounding(self):
+        # Reviewer counterexample: three equal gains were labelled COMPOUNDING.
+        win = ["IMPROVEMENT"] * 3
+        self.assertEqual(sb.compounding([0.05, 0.05, 0.05], win)["verdict"], "NO_COMPOUNDING")
+        self.assertEqual(sb.compounding([0.05, 0.055, 0.06], win)["verdict"], "NO_COMPOUNDING")
+
+    def test_compounding_needs_consecutive_growing_gains(self):
         win = ["IMPROVEMENT"] * 3
         self.assertEqual(sb.compounding([0.05, 0.06, 0.07], win)["verdict"], "COMPOUNDING")
         self.assertEqual(sb.compounding([0.09, 0.07, 0.05], win)["verdict"], "NO_COMPOUNDING")

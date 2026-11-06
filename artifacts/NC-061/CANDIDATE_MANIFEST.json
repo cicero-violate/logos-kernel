@@ -3,14 +3,14 @@
  "task": "NC-061",
  "owner": "claude-code-turn-0f97bfac6651402eba375336293883b0",
  "source_sha256": {
-  "scoreboard.py": "e0c0f4a681e75f99bc81866120dd31469f4f88efacc5ce449c82ea524e7d196b",
+  "scoreboard.py": "3f5c307fc190f0475c48995724c58c34d71f80c23d1676415664ea641d652ea9",
   "controls.py": "68d5d041fe6e412906f185ec83ef69952d5480b5df564d08ef8f78ab635b7bcd",
-  "test_scoreboard.py": "425c5e6f35ea448994cfc68ecc4a60ad6bf686ab4042117ce187c6d5f46a1223",
+  "test_scoreboard.py": "ce1a08e74432b899219a725c1d8c27b93d53163c448316e5c7ddb101b7d7812a",
   "README.md": "d41572febbc9daf5ac79a03c0778bf52bece85f482a49cf07275b14d96b0ec84"
  },
  "evidence_sha256": {
-  "scoreboard_spec.json": "f16c095cd297797731358605431901f056440c3a8ad6ebdfca0493cc4c8b90a8",
-  "control_results.json": "df4933db9f308989fba1c8cf33493049c0d06beda0dc1b12eb940ebe3c7f2f0f"
+  "scoreboard_spec.json": "1f0fd64a8bd7d6a71bd6be017bf6cac2cb17b1142c180fe17f3804257df7bc14",
+  "control_results.json": "58bf91c69fb0d2885b51bbf02caebf367b94f9dd2b1132c27b33b60890cdbe1b"
  },
  "canonical_isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
  "control_verdicts": {
@@ -22,7 +22,7 @@
   "memorizer": "NO_IMPROVEMENT",
   "budget_cheat": "INVALID"
  },
- "review_output_path": "artifacts/NC-061/independent_receipt.json",
+ "review_output_path": "artifacts/NC-061/independent_verification.json",
  "reproduction": [
   "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-061/test_scoreboard.py",
   "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-061/controls.py"
@@ -47,7 +47,18 @@
   "The goal domain is 4-bit functions of two inputs from short programs. It measures this domain only and says nothing about general intelligence.",
   "Retention is supplied by the caller and must be independently reproduced by the reviewer.",
   "Thresholds are preregistered judgement calls, not derived from a power analysis.",
+  "CPU measured in-process can undercount work a candidate does in other processes, and a candidate's reported candidate count is only range-checked, so real runs need independent process metering.",
   "No improvement loop has used this scoreboard yet, so it has only been exercised on controls.",
   "Controls use public seeds so reviewers can reproduce them; a real run uses new_commitment()."
- ]
+ ],
+ "rework_of_review": {
+  "verdict": "FAIL",
+  "reviewer": "turn-d8f5aaf8cc684bcaa9ceea0c9011fee7",
+  "fixed": [
+   "compare now gates on CPU measured by the scoreboard",
+   "spent must be an integer within budget",
+   "compounding requires growing gains"
+  ],
+  "note": "The reviewer's negative-control script asserts the old defects, so it should now stop at its first assertion."
+ }
 }

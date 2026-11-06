@@ -1,14 +1,17 @@
 {
  "schema": "logos.nc061.spec/1",
  "generator": "logos.nc061.goals/1",
- "scoreboard_source_sha256": "e0c0f4a681e75f99bc81866120dd31469f4f88efacc5ce449c82ea524e7d196b",
+ "scoreboard_source_sha256": "3f5c307fc190f0475c48995724c58c34d71f80c23d1676415664ea641d652ea9",
  "thresholds": {
   "min_seeds": 3,
   "improvement_margin": 0.05,
   "retention_floor": 0.95,
   "budget_tolerance": 0.1,
+  "cpu_tolerance": 0.25,
+  "cpu_floor_seconds": 1.0,
   "contamination_limit": 0.0,
   "compounding_generations": 3,
+  "compounding_min_growth": 0.01,
   "examples": 8,
   "goals": 40,
   "max_program": 5
@@ -17,19 +20,19 @@
   "primary": "exhaustively verified solve rate on freshly generated sealed goals",
   "also_recorded": [
    "unseen_solved: solves of functions absent from declared training data",
-   "cpu_seconds_per_solve",
+   "cpu_seconds_per_solve, with CPU measured by the scoreboard around the candidate only",
    "candidates_used against an equal per-goal budget",
    "retention, measured by the caller on previously qualified capabilities"
   ]
  },
  "generation_verdicts": {
-  "IMPROVEMENT": "beats the previous generation by the margin on most seeds, on an equal budget, with retention above the floor",
+  "IMPROVEMENT": "beats the previous generation by the margin on most seeds, within candidate and measured CPU budgets, with retention above the floor",
   "NO_IMPROVEMENT": "any of those fails",
   "CONTAMINATED": "sealed goals appear in declared training data",
   "INVALID": "budget exceeded",
   "NOT_ESTABLISHED": "too few seeds"
  },
- "compounding": "at least three consecutive IMPROVEMENT generations whose gains do not shrink",
+ "compounding": "at least three consecutive IMPROVEMENT generations whose gains each grow by at least compounding_min_growth",
  "procedure": [
   "Publish new_commitment() output before freezing a candidate, and store the reveal outside any improvement loop's write access.",
   "Freeze and hash the candidate.",
@@ -41,6 +44,7 @@
   "Training overlap relies on the training keys a candidate declares, so undeclared training data is not detected.",
   "The goal domain is 4-bit functions of two inputs from short programs. It measures this domain only and says nothing about general intelligence.",
   "Retention is supplied by the caller and must be independently reproduced by the reviewer.",
-  "Thresholds are preregistered judgement calls, not derived from a power analysis."
+  "Thresholds are preregistered judgement calls, not derived from a power analysis.",
+  "CPU measured in-process can undercount work a candidate does in other processes, and a candidate's reported candidate count is only range-checked, so real runs need independent process metering."
  ]
 }

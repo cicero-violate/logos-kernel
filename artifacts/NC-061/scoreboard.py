@@ -21,7 +21,7 @@ VALUES = 1 << WIDTH
 DOMAIN = [(x, y) for x in range(VALUES) for y in range(VALUES)]
 OPS = ("LOADI", "MOV", *isa.BINARY, *isa.UNARY)
 THRESHOLDS = {"min_seeds": 3, "improvement_margin": 0.05, "retention_floor": 0.95, "budget_tolerance": 0.10,
-              "contamination_limit": 0.0, "compounding_generations": 3, "examples": 8, "goals": 40, "max_program": 5}
+              "cpu_tolerance": 0.25, "cpu_floor_seconds": 1.0, "contamination_limit": 0.0, "compounding_generations": 3, "compounding_min_growth": 0.01, "examples": 8, "goals": 40, "max_program": 5}
 UNTRUSTED = "Candidate programs are data: they run only through canonical_isa.reference with a step limit."
 
 
@@ -97,15 +97,18 @@ def score_candidate(candidate, goals, budget, training_table_keys=(), retention=
     """Score one frozen candidate: candidate(examples, budget) -> (program body or None, candidates used)."""
     training = set(training_table_keys)
     solved = used = unseen_solved = overlap = invalid = over_budget = 0
-    started = time.process_time()
+    cpu = 0.0
     for goal in goals:
         key = table_key(goal["table"])
         overlap += key in training
+        # CPU is measured here and covers only the candidate; its own usage report is not trusted alone.
+        started = time.process_time()
         body, spent = candidate(goal["examples"], budget)
-        used += spent
-        if spent > budget:
+        cpu += time.process_time() - started
+        if type(spent) is not int or not 1 <= spent <= budget:
             over_budget += 1
             continue
+        used += spent
         if body is None:
             continue
         try:
@@ -116,8 +119,8 @@ def score_candidate(candidate, goals, budget, training_table_keys=(), retention=
         solved += correct
         unseen_solved += correct and key not in training
     report = {"solved": solved, "total": len(goals), "solve_rate": solved / len(goals), "unseen_solved": unseen_solved,
-              "candidates_used": used, "budget_per_goal": budget, "cpu_seconds": round(time.process_time() - started, 3),
-              "cpu_seconds_per_solve": round((time.process_time() - started) / solved, 4) if solved else None,
+              "candidates_used": used, "budget_per_goal": budget, "cpu_seconds": round(cpu, 3),
+              "cpu_seconds_per_solve": round(cpu / solved, 4) if solved else None,
               "invalid_programs": invalid, "over_budget_goals": over_budget, "training_overlap": overlap / len(goals)}
     if retention is not None:
         report["retention"] = retention
@@ -138,6 +141,13 @@ def compare(previous, current, thresholds=None):
     budget_ratio = mean(current, "candidates_used") / max(1, mean(previous, "candidates_used"))
     if budget_ratio > 1 + t["budget_tolerance"]:
         reasons.append(f"used {budget_ratio:.2f} times the previous generation's candidates")
+    if any("cpu_seconds" not in r for r in [*previous, *current]):
+        reasons.append("CPU was not measured on every seed")
+    else:
+        # The floor stops timer noise deciding very cheap runs; it never excuses a real increase.
+        limit = mean(previous, "cpu_seconds") * (1 + t["cpu_tolerance"]) + t["cpu_floor_seconds"]
+        if mean(current, "cpu_seconds") > limit:
+            reasons.append(f"used {mean(current, 'cpu_seconds'):.2f} CPU seconds against a limit of {limit:.2f}")
     gain = mean(current, "solve_rate") - mean(previous, "solve_rate")
     if gain < t["improvement_margin"]:
         reasons.append(f"gain {gain:.3f} is below the margin {t['improvement_margin']}")
@@ -152,7 +162,7 @@ def compare(previous, current, thresholds=None):
 
 
 def compounding(generation_gains, verdicts, thresholds=None):
-    """Compounding needs consecutive verified improvements whose gains do not shrink."""
+    """Compounding means the rate of improvement itself grows across consecutive verified generations."""
     t = thresholds or THRESHOLDS
     need = t["compounding_generations"]
     if len(generation_gains) < need or len(verdicts) != len(generation_gains):
@@ -160,6 +170,6 @@ def compounding(generation_gains, verdicts, thresholds=None):
     gains, labels = generation_gains[-need:], verdicts[-need:]
     if any(v != "IMPROVEMENT" for v in labels):
         return {"verdict": "NO_COMPOUNDING", "reason": "a generation in the window did not improve"}
-    if any(b < a for a, b in zip(gains, gains[1:])):
-        return {"verdict": "NO_COMPOUNDING", "reason": "gains shrank, so this is improvement without compounding"}
-    return {"verdict": "COMPOUNDING", "reason": f"gains {gains} did not shrink across {need} generations"}
+    if any(round(b - a, 9) < t["compounding_min_growth"] for a, b in zip(gains, gains[1:])):
+        return {"verdict": "NO_COMPOUNDING", "reason": "gains did not grow by the required margin, so this is improvement without compounding"}
+    return {"verdict": "COMPOUNDING", "reason": f"gains {gains} grew across {need} generations"}
