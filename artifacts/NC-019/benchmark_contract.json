@@ -1,0 +1,1108 @@
+{
+  "budget_ceiling_not_observed_metrics": {
+    "hardware_policy": "log real CPU/GPU model, peak allocated and RSS bytes, package versions; time limits are ceilings not claims of achieved speed",
+    "per_formula_family": {
+      "max_model_inference_calls": 8192,
+      "proposal_evaluations_max": 1024,
+      "search_expansions_max": 1024,
+      "verifier_calls_max": 1024,
+      "wall_clock_seconds_max": 900
+    },
+    "per_model_seed": {
+      "effective_training_examples_are_logged": true,
+      "equal_sample_exposure_claim_allowed": false,
+      "minibatch_size": 256,
+      "number_of_seeds": 3,
+      "optimizer_updates": 2250,
+      "training_seeds": [
+        11,
+        19,
+        29
+      ]
+    },
+    "reference_test": {
+      "batch_repeat_handling": "retain duplicates and report unique valuations",
+      "no_model_test_access_before_freeze": true,
+      "seeds": [
+        11,
+        19,
+        29
+      ],
+      "width16": "256 deterministically sampled assignments per family/seed/mode",
+      "width4": "all 16^arity assignments, all modes",
+      "width8": "256 deterministically sampled assignments per family/seed/mode"
+    }
+  },
+  "contract_type": "pre-registered candidate model evaluation, not learned evidence",
+  "dependencies": {
+    "NC000_source_inventory": {
+      "bytes": 24245,
+      "path": "/workspace/experiments/logos-kernel/artifacts/NC-000/inventory.json",
+      "sha256": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f"
+    },
+    "NC001_canonical_ISA": {
+      "bytes": 14681,
+      "path": "/workspace/experiments/logos-kernel/artifacts/NC-001/canonical_isa.py",
+      "sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c"
+    },
+    "NC004_checkpoint_inventory": {
+      "bytes": 11632,
+      "path": "/workspace/experiments/logos-kernel/artifacts/NC-004/checkpoint.json",
+      "sha256": "3fb5ae6f66c9528ff68a2ace0444ea5b8b730007b974cd7f05380980fd010500"
+    },
+    "NC004_semantic_experiment": {
+      "bytes": 15288,
+      "path": "/workspace/experiments/logos-kernel/artifacts/NC-004/causal_semantics.py",
+      "sha256": "73263696cb678aa97256672d05b6ae20053093d24a2fde3ca734a460c2484fce"
+    },
+    "NC005_independent_receipt": {
+      "bytes": 13188,
+      "path": "/workspace/experiments/logos-kernel/artifacts/NC-005/independent_receipt.json",
+      "sha256": "b9fc3107a1838b2ce0fbebc6325a3d03af05fd6c4cfb277b101a35add58535fe"
+    },
+    "NC005_training_report": {
+      "bytes": 295151,
+      "path": "/workspace/experiments/logos-kernel/artifacts/NC-005/training_report.json",
+      "sha256": "df7902c21afee69b1bc543ac86841b7d9d382a694fb6cccc09d50b9f8b79c713"
+    },
+    "champion_weights": {
+      "bytes": 1519075,
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    }
+  },
+  "families": [
+    {
+      "expected_equivalence": true,
+      "id": "T_ADD_COMM",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "var": "b"
+          }
+        ],
+        "op": "add"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "args": [
+          {
+            "var": "b"
+          },
+          {
+            "var": "a"
+          }
+        ],
+        "op": "add"
+      },
+      "split": "train",
+      "structural_fingerprint": "c66ba6433ff702f7a7200ad982eca1a4cbd8e62254c85b922b645a7c54ab6f90",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "T_XOR_CANCEL",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "xor"
+          },
+          {
+            "var": "b"
+          }
+        ],
+        "op": "xor"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "var": "a"
+      },
+      "split": "train",
+      "structural_fingerprint": "1a2c36e3acb01499f383971f3ff845240c3813ec35ff4f692250c5b11e6d1b1f",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "T_AND_IDEMPOTENCE",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "var": "a"
+          }
+        ],
+        "op": "and"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "var": "a"
+      },
+      "split": "train",
+      "structural_fingerprint": "9b2c2443caf0dbd59691709743c3801220d339200f0b150abd43f356ad36ed51",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "T_SHIFT_DOUBLE",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          }
+        ],
+        "op": "shl"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "var": "a"
+          }
+        ],
+        "op": "add"
+      },
+      "split": "train",
+      "structural_fingerprint": "c06d7e2f7394842e874355b21246bf0b9da4a0ad2e35ada543d745037b5abc67",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "T_SUBTRACT_ZERO",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "const": 0
+          }
+        ],
+        "op": "sub"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "var": "a"
+      },
+      "split": "train",
+      "structural_fingerprint": "27e4e417326caae7d21aa560b00457aa2aaa7ffc8f113687a1472f6a3e7320ec",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "V_OR_ABSORPTION",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "and"
+          }
+        ],
+        "op": "or"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "var": "a"
+      },
+      "split": "validation",
+      "structural_fingerprint": "d772d9bd496545299f576ed8e707307450f2c49fcf0fa7a335f77b7850462f42",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "V_SUB_CANCEL",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "add"
+          },
+          {
+            "var": "b"
+          }
+        ],
+        "op": "sub"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "var": "a"
+      },
+      "split": "validation",
+      "structural_fingerprint": "3b9e6ba0ac98f6eee5caca336a258c8157c626b37627fb4355c683c7396e1f16",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "E_DISTRIB_AND_OVER_OR",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "and"
+          },
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "c"
+              }
+            ],
+            "op": "and"
+          }
+        ],
+        "op": "or"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "args": [
+              {
+                "var": "b"
+              },
+              {
+                "var": "c"
+              }
+            ],
+            "op": "or"
+          }
+        ],
+        "op": "and"
+      },
+      "split": "test",
+      "structural_fingerprint": "4aef577e26d7abacd3d607fcd5f807ccb49865f7b4b1ec8f7df842f6217ff4ef",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "E_ADD_SUB_REASSOCIATION",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "args": [
+              {
+                "var": "b"
+              },
+              {
+                "var": "c"
+              }
+            ],
+            "op": "sub"
+          }
+        ],
+        "op": "add"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "add"
+          },
+          {
+            "var": "c"
+          }
+        ],
+        "op": "sub"
+      },
+      "split": "test",
+      "structural_fingerprint": "368e6eed67cb38083b0ddb42b98ff5d04322e5b28f41ace5483cf8992b10216d",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "E_XOR_ASSOCIATIVITY",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "args": [
+              {
+                "var": "b"
+              },
+              {
+                "var": "c"
+              }
+            ],
+            "op": "xor"
+          }
+        ],
+        "op": "xor"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "xor"
+          },
+          {
+            "var": "c"
+          }
+        ],
+        "op": "xor"
+      },
+      "split": "test",
+      "structural_fingerprint": "1496e8133e06d643901af57f0c354de4735af3fc0a02d9b2d786077a236c0e3e",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "E_SUBTRACTION_REWRITE",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "sub"
+          },
+          {
+            "var": "c"
+          }
+        ],
+        "op": "sub"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "args": [
+              {
+                "var": "b"
+              },
+              {
+                "var": "c"
+              }
+            ],
+            "op": "add"
+          }
+        ],
+        "op": "sub"
+      },
+      "split": "test",
+      "structural_fingerprint": "a22e62f2719026788ce23feaabe2714dd2f87c3b3d1363d1cab74feda2bf1b7d",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "E_XOR_CHAIN_CANCEL",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "xor"
+          },
+          {
+            "args": [
+              {
+                "var": "b"
+              },
+              {
+                "var": "c"
+              }
+            ],
+            "op": "xor"
+          }
+        ],
+        "op": "xor"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "var": "c"
+          }
+        ],
+        "op": "xor"
+      },
+      "split": "test",
+      "structural_fingerprint": "fdd81eca088f094e62678450d79fa03b24e50c967b683c2d27c9e837733e3cee",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "expected_equivalence": true,
+      "id": "E_OR_DISTRIB_AND",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "or"
+          },
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "c"
+              }
+            ],
+            "op": "or"
+          }
+        ],
+        "op": "and"
+      },
+      "negative_control": false,
+      "negative_witness_required": false,
+      "rhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "args": [
+              {
+                "var": "b"
+              },
+              {
+                "var": "c"
+              }
+            ],
+            "op": "and"
+          }
+        ],
+        "op": "or"
+      },
+      "split": "test",
+      "structural_fingerprint": "193a6c2f18ae26c897f224f94a08036032ee5219fc193c3ead02b4b1ec79bcce",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "expected_equivalence": false,
+      "id": "N_ADD_OR",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "var": "b"
+          }
+        ],
+        "op": "add"
+      },
+      "negative_control": true,
+      "negative_witness_required": true,
+      "rhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "var": "b"
+          }
+        ],
+        "op": "or"
+      },
+      "split": "test",
+      "structural_fingerprint": "114d70f0c1013f677b31801ade3b4ae0500ff5efe59d8751c81bd5a64067db15",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "expected_equivalence": false,
+      "id": "N_SUB_REVERSE",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "var": "b"
+          }
+        ],
+        "op": "sub"
+      },
+      "negative_control": true,
+      "negative_witness_required": true,
+      "rhs": {
+        "args": [
+          {
+            "var": "b"
+          },
+          {
+            "var": "a"
+          }
+        ],
+        "op": "sub"
+      },
+      "split": "test",
+      "structural_fingerprint": "301ca0f6615e7259622644b96385803c6260a210ccfd0cfed69e00b1b4b2f715",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "expected_equivalence": false,
+      "id": "N_SHIFT_ROUNDING",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "add"
+          }
+        ],
+        "op": "shr"
+      },
+      "negative_control": true,
+      "negative_witness_required": true,
+      "rhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              }
+            ],
+            "op": "shr"
+          },
+          {
+            "args": [
+              {
+                "var": "b"
+              }
+            ],
+            "op": "shr"
+          }
+        ],
+        "op": "add"
+      },
+      "split": "test",
+      "structural_fingerprint": "c390e1586b39e82661983d513644501af242710a91efadb900a3a04c0fd9cfec",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "expected_equivalence": false,
+      "id": "N_XOR_OR",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "var": "b"
+          }
+        ],
+        "op": "xor"
+      },
+      "negative_control": true,
+      "negative_witness_required": true,
+      "rhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "var": "b"
+          }
+        ],
+        "op": "or"
+      },
+      "split": "test",
+      "structural_fingerprint": "d7ed4e4f61a041cf6a86e5de15bc439359740f72513aac504f94bcc601e9dd87",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "expected_equivalence": false,
+      "id": "N_INVALID_DISTRIBUTION",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "or"
+          },
+          {
+            "var": "c"
+          }
+        ],
+        "op": "and"
+      },
+      "negative_control": true,
+      "negative_witness_required": true,
+      "rhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "args": [
+              {
+                "var": "b"
+              },
+              {
+                "var": "c"
+              }
+            ],
+            "op": "and"
+          }
+        ],
+        "op": "or"
+      },
+      "split": "test",
+      "structural_fingerprint": "056f93e89a6650c7c082c82466c144f4da9494fbe4399e8232ee999d4931178a",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "expected_equivalence": false,
+      "id": "N_SAR_NOT_SHR",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          }
+        ],
+        "op": "sar"
+      },
+      "negative_control": true,
+      "negative_witness_required": true,
+      "rhs": {
+        "args": [
+          {
+            "var": "a"
+          }
+        ],
+        "op": "shr"
+      },
+      "split": "test",
+      "structural_fingerprint": "c933419baad5a2712526f73156a315dc36243392e8dc485272985d3172a0e8f4",
+      "supported_modes": [
+        "twos_complement"
+      ],
+      "variables": [
+        "a"
+      ]
+    },
+    {
+      "expected_equivalence": false,
+      "id": "N_SUB_WRONG_GROUP",
+      "label_rule": "reference finite exhaustive at width4; wider sampled observations are not proofs",
+      "lhs": {
+        "args": [
+          {
+            "var": "a"
+          },
+          {
+            "args": [
+              {
+                "var": "b"
+              },
+              {
+                "var": "c"
+              }
+            ],
+            "op": "sub"
+          }
+        ],
+        "op": "sub"
+      },
+      "negative_control": true,
+      "negative_witness_required": true,
+      "rhs": {
+        "args": [
+          {
+            "args": [
+              {
+                "var": "a"
+              },
+              {
+                "var": "b"
+              }
+            ],
+            "op": "sub"
+          },
+          {
+            "var": "c"
+          }
+        ],
+        "op": "sub"
+      },
+      "split": "test",
+      "structural_fingerprint": "2a9cc291f3fbe986a3a874da881e10e21a6c2bf890decd8393b5bc8a8c131dfb",
+      "supported_modes": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "variables": [
+        "a",
+        "b",
+        "c"
+      ]
+    }
+  ],
+  "family_roster_sha256": "1c21f0a4e84f57dcf4b23809dd6e4c8148102d6f7c770297d78b2a9107a1a126",
+  "future_NC020": "Will supply separate typed AST equivalence benchmark with proof-status receipts and independent verifier",
+  "mathematical_semantics": {
+    "SAR": "sign-preserving arithmetic right shift, two's-complement only",
+    "SHR": "logical right shift",
+    "cast_policy": "no implicit type changes, width mixing, boolean-as-int or rounding extrapolation",
+    "domain": "fixed-width bitvectors over raw unsigned encodings",
+    "integers_not_real_numbers": "integer unbounded or float identities are never assumed to apply to wraparound bitvectors",
+    "overflow": "all ADD/SUB/SHL wrap modulo 2^width; operations AND/OR/XOR bitwise",
+    "proof_strength": "4bit exhaustive finite enumeration only; 8/16bit sampled tests are evidence but not full mathematical proof",
+    "signedness_modes": [
+      "unsigned",
+      "twos_complement"
+    ],
+    "typed_AST_contract": "NC001 canonical_isa.validate_ast; use only supported bv.const/read/add/sub/and/or/xor/and1/shl/shr/sar",
+    "values": "raw bitpatterns in 0 .. 2^width-1",
+    "variable_mapping": {
+      "a": "X",
+      "b": "Y",
+      "c": "T"
+    },
+    "widths": [
+      4,
+      8,
+      16
+    ]
+  },
+  "negative_controls": {
+    "always_no": {
+      "expected": "FAIL on all positive examples; cannot produce balanced accuracy=1"
+    },
+    "always_yes": {
+      "expected": "FAIL on all negative examples; cannot produce balanced accuracy=1"
+    },
+    "fabricated_proof": {
+      "expected": "no verified capability gain without independently checked proof"
+    },
+    "no_execution": {
+      "expected": "0 correct on executed-output tests; no wall-time=0 efficiency gain"
+    },
+    "numerical_counterexamples": [
+      "N_ADD_OR",
+      "N_SUB_REVERSE",
+      "N_SHIFT_ROUNDING",
+      "N_XOR_OR",
+      "N_INVALID_DISTRIBUTION",
+      "N_SAR_NOT_SHR",
+      "N_SUB_WRONG_GROUP"
+    ],
+    "raw_optimizer_time_only": {
+      "expected": "fails total-system cost accounting if search or verification omitted"
+    },
+    "semantic_domain_mismatch": {
+      "expected": "reject SAR with unsigned, reject width-mismatch and nonfinite/wrong AST"
+    },
+    "string_equality": {
+      "expected": "FAIL on syntactically distinct equivalent pairs"
+    },
+    "training_family_lookup": {
+      "expected": "fails transfer credit on strictly heldout structural families"
+    }
+  },
+  "pre_registered": true,
+  "schema": 1,
+  "split_commitment_sha256": "7ff63ee9139e51cfe8b49dfb760de477bc048c9bf0069984348a92d97b220ef5",
+  "split_protocol": {
+    "canonical_case_id": "sha256(version,family_id,split,width,mode,seed,assignment_index)",
+    "determinism": "width4 enumerate cartesian 0..15; width8/16 sample with replacement 256 per family/seed/mode",
+    "disjoint_families": true,
+    "disjoint_structural_fingerprints": true,
+    "labels": "equivalent pairs=positive, inequivalent pairs=negative with a concrete witness",
+    "raw_operand_disjointness": false,
+    "reason_raw_values_overlap": "4bit exhaustive finite spaces necessarily include repeated raw values; no assertion of old NC004/NC005 pretraining-disjointness",
+    "rng": "Python random.Random seed from first 64 bits of sha256(canonical_json([version,id,split,width,mode,seed]))",
+    "seeds": [
+      11,
+      19,
+      29
+    ],
+    "source_hash_pin": "See immutable source_hashes in this document",
+    "splits": {
+      "test": [
+        "E_ADD_SUB_REASSOCIATION",
+        "E_DISTRIB_AND_OVER_OR",
+        "E_OR_DISTRIB_AND",
+        "E_SUBTRACTION_REWRITE",
+        "E_XOR_ASSOCIATIVITY",
+        "E_XOR_CHAIN_CANCEL",
+        "N_ADD_OR",
+        "N_INVALID_DISTRIBUTION",
+        "N_SAR_NOT_SHR",
+        "N_SHIFT_ROUNDING",
+        "N_SUB_REVERSE",
+        "N_SUB_WRONG_GROUP",
+        "N_XOR_OR"
+      ],
+      "train": [
+        "T_ADD_COMM",
+        "T_AND_IDEMPOTENCE",
+        "T_SHIFT_DOUBLE",
+        "T_SUBTRACT_ZERO",
+        "T_XOR_CANCEL"
+      ],
+      "validation": [
+        "V_OR_ABSORPTION",
+        "V_SUB_CANCEL"
+      ]
+    },
+    "test": "named test families and negative controls hidden from optimizer/hyperparameter search until frozen checkpoint commit",
+    "test_immutability": "This contract must be committed before NC020 models/datasets or candidate optimization; changes require new version and new append-only task",
+    "train": "only named train families and their generated inputs available to model optimizer",
+    "validation": "named validation families available for selection; never update model using validation targets"
+  },
+  "task": "NC-019",
+  "version": "logos.semantic-objective/1"
+}

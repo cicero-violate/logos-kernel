@@ -1,0 +1,113 @@
+{
+  "anti_metrics": [
+    "training or test recall of primitive truth-table rows is NOT unseen understanding",
+    "classifying equivalent ASTs without executing valid predictions is NOT composed behavior",
+    "a constant yes/no predictor is rejected using both semantic labels",
+    "a syntactic match or raw string equality is NOT general semantic equivalence",
+    "searching more candidates or caching prior solutions is NOT verified capability gain",
+    "a small parameter count or 0 seconds due to no execution is NOT an efficiency improvement",
+    "meaning-channel gradients/rotation are causal pathway evidence, not a universal scalar measure of understanding",
+    "source RLT checkpoint contains multiplication training; reuse is not zero-shot discovery"
+  ],
+  "downstream": [
+    "NC-020",
+    "NC-021",
+    "NC-022",
+    "NC-023",
+    "NC-024",
+    "NC-025",
+    "NC-026",
+    "NC-027"
+  ],
+  "id": "NC-019",
+  "metric_definitions": {
+    "retention": {
+      "denominators": "old_skill_cases > 0; every prior verified skill separately and every stage",
+      "forgetting_formula": "max(0, accuracy_before - accuracy_after)",
+      "formula": "correct_and_verified_old_skill_cases_at_stage_t / frozen_registered_old_skill_cases",
+      "gate": "zero regression on exactly proven prior scope; otherwise report lost cases and no promotion",
+      "metric": "qualified_previous_capability_replay_accuracy",
+      "qualifier": "old skill must have frozen pre-stage independent receipt with scope and checkpoint"
+    },
+    "search_learning_efficiency": {
+      "cost_vector": [
+        "training_seconds",
+        "model_inference_seconds",
+        "proposal_seconds",
+        "search_seconds",
+        "verification_seconds",
+        "total_elapsed_critical_path_seconds",
+        "peak_cpu_ram_bytes",
+        "peak_gpu_ram_bytes",
+        "model_bytes",
+        "proposals",
+        "search_expansions",
+        "verifier_calls",
+        "total_energy_joules_if_measured"
+      ],
+      "denominators": "total_wall_seconds > 0 and candidate_evaluations > 0",
+      "dominance": "A dominates B only if A passes all semantic/retention gates, is no worse on all reported capability scores/cost metrics, and strictly better on at least one",
+      "formula": "distinct_verified_new_families / total_wall_seconds, with numerator and denominator separately reported",
+      "metric": "verified_discovery_per_fully_accounted_compute_and_pareto_front",
+      "missing_energy": "null and labelled NOT_MEASURED; never treat missing as zero",
+      "priority": "Never optimize cost by skipping execution, semantic checks, verification or training while calling results equal",
+      "total_cost_identity": "training + inference + proposal + search + verification wall-component times may overlap; total_elapsed is independently timed, do not sum overlapping times"
+    },
+    "semantic_equivalence": {
+      "FN": "equivalent pairs incorrectly rejected",
+      "FP": "non-equivalent pairs incorrectly accepted",
+      "TN": "non-equivalent pairs correctly rejected",
+      "TP": "equivalent pairs correctly accepted",
+      "denominators": "TP+FN > 0 AND TN+FP > 0, otherwise invalid score",
+      "formula": "0.5 * [TP/(TP+FN) + TN/(TN+FP)]",
+      "inputs": "typed candidate classification of positive and negative AST pairs, same width/signedness",
+      "metric": "balanced_accuracy_with_family_macro_report",
+      "negative": "one exact typed counterexample under same semantics",
+      "nonexecution": "invalid; count as incorrect on that case, no abstention bonus",
+      "positive": "ground-truth equivalent under declared bitvector semantics",
+      "require": "record TP,TN,FP,FN, per-family numerators, proof scopes, counterexamples"
+    },
+    "unseen_composition": {
+      "denominators": "registered_heldout_cases > 0; report by family, width, sign and seed",
+      "formula": "number_of_exact_heldout_outputs_with_valid_type_and_termination / total_registered_heldout_cases",
+      "metric": "exact_verified_output_accuracy_on_family_heldout",
+      "nonexecution": "0 correct; timeout, missing output or type mismatch counts as failed case",
+      "not_allowed": "training-seen primitive truth rows cannot count as unseen composition",
+      "split": "structurally held-out entire formula families, no access during training/model selection"
+    },
+    "verified_capability_gain": {
+      "baseline": "freeze code, checkpoint, family list and proof scope before training",
+      "denominators": "pre_registered_new_goal_families > 0",
+      "formula": "count(new_versioned_heldout_families_with_independent_equivalence_proof_and_correct_executable_result AND absent_from_frozen_baseline) / count(preregistered_new_goal_families)",
+      "metric": "newly certified distinct operators or rewrite families, not examples or cached programs",
+      "proof": "each gain needs typed contract, exact checkpoint/source hash, independent proof or explicit finite-exhaustive scope, counterexample search, non-regression",
+      "rejected": "memorizing exact programs, source ROM reuse, self-reported discovery, sampled agreement labeled proof"
+    }
+  },
+  "model_and_rom_limit": "NC019 defines evaluation, does not establish learned program generation or fuse host ROM with Transformer",
+  "optimization": "hard-gated lexicographic correctness/verified transfer first; Pareto efficiency among passing models only",
+  "precedence_rule": "NC-019 semantic-first research correctness, unseen verified transfer and retention dominate NC-018 compute-minimization; NC-018 is retained as an execution-cost subproblem and its original task/ledger remains untouched.",
+  "predecessor": "NC-018",
+  "preregistered": true,
+  "promotion_hard_gates": [
+    "semantic equivalence evaluation with nonempty TP+FN and TN+FP and all negative controls disclosed",
+    "no false equivalence accepted in independently certified exhaustive/proof scope",
+    "at least one structurally unseen test family independently checked before calling transfer",
+    "all previously independently qualified operations retained at their original proof scopes",
+    "new capability credited only when nontrivial new family is absent from frozen baseline and certified independently",
+    "all training/inference/proposal/search/verification compute and memory costs recorded, no hidden oracle/host substitution",
+    "three matched seeds reported individually with seed-specific failure cases; do not hide regressions in averages",
+    "independent actual verifier identity, exact source/checkpoint hashes and rollback plan required",
+    "reversible champion promotion only after downstream dedicated release task; NC019 itself never promotes"
+  ],
+  "research_priority": [
+    "semantic_correctness",
+    "unseen_composition",
+    "verified_capability_gain",
+    "retention",
+    "search_learning_efficiency"
+  ],
+  "scalar_meaning_score": "NONE; unrelated measured dimensions remain separate",
+  "schema": 1,
+  "version": "logos.semantic-objective/1"
+}
