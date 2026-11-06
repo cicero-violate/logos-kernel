@@ -1,0 +1,130 @@
+{
+  "task": "NC-002",
+  "audit_kind": "independent_first_pass_diagnostics_not_final_receipt",
+  "implementation_commit": "ba14e31d7d17e6ae79a6404a1b78788931b2830d",
+  "implementer": "1db9edb983ff4df9933612e7c826e55f",
+  "runtime_thread_identity": null,
+  "identity_note": "No verifier runtime thread ID was directly exposed. No identity was inferred from the prompt, owner ID, manifests, environment, or repository.",
+  "recommendation": {
+    "scientific_result": "PASS_WITH_EXPLICIT_LIMITS",
+    "overall": "HOLD",
+    "reason": "The persistence and same-environment synthetic continuation claims passed, but a final independent_receipt.json and ledger PASS must remain on hold until the real verifier runtime thread ID is directly confirmed. Historical training resume is not available and is not claimed."
+  },
+  "environment": {
+    "cwd": "/workspace/experiments/logos-kernel",
+    "date": "2026-11-05",
+    "timezone": "Canada/Eastern",
+    "python": "3.14.6",
+    "platform": "Linux-6.12.10-1-lts-x86_64-with-glibc2.43",
+    "torch": "2.12.1",
+    "numpy": "2.5.0",
+    "cuda_available": false,
+    "device_tested": "cpu",
+    "torch_threads": 1,
+    "deterministic_algorithms": true
+  },
+  "source_repositories": {
+    "logos_kernel_head": "ba14e31d7d17e6ae79a6404a1b78788931b2830d",
+    "rlt_champion_head": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+    "standalone_isa_head": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+    "commits_match_manifest": true,
+    "inventory_files_checked": 60,
+    "inventory_sha256_and_size_all_match": true,
+    "rlt_worktree_preexisting_untracked": [
+      "capability_ladder_v3_rehearsal/generate.py"
+    ],
+    "source_repositories_modified_by_audit": false
+  },
+  "artifact_hashes": {
+    "checkpoint_manifest.json": "6af2f9bcd362ab81405eef1f6523a304dc6714559358a67f2e3d3072213f789f",
+    "reload_receipt.json": "c063746c36c1b69d9c946af99958ca21c3f55576617a3ab279ecb37c89ba7170",
+    "state_package.py": "0e3a4322ba311c5b080300b4f01b44cdb7cf51e15da4cb1a87372cbe80a4a2fe",
+    "test_state_package.py": "98cb36e3b065dd257fd34eb4ff8af5094d52afb16a1f9c2f571626f494424c3c"
+  },
+  "frozen_champion": {
+    "checkpoint_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "config_sha256": "ca0ec6367535ea01264ccd00ffe1a32f4ebd65aaee364705e173193daf88ec83",
+    "promotion_sha256": "ef67ba9fbd886530ba41c5c0bbf7a28004589e3f19fc7d1ad813279e4041c116b",
+    "matches_NC000_inventory": true,
+    "default_promotion_changed": false
+  },
+  "contract_review": {
+    "explicit_model_factories_reviewed": true,
+    "strict_tensor_schema_and_load_state_dict": true,
+    "source_and_architecture_hash_pinning": true,
+    "source_git_commits_match_current_repositories": true,
+    "vocabulary_checked_for_all_five": true,
+    "normalization_recorded": "in-model LayerNorm or explicit input bits; no external fitted normalization statistics",
+    "optimizer": "fresh AdamW(lr=1e-4, weight_decay=1e-4) at the new continuation boundary",
+    "rng_saved": [
+      "Python random",
+      "NumPy Generator bit_generator state",
+      "PyTorch CPU RNG",
+      "PyTorch CUDA RNG list when CUDA was initialized"
+    ],
+    "progress": "continuation_step 0 in initial packages and 1 in synthetic step-1 packages; original reported progress is separately labeled and nonrecoverable fields are false",
+    "torch_load_calls_reviewed": 3,
+    "all_persisted_state_torch_load_calls_use_weights_only_true": true
+  },
+  "original_checkpoint_inspection": {
+    "general_rlt": {"payload": "OrderedDict model tensors only", "historical_optimizer_scheduler_rng_history_or_cursor_present": false},
+    "carry_gru": {"payload": "OrderedDict model tensors only", "historical_optimizer_scheduler_rng_history_or_cursor_present": false},
+    "shared_rlt_isa": {"top_level_keys": ["arm", "model", "seed", "shared_attention", "source_RLT", "source_native_executor"], "historical_optimizer_scheduler_rng_history_or_cursor_present": false},
+    "standalone_isa": {"top_level_keys": ["model", "ops", "width"], "historical_optimizer_scheduler_rng_history_or_cursor_present": false},
+    "standalone_controller_v2": {"top_level_keys": ["architecture", "model", "program", "seed"], "historical_optimizer_scheduler_rng_history_or_cursor_present": false},
+    "conclusion": "No original checkpoint supports exact historical training resume. The packages prove only a newly initialized optimizer continuation branch."
+  },
+  "tests": {
+    "ledger_validate": {"result": "PASS", "nodes": 19, "events": 32, "head_sha256": "b460a079606101354e01b9c77565a7f0eb214200cdb5d436ca71a00d324ce384"},
+    "dag_unittest": {"passed": 17, "tested": 17},
+    "negative_unittest": {"passed": 7, "tested": 7},
+    "fresh_process_models": {"passed": 5, "tested": 5},
+    "tamper_test": {"kind": "model tensor shape corruption in a temporary copy", "result": "PASS_CLOSED", "observed": "RuntimeError from strict TaskConditionedRLT state_dict load"}
+  },
+  "models": {
+    "general_rlt": {"initial_sha256_match": true, "step1_sha256_match": true, "initial_optimizer_empty": true, "step1_optimizer_entries": 48, "optimizer_tensor_fields": ["step", "exp_avg", "exp_avg_sq"], "model_state_keys_compared": 48, "all_model_tensors_exact_after_direct_vs_resume_step": true, "all_optimizer_tensors_exact_after_direct_vs_resume_step": true, "step2_loss": 84.53378295898438, "step2_loss_exact": true},
+    "carry_gru": {"initial_sha256_match": true, "step1_sha256_match": true, "initial_optimizer_empty": true, "step1_optimizer_entries": 9, "optimizer_tensor_fields": ["step", "exp_avg", "exp_avg_sq"], "model_state_keys_compared": 11, "all_model_tensors_exact_after_direct_vs_resume_step": true, "all_optimizer_tensors_exact_after_direct_vs_resume_step": true, "step2_loss": 23.874588012695312, "step2_loss_exact": true},
+    "shared_rlt_isa": {"initial_sha256_match": true, "step1_sha256_match": true, "initial_optimizer_empty": true, "step1_optimizer_entries": 40, "optimizer_tensor_fields": ["step", "exp_avg", "exp_avg_sq"], "model_state_keys_compared": 40, "all_model_tensors_exact_after_direct_vs_resume_step": true, "all_optimizer_tensors_exact_after_direct_vs_resume_step": true, "step2_loss": 304.978515625, "step2_loss_exact": true},
+    "standalone_isa": {"initial_sha256_match": true, "step1_sha256_match": true, "initial_optimizer_empty": true, "step1_optimizer_entries": 8, "optimizer_tensor_fields": ["step", "exp_avg", "exp_avg_sq"], "model_state_keys_compared": 12, "all_model_tensors_exact_after_direct_vs_resume_step": true, "all_optimizer_tensors_exact_after_direct_vs_resume_step": true, "step2_loss": 113.43093872070312, "step2_loss_exact": true},
+    "standalone_controller_v2": {"initial_sha256_match": true, "step1_sha256_match": true, "initial_optimizer_empty": true, "step1_optimizer_entries": 29, "optimizer_tensor_fields": ["step", "exp_avg", "exp_avg_sq"], "model_state_keys_compared": 29, "all_model_tensors_exact_after_direct_vs_resume_step": true, "all_optimizer_tensors_exact_after_direct_vs_resume_step": true, "step2_loss": 354.0470886230469, "step2_loss_exact": true}
+  },
+  "execution_boundaries": {
+    "general_rlt": "actual neural forward",
+    "carry_gru": "actual neural forward",
+    "standalone_isa": "actual neural arithmetic MLP forward",
+    "standalone_controller_v2": "actual neural Transformer controller forward over a fixed program vocabulary; not arithmetic execution or program invention",
+    "shared_rlt_isa": "actual neural shared model logits/local logits, while end-to-end ISA execution still uses a fixed ROM and Python host register routing",
+    "symbolic_verifier_used_as_neural_evidence": false,
+    "fixed_rom_claimed_as_program_invention": false
+  },
+  "limitations": [
+    "No historical Adam/AdamW moments, scheduler, data cursor, RNG state, or full training history exists in the original checkpoints.",
+    "Exact continuation was demonstrated only for a synthetic non-task step on the reproduced CPU/Python/PyTorch/NumPy environment.",
+    "This audit does not establish improved capability, continual learning, cross-device bitwise reproducibility, neural program invention, or default promotion readiness.",
+    "The normalization field is a declarative contract backed by reviewed model topology; there are no separate fitted normalization statistics to restore.",
+    "A final independent receipt was intentionally not written because the verifier runtime thread identity is not directly exposed."
+  ],
+  "commands": [
+    "rtk python dag.py validate",
+    "rtk python -m unittest -q test_dag",
+    "rtk python dag.py ready",
+    "rtk python dag.py list",
+    "PYTHONDONTWRITEBYTECODE=1 rtk python -m unittest -v artifacts/NC-002/test_state_package.py",
+    "PYTHONDONTWRITEBYTECODE=1 rtk python artifacts/NC-002/state_package.py verify-child --name general_rlt --manifest artifacts/NC-002/checkpoint_manifest.json",
+    "PYTHONDONTWRITEBYTECODE=1 rtk python artifacts/NC-002/state_package.py verify-child --name carry_gru --manifest artifacts/NC-002/checkpoint_manifest.json",
+    "PYTHONDONTWRITEBYTECODE=1 rtk python artifacts/NC-002/state_package.py verify-child --name shared_rlt_isa --manifest artifacts/NC-002/checkpoint_manifest.json",
+    "PYTHONDONTWRITEBYTECODE=1 rtk python artifacts/NC-002/state_package.py verify-child --name standalone_isa --manifest artifacts/NC-002/checkpoint_manifest.json",
+    "PYTHONDONTWRITEBYTECODE=1 rtk python artifacts/NC-002/state_package.py verify-child --name standalone_controller_v2 --manifest artifacts/NC-002/checkpoint_manifest.json",
+    "rtk git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 rev-parse HEAD",
+    "rtk git -C /workspace/experiments/latticeforge_neural_isa_test rev-parse HEAD",
+    "rtk sha256sum artifacts/NC-002/checkpoint_manifest.json artifacts/NC-002/reload_receipt.json artifacts/NC-002/state_package.py artifacts/NC-002/test_state_package.py",
+    "rtk sha256sum /workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt /workspace/experiments/rlt_split_algorithms_ablation_v1/config.json /workspace/experiments/rlt_split_algorithms_ablation_v1/PROMOTION.json",
+    "rtk proxy python /dev/stdin <<'PY' [independent weights_only loads; 60-file SHA-256/size verification; original-payload key inspection; all-five initial/step1 hashes; RNG/vocab/schema checks; duplicate restored step with exact comparison of every model and optimizer tensor; temporary tensor-shape tamper] PY"
+  ],
+  "write_scope": {
+    "files_written": ["artifacts/NC-002/independent_diagnostics.json"],
+    "independent_receipt_written": false,
+    "dag_mutation_performed": false,
+    "authored_modules_or_checkpoints_modified": false
+  }
+}

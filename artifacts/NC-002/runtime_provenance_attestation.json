@@ -1,0 +1,40 @@
+{
+  "checkpoint_manifest_sha256": "6af2f9bcd362ab81405eef1f6523a304dc6714559358a67f2e3d3072213f789f",
+  "implementer": "1db9edb983ff4df9933612e7c826e55f",
+  "independent_diagnostics_sha256": "f45c71e72d0d73c0be6efbd525894238e1d2273a66c8a93ddb84f5711a002634",
+  "independent_receipt_sha256": "91fbdb6d101a702a8ff67d0818e00a5d812e8f81b5eabcbe398e9074a68bdaa8",
+  "kind": "external_runtime_identity_attestation",
+  "limits": [
+    "No historical optimizer/RNG/scheduler/data cursor reconstruction.",
+    "Runtime session trace evidence is local capture, not cryptographic identity authentication.",
+    "No promotion and no new trained neural capability."
+  ],
+  "model_count_independently_verified": 5,
+  "original_and_resumed_cli_thread_started_events": [
+    {
+      "event_count": 80,
+      "log_name": "logos_nc002_independent_verifier_events.jsonl",
+      "sha256": "0ece6e2b25808b041354a36fe9c60b2b9b2f2a8a360bf80ed655b338f41a2373",
+      "thread_started_ids": [
+        "01a1ae9b-2c20-7a91-84a3-0c595be8848d"
+      ],
+      "turn_complete": true
+    },
+    {
+      "event_count": 25,
+      "log_name": "logos_nc002_independent_finalize_events.jsonl",
+      "sha256": "42d18c76554ce5d31e135a6eb65757eb21e66320dc1608d5dbd144cca69cb613",
+      "thread_started_ids": [
+        "01a1ae9b-2c20-7a91-84a3-0c595be8848d"
+      ],
+      "turn_complete": true
+    }
+  ],
+  "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "scope": "Frozen tensor reload + deterministic NEW-optimizer synthetic continuation only",
+  "source_files_rehashed": 60,
+  "status": "PASS",
+  "task": "NC-002",
+  "utc": "2026-11-06T02:14:25.405434+00:00",
+  "verifier": "codex-cli:01a1ae9b-2c20-7a91-84a3-0c595be8848d"
+}

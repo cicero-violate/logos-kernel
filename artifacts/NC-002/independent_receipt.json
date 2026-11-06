@@ -1,0 +1,229 @@
+{
+  "task": "NC-002",
+  "result": "PASS",
+  "scientific_result": "PASS",
+  "independent": true,
+  "implementer": "1db9edb983ff4df9933612e7c826e55f",
+  "verifier": "codex-cli:01a1ae9b-2c20-7a91-84a3-0c595be8848d",
+  "identity_provenance": {
+    "source": "/tmp/logos_nc002_independent_verifier_events.jsonl",
+    "source_sha256": "0ece6e2b25808b041354a36fe9c60b2b9b2f2a8a360bf80ed655b338f41a2373",
+    "observed_event": {
+      "type": "thread.started",
+      "thread_id": "01a1ae9b-2c20-7a91-84a3-0c595be8848d"
+    },
+    "verifier_distinct_from_implementer": true,
+    "identity_inferred_or_invented": false
+  },
+  "implementation": {
+    "repository": "/workspace/experiments/logos-kernel",
+    "commit": "ba14e31d7d17e6ae79a6404a1b78788931b2830d",
+    "authored_NC002_files_match_commit": true,
+    "manifest_sha256": "6af2f9bcd362ab81405eef1f6523a304dc6714559358a67f2e3d3072213f789f",
+    "diagnostics_sha256": "f45c71e72d0d73c0be6efbd525894238e1d2273a66c8a93ddb84f5711a002634",
+    "reload_receipt_sha256": "c063746c36c1b69d9c946af99958ca21c3f55576617a3ab279ecb37c89ba7170",
+    "state_package_sha256": "0e3a4322ba311c5b080300b4f01b44cdb7cf51e15da4cb1a87372cbe80a4a2fe",
+    "test_state_package_sha256": "98cb36e3b065dd257fd34eb4ff8af5094d52afb16a1f9c2f571626f494424c3c"
+  },
+  "source_repositories": {
+    "rlt_champion": {
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1",
+      "commit": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb"
+    },
+    "standalone_isa": {
+      "path": "/workspace/experiments/latticeforge_neural_isa_test",
+      "commit": "feb001dbdb2e19fb5f123fe12116aec5503522fe"
+    },
+    "NC000_inventory_files_checked": 60,
+    "NC000_inventory_sha256_and_size_matches": 60,
+    "NC000_inventory_failures": 0
+  },
+  "frozen_champion": {
+    "checkpoint": "snapshots/current_unified_v3.pt",
+    "checkpoint_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "config_sha256": "ca0ec6367535ea01264ccd00ffe1a32f4ebd65aaee364705e173193daf88ec83",
+    "promotion_sha256": "ef67ba9fbd886530ba41c5c0bbf7a28004589e3f19fc7d1ad813279e4041c116b",
+    "unchanged": true,
+    "default_promotion_performed": false
+  },
+  "environment": {
+    "python": "3.14.6",
+    "torch": "2.12.1",
+    "numpy": "2.5.0",
+    "platform": "Linux-6.12.10-1-lts-x86_64-with-glibc2.43",
+    "device": "cpu",
+    "cuda_available": false,
+    "torch_threads": 1,
+    "deterministic_algorithms": true,
+    "seed": 11052026
+  },
+  "model_denominator": {
+    "tested": 5,
+    "passed": 5,
+    "failed": 0,
+    "models": [
+      "general_rlt",
+      "carry_gru",
+      "shared_rlt_isa",
+      "standalone_isa",
+      "standalone_controller_v2"
+    ]
+  },
+  "package_hashes": {
+    "general_rlt": {
+      "initial_sha256": "53c2763638d80a75f9a693d566d1fa5d87cd0996e502ca69f33af84496195d28",
+      "continuation_step1_sha256": "98d0f76e4e0d7202bbe782fc51b5627de41f0ea9034fb82cb0048a36cde51d16"
+    },
+    "carry_gru": {
+      "initial_sha256": "16800c883697021fde2a53c8b3836182053ada6422e4e191c8499808ff6e7f9b",
+      "continuation_step1_sha256": "2429b17d6d5a30a2f26f672415d548c6991d5463c868c7de3ac1290608662305"
+    },
+    "shared_rlt_isa": {
+      "initial_sha256": "ccc9494ad0ab37a2abf3a56e45a88c1c581ae20b07bd0ba2a0bb976a001d732d",
+      "continuation_step1_sha256": "a917d154831b794ff7a6a09b667341630a80f257d9fcb8910ab69b258eab6d0a"
+    },
+    "standalone_isa": {
+      "initial_sha256": "12524351fc51adab26193149c689f7c9a5f1d739ef26ebfca01b50782ddc96a7",
+      "continuation_step1_sha256": "c7e89ddea857857fae4981dfe37518f3d03cab0148e041a20ecaa69099e84937"
+    },
+    "standalone_controller_v2": {
+      "initial_sha256": "50248e5a9e904e61d6d1b8541f61e4bb023b5fd78cefdc50c0de258561cdae9d",
+      "continuation_step1_sha256": "ae9ce686791e02ad77b4be4f5d589af428b55a03bc108c0272a91af7a07b108c"
+    },
+    "all_ten_match_manifest": true
+  },
+  "checks": {
+    "fresh_process_reload_and_step2_continuation": {
+      "tested": 5,
+      "passed": 5,
+      "frozen_source_neural_outputs_equal": true,
+      "initial_package_outputs_equal": true,
+      "step2_losses_exact": true,
+      "step2_probe_outputs_exact": true
+    },
+    "independent_direct_vs_resume_tensor_comparison": {
+      "tested": 5,
+      "passed": 5,
+      "all_model_state_keys_exact": true,
+      "all_AdamW_state_tensors_exact": true,
+      "optimizer_tensor_fields": [
+        "step",
+        "exp_avg",
+        "exp_avg_sq"
+      ],
+      "model_state_keys_compared_by_model": {
+        "general_rlt": 48,
+        "carry_gru": 11,
+        "shared_rlt_isa": 40,
+        "standalone_isa": 12,
+        "standalone_controller_v2": 29
+      }
+    },
+    "negative_tests": {
+      "tested": 7,
+      "passed": 7,
+      "failed": 0,
+      "coverage": [
+        "60-file inventory and champion integrity",
+        "all frozen model fresh reloads",
+        "source-hash tamper fails closed",
+        "vocabulary tamper fails closed",
+        "optimizer-config tamper fails closed",
+        "manifest requires optimizer moments",
+        "no synthetic model promotion"
+      ]
+    },
+    "additional_tamper_confidence_test": {
+      "tested": 1,
+      "passed": 1,
+      "case": "corrupted model tensor shape in a temporary package copy",
+      "result": "strict state_dict loading failed closed"
+    },
+    "DAG_tests": {
+      "tested": 17,
+      "passed": 17,
+      "ledger_validation": "PASS"
+    },
+    "weights_only": {
+      "torch_load_calls_reviewed": 3,
+      "all_persisted_state_loads_use_weights_only_true": true
+    },
+    "state_contract": {
+      "explicit_model_factories": true,
+      "strict_tensor_schema": true,
+      "vocabulary_checked": true,
+      "normalization_checked": true,
+      "AdamW_configuration_checked": true,
+      "Python_NumPy_Torch_RNG_checked": true,
+      "continuation_progress_checked": true,
+      "source_and_architecture_hash_pinning_checked": true
+    }
+  },
+  "training_steps_and_progress": {
+    "initial_package_continuation_step": 0,
+    "continuation_package_step": 1,
+    "confidence_resume_step": 2,
+    "step1_kind": "synthetic continuation proof only; not task training",
+    "step2_kind": "synthetic direct-versus-restored continuity proof only",
+    "initial_optimizer_state": "newly initialized AdamW with empty moments",
+    "step1_optimizer_state": "AdamW step, exp_avg and exp_avg_sq present",
+    "general_rlt_source_reported_steps": 640,
+    "other_source_epochs_or_steps": "not recoverable from original checkpoint payloads"
+  },
+  "historical_resume": {
+    "legacy_historical_optimizer_state_recovered": false,
+    "legacy_historical_RNG_state_recovered": false,
+    "legacy_historical_scheduler_recovered": false,
+    "legacy_historical_data_cursor_recovered": false,
+    "exact_original_training_run_resume_proven": false,
+    "statement": "No legacy historical optimizer state was recovered. Original checkpoints lack the required optimizer moments, scheduler, RNG, cursor, and history. Exactness begins only at the newly initialized continuation boundary."
+  },
+  "proof_scope": {
+    "proven": [
+      "Full frozen model tensor topology and values reload for five models under the pinned source implementations.",
+      "Vocabulary, normalization contract, AdamW configuration, RNG state and continuation progress are persisted.",
+      "A newly initialized AdamW continuation branch resumes exactly for the tested synthetic next step in the reproduced CPU environment.",
+      "Original source/checkpoint inventory and selected champion remain unchanged."
+    ],
+    "not_proven": [
+      "Historical optimizer reconstruction or exact continuation of the original training run",
+      "Improved neural capability or continual learning",
+      "Cross-hardware or cross-version bitwise reproducibility",
+      "Neural program invention",
+      "Promotion readiness for synthetic continuation packages"
+    ],
+    "neural_symbolic_boundary": "The probes exercise actual neural forwards. The shared ISA still relies on a fixed program ROM and Python host register routing for end-to-end execution; symbolic verification and fixed ROM behavior are not counted as neural program invention."
+  },
+  "checked_commands": [
+    "rtk proxy sed -n '1,80p' /tmp/logos_nc002_independent_verifier_events.jsonl",
+    "rtk python dag.py validate",
+    "rtk python -m unittest -q test_dag",
+    "rtk python dag.py ready",
+    "rtk python dag.py list",
+    "rtk git rev-parse HEAD",
+    "rtk git ls-tree -r --name-only ba14e31d7d17e6ae79a6404a1b78788931b2830d -- artifacts/NC-002",
+    "rtk git diff --exit-code ba14e31d7d17e6ae79a6404a1b78788931b2830d -- artifacts/NC-002/README.md artifacts/NC-002/state_package.py artifacts/NC-002/test_state_package.py artifacts/NC-002/checkpoint_manifest.json artifacts/NC-002/reload_receipt.json artifacts/NC-002/'*.pt'",
+    "PYTHONDONTWRITEBYTECODE=1 rtk python -m unittest -v artifacts/NC-002/test_state_package.py",
+    "PYTHONDONTWRITEBYTECODE=1 rtk python artifacts/NC-002/state_package.py verify-child --name <each of five models> --manifest artifacts/NC-002/checkpoint_manifest.json",
+    "rtk git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 rev-parse HEAD",
+    "rtk git -C /workspace/experiments/latticeforge_neural_isa_test rev-parse HEAD",
+    "rtk sha256sum /workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt /workspace/experiments/rlt_split_algorithms_ablation_v1/config.json /workspace/experiments/rlt_split_algorithms_ablation_v1/PROMOTION.json",
+    "rtk proxy python /dev/stdin [independent manifest/package SHA-256 comparison for all ten packages]",
+    "rtk proxy python /dev/stdin [independent all-key model and optimizer direct-versus-resume comparison plus tensor-shape tamper test]"
+  ],
+  "failed_cases": [],
+  "limitations": [
+    "Same-environment CPU deterministic evidence only.",
+    "Synthetic continuation checks are not new-skill training or evidence of improved capability.",
+    "The source checkpoints do not contain historical optimizer, scheduler, RNG, data cursor, or complete epoch history.",
+    "The canonical ISA contract is provenance here; these models were not retroactively trained on every canonical opcode."
+  ],
+  "audit_actions": {
+    "dag_pass_called": false,
+    "dag_claim_or_release_called": false,
+    "original_weights_modified": false,
+    "authored_modules_modified": false,
+    "implementation_checkpoints_modified": false,
+    "unrelated_staged_files_modified": false
+  }
+}
