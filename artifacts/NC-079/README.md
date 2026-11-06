@@ -12,6 +12,12 @@ Bottom-up search over ISA arithmetic keeps subexpressions of verified solutions 
 
 Dependencies: Python 3, NumPy, `artifacts/NC-061/scoreboard.py` and `artifacts/NC-001/canonical_isa.py` through the scoreboard.
 
-## Results on shared exams
+## Results on shared exams with a matched random control
 
-These replace the first run, which a review failed because arms faced different exams and random libraries had the wrong sizes. Structured world, final generation: library 0.544, no library 0.311, random library 0.156. The scoreboard still returns NO_IMPROVEMENT, since retention of 0.933 is below its 0.95 floor. Unstructured: no gain, as a control should show. Arithmetic without a ladder: 0 in all arms. Curriculum: 0.211 against 0 for no library, random library and library without a ladder. It passes against no library and no ladder, and is refused against the random library at 2.19 CPU seconds against a limit of 2.00. All worlds: NO_COMPOUNDING.
+Each random library copies the real library arm's concept count and sizes at the same generation, world and seed, and the run stops if they differ.
+
+- Structured, final generation: library 0.544, no library 0.311, random library 0.178. The scoreboard returns NO_IMPROVEMENT, since retention of 0.933 is below its 0.95 floor.
+- Unstructured: 0.089, 0.089 and 0.067. No gain, as a control should show.
+- Arithmetic without a ladder: 0 in all arms.
+- Curriculum on the hard arithmetic exam: library 0.211, against 0 for no library, random library and library without a ladder. All three comparisons return IMPROVEMENT.
+- Every world and the curriculum: NO_COMPOUNDING.

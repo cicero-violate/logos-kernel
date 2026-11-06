@@ -1,17 +1,17 @@
 {
  "schema_version": 1,
  "task": "NC-079",
- "owner": "claude-code-turn-0f828173bcf24622a4099422ec73a053",
+ "owner": "claude-code-turn-b7227ec1bf3f45a49233e030e98ec623",
  "source_sha256": {
-  "stack.py": "0107d78b183c0753f9a2b1970df75e124fe5cf29359026a02326091839173807",
-  "run_compounding.py": "645f4e9a19f88b7aecf5d23200a657496e7d294cb43036fcfe3f32fe28ae678b",
-  "run_curriculum.py": "adbd1b5551729e8dd8cd3f39abb1e5154c70d4121eab646b4b98ea9a154d6611",
-  "test_stack.py": "cdaa1aef202e1fb2a58b909a3b74433be9e680247c346e3c295952f60a3bfb07",
-  "README.md": "769dcceb9c452f65fb7a48d2ec0e613ca0c7f221b181001f1500d40169de0ab3"
+  "stack.py": "e2730e0dcb985b61a3fc2f5463db88f00d320e97cf530d75e8a3f5ce3cfababf",
+  "run_compounding.py": "cd83c136cf64078d92b6bb541b3f218a21dc1bc85d8c1f566bb799289169b77d",
+  "run_curriculum.py": "7c2a64bf5b5b8fd146c285368baa564600c6e32c1b2ff7053c0fb4c36ae780a0",
+  "test_stack.py": "6fd114f5f46823d9516f05f88ae7fb316798a338ec0073689d8888fc986c44eb",
+  "README.md": "e8fe4f4d0838c33ab9fd6a665208fb1cec231d39249ea2003d0bd953d29c021e"
  },
  "evidence_sha256": {
-  "compounding_results.json": "613fd8730dae48bcd365e33fc1781473c008f6c0706573c738bab7c0a462e021",
-  "curriculum_results.json": "1f728409fef6ac7a3cc5e38fb4c437a96f0d8080afa88bd0b06730e3630e7472"
+  "compounding_results.json": "1c436c74f39594f28d40e03d4b3af74c985e3572ce49cc3e90aa39f6dd98c46f",
+  "curriculum_results.json": "a2aca4f62fe5f429c1615f5bf4b9b08807b6cc52ca4eb1b3839a4d33e9af5751"
  },
  "scoreboard_sha256": "34fcdecd35e05547e7ea562882426bd54a5f39c828cbb8f3a32275e3511412fe",
  "main_verdicts": {
@@ -25,7 +25,7 @@
    },
    "final_vs_random_library": {
     "verdict": "NO_IMPROVEMENT",
-    "gain": 0.3889,
+    "gain": 0.3667,
     "reasons": [
      "retention 0.933 is below the floor 0.95"
     ]
@@ -62,9 +62,10 @@
    },
    "final_vs_random_library": {
     "verdict": "NO_IMPROVEMENT",
-    "gain": 0.0444,
+    "gain": 0.0222,
     "reasons": [
-     "gain 0.044 is below the margin 0.05"
+     "gain 0.022 is below the margin 0.05",
+     "did not beat the previous generation on most seeds"
     ]
    },
    "compounding": "NO_COMPOUNDING"
@@ -77,11 +78,9 @@
    "reasons": []
   },
   "final_vs_random_library": {
-   "verdict": "NO_IMPROVEMENT",
+   "verdict": "IMPROVEMENT",
    "gain": 0.2111,
-   "reasons": [
-    "used 2.19 CPU seconds against a limit of 2.00"
-   ]
+   "reasons": []
   },
   "final_vs_no_ladder": {
    "verdict": "IMPROVEMENT",
@@ -100,11 +99,13 @@
   "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-079/run_curriculum.py --out /tmp/nc079-curriculum.json"
  ],
  "negative_controls": [
-  "no library",
-  "random library of matching sizes",
-  "library without a ladder",
   "a world with no shared structure",
+  "library without a ladder",
+  "no library",
+  "random library matching the real library arm's sizes at every generation, enforced at run time",
+  "random library of matching sizes",
   "sealed and training goals split by function hash",
+  "unstructured world",
   "verification across all 65,536 pairs plus a separate integer evaluator"
  ],
  "dependencies": [
@@ -119,8 +120,10 @@
   "Search matches expressions on 64 probes, with exhaustive verification only of what it returns.",
   "The separate evaluator matches a canonical ISA program in tests but expressions are not compiled to ISA programs.",
   "Library capped at 48 concepts, and CPU was measured under shared load.",
-  "Structured gains of 0.233 and 0.389 are refused by the 0.95 retention floor; the curriculum's gain over the random library is refused on CPU by about 10%, measured under shared load. Both stand as NO_IMPROVEMENT rather than being argued away.",
   "Seed 19's structured library reaches 1.0 while the others stay near 0.3, so the mean is seed-dependent.",
-  "The curriculum library ends near 0.2 after 10 generations; no compounding was established in any world."
+  "Structured gains of 0.233 and 0.367 are refused by the 0.95 retention floor and stand as NO_IMPROVEMENT.",
+  "Curriculum IMPROVEMENT is a one-time gain from 0 to about 0.21 on a hard family after training on an easier ladder; generation-to-generation gains do not compound.",
+  "All curriculum solve counts in the random arm are 0 of 30 per seed, so the size of the advantage has a coarse floor.",
+  "Runs shared the machine under heavy load, about 2x core count, so CPU figures are noisy."
  ]
 }
