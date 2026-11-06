@@ -1,0 +1,80 @@
+{
+  "acceptance_finding": {
+    "conclusion": "Component-level sealed-side supervision is present in the candidate training data; target-level filtering alone does not enforce the task stated no-sealed-functions-in-training condition. This is not proof that any exact sealed exam target is in training.",
+    "counterexample": {
+      "accepted_training_target_function_key": "715ad5148ad1c8084a1a51854cb9f24d131864266be9822672558a87a6894d54",
+      "component_is_sealed": true,
+      "sealed_component_function_key": "a0fad2d776ef280a807f941ceae877ca0e9194de20913e49adb0c805a0b09ffa",
+      "seed": 11,
+      "selected_label_concept_index": 14,
+      "training_target_is_sealed": false
+    },
+    "criterion": "Keep sealed functions out of training by truth table",
+    "evidence_first_1000_accepted_dreams": {
+      "11": {
+        "accepted_dreams": 1000,
+        "accepted_targets_on_sealed_side": 0,
+        "discarded_sealed_target_dreams": 825,
+        "sealed_component_label_mentions": 155,
+        "sealed_concepts_in_64_class_pool": 6,
+        "targets_with_sealed_component_labels": 147
+      },
+      "19": {
+        "accepted_dreams": 1000,
+        "accepted_targets_on_sealed_side": 0,
+        "discarded_sealed_target_dreams": 804,
+        "sealed_component_label_mentions": 89,
+        "sealed_concepts_in_64_class_pool": 3,
+        "targets_with_sealed_component_labels": 87
+      },
+      "29": {
+        "accepted_dreams": 1000,
+        "accepted_targets_on_sealed_side": 0,
+        "discarded_sealed_target_dreams": 781,
+        "sealed_component_label_mentions": 152,
+        "sealed_concepts_in_64_class_pool": 5,
+        "targets_with_sealed_component_labels": 145
+      }
+    },
+    "mechanism": "selector.make_dreams excludes generated dream expression if its function key is sealed, but dream() picks concepts from unfiltered concepts and sets supervision label[pick] = 1 regardless of whether the selected concept function key lies on sealed side.",
+    "status": "FAIL"
+  },
+  "candidate_path": "artifacts/NC-081/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "c9eec4e413ee6d333d568ebb477dc06ba8e7b1a5",
+  "candidate_sha256": "88a905ce47151962307fe97a18854fb81a63a6c6a5606e95324b5bcb2177d381",
+  "dependencies": [
+    "Python 3",
+    "Git",
+    "NumPy",
+    "PyTorch CPU",
+    "artifacts/NC-081/selector.py",
+    "artifacts/NC-081/la015_library_pinned.py",
+    "artifacts/NC-081/library_seed11.jsonl",
+    "artifacts/NC-081/library_seed19.jsonl",
+    "artifacts/NC-081/library_seed29.jsonl"
+  ],
+  "limits": [
+    "The full 30000-dream three-seed training and 900-goal search were not rerun by this reviewer because a deterministic necessary acceptance gate fails.",
+    "Sparse-grid key is the defined split key; a stronger exhaustive function truth-table check is desirable if full-domain nonoverlap is claimed.",
+    "NO_GAIN is a descriptive result only; no champion promotion or AGI claim."
+  ],
+  "other_checks": {
+    "audit_tests": "2/2 PASS",
+    "candidate_checkpoints": "3/3 MATCH",
+    "candidate_evidence_files_at_pinned_revision": "4/4 MATCH",
+    "candidate_manifest_hash": "MATCH",
+    "candidate_source_files_at_pinned_revision": "4/4 MATCH",
+    "dag_tests": "19/19 PASS",
+    "dag_validate": "PASS 890 nodes 1114 events before claim",
+    "pull_tests": "20/20 PASS",
+    "reported_outcome": "NO_GAIN, model [2,1,0] vs equal CPU all-concepts [5,1,0] and other-goal examples [2,1,0]",
+    "selector_tests": "9/9 PASS"
+  },
+  "owner": "claude-code-turn-4a6e5254936542a3a143e56d67ffb6c0",
+  "proof_scope": "Independent replay of first 1000 accepted dream-generation targets per seed (11,19,29), inspection of frozen source and manifests, candidate hash and pinned source/evidence/checkpoint audits, and 11 freshly passed unit tests. Deterministically falsified the explicit separation requirement for sealed-side concept functions in supervised training labels. Did not run complete 3-seed retraining or all 900 exam problems once this necessary acceptance condition failed. No claim of remeasured model efficacy, and no direct leakage of exact exam-target functions established.",
+  "required_fix": "Exclude all sealed-side component-function keys from the supervised training concept pool and labels (not just composite target outputs), prove this for full 30000 accepted dreams across all seeds, publish a new frozen manifest and retrain/re-evaluate all seven arms at measured equal total CPU. Keep the existing candidate and previous reviews unchanged.",
+  "schema": "logos.nc081.independent_review/1",
+  "task": "NC-081",
+  "verdict": "FAIL",
+  "verifier": "turn-9bf9be965a0b4e0e854f3b4918ad5516"
+}
