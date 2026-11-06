@@ -55,10 +55,13 @@ counterexample values do not condition logits. It does NOT constitute novel
 task generalization or an effective natural counterexample-revision loop.
 Any synthetic-fault case is excluded from performance claims.
 
-A learned counterexample-conditioned policy, structurally unseen model
-proposal, independently accepted end-to-end feedback success and **matched
-CPU/wall-budget baselines** remain **UNIMPLEMENTED**. Equal maximum proposal
-counts and eight evaluation pairs do not establish equal compute budgets.
+The old frozen-controller reranker has no learned correction; the separate
+lexical controller below has numeric-counterexample-weighted online negative
+updates. This is a causal dependence on observed numeric errors, **not** proof
+of counterexample-guided synthesis or useful repair. Matched consumed-CPU
+comparisons, if within the preregistered tolerance on a fresh reproduction,
+remain an empirical budget comparison rather than exact wall/CPU equality.
+Independent acceptance and discovery remain unproven.
 The frozen known-goal training coverage makes neural invention unsupported.
 
 The sandbox and scientific evidence require a **distinct real independent
@@ -84,40 +87,64 @@ python dag.py validate
 The `isolation.py` runner currently depends on these exact host paths; it is
 not portable without updating and verifying the allowlist.
 
-## Additional unseen-goal neural baseline (implementer-only)
+## Additional unseen-goal neural benchmark (rework, implementer-only)
 
-`train_lexical.py` trains a small character/ngram neural controller on the
-**11 supervised NC-007 macro labels only** and writes
-`lexical_controller.pt`; it excludes the full structural evaluation goal
-`UNSEEN_XOR_DOUBLE_PLUS_Y`. This is a supervised textual transfer baseline,
-**not** proof of neural algorithm invention. `lexical_model.py` is a separate
-sandboxed inference worker with no program table, formula oracle or target
-recipe. It maps unseen goal text to bounded neural token logits.
+`train_lexical.py` trains a character/ngram neural controller on **11 known
+supervised goal/program labels**, explicitly excluding the target goal
+`UNSEEN_XOR_DOUBLE_PLUS_Y`. This is supervised textual transfer, not proof
+of neural algorithm invention. `lexical_model.py` runs a frozen checkpoint
+copy in an isolated process; its bounded online update changes only the
+in-memory model of a single proposal call.
 
-On a failed *separate* 8-example feedback split, the temporary model performs
-12 bounded negative-only SGD steps to reduce the probability of the rejected
-action sequence; a second proposed program is scored independently on an
-untouched 8-example heldout split. The transmitted feedback contains only the
-rejected actions and (correct,tested) counts, never target programs or expected
-numeric outputs. The original training checkpoint and RLT champion stay frozen.
+After execution, the host selects a **real numeric failure from the
+8-example feedback split** (`pair_index,x,y,expected,observed`) and rejects
+the failed action sequence. The second lexical proposal uses 12 bounded SGD
+steps penalizing the rejected sequence, weighted by the numeric error.
+An actual counterexample changes the policy gradient even when the aggregate
+counts remain identical. **It does not differentiate through the algorithm
+or infer which replacement actions will be correct.** No target action
+sequence, held-out oracle labels or solution recipe reaches the proposer.
+The disjoint eight-case held-out split is used for scoring only.
 
-`novel_trial.py` preallocates the **same** 12 CPU-second and 20 wall-second
-limits, two candidate opportunities and 16 probe/evaluation cases to neural,
-fixed-host and seeded-random-host arms; each sandbox child receives a reduced
-CPU cap. It records actual CPU/wall for every call. **Actual consumed compute is
-not equal across arms**, so this is an equal-cap/opportunity comparison, not an
-equal-consumed-CPU result. No broader discovery or performance superiority is
-claimed. Distinct independent review remains required.
+The four predeclared benchmark arms are:
 
-Run:
+- `lexical_neural`: two neural propose+execute attempts with genuine feedback.
+- `lexical_frozen`: two neural propose+execute attempts, no feedback update.
+- `fixed_host`: four deterministic host-chosen programs, no trained proposer.
+- `random_host`: four seeded host-chosen programs, no trained proposer.
+
+Every arm has the same **12 process-CPU-second and 20 wall-second allocated
+caps**, the same disjoint feedback/heldout operand sets and the same execution
+worker. Baseline arms receive more attempts because they avoid neural-proposal
+CPU cost. Actual consumed CPU and wall are recorded; the run is called
+`cpu_matched`/`wall_matched` only if **every arm** differs from the neural
+reference by at most 15%. Otherwise comparability is reported as NOT MATCHED.
+This tolerance, attempt schedule and stopping rule are fixed in source before
+execution, independent of scores. This is *approximate* measured-compute
+matching, not identical effort or identical proposal counts. Repeated held-out
+testing is not independent sample accumulation; the feedback-best candidate is
+selected strictly from feedback counts. Claims of neural superiority are
+prohibited without an actual matched multiseed comparison and independent
+review.
+
+`NO_DISCOVERY` remains the scientific result unless a distinct verifier
+reproduces evidence and accepts it. Single-seed finite arithmetic samples do
+not prove generalization, autonomous discovery, model-based causal reasoning,
+or safe deployment. Frozen original RLT champion and pretrained checkpoints
+remain unchanged.
+
+### Reproduction and dependencies
+
 ```bash
 cd /workspace/experiments/logos-kernel
-PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/train_lexical.py
 PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/novel_trial.py
 PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-028 -p 'test_*.py'
+python dag.py validate
 ```
 
-Extra dependencies: Python stdlib, PyTorch CPU, pinned
-`artifacts/NC-007/composition_receipt.json` and frozen NC-006/007 executor
-and checkpoint dependencies already enumerated above, Linux Landlock ABI >=5,
-libseccomp.so.2, and private `artifacts/NC-028/scratch`.
+Files: `novel_trial.py` depends on `arena.py`, `isolation.py`,
+`lexical_model.py`, `lexical_controller.pt`, `execute_worker.py`,
+NC-001/005/006/007 frozen sources, manifests and checkpoint weights,
+Linux Landlock ABI >=5, libseccomp.so.2, Python 3.14, NumPy and PyTorch CPU.
+The tests additionally use `test_lexical.py` and pinned benchmark evidence.
+No other repository or champion is modified by the benchmark.

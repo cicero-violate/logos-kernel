@@ -1,0 +1,165 @@
+{
+  "artificial_fault_used_in_novel_benchmark": false,
+  "attempt_schedule": {
+    "fixed_host": 4,
+    "lexical_frozen": 2,
+    "lexical_neural": 2,
+    "random_host": 4
+  },
+  "corrections": [
+    "Four preregistered arms: 2 revised-neural, 2 frozen-neural, 4 fixed-host, 4 random-host; measured aggregate CPU and wall are within +/-15 percent of revised-neural reference",
+    "Real feedback-split numeric failures include pair_index, x, y, expected and observed and causally weight the negative rejection gradient",
+    "All failed/partial subprocess CPU and wall costs are charged to the arm budget, not discarded",
+    "Negative controls reject malformed and label-leaky inputs; original champion and lexical checkpoint hashes retained"
+  ],
+  "cpu_matched": true,
+  "feedback_policy_weights_after": "6a7c67414e49532ec87259a99fce7ae0d9a7ab283d607715af6bf29438d1c666",
+  "feedback_policy_weights_before": "f77d29eb168ffc9e09b9008626b4e4b587ed55dfad6ff8afc8324028449758b6",
+  "feedback_split_counterexample": {
+    "expected": 45393,
+    "observed": 61067,
+    "pair_index": 0,
+    "x": 9844,
+    "y": 41379
+  },
+  "first_neural_actions": [
+    "ADD_XX",
+    "ADD_RY",
+    "HALT"
+  ],
+  "heldout_labels_never_sent_to_proposer": true,
+  "lexical_checkpoint_sha256": "6437f72373800d2ed0d847835ad7065a21759c81b9f96bc4d1286e83a0360728",
+  "limitations": [
+    "Negative-only residual-weighted update is not differentiable program execution, useful correction, or complete CEGIS",
+    "Original frozen NC-007 controller has no structurally unseen goal support; lexical text model is separate and trained on only 11 labeled macro programs",
+    "Reusing the same 8 heldout operands over attempts does not increase independent heldout coverage",
+    "Approximate measured CPU comparability at single seed does not prove superiority or statistically matched multiseed outcome",
+    "Sandbox is Landlock/seccomp host containment, not a VM, isolated UID, net namespace, or independently certified malicious-code security boundary",
+    "No external network, service, self-improvement claim, or champion promotion; independent verifier still required"
+  ],
+  "local_tests": {
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-028 -p 'test_*.py'": "17/17 PASS",
+    "python -m unittest -q test_dag": "19/19 PASS",
+    "python -m unittest -q test_pull": "17/17 PASS",
+    "python dag.py validate": "PASS: 64 tasks, 129 events"
+  },
+  "measured_arm_totals": {
+    "fixed_host": {
+      "attempts": 4,
+      "best_by_feedback": {
+        "attempt": 1,
+        "feedback_correct": 0,
+        "heldout_correct": 0,
+        "heldout_tested": 8
+      },
+      "cpu_seconds": 5.818689999999997,
+      "feedback_correct": 0,
+      "feedback_tested": 32,
+      "heldout_correct": 0,
+      "heldout_tested": 32,
+      "wall_seconds": 6.01851068099495
+    },
+    "lexical_frozen": {
+      "attempts": 2,
+      "best_by_feedback": {
+        "attempt": 1,
+        "feedback_correct": 0,
+        "heldout_correct": 0,
+        "heldout_tested": 8
+      },
+      "cpu_seconds": 5.978807000000001,
+      "feedback_correct": 0,
+      "feedback_tested": 16,
+      "heldout_correct": 0,
+      "heldout_tested": 16,
+      "wall_seconds": 6.118496590992436
+    },
+    "lexical_neural": {
+      "attempts": 2,
+      "best_by_feedback": {
+        "attempt": 1,
+        "feedback_correct": 0,
+        "heldout_correct": 0,
+        "heldout_tested": 8
+      },
+      "cpu_seconds": 6.515726,
+      "feedback_correct": 0,
+      "feedback_tested": 16,
+      "heldout_correct": 0,
+      "heldout_tested": 16,
+      "wall_seconds": 6.687016849056818
+    },
+    "random_host": {
+      "attempts": 4,
+      "best_by_feedback": {
+        "attempt": 1,
+        "feedback_correct": 0,
+        "heldout_correct": 0,
+        "heldout_tested": 8
+      },
+      "cpu_seconds": 5.909527000000001,
+      "feedback_correct": 0,
+      "feedback_tested": 32,
+      "heldout_correct": 0,
+      "heldout_tested": 32,
+      "wall_seconds": 6.121364208171144
+    }
+  },
+  "measured_comparability": {
+    "fixed_host": {
+      "cpu_ratio_to_neural": 0.8930225119963603,
+      "wall_ratio_to_neural": 0.900029238275935
+    },
+    "lexical_frozen": {
+      "cpu_ratio_to_neural": 0.9175964428215675,
+      "wall_ratio_to_neural": 0.9149814826405634
+    },
+    "lexical_neural": {
+      "cpu_ratio_to_neural": 1.0,
+      "wall_ratio_to_neural": 1.0
+    },
+    "random_host": {
+      "cpu_ratio_to_neural": 0.9069637059630808,
+      "wall_ratio_to_neural": 0.915410316191224
+    }
+  },
+  "novel_discoveries": 0,
+  "original_champion_unchanged_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "owner": "turn-da6cbd934b984632bc9b5628d5b39489",
+  "prior_receipt": "artifacts/NC-028/verification_turn-96381475ca7e491395caffdd6537a557.json",
+  "prior_reviewer": "turn-96381475ca7e491395caffdd6537a557",
+  "prior_verdict": "HOLD",
+  "proof_scope": "Single seed 11, unsigned 16-bit sampled arithmetic, disjoint 8 feedback and 8 heldout pairs repeated over attempts. Approximate measured CPU/wall matching within 15 percent but differing attempts and per-arm numerical denominators. No statistical advantage or novel operator demonstrated.",
+  "real_counterexample_scoring_only": true,
+  "relative_tolerance": 0.15,
+  "reproduction": [
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/novel_trial.py",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-028 -p 'test_*.py'",
+    "python dag.py validate",
+    "python -m unittest -q test_dag",
+    "python -m unittest -q test_pull"
+  ],
+  "result_sha256": "9589cf10b7fab88c9370c22f35698e72e8a8448a79f6382f9c9eddb4609e62b7",
+  "role": "IMPLEMENTER",
+  "schema": "logos.nc028.rework-submission/1",
+  "scientific_outcome": "NO_DISCOVERY",
+  "second_neural_actions": [
+    "ADD_X1",
+    "HALT"
+  ],
+  "source_sha256": {
+    "README.md": "e586dd5d41d48b4edf286c2af24b504209a43f89bc278e6f5fcc87cfaebbb4e0",
+    "VERIFIER_REQUEST.md": "51b3f3da6002f516bea7fe6bbc5a407db37c65d62df14dc65592faf1224ff3c8",
+    "arena.py": "68d54f2695581ab110a34d308676e0e07c8e2e0a969b2f9b6ea8b3e297cf11d4",
+    "execute_worker.py": "54aaf3676719a18b12f01b491322c1325be493eb04c0dc846ceb0e4dcbe7a21d",
+    "isolation.py": "cbdaa657434e6f190944d5694b40f0e21bb3954b81a311fd2c178d591b596fda",
+    "lexical_model.py": "08937fc26915247419cb928d9465db667e0bf01eb51ce74a922ab16f917974f6",
+    "novel_trial.py": "66dc2036b7d9bb6a28bc22b20bcdb7768fae85a2c37eebd1cba10c1da507be76",
+    "test_lexical.py": "d3ae223ad7a00842073493c7e7b87c9ab8a90caf84a0134dbc9c01ba4c126137",
+    "train_lexical.py": "63638b643324ee726218c69564cc40bf49b19cc6086f0cd14227df8549aaa299"
+  },
+  "status": "AWAITING_INDEPENDENT_VERIFICATION",
+  "task": "NC-028",
+  "timestamp_utc": "2026-11-06T13:02:55.624006+00:00",
+  "wall_matched": true
+}

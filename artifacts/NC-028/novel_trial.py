@@ -17,10 +17,16 @@ import isolation
 
 HERE = Path(__file__).resolve().parent
 GOAL = "UNSEEN_XOR_DOUBLE_PLUS_Y"
-MAX_ATTEMPTS = 2
+# Preregistered CPU-matching schedule: two neural proposal+execution
+# calls cost approximately four execution-only host baseline calls.
+# Neither test labels nor observed success affect this schedule.
+ATTEMPTS_PER_ARM = {"lexical_neural": 2, "lexical_frozen": 2,
+                    "fixed_host": 4, "random_host": 4}
+MAX_ATTEMPTS = max(ATTEMPTS_PER_ARM.values())
+MATCH_TOLERANCE = 0.15
 ARM_CPU_SECONDS = 12.0
 ARM_WALL_SECONDS = 20.0
-ARMS = ("lexical_neural", "fixed_host", "random_host")
+ARMS = tuple(ATTEMPTS_PER_ARM)
 
 
 def sandbox(name, payload, remaining_cpu, remaining_wall):
@@ -65,7 +71,13 @@ def evaluate(actions, seed, probe, heldout, cpu_remaining, wall_remaining):
     }
     if len(values) != 16:
         counts["feedback_correct"] = counts["heldout_correct"] = 0
-    return counts, cost
+    counterexamples = [
+        {"pair_index": i, "x": x, "y": y, "expected": expected[i],
+         "observed": values[i]}
+        for i, (x,y) in enumerate(probe)
+        if len(values) == 16 and values[i] != expected[i]
+    ]
+    return counts, cost, counterexamples
 
 
 def trial(seed=11):
@@ -83,17 +95,19 @@ def trial(seed=11):
     champion = arena.ROOT.parent/"rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt"
     original = arena.hash_file(champion)
     rows = []
+    consumed = {}
     for arm in ARMS:
         cpu, wall = 0.0, 0.0
         rejected = []
-        for index in range(MAX_ATTEMPTS):
+        for index in range(ATTEMPTS_PER_ARM[arm]):
             if ARM_CPU_SECONDS-cpu < 3 or ARM_WALL_SECONDS-wall < 4:
                 rows.append({"arm":arm,"attempt":index+1,"status":"BUDGET_EXHAUSTED"})
                 break
-            if arm == "lexical_neural":
+            if arm in ("lexical_neural", "lexical_frozen"):
                 proposal, pcost = sandbox(
                     "lexical_model.py",
-                    {"goal":GOAL, "checkpoint_sha256":digest, "feedback":rejected},
+                    {"goal":GOAL, "checkpoint_sha256":digest,
+                     "feedback":rejected if arm == "lexical_neural" else []},
                     ARM_CPU_SECONDS-cpu, ARM_WALL_SECONDS-wall)
                 cpu += pcost["cpu_seconds"]
                 wall += pcost["wall_seconds"]
@@ -101,7 +115,8 @@ def trial(seed=11):
                 model_generated = bool(proposal and proposal.get("model_generated"))
                 proposal_status = proposal.get("status","FAILED") if proposal else "FAILED"
             elif arm == "fixed_host":
-                actions = (["ADD_XY","HALT"] if index == 0 else ["ADD_XX","HALT"])
+                actions = ([["ADD_XY","HALT"], ["ADD_XX","HALT"],
+                            ["XOR_XY","HALT"], ["AND_XY","HALT"]][index])
                 pcost={"cpu_seconds":0.0,"wall_seconds":0.0,"status":"HOST"}
                 model_generated=False
                 proposal_status="HOST_BASELINE"
@@ -116,7 +131,7 @@ def trial(seed=11):
                 rows.append({"arm":arm,"attempt":index+1,
                              "status":"CANNOT_PROPOSE","proposal_cost":pcost})
                 break
-            counts, ecost = evaluate(actions,seed,probe,heldout,
+            counts, ecost, counterexamples = evaluate(actions,seed,probe,heldout,
                                      ARM_CPU_SECONDS-cpu,ARM_WALL_SECONDS-wall)
             cpu += ecost["cpu_seconds"]
             wall += ecost["wall_seconds"]
@@ -124,16 +139,23 @@ def trial(seed=11):
                          "status":"TESTED" if ecost["status"] == "OK" else "EXECUTION_FAILED",
                          "actions":actions,"model_generated":model_generated,
                          "proposal_status":proposal_status,
-                         "feedback_method": ("rejection-gradient" if rejected else "none"),
+                         "feedback_method": ("numeric-counterexample-rejection-gradient"
+                                              if arm=="lexical_neural" and rejected else "none"),
+                         "feedback_counterexamples":counterexamples,
                          "proposal_cost":pcost,"execution_cost":ecost,
                          "aggregate_cpu_seconds":cpu,"aggregate_wall_seconds":wall,
                          **counts,
-                         "policy_weights_before": proposal.get("weights_before") if arm=="lexical_neural" else None,
-                         "policy_weights_after": proposal.get("weights_after") if arm=="lexical_neural" else None})
-            if arm == "lexical_neural" and counts["feedback_correct"] < counts["feedback_tested"]:
-                # The proposer receives no expected values, operand pairs or target recipe.
+                         "policy_weights_before": proposal.get("weights_before") if arm in ("lexical_neural","lexical_frozen") else None,
+                         "policy_weights_after": proposal.get("weights_after") if arm in ("lexical_neural","lexical_frozen") else None})
+            if (arm == "lexical_neural" and ecost["status"] == "OK"
+                    and counterexamples):
+                # Only the FIRST real feedback-split numeric failure is sent.
+                # Heldout labels and target recipes never reach the proposer.
                 rejected.append({"actions":actions,"correct":counts["feedback_correct"],
-                                 "tested":counts["feedback_tested"]})
+                                 "tested":counts["feedback_tested"],
+                                 "counterexample":counterexamples[0]})
+        # Charge failures and interrupted attempts too, not only tested rows.
+        consumed[arm] = {"cpu_seconds":cpu, "wall_seconds":wall}
         if cpu > ARM_CPU_SECONDS+0.05 or wall > ARM_WALL_SECONDS+0.05:
             raise RuntimeError(f"allocated resource budget exceeded by {arm}: {cpu}/{wall}")
     if arena.hash_file(champion) != original:
@@ -145,23 +167,45 @@ def trial(seed=11):
                      "heldout_tested":sum(r["heldout_tested"] for r in rr),
                      "feedback_correct":sum(r["feedback_correct"] for r in rr),
                      "feedback_tested":sum(r["feedback_tested"] for r in rr),
-                     "cpu_seconds":sum(r["proposal_cost"]["cpu_seconds"]+
-                                       r["execution_cost"]["cpu_seconds"] for r in rr),
-                     "wall_seconds":sum(r["proposal_cost"]["wall_seconds"]+
-                                        r["execution_cost"]["wall_seconds"] for r in rr),
-                     "attempts":len(rr)}
-    receipt={"schema":"logos.nc028.unseen-feedback-benchmark/1",
+                     "cpu_seconds":consumed[arm]["cpu_seconds"],
+                     "wall_seconds":consumed[arm]["wall_seconds"],
+                     "attempts":len(rr),
+                     "best_by_feedback": next((
+                         {"attempt":r["attempt"],"feedback_correct":r["feedback_correct"],
+                          "heldout_correct":r["heldout_correct"],"heldout_tested":r["heldout_tested"]}
+                         for r in sorted(rr, key=lambda r:(-r["feedback_correct"],r["attempt"]))
+                     ), None)}
+    reference_cpu=checks["lexical_neural"]["cpu_seconds"]
+    reference_wall=checks["lexical_neural"]["wall_seconds"]
+    if reference_cpu <= 0 or reference_wall <= 0:
+        raise RuntimeError("no measured neural budget")
+    comparability={
+        arm: {"cpu_ratio_to_neural": checks[arm]["cpu_seconds"]/reference_cpu,
+              "wall_ratio_to_neural": checks[arm]["wall_seconds"]/reference_wall}
+        for arm in ARMS
+    }
+    cpu_matched=all(abs(v["cpu_ratio_to_neural"]-1) <= MATCH_TOLERANCE
+                    for v in comparability.values())
+    wall_matched=all(abs(v["wall_ratio_to_neural"]-1) <= MATCH_TOLERANCE
+                     for v in comparability.values())
+    receipt={"schema":"logos.nc028.unseen-feedback-benchmark/2",
              "status":"NO_DISCOVERY",
              "independent_verdict":"PENDING",
              "goal":GOAL, "train_label_leakage":False,
              "training_style":"supervised known macro labels, then OOD goal-name proposal",
              "novel_program_success":False,
-             "feedback_method":"negative-only online neural weight update; not full counterexample-guided synthesis",
+             "feedback_method":"real numeric feedback mismatch scales rejection-only gradient; not full CEGIS synthesis",
              "scoring":"separate 8-example feedback and untouched 8-example heldout sets",
              "cpu_budget_per_arm":ARM_CPU_SECONDS,
              "wall_budget_per_arm":ARM_WALL_SECONDS,
-             "max_attempts_per_arm":MAX_ATTEMPTS,
-             "comparability":"EQUAL ALLOCATED CAPS AND OPPORTUNITIES; ACTUAL CPU CONSUMPTION UNEQUAL",
+             "max_attempts_per_arm":ATTEMPTS_PER_ARM,
+             "cpu_matching_tolerance_fraction":MATCH_TOLERANCE,
+             "cpu_matched":cpu_matched,"wall_matched":wall_matched,
+             "compute_ratios":comparability,
+             "comparability":("MEASURED CPU/WALL MATCHED WITHIN 15 PERCENT; "
+                              "BASELINE ATTEMPT COUNTS DIFFER; NO SUPERIORITY CLAIM"
+                              if cpu_matched and wall_matched else
+                              "NOT COMPUTE MATCHED; NO PERFORMANCE COMPARISON"),
              "seed":seed,
              "feedback_pairs_sha256":hashlib.sha256(json.dumps(probe).encode()).hexdigest(),
              "heldout_pairs_sha256":hashlib.sha256(json.dumps(heldout).encode()).hexdigest(),
@@ -186,5 +230,5 @@ if __name__=="__main__":
     print(json.dumps({"status":result["status"],"counts":result["arm_totals"],
                       "heldout_program_proposed":any(row.get("model_generated") for row in result["attempts"] if row["arm"]=="lexical_neural"),
                       "feedback_weight_changed":any(row.get("policy_weights_before") != row.get("policy_weights_after")
-                                                   for row in result["attempts"] if row["arm"]=="lexical_neural" and row.get("feedback_method")=="rejection-gradient")},
+                                                   for row in result["attempts"] if row["arm"]=="lexical_neural" and row.get("feedback_method")=="numeric-counterexample-rejection-gradient")},
                      sort_keys=True))

@@ -112,7 +112,7 @@ def read_input(data):
         raise ValueError("invalid feedback")
     prior = set()
     for row in feedback:
-        if type(row) is not dict or set(row) != {"actions", "correct", "tested"}:
+        if type(row) is not dict or set(row) != {"actions", "correct", "tested", "counterexample"}:
             raise ValueError("invalid feedback schema")
         actions = row["actions"]
         if (type(actions) is not list or not 2 <= len(actions) <= MAX_STEPS
@@ -121,6 +121,13 @@ def read_input(data):
                 or type(row["correct"]) is not int or type(row["tested"]) is not int
                 or not 0 <= row["correct"] < row["tested"] <= 16):
             raise ValueError("invalid counterexample feedback")
+        cx = row["counterexample"]
+        if (type(cx) is not dict or set(cx) != {"pair_index", "x", "y", "expected", "observed"}
+                or any(type(cx[key]) is not int for key in cx)
+                or not 0 <= cx["pair_index"] < row["tested"]
+                or not all(0 <= cx[key] <= 65535 for key in ("x", "y", "expected", "observed"))
+                or cx["expected"] == cx["observed"]):
+            raise ValueError("invalid numeric counterexample")
         prior.add(tuple(actions))
     return goal, digest, feedback, prior
 
@@ -141,13 +148,16 @@ def main():
     model.eval()
     before = model_digest(model)
     feature = goal_features(goal)
-    # Online negative-only policy update. Uses a rejected program and success
-    # fraction, not the target action sequence, oracle answer or correct recipe.
+    # Online counterexample-conditioned *rejection* update. A real numeric
+    # mismatch scales the negative gradient; no target action sequence is given.
+    # This is NOT differentiable execution, CEGIS synthesis, or proof of repair.
     if feedback:
         for _ in range(12):
             loss = sum(
                 sequence_log_prob(model, feature, row["actions"])
                 * ((row["tested"] - row["correct"]) / row["tested"])
+                * (1.0 + abs(row["counterexample"]["expected"] -
+                             row["counterexample"]["observed"]) / 65535.0)
                 for row in feedback
             )
             model.zero_grad(set_to_none=True)
@@ -164,7 +174,9 @@ def main():
         "actions": actions or [],
         "model_generated": bool(actions),
         "structurally_unseen_goal": True,
-        "feedback_uses_labels": False,
+        "feedback_uses_labels": bool(feedback),
+        "feedback_uses_heldout_labels": False,
+        "feedback_type": "numeric-counterexample-weighted-rejection",
         "online_gradient_updates": 12 if feedback else 0,
         "weights_before": before,
         "weights_after": after,

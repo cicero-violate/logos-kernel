@@ -65,17 +65,28 @@ Additional checks required:
     Verify each proposed token sequence was emitted by the learned policy
     rather than a host-created program, and all execution uses the frozen
     neural library.
-11. Exercise malicious request schemas, feedback scores, checkpoint hash
-    mismatches, and training-goal overlap. Confirm that online negative-only
-    gradient updates change only in-memory policy parameters and produce a
-    distinct candidate after a real failed evaluation. The feedback does
-    **not** contain oracle values or target programs, and this is **not**
-    full CEGIS nor positive operator learning.
-12. Check all three arms have two proposal opportunities, 12 CPU-second and
-    20 wall-second *allocated* limits, and a separate heldout 8-pair split.
-    Inspect actual child CPU/wall counters: **actual compute is unequal**
-    and must not be described as matched-consumed-CPU evidence. Recompute
-    exact correct/tested counts and record failures.
+11. Exercise malformed request schemas, injected target-program keys,
+    ill-typed numeric counterexamples, false non-failures
+    (`observed==expected`), checkpoint hash mismatches, and training-label
+    overlap. Recompute first *real* mismatch (`x,y,expected,observed`)
+    directly from sandbox outputs and the 8 feedback pairs. Check that ONLY
+    this feedback-split numeric error and rejection data reach the proposer;
+    heldout answers and target action sequences must not. Demonstrate
+    causal numeric conditioning with identical counts but distinct residuals
+    producing different in-memory weight hashes. Reject any assertion that
+    this negative-only error-weighted update is full CEGIS or solved repair.
+12. Independently reproduce the FOUR preregistered arms: lexical_neural and
+    lexical_frozen each use 2 attempts, deterministic fixed_host and seeded
+    random_host each 4. Each has 12 aggregate process-CPU-second and 20
+    wall-second caps, same disjoint feedback/heldout eight-pair sets per
+    attempt, and a pinned finite 16-bit target. Baseline attempts differ
+    expressly to spend approximately the same CPU as neural proposals.
+    Recalculate total process CPU and wall including every failed/partial
+    attempt; independently compute each ratio to the neural arm and require
+    absolute ratio deviation <=15% for BOTH CPU and wall before describing
+    this *particular run* as approximately matched. If outside tolerance,
+    declare NOT MATCHED, not PASS for budget comparison. Such a single seed
+    and unequal opportunity counts do not establish neural superiority.
 13. Review `test_lexical.py` as well as the original sandbox negative controls,
     and inspect any unaddressed OS security escapes. Scope PASS only to actual
     satisfied acceptance; no novel success, champion promotion or general

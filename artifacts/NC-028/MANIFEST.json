@@ -1,18 +1,18 @@
 {
   "code_sha256": {
-    "README.md": "f2a98831f9b39067d985b537b9db075457161c19a17fd4b696484027f28939be",
-    "VERIFIER_REQUEST.md": "b15c1a5d8efafdf6d3d6a9128a59fd5586cb7c34840d434c162d7b7a2261e34f",
+    "README.md": "e586dd5d41d48b4edf286c2af24b504209a43f89bc278e6f5fcc87cfaebbb4e0",
+    "VERIFIER_REQUEST.md": "51b3f3da6002f516bea7fe6bbc5a407db37c65d62df14dc65592faf1224ff3c8",
     "arena.py": "68d54f2695581ab110a34d308676e0e07c8e2e0a969b2f9b6ea8b3e297cf11d4",
     "execute_worker.py": "54aaf3676719a18b12f01b491322c1325be493eb04c0dc846ceb0e4dcbe7a21d",
     "feedback_trial.py": "8dcdc3764f375d7d596cfd05379bfbd97c3326ad86d7c4ec3ae2df2ee19a1052",
     "isolation.py": "cbdaa657434e6f190944d5694b40f0e21bb3954b81a311fd2c178d591b596fda",
-    "lexical_model.py": "4bcccea614f362621a7d9f6977dec0697ad8ea51c82567f934cc843dbc6b5cdb",
-    "novel_trial.py": "38647b133ffc185ee9d3d8ab5f953dcd9be1148f2fac8c88763c6d1fea77d30c",
+    "lexical_model.py": "08937fc26915247419cb928d9465db667e0bf01eb51ce74a922ab16f917974f6",
+    "novel_trial.py": "66dc2036b7d9bb6a28bc22b20bcdb7768fae85a2c37eebd1cba10c1da507be76",
     "propose_worker.py": "7b524c43fc185c0606da4d8b339dd2168dc3c75aaffb0fe48f9a4a1e171b0752",
     "test_arena.py": "7915fd4e2b1b81496c1864071fc100dbf9095841b68f124ca7a26dd49dcc5e5e",
     "test_feedback.py": "946486b3cdba0668f57902ae4166f25f9456728d10fa54764c4758941e1ead90",
     "test_isolation.py": "2efc3352d9b233924fccae4f18a5a1ee3a0644edc43804d78537b7165c16c1c7",
-    "test_lexical.py": "3f03cd57cf463df7e9ab0dbbdfcd39a92e77376802d57d97aa3fee82bcf7623f",
+    "test_lexical.py": "d3ae223ad7a00842073493c7e7b87c9ab8a90caf84a0134dbc9c01ba4c126137",
     "train_lexical.py": "63638b643324ee726218c69564cc40bf49b19cc6086f0cd14227df8549aaa299"
   },
   "dependencies": [
@@ -29,9 +29,10 @@
     "feedback_probe.json": "05f27a02dfb68494e5709bc8d1c9828f637b2c264347d5f53e4c21930a88c675",
     "implementation_failures.jsonl": "b657ed18abf6777b6f7e61606fd1a901ea97e20a703b534f794c9c6cac16400a",
     "lexical_controller.pt": "6437f72373800d2ed0d847835ad7065a21759c81b9f96bc4d1286e83a0360728",
-    "novel_feedback_results.json": "12974a27cfed3c55381f5b07eebb9fe40c089c7a991899055d78c82bd04ba56a",
+    "novel_feedback_results.json": "9589cf10b7fab88c9370c22f35698e72e8a8448a79f6382f9c9eddb4609e62b7",
     "pilot_results.json": "38cab5e3f6d653c67a1055858e2d8f818637a14756606a429fd0aa7827fac3a8",
     "proposal_trace.jsonl": "7290c216ea0f9a12f4ca15a3846a5f47708e87c6f6f041a07b6541f7d24a07cb",
+    "rework_submission.json": "278297c4d6d8d92efdc54f8da0d4141f854cfced3ebf698674e9c6f7f041f196",
     "sandbox_manifest.json": "0d1991b307cc4cce7b5e1891e7560ed6b3d15bec9a787b683627a74498d56251"
   },
   "limitations": [
@@ -42,7 +43,13 @@
     "Linux Landlock+seccomp shares UID and host; no cgroup/VM/container security guarantee",
     "no proof of novel discovery, autonomous service, or generalization",
     "independent reviewer must reproduce and accept before any DAG PASS",
-    "NO network access, champion change, deployment or promotion"
+    "NO network access, champion change, deployment or promotion",
+    "Negative-only residual-weighted update is not differentiable program execution, useful correction, or complete CEGIS",
+    "Original frozen NC-007 controller has no structurally unseen goal support; lexical text model is separate and trained on only 11 labeled macro programs",
+    "Reusing the same 8 heldout operands over attempts does not increase independent heldout coverage",
+    "Approximate measured CPU comparability at single seed does not prove superiority or statistically matched multiseed outcome",
+    "Sandbox is Landlock/seccomp host containment, not a VM, isolated UID, net namespace, or independently certified malicious-code security boundary",
+    "No external network, service, self-improvement claim, or champion promotion; independent verifier still required"
   ],
   "negative_controls": [
     "fork() denied, posix_spawn() denied, pthread still allowed",
@@ -52,18 +59,21 @@
     "known training-goal overlap at heldout inference denied",
     "checkpoint hash mismatch rejected",
     "separate disjoint feedback and heldout splits",
-    "original champion SHA-256 unchanged"
+    "original champion SHA-256 unchanged",
+    "numeric counterexample required and malformed/identical observed-expected rejected",
+    "same count, different numeric residual yields distinct updated weight hashes",
+    "separate frozen-neural control does not receive numeric feedback",
+    "heldout oracle never enters the proposer"
   ],
-  "owner": "turn-9756f82924064ded92109bc00406b425",
+  "new_rework_receipt": "artifacts/NC-028/rework_submission.json",
+  "owner": "turn-da6cbd934b984632bc9b5628d5b39489",
   "reproduction": [
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/novel_trial.py",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-028 -p 'test_*.py'",
     "python dag.py validate",
     "python -m unittest -q test_dag",
     "python -m unittest -q test_pull",
-    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/train_lexical.py",
-    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/novel_trial.py",
-    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/arena.py",
-    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/feedback_trial.py",
-    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-028 -p 'test_*.py'"
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/train_lexical.py"
   ],
   "role": "IMPLEMENTER",
   "sandbox_source_sha256": {
@@ -84,47 +94,114 @@
     "propose_worker.py": "7b524c43fc185c0606da4d8b339dd2168dc3c75aaffb0fe48f9a4a1e171b0752",
     "unified_RLT_champion": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
   },
-  "schema": "logos.nc028.candidate-manifest/2",
+  "schema": "logos.nc028.candidate-manifest/3",
   "scientific_outcome": {
+    "approximate_measured_cpu_match_15_percent": true,
+    "approximate_measured_wall_match_15_percent": true,
     "arm_totals": {
       "fixed_host": {
+        "attempts": 4,
+        "best_by_feedback": {
+          "attempt": 1,
+          "feedback_correct": 0,
+          "heldout_correct": 0,
+          "heldout_tested": 8
+        },
+        "cpu_seconds": 5.818689999999997,
+        "feedback_correct": 0,
+        "feedback_tested": 32,
+        "heldout_correct": 0,
+        "heldout_tested": 32,
+        "wall_seconds": 6.01851068099495
+      },
+      "lexical_frozen": {
         "attempts": 2,
-        "cpu_seconds": 3.2610849999999996,
+        "best_by_feedback": {
+          "attempt": 1,
+          "feedback_correct": 0,
+          "heldout_correct": 0,
+          "heldout_tested": 8
+        },
+        "cpu_seconds": 5.978807000000001,
         "feedback_correct": 0,
         "feedback_tested": 16,
         "heldout_correct": 0,
         "heldout_tested": 16,
-        "wall_seconds": 3.365760004031472
+        "wall_seconds": 6.118496590992436
       },
       "lexical_neural": {
         "attempts": 2,
-        "cpu_seconds": 6.526678,
+        "best_by_feedback": {
+          "attempt": 1,
+          "feedback_correct": 0,
+          "heldout_correct": 0,
+          "heldout_tested": 8
+        },
+        "cpu_seconds": 6.515726,
         "feedback_correct": 0,
         "feedback_tested": 16,
         "heldout_correct": 0,
         "heldout_tested": 16,
-        "wall_seconds": 6.678547080140561
+        "wall_seconds": 6.687016849056818
       },
       "random_host": {
-        "attempts": 2,
-        "cpu_seconds": 3.8753520000000012,
+        "attempts": 4,
+        "best_by_feedback": {
+          "attempt": 1,
+          "feedback_correct": 0,
+          "heldout_correct": 0,
+          "heldout_tested": 8
+        },
+        "cpu_seconds": 5.909527000000001,
         "feedback_correct": 0,
-        "feedback_tested": 16,
+        "feedback_tested": 32,
         "heldout_correct": 0,
-        "heldout_tested": 16,
-        "wall_seconds": 3.970780431991443
+        "heldout_tested": 32,
+        "wall_seconds": 6.121364208171144
       }
     },
-    "attempts_per_arm": 2,
+    "attempts_per_arm": {
+      "fixed_host": 4,
+      "lexical_frozen": 2,
+      "lexical_neural": 2,
+      "random_host": 4
+    },
     "cpu_limit_seconds_per_arm": 12,
     "disjoint_heldout_cases_per_proposal": 8,
     "equal_allocated_budget": true,
     "equal_consumed_budget": false,
     "feedback_cases_per_proposal": 8,
+    "feedback_example": {
+      "expected": 45393,
+      "observed": 61067,
+      "pair_index": 0,
+      "x": 9844,
+      "y": 41379
+    },
+    "feedback_method": "real numeric counterexample weighted rejection-only SGD",
+    "measured_compute_ratios": {
+      "fixed_host": {
+        "cpu_ratio_to_neural": 0.8930225119963603,
+        "wall_ratio_to_neural": 0.900029238275935
+      },
+      "lexical_frozen": {
+        "cpu_ratio_to_neural": 0.9175964428215675,
+        "wall_ratio_to_neural": 0.9149814826405634
+      },
+      "lexical_neural": {
+        "cpu_ratio_to_neural": 1.0,
+        "wall_ratio_to_neural": 1.0
+      },
+      "random_host": {
+        "cpu_ratio_to_neural": 0.9069637059630808,
+        "wall_ratio_to_neural": 0.915410316191224
+      }
+    },
     "model_proposal_emitted_and_executed": true,
     "negative_feedback_gradient_updates": 12,
+    "new_discoveries": 0,
     "novel_discoveries": 0,
-    "proof_scope": "16-bit arithmetic, only 8 held-out pairs per attempt per arm; bounded sampling, no generalization proof",
+    "proof_scope": "Single seed 11, unsigned 16-bit sampled arithmetic, disjoint 8 feedback and 8 heldout pairs repeated over attempts. Approximate measured CPU/wall matching within 15 percent but differing attempts and per-arm numerical denominators. No statistical advantage or novel operator demonstrated.",
     "trained_on_structurally_unseen_goal": false,
     "unseen_goal": "UNSEEN_XOR_DOUBLE_PLUS_Y",
     "wall_limit_seconds_per_arm": 20
@@ -142,10 +219,9 @@
   "status": "NO_DISCOVERY",
   "task": "NC-028",
   "tests_completed": {
-    "DAG_validation": "PASS 61 nodes 116 events (validation prior to manifest commit)",
+    "DAG_validation": "PASS 64 tasks 129 events (moving append-only ledger)",
     "NC028_test_discovery": "17/17 PASS",
-    "novel_feedback_benchmark": "NO_DISCOVERY 0/16 neural heldout, 0/16 fixed host, 0/16 random host",
-    "original_pilot": "NO_DISCOVERY known-goal supervised 72/96; unseen-goal 0/24",
+    "new_benchmark": "NO_DISCOVERY: 0/16 heldout neural, 0/16 frozen, 0/32 fixed, 0/32 random",
     "test_dag": "19/19 PASS",
     "test_pull": "17/17 PASS"
   },
