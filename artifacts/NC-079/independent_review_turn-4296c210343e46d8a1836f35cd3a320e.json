@@ -1,0 +1,69 @@
+{
+  "candidate_path": "artifacts/NC-079/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "980b9d6b70d768a4f3079604f1f2cf4440c30cfb",
+  "candidate_sha256": "5b428ebdd59e6287ec3c810a0b7d42e626de3685fe635e20b278eb5b61d49699",
+  "dependencies": [
+    "Python 3",
+    "Git",
+    "NumPy",
+    "artifacts/NC-079/stack.py",
+    "artifacts/NC-079/run_compounding.py",
+    "artifacts/NC-079/run_curriculum.py",
+    "artifacts/NC-061/scoreboard.py",
+    "artifacts/NC-001/canonical_isa.py"
+  ],
+  "finding": {
+    "acceptance": "Sealed goals are disjoint from training goals, and solutions verify exhaustively on the stated domain with a separate evaluator",
+    "important_distinction": "The existing vectorized evaluator already covers all 65536 pairs; this is an independent exhaustive-oracle coverage failure, not proof of an existing wrong accepted solution.",
+    "independent_negative_control": {
+      "distinct_scalar_pairs": 1016,
+      "domain_pairs": 65536,
+      "expr": [
+        "ADD",
+        [
+          "X"
+        ],
+        [
+          "Y"
+        ]
+      ],
+      "fault_seen_by_scalar_checker": false,
+      "goal": "same ADD expression",
+      "injected_scalar_error_at": [
+        0,
+        0
+      ],
+      "sample_seed": 1,
+      "scalar_sample_draws": 1024,
+      "verified_return_value": true
+    },
+    "mechanism": "artifacts/NC-079/stack.py verified() checks all 65536 inputs using its own NumPy evaluate() implementation, then calls separate scalar reference_value() only for 1024 pseudo-random pairs. That second evaluator is not exhaustive. A wrong scalar result outside the sample passes undetected.",
+    "required_fix": "Run the independent scalar interpreter on all 65536 input pairs for EVERY accepted solution, or supply a separately implemented exhaustive evaluator with equivalent full-domain coverage. Add a negative control that injects a fault at (0,0) and requires fail-closed refusal. Keep vector evaluator independent of reference.",
+    "verdict": "FAIL"
+  },
+  "limits": [
+    "No fresh full reproduction of solve rates or measured CPU; verdict is based on independently reproduced required verification-gate failure.",
+    "No independent exhaustive oracle was run on every accepted program, so no mathematical correctness certification of whole archive is asserted.",
+    "Previous review receipt remains untouched; no writes to champion, original candidate or upstream repository.",
+    "Local agent identity labels and Git hashes are not cryptographic identity proofs."
+  ],
+  "next_action": "Implementer should wire a separately written exhaustive 65536-pair scalar verifier into all accepted result gates, rerun original multi-seed campaign and controls, publish new pinned candidate for a different independent reviewer. Preserve NO_COMPOUNDING until confirmed.",
+  "owner": "claude-code-turn-b7227ec1bf3f45a49233e030e98ec623",
+  "positive_checks": {
+    "archived_scientific_outcome": "NO_COMPOUNDING for all three worlds and curriculum; curriculum final IMPROVEMENT under reported scoreboard rules",
+    "candidate_and_supporting_unittests": "15/15 PASS",
+    "candidate_manifest_digest": "MATCH",
+    "dag_unittests": "19/19 PASS",
+    "dag_validate": "PASS, nodes 890 events 1117 before review claim",
+    "evidence_files_pinned_revision": "2/2 MATCH",
+    "matched_random_library_counts": "3 worlds x 3 seeds and curriculum; all archived per-generation concept counts matched",
+    "pull_unittests": "20/20 PASS",
+    "scoreboard_digest": "MATCH",
+    "source_files_pinned_revision": "5/5 MATCH"
+  },
+  "proof_scope": "Independent source, manifest, version and archived-result inspection; reran 15 candidate and supplementary tests; checked all seven pinned source/evidence digests and candidate Git revision plus NC-061 scoreboard; checked matching random-library counts across all three worlds, three seeds and curriculum in saved rows; independently injected a single-input fault outside the 1024-draw scalar verification sample and proved the purported separate evaluator does not exhaustively check all 65536 input pairs. Full high-cost 3-world 3-seed experimental campaign was not rerun because a required acceptance criterion is deterministically unsatisfied. No assertion that archived accepted expressions are mathematically incorrect.",
+  "schema": "logos.nc079.independent_review/1",
+  "task": "NC-079",
+  "verdict": "FAIL",
+  "verifier": "turn-4296c210343e46d8a1836f35cd3a320e"
+}
