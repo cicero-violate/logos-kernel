@@ -6,6 +6,10 @@ Canonical path: `/workspace/experiments/logos-kernel/`
 
 - `instructions.jsonl` is a SHA-256 hash-chained, append-only event log. Existing events are never rewritten.
 - `dag.py` validates the task DAG and appends atomic `task`, `claim`, `release`, `status` and `reopen` events.
+- **Every successfully appended event is immediately committed to local Git** as a ledger-only commit, while the append lock is held. Other staged and unstaged files are excluded.
+- Before appending, the CLI verifies that committed history is an exact byte-prefix of the current ledger; the ledger must match Git HEAD or the append stops and requests `python dag.py sync`.
+- If Git commit fails after an event is fsynced, the event **remains appended** and the CLI exits nonzero. Run `python dag.py sync`; never re-add the same event or rewrite the ledger.
+- This is a **local commit**, not a Git push, cloud backup, or signed/remote tamper-proof record.
 - `AGENTS.md` is the mandatory entry point and complete agent protocol.
 - A claim records an **exclusive current owner**, not an alive worker or a job execution state.
 - No scheduler, heartbeat, lease, auto-timeout, fake workers or automatic reassignment.
@@ -19,6 +23,8 @@ python dag.py validate
 python -m unittest -q test_dag
 python dag.py ready
 python dag.py list
+# Commit preexisting valid uncommitted ledger append(s) after an interrupted Git operation:
+python dag.py sync
 
 # Set AGENT_ID from your actual connected agent identity.
 test -n "$AGENT_ID" || exit 2
@@ -41,6 +47,14 @@ python dag.py add-task --file /path/to/new_task_event.json
 ```
 
 These are **command examples for alternative outcomes**, not one sequence to execute. Task `NC-000` must be ready; `AGENT_ID`, `VERIFIER_ID` and `OPERATOR_ID` must refer to real identities. Claim ownership cannot itself prove that the agent is running or that PASS evidence is correct.
+
+## Git commit rules and failure modes
+
+- All ledger mutations (claim, release, pass, fail, block, reopen, add-task) automatically create a local Git commit for `instructions.jsonl` only. `python dag.py validate`, `ready`, and `list` are read-only and create no commits.
+- Git user identity must be configured and `git` available. The command uses `git commit --only -- instructions.jsonl`, not `git add .` or an all-files commit.
+- File locks serialize **DAG writers on this local filesystem**, including the commit. They do not serialize unrelated `git` processes or independent working copies. If Git fails, use `python dag.py sync` after resolving the cause.
+- This mechanism commits the ledger only; implementation artifacts and receipts should be committed separately by their owners. There is no automatic push.
+- The append is durable before its Git commit. There is no cross-filesystem transaction spanning both steps: a crash can leave a valid but uncommitted event. `sync` is the recovery command and adds no new event.
 
 ## Acceptance policy
 

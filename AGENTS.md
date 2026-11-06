@@ -95,7 +95,9 @@ python dag.py validate
 Never edit earlier JSONL, even to correct mistakes; use a new task and clearly document supersession. The task DAG is acyclic; **the programs being learned may contain loops in their runtime CFG**.
 
 - The JSONL writer locks the local file and fsyncs each append; this does not serialize Git operations or coordinate across incompatible filesystems.
-- Inspect Git status before edits; stage only your own files and coordinate committing `instructions.jsonl` with other agents.
+- `dag.py` automatically commits each append-only JSONL event in a **ledger-only local Git commit**; do not separately stage or commit `instructions.jsonl`.
+- If an append reports Git failure after fsync, use `python dag.py sync` before adding another event; do not replay, rewrite, or discard the recorded event.
+- Inspect Git status before edits; stage only your own **non-ledger** files. Coordinate Git operations with other agents.
 - Do not hard-reset, restore, rebase away, force-push or hand-merge diverged ledger histories.
 - Local Git+hash chain detect accidental editing, not malicious full-history rewrite. Use protected offsite storage for stronger integrity.
 

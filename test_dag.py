@@ -1,4 +1,6 @@
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -139,19 +141,113 @@ class DagTests(unittest.TestCase):
                 self.assertEqual(ts["a"]["status"], "passed")
                 self.assertIsNone(ts["a"]["owner"])
 
-    def test_append_only_claim_events_via_cli_writer(self):
+    @staticmethod
+    def _git(root, *args):
+        return subprocess.run(
+            ["git", "-C", str(root), *args],
+            check=True, capture_output=True, text=True
+        ).stdout.strip()
+
+    def _init_git_ledger(self, root):
+        self._git(root, "init", "-q", "-b", "main")
+        self._git(root, "config", "user.name", "Ledger Test")
+        self._git(root, "config", "user.email", "ledger-test@example.invalid")
+        (root / "instructions.jsonl").write_text(log([node("initial")]))
+        self._git(root, "add", "--", "instructions.jsonl")
+        self._git(root, "commit", "-q", "-m", "initial ledger")
+
+    def test_append_commits_each_event_without_other_files(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
+            self._init_git_ledger(root)
+            # Other staged files may belong to a second agent.
+            (root / "unrelated.txt").write_text("do not commit me\n")
+            self._git(root, "add", "--", "unrelated.txt")
             with patch.object(dag, "ROOT", root), patch.object(dag, "LOG", root / "instructions.jsonl"):
-                append(node("a"))
-                append({"kind": "claim", "id": "a", "owner": "actual-agent"})
-                append({"kind": "release", "id": "a", "by": "actual-agent",
-                        "expected_owner": "actual-agent", "reason": "done"})
-                ts, n, _ = audit(dag.LOG.read_text())
+                first = append(node("a"))
+                second = append({"kind": "claim", "id": "a", "owner": "actual-agent"})
+                third = append({"kind": "release", "id": "a", "by": "actual-agent",
+                                "expected_owner": "actual-agent", "reason": "handoff"})
+                tasks, n, head = audit(dag.LOG.read_text())
+                self.assertEqual(n, 4)
+                self.assertEqual(tasks["a"]["status"], "planned")
+                self.assertIsNone(tasks["a"]["owner"])
+                self.assertEqual(head, third["sha256"])
+                self.assertNotEqual(first["git_commit"], second["git_commit"])
+                self.assertNotEqual(second["git_commit"], third["git_commit"])
+                self.assertEqual(self._git(root, "rev-list", "--count", "HEAD"), "4")
+                committed = subprocess.check_output(["git", "-C", str(root),
+                                                     "show", "HEAD:instructions.jsonl"])
+                self.assertEqual(committed, dag.LOG.read_bytes())
+                self.assertEqual(self._git(root, "diff", "--cached", "--name-only"), "unrelated.txt")
+                listed = self._git(root, "ls-tree", "-r", "--name-only", "HEAD")
+                self.assertNotIn("unrelated.txt", listed)
+
+    def test_sync_uncommitted_append_recovers_without_duplicates(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._init_git_ledger(root)
+            with patch.object(dag, "ROOT", root), patch.object(dag, "LOG", root / "instructions.jsonl"):
+                # Simulated crash after fsync and before Git commit.
+                previous = audit(dag.LOG.read_text())[2]
+                with dag.LOG.open("a") as stream:
+                    stream.write(canon(row(2, previous, node("a"))) + "\n")
+                with self.assertRaisesRegex(RuntimeError, "run 'python dag.py sync' first"):
+                    append(node("b"))
+                self.assertEqual(len(dag.LOG.read_text().splitlines()), 2)
+                synced = dag.sync()
+                self.assertEqual(synced["git_status"], "committed")
+                append(node("b"))
+                tasks, n, _ = audit(dag.LOG.read_text())
                 self.assertEqual(n, 3)
-                self.assertEqual(len(dag.LOG.read_text().splitlines()), 3)
-                self.assertEqual(ts["a"]["status"], "planned")
-                self.assertIsNone(ts["a"]["owner"])
+                self.assertEqual(set(tasks), {"initial", "a", "b"})
+                self.assertEqual(self._git(root, "rev-list", "--count", "HEAD"), "3")
+
+    def test_concurrent_processes_serialize_appends_and_git_commits(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._init_git_ledger(root)
+            source_dir = str(Path(dag.__file__).resolve().parent)
+            code = (
+                "import sys; from pathlib import Path; "
+                "sys.path.insert(0,sys.argv[1]); import dag; "
+                "dag.ROOT=Path(sys.argv[2]); dag.LOG=dag.ROOT/'instructions.jsonl'; "
+                "dag.append({'kind':'task','id':sys.argv[3],'priority':'P0',"
+                "'title':'concurrency test','depends_on':[],'instruction':['run'],"
+                "'acceptance':['verify'],'outputs':['receipt.json'],"
+                "'avoid':['drift'],'status':'planned'})"
+            )
+            args = [sys.executable, "-c", code, source_dir, str(root)]
+            a = subprocess.Popen(args + ["concurrent-a"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            b = subprocess.Popen(args + ["concurrent-b"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            out_a, err_a = a.communicate(timeout=30)
+            out_b, err_b = b.communicate(timeout=30)
+            self.assertEqual(a.returncode, 0, err_a + out_a)
+            self.assertEqual(b.returncode, 0, err_b + out_b)
+            tasks, n, _ = audit((root / "instructions.jsonl").read_text())
+            self.assertEqual(n, 3)
+            self.assertEqual(set(tasks), {"initial", "concurrent-a", "concurrent-b"})
+            self.assertEqual(self._git(root, "rev-list", "--count", "HEAD"), "3")
+            committed = subprocess.check_output(["git", "-C", str(root),
+                                                 "show", "HEAD:instructions.jsonl"])
+            self.assertEqual(committed, (root / "instructions.jsonl").read_bytes())
+
+    def test_failed_git_commit_is_recoverable_and_never_rewrites(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._init_git_ledger(root)
+            hook = root / ".git/hooks/pre-commit"
+            hook.write_text("#!/bin/sh\nexit 17\n")
+            hook.chmod(0o755)
+            with patch.object(dag, "ROOT", root), patch.object(dag, "LOG", root / "instructions.jsonl"):
+                with self.assertRaisesRegex(RuntimeError, "APPENDED and fsynced"):
+                    append(node("a"))
+                self.assertEqual(len(dag.LOG.read_text().splitlines()), 2)
+                self.assertEqual(self._git(root, "rev-list", "--count", "HEAD"), "1")
+                hook.unlink()
+                dag.sync()
+                self.assertEqual(self._git(root, "rev-list", "--count", "HEAD"), "2")
+                self.assertEqual(audit(dag.LOG.read_text())[1], 2)
 
 
 if __name__ == "__main__":

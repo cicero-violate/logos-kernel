@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Append-only, SHA-256 chained DAG instructions with explicit ownership claims.
 
-Standard-library-only. The original 17 events (including the historical
+Requires Python standard library and the Git CLI. The original 17 events (including the historical
 status=working claim) are replayable. New task ownership uses claim/release.
 """
 import argparse
@@ -9,6 +9,7 @@ import fcntl
 import hashlib
 import json
 import os
+import subprocess
 import sys
 from pathlib import Path
 
@@ -153,12 +154,89 @@ def audit(raw):
     return tasks, len(lines), prev
 
 
+
+# This ledger is the sole Git-managed file committed by the append pipeline.
+# Do not use `git add -A` or ordinary `git commit` here: those could capture
+# unrelated staged files from concurrent users.
+def _git(*args):
+    proc = subprocess.run(
+        ["git", "-C", str(ROOT), *args],
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+        check=False,
+    )
+    if proc.returncode:
+        raise RuntimeError(
+            "git " + " ".join(args) + " failed (exit " + str(proc.returncode)
+            + "): " + (proc.stderr or proc.stdout).strip()
+        )
+    return proc.stdout.strip()
+
+
+def _check_git_ledger(expected_bytes):
+    repository = Path(_git("rev-parse", "--show-toplevel")).resolve()
+    if repository != ROOT.resolve():
+        raise RuntimeError("ledger Git root mismatch: " + str(repository))
+    previous = subprocess.run(
+        ["git", "-C", str(ROOT), "show", "HEAD:instructions.jsonl"],
+        capture_output=True, check=False,
+    )
+    if previous.returncode:
+        raise RuntimeError(
+            "Git HEAD does not contain instructions.jsonl; create a baseline commit before appending"
+        )
+    if not expected_bytes.startswith(previous.stdout):
+        raise RuntimeError(
+            "current ledger differs from committed Git prefix; refusing append or sync"
+        )
+    # Validate identity *before* writing an event, so a missing Git author
+    # does not leave an avoidable uncommitted append.
+    _git("var", "GIT_AUTHOR_IDENT")
+    _git("var", "GIT_COMMITTER_IDENT")
+    return previous.stdout
+
+
+def _commit_ledger(ledger_bytes, reason):
+    previous = _check_git_ledger(ledger_bytes)
+    if ledger_bytes == previous:
+        return {"git_status": "already_committed", "commit": _git("rev-parse", "HEAD")}
+    # --only commits exactly the current ledger from the worktree,
+    # without introducing any other staged or unstaged files.
+    _git("commit", "--only", "-m", reason, "--", "instructions.jsonl")
+    head = _git("rev-parse", "HEAD")
+    actual = subprocess.run(
+        ["git", "-C", str(ROOT), "show", "HEAD:instructions.jsonl"],
+        capture_output=True, check=True,
+    ).stdout
+    if actual != ledger_bytes:
+        raise RuntimeError("Git commit succeeded but ledger bytes do not match the commit")
+    return {"git_status": "committed", "commit": head}
+
+
+def sync():
+    """Commit already-appended events after interrupted Git writes; never rewrite."""
+    if not LOG.is_file():
+        raise ValueError("instructions.jsonl missing")
+    with LOG.open("a+", encoding="utf-8") as ledger:
+        fcntl.flock(ledger, fcntl.LOCK_EX)
+        ledger.seek(0)
+        raw = ledger.read()
+        tasks, n, head = audit(raw)
+        result = _commit_ledger(raw.encode("utf-8"), f"DAG sync append-only events through {n}")
+    return {"events": n, "nodes": len(tasks), "head_sha256": head, **result}
+
 def append(ev):
+    # The same exclusive flock spans hash validation, append, fsync and
+    # Git commit. Another dag.py writer cannot append between those steps.
     LOG.touch(exist_ok=True)
     with LOG.open("a+", encoding="utf-8") as ledger:
         fcntl.flock(ledger, fcntl.LOCK_EX)
         ledger.seek(0)
-        tasks, n, prev = audit(ledger.read())
+        raw = ledger.read()
+        # A prior interrupted commit must be repaired using explicit 'sync'.
+        committed = _check_git_ledger(raw.encode("utf-8"))
+        if raw.encode("utf-8") != committed:
+            raise RuntimeError("uncommitted ledger events already exist; run 'python dag.py sync' first")
+        tasks, n, prev = audit(raw)
         validate_event(ev, tasks)
         body = {"seq": n + 1, "event": ev}
         row = {**body, "prev_sha256": prev, "sha256": hash_event(prev, body)}
@@ -166,13 +244,22 @@ def append(ev):
         ledger.write(canon(row) + "\n")
         ledger.flush()
         os.fsync(ledger.fileno())
+        try:
+            result = _commit_ledger((raw + canon(row) + "\n").encode("utf-8"),
+                                    f"DAG event {n + 1}: {ev.get('kind', 'unknown')} {str(ev.get('id', ''))[:48]}")
+        except (OSError, RuntimeError) as exc:
+            raise RuntimeError(
+                f"event {n + 1} was APPENDED and fsynced, but Git commit FAILED; "
+                f"do not append again or rewrite history. Recover using "
+                f"'python dag.py sync'. Reason: {exc}"
+            ) from exc
+        row["git_commit"] = result["commit"]
     return row
-
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for cmd in ("validate", "ready", "list"):
+    for cmd in ("validate", "ready", "list", "sync"):
         sub.add_parser(cmd)
     add = sub.add_parser("add-task")
     add.add_argument("--file", required=True, type=Path)
@@ -201,6 +288,9 @@ def main():
         op.add_argument("--note", default="")
 
     args = parser.parse_args()
+    if args.cmd == "sync":
+        print(json.dumps(sync(), indent=2))
+        return
     if args.cmd == "add-task":
         row = append(json.loads(args.file.read_text()))
     elif args.cmd == "claim":
@@ -240,12 +330,12 @@ def main():
                            "depends_on": item["record"]["depends_on"]})
         print(json.dumps(result, indent=2))
         return
-    print(json.dumps({"appended_seq": row["seq"], "event": row["event"], "head_sha256": row["sha256"]}, indent=2))
+    print(json.dumps({"appended_seq": row["seq"], "event": row["event"],  "head_sha256": row["sha256"], "git_commit": row["git_commit"]}, indent=2))
 
 
 if __name__ == "__main__":
     try:
         main()
-    except (ValueError, KeyError, OSError, json.JSONDecodeError) as err:
+    except (ValueError, KeyError, OSError, RuntimeError, json.JSONDecodeError) as err:
         print("FAIL:", err, file=sys.stderr)
         sys.exit(2)
