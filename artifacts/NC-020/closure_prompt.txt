@@ -1,0 +1,19 @@
+NC-020 THIRD DISTINCT READ-ONLY CODEX CLI CLOSURE VERIFIER.
+Source repository: /workspace/experiments/logos-kernel
+Exact committed receipt revision: d29609b5fbfd1117c4143d3cec9bee84bc906cb7
+Previous implementation and correction: 715b71a0568aecc1c0e68660f2a697bd11829b84 and d8ea312c6ef20d2bcb15f9a76251a9176ddf3579.
+Agent Event Lab implementer: 1db9edb983ff4df9933612e7c826e55f.
+Real independent scientific Codex: 01a1af2e-1690-7bd2-93a7-cb2c2e6916bc.
+Real correction Codex: 01a1af34-6560-7950-9349-2aec2566732a.
+YOUR actual thread.started ID MUST differ from all three. Never fabricate verifier provenance. Do NOT modify any project source/receipt/ledger/Git, create model training or declare DAG status. Work read-only and independently.
+
+Read AGENTS.md and relevant task NC-020 in instructions.jsonl, all NC-020 manifests, benchmark source/tests, original and v2 Codex final JSON and first line of BOTH trace files, receipt independent_receipt.json, closure-related task source; compare audited commit with worktree.
+
+Mandatory checks:
+- Verify the committed independent_receipt.json matches exact original and corrected raw Codex verdicts PASS, distinct actual thread.started IDs, audited commits, SHA256 of both raw traces and final JSON. Reject any forged identity, missing file, evidence mismatch, or self-signed approval. Receipt assembled by implementer is not itself an independent verdict.
+- Recompute generator source/checkpoint/dependency hashes and benchmark dataset hashes. Check 274/274 row hashes, same 274 case IDs, exact family-disjoint splits and no change to original 274-case benchmark. Confirm all original and v2 verifier output files match d296... commit.
+- Run python dag.py validate, TMPDIR=/dev/shm python -m unittest -q test_dag, PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-020 -p test_benchmark.py; report exact results. Explicitly test audit([]) rejects with fail-closed ValueError.
+- Verify champion and NC-005 42 frozen checkpoint checksums from accepted NC-006/NC-005 manifests; neither trained nor promoted. Check any unrelated dirty worktree paths separately, do not stage/clean them.
+- Check proof scopes: global exact integer +,-,* polynomial normalization, finite exhaustive output-bit 3/4/5-bit X,Y, two floating counterexamples, two invalid-type rejections. No full ISA program, no unseen neural semantics, historical training independence, AGI or champion promotion.
+- Return verdict PASS|HOLD|FAIL for COMMITTED CLOSURE CONSISTENCY, not original scientific correctness. Any mandatory unfinished check means HOLD. Never append DAG PASS yourself.
+- Final ONLY JSON fields: task, verdict, real_closure_verifier_thread_id, implementer_identity, audited_commit, checks, scientific_and_correction_verifier_binding, frozen_models, proof_scope, limits, failures.

@@ -1,0 +1,119 @@
+{
+  "audited_commit": "d29609b5fbfd1117c4143d3cec9bee84bc906cb7",
+  "champion_promotion": false,
+  "checks": {
+    "audit_empty_input": {
+      "exception": "ValueError",
+      "message": "NC020_UNREGISTERED_OR_MODIFIED_BENCHMARK_CASES",
+      "rejected": true
+    },
+    "benchmark_unit_tests": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-020 -p test_benchmark.py",
+      "errors": 0,
+      "failed": 0,
+      "passed": 14
+    },
+    "closure_target": "COMMITTED CLOSURE CONSISTENCY",
+    "dag_status_appended": false,
+    "dag_unit_tests": {
+      "command": "TMPDIR=/dev/shm python -m unittest -q test_dag",
+      "errors": 0,
+      "failed": 0,
+      "passed": 19
+    },
+    "dag_validation": {
+      "events": 55,
+      "head_sha256": "c0aa9c9c3c9ac1ded3593fb74a33cc07803847a2d0225cd90888d8a2cb7729ac",
+      "nodes": 29,
+      "status": "PASS"
+    },
+    "dataset": {
+      "canonical_dataset_sha256": "8a944ada4b2ab323433f1a7f10e63fb2244822d318cda89966ab164eed0328bd",
+      "case_set_sha256": "eccdd5b5fb43666750ad00b7a028d6b7f28a581d7c2cc290e7d04f8d23d6e733",
+      "cases": 274,
+      "dataset_file_sha256": "d101fc2e9aaf36a698474fed8aa80696a0b869a2686eebe0e405c2e498490c3c",
+      "family_cross_split_leaks": 0,
+      "record_hashes_valid": "274/274",
+      "split_case_id_lists_exact": true,
+      "split_counts": {
+        "test": 94,
+        "train": 108,
+        "validation": 72
+      },
+      "unchanged_from_original_commit": true,
+      "unique_case_ids": 274
+    },
+    "project_mutations": false,
+    "source_hashes": {
+      "all_match_manifests": true,
+      "canonical_isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+      "generator_sha256": "0c254d70d1319a0f9406fa900b9879289222ed65a77083cfedaff5e5f6802485",
+      "semantic_objective_sha256": "964f40d9d20a0333f7d8a6982045e3219866008a2a0ddc02464083857f9970c1"
+    },
+    "thread_identity_distinct": true,
+    "unrelated_dirty_worktree": {
+      "action_taken": "none; no staging, cleaning, restoration, or modification",
+      "nc020_tracked_differences": 0,
+      "present": true,
+      "separately_inspected": true
+    },
+    "verifier_outputs_match_audited_commit": true,
+    "worktree_nc020_matches_audited_commit": true
+  },
+  "closure_verifier": "codex-cli:01a1af38-6ce1-7e10-a200-9aa9925ca9b5",
+  "created_utc": "2026-11-06T05:00:42.108215+00:00",
+  "frozen_models": {
+    "nc005_checkpoints": {
+      "entries": 42,
+      "hashes_checked": 42,
+      "manifest_sha256": "b721b1a6c3a7d39fc02d0b3c787c4f559a8ccb94d4af249df57c7a0f4afe4624",
+      "mismatches": 0,
+      "promoted": false,
+      "trained_during_closure_audit": false
+    },
+    "rlt_champion": {
+      "matches_accepted_manifests": true,
+      "promoted": false,
+      "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "trained": false
+    }
+  },
+  "independent_receipt_file": "artifacts/NC-020/independent_receipt.json",
+  "independent_receipt_sha256": "dff094fff2f9eeb661cfa3824386224b61c23e45c5e52e49246724cf3a6d4442",
+  "limits": [
+    "No full ISA-program, flags, PC, HALT, or complete machine-state proof.",
+    "No unseen neural semantics or neural model evaluation.",
+    "Historical training and pretraining independence are not established.",
+    "No larger-width generalization, continual learning, AGI, or champion promotion claim.",
+    "This verdict addresses committed closure consistency, not a new declaration of original scientific correctness."
+  ],
+  "model_training": false,
+  "owner": "1db9edb983ff4df9933612e7c826e55f",
+  "proof_scope": {
+    "bitvector": "Finite exhaustive output-bit comparison for every X,Y assignment at widths 3, 4, and 5.",
+    "floating_point": "Two concrete Python binary64 counterexamples.",
+    "integer": "Global exact polynomial normalization over unbounded integers for committed +, -, and * ASTs.",
+    "invalid_types": "Two strict invalid-type rejections."
+  },
+  "raw_closure_final_file": "artifacts/NC-020/codex_closure_final.json",
+  "raw_closure_final_sha256": "0599c96a16e5c4c4dfa4e662acb313e423b975effbb56d95aa79f63f56cc3452",
+  "raw_closure_trace_file": "artifacts/NC-020/codex_closure_trace.jsonl",
+  "raw_closure_trace_sha256": "bb4b0d045f1c39df50f684fa3bab440b750322cbdddd2d28b7214f9fa216c3a2",
+  "receipt_is": "implementer-assembled binding to a third distinct read-only Codex closure verdict",
+  "schema": "logos.closure-evidence/1",
+  "scientific_verifiers": [
+    "codex-cli:01a1af2e-1690-7bd2-93a7-cb2c2e6916bc",
+    "codex-cli:01a1af34-6560-7950-9349-2aec2566732a"
+  ],
+  "source_dependencies": [
+    "artifacts/NC-020/benchmark.py",
+    "artifacts/NC-020/test_benchmark.py",
+    "artifacts/NC-001/canonical_isa.py",
+    "artifacts/NC-019/semantic_objective.json",
+    "artifacts/NC-020/independent_receipt.json",
+    "Python 3 standard library",
+    "Git"
+  ],
+  "status": "PASS",
+  "task": "NC-020"
+}
