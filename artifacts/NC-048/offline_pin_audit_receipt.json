@@ -1,0 +1,132 @@
+{
+  "audit_replay": {
+    "command": "python artifacts/NC-048/offline_pin_audit.py --cache artifacts/NC-048 --manifest artifacts/NC-048/teacher_reference_manifest.json",
+    "exit_code": 2,
+    "result": {
+      "count": 6,
+      "results": [
+        {
+          "id": "alphageometry",
+          "network_access": false,
+          "reason": "missing exact 40-hex commit pin",
+          "reviewer_identity_authenticated": false,
+          "source_executed": false,
+          "status": "HOLD"
+        },
+        {
+          "id": "tscl",
+          "network_access": false,
+          "reason": "missing exact 40-hex commit pin",
+          "reviewer_identity_authenticated": false,
+          "source_executed": false,
+          "status": "HOLD"
+        },
+        {
+          "id": "alp-gmm",
+          "network_access": false,
+          "reason": "missing exact 40-hex commit pin",
+          "reviewer_identity_authenticated": false,
+          "source_executed": false,
+          "status": "HOLD"
+        },
+        {
+          "id": "dreamcoder",
+          "network_access": false,
+          "reason": "missing exact 40-hex commit pin",
+          "reviewer_identity_authenticated": false,
+          "source_executed": false,
+          "status": "HOLD"
+        },
+        {
+          "id": "stitch",
+          "network_access": false,
+          "reason": "missing exact 40-hex commit pin",
+          "reviewer_identity_authenticated": false,
+          "source_executed": false,
+          "status": "HOLD"
+        },
+        {
+          "id": "z3",
+          "network_access": false,
+          "reason": "missing exact 40-hex commit pin",
+          "reviewer_identity_authenticated": false,
+          "source_executed": false,
+          "status": "HOLD"
+        }
+      ],
+      "scope": "read-only local source integrity, not independent verification",
+      "status": "HOLD"
+    }
+  },
+  "candidate_review_requested": false,
+  "generated_utc": "2026-11-06T11:44:11.331130+00:00",
+  "independent_verification": "NOT_PERFORMED",
+  "limitations": [
+    "Six immutable 40-hex revision pins not acquired or attested.",
+    "Six LICENSE SHA-256 values not acquired; license compatibility not established.",
+    "Exact source file lists contain unverified paths; any directory-only entries need correction after trusted mirroring.",
+    "Local Git remote.origin.url is untrusted metadata and cannot authenticate upstream origin.",
+    "Git links are checked only as listed; submodule contents/licenses still require separate per-repo audit.",
+    "No independent verification receipt; no training/CPU evaluation or resource consumption measured.",
+    "Runtime Python 3 standard library plus Git; no mandatory network service or additional packages."
+  ],
+  "model_weights_downloaded": false,
+  "negative_controls": [
+    "invalid/missing commit",
+    "changed LICENSE bytes",
+    "incorrect remote URL metadata",
+    "missing source Git blob",
+    "submodule pin mismatch",
+    "missing submodule manifest",
+    "Git path traversal",
+    "out-of-cache symlink",
+    "oversized 1 MiB blob",
+    "duplicate JSON keys"
+  ],
+  "next_action": "Obtain operator-authorized six pinned local Git mirrors and license bytes, replace null pins, independently audit submodules/license provenance; then rerun audit and request independent review.",
+  "owner": "turn-ca15277ab7c040d79ea11f4dd7fe4af3",
+  "reference_observations": [
+    {
+      "id": "alphageometry",
+      "observation": "README permits symbolic DDAR without Meliad; full LM reproduction calls for major GPU/CPU resources; no run authorized.",
+      "source": "https://github.com/google-deepmind/alphageometry"
+    },
+    {
+      "id": "stitch",
+      "observation": "Artifact documentation estimates some claim reproductions at 20-50 GiB RAM; do not treat toy CPU benchmark as reproducing paper results.",
+      "source": "https://github.com/mlb2251/stitch-artifact"
+    },
+    {
+      "id": "tscl",
+      "observation": "Repository landing view does not establish exact LICENSE bytes; no code reuse cleared.",
+      "source": "https://github.com/tambetm/TSCL"
+    }
+  ],
+  "schema_version": "nc048-offline-pin-control-v1",
+  "services_enabled": false,
+  "source_sha256": {
+    "artifacts/NC-048/offline_pin_audit.py": "054b1d69604deb0714bf8907b2d4574d67ca466e940cb4751475021c648bf54a",
+    "artifacts/NC-048/source_risk_receipt.json": "675e22e64632dce0b6cc65e5ce37c9f1c18be14bddec0885f927545e05310995",
+    "artifacts/NC-048/teacher_reference_manifest.json": "fde441d50d693c58f92c9a00ff4f218fc2d23beb7a652be403fec287b90c76f6",
+    "artifacts/NC-048/test_offline_pin_audit.py": "84b6ccc074db2801feb51b3fa3fcabbc7cb3ff5b9ee5f7f37db1049d484eb7b1"
+  },
+  "task": "NC-048",
+  "tests": [
+    {
+      "command": "python -m unittest discover -s artifacts/NC-048 -p test_offline_pin_audit.py -q",
+      "failed": 0,
+      "passed": 13
+    },
+    {
+      "command": "python -m unittest -q test_dag test_pull",
+      "failed": 0,
+      "passed": 36
+    },
+    {
+      "command": "python dag.py validate",
+      "status": "PASS"
+    }
+  ],
+  "upstream_code_executed": false,
+  "verdict": "HOLD_MISSING_PRIMARY_SOURCE_PINS"
+}
