@@ -1,0 +1,238 @@
+{
+  "candidate_evidence_sha256": {
+    "neural_proposal_traces.jsonl": "4355e66780a940aa86b2e679874090367f4e7a463ac2dabdc286ec729f34775a",
+    "ranker_seed11.pt": "6c4294e037611d9330ad1f6344bb3f9a3e37034aaea0bb6a99a336f103e943e4",
+    "ranker_seed19.pt": "0427374d263ced911583159306d896ac206f882c7bc25f61d25b79737f7cd9b3",
+    "ranker_seed29.pt": "4002a97ab8e507f083e62b5fe711514149a9d10ac81634ed9284c92eb6cb84be",
+    "search_policy_ablation.json": "773fdf98418ce8e455c3931d5435cd3767ffde528fcc418b7ffce29df2ed3b9c",
+    "tests.log": "4743e340562201447d752d0a06ee7b16ec948a2f37d75a82374573eb9afb4b41"
+  },
+  "candidate_source_sha256": {
+    "PROTOCOL.md": "729a7c3dc043036122ff79d200e46dc2e375388a5377701fdf1a2bff974cbf7f",
+    "audit_ablation.py": "ff3db59cb36948ea74ba2f7c6bd2c99253570dab946fbc421a2c06a87a6b54bf",
+    "run_ablation.py": "ae7ae9e6e82f7b2ad73c9a5548d7a5e04b8d54a8b67b26d1c42d422c29472a79",
+    "search_policy.py": "fbb20be679019e8f72bc0d46bc67ef51ff73850dde28026ae5ab71c9b316d44c",
+    "test_search_policy.py": "a5d52bce366e05c0b6082b31c114a076bac05fb7af8c25b36939145f3717318f"
+  },
+  "checkpoints": {
+    "11": {
+      "path": "artifacts/NC-024/ranker_seed11.pt",
+      "sha256": "6c4294e037611d9330ad1f6344bb3f9a3e37034aaea0bb6a99a336f103e943e4",
+      "training": {
+        "epochs": 2,
+        "gradient_updates": 48,
+        "last_loss": 0.916694,
+        "training_cases": 24,
+        "training_cpu_seconds": 0.521252
+      }
+    },
+    "19": {
+      "path": "artifacts/NC-024/ranker_seed19.pt",
+      "sha256": "0427374d263ced911583159306d896ac206f882c7bc25f61d25b79737f7cd9b3",
+      "training": {
+        "epochs": 2,
+        "gradient_updates": 48,
+        "last_loss": 0.945075,
+        "training_cases": 24,
+        "training_cpu_seconds": 0.582885
+      }
+    },
+    "29": {
+      "path": "artifacts/NC-024/ranker_seed29.pt",
+      "sha256": "4002a97ab8e507f083e62b5fe711514149a9d10ac81634ed9284c92eb6cb84be",
+      "training": {
+        "epochs": 2,
+        "gradient_updates": 48,
+        "last_loss": 0.016919,
+        "training_cases": 24,
+        "training_cpu_seconds": 0.390271
+      }
+    }
+  },
+  "comparison_verdict": "NO_GAIN",
+  "config": {
+    "epochs": 2,
+    "evaluation_per_family": 3,
+    "frontier_pool_cap": 40,
+    "proof_evaluations_per_case": 6,
+    "training_per_family": 6
+  },
+  "dataset_file_sha256": "d101fc2e9aaf36a698474fed8aa80696a0b869a2686eebe0e405c2e498490c3c",
+  "dataset_sha256": "8a944ada4b2ab323433f1a7f10e63fb2244822d318cda89966ab164eed0328bd",
+  "dependencies": [
+    "Python 3.10+",
+    "PyTorch 2.12.1",
+    "Git",
+    "artifacts/NC-020/benchmark.py",
+    "artifacts/NC-020/equivalence_benchmark.jsonl",
+    "artifacts/NC-020/splits_and_semantics.json",
+    "artifacts/NC-023/symbolic_search.py",
+    "artifacts/NC-001/canonical_isa.py",
+    "artifacts/NC-024/search_policy.py",
+    "artifacts/NC-024/run_ablation.py"
+  ],
+  "heldout_metrics": {
+    "heuristic": {
+      "test": {
+        "cases": 45,
+        "full_search_cpu_s": 0.99808,
+        "full_search_wall_s": 1.02869,
+        "generated_proposals": 738,
+        "improved": 24,
+        "optimized_dag_ops": 159,
+        "proof_evaluations": 117,
+        "ranker_cpu_s": 0.45646,
+        "source_dag_ops": 198,
+        "verified_proposals": 117
+      },
+      "validation": {
+        "cases": 36,
+        "full_search_cpu_s": 0.84908,
+        "full_search_wall_s": 0.8583,
+        "generated_proposals": 675,
+        "improved": 24,
+        "optimized_dag_ops": 78,
+        "proof_evaluations": 123,
+        "ranker_cpu_s": 0.27771,
+        "source_dag_ops": 126,
+        "verified_proposals": 123
+      }
+    },
+    "neural": {
+      "test": {
+        "cases": 45,
+        "full_search_cpu_s": 1.08498,
+        "full_search_wall_s": 1.10896,
+        "generated_proposals": 799,
+        "improved": 24,
+        "optimized_dag_ops": 158,
+        "proof_evaluations": 117,
+        "ranker_cpu_s": 0.46392,
+        "source_dag_ops": 198,
+        "verified_proposals": 117
+      },
+      "validation": {
+        "cases": 36,
+        "full_search_cpu_s": 0.94929,
+        "full_search_wall_s": 0.95875,
+        "generated_proposals": 729,
+        "improved": 24,
+        "optimized_dag_ops": 77,
+        "proof_evaluations": 123,
+        "ranker_cpu_s": 0.41179,
+        "source_dag_ops": 126,
+        "verified_proposals": 123
+      }
+    },
+    "random": {
+      "test": {
+        "cases": 45,
+        "full_search_cpu_s": 0.63448,
+        "full_search_wall_s": 0.64269,
+        "generated_proposals": 972,
+        "improved": 19,
+        "optimized_dag_ops": 168,
+        "proof_evaluations": 117,
+        "ranker_cpu_s": 0.00091,
+        "source_dag_ops": 198,
+        "verified_proposals": 117
+      },
+      "validation": {
+        "cases": 36,
+        "full_search_cpu_s": 0.58718,
+        "full_search_wall_s": 0.59284,
+        "generated_proposals": 848,
+        "improved": 19,
+        "optimized_dag_ops": 90,
+        "proof_evaluations": 123,
+        "ranker_cpu_s": 0.00098,
+        "source_dag_ops": 126,
+        "verified_proposals": 123
+      }
+    },
+    "untrained": {
+      "test": {
+        "cases": 45,
+        "full_search_cpu_s": 1.30414,
+        "full_search_wall_s": 1.33116,
+        "generated_proposals": 1038,
+        "improved": 16,
+        "optimized_dag_ops": 173,
+        "proof_evaluations": 117,
+        "ranker_cpu_s": 0.61799,
+        "source_dag_ops": 198,
+        "verified_proposals": 117
+      },
+      "validation": {
+        "cases": 36,
+        "full_search_cpu_s": 1.0418,
+        "full_search_wall_s": 1.05214,
+        "generated_proposals": 944,
+        "improved": 20,
+        "optimized_dag_ops": 90,
+        "proof_evaluations": 123,
+        "ranker_cpu_s": 0.44051,
+        "source_dag_ops": 126,
+        "verified_proposals": 123
+      }
+    }
+  },
+  "independent_reviewer_receipt_reserved": "artifacts/NC-024/independent_receipt.json",
+  "limitations": [
+    "New RLT-style candidate ranker, not original champion or reused weights.",
+    "Training imitates a deterministic static-cost ranker, not invented laws.",
+    "Training and inference CPU overhead counted separately; equal proof budgets do not imply equal total compute.",
+    "Ideal DAG cost is not hardware runtime.",
+    "No target RHS exposed; no historical pretraining isolation guarantee.",
+    "Finite polynomial or 3/4/5-bit output proof only; no stateful machine, floating, unrestricted math or AGI.",
+    "The first frontier generation occurs before full_search_cpu timing and model initialization before search timing; complete runner wall records experiment critical path but per-case CPU is not fully inclusive.",
+    "Neural attention overhead + training CPU reduces verified improvements per total CPU versus deterministic control; slight static DAG gain is insufficient to establish neural advantage.",
+    "Checkpoint/method uses PyTorch CPU; model was trained with gradient descent, unlike static symbolic heuristics; does not show operation invention.",
+    "Candidate replays use the same exact oracle; an independent verifier must use independently reasoned counterexamples.",
+    "No champion promotion, service activation, AGI or unrestricted self improvement."
+  ],
+  "method": "new RLT-style recurrent z_H/z_L self-attention ranker on deterministic NC-023 generated candidates; training-only static-cost imitation; no original RLT checkpoint loaded",
+  "negative_controls": {
+    "no_target_rhs_training": true,
+    "non_equivalent_invalid_validation_test_rows_rejected": 85,
+    "proof_checked_accepted_proposals": 960,
+    "random_and_heuristic_equal_budget": true,
+    "recorded_proposals": 960,
+    "untrained_equal_budget_ranker": true,
+    "wrong_program_negative_control": "test_invalid_rewrite_cannot_be_promoted"
+  },
+  "owner": "turn-5a39bec034be4d108cd4933be0d16d26",
+  "proof_scope": "NC-020 heldout disjoint fixed families, typed exact Z[x,y,z] polynomial and exhaustive 3/4/5-bit X/Y output equivalence; 3 seeds, 4 arms, same 6 proof checks per case, no external certificate, historical pretraining independence unknown.",
+  "reproduction": [
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-024 -p test_search_policy.py",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-024/audit_ablation.py",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-023 -p test_symbolic_search.py",
+    "python dag.py validate",
+    "python -m unittest -q test_dag",
+    "python -m unittest -q test_pull"
+  ],
+  "reproduction_warning": "Full run_ablation.py retrains and overwrites frozen candidate checkpoint/result bytes. Run only into independent isolated copy after pinning; do not rerun in shared checkout before review.",
+  "schema_version": 1,
+  "seeds": [
+    11,
+    19,
+    29
+  ],
+  "split_counts": {
+    "negative_controls": 85,
+    "test": 15,
+    "train": 36,
+    "validation": 12
+  },
+  "status": "CANDIDATE_PENDING_INDEPENDENT_VERIFICATION",
+  "task": "NC-024",
+  "title": "Evaluate neural-guided formula rewrite search against deterministic search",
+  "training_cpu_seconds_all_seeds": 1.494408,
+  "upstream_sha256": {
+    "benchmark.py": "0c254d70d1319a0f9406fa900b9879289222ed65a77083cfedaff5e5f6802485",
+    "canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "run_ablation.py": "ae7ae9e6e82f7b2ad73c9a5548d7a5e04b8d54a8b67b26d1c42d422c29472a79",
+    "search_policy.py": "fbb20be679019e8f72bc0d46bc67ef51ff73850dde28026ae5ab71c9b316d44c",
+    "symbolic_search.py": "078cf38ceea8306e2e238b5149d0e48a73f55e2d5f7cba1ee0ac3eeef2095011"
+  }
+}
