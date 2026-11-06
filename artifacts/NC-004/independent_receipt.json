@@ -1,0 +1,120 @@
+{
+  "task": "NC-004",
+  "result": "PASS",
+  "independent": true,
+  "implementer": "1db9edb983ff4df9933612e7c826e55f",
+  "verifier": "codex-cli:01a1aec7-5615-7293-9452-c5e9083fb395",
+  "identity_provenance": {
+    "kind": "actual original Codex CLI runtime log",
+    "path_observed": "/tmp/logos_nc004_independent_events.jsonl",
+    "sha256": "f1cff516350ae9b1a047a87c14825060095ee2a5ee5819cb671bceb6b097c938",
+    "thread_started_event_observed": {
+      "type": "thread.started",
+      "thread_id": "01a1aec7-5615-7293-9452-c5e9083fb395"
+    },
+    "turn_completed_observed": true,
+    "identity_extrapolated": false
+  },
+  "implementation": {
+    "repository": "/workspace/experiments/logos-kernel",
+    "commit": "3891e10cc7afbf7c2c5ddbe5a7282bec58b6245c"
+  },
+  "evidence_sha256": {
+    "independent_diagnostics.json": "c3118ca8f1d95fe477ed7fda796c55ed7b686a5517d310be3698a9dce272f868",
+    "checkpoint.json": "3fb5ae6f66c9528ff68a2ace0444ea5b8b730007b974cd7f05380980fd010500",
+    "semantic_receipt.json": "8192b8f5764357b03ebb443115e5acc3e4fd697cdacbe60e55f18e33a52bb95a",
+    "state_conformance.json": "e7c797b6b8626670e77dc9770645d947c715d0a71b80debb8eabd3b95b04d08a"
+  },
+  "checkpoint_sha256": {
+    "coupled_seed11.pt": "50dbad914ae2ca5d11259885c64f65fa8f3ad6f2bf4ed7bd15acf067287e2b65",
+    "coupled_seed19.pt": "3c0c3f95501660a7952affcd5254f9bd39de79d2ba04b6f685d66fff4663fb9d",
+    "coupled_seed29.pt": "b6f561a6cda9679f17e32a4947f3fbff69b9ca2b2f32df0b44c5b789d8ae4d15",
+    "detached_seed11.pt": "49f57af270e39e01ae8fa48020aba1c7dbd7b85af895e3e023ea7fd4e801918d",
+    "detached_seed19.pt": "72987fa0f6a4c4b94af404ab12a8fab34e91e8ef2f2065355fe13d56cb7aaf0d",
+    "detached_seed29.pt": "d1ae65c38f079d003014b400403a853dc539996b4e77f2ae847fdca7cf3141dd"
+  },
+  "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "independent_measurements": {
+    "seeds": [
+      11,
+      19,
+      29
+    ],
+    "arms": [
+      "coupled",
+      "detached"
+    ],
+    "training_updates_per_arm_per_seed": 1500,
+    "local_patterns_per_seed_per_arm": 320,
+    "local_numeric": {
+      "coupled_seed11": "320/320",
+      "coupled_seed19": "320/320",
+      "coupled_seed29": "320/320",
+      "detached_seed11": "320/320",
+      "detached_seed19": "320/320",
+      "detached_seed29": "320/320"
+    },
+    "math_labels": {
+      "coupled_seed11": "320/320",
+      "coupled_seed19": "320/320",
+      "coupled_seed29": "320/320",
+      "detached_seed11": "320/320",
+      "detached_seed19": "320/320",
+      "detached_seed29": "320/320"
+    },
+    "numeric_gradient_to_meaning_head": {
+      "coupled_seed11_l1": 2.0774425593117485e-06,
+      "coupled_seed19_l1": 1.7645795651333174e-06,
+      "coupled_seed29_l1": 1.2144231504862546e-06,
+      "coupled_nonzero_for_all_three_seeds": true,
+      "detached_seed11_l1": 0.0,
+      "detached_seed19_l1": 0.0,
+      "detached_seed29_l1": 0.0,
+      "detached_meaning_head_in_numeric_graph": false
+    },
+    "meaning_distribution_intervention": {
+      "same_raw_input": true,
+      "coupled_baseline_correct_per_seed": "320/320",
+      "coupled_intervened_correct_per_seed": "136/320",
+      "coupled_outputs_changed_per_seed": "184/320",
+      "detached_baseline_correct_per_seed": "320/320",
+      "detached_intervened_correct_per_seed": "320/320",
+      "detached_outputs_changed_per_seed": "0/320",
+      "conclusion": "Numeric output causally depends on the predicted meaning distribution in the coupled arm; the same intervention has no numeric effect in the detached arm."
+    },
+    "fixed_two_operation_compositions": {
+      "correct": 13824,
+      "tested": 13824,
+      "coverage": "For each of three fixed programs, both arms and all three seeds: 256 exhaustive 4-bit operand pairs plus 512 seeded sampled 8-bit operand pairs."
+    },
+    "host_assisted_full_state": {
+      "correct": 7680,
+      "tested": 7680
+    },
+    "failed_cases": 0,
+    "checkpoint_load": "All six checkpoints loaded successfully with torch.load(weights_only=True).",
+    "negative_tamper_checkpoint_detected": true
+  },
+  "scientific_boundary": {
+    "learned": "Five-class meaning logits and 16-bit neural arithmetic result transitions for ADD, SHL, SHR, AND1 and OR.",
+    "host": "Canonical typed AST rendering, operand and register wiring, fixed supplied programs, flags, PC and HALT.",
+    "symbolic_execution_in_numeric_neural_forward": false,
+    "learned_opcode_count": 5,
+    "canonical_opcode_count": 15,
+    "all_320_local_patterns_were_in_training": true,
+    "held_out_local_pattern_claim": false,
+    "coupled_accuracy_improvement_over_detached": false,
+    "coupled_advantage_supported": "causal dependence only, not tested-answer accuracy superiority"
+  },
+  "limits": [
+    "Only five of 15 canonical opcodes were learned.",
+    "All 320 local primitive patterns were training-seen, so local results are not held-out primitive generalization.",
+    "Typed math AST rendering, register wiring, flags, PC, HALT and the fixed two-operation programs are host-provided and not learned.",
+    "The coupled arm shows causal dependence on its semantic bottleneck but no tested accuracy improvement over the detached arm.",
+    "The 512 eight-bit cases per fixed program and model are sampled, not exhaustive over all 65,536 operand pairs.",
+    "The four-bit composition cases are exhaustive only within the bounded 16 by 16 operand domain.",
+    "The experiment does not establish universal exactness, all-width correctness, autonomous program synthesis, or general reasoning.",
+    "The 7,680 full-state checks are host-assisted; only meaning logits and arithmetic R values are neural."
+  ],
+  "verdict": "Independent rerun measurements satisfy NC-004's exact bounded acceptance: 320/320 local neural numeric results and math labels for every arm and seed, a nonzero numeric-loss gradient and damaging meaning intervention only in the coupled arm, with the detached classifier showing no numeric path or intervention effect. PASS is scientifically supported only within the stated five-opcode, training-seen, host-assisted scope."
+}

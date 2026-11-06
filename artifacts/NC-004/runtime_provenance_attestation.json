@@ -1,0 +1,46 @@
+{
+  "causal_intervention_coupled": "136/320 after meaning permutation vs 320/320 original",
+  "causal_intervention_detached": "320/320 unchanged",
+  "claim_scope": "5/15 canonical opcodes, host-provided PC/HALT/flags, no accuracy gain over detached",
+  "compositions": "13824/13824 fixed supplied programs",
+  "host_assisted_full_state": "7680/7680",
+  "implementation_commit": "3891e10cc7afbf7c2c5ddbe5a7282bec58b6245c",
+  "independent_diagnostics_sha256": "c3118ca8f1d95fe477ed7fda796c55ed7b686a5517d310be3698a9dce272f868",
+  "independent_receipt_sha256": "93edebbf0cea5ce7c5a3d3becb640572f44f26b1750301a115de6410a6046cf6",
+  "kind": "external_codex_runtime_provenance_attestation",
+  "local_patterns_each_arm_seed": "320/320 (train-seen)",
+  "not_claimed": [
+    "autonomous program invention",
+    "heldout primitive truth-table generalization",
+    "new champion promotion",
+    "AGI"
+  ],
+  "original_and_resumed_runtime_logs": [
+    {
+      "basename": "logos_nc004_independent_events.jsonl",
+      "events": 29,
+      "sha256": "f1cff516350ae9b1a047a87c14825060095ee2a5ee5819cb671bceb6b097c938",
+      "thread_started": [
+        "01a1aec7-5615-7293-9452-c5e9083fb395"
+      ],
+      "turn_completed": true
+    },
+    {
+      "basename": "logos_nc004_final_events.jsonl",
+      "events": 14,
+      "sha256": "f3b4bbb0d3897c0b8b277428e4b24cb3dfe2332c6a3d38fb0fee39d2b54289da",
+      "thread_started": [
+        "01a1aec7-5615-7293-9452-c5e9083fb395"
+      ],
+      "turn_completed": true
+    }
+  ],
+  "owner": "1db9edb983ff4df9933612e7c826e55f",
+  "provenance_limit": "runtime log attestation from local original and resumed Codex event streams, not cryptographic identity certificate",
+  "six_checkpoints_verified": 6,
+  "source_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "status": "PASS",
+  "task": "NC-004",
+  "verified_utc": "2026-11-06T03:00:02.707466+00:00",
+  "verifier": "codex-cli:01a1aec7-5615-7293-9452-c5e9083fb395"
+}

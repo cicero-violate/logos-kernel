@@ -1,0 +1,996 @@
+{
+  "acceptance_assessment": {
+    "320_local_numeric_and_labels": true,
+    "detached_control_has_no_causal_effect": true,
+    "disrupting_meaning_degrades_coupled_execution": true,
+    "numeric_gradient_reaches_meaning_head": true,
+    "scientifically_supported": true,
+    "scope": "bounded five-opcode, training-seen local-pattern causal-channel claim only"
+  },
+  "checkpoint_hashes": {
+    "coupled_seed11": {
+      "actual": "50dbad914ae2ca5d11259885c64f65fa8f3ad6f2bf4ed7bd15acf067287e2b65",
+      "manifest": "50dbad914ae2ca5d11259885c64f65fa8f3ad6f2bf4ed7bd15acf067287e2b65",
+      "match": true
+    },
+    "coupled_seed19": {
+      "actual": "3c0c3f95501660a7952affcd5254f9bd39de79d2ba04b6f685d66fff4663fb9d",
+      "manifest": "3c0c3f95501660a7952affcd5254f9bd39de79d2ba04b6f685d66fff4663fb9d",
+      "match": true
+    },
+    "coupled_seed29": {
+      "actual": "b6f561a6cda9679f17e32a4947f3fbff69b9ca2b2f32df0b44c5b789d8ae4d15",
+      "manifest": "b6f561a6cda9679f17e32a4947f3fbff69b9ca2b2f32df0b44c5b789d8ae4d15",
+      "match": true
+    },
+    "detached_seed11": {
+      "actual": "49f57af270e39e01ae8fa48020aba1c7dbd7b85af895e3e023ea7fd4e801918d",
+      "manifest": "49f57af270e39e01ae8fa48020aba1c7dbd7b85af895e3e023ea7fd4e801918d",
+      "match": true
+    },
+    "detached_seed19": {
+      "actual": "72987fa0f6a4c4b94af404ab12a8fab34e91e8ef2f2065355fe13d56cb7aaf0d",
+      "manifest": "72987fa0f6a4c4b94af404ab12a8fab34e91e8ef2f2065355fe13d56cb7aaf0d",
+      "match": true
+    },
+    "detached_seed29": {
+      "actual": "d1ae65c38f079d003014b400403a853dc539996b4e77f2ae847fdca7cf3141dd",
+      "manifest": "d1ae65c38f079d003014b400403a853dc539996b4e77f2ae847fdca7cf3141dd",
+      "match": true
+    }
+  },
+  "checkpoint_safety": {
+    "coupled_seed11": {
+      "has_numpy_rng": true,
+      "has_python_rng": true,
+      "has_torch_rng": true,
+      "optimizer_state_entries": 8,
+      "trained_updates": 1500,
+      "weights_only_load_succeeded": true
+    },
+    "coupled_seed19": {
+      "has_numpy_rng": true,
+      "has_python_rng": true,
+      "has_torch_rng": true,
+      "optimizer_state_entries": 8,
+      "trained_updates": 1500,
+      "weights_only_load_succeeded": true
+    },
+    "coupled_seed29": {
+      "has_numpy_rng": true,
+      "has_python_rng": true,
+      "has_torch_rng": true,
+      "optimizer_state_entries": 8,
+      "trained_updates": 1500,
+      "weights_only_load_succeeded": true
+    },
+    "detached_seed11": {
+      "has_numpy_rng": true,
+      "has_python_rng": true,
+      "has_torch_rng": true,
+      "optimizer_state_entries": 8,
+      "trained_updates": 1500,
+      "weights_only_load_succeeded": true
+    },
+    "detached_seed19": {
+      "has_numpy_rng": true,
+      "has_python_rng": true,
+      "has_torch_rng": true,
+      "optimizer_state_entries": 8,
+      "trained_updates": 1500,
+      "weights_only_load_succeeded": true
+    },
+    "detached_seed29": {
+      "has_numpy_rng": true,
+      "has_python_rng": true,
+      "has_torch_rng": true,
+      "optimizer_state_entries": 8,
+      "trained_updates": 1500,
+      "weights_only_load_succeeded": true
+    }
+  },
+  "commands": [
+    {
+      "command": "python dag.py validate",
+      "cwd": "/workspace/experiments/logos-kernel",
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"nodes\": 19,\n  \"events\": 36,\n  \"head_sha256\": \"85670684910e2b768eee41dd53dd7e1e22d4d8fe5dad8dc9cde80ca5bf17e9c5\"\n}"
+    },
+    {
+      "command": "python -m unittest -q test_dag",
+      "cwd": "/workspace/experiments/logos-kernel",
+      "exit_code": 0,
+      "stderr": "----------------------------------------------------------------------\nRan 17 tests in 0.382s\n\nOK",
+      "stdout": ""
+    },
+    {
+      "command": "python -m unittest -q artifacts/NC-004/test_semantics.py",
+      "cwd": "/workspace/experiments/logos-kernel",
+      "exit_code": 0,
+      "stderr": "----------------------------------------------------------------------\nRan 10 tests in 0.129s\n\nOK",
+      "stdout": ""
+    }
+  ],
+  "composition": {
+    "correct": 13824,
+    "rows": {
+      "coupled_seed11": {
+        "double_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      },
+      "coupled_seed19": {
+        "double_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      },
+      "coupled_seed29": {
+        "double_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      },
+      "detached_seed11": {
+        "double_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      },
+      "detached_seed19": {
+        "double_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      },
+      "detached_seed29": {
+        "double_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sampled": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_exhaustive": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      }
+    },
+    "sampling_seed": 17011,
+    "tested": 13824
+  },
+  "confounds_and_limits": [
+    "Causal intervention establishes use of a learned soft class bottleneck, but does not show accuracy benefit versus the detached arm.",
+    "Training and local evaluation reuse all 320 bit patterns; this is not held-out primitive generalization.",
+    "Composition programs are fixed two-operation host-provided sequences, not learned planning or program invention.",
+    "Four-bit compositions are exhaustive only over 16x16 operands; eight-bit results are 512 seeded samples per program/model, not exhaustive.",
+    "Neural arithmetic is 16-bit and does not establish all-width exactness or the other ten opcodes.",
+    "Full-state checks are host-assisted: only meaning logits and R arithmetic are neural.",
+    "Identical seeded initialization is established by reconstructing both same-sized classes; saved checkpoints contain post-training RNG, not pre-training snapshots."
+  ],
+  "dag": {
+    "dag_tests": {
+      "passed": 17,
+      "tested": 17
+    },
+    "events": 36,
+    "integrity": "PASS",
+    "nc004_tests": {
+      "passed": 10,
+      "tested": 10
+    },
+    "nodes": 19
+  },
+  "environment": {
+    "platform": "Linux-6.12.10-1-lts-x86_64-with-glibc2.43",
+    "python": "3.14.6",
+    "torch": "2.12.1"
+  },
+  "findings": [
+    "All six models independently reproduce 320/320 trained local neural numeric patterns and 320/320 meaning labels.",
+    "Numeric autograd reaches the meaning head only in coupled models; detached models have no graph path and zero gradient.",
+    "Rotating only the predicted meaning distribution causes concrete coupled numeric errors and no detached output change.",
+    "Both arms are equally correct on the tested fixed compositions; evidence supports causal dependence, not superiority.",
+    "Typed AST rendering is deterministic host code after class prediction; canonical symbolic execution is absent from neural numeric forward.",
+    "Host supplies fixed programs, register routing, flags, PC, and HALT; these are not learned.",
+    "The five learned classes cover only 5/15 canonical opcodes; all local primitive patterns were training-seen.",
+    "RLT tracked files are clean but its worktree is not literally clean because capability_ladder_v3_rehearsal/generate.py is untracked."
+  ],
+  "host_assisted_full_state": {
+    "by_model": {
+      "coupled_seed11": {
+        "ADD": {
+          "correct": 256,
+          "tested": 256
+        },
+        "AND1": {
+          "correct": 256,
+          "tested": 256
+        },
+        "OR": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHL": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHR": {
+          "correct": 256,
+          "tested": 256
+        }
+      },
+      "coupled_seed19": {
+        "ADD": {
+          "correct": 256,
+          "tested": 256
+        },
+        "AND1": {
+          "correct": 256,
+          "tested": 256
+        },
+        "OR": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHL": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHR": {
+          "correct": 256,
+          "tested": 256
+        }
+      },
+      "coupled_seed29": {
+        "ADD": {
+          "correct": 256,
+          "tested": 256
+        },
+        "AND1": {
+          "correct": 256,
+          "tested": 256
+        },
+        "OR": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHL": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHR": {
+          "correct": 256,
+          "tested": 256
+        }
+      },
+      "detached_seed11": {
+        "ADD": {
+          "correct": 256,
+          "tested": 256
+        },
+        "AND1": {
+          "correct": 256,
+          "tested": 256
+        },
+        "OR": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHL": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHR": {
+          "correct": 256,
+          "tested": 256
+        }
+      },
+      "detached_seed19": {
+        "ADD": {
+          "correct": 256,
+          "tested": 256
+        },
+        "AND1": {
+          "correct": 256,
+          "tested": 256
+        },
+        "OR": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHL": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHR": {
+          "correct": 256,
+          "tested": 256
+        }
+      },
+      "detached_seed29": {
+        "ADD": {
+          "correct": 256,
+          "tested": 256
+        },
+        "AND1": {
+          "correct": 256,
+          "tested": 256
+        },
+        "OR": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHL": {
+          "correct": 256,
+          "tested": 256
+        },
+        "SHR": {
+          "correct": 256,
+          "tested": 256
+        }
+      }
+    },
+    "correct": 7680,
+    "tested": 7680
+  },
+  "implementation_commit": "3891e10cc7afbf7c2c5ddbe5a7282bec58b6245c",
+  "model_checks": {
+    "coupled_seed11": {
+      "intervention": {
+        "baseline_correct": 320,
+        "intervened_correct": 136,
+        "outputs_changed": 184,
+        "same_raw_input": true,
+        "specific_counterexample": {
+          "baseline_bits": [
+            0,
+            0
+          ],
+          "intervened_bits": [
+            1,
+            0
+          ],
+          "predicted_distribution": [
+            0.9858942031860352,
+            0.0021525949705392122,
+            0.0029759970493614674,
+            0.005420905537903309,
+            0.003556235693395138
+          ],
+          "raw_input": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "rotated_distribution": [
+            0.003556235693395138,
+            0.9858942031860352,
+            0.0021525949705392122,
+            0.0029759970493614674,
+            0.005420905537903309
+          ],
+          "row": 4,
+          "truth": [
+            0,
+            0
+          ]
+        },
+        "tested": 320
+      },
+      "local_numeric": {
+        "correct": 320,
+        "tested": 320
+      },
+      "math_labels": {
+        "correct": 320,
+        "tested": 320
+      },
+      "numeric_autograd": {
+        "gradient_l1": 2.0774425593117485e-06,
+        "meaning_gradient_present": true
+      }
+    },
+    "coupled_seed19": {
+      "intervention": {
+        "baseline_correct": 320,
+        "intervened_correct": 136,
+        "outputs_changed": 184,
+        "same_raw_input": true,
+        "specific_counterexample": {
+          "baseline_bits": [
+            0,
+            0
+          ],
+          "intervened_bits": [
+            1,
+            0
+          ],
+          "predicted_distribution": [
+            0.985545814037323,
+            0.003271230962127447,
+            0.002767069498077035,
+            0.005345939192920923,
+            0.003069913014769554
+          ],
+          "raw_input": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "rotated_distribution": [
+            0.003069913014769554,
+            0.985545814037323,
+            0.003271230962127447,
+            0.002767069498077035,
+            0.005345939192920923
+          ],
+          "row": 4,
+          "truth": [
+            0,
+            0
+          ]
+        },
+        "tested": 320
+      },
+      "local_numeric": {
+        "correct": 320,
+        "tested": 320
+      },
+      "math_labels": {
+        "correct": 320,
+        "tested": 320
+      },
+      "numeric_autograd": {
+        "gradient_l1": 1.7645795651333174e-06,
+        "meaning_gradient_present": true
+      }
+    },
+    "coupled_seed29": {
+      "intervention": {
+        "baseline_correct": 320,
+        "intervened_correct": 136,
+        "outputs_changed": 184,
+        "same_raw_input": true,
+        "specific_counterexample": {
+          "baseline_bits": [
+            0,
+            0
+          ],
+          "intervened_bits": [
+            1,
+            0
+          ],
+          "predicted_distribution": [
+            0.9872370958328247,
+            0.0027918012347072363,
+            0.0024835781659930944,
+            0.0040632132440805435,
+            0.0034243206027895212
+          ],
+          "raw_input": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "rotated_distribution": [
+            0.0034243206027895212,
+            0.9872370958328247,
+            0.0027918012347072363,
+            0.0024835781659930944,
+            0.0040632132440805435
+          ],
+          "row": 4,
+          "truth": [
+            0,
+            0
+          ]
+        },
+        "tested": 320
+      },
+      "local_numeric": {
+        "correct": 320,
+        "tested": 320
+      },
+      "math_labels": {
+        "correct": 320,
+        "tested": 320
+      },
+      "numeric_autograd": {
+        "gradient_l1": 1.2144231504862546e-06,
+        "meaning_gradient_present": true
+      }
+    },
+    "detached_seed11": {
+      "intervention": {
+        "baseline_correct": 320,
+        "intervened_correct": 320,
+        "outputs_changed": 0,
+        "same_raw_input": true,
+        "specific_counterexample": null,
+        "tested": 320
+      },
+      "local_numeric": {
+        "correct": 320,
+        "tested": 320
+      },
+      "math_labels": {
+        "correct": 320,
+        "tested": 320
+      },
+      "numeric_autograd": {
+        "gradient_l1": 0.0,
+        "meaning_gradient_present": false
+      }
+    },
+    "detached_seed19": {
+      "intervention": {
+        "baseline_correct": 320,
+        "intervened_correct": 320,
+        "outputs_changed": 0,
+        "same_raw_input": true,
+        "specific_counterexample": null,
+        "tested": 320
+      },
+      "local_numeric": {
+        "correct": 320,
+        "tested": 320
+      },
+      "math_labels": {
+        "correct": 320,
+        "tested": 320
+      },
+      "numeric_autograd": {
+        "gradient_l1": 0.0,
+        "meaning_gradient_present": false
+      }
+    },
+    "detached_seed29": {
+      "intervention": {
+        "baseline_correct": 320,
+        "intervened_correct": 320,
+        "outputs_changed": 0,
+        "same_raw_input": true,
+        "specific_counterexample": null,
+        "tested": 320
+      },
+      "local_numeric": {
+        "correct": 320,
+        "tested": 320
+      },
+      "math_labels": {
+        "correct": 320,
+        "tested": 320
+      },
+      "numeric_autograd": {
+        "gradient_l1": 0.0,
+        "meaning_gradient_present": false
+      }
+    }
+  },
+  "recommendation": "PASS",
+  "schema": 1,
+  "sources": {
+    "baseline_source_sha256": "4a3b484ee97cc5799b4d15ed15bf4f504c2ccbb63453220dda1254efd04315e6",
+    "canonical_isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "champion_actual_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "champion_inventory_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "champion_unchanged": true,
+    "repos": {
+      "rlt": {
+        "head": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+        "inventory_pinned_head": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+        "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1",
+        "pinned_head_match": true,
+        "status_porcelain": [
+          "?? capability_ladder_v3_rehearsal/generate.py"
+        ],
+        "tracked_files_clean": true,
+        "worktree_fully_clean": false
+      },
+      "standalone_isa": {
+        "head": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+        "inventory_pinned_head": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+        "path": "/workspace/experiments/latticeforge_neural_isa_test",
+        "pinned_head_match": true,
+        "status_porcelain": [],
+        "tracked_files_clean": true,
+        "worktree_fully_clean": true
+      }
+    }
+  },
+  "tamper_negative_test": {
+    "hash_mismatch_detected": true,
+    "original_sha256": "50dbad914ae2ca5d11259885c64f65fa8f3ad6f2bf4ed7bd15acf067287e2b65",
+    "seed_provenance_rejected": true,
+    "tampered_sha256": "bf926426c13b69f4580cafaed67e288e6b67f3c3b0cee2b7bd7648f28cbbee1a",
+    "weights_only_load_succeeded": true
+  },
+  "task": "NC-004",
+  "training_match": {
+    "all_320_local_patterns_training_seen": true,
+    "arms": [
+      "coupled",
+      "detached"
+    ],
+    "curriculum": [
+      [
+        "ADD",
+        [
+          "ADD"
+        ],
+        300
+      ],
+      [
+        "SHIFTS",
+        [
+          "ADD",
+          "SHL",
+          "SHR"
+        ],
+        350
+      ],
+      [
+        "ALL",
+        [
+          "ADD",
+          "SHL",
+          "SHR",
+          "AND1",
+          "OR"
+        ],
+        850
+      ]
+    ],
+    "initial_rng_equivalence": {
+      "11": {
+        "all_tensors_equal": true,
+        "keys_equal": true,
+        "tensor_count": 12
+      },
+      "19": {
+        "all_tensors_equal": true,
+        "keys_equal": true,
+        "tensor_count": 12
+      },
+      "29": {
+        "all_tensors_equal": true,
+        "keys_equal": true,
+        "tensor_count": 12
+      }
+    },
+    "parameter_counts": {
+      "coupled_seed11": 5665,
+      "coupled_seed19": 5665,
+      "coupled_seed29": 5665,
+      "detached_seed11": 5665,
+      "detached_seed19": 5665,
+      "detached_seed29": 5665
+    },
+    "same_training_data_by_code_path": true,
+    "seeds": [
+      11,
+      19,
+      29
+    ],
+    "separate_checkpoint_files": true,
+    "steps_each": 1500
+  },
+  "typed_ast": {
+    "checks": {
+      "coupled_seed11": {
+        "ADD": {
+          "predicted_class": "ADD",
+          "valid": true
+        },
+        "AND1": {
+          "predicted_class": "AND1",
+          "valid": true
+        },
+        "OR": {
+          "predicted_class": "OR",
+          "valid": true
+        },
+        "SHL": {
+          "predicted_class": "SHL",
+          "valid": true
+        },
+        "SHR": {
+          "predicted_class": "SHR",
+          "valid": true
+        }
+      },
+      "coupled_seed19": {
+        "ADD": {
+          "predicted_class": "ADD",
+          "valid": true
+        },
+        "AND1": {
+          "predicted_class": "AND1",
+          "valid": true
+        },
+        "OR": {
+          "predicted_class": "OR",
+          "valid": true
+        },
+        "SHL": {
+          "predicted_class": "SHL",
+          "valid": true
+        },
+        "SHR": {
+          "predicted_class": "SHR",
+          "valid": true
+        }
+      },
+      "coupled_seed29": {
+        "ADD": {
+          "predicted_class": "ADD",
+          "valid": true
+        },
+        "AND1": {
+          "predicted_class": "AND1",
+          "valid": true
+        },
+        "OR": {
+          "predicted_class": "OR",
+          "valid": true
+        },
+        "SHL": {
+          "predicted_class": "SHL",
+          "valid": true
+        },
+        "SHR": {
+          "predicted_class": "SHR",
+          "valid": true
+        }
+      },
+      "detached_seed11": {
+        "ADD": {
+          "predicted_class": "ADD",
+          "valid": true
+        },
+        "AND1": {
+          "predicted_class": "AND1",
+          "valid": true
+        },
+        "OR": {
+          "predicted_class": "OR",
+          "valid": true
+        },
+        "SHL": {
+          "predicted_class": "SHL",
+          "valid": true
+        },
+        "SHR": {
+          "predicted_class": "SHR",
+          "valid": true
+        }
+      },
+      "detached_seed19": {
+        "ADD": {
+          "predicted_class": "ADD",
+          "valid": true
+        },
+        "AND1": {
+          "predicted_class": "AND1",
+          "valid": true
+        },
+        "OR": {
+          "predicted_class": "OR",
+          "valid": true
+        },
+        "SHL": {
+          "predicted_class": "SHL",
+          "valid": true
+        },
+        "SHR": {
+          "predicted_class": "SHR",
+          "valid": true
+        }
+      },
+      "detached_seed29": {
+        "ADD": {
+          "predicted_class": "ADD",
+          "valid": true
+        },
+        "AND1": {
+          "predicted_class": "AND1",
+          "valid": true
+        },
+        "OR": {
+          "predicted_class": "OR",
+          "valid": true
+        },
+        "SHL": {
+          "predicted_class": "SHL",
+          "valid": true
+        },
+        "SHR": {
+          "predicted_class": "SHR",
+          "valid": true
+        }
+      }
+    },
+    "rendering_is_host_deterministic": true,
+    "symbolic_reference_in_numeric_forward": false,
+    "version": "logos.isa/1"
+  },
+  "verifier_role": "distinct Codex CLI independent verifier; not owner/implementer",
+  "verifier_runtime_id": null
+}
