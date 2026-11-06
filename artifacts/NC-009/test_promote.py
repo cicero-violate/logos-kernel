@@ -75,6 +75,26 @@ class PromoteTests(unittest.TestCase):
             new, audit = p.process([candidate], PAIRS)
             self.assertEqual((new, audit[0]["decision"]), ([], "REJECTED"))
 
+    def test_reviewer_counterexample_malformed_programs_do_not_crash(self):
+        for program in (None, 7, [], [None, "HALT"], [1, "HALT"], [["ADD_X1"], "HALT"], "ADD_X1", {"a": 1}):
+            new, audit = p.process([{"task": "INC", "source": "t", "program": program}], PAIRS)
+            self.assertEqual((new, audit[0]["decision"]), ([], "REJECTED"), program)
+
+    def test_reviewer_counterexample_tokens_after_halt_are_rejected(self):
+        for program in (["ADD_X1", "HALT", "NOPE"], ["ADD_X1", "HALT", "ADD_XX"], ["ADD_X1", "HALT", "HALT"]):
+            new, audit = p.process([{"task": "INC", "source": "t", "program": program}], PAIRS)
+            self.assertEqual((new, audit[0]["decision"]), ([], "REJECTED"), program)
+
+    def test_reviewer_counterexample_tampered_history_is_refused(self):
+        rows, _ = p.process([cand("INC", "ADD_X1"), cand("DOUBLE", "ADD_XX")], PAIRS)
+        p.verify_chain(rows)
+        edited = [dict(rows[0], proof_scope="forged"), rows[1]]
+        reordered = [rows[1], rows[0]]
+        forged_hash = [rows[0], dict(rows[1], chain_sha256="0" * 64)]
+        for bad in (edited, reordered, rows[1:], forged_hash):
+            with self.assertRaisesRegex(ValueError, "chain broken"):
+                p.process([cand("INC", "ADD_X1")], PAIRS, bad)
+
     def test_rerun_appends_nothing_and_earlier_rows_stay_unchanged(self):
         first, _ = p.process([cand("INC", "ADD_X1")], PAIRS)
         before = dict(first[0])

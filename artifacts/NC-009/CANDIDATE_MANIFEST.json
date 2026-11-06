@@ -3,13 +3,13 @@
  "task": "NC-009",
  "owner": "claude-code-turn-6fab0d6a43294c558ed9b1c62f2f0d92",
  "source_sha256": {
-  "promote.py": "10336a2df019df4fc526965ab407674158c61bce6c0c753c7f842252525b29e3",
-  "test_promote.py": "2a526b37ecdfaaf49320fff3792fb504ff54113373b1a3946045aff2474d1538",
+  "promote.py": "15d2f80c7ddac13dc0fa6fa6830827d7dec113754aa0e54b339a4a85d4036600",
+  "test_promote.py": "b49e6071decf480f9d8f95d794a5e988848d66d9323e78b903f570b844e010ad",
   "README.md": "ae747dab3427aa5cfb0a19744b74626531a4ac625455c1f3cec944f6bc91de45"
  },
  "evidence_sha256": {
   "operator_promotions.jsonl": "64644db1894cf369c7769d1076ffb177dba6b8aada7e20cb153d98d906c52db9",
-  "promotion_audit.json": "1c505d8520c7d29eb00e7c127d5c090ad3c1e0ca12c3ac0235d3776f2b8a6f7b"
+  "promotion_audit.json": "2fd7d0d661675ef5db74a59f1d14e6a97da9ca04288e0b7d56e9841e2b3c6c45"
  },
  "nc008_proposals_sha256": "4f12d3b4c90a7753e8ca0f984f4958e42c1c6b6926ea988989c247815965c4a4",
  "promoted": [
@@ -30,7 +30,10 @@
   "duplicate after canonicalizing",
   "longer program with identical behaviour subsumed",
   "malformed and unknown inputs rejected",
-  "rerun appends nothing"
+  "rerun appends nothing",
+  "edited, reordered, truncated and forged-hash registry history refused",
+  "None, integer and nested programs rejected without a crash",
+  "tokens after HALT rejected"
  ],
  "limitations": [
   "Promotion is not invention of a new primitive.",
@@ -38,5 +41,14 @@
   "Neural execution of these programs is NC-008 evidence, not rechecked here.",
   "Testing is finite, not a symbolic proof.",
   "All candidates here came from NC-008, so the registry holds only 4 small operators."
- ]
+ ],
+ "rework_of_review": {
+  "verdict": "FAIL",
+  "fixed": [
+   "registry chain recomputed from the start on every load",
+   "program shape validated before use",
+   "HALT must be last and unique"
+  ],
+  "note": "promote.py was rerun and appended nothing; the 4 rows are from the first run, and the audit now records them as duplicates."
+ }
 }

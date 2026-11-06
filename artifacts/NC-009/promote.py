@@ -36,14 +36,15 @@ def run(body, x, y):
 
 
 def body_of(program):
-    body = []
-    for token in program:
-        if token == "HALT":
-            return body
+    """Exactly one HALT, in last place, after known string tokens. Anything else is rejected."""
+    if type(program) is not list or not program or any(type(token) is not str for token in program):
+        raise ValueError("program must be a nonempty list of tokens")
+    if program[-1] != "HALT" or program.count("HALT") != 1:
+        raise ValueError("program must end with its only HALT")
+    for token in program[:-1]:
         if token not in SEMANTICS:
             raise ValueError(f"unknown token {token!r}")
-        body.append(token)
-    raise ValueError("program has no HALT")
+    return program[:-1]
 
 
 def canonicalize(body):
@@ -87,8 +88,19 @@ def chain(previous, record):
     return hashlib.sha256((previous + json.dumps(record, sort_keys=True, separators=(",", ":"))).encode()).hexdigest()
 
 
+def verify_chain(rows):
+    """Recompute the whole chain, so editing, removing or reordering an earlier row is detected."""
+    previous = "0" * 64
+    for row in rows:
+        body = {k: v for k, v in row.items() if k != "chain_sha256"}
+        previous = chain(previous, body)
+        if row.get("chain_sha256") != previous:
+            raise ValueError(f"registry chain broken at {row.get('operator_id')!r}")
+
+
 def process(candidates, pairs, existing=()):
     """Decide each candidate in order. Returns registry rows to append and the full audit trail."""
+    verify_chain(existing)
     registry = list(existing)
     by_key = {row["canonical_key"]: row for row in registry}
     by_behaviour = {(row["task"], row["behaviour_key"]): row for row in registry}
@@ -103,7 +115,7 @@ def process(candidates, pairs, existing=()):
         except ValueError as exc:
             entry.update(decision="REJECTED", reason=str(exc))
             continue
-        contract = CONTRACTS.get(c["task"])
+        contract = CONTRACTS.get(c["task"]) if type(c["task"]) is str else None
         if contract is None:
             entry.update(decision="REJECTED", reason="no independent contract for this task")
             continue
