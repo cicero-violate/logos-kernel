@@ -1,0 +1,40 @@
+{
+  "acceptance_failures": [
+    "A contained process can fork; aggregate process and compute budgets are not enforced.",
+    "Declared file-size limit does not match enforced RLIMIT_FSIZE.",
+    "No task-to-candidate-to-counterexample-to-revised-candidate closed loop.",
+    "No model-generated program for a structurally unseen goal.",
+    "Baseline full CPU/wall budgets are not matched."
+  ],
+  "candidate_revision": "a07da1df27af63862de8a808f382afff824e22cb",
+  "candidate_sha256": "3f49b499d0f7bc4fc0e85c8a6b0cb6c34a26d2ccefcf168da8e7b3982d27e3e3",
+  "changes_to_candidate": false,
+  "checks": {
+    "arm_correct": {
+      "fixed_ADD_XY": "0/96",
+      "supervised_neural_controller": "72/96",
+      "uniform_random_one_step": "8/96"
+    },
+    "dag_validate": "PASS: 61 nodes, 99 events before review claim",
+    "manifest_fsize_bytes": 0,
+    "nc028_tests": "6/6 PASS",
+    "novel_goal_neural_candidates": 0,
+    "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "pinned_source_and_evidence_files": "21/21 SHA256 match, 0 missing",
+    "rlimit_nproc": "not set",
+    "runtime_fsize_bytes": 4194304,
+    "single_child_fork_probe": "SUCCESS inside Landlock/seccomp sandbox: ONE_CHILD_FORK_SUCCEEDED",
+    "stored_trace": "36 records, 288 cases, failed-case expected values independently recomputed; 0 inconsistencies",
+    "test_dag": "19/19 PASS",
+    "test_pull": "6/6 PASS"
+  },
+  "next_action": "Implementer fixes fork containment, manifest fidelity, feedback loop and matched-budget evaluation, then requests a new review.",
+  "prior_independent_receipt": "artifacts/NC-028/independent_receipt.json, preexisting FAIL, preserved unchanged",
+  "provenance_limit": "Turn-local reviewer ID is a label, not cryptographically attested identity.",
+  "reviewer": "turn-8fabf26f40a34a119f958694cd2cb213",
+  "role": "VERIFIER",
+  "schema": "logos.nc028.independent-audit/1",
+  "scientific_scope": "Known-goal supervised recipe recall on finite 16-bit sampled operands; NO_DISCOVERY.",
+  "task": "NC-028",
+  "verdict": "FAIL"
+}
