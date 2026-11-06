@@ -1,0 +1,72 @@
+{
+  "acceptance": {
+    "candidate_count": "PASS: positive int within per-goal budget enforced",
+    "commitment_tampering": "PASS: seed, nonce, generator and threshold changes rejected in unit tests",
+    "compounding": "PASS: flat gains rejected, increasing gains accepted in tests",
+    "seven_control_categories": "PASS: constant, known_good, random_search, leaked_answer, regressed, memorizer, budget_cheat",
+    "strict_equal_cpu_budget": "FAIL: compare marks 49x CPU spending IMPROVEMENT under a 0.05-second absolute noise floor"
+  },
+  "candidate_path": "artifacts/NC-061/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "6d5ecdfaa3f00717b12acd510d9f147c065c65d6",
+  "candidate_sha256": "cf3bf0a6932b80b547444ad60a12addca7a26096b3bcf3cac7c1e59335b94db8",
+  "counterexample": {
+    "absolute_floor_seconds": 0.05,
+    "declared_cpu_tolerance": 0.25,
+    "expected_verdict": "NOT_ESTABLISHED or NO_IMPROVEMENT",
+    "observed_verdict": "IMPROVEMENT",
+    "per_seed_baseline": {
+      "candidates_used": 40,
+      "cpu_seconds": 0.001,
+      "over_budget_goals": 0,
+      "retention": 1.0,
+      "solve_rate": 0.0,
+      "training_overlap": 0.0
+    },
+    "per_seed_candidate": {
+      "candidates_used": 40,
+      "cpu_seconds": 0.049,
+      "over_budget_goals": 0,
+      "retention": 1.0,
+      "solve_rate": 1.0,
+      "training_overlap": 0.0
+    },
+    "ratio_cpu": 49.0,
+    "reproducer": "artifacts/NC-061/reviewer_e75b_budget_probe.py",
+    "reproducer_sha256": "e832556b0b87bdead65b7bcbae8327fd962e3d5fb35a5683ed417e348504632f",
+    "root_cause": "max(baseline CPU * 1.25, 0.05) substitutes an absolute allowance for matched-compute verification on cheap baselines.",
+    "seed_count": 3
+  },
+  "dependencies": [
+    "Python 3 standard library",
+    "artifacts/NC-061/scoreboard.py",
+    "artifacts/NC-061/test_scoreboard.py",
+    "artifacts/NC-061/controls.py",
+    "artifacts/NC-001/canonical_isa.py"
+  ],
+  "independent_tests": {
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-061/test_scoreboard.py": "19/19 PASS",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-061/controls.py": "7 expected control verdicts PASS (script rewrote deterministic control_results; reviewer restored exact pinned candidate blob immediately)",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-061/reviewer_e75b_budget_probe.py": "REPRODUCED FAIL: 49x budget increase accepted; 51x control correctly rejected",
+    "python -m unittest -q test_dag": "19/19 PASS",
+    "python -m unittest -q test_pull": "20/20 PASS",
+    "python dag.py validate": "PASS: 886 nodes, 1036 events at initial verification and 1039 events after separate concurrent writes"
+  },
+  "limitations": [
+    "The CPU counterexample uses synthetic score rows, not physical timed repeated trials; it specifically falsifies the compare function acceptance policy.",
+    "Scoreboard CPU accounting uses in-process process_time and caller-reported proposal count; subprocess use and external worker costs are not verified.",
+    "Goal separation from training depends on declared training keys and physical reveal isolation; source controls cannot establish secrecy against same-user processes.",
+    "The 4-bit program domain is bounded; no demonstrated learner or autonomous improvement run.",
+    "Previous independent receipt files were preserved; this is a separate, reviewer-owned FAIL receipt."
+  ],
+  "owner": "claude-code-turn-0f97bfac6651402eba375336293883b0",
+  "pinned_candidate_hashes": {
+    "canonical_isa": "PASS",
+    "manifest": "PASS",
+    "source_and_evidence_files": "6/6 PASS"
+  },
+  "proof_scope": "Independent review of pinned NC-061 scoreboard source, 19 candidate tests, 7 control categories, and constructed per-seed synthetic policy inputs. Demonstrates a reproducible false-positive improvement label despite 49x CPU consumption at equal candidate count. Does not measure an actual model trained across generations, and does not assert AGI.",
+  "recommended_fix": "For runs below the timing resolution, report NOT_ESTABLISHED and repeat or aggregate independent metered trials until relative CPU tolerance can be evaluated. Never assert IMPROVEMENT solely because both CPU values are below an absolute floor. Add 0.001 vs 0.049 three-seed negative control and republish a pinned candidate.",
+  "reviewer": "turn-e75b1267dc454650ac5bb90732a78f9c",
+  "task": "NC-061",
+  "verdict": "FAIL"
+}
