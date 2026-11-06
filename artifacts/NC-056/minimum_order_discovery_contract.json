@@ -45,10 +45,12 @@
     16,
     30
   ],
+  "previous_source_commit": "dcceb67c90ee4da4c37cc1d051d0ec26d853ac47",
   "query_horizons": [
     8,
     24
   ],
+  "revision_note": "Output-path normalization only; v1 relative-output replay failed after inference. Original fresh result and incomplete replay preserved in v1_path_bug; v2 draws fresh seeds, no model tuning.",
   "search_grammar": {
     "autoregression_orders": [
       1,
@@ -78,12 +80,12 @@
   "source_sha256": {
     "README.md": "5a389149a85918fc733e26aaf0f086902c375804a148e809cfb3170868edcda9",
     "discover.py": "b37ffa7472c3b6c6f6efcc7d2fe77868195f00d8d420dc88629b681872757720",
-    "evaluate.py": "28c37d9d0f1b65736b80e8dae414f8cfb69ea3f171f94936e9313d142875d99f",
+    "evaluate.py": "98239405213a32c76247fa1dc0b03e5fc4f838b44205bc073c9ab1fae8496516",
     "test_discover.py": "abe98e84e70f925d4968f9b888f62efee765e3fde744824e2fdc1e0e2c5be697",
     "test_evaluate.py": "4a968b488a56b4441b0d6d1b58cec0a56e349e4be2608b4da8af0df42cebe7dd"
   },
   "status": "PREREGISTERED_BEFORE_HELDOUT_SEED_DRAW",
   "task": "NC-056",
   "total_cases": 78,
-  "version": 1
+  "version": 2
 }

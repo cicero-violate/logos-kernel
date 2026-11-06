@@ -178,6 +178,8 @@ def main():
     parser.add_argument("--replay-seeds",type=Path)
     parser.add_argument("--output",type=Path,default=HERE/"heldout_law_recovery.json")
     args=parser.parse_args()
+    args.output=args.output.resolve()
+    if args.output.parent!=HERE:raise ValueError("output must be directly inside NC-056 artifacts")
     contract=verify_freeze()
     if args.output.exists():raise ValueError("refuse evidence overwrite; choose a new output")
     seeds=json.loads(args.replay_seeds.read_text())["seeds"] if args.replay_seeds else [secrets.randbits(64) for _ in range(3)]
