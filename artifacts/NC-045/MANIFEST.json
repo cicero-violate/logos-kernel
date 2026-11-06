@@ -1,0 +1,55 @@
+{
+  "candidate_evidence_sha256": {
+    "stateless_recovery_receipt.json": "cfcb28b3b39eb76a719ac00316ae194fc7efc6bcdda7044710aa9a796f64d0e8",
+    "trainer_ledger_contract.json": "a4cc17d48fd9a4d3bb6b63f15901cd762a41d244d27d3e5b3340614a30839793"
+  },
+  "candidate_type": "independent trainer ledger bootstrap",
+  "frozen_external_inputs": {
+    "champion": {
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    "nc044_independent_receipt": {
+      "path": "artifacts/NC-044/independent_verification.json",
+      "sha256": "0f87729f0ffe0cb715e58c53a7188a43921c27cce173f3c1776f439b26b7b9b3"
+    },
+    "nc044_manifest": {
+      "path": "artifacts/NC-044/MANIFEST.json",
+      "sha256": "6ec7932ced69cb286cc8ac5a2af337d48b18ea5c2bd3a0c0632bf393df607e98"
+    }
+  },
+  "independent_receipt": "artifacts/NC-045/independent_verification.json (not authored by implementer)",
+  "limits": [
+    "No actual neural trainer, service, scheduler, process heartbeat or checkpoint deserializer",
+    "Trainer-only CLI path restrictions are not OS confinement against arbitrary same-UID processes",
+    "Training task operator evidence is a recorded claim, not authenticated human authorization",
+    "Source/data pins in seed canary are zero placeholders; no dataset was loaded",
+    "Exactly-once physical gradient computation is unproven for interrupted uncommitted steps",
+    "Future NC-046 worker must impose verified process liveness before any active-job takeover",
+    "Content-addressed checkpoint bytes excluded from Git; require external backup",
+    "No independent scientific quality or model promotion assertion"
+  ],
+  "owner": "turn-237e86c72be347d9a2f28e16be3b318b",
+  "reproduction": [
+    "cd /workspace/experiments/logos-trainer && python trainer_dag.py validate",
+    "cd /workspace/experiments/logos-trainer && python -m unittest -q test_trainer_dag",
+    "cd /workspace/experiments/logos-kernel && python dag.py validate",
+    "cd /workspace/experiments/logos-kernel && python -m unittest -q test_dag",
+    "cd /workspace/experiments/logos-kernel && python -m unittest -q test_pull"
+  ],
+  "schema": "logos-kernel-nc045-candidate-v1",
+  "status": "REQUEST_INDEPENDENT_REVIEW",
+  "task": "NC-045",
+  "trainer_git_revision": "ac5946bd58f12205235b1d5dd4d053a579c54e35",
+  "trainer_repo": "/workspace/experiments/logos-trainer",
+  "trainer_source_sha256": {
+    ".gitignore": "b28f8c40bdd683a06260cfe3e43e3b608fb3a5fa783eb5b684b67c0ee4d94d0e",
+    "AGENTS.md": "e77873b5cce0273c75e6886f6e053980cc83938515d0f0c6de4882ecb8bf4a41",
+    "README.md": "12bf62eecdafcea57f0921aa66e010d40e6abd76f7a7a0c8708b2e281b37488a",
+    "SCHEDULE.md": "8c8eb4d5d54cd639a45194ac0e6d3405774a0d1e653b278efdccbcec03a8b031",
+    "TAB_PROMPT.md": "d5f55ff2f58e114024b5e21af95f1a1e264133d3ff2eb03109e7ab4d9c5c6601",
+    "test_trainer_dag.py": "7ee3a1fd3684e65a07d171b1137be303d89dffc8ea486728edef61f67dd39245",
+    "trainer_dag.py": "22294bd65cb15bd86731fae6b53a0b9fe18e91b12051a19e3354c30cc8950865",
+    "training.jsonl": "11d92fa32b8197cb0fabef994f475426a613753beb00a0c9e645e04ea0c00955"
+  }
+}

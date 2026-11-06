@@ -1,0 +1,75 @@
+{
+  "frozen_inputs": {
+    "champion": {
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    "nc044_independent_receipt": {
+      "path": "artifacts/NC-044/independent_verification.json",
+      "sha256": "0f87729f0ffe0cb715e58c53a7188a43921c27cce173f3c1776f439b26b7b9b3"
+    },
+    "nc044_manifest": {
+      "path": "artifacts/NC-044/MANIFEST.json",
+      "sha256": "6ec7932ced69cb286cc8ac5a2af337d48b18ea5c2bd3a0c0632bf393df607e98"
+    }
+  },
+  "independent_verdict": "PENDING (reviewer must author the separate receipt)",
+  "negative_control_observations": {
+    "Git_commit_failure_after_fsync": "recoverable by sync, no duplicate appended",
+    "checkpoint_identity_and_same-step_duplicate": "PASS",
+    "cross_project_source_and_plan": "REFUSED",
+    "different_checkpoint_same_step": "REFUSED",
+    "exclusive_claim_concurrency": "PASS",
+    "fresh_restart_and_owner_reuse": "PASS",
+    "invalid_task_pin_and_unauthorized_spec": "REFUSED",
+    "missing_tasks_in_priority_snapshot": "REFUSED",
+    "stale_nonrunning_takeover_and_handoff": "PASS",
+    "symlinks_and_parent_traversal": "REFUSED",
+    "tampered_checkpoint": "REFUSED",
+    "tampered_ledger": "REFUSED",
+    "wrong_rng_pin_conflict": "REFUSED"
+  },
+  "next": "independent reviewer checks pinned trainer Git tree, code, tests and denial controls, writes separate receipt and review-result",
+  "owner": "turn-237e86c72be347d9a2f28e16be3b318b",
+  "proof_scope": "Fresh isolated temporary-Git test repositories exercise ledger integrity and owner transitions; not a scientific/OS-attested/verifier PASS. Original champion bytes remain pinned; construction ledger not modified by trainer CLI. Test fixture checkpoint bytes are not learned weights.",
+  "review_receipt_path": "artifacts/NC-045/independent_verification.json",
+  "schema": "logos-kernel-nc045-stateless-recovery-implementer-evidence-v1",
+  "source_sha256": {
+    ".gitignore": "b28f8c40bdd683a06260cfe3e43e3b608fb3a5fa783eb5b684b67c0ee4d94d0e",
+    "AGENTS.md": "e77873b5cce0273c75e6886f6e053980cc83938515d0f0c6de4882ecb8bf4a41",
+    "README.md": "12bf62eecdafcea57f0921aa66e010d40e6abd76f7a7a0c8708b2e281b37488a",
+    "SCHEDULE.md": "8c8eb4d5d54cd639a45194ac0e6d3405774a0d1e653b278efdccbcec03a8b031",
+    "TAB_PROMPT.md": "d5f55ff2f58e114024b5e21af95f1a1e264133d3ff2eb03109e7ab4d9c5c6601",
+    "test_trainer_dag.py": "7ee3a1fd3684e65a07d171b1137be303d89dffc8ea486728edef61f67dd39245",
+    "trainer_dag.py": "22294bd65cb15bd86731fae6b53a0b9fe18e91b12051a19e3354c30cc8950865",
+    "training.jsonl": "11d92fa32b8197cb0fabef994f475426a613753beb00a0c9e645e04ea0c00955"
+  },
+  "task": "NC-045",
+  "test_runs": [
+    {
+      "command": "cd /workspace/experiments/logos-trainer && python -m unittest -q test_trainer_dag",
+      "observed": "Ran 19 tests in 29.938s; OK",
+      "tests_passed": 19
+    },
+    {
+      "command": "cd /workspace/experiments/logos-trainer && python trainer_dag.py validate",
+      "observed": {
+        "git_synced": true,
+        "resident_worker": false,
+        "seq": 4,
+        "status": "PASS",
+        "tasks": 2
+      }
+    },
+    {
+      "command": "cd /workspace/experiments/logos-trainer && python -m py_compile trainer_dag.py test_trainer_dag.py",
+      "observed": "PASS"
+    },
+    {
+      "command": "cd /workspace/experiments/logos-kernel && python dag.py validate",
+      "observed": "PASS"
+    }
+  ],
+  "trainer_git_revision": "ac5946bd58f12205235b1d5dd4d053a579c54e35",
+  "trainer_ledger_head_sha256": "f3c3e3406154b68a9cedfb40dbedd4920a35a0ed81c119dc2a304609c7419043"
+}

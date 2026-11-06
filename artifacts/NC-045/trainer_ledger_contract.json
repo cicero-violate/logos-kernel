@@ -1,0 +1,125 @@
+{
+  "api": {
+    "append": "exclusive flock -> chain/semantic replay -> exact Git HEAD prefix -> append/fsync -> commit only training.jsonl",
+    "checkpoint": "complete candidate bytes copied into content-addressed trainer path; fsync file+dir, then register step/hash/parent/optimizer-RNG/source/data SHA",
+    "commands": [
+      "seed",
+      "validate",
+      "status",
+      "sync",
+      "add-task",
+      "priority-plan",
+      "pull",
+      "release",
+      "checkpoint",
+      "seal"
+    ],
+    "conflicting_tail": "different Git prefix/torn JSONL/hash corruption/checkpoint corruption fail closed",
+    "events": [
+      "genesis",
+      "task",
+      "priorities",
+      "claim",
+      "takeover",
+      "release",
+      "checkpoint",
+      "seal"
+    ],
+    "idempotency": "identical accepted checkpoint step + same optimizer/RNG digest returns ALREADY_COMMITTED; conflicting version rejected",
+    "recovery": "post-fsync Git failure leaves valid unsynced suffix; sync commits it, never appends duplicate",
+    "seal": "candidate only, not independently approved, not promoted",
+    "task_claim": "exclusive; lease 7200 seconds; only nonrunning expired claims eligible for takeover"
+  },
+  "authority": {
+    "kernel": "construction tasks, independent verification and subsequent champion promotion gate",
+    "original_champion_is_immutable": true,
+    "plan_authoring_guard": "only trainer plans; one full append-only task record and complete priority snapshot",
+    "promote_champion": false,
+    "source_import_guard": "only trainer inbox; absolute, no symlinks or traversal",
+    "trainer": "training task specifications, claims, and candidate checkpoint byte identities only",
+    "trainer_write_scope": [
+      "training.jsonl",
+      "checkpoint copies in trainer/checkpoints/",
+      "trainer-local Git commits"
+    ],
+    "two_ledger_transition_ownership": false
+  },
+  "dependencies": [
+    "Python 3 standard library",
+    "local Git",
+    "flock/fsync filesystem",
+    "NC-044 verified isolation design"
+  ],
+  "frozen_dependencies": {
+    "champion": {
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    "nc044_independent_receipt": {
+      "path": "artifacts/NC-044/independent_verification.json",
+      "sha256": "0f87729f0ffe0cb715e58c53a7188a43921c27cce173f3c1776f439b26b7b9b3"
+    },
+    "nc044_manifest": {
+      "path": "artifacts/NC-044/MANIFEST.json",
+      "sha256": "6ec7932ced69cb286cc8ac5a2af337d48b18ea5c2bd3a0c0632bf393df607e98"
+    }
+  },
+  "limitations": [
+    "No actual neural trainer, service, scheduler, process heartbeat or checkpoint deserializer",
+    "Trainer-only CLI path restrictions are not OS confinement against arbitrary same-UID processes",
+    "Training task operator evidence is a recorded claim, not authenticated human authorization",
+    "Source/data pins in seed canary are zero placeholders; no dataset was loaded",
+    "Exactly-once physical gradient computation is unproven for interrupted uncommitted steps",
+    "Future NC-046 worker must impose verified process liveness before any active-job takeover",
+    "Content-addressed checkpoint bytes excluded from Git; require external backup",
+    "No independent scientific quality or model promotion assertion"
+  ],
+  "negative_controls": [
+    "cross-project source path rejection",
+    "cross-project task-plan path rejection",
+    "symlink/traversal rejection",
+    "exclusive concurrent claims",
+    "invalid task pin rejection",
+    "duplicate conflicting checkpoint and optimizer/RNG digests",
+    "tampered ledger and checkpoint rejection",
+    "post-fsync Git failure, sync and no double-acceptance"
+  ],
+  "owner": "turn-237e86c72be347d9a2f28e16be3b318b",
+  "restart_protocol": [
+    "Read AGENTS.md, README.md, SCHEDULE.md, TAB_PROMPT.md and ledger status",
+    "Validate chain, replay checkpoints, Git synchronization, tests and claimant",
+    "Create unique turn-uuid, use pull; respect HOLD and existing owner lease",
+    "Never execute steps already accepted into ledger; verify last checkpoint identity first",
+    "Only independently approved future worker may execute training; NC-045 starts no worker",
+    "Treat ambiguous crash before checkpoint acceptance as potentially repeated computation",
+    "No scientific PASS or upstream promotion without separate verifier"
+  ],
+  "schema": "logos-kernel-nc045-trainer-contract-v1",
+  "seed_task_snapshot": {
+    "TR-001": "manual synthetic canary, approved for protocol test only",
+    "TR-002": "real CPU learning episode, unapproved and dependency-blocked"
+  },
+  "source_and_evidence_sha256": {
+    ".gitignore": "b28f8c40bdd683a06260cfe3e43e3b608fb3a5fa783eb5b684b67c0ee4d94d0e",
+    "AGENTS.md": "e77873b5cce0273c75e6886f6e053980cc83938515d0f0c6de4882ecb8bf4a41",
+    "README.md": "12bf62eecdafcea57f0921aa66e010d40e6abd76f7a7a0c8708b2e281b37488a",
+    "SCHEDULE.md": "8c8eb4d5d54cd639a45194ac0e6d3405774a0d1e653b278efdccbcec03a8b031",
+    "TAB_PROMPT.md": "d5f55ff2f58e114024b5e21af95f1a1e264133d3ff2eb03109e7ab4d9c5c6601",
+    "test_trainer_dag.py": "7ee3a1fd3684e65a07d171b1137be303d89dffc8ea486728edef61f67dd39245",
+    "trainer_dag.py": "22294bd65cb15bd86731fae6b53a0b9fe18e91b12051a19e3354c30cc8950865",
+    "training.jsonl": "11d92fa32b8197cb0fabef994f475426a613753beb00a0c9e645e04ea0c00955"
+  },
+  "task": "NC-045",
+  "trainer_git_revision": "ac5946bd58f12205235b1d5dd4d053a579c54e35",
+  "trainer_root": "/workspace/experiments/logos-trainer",
+  "training_ledger": {
+    "file_sha256": "11d92fa32b8197cb0fabef994f475426a613753beb00a0c9e645e04ea0c00955",
+    "head_sha256": "f3c3e3406154b68a9cedfb40dbedd4920a35a0ed81c119dc2a304609c7419043",
+    "ledger_id": "trainer-c5032383d28343858c2d6c1e1875292d",
+    "local_git_commits": true,
+    "original_kernel_history_copied": false,
+    "path": "/workspace/experiments/logos-trainer/training.jsonl",
+    "record_count": 4,
+    "version": "logos-training-ledger-v1"
+  }
+}
