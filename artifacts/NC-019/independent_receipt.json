@@ -1,0 +1,362 @@
+{
+  "audited_checks": {
+    "documents_reviewed": [
+      "AGENTS.md",
+      "README.md",
+      "complete NC-018 task record",
+      "complete NC-019 task and claim records",
+      "artifacts/NC-019/README.md",
+      "artifacts/NC-019/benchmark_contract.json",
+      "artifacts/NC-019/precedence_and_audit.md",
+      "artifacts/NC-019/reference_contract.py",
+      "artifacts/NC-019/reference_receipt.json",
+      "artifacts/NC-019/score_contract.py",
+      "artifacts/NC-019/semantic_objective.json",
+      "artifacts/NC-019/test_semantic_objective.py",
+      "artifacts/NC-019/self_report_bypass_regression.json"
+    ],
+    "family_counts": {
+      "test_negative": 7,
+      "test_positive": 6,
+      "total": 20,
+      "train_positive": 5,
+      "validation_positive": 2
+    },
+    "mathematical_oracle": {
+      "four_bit_comparisons": 69744,
+      "four_bit_scope": "all finite assignments for every supported signedness mode",
+      "negative_families_with_witnesses": 7,
+      "overflow_checks": {
+        "16bit_0_minus_1": 65535,
+        "8bit_255_plus_1": 0
+      },
+      "positive_families_agreed": 13,
+      "signedness_check": {
+        "SAR_twos_complement": 192,
+        "SHR_logical": 64,
+        "input_8bit": 128
+      },
+      "wider_random_comparisons": 39936,
+      "wider_seeds": [
+        11,
+        19
+      ],
+      "wider_widths": [
+        8,
+        16
+      ]
+    },
+    "negative_witnesses_4bit": {
+      "N_ADD_OR": {
+        "lhs": 2,
+        "rhs": 1,
+        "variables": {
+          "a": 1,
+          "b": 1
+        }
+      },
+      "N_INVALID_DISTRIBUTION": {
+        "lhs": 0,
+        "rhs": 1,
+        "variables": {
+          "a": 1,
+          "b": 0,
+          "c": 0
+        }
+      },
+      "N_SAR_NOT_SHR": {
+        "lhs": 12,
+        "mode": "twos_complement",
+        "rhs": 4,
+        "variables": {
+          "a": 8
+        }
+      },
+      "N_SHIFT_ROUNDING": {
+        "lhs": 1,
+        "rhs": 0,
+        "variables": {
+          "a": 1,
+          "b": 1
+        }
+      },
+      "N_SUB_REVERSE": {
+        "lhs": 15,
+        "rhs": 1,
+        "variables": {
+          "a": 0,
+          "b": 1
+        }
+      },
+      "N_SUB_WRONG_GROUP": {
+        "lhs": 1,
+        "rhs": 15,
+        "variables": {
+          "a": 0,
+          "b": 0,
+          "c": 1
+        }
+      },
+      "N_XOR_OR": {
+        "lhs": 0,
+        "rhs": 1,
+        "variables": {
+          "a": 1,
+          "b": 1
+        }
+      }
+    },
+    "score_definitions": {
+      "full_accounting_search_learning_efficiency": {
+        "costs_separate_from_capability": true,
+        "definition": "externally authenticated verified-family gain divided by fully accounted elapsed time",
+        "denominator": "positive critical-path elapsed time with positive proposals and verifier calls"
+      },
+      "old_skill_retention": {
+        "definition": "correct verified old-skill cases divided by frozen registered cases",
+        "denominator": "unchanged frozen nonempty case set per prior skill"
+      },
+      "semantic_equivalence": {
+        "definition": "balanced accuracy with abstentions wrong",
+        "negative_denominator": 7,
+        "positive_denominator": 13
+      },
+      "unseen_composition": {
+        "definition": "exact, typed, halted output with externally trusted neural-execution check",
+        "denominator": "complete externally registered held-out case set, greater than zero"
+      },
+      "verified_new_capability_gain": {
+        "definition": "distinct new family absent from frozen baseline and externally proof-authenticated",
+        "denominator": "preregistered goal families, greater than zero"
+      }
+    },
+    "split_integrity": {
+      "canonicalization": "sorted-key compact JSON, UTF-8, SHA-256",
+      "cross_split_collisions": 0,
+      "family_roster_sha256": "1c21f0a4e84f57dcf4b23809dd6e4c8148102d6f7c770297d78b2a9107a1a126",
+      "raw_operand_or_pretraining_disjointness_asserted": false,
+      "split_commitment_sha256": "7ff63ee9139e51cfe8b49dfb760de477bc048c9bf0069984348a92d97b220ef5",
+      "structural_fingerprints_recomputed": 20,
+      "unique_case_ids_checked": 109680,
+      "width4_seed_independent": true,
+      "width8_16_seed_specific_and_deterministic": true
+    }
+  },
+  "distinct_verifier": "codex-cli:01a1af02-50bc-7643-9f63-f9e53e0fdeb7",
+  "evidence_files": {
+    "README.md": {
+      "bytes": 1394,
+      "path": "artifacts/NC-019/README.md",
+      "sha256": "9e2f91e152739d9e8e66165c3931d3ccf986c732ff4119ff365a901a33627188"
+    },
+    "benchmark_contract.json": {
+      "bytes": 27562,
+      "path": "artifacts/NC-019/benchmark_contract.json",
+      "sha256": "6dc5064d56821d8015347eb0b535e7ab176de07f6f5de9b17957b49fd4d983f1"
+    },
+    "codex_verifier_trace.jsonl": {
+      "bytes": 136191,
+      "disposition": "CANCELED_SUPERSEDED_NOT_ACCEPTED_AS_INDEPENDENT_PASS",
+      "path": "artifacts/NC-019/codex_verifier_trace.jsonl",
+      "sha256": "480180c8f7b53b685e317f8ebe465108e1d8f77d214013e9a40f0f36496f7acb"
+    },
+    "codex_verifier_v2_final.json": {
+      "bytes": 9852,
+      "path": "artifacts/NC-019/codex_verifier_v2_final.json",
+      "sha256": "8ce530a498b92494f92e4ebca1a64d7133afcab5581fed2cf44d8c60cdc55a51"
+    },
+    "codex_verifier_v2_trace.jsonl": {
+      "bytes": 284119,
+      "path": "artifacts/NC-019/codex_verifier_v2_trace.jsonl",
+      "sha256": "c1b016a7dbd50688a52426c753d87d892e4615c946f1a9259a5b789fd2a1e302"
+    },
+    "precedence_and_audit.md": {
+      "bytes": 10119,
+      "path": "artifacts/NC-019/precedence_and_audit.md",
+      "sha256": "8486b5d3aa9d3ec91175a9b84510a7b3fe377bebe7aeb3176d4cbe5cd09b1805"
+    },
+    "reference_contract.py": {
+      "bytes": 25383,
+      "path": "artifacts/NC-019/reference_contract.py",
+      "sha256": "b4326855138152236bf142bc99d672583b33774d0d751801e6e57e8af9594634"
+    },
+    "reference_receipt.json": {
+      "bytes": 52197,
+      "path": "artifacts/NC-019/reference_receipt.json",
+      "sha256": "a2886aff41a5777df373563356bfa77122d28630f4b812b70459204cec682658"
+    },
+    "score_contract.py": {
+      "bytes": 12979,
+      "path": "artifacts/NC-019/score_contract.py",
+      "sha256": "fe19c69e1d1f0550d62b7eda567587d605b04a95fad82d1eee12b8ffc6ac8137"
+    },
+    "self_report_bypass_regression.json": {
+      "bytes": 1640,
+      "path": "artifacts/NC-019/self_report_bypass_regression.json",
+      "sha256": "eb69c779a673f0c64e562f34a5d0c1ca9a82425c30a095b713041d1d2f4deb5c"
+    },
+    "semantic_objective.json": {
+      "bytes": 7732,
+      "path": "artifacts/NC-019/semantic_objective.json",
+      "sha256": "964f40d9d20a0333f7d8a6982045e3219866008a2a0ddc02464083857f9970c1"
+    },
+    "test_semantic_objective.py": {
+      "bytes": 11617,
+      "path": "artifacts/NC-019/test_semantic_objective.py",
+      "sha256": "0cfff42729c370fae236bb6f56b0391a8aacc3065ffaf1ecdb4c1ed2f8328f8f"
+    },
+    "verifier_prompt.txt": {
+      "bytes": 4112,
+      "disposition": "CANCELED_SUPERSEDED_NOT_ACCEPTED_AS_INDEPENDENT_PASS",
+      "path": "artifacts/NC-019/verifier_prompt.txt",
+      "sha256": "401ce89cc692297df2bd0f7f3a70b6b9879f8c5a16f55be038a9ce86561dcd74"
+    },
+    "verifier_v2_prompt.txt": {
+      "bytes": 4318,
+      "path": "artifacts/NC-019/verifier_v2_prompt.txt",
+      "sha256": "435473bdbf8ca63523084606cbc2554ab56f0ea2c2eda3db2a908fb781e6dd98"
+    }
+  },
+  "exact_verifier_commands": [
+    {
+      "command": "python dag.py validate",
+      "counts": {
+        "events": 49,
+        "nodes": 28
+      },
+      "ledger_head_sha256": "3d9a22788e054acb28a29fa920607b27c6950bfae79cdb7413e8b3ed4a0bc1c0",
+      "result": "PASS"
+    },
+    {
+      "command": "python -m unittest -q test_dag",
+      "result": "PASS",
+      "tests_run": 17
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-019 -p test_semantic_objective.py",
+      "result": "PASS",
+      "tests_run": 15
+    },
+    {
+      "command": "python /tmp/nc019_independent_audit.py",
+      "note": "Ephemeral independently written oracle; did not call reference_contract.reference, native_eval, or canonical_isa.eval_ast.",
+      "result": "PASS"
+    },
+    {
+      "command": "git diff --name-only f2b5d6e675f7cdd02b42e73b4d7c94149a1c45da -- artifacts/NC-019 artifacts/NC-001 artifacts/NC-004 artifacts/NC-005",
+      "result": "no differences"
+    },
+    {
+      "command": "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 diff --name-only && git -C /workspace/experiments/latticeforge_neural_isa_test diff --name-only",
+      "result": "no tracked differences"
+    }
+  ],
+  "external_trust_boundary": "Real verifier still needed for future model proof traces and trusted scorer callbacks; no local string proves independence",
+  "failures": [],
+  "frozen_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "implementation_commit": "f2b5d6e675f7cdd02b42e73b4d7c94149a1c45da",
+  "independent_negative_controls": {
+    "all_abstain_balanced_accuracy": 0.0,
+    "always_NO_balanced_accuracy": 0.5,
+    "always_YES_balanced_accuracy": 0.5,
+    "changed_retention_case_set_sha256_rejected": true,
+    "host_or_symbolic_transfer_credit": 0,
+    "initial_9566da1_fake_verifier_and_aaaa_hash_credit_after_fix": 0,
+    "mismatched_registered_truth_rejected": true,
+    "missing_cost_field_rejected": true,
+    "missing_executable_result_attestation_credit": 0,
+    "missing_independent_verification_credit": 0,
+    "missing_proof_scope_credit": 0,
+    "missing_receipt_sha256_credit": 0,
+    "missing_registered_case_rejected": true,
+    "missing_verifier_credit": 0,
+    "positive_gain_without_external_attestation_rejected": true,
+    "remaining_trust_boundary": "trusted_proof_check and trusted_execution_check are explicit evaluator-controlled external trust assumptions; the local scorer cannot authenticate identity strings or a hostile callback",
+    "untrusted_neural_transfer_credit": 0,
+    "zero_proposals_rejected": true,
+    "zero_verifier_calls_rejected": true
+  },
+  "limitations": [
+    "The 8-bit and 16-bit checks are sampled and cannot establish exhaustive full-width equivalence.",
+    "The registered 20-family benchmark is bounded and is not a universal measure of meaning or general intelligence.",
+    "Structural family holdout does not establish raw operand or pretraining disjointness.",
+    "Hash agreement establishes artifact identity, not scientific correctness or authenticated human/agent identity.",
+    "External trusted callbacks must genuinely validate execution traces, proof artifacts, source/checkpoint bindings, and verifier provenance; the scorer cannot authenticate those facts locally.",
+    "Pre-existing untracked verifier traces and unrelated staged NC-000 artifacts were present and were neither modified nor treated as evidence."
+  ],
+  "model_promotion_authorized": false,
+  "neural_models_trained_or_evaluated": false,
+  "original_champion_modified": false,
+  "original_dag_events_rewritten": false,
+  "proof_scope": {
+    "champion_promotion": "none",
+    "eight_and_sixteen_bit": "deterministic sampled agreement/counterexample evidence on seeds 11 and 19, not global proof",
+    "four_bit": "finite exhaustive proof for the registered families and supported modes only",
+    "neural_claim": "none",
+    "program_invention_claim": "none",
+    "reference_boundary": "independent fixed-width bitvector formulas; no neural model or checkpoint inference performed",
+    "training_claim": "none"
+  },
+  "research_vs_execution_precedence": {
+    "NC018_closed_or_modified": false,
+    "NC018_record_sha256_before_and_after_commit": "25fcb9f4e9469c8b181bba24542e4e953e3d5ad456b8069360b7f9807ade89ff",
+    "NC018_record_unchanged": true,
+    "champion_promotion_authorized": false,
+    "execution_subproblem": "NC-018 full-accounting compute minimization only after semantic and retention gates",
+    "research_primary": "NC-019 semantic correctness, unseen verified transfer, capability gain, and retention"
+  },
+  "result": "PASS",
+  "schema": 1,
+  "scientific_scope": "preregistered semantic-first objective and reference family/metric contract ONLY; no neural benchmark result or training",
+  "source_hashes": {
+    "NC000_source_inventory": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+    "NC001_canonical_ISA": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "NC004_checkpoint_inventory": "3fb5ae6f66c9528ff68a2ace0444ea5b8b730007b974cd7f05380980fd010500",
+    "NC004_semantic_experiment": "73263696cb678aa97256672d05b6ae20053093d24a2fde3ca734a460c2484fce",
+    "NC005_independent_receipt": "b9fc3107a1838b2ce0fbebc6325a3d03af05fd6c4cfb277b101a35add58535fe",
+    "NC005_training_report": "df7902c21afee69b1bc543ac86841b7d9d382a694fb6cccc09d50b9f8b79c713",
+    "champion_weights": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+  },
+  "source_integrity": {
+    "NC000_manifest_files_checked": 60,
+    "NC000_manifest_mismatches": 0,
+    "audited_checkout_matches_commit": true,
+    "champion_matches_NC000_selected_bundle_sha256": true,
+    "ledger_mutated": false,
+    "pinned_dependencies": {
+      "NC000_source_inventory": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+      "NC001_canonical_ISA": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+      "NC004_checkpoint_inventory": "3fb5ae6f66c9528ff68a2ace0444ea5b8b730007b974cd7f05380980fd010500",
+      "NC004_semantic_experiment": "73263696cb678aa97256672d05b6ae20053093d24a2fde3ca734a460c2484fce",
+      "NC005_independent_receipt": "b9fc3107a1838b2ce0fbebc6325a3d03af05fd6c4cfb277b101a35add58535fe",
+      "NC005_training_report": "df7902c21afee69b1bc543ac86841b7d9d382a694fb6cccc09d50b9f8b79c713",
+      "champion_weights": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    "project_files_written_by_verifier": false,
+    "tracked_RLT_changes": [],
+    "tracked_standalone_ISA_changes": []
+  },
+  "split_commitment_sha256": "7ff63ee9139e51cfe8b49dfb760de477bc048c9bf0069984348a92d97b220ef5",
+  "task": "NC-019",
+  "task_owner_actual_runtime_session": "1db9edb983ff4df9933612e7c826e55f",
+  "verifier_provenance": {
+    "actual_distinct_agent": true,
+    "canceled_earlier_audit": {
+      "audited_old_commit": "9566da1c0e85176fd9cea4fe5afe119b66c16c56",
+      "no_completed_verification": true,
+      "result": "CANCELED_ON_FOUND_SELF_REPORT_BYPASS",
+      "thread_started": {
+        "thread_id": "01a1aefc-99da-7701-b7bd-0f8331fa96e3",
+        "type": "thread.started"
+      }
+    },
+    "first_audit_canceled_after_real_fabricated_proof_bypass": "9566da1 initial bug; corrected f2b5d6e independent run",
+    "source": "artifacts/NC-019/codex_verifier_v2_trace.jsonl",
+    "thread_started_event": {
+      "thread_id": "01a1af02-50bc-7643-9f63-f9e53e0fdeb7",
+      "type": "thread.started"
+    },
+    "turn_completed_recorded": true
+  },
+  "verifier_result": "PASS"
+}

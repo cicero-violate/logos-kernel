@@ -1,0 +1,23 @@
+INDEPENDENT NC-019 scientific verifier. You are a DIFFERENT REAL Codex CLI agent from current Event Lab owner 1db9edb983ff4df9933612e7c826e55f. YOUR actual thread.started event ID is authoritative provenance, not any guessed verifier name. All prior NC-019 verifier runs were stopped due to discovered self-report bypass and must NOT be counted as a PASS.
+
+Audit exact final implementation COMMIT: f2b5d6e675f7cdd02b42e73b4d7c94149a1c45da
+Working directory: /workspace/experiments/logos-kernel
+READ-ONLY project/source/checkpoints/ledger. Use a sandbox allowing Python's ephemeral temporary directory for unittest. Do not write project source, alter Git history, train any model, claim/pass DAG or generate an unverified receipt. The harness saves only your final JSON and trace.
+
+MANDATORY checks:
+1. Read AGENTS.md, README.md, complete NC-018 and NC-019 task records in instructions.jsonl, and eight NC-019 implementation files plus self_report_bypass_regression.json and all generated contract/receipt data.
+2. Fresh process: python dag.py validate, python -m unittest -q test_dag, and PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-019 -p test_semantic_objective.py. Report actual counts. All source files must match audited commit.
+3. Independently compute seven pinned source/checkpoint SHA256s from benchmark_contract.json; verify original selected RLT champion against NC-000 SHA256 manifest; check no tracked RLT or standalone ISA model source/weights changed.
+4. INDEPENDENT MATHEMATICAL CHECK: Write ephemeral code only (no project-file writes) to evaluate at least 20 registered families across all finite 4bit operand assignments/modes without calling reference_contract.reference, native_eval, or canonical_isa.eval_ast for the independent oracle. Reconstruct bitvector operations with your own math formulas, compare expected equivalence/non-equivalence truth, and produce concrete witness for EACH of 7 negative families (including signed SAR != logical SHR). Spot-check wider 8/16 bit random inputs on at least two seeds and verify overflow and signedness. Do not treat width8/16 sampled agreement as a global proof.
+5. Recompute 5 train-positive, 2 validation-positive, 6 test-positive and 7 test-negative disjoint structural family fingerprints; cryptographically recompute split commitment using exact canonical sorted JSON. Verify seed-independent full 4bit enumeration, seed-specific deterministic width8/16 samples and disjoint case IDs across structurally held-out families. Raw operand/pretraining disjointness must NOT be asserted.
+6. Independently exercise scorer with adversarial negative controls: always YES=.5, always NO=.5, all abstain=0, noexecution or host-provided answer never neural transfer; reject absent/mismatched externally registered case IDs/truth, changed retention case_set_sha256, missing verifier/proof attestation and missing/nonpositive cost fields. Especially confirm initial 9566da1 bug (fake claimed verifier plus aaaa hash) now scores zero by default after fix. The trusted verifier callback is an explicit EXTERNAL trust assumption; local scorer cannot authenticate identity strings itself. If any bypass remains, verdict HOLD/FAIL.
+7. Verify ALL 5 distinct score definitions and their positive denominators: semantic equivalence, unseen composition, verified new capability gain, old-skill retention, full-accounting search learning efficiency; costs/capability must be separate, zero proposals/verification cannot produce low-cost success.
+8. Check precedence NC-019 RESEARCH semantic objective over NC-018 EXECUTION compute-minimization while NC-018 remains unmodified/unclosed. No DAG history rewriting, no champion promotion, no neural-model training/evaluation claim from these reference checks.
+9. Report independent pass/fail evidence, exact commands, case denominators, widths, proof scopes, source/path hashes, negative controls and mathematical caveats. If any required check unperformed, verdict HOLD not PASS.
+
+FINAL OUTPUT exactly one standalone JSON object with keys:
+task, verdict (PASS|HOLD|FAIL), verifier_type, audited_commit, commands,
+independent_checks, negative_controls, source_integrity, precedence,
+proof_scope, limitations, failures.
+
+Do not write independent_receipt.json and do not append DAG PASS yourself.

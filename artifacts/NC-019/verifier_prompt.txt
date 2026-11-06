@@ -1,0 +1,23 @@
+Independent scientific/code review of task NC-019 for Logos Kernel. You must be a DIFFERENT actual Codex CLI runtime agent, not the current Event Lab task owner. Your runtime identity is recorded by the Codex thread.started event and will be bound to your signed-off receipt.
+
+READ ONLY: do not modify DAG, artifacts, source, checkpoints, Git, or training results. The CLI harness writes only your final output/trace in the NC-019 evidence folder. DO NOT invoke training, download libraries, modify model weights or run neural inference.
+
+Working dir: /workspace/experiments/logos-kernel
+Audited implementation commit: 9566da1c0e85176fd9cea4fe5afe119b66c16c56
+Owner: current real Event Lab session 1db9edb983ff4df9933612e7c826e55f (must be different from your actual Codex identity).
+
+Read AGENTS.md, README.md, exact NC-019 and NC-018 task records in instructions.jsonl, and the eight committed NC-019 files. Independently audit:
+1. DAG hash-chain integrity and 17 DAG tests; NC-019 scorer tests 14 tests. Run fresh processes and reproduce exact denominators, failure/success; do not count developer tests alone as an independent scientific audit.
+2. Rehash all seven pinned source files/checkpoints from benchmark_contract.json; check frozen RLT champion SHA against NC-000 inventory, no tracked RLT/ISA modifications, no source-model overwrite, and source Git commit equal/descendant of specified audited implementation.
+3. Independently rebuild representative positive and negative formula evaluations from scratch. Prefer your own arithmetic evaluator/logic rather than invoking reference_contract.reference to validate against itself: at least every positive and negative family at width4 (all possible valuations per supported signedness mode), with concrete negative witnesses; additional deterministic width8/16 spot checks including high sign-bit SAR, overflow and shift-right truncation. Check NC001 bitvector type and AST arities. Note that width4 finite exhaustive is NOT width8/16 formal equivalence proof.
+4. Recompute SHA-256 split_commitment_sha256 and family_roster_sha256 using the contract's deterministic canonical encoding. Validate 5 train-positive, 2 val-positive, 6 test-positive and 7 test-negative family sets. Verify structural fingerprints disjoint, draw lists deterministic and seed-dependent, no false raw-operand/pretraining disjointness claim.
+5. Independently construct balanced accuracy controls: always YES=0.5, always NO=0.5, all abstain=0, perfect reference=1; require both class denominators and reject nonexecution as cheap correctness. Adversarially test score_contract.py for missing/zero denominators, self-reported independent proof, forgotten old skill, missing compute cost, host oracle substitute. If any bypass exists, verdict HOLD/FAIL with a reproducible example.
+6. Check strict priority NC-019 semantic correctness/unseen verified gain/retention OVER NC-018 compute minimization while retaining NC-018 original task unmodified. Verify the contract actually defines distinct measures and training/proposal/search/verification/deployment costs as constraints, not a meaningless scalar.
+7. Evaluate scientific accuracy and hidden assumptions: no neural model evaluated in NC019; symbolic algebraic identities not universally proven at widths8/16; finite 4bit exhaustive scope only; original source pretraining disjointness unknown; external verifier/proofs required to credit novelty; no automatic champion promotion. Detect contradictory terms/metrics.
+8. Record exact independent commands, source hashes, family/seed widths, measures, failed cases, verification caveats, model-vs-host boundary and runtime ID. Do not claim formal proof from sampling.
+
+Your FINAL must be standalone JSON ONLY with keys:
+task, verdict (PASS | HOLD | FAIL), verifier_type, audited_commit, commands,
+independent_checks, negative_controls, proof_scope, source_integrity, limitations, failures.
+
+If you cannot run necessary checks, verdict HOLD with details. Do not create an independent_receipt.json yourself, do not PASS the DAG yourself; only return your JSON verdict to harness.
