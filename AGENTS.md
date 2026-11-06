@@ -4,12 +4,28 @@
 
 This repository is a task DAG for progressive neural learning, operation composition, verification and promotion—not an agent runner.
 
+
+
+
 - Repository: `/workspace/experiments/logos-kernel` (actual path: `/workspace/experiments/logos-kernel`)
 - Instructions: `instructions.jsonl`, a hash-chained, **append-only** JSONL event log
 - Only ledger writer: `python dag.py`; do not edit, truncate, reorder or reconstruct earlier records
 - Task specification: full `kind=task` records in `instructions.jsonl` including `depends_on`, `instruction`, `acceptance`, `outputs`, `avoid`
 - There is **no automatic worker**, implicit owner, heartbeat, lease, timer or abandoned-claim cleanup.
 - A task being *claimed* does **not** prove its agent is alive or working.
+
+## Stateless-chat verification-first dispatch
+
+**If a task needs independent verification, become its verifier before starting new implementation**, provided you can actually meet the independence contract. This applies even while the implementer legitimately holds an exclusive claim: the verifier does not take ownership of the task.
+
+On EVERY stateless ChatGPT conversation:
+1. Recover the current ledger, Git HEAD, claims, verifier requests and missing/pending receipts; run the repository's DAG validation and tests first. Check pending verification work before choosing a new ready task.
+2. If your **actual runtime-assigned identity** is distinct from the implementer's, and you did **not** implement, modify, train, author its acceptance evidence, or review your own candidate, take the **VERIFIER** role for the highest-priority pending verification. Record identity/provenance, exact source and checkpoint hashes, independent reproduction commands, inputs, denominators, counterexamples, proof scope and verdict. Use isolated, preferably read-only code/checkpoint inspection and independent ground truth; preserve other agents' work.
+3. A new ChatGPT conversation, tab, prompt, role label or fabricated ID does **not** create independence. If a real distinct identity or truly separate audit cannot be established, perform only labeled self-checks and report **HOLD: independent verifier required**. Never create an invented verifier, sign your own result, or report PASS merely because tests or a receipt file exist.
+4. The verifier may produce a distinct, attributable receipt at the task's declared evidence path, but must **not** claim/release the implementer's task, change its status, bypass ownership, overwrite the champion, or quietly repair candidate code then approve that same revision. Return failures to the implementer with reproducible counterexamples. Under the DAG protocol the legitimate owner records final PASS only after genuine independent verification.
+5. If no eligible verification exists, proceed with the highest-ranked eligible unclaimed task. Do not force-release another agent's claim based only on elapsed time or a stateless tab.
+
+**Priority:** pending independent verification with provable separation > new implementation, without suspending a valid active owner or weakening scientific gates.
 
 ## At the beginning of each actual agent session
 
