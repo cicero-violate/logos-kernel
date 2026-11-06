@@ -1,0 +1,22 @@
+NC-020 INDEPENDENT SCIENTIFIC VERIFIER — READ ONLY. You are a separate real Codex CLI agent from the Event Lab implementer/session 1db9edb983ff4df9933612e7c826e55f. Your real Codex thread.started ID is the only acceptable verifier provenance. Do NOT claim ownership, edit implementation, generate dataset, change Git, run git commit, mark DAG PASS, train neural models, or silently repair errors. Only read code and data and run independent read-only checks. Use ephemeral commands, no project writes.
+
+Audited immutable implementation commit: 715b71a0568aecc1c0e68660f2a697bd11829b84
+Repository: /workspace/experiments/logos-kernel
+Task: NC-020. Read AGENTS.md, README.md, NC-020 task record inside instructions.jsonl, and all six committed NC-020 files. Read NC-001/canonical_isa.py and NC-019/semantic_objective.json.
+
+Mandatory audit gates:
+1. Source integrity: ensure source and dataset files in working tree match audited commit, no tracked champion/checkpoint changes; compute SHA256 of benchmark.py, canonical_isa.py, semantic_objective.json and match splits_and_semantics.json. Recompute independent case IDs and record SHA256 from canonical sorted compact JSON.
+2. Reproduce: python dag.py validate (55 events until you audit), python -m unittest -q test_dag, PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-020 -p test_benchmark.py. List test denominators and failures.
+3. Independently implement POLYNOMIAL coefficient-ring equality (or independent algebraic expansion) for a representative diverse sample of at least 24 integer pairs including both labels, all three splits, multiple depths and all integer families. Do not call benchmark.normalize_int or eval_int as your independent proof oracle. Establish that equal coefficient maps imply equality under exact integers, and counterexamples actually differ with independent interpreter. Report how many globally checked independently and scope.
+4. Independently implement bitvector output interpreter, not calling benchmark.brute_bv, eval_bv, canonical_isa.eval_ast or benchmark.make_case. Exhaustively test all X,Y assignments for at least 12 diverse pairs including both labels, all bitvector families, widths 3/4/5 and signed and unsigned modes. Include signed SAR/SHR divergence at negative X and wraparound behavior; inspect recorded counterexamples. No claim about flags, PC, HALT or the full ISA.
+5. Independently confirm both IEEE754 binary64 counterexamples with ordinary Python floats, strict rejection of both invalid typed pairs, and an intentionally unsound integer rewrite. Confirm the labels of negative controls are not treated as equivalence-class negatives when types disagree.
+6. Recompute family and AST pair-shape fingerprints and inspect family- and structural-disjoint splits, case IDs and exact pair counts. Distinguish newly generated family-disjointness from unverifiable historical model training data independence. Check for near-duplicate structural rules across held-out sets and flag leakage concern if found.
+7. Check proof and split reports, all 274 cases, expected counts: 144 int polynomial, 126 exhaustive BV, 2 concrete float counterexamples, 2 type rejections. Ensure no proof claims beyond exact finite scope and no statement this is a trained neural model, program invention or AGI.
+8. Consider adversarial attacks: counterfeit record hash, wrong width/signature, a wrongly labeled equivalent pair, corrupted counterexample, same family in multiple splits. Check code/test response to at least three in read-only ephemeral code. If proof labels silently accepted by generator or audit without validation, flag.
+9. Verify independent agent identity differs from implementer, report exact audited commit and commands; do not self-award PASS without performing checks. If any mandatory check incomplete, issue HOLD, not PASS.
+
+Return one JSON object ONLY, with:
+task, verdict (PASS|HOLD|FAIL), verifier_type ("codex-cli"), audited_commit,
+independent_checks (detailed counts), controls (detailed), split_audit,
+source_integrity, proof_scope, limitations, failures, recommendations.
+Do not invent missing counts or identities. The harness will preserve your raw trace, final JSON and stderr under NC-020. Your output does NOT itself append DAG status.

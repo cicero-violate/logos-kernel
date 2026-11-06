@@ -1,6 +1,7 @@
 """NC-020 tests; dependencies: Python 3 stdlib, benchmark.py, NC-001/canonical_isa.py,
 and the three generated NC-020 JSON outputs. No model or GPU."""
 import collections
+import copy
 import hashlib
 import json
 import unittest
@@ -99,6 +100,27 @@ class BenchmarkTests(unittest.TestCase):
             b.isa.validate_ast(c["lhs"],c["width"],c["signedness"])
             with self.assertRaises(b.isa.ISAError):
                 b.isa.validate_ast(c["rhs"],c["width"],c["signedness"])
+    def test_audit_fail_closed_on_tampering(self):
+        # The report routine must not silently certify changed or unregistered
+        # inputs, even if the caller supplies internally self-consistent fields.
+        def check(mutator):
+            rows=copy.deepcopy(self.cases)
+            mutator(rows)
+            with self.assertRaisesRegex(ValueError,"NC020_UNREGISTERED_OR_MODIFIED"):
+                b.audit(rows)
+        check(lambda rows:rows[0].__setitem__("record_sha256","0"*64))
+        check(lambda rows:rows[0].__setitem__("label","non_equivalent"))
+        check(lambda rows:rows[0].__setitem__("split","test"))
+        check(lambda rows:rows[0].__setitem__("id","forged"))
+        check(lambda rows:rows[0]["proof"].__setitem__("left_sha256","deadbeef"))
+        width_index=next(i for i,row in enumerate(self.cases) if row["domain"]=="bitvector")
+        check(lambda rows:rows[width_index]["lhs"].__setitem__("width",99))
+        negative_index=next(i for i,row in enumerate(self.cases)
+                            if row["label"]=="non_equivalent" and row["domain"]=="bitvector")
+        check(lambda rows:rows[negative_index]["proof"].__setitem__("counterexample",None))
+    def test_audit_refuses_unregistered_dataset(self):
+        with self.assertRaisesRegex(ValueError,"NC020_UNREGISTERED_OR_MODIFIED"):
+            b.audit([])
     def test_scope_disclosed(self):
         self.assertTrue(self.meta["splits"]["no_model_trained"])
         self.assertEqual(self.meta["splits"]["training_preexposure_absence"],"NOT_ESTABLISHED")

@@ -1,0 +1,240 @@
+{
+  "task": "NC-020",
+  "verdict": "PASS",
+  "verifier_type": "codex-cli",
+  "audited_commit": "715b71a0568aecc1c0e68660f2a697bd11829b84",
+  "independent_checks": {
+    "verifier_identity": "01a1af2e-1690-7bd2-93a7-cb2c2e6916bc",
+    "implementer_identity": "1db9edb983ff4df9933612e7c826e55f",
+    "identities_distinct": true,
+    "dag_validation": {
+      "events": 55,
+      "nodes": 29,
+      "result": "PASS",
+      "head_sha256": "c0aa9c9c3c9ac1ded3593fb74a33cc07803847a2d0225cd90888d8a2cb7729ac"
+    },
+    "test_dag": {
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "command": "TMPDIR=/dev/shm python -m unittest -q test_dag",
+      "note": "The first invocation without TMPDIR produced five environment errors because no default writable temporary directory was available. The read-only rerun used ephemeral /dev/shm and passed all 19 tests."
+    },
+    "benchmark_tests": {
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-020 -p test_benchmark.py"
+    },
+    "integer_polynomial": {
+      "implementation": "Independent sparse coefficient maps over Z[x,y,z], without benchmark.normalize_int or benchmark.eval_int",
+      "pairs_checked": 144,
+      "equivalent": 72,
+      "non_equivalent": 72,
+      "families": 8,
+      "splits": [
+        "train",
+        "validation",
+        "test"
+      ],
+      "depths": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "counterexamples_replayed": 72,
+      "label_or_counterexample_failures": 0,
+      "proof_basis": "Equality of finite coefficient maps proves equality of the represented polynomials for every exact integer assignment; unequal maps were additionally checked using the recorded integer witnesses."
+    },
+    "bitvector": {
+      "implementation": "Independent typed output-bit interpreter; did not call benchmark.brute_bv, benchmark.eval_bv, canonical_isa.eval_ast, or benchmark.make_case",
+      "pairs_checked": 126,
+      "equivalent": 63,
+      "non_equivalent": 63,
+      "families": 7,
+      "widths": [
+        3,
+        4,
+        5
+      ],
+      "signedness": [
+        "twos_complement",
+        "unsigned"
+      ],
+      "splits": [
+        "train",
+        "validation",
+        "test"
+      ],
+      "assignments_checked": 56448,
+      "counterexamples_replayed": 63,
+      "label_or_counterexample_failures": 0,
+      "signed_shift_control": {
+        "width": 4,
+        "raw_X": 8,
+        "signed_X": -8,
+        "SAR_result_raw": 12,
+        "SHR_result_raw": 4,
+        "divergence_confirmed": true
+      },
+      "wraparound_control": {
+        "expression": "3-bit unsigned 7 + 1",
+        "result": 0,
+        "confirmed": true
+      }
+    },
+    "floating_point": {
+      "counterexamples_checked": 2,
+      "reassociation": {
+        "lhs": 1.0,
+        "rhs": 0.0,
+        "non_equivalent": true
+      },
+      "rounding": {
+        "lhs": 0.30000000000000004,
+        "rhs": 0.3,
+        "non_equivalent": true
+      },
+      "intentionally_unsound_integer_rewrite": {
+        "rewrite": "x^2 + y^2 = (x+y)^2",
+        "assignment": {
+          "x": 1,
+          "y": 1
+        },
+        "lhs": 2,
+        "rhs": 4,
+        "rejected": true
+      }
+    },
+    "type_controls": {
+      "invalid_pairs": 2,
+      "mixed_width_rejected": true,
+      "mixed_signedness_rejected": true,
+      "excluded_from_equivalence_class_negative_count": true
+    },
+    "dataset_totals": {
+      "cases": 274,
+      "integer_polynomial": 144,
+      "finite_exhaustive_bitvector": 126,
+      "concrete_float_counterexamples": 2,
+      "strict_type_rejections": 2,
+      "labels": {
+        "equivalent": 135,
+        "non_equivalent": 137,
+        "invalid_type": 2
+      },
+      "failures": 0
+    }
+  },
+  "controls": {
+    "adversarial_mutations": {
+      "counterfeit_record_hash": {
+        "independent_check_detected": true,
+        "committed_test_suite_detects": true,
+        "benchmark.audit_alone_rejects": false
+      },
+      "wrong_width_signature": {
+        "independent_check_detected": true,
+        "committed_validation_path_detects": true,
+        "benchmark.audit_alone_rejects": false
+      },
+      "wrong_label": {
+        "independent_algebra_detected": true,
+        "generator_make_case_detects": true,
+        "benchmark.audit_alone_rejects": false
+      },
+      "corrupted_counterexample": {
+        "independent_interpreter_detected": true,
+        "committed exhaustive tests detect": true,
+        "benchmark.audit_alone_rejects": false
+      },
+      "same_family_in_multiple_splits": {
+        "independent_split_recomputation_detected": true,
+        "generator_produce_detects": true,
+        "benchmark.audit_alone_rejects": false
+      }
+    },
+    "interpretation": "The generator and full committed test suite validate generated labels, types, hashes, witnesses, and split separation. The standalone benchmark.audit function is only a report summarizer and silently summarizes adversarially mutated input without revalidation."
+  },
+  "split_audit": {
+    "case_counts": {
+      "train": 108,
+      "validation": 72,
+      "test": 94
+    },
+    "families": 19,
+    "structural_fingerprints": 48,
+    "family_cross_split_leaks": 0,
+    "structural_fingerprint_cross_split_leaks": 0,
+    "case_ids_recomputed": 274,
+    "case_id_failures": 0,
+    "structural_fingerprints_recomputed": 274,
+    "structural_fingerprint_failures": 0,
+    "case_set_sha256": "eccdd5b5fb43666750ad00b7a028d6b7f28a581d7c2cc290e7d04f8d23d6e733",
+    "dataset_sha256": "8a944ada4b2ab323433f1a7f10e63fb2244822d318cda89966ab164eed0328bd",
+    "near_duplicate_review": "No exact pair-shape fingerprint crosses train, validation, or test. Fingerprints intentionally erase variable identities and constant values and group positive/negative variants inside a split; therefore they are a structural-disjointness check, not a semantic-distance theorem.",
+    "historical_independence": "NOT_ESTABLISHED. The audit confirms disjointness only for this newly generated benchmark and cannot establish independence from historical model training or pretraining data."
+  },
+  "source_integrity": {
+    "repository": "/workspace/experiments/logos-kernel",
+    "six_nc020_files_read": [
+      "artifacts/NC-020/README.md",
+      "artifacts/NC-020/benchmark.py",
+      "artifacts/NC-020/equivalence_benchmark.jsonl",
+      "artifacts/NC-020/proof_audit.json",
+      "artifacts/NC-020/splits_and_semantics.json",
+      "artifacts/NC-020/test_benchmark.py"
+    ],
+    "dependency_files_read": [
+      "artifacts/NC-001/canonical_isa.py",
+      "artifacts/NC-019/semantic_objective.json"
+    ],
+    "nc020_and_dependency_diff_from_audited_commit": false,
+    "tracked_champion_or_checkpoint_changes_detected": false,
+    "unrelated_dirty_tracked_files": [
+      "artifacts/NC-000/baseline_receipt.json",
+      "artifacts/NC-000/interactive_review.json",
+      "artifacts/NC-000/runtime_provenance_attestation.json",
+      "artifacts/NC-000/verifier_diagnostics.json"
+    ],
+    "source_sha256": {
+      "benchmark.py": "9cddb14471e8b420e43fce986791a57e3c42a9c345837e98fe8c224160bacf6f",
+      "canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+      "semantic_objective.json": "964f40d9d20a0333f7d8a6982045e3219866008a2a0ddc02464083857f9970c1"
+    },
+    "source_hashes_match_splits_and_semantics": true,
+    "record_hashes_recomputed": 274,
+    "record_hash_failures": 0
+  },
+  "proof_scope": {
+    "integer": "Exact polynomial equality over unbounded mathematical integers for the committed +, -, and * ASTs only.",
+    "bitvector": "Exact finite enumeration of output bits for every X,Y assignment at each declared width 3, 4, or 5. R and T are unreferenced.",
+    "floating_point": "Two concrete ordinary Python binary64 counterexamples only; no universal floating-point theorem.",
+    "invalid_types": "Strict rejection of the two mixed-type controls; they are not semantic non-equivalence examples within a common type.",
+    "excluded_claims": [
+      "flags",
+      "PC behavior",
+      "HALT behavior",
+      "full ISA execution",
+      "larger bit widths",
+      "trained neural capability",
+      "program invention",
+      "historical training-data independence",
+      "AGI"
+    ]
+  },
+  "limitations": [
+    "The standalone benchmark.audit function does not validate arbitrary supplied cases; consumers must regenerate with produce and run the committed tests or add explicit validation before trusting a report.",
+    "Structural fingerprints are deliberately coarse and do not prove semantic novelty between algebraically related families.",
+    "No historical model-training or pretraining independence can be verified from these artifacts.",
+    "The repository contained unrelated dirty NC-000 evidence files, but audited NC-020 sources, dataset, dependencies, champion paths, and checkpoint paths matched the audited commit."
+  ],
+  "failures": [],
+  "recommendations": [
+    "Harden benchmark.audit to reject invalid record hashes, case IDs, labels, witnesses, typed ASTs, and cross-split family/fingerprint leakage instead of only summarizing input.",
+    "Keep the existing proof-scope language and historical-data caveat in downstream use.",
+    "Record this verifier identity and immutable commit in the owner-generated receipt before the task owner appends DAG PASS."
+  ]
+}

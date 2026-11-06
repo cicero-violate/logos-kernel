@@ -59,3 +59,7 @@ A different real Codex verifier must independently recompute mathematical
 cases without relying only on the producer's oracle, independently detect
 wrong rewrites and type errors, inspect exact source hashes, and audit
 family/structure split disjointness. Only then may the task owner append PASS.
+
+The audit summarizer is fail-closed: it re-generates the frozen preregistered
+case set and rejects any mutated, missing or unregistered row, rather than
+printing a misleading proof summary for caller-provided data.

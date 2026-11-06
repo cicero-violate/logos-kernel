@@ -337,6 +337,12 @@ def metadata(cases):
     }
 
 def audit(cases):
+    # Fail closed: these receipts cover the exact deterministic, preregistered
+    # dataset. Never summarize modified/unregistered rows as certified cases.
+    # Validity is established by produce() using strict typed semantics and
+    # per-case polynomial or complete finite-domain checks.
+    if cases != produce():
+        raise ValueError("NC020_UNREGISTERED_OR_MODIFIED_BENCHMARK_CASES")
     proofs=collections.Counter(c["proof"]["method"] for c in cases)
     widths=collections.Counter(str(c["width"]) for c in cases)
     depths=collections.Counter(str(c["difficulty"]["depth"]) for c in cases)
