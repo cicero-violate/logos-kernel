@@ -1,0 +1,55 @@
+{
+  "frozen_provenance": {
+    "checkpoint_path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage06.pt",
+    "checkpoint_sha256": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
+    "isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "library_sha256": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+    "source_sha256": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d"
+  },
+  "heldout_neural_correct": 1024,
+  "heldout_neural_total": 1024,
+  "limits": [
+    "Task-specific policy adaptation has access to reference I/O examples and verifier feedback.",
+    "Policy training and uniform baseline both search bounded program vocabulary; sampled programs are not newly invented primitives.",
+    "Frozen local neural ISA, not a jointly trained Transformer, performs numeric execution.",
+    "Proof consists of finite disjoint heldout operand tests, not symbolic equivalence.",
+    "Host handles registers, HALT and primitive wiring; neural model only chooses program tokens.",
+    "No claim that self-trained policy beats uniform baseline or generalizes to unseen task families.",
+    "Local Python/PyTorch execution is not hostile-code isolation.",
+    "No champion promotion."
+  ],
+  "method": "Transformer stochastic neural candidate proposals; reward-ranked policy distillation; greedy decoder; independent heldout frozen-neural execution",
+  "model": "2-layer 4-head 48-width TransformerEncoder over task IO samples and previous-action query",
+  "negative_controls": {
+    "behavioral_spec_perturbation_changes_logits": true,
+    "fresh_replay_test_count": 5,
+    "frozen_primitive_provenance_mutation_rejected": true,
+    "policy_weight_ablation_changes_greedy_programs": true,
+    "source_and_policy_hashes_checked": true,
+    "uniform_random_solved_all_tasks_within_budget": true,
+    "wrong_program_fails_fresh_validation": true
+  },
+  "not_a_claim_of": "zero-shot invention, new primitive discovery, policy superiority over uniform search, AGI or proof over all 2^32 input pairs",
+  "policy_parameters": 41677,
+  "proposals_sha256": "4f12d3b4c90a7753e8ca0f984f4958e42c1c6b6926ea988989c247815965c4a4",
+  "readme_sha256": "843563b22c6d868b4426d6bac52ba4666496ebbe2ab3cfed5b064c56c6667e66",
+  "sample_budget_per_task": 2304,
+  "schema": "logos.nc008.invention/1",
+  "source_sha256": {
+    "invent.py": "a501219a8d5737eb9e60b52e0af1b8490d0871ba7d4cbdb2413a3ec8d4550699",
+    "nc006_library": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+    "nc007_compose.py": "3fb777f2cb8e1ab8dee5fff3f78893d5515f679fdcc8742a7bdf15a1b7e66e00"
+  },
+  "status": "IMPLEMENTER_TESTED_PENDING_INDEPENDENT",
+  "supported_count": 4,
+  "task": "NC-008",
+  "task_count": 4,
+  "training": "36 rounds per task of 64 model samples, train on top 12 self-proposed programs under probe reward; no target program labels",
+  "zero_shot_transfers": {
+    "evidence_path": "artifacts/NC-008/unseen_probe.json",
+    "evidence_sha256": "78578e087f2a072bbbda39551912cbb3da49902cb3046e4dc275c486a0a05d32",
+    "interpretation": "No zero-shot transfer succeeded; training includes task-specific oracle feedback.",
+    "successful": 0,
+    "trials": 12
+  }
+}

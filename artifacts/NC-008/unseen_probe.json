@@ -1,0 +1,151 @@
+{
+  "note": "Evaluated by independent host arithmetic only; successful results would require fresh frozen-neural verification; no oracle-supplied program",
+  "purpose": "zero-shot unseen-task negative control",
+  "results": [
+    {
+      "correct": 0,
+      "program": [
+        "ADD_X1",
+        "ADD_X1",
+        "HALT"
+      ],
+      "source_policy": "INC",
+      "tested": 246,
+      "unseen_goal": "OR_SHIFT",
+      "updates_on_unseen": 0
+    },
+    {
+      "correct": 0,
+      "program": [
+        "ADD_X1",
+        "ADD_X1",
+        "HALT"
+      ],
+      "source_policy": "INC",
+      "tested": 246,
+      "unseen_goal": "XOR_ADD_Y",
+      "updates_on_unseen": 0
+    },
+    {
+      "correct": 0,
+      "program": [
+        "ADD_X1",
+        "ADD_X1",
+        "HALT"
+      ],
+      "source_policy": "INC",
+      "tested": 246,
+      "unseen_goal": "XOR_MASK_ONE",
+      "updates_on_unseen": 0
+    },
+    {
+      "correct": 0,
+      "program": [
+        "AND1_X",
+        "ADD_XX",
+        "HALT"
+      ],
+      "source_policy": "DOUBLE",
+      "tested": 246,
+      "unseen_goal": "OR_SHIFT",
+      "updates_on_unseen": 0
+    },
+    {
+      "correct": 0,
+      "program": [
+        "AND1_X",
+        "ADD_XX",
+        "HALT"
+      ],
+      "source_policy": "DOUBLE",
+      "tested": 246,
+      "unseen_goal": "XOR_ADD_Y",
+      "updates_on_unseen": 0
+    },
+    {
+      "correct": 0,
+      "program": [
+        "AND1_X",
+        "ADD_XX",
+        "HALT"
+      ],
+      "source_policy": "DOUBLE",
+      "tested": 246,
+      "unseen_goal": "XOR_MASK_ONE",
+      "updates_on_unseen": 0
+    },
+    {
+      "correct": 0,
+      "program": [
+        "AND_XY",
+        "XOR_RX",
+        "HALT"
+      ],
+      "source_policy": "BOOLEAN_COMPOSITE",
+      "tested": 246,
+      "unseen_goal": "OR_SHIFT",
+      "updates_on_unseen": 0
+    },
+    {
+      "correct": 0,
+      "program": [
+        "AND_XY",
+        "XOR_RX",
+        "HALT"
+      ],
+      "source_policy": "BOOLEAN_COMPOSITE",
+      "tested": 246,
+      "unseen_goal": "XOR_ADD_Y",
+      "updates_on_unseen": 0
+    },
+    {
+      "correct": 0,
+      "program": [
+        "AND_XY",
+        "XOR_RX",
+        "HALT"
+      ],
+      "source_policy": "BOOLEAN_COMPOSITE",
+      "tested": 246,
+      "unseen_goal": "XOR_MASK_ONE",
+      "updates_on_unseen": 0
+    },
+    {
+      "correct": 0,
+      "program": [
+        "XOR_XY",
+        "SHL_R",
+        "HALT"
+      ],
+      "source_policy": "SHIFT_COMPOSITE",
+      "tested": 246,
+      "unseen_goal": "OR_SHIFT",
+      "updates_on_unseen": 0
+    },
+    {
+      "correct": 0,
+      "program": [
+        "XOR_XY",
+        "SHL_R",
+        "HALT"
+      ],
+      "source_policy": "SHIFT_COMPOSITE",
+      "tested": 246,
+      "unseen_goal": "XOR_ADD_Y",
+      "updates_on_unseen": 0
+    },
+    {
+      "correct": 0,
+      "program": [
+        "XOR_XY",
+        "SHL_R",
+        "HALT"
+      ],
+      "source_policy": "SHIFT_COMPOSITE",
+      "tested": 246,
+      "unseen_goal": "XOR_MASK_ONE",
+      "updates_on_unseen": 0
+    }
+  ],
+  "schema": "logos.nc008.invention/1"
+}

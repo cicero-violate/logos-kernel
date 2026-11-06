@@ -1,0 +1,75 @@
+{
+  "acceptance": {
+    "distinct_operands_heldout_correct": 1024,
+    "distinct_operands_heldout_total": 1024,
+    "frozen_primitive_execution": true,
+    "model_proposed_nontrivial_operations": 4,
+    "uniform_control_found_all_four": true,
+    "zero_shot_unseen_tasks_successful": 0,
+    "zero_shot_unseen_tasks_tested": 12
+  },
+  "candidate_status": "REQUEST_INDEPENDENT_REVIEW",
+  "code_and_evidence_sha256": {
+    "artifacts/NC-008/README.md": "843563b22c6d868b4426d6bac52ba4666496ebbe2ab3cfed5b064c56c6667e66",
+    "artifacts/NC-008/invent.py": "a501219a8d5737eb9e60b52e0af1b8490d0871ba7d4cbdb2413a3ec8d4550699",
+    "artifacts/NC-008/invention_receipt.json": "fcc10e62c0df265d0511a54102dc14f19acd24ba7ba7ce30d481de1375a692e6",
+    "artifacts/NC-008/policy_boolean_composite.pt": "ea1fc09c17bd50bf0bc7bad37b2df6a053e19d76655bfd046ef30e26ffe0868a",
+    "artifacts/NC-008/policy_double.pt": "9d1becd50cdee64da033cdbd9e4b2421e5935bb743bd977185c682623890c9f5",
+    "artifacts/NC-008/policy_inc.pt": "4214a00cb0d8c70325ead9949f329f7012ef9763135aeae23c4a3eaa6afe55c8",
+    "artifacts/NC-008/policy_shift_composite.pt": "167d80bbef32e2ca59c62e1b4262368487594b309f5c1a365fa84f55da6ba8d4",
+    "artifacts/NC-008/proposals.jsonl": "4f12d3b4c90a7753e8ca0f984f4958e42c1c6b6926ea988989c247815965c4a4",
+    "artifacts/NC-008/test_invent.py": "17bfe80b2c0f7b92d58c5ada57623d6c7a55fbcde4cf36cb91f9ef431e9b2329",
+    "artifacts/NC-008/unseen_probe.json": "78578e087f2a072bbbda39551912cbb3da49902cb3046e4dc275c486a0a05d32",
+    "artifacts/NC-008/unseen_probe.py": "b7fd44f81e5146893e19c6b4ea28cd724d7e3d6526049f8f747aafa89b64de80"
+  },
+  "external_dependencies": {
+    "checkpoint_path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage06.pt",
+    "checkpoint_sha256": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
+    "isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "library_sha256": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+    "source_sha256": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d"
+  },
+  "frozen_source_sha256": {
+    "invent.py": "a501219a8d5737eb9e60b52e0af1b8490d0871ba7d4cbdb2413a3ec8d4550699",
+    "nc006_library": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+    "nc007_compose.py": "3fb777f2cb8e1ab8dee5fff3f78893d5515f679fdcc8742a7bdf15a1b7e66e00"
+  },
+  "limits": [
+    "Task-specific policy adaptation has access to reference I/O examples and verifier feedback.",
+    "Policy training and uniform baseline both search bounded program vocabulary; sampled programs are not newly invented primitives.",
+    "Frozen local neural ISA, not a jointly trained Transformer, performs numeric execution.",
+    "Proof consists of finite disjoint heldout operand tests, not symbolic equivalence.",
+    "Host handles registers, HALT and primitive wiring; neural model only chooses program tokens.",
+    "No claim that self-trained policy beats uniform baseline or generalizes to unseen task families.",
+    "Local Python/PyTorch execution is not hostile-code isolation.",
+    "No champion promotion.",
+    "Uniform random search also found each accepted program within same proposal budget; cannot attribute search efficiency to Transformer vs uniform.",
+    "Functional target is coded as a host reference formula; it is exposed to model as only task-specific examples and verifier feedback; this is not a discovered mathematical law.",
+    "Generated code is a composition of existing frozen primitives, not invention of a new neural operator."
+  ],
+  "negative_controls": {
+    "behavioral_spec_perturbation_changes_logits": true,
+    "fresh_replay_test_count": 5,
+    "frozen_primitive_provenance_mutation_rejected": true,
+    "policy_weight_ablation_changes_greedy_programs": true,
+    "source_and_policy_hashes_checked": true,
+    "uniform_random_solved_all_tasks_within_budget": true,
+    "wrong_program_fails_fresh_validation": true
+  },
+  "owner": "turn-280d9e6de38342cd876a1f667c98f759",
+  "proof_scope": "Four task-conditioned 16-bit example-driven Transformer guided searches: 4 greedy generated candidates executed using bound frozen local neural ISA on 256 disjoint heldout operand pairs each; no proof outside these cases, no zero-shot unseen success.",
+  "reproduction_commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-008 -p test_invent.py",
+    "python dag.py validate",
+    "python -m unittest -q test_dag",
+    "python -m unittest -q test_pull"
+  ],
+  "reviewer_output": "artifacts/NC-008/verification.json",
+  "role": "IMPLEMENTER",
+  "schema": "logos.nc008.candidate/1",
+  "task": "NC-008",
+  "training_reproduction_commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-008/invent.py",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-008/unseen_probe.py"
+  ]
+}
