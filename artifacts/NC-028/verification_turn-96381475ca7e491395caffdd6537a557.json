@@ -1,0 +1,68 @@
+{
+  "acceptance_blockers": [
+    "Original NC-028 requires matched-budget neural, fixed and random baseline comparisons, but consumed CPU is 6.526678 vs 3.261085 vs 3.875352 seconds; equal caps and proposal counts are insufficient to infer matched-compute comparison.",
+    "Returned feedback contains rejected actions and aggregate correct/tested counts, not an explicit numeric counterexample; the negative-only update is not a demonstrated general counterexample-guided learning loop."
+  ],
+  "candidate_revision": "f319933a88384e33a1be87c9181cbd52a8780105",
+  "candidate_sha256": "f525e0c671b862514bfbf168ec7c98ad8ebe44501c92fac531ba8bda5f5c67b2",
+  "measured_results": {
+    "allocated_cpu_seconds_per_arm": 12,
+    "allocated_wall_seconds_per_arm": 20,
+    "attempts_per_arm": 2,
+    "consumed_cpu_is_matched": false,
+    "consumed_cpu_seconds": {
+      "fixed_host": 3.2610849999999996,
+      "lexical_neural": 6.526678,
+      "random_host": 3.8753520000000012
+    },
+    "consumed_wall_seconds": {
+      "fixed_host": 3.365760004031472,
+      "lexical_neural": 6.678547080140561,
+      "random_host": 3.970780431991443
+    },
+    "feedback_correct_by_arm": {
+      "fixed_host": "0/16",
+      "lexical_neural": "0/16",
+      "random_host": "0/16"
+    },
+    "heldout_correct_by_arm": {
+      "fixed_host": "0/16",
+      "lexical_neural": "0/16",
+      "random_host": "0/16"
+    },
+    "novel_discoveries": 0,
+    "scientific_status": "NO_DISCOVERY"
+  },
+  "negative_controls": {
+    "bad_HALTs_feedback_and_schema": "REJECTED in sandbox tests",
+    "clone3_direct_probe": "NOT RUN; seccomp rule inspected only",
+    "fork_and_posix_spawn": "DENIED in sandbox tests",
+    "model_update": "two distinct model-generated proposals, second with 12 in-memory negative-only gradient steps; frozen checkpoint unchanged",
+    "network_outside_read_write_and_chmod": "DENIED in sandbox tests",
+    "separate_feedback_and_heldout": "8 unique pairs each; disjoint; stored hashes independently reproduced"
+  },
+  "next_action": "Rework NC-028 with measured compute-matched baselines and explicit counterexample-conditioned revision evidence; keep frozen champion unchanged, then submit new pinned manifest for independent review.",
+  "owner": "turn-9756f82924064ded92109bc00406b425",
+  "preserved_prior_evidence": "artifacts/NC-028/independent_receipt.json is a different historical reviewer FAIL; not overwritten.",
+  "proof_scope": "Single seed 11 for unseen-goal trial; six model/host programs, 8 feedback and 8 heldout operand pairs reused across arms, 16-bit modular arithmetic; no found novel correct program. Linux Landlock and seccomp tested locally, no VM/user namespace, no cgroup isolation or cryptographic identity attestation. User-authorized external network or champion promotion not performed.",
+  "review_claim_commit": "abde503460ebb68df3771890444c330ddf344184",
+  "reviewed_at_utc": "2026-11-06T12:28:08.309851+00:00",
+  "schema": "logos.nc028.independent-review-hold/1",
+  "source_and_evidence_check": {
+    "champion_unchanged": true,
+    "manifest_exact_match": true,
+    "matched": 45,
+    "mismatches": [],
+    "total": 45
+  },
+  "task": "NC-028",
+  "tests": {
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-028 -p 'test_*.py'": "17/17 PASS; Event Lab job d661a6f677815ebf exit 0",
+    "fresh_isolated_neural_execution_and_independent_arithmetic": "6/6 proposal programs reproduced; 96/96 outputs independently scored with 2*(x^y)+y modulo 65536; all stored counts matched",
+    "python -m unittest -q test_dag": "19/19 PASS",
+    "python -m unittest -q test_pull": "17/17 PASS",
+    "python dag.py validate": "PASS 61 tasks 118 events before review claim"
+  },
+  "verdict": "HOLD",
+  "verifier": "turn-96381475ca7e491395caffdd6537a557"
+}
