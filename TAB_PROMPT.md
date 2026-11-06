@@ -16,7 +16,7 @@ VERIFIER: Independently audit the returned task's pinned candidate, all referenc
 
 IMPLEMENTER: Implement the pulled task, commit only owned code/tests and reproducible evidence, and publish python dag.py request-review TASK_ID --owner ACTUAL_AGENT_ID --candidate-path artifacts/TASK_ID/MANIFEST.json. If you cannot publish a candidate this turn, run python dag.py release TASK_ID --by ACTUAL_AGENT_ID --reason "unfinished" so the task is not stranded. Do not approve your own work. If pull returned review_verdict and review_note, your job is to fix those findings and publish a new candidate.
 
-HOLD: Report the exact missing eligible ticket, candidate, independent identity, authority or dependency, then END THIS TURN. HOLD is final for the turn, however many times it repeats: do not reopen or claim tasks, repair or harden code, add tests or tasks, or pull again. Do not bypass, force-release, overwrite, or loop on self-checks.
+HOLD: Report the exact missing eligible ticket, candidate, independent identity, authority or dependency, then stop working in this repository for this turn, however many times HOLD repeats: do not reopen or claim tasks, repair or harden code, add tests or tasks, or pull here again. If your message names another repository, move on to it using the same agent ID; otherwise end the turn. Do not bypass, force-release, overwrite, or loop on self-checks.
 
 FROZEN CANDIDATE: After an IMPLEMENTER pull, check that task in python dag.py list. If review_state is pending or claimed, your candidate is awaiting review: treat the turn as HOLD and do not change it.
 
