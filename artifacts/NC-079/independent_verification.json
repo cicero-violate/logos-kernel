@@ -1,0 +1,101 @@
+{
+  "task": "NC-079",
+  "owner": "claude-code-turn-0f828173bcf24622a4099422ec73a053",
+  "verifier": "turn-8bd2ce85bec7435aae93995be074fe11",
+  "verdict": "FAIL",
+  "candidate_sha256": "80ce02fef142593c7cdb146491373a382503554b1a3b2eb958dc170928d63cc2",
+  "candidate_revision": "49688607321edc4e8fc3390348c5eab80ff56512",
+  "proof_scope": "Independent source and artifact hash audit, 8 unit tests, and first-generation 30-goal negative-control probes for three worlds at seed 11. Full 3-seed default runs were not repeated because the control requirements already fail. This receipt does not claim that the reported solve rates are false or that recursive learning is impossible.",
+  "tests": [
+    {
+      "name": "python dag.py validate",
+      "result": "PASS; 887 nodes before review"
+    },
+    {
+      "name": "python -m unittest -q test_dag",
+      "result": "PASS; 19 tests"
+    },
+    {
+      "name": "python -m unittest -q test_pull",
+      "result": "PASS; 20 tests"
+    },
+    {
+      "name": "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-079/test_stack.py",
+      "result": "PASS; 8 tests"
+    },
+    {
+      "name": "source/evidence hashes and scoreboard SHA-256 against manifest",
+      "result": "PASS"
+    },
+    {
+      "name": "source byte hashes at candidate_revision",
+      "result": "PASS"
+    },
+    {
+      "name": "cross-arm identical sealed-goal probe",
+      "result": "FAIL"
+    },
+    {
+      "name": "random-library exact-size-matching probe",
+      "result": "FAIL"
+    }
+  ],
+  "counterexamples": [
+    {
+      "condition": "Arms must be compared on matched sealed goals to isolate the library intervention",
+      "finding": "Both experiment scripts incorporate arm in the RNG seed, so each arm receives a different sealed exam. With seed 11, only 0\u20133 of 30 functions overlap across control-vs-library exams in each world.",
+      "first_generation_intersections_of_30": {
+        "structured": {
+          "library_vs_none": 3,
+          "library_vs_random_library": 3
+        },
+        "arithmetic": {
+          "library_vs_none": 2,
+          "library_vs_random_library": 2
+        },
+        "unstructured": {
+          "library_vs_none": 0,
+          "library_vs_random_library": 0
+        }
+      },
+      "locations": [
+        "run_compounding.py:run_arm",
+        "run_curriculum.py:run_arm"
+      ]
+    },
+    {
+      "condition": "Random library must have equal concept sizes as the actual library",
+      "finding": "Random generator fails exact size-matching because building binary nodes does not preserve requested total node count; the existing unit test checks only the number of concepts.",
+      "target_vs_random_size": [
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "location": "stack.py:random_library"
+    }
+  ],
+  "supported_findings": [
+    "Candidate input sources and results are hash consistent with declared manifest",
+    "Existing 8 NC-079 tests pass",
+    "Stored analysis reports NO_COMPOUNDING, which is appropriately not a claim of compounding"
+  ],
+  "limits": [
+    "Candidate scores cannot support matched-control improvement claims until the same exam lists and size-matched random controls are enforced",
+    "The separate integer reference evaluator is sampled at 64 pairs, whereas the full 65536-pair check uses NumPy evaluate",
+    "No original full-default 3-seed rerun performed; blocked by reproducible experimental-design violations"
+  ],
+  "repair": [
+    "Precompute identical per-world/per-generation/per-seed sealed goal sets independently of arm, then compare outcomes on paired goals",
+    "Construct random library expressions with exactly equal total node sizes and match size distribution to the real library arm, with explicit tests",
+    "Rerun three-seed full experiment and curriculum under frozen common exams, verify CPU/candidate budgets and independently validate verdicts"
+  ]
+}
