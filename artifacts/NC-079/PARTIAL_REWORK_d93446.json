@@ -1,0 +1,53 @@
+{
+  "agent": "turn-d93446a6e51b48d1875012c206198761",
+  "audit": {
+    "full_campaign_reproduced": false,
+    "generations_each": 3,
+    "matched_per_generation_library_count_and_exact_size_multiset": true,
+    "paired_arms": [
+      "library",
+      "random_library"
+    ],
+    "total_world_seed_generations": 36,
+    "world_seed_pairs": 12
+  },
+  "candidate_published": false,
+  "exhaustive_check": {
+    "incumbent_sampled_scalar_pairs": 1024,
+    "integrated_into_runners": false,
+    "negative_control": "A single injected off-sample scalar error is not caught by incumbent verified(); new full scalar checker rejects it.",
+    "scalar_input_pairs": 65536
+  },
+  "limitations": [
+    "Uncommitted runner fix cannot be considered a pinned candidate",
+    "Low-budget campaign has empty libraries in some worlds",
+    "No full original-budget replay; no updated scoreboard or CPU verdict",
+    "Full scalar helper not integrated with all accepted solutions",
+    "No independent PASS, no champion promotion"
+  ],
+  "next_action": "Reconcile working-tree fixes with their owner, integrate exhaustive scalar gate, complete original-budget campaign across all seeds and worlds, then publish manifest for independent review.",
+  "preexisting_uncommitted_files_not_modified_or_committed": [
+    "stack.py",
+    "run_compounding.py",
+    "run_curriculum.py",
+    "test_stack.py"
+  ],
+  "previous_review": "FAIL for unmatched random library sizes",
+  "schema": "logos.nc079.partial-rework/1",
+  "sources": {
+    "REWORK_HANDOFF_d93446.md": "fac5e92940d846611a883f5270fec5cbf801b73dfa60d661fc9504480a568483",
+    "audit_matched_controls_d93446.py": "75a85fdbf6cdf4323d0fe5fdde092d618bc7725a2262dd0b45b29aa6de2adda3",
+    "exhaustive_reference_d93446.py": "9c6690a47259505871c6aa893a7362a8d7fba821adff23113e265df08e955638",
+    "matched_control_smoke_d93446.json": "418168532ff9ae0b2f3debbf716cb57e24ba37a398850aadc2f32b30a15de2f8",
+    "test_exhaustive_reference_d93446.py": "6dedf1787495000cf1f73e4c3eada491e2c34d270b195c210d94d83bbad4f269",
+    "test_matched_library_controls_d93446.py": "d9d6b9781935a994c9f2ec4f4135c76573de6ba9403262d8966c8823df95c9d8"
+  },
+  "task": "NC-079",
+  "tests": {
+    "new_control_and_exhaustive_tests": "5/5 PASS",
+    "preexisting_NC079_suite": "10/10 PASS",
+    "repository_test_dag": "19/19 PASS",
+    "repository_test_pull": "20/20 PASS"
+  },
+  "verdict": "INCOMPLETE"
+}

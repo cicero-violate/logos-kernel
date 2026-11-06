@@ -1,0 +1,741 @@
+{
+  "all_pass": true,
+  "config": {
+    "budget": 1500,
+    "generations": 3,
+    "retention_goals": 2,
+    "sealed_goals": 2,
+    "seeds": [
+      11,
+      19,
+      29
+    ],
+    "train_goals": 3
+  },
+  "matches": [
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "library_solved": [
+        0,
+        0,
+        0
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "random_solved": [
+        0,
+        0,
+        0
+      ],
+      "seed": 11,
+      "world": "structured"
+    },
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        1,
+        2
+      ],
+      "library_solved": [
+        1,
+        1,
+        2
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [
+            3
+          ],
+          "reference_sizes": [
+            3
+          ],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [
+            2,
+            3
+          ],
+          "reference_sizes": [
+            2,
+            3
+          ],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [
+            2,
+            2,
+            3,
+            4
+          ],
+          "reference_sizes": [
+            2,
+            2,
+            3,
+            4
+          ],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        1,
+        2
+      ],
+      "random_solved": [
+        1,
+        1,
+        2
+      ],
+      "seed": 19,
+      "world": "structured"
+    },
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "library_solved": [
+        0,
+        0,
+        0
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [
+            3,
+            5
+          ],
+          "reference_sizes": [
+            3,
+            5
+          ],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "random_solved": [
+        0,
+        0,
+        0
+      ],
+      "seed": 29,
+      "world": "structured"
+    },
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "library_solved": [
+        0,
+        0,
+        0
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "random_solved": [
+        0,
+        0,
+        0
+      ],
+      "seed": 11,
+      "world": "arithmetic"
+    },
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "library_solved": [
+        0,
+        0,
+        0
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "random_solved": [
+        0,
+        0,
+        0
+      ],
+      "seed": 19,
+      "world": "arithmetic"
+    },
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "library_solved": [
+        0,
+        0,
+        0
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "random_solved": [
+        0,
+        0,
+        0
+      ],
+      "seed": 29,
+      "world": "arithmetic"
+    },
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        3,
+        3
+      ],
+      "library_solved": [
+        0,
+        0,
+        1
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [
+            2,
+            3,
+            6
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            6
+          ],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [
+            2,
+            3,
+            6
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            6
+          ],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [
+            2,
+            3,
+            6
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            6
+          ],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        3,
+        3
+      ],
+      "random_solved": [
+        0,
+        0,
+        0
+      ],
+      "seed": 11,
+      "world": "unstructured"
+    },
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "library_solved": [
+        0,
+        0,
+        0
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "random_solved": [
+        0,
+        0,
+        0
+      ],
+      "seed": 19,
+      "world": "unstructured"
+    },
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "library_solved": [
+        0,
+        0,
+        0
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [],
+          "reference_sizes": [],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [
+            2,
+            3
+          ],
+          "reference_sizes": [
+            2,
+            3
+          ],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        0,
+        0
+      ],
+      "random_solved": [
+        0,
+        0,
+        0
+      ],
+      "seed": 29,
+      "world": "unstructured"
+    },
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        4,
+        5
+      ],
+      "library_solved": [
+        0,
+        0,
+        0
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [
+            2,
+            3,
+            5,
+            6
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            5,
+            6
+          ],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        4,
+        5
+      ],
+      "random_solved": [
+        0,
+        0,
+        0
+      ],
+      "seed": 11,
+      "world": "curriculum"
+    },
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        4,
+        6
+      ],
+      "library_solved": [
+        0,
+        0,
+        0
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [
+            2,
+            3,
+            5,
+            6
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            5,
+            6
+          ],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [
+            2,
+            3,
+            5,
+            6,
+            8,
+            10
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            5,
+            6,
+            8,
+            10
+          ],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [
+            2,
+            3,
+            3,
+            5,
+            6,
+            8,
+            10
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            3,
+            5,
+            6,
+            8,
+            10
+          ],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        4,
+        6
+      ],
+      "random_solved": [
+        0,
+        0,
+        0
+      ],
+      "seed": 19,
+      "world": "curriculum"
+    },
+    {
+      "generations": 3,
+      "library_size_by_generation": [
+        0,
+        3,
+        4
+      ],
+      "library_solved": [
+        0,
+        0,
+        0
+      ],
+      "matched_count_and_size_multiset_all_generations": true,
+      "matched_shapes": [
+        {
+          "generation_added": 0,
+          "random_sizes": [
+            2,
+            3,
+            6
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            6
+          ],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 1,
+          "random_sizes": [
+            2,
+            3,
+            6,
+            7
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            6,
+            7
+          ],
+          "same_exact_shape_multiset": true
+        },
+        {
+          "generation_added": 2,
+          "random_sizes": [
+            2,
+            3,
+            6,
+            7,
+            8,
+            9
+          ],
+          "reference_sizes": [
+            2,
+            3,
+            6,
+            7,
+            8,
+            9
+          ],
+          "same_exact_shape_multiset": true
+        }
+      ],
+      "random_library_size_by_generation": [
+        0,
+        3,
+        4
+      ],
+      "random_solved": [
+        0,
+        0,
+        0
+      ],
+      "seed": 29,
+      "world": "curriculum"
+    }
+  ],
+  "schema": "logos.nc079.matched-control-audit/1",
+  "scope": "bounded real-search 3 seeds x 4 worlds: library/random-library only, small budget; NOT full NC-079 acceptance",
+  "source_sha256_at_run": {
+    "audit_matched_controls_d93446.py": "75a85fdbf6cdf4323d0fe5fdde092d618bc7725a2262dd0b45b29aa6de2adda3",
+    "run_compounding.py": "cd83c136cf64078d92b6bb541b3f218a21dc1bc85d8c1f566bb799289169b77d",
+    "run_curriculum.py": "7c2a64bf5b5b8fd146c285368baa564600c6e32c1b2ff7053c0fb4c36ae780a0",
+    "stack.py": "e2730e0dcb985b61a3fc2f5463db88f00d320e97cf530d75e8a3f5ce3cfababf",
+    "test_matched_library_controls_d93446.py": "d9d6b9781935a994c9f2ec4f4135c76573de6ba9403262d8966c8823df95c9d8",
+    "test_stack.py": "6fd114f5f46823d9516f05f88ae7fb316798a338ec0073689d8888fc986c44eb"
+  }
+}
