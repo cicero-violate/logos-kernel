@@ -1,0 +1,1093 @@
+{
+  "champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "environment": {
+    "cuda": false,
+    "python": "3.14.6",
+    "torch": "2.12.1"
+  },
+  "heldout_scope": "121 edge cross-products + 256 pseudorandom pairs per model, non-guaranteed disjoint from original NC004 pretraining; full 65536 zero predicate enumerated",
+  "models": {
+    "new_only_seed11": {
+      "arm": "new_only",
+      "checkpoint": "artifacts/NC-005/checkpoints/new_only_seed11_stage06.pt",
+      "checkpoint_sha256": "b759545ea11c0e7d015cac5f59a22826d46a2d2b218e5ebba8f6b9ebc7206c87",
+      "exact_local": {
+        "correct": 422,
+        "meaning_correct": 576,
+        "meaning_tested": 576,
+        "tested": 576
+      },
+      "exhaustive_zero_16bit": {
+        "correct": 65536,
+        "failures": [],
+        "scope": "complete 16bit register-zero predicate, not all ISA machine states",
+        "tested": 65536
+      },
+      "fresh_16bit_arithmetic": {
+        "ADD": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND1": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "OR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SAR": {
+          "carry": null,
+          "correct": 19,
+          "failures": [
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 1,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 3,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 255,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 32767,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 32769,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 65535,
+              "reference": 0
+            }
+          ],
+          "tested": 377
+        },
+        "SHL": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SHR": {
+          "carry": null,
+          "correct": 339,
+          "failures": [
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 1,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 3,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 255,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 32767,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 32769,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 65535,
+              "reference": 0
+            }
+          ],
+          "tested": 377
+        },
+        "SUB": {
+          "carry": {
+            "correct": 200,
+            "mode": "SUB final no-borrow bit; host collects carry",
+            "tested": 377
+          },
+          "correct": 19,
+          "failures": [
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 1,
+              "reference": 65535
+            },
+            {
+              "a": 0,
+              "actual": 2,
+              "b": 2,
+              "reference": 65534
+            },
+            {
+              "a": 0,
+              "actual": 3,
+              "b": 3,
+              "reference": 65533
+            },
+            {
+              "a": 0,
+              "actual": 255,
+              "b": 255,
+              "reference": 65281
+            },
+            {
+              "a": 0,
+              "actual": 256,
+              "b": 256,
+              "reference": 65280
+            },
+            {
+              "a": 0,
+              "actual": 32767,
+              "b": 32767,
+              "reference": 32769
+            }
+          ],
+          "tested": 377
+        },
+        "XOR": {
+          "carry": null,
+          "correct": 96,
+          "failures": [
+            {
+              "a": 2,
+              "actual": 3,
+              "b": 0,
+              "reference": 2
+            },
+            {
+              "a": 2,
+              "actual": 3,
+              "b": 2,
+              "reference": 0
+            },
+            {
+              "a": 2,
+              "actual": 3,
+              "b": 3,
+              "reference": 1
+            },
+            {
+              "a": 2,
+              "actual": 255,
+              "b": 255,
+              "reference": 253
+            },
+            {
+              "a": 2,
+              "actual": 259,
+              "b": 256,
+              "reference": 258
+            },
+            {
+              "a": 2,
+              "actual": 32767,
+              "b": 32767,
+              "reference": 32765
+            }
+          ],
+          "tested": 377
+        }
+      },
+      "meaning_intervention": {
+        "bits_changed": 325,
+        "intervened_correct": 195,
+        "mechanism": "rotation of ONLY predicted semantic distribution into numeric MLP",
+        "normal_correct": 422,
+        "tested": 576
+      },
+      "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "same_training_budget": 2250,
+      "seed": 11
+    },
+    "new_only_seed19": {
+      "arm": "new_only",
+      "checkpoint": "artifacts/NC-005/checkpoints/new_only_seed19_stage06.pt",
+      "checkpoint_sha256": "e2fc31786fa6179db1e2fd88db5b023c8fdd1f4beb518a83584df82f8738a921",
+      "exact_local": {
+        "correct": 361,
+        "meaning_correct": 576,
+        "meaning_tested": 576,
+        "tested": 576
+      },
+      "exhaustive_zero_16bit": {
+        "correct": 65536,
+        "failures": [],
+        "scope": "complete 16bit register-zero predicate, not all ISA machine states",
+        "tested": 65536
+      },
+      "fresh_16bit_arithmetic": {
+        "ADD": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND1": {
+          "carry": null,
+          "correct": 190,
+          "failures": [
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 1,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 3,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 255,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 32767,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 32769,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 65535,
+              "reference": 0
+            }
+          ],
+          "tested": 377
+        },
+        "OR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SAR": {
+          "carry": null,
+          "correct": 19,
+          "failures": [
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 1,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 3,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 255,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 32767,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 32769,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 65535,
+              "reference": 0
+            }
+          ],
+          "tested": 377
+        },
+        "SHL": {
+          "carry": null,
+          "correct": 120,
+          "failures": [
+            {
+              "a": 3,
+              "actual": 4,
+              "b": 2,
+              "reference": 6
+            },
+            {
+              "a": 3,
+              "actual": 4,
+              "b": 3,
+              "reference": 6
+            },
+            {
+              "a": 3,
+              "actual": 4,
+              "b": 255,
+              "reference": 6
+            },
+            {
+              "a": 3,
+              "actual": 4,
+              "b": 32767,
+              "reference": 6
+            },
+            {
+              "a": 3,
+              "actual": 4,
+              "b": 65534,
+              "reference": 6
+            },
+            {
+              "a": 3,
+              "actual": 4,
+              "b": 65535,
+              "reference": 6
+            }
+          ],
+          "tested": 377
+        },
+        "SHR": {
+          "carry": null,
+          "correct": 103,
+          "failures": [
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 1,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 3,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 255,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 32767,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 32769,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 65535,
+              "reference": 0
+            }
+          ],
+          "tested": 377
+        },
+        "SUB": {
+          "carry": {
+            "correct": 200,
+            "mode": "SUB final no-borrow bit; host collects carry",
+            "tested": 377
+          },
+          "correct": 19,
+          "failures": [
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 1,
+              "reference": 65535
+            },
+            {
+              "a": 0,
+              "actual": 2,
+              "b": 2,
+              "reference": 65534
+            },
+            {
+              "a": 0,
+              "actual": 3,
+              "b": 3,
+              "reference": 65533
+            },
+            {
+              "a": 0,
+              "actual": 255,
+              "b": 255,
+              "reference": 65281
+            },
+            {
+              "a": 0,
+              "actual": 256,
+              "b": 256,
+              "reference": 65280
+            },
+            {
+              "a": 0,
+              "actual": 32767,
+              "b": 32767,
+              "reference": 32769
+            }
+          ],
+          "tested": 377
+        },
+        "XOR": {
+          "carry": null,
+          "correct": 13,
+          "failures": [
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 0,
+              "reference": 1
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 2,
+              "reference": 3
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 3,
+              "reference": 2
+            },
+            {
+              "a": 1,
+              "actual": 252,
+              "b": 255,
+              "reference": 254
+            },
+            {
+              "a": 1,
+              "actual": 256,
+              "b": 256,
+              "reference": 257
+            },
+            {
+              "a": 1,
+              "actual": 32764,
+              "b": 32767,
+              "reference": 32766
+            }
+          ],
+          "tested": 377
+        }
+      },
+      "meaning_intervention": {
+        "bits_changed": 313,
+        "intervened_correct": 225,
+        "mechanism": "rotation of ONLY predicted semantic distribution into numeric MLP",
+        "normal_correct": 361,
+        "tested": 576
+      },
+      "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "same_training_budget": 2250,
+      "seed": 19
+    },
+    "new_only_seed29": {
+      "arm": "new_only",
+      "checkpoint": "artifacts/NC-005/checkpoints/new_only_seed29_stage06.pt",
+      "checkpoint_sha256": "17eb242ff784517c8b1206ddd665563ffa61a19719da0a50362d8f2df2453ef3",
+      "exact_local": {
+        "correct": 337,
+        "meaning_correct": 576,
+        "meaning_tested": 576,
+        "tested": 576
+      },
+      "exhaustive_zero_16bit": {
+        "correct": 65536,
+        "failures": [],
+        "scope": "complete 16bit register-zero predicate, not all ISA machine states",
+        "tested": 65536
+      },
+      "fresh_16bit_arithmetic": {
+        "ADD": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND1": {
+          "carry": null,
+          "correct": 52,
+          "failures": [
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 1,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 3,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 255,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 32767,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 32769,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 65535,
+              "reference": 0
+            }
+          ],
+          "tested": 377
+        },
+        "OR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SAR": {
+          "carry": null,
+          "correct": 31,
+          "failures": [
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 1,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 3,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 255,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 32767,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 32769,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 65535,
+              "reference": 0
+            }
+          ],
+          "tested": 377
+        },
+        "SHL": {
+          "carry": null,
+          "correct": 212,
+          "failures": [
+            {
+              "a": 3,
+              "actual": 7,
+              "b": 1,
+              "reference": 6
+            },
+            {
+              "a": 3,
+              "actual": 7,
+              "b": 3,
+              "reference": 6
+            },
+            {
+              "a": 3,
+              "actual": 7,
+              "b": 255,
+              "reference": 6
+            },
+            {
+              "a": 3,
+              "actual": 7,
+              "b": 32767,
+              "reference": 6
+            },
+            {
+              "a": 3,
+              "actual": 7,
+              "b": 32769,
+              "reference": 6
+            },
+            {
+              "a": 3,
+              "actual": 7,
+              "b": 65535,
+              "reference": 6
+            }
+          ],
+          "tested": 377
+        },
+        "SHR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SUB": {
+          "carry": {
+            "correct": 190,
+            "mode": "SUB final no-borrow bit; host collects carry",
+            "tested": 377
+          },
+          "correct": 19,
+          "failures": [
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 1,
+              "reference": 65535
+            },
+            {
+              "a": 0,
+              "actual": 2,
+              "b": 2,
+              "reference": 65534
+            },
+            {
+              "a": 0,
+              "actual": 3,
+              "b": 3,
+              "reference": 65533
+            },
+            {
+              "a": 0,
+              "actual": 255,
+              "b": 255,
+              "reference": 65281
+            },
+            {
+              "a": 0,
+              "actual": 256,
+              "b": 256,
+              "reference": 65280
+            },
+            {
+              "a": 0,
+              "actual": 32767,
+              "b": 32767,
+              "reference": 32769
+            }
+          ],
+          "tested": 377
+        },
+        "XOR": {
+          "carry": null,
+          "correct": 29,
+          "failures": [
+            {
+              "a": 0,
+              "actual": 0,
+              "b": 1,
+              "reference": 1
+            },
+            {
+              "a": 0,
+              "actual": 2,
+              "b": 3,
+              "reference": 3
+            },
+            {
+              "a": 0,
+              "actual": 254,
+              "b": 255,
+              "reference": 255
+            },
+            {
+              "a": 0,
+              "actual": 32766,
+              "b": 32767,
+              "reference": 32767
+            },
+            {
+              "a": 0,
+              "actual": 32768,
+              "b": 32769,
+              "reference": 32769
+            },
+            {
+              "a": 0,
+              "actual": 65534,
+              "b": 65535,
+              "reference": 65535
+            }
+          ],
+          "tested": 377
+        }
+      },
+      "meaning_intervention": {
+        "bits_changed": 314,
+        "intervened_correct": 159,
+        "mechanism": "rotation of ONLY predicted semantic distribution into numeric MLP",
+        "normal_correct": 337,
+        "tested": 576
+      },
+      "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "same_training_budget": 2250,
+      "seed": 29
+    },
+    "rehearsal_seed11": {
+      "arm": "rehearsal",
+      "checkpoint": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage06.pt",
+      "checkpoint_sha256": "8db88c54e0a9a209e335564b8ed76e5c9f8e9702a6c497b42f59940c0224f95b",
+      "exact_local": {
+        "correct": 576,
+        "meaning_correct": 576,
+        "meaning_tested": 576,
+        "tested": 576
+      },
+      "exhaustive_zero_16bit": {
+        "correct": 65536,
+        "failures": [],
+        "scope": "complete 16bit register-zero predicate, not all ISA machine states",
+        "tested": 65536
+      },
+      "fresh_16bit_arithmetic": {
+        "ADD": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND1": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "OR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SAR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SHL": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SHR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SUB": {
+          "carry": {
+            "correct": 377,
+            "mode": "SUB final no-borrow bit; host collects carry",
+            "tested": 377
+          },
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "XOR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        }
+      },
+      "meaning_intervention": {
+        "bits_changed": 376,
+        "intervened_correct": 200,
+        "mechanism": "rotation of ONLY predicted semantic distribution into numeric MLP",
+        "normal_correct": 576,
+        "tested": 576
+      },
+      "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "same_training_budget": 2250,
+      "seed": 11
+    },
+    "rehearsal_seed19": {
+      "arm": "rehearsal",
+      "checkpoint": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage06.pt",
+      "checkpoint_sha256": "f07e0db27c04b07ffc82bc2cd38dcf7f1437562b463cc21e01c97ec8cc779dd0",
+      "exact_local": {
+        "correct": 576,
+        "meaning_correct": 576,
+        "meaning_tested": 576,
+        "tested": 576
+      },
+      "exhaustive_zero_16bit": {
+        "correct": 65536,
+        "failures": [],
+        "scope": "complete 16bit register-zero predicate, not all ISA machine states",
+        "tested": 65536
+      },
+      "fresh_16bit_arithmetic": {
+        "ADD": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND1": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "OR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SAR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SHL": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SHR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SUB": {
+          "carry": {
+            "correct": 377,
+            "mode": "SUB final no-borrow bit; host collects carry",
+            "tested": 377
+          },
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "XOR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        }
+      },
+      "meaning_intervention": {
+        "bits_changed": 376,
+        "intervened_correct": 200,
+        "mechanism": "rotation of ONLY predicted semantic distribution into numeric MLP",
+        "normal_correct": 576,
+        "tested": 576
+      },
+      "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "same_training_budget": 2250,
+      "seed": 19
+    },
+    "rehearsal_seed29": {
+      "arm": "rehearsal",
+      "checkpoint": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage06.pt",
+      "checkpoint_sha256": "790aef99bf1cf4bd281b79aa5aa3bcabf24a27dd42cca5321154685fe6a5a613",
+      "exact_local": {
+        "correct": 576,
+        "meaning_correct": 576,
+        "meaning_tested": 576,
+        "tested": 576
+      },
+      "exhaustive_zero_16bit": {
+        "correct": 65536,
+        "failures": [],
+        "scope": "complete 16bit register-zero predicate, not all ISA machine states",
+        "tested": 65536
+      },
+      "fresh_16bit_arithmetic": {
+        "ADD": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND1": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "OR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SAR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SHL": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SHR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SUB": {
+          "carry": {
+            "correct": 377,
+            "mode": "SUB final no-borrow bit; host collects carry",
+            "tested": 377
+          },
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "XOR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        }
+      },
+      "meaning_intervention": {
+        "bits_changed": 376,
+        "intervened_correct": 200,
+        "mechanism": "rotation of ONLY predicted semantic distribution into numeric MLP",
+        "normal_correct": 576,
+        "tested": 576
+      },
+      "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "same_training_budget": 2250,
+      "seed": 29
+    }
+  },
+  "no_promotion": true,
+  "program_control_boundary": "16bit operations neural bit/carry predictions; register code and zero predicate checks separate, no learned general program planner",
+  "source": "full persisted NC005 stage06 neural and optimizer checkpoints, no retraining",
+  "status": "IMPLEMENTER_FROZEN_RELOAD",
+  "task": "NC-005"
+}
