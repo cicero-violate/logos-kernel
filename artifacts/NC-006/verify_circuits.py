@@ -144,6 +144,13 @@ def entry(model_sha,seed,arm,op,proof):
  }
 
 def run():
+ # Release is immutable: never silently overwrite a distinct verifier's
+ # accepted manifest with an implementer-generated PENDING proposal.
+ current=HERE/"library_manifest.json"
+ if current.exists():
+  previous=json.loads(current.read_text())
+  if previous.get("independent_verifier_status")=="PASS":
+   raise RuntimeError("NC006_VERIFIED_RELEASE_IMMUTABLE: replay in an isolated copy; never overwrite accepted manifest")
  torch.set_num_threads(1)
  manifest=json.loads((ROOT/"artifacts/NC-005/checkpoint_manifest.json").read_text())
  original=json.loads((ROOT/"artifacts/NC-000/inventory.json").read_text())

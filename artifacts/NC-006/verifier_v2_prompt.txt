@@ -1,0 +1,27 @@
+NC-006 SECOND REAL independent verification, after documented first audit FAIL.
+
+Your actual Codex thread.started runtime ID must differ from Event Lab implementer
+1db9edb983ff4df9933612e7c826e55f AND from prior failed Codex verifier
+01a1af0d-e74c-75a3-a746-ad494a358571.
+
+Audited corrected source commit: 611a18f081375fe3aae5040ad499dc4b126d6ec0
+Initial implementation commit ecdb2dc2004eb25b281bf9a1be95cdc9b11937d2 produced PASS numeric measurements but INDEPENDENT FAIL because proof_receipts.jsonl truncated the last 185 of 487 new_only local failures. Initial FAIL and its trace are committed as evidence and MUST remain FAIL.
+
+Task: independently verify correction AND rerun scientific checks; READ ONLY project/source/checkpoints/ledger. Temporary independent script under /tmp allowed; do not train or modify models. Harness saves only your final JSON/trace, not task PASS.
+
+Required:
+1. Read AGENTS.md, exact NC006 task, corrected files and documented first FAIL verdict. Fresh-process python dag.py validate, 19 DAG tests, 10 NC006 tests.
+2. Rehash all 60 original NC000 inventory files and all six frozen NC005 final packages; compare champion SHA and tracked RLT/ISA changes to source.
+3. Independently load all SIX frozen ExpandedISA MLP models via torch.load(weights_only=True), generate all 64 six-bit input features for 9 fixed ops per model and integer math oracle written independently; compare both neural output bits and 9 meaning labels. All three rehearsal seeds MUST have 576/576; new_only MUST have actual 438/576,428/576,375/576 and record precise failing examples. Do not use NC006 verifier's target generator as independent oracle.
+4. CRITICAL FIRST FAILURE CLOSURE: For each new_only arm/seed/op, form the COMPLETE SET of incorrect input six-tuples with independently observed prediction and independently computed expected two bits. Compare that set, not just count, to proof_receipts.jsonl failure_examples. Require sum of failures=487, stored=487, omitted=0; confirm exact per seed 138,148,201 and all 13 affected receipt entries complete. If any mismatch, verdict FAIL.
+5. Independently enumerate all 65,536 raw 16-bit inputs for learned ZERO on 3 rehearsal seeds, verify neural prediction, 1 positive/65535 negative; JZ/JNZ host choices and inverted prediction negative control. Optionally repeat new_only zero head.
+6. Check 60 neural candidate registry entries + 1 separate symbolic reference, 60 proof receipts, source SHA, version, no default/champion promotion, no candidate prematurely labeled independently verified. Rehearsal 27 local +3 ZERO candidate qualified BOUNDED; new_only failures excluded. The JZ branch target/PC/HALT remain HOST and ZERO16 training is not neural program generation.
+7. Source verifier must not substitute symbolic or lookup oracle into neural output. All local 64 feature combinations were training-seen, observed finite-exhaustive CPU inference only, not formal proof of arbitrary machine states, generalized learned algorithms or original RLT Transformer.
+8. Attest exact corrected commit and all files SHA, source/checkpoint hashes, commands, counts, evidence failure trace completeness and limitations. Report contradictory or missing evidence as HOLD/FAIL, not PASS.
+
+FINAL: a standalone JSON object ONLY with keys
+task, verdict (PASS|HOLD|FAIL), verifier_type, audited_commit, commands,
+independent_checks, corrected_failure_trace_completeness, negative_controls,
+source_integrity, neural_host_boundary, proof_scope, limitations, failures.
+
+Do not create independent_receipt.json, accepted_library.json, or modify task DAG yourself.

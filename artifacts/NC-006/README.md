@@ -84,3 +84,43 @@ finite local configuration and adds a hard completeness assertion in tests.
 The original failed verifier output and trace are retained as evidence, NOT
 accepted as a PASS. A second distinct real agent must verify the corrected
 commit before any bounded library release.
+
+## Independent bounded release — implemented after verifier PASS
+
+The first independent Codex verifier returned FAIL against the original
+implementation because 185 of 487 new-only counterexamples were omitted.
+This FAIL is permanently retained in codex_verifier_final.json and
+codex_verifier_trace.jsonl; it has not been converted into a PASS.
+
+The implementer corrected all failure trace omissions: 487/487 preserved.
+A second distinct real Codex verifier independently reloaded all six frozen
+models, checked each failure set and returned PASS against commit 611a18f.
+Its identity comes from the actual codex_verifier_v2_trace.jsonl thread.started
+runtime event, not a fabricated worker ID.
+
+- codex_verifier_v2_final.json / trace.jsonl: raw independent PASS
+- independent_receipt.json: implementer-assembled hash-bound provenance
+- library_manifest.json: independently verified bounded release, not champion
+- accepted_library.json: only 30 rehearsal neural candidates (27 one-bit
+  primitives + 3 16-bit is-zero predicates)
+- 30 new-only controls remain excluded; 487 failures remain visible
+- The NC-001 symbolic reference is separately marked and never called neural.
+
+Proof scope: each one-bit primitive passes all 64 locally training-seen
+six-bit feature combinations. Each accepted is-zero head passes all 65,536
+raw 16-bit values. Host-controlled JZ/JNZ based on that zero head also pass
+65,536 inputs per seed, but opcode selection, targets, PC, HALT, bit indexing,
+register wiring and the fixed multiplication ROM are NOT learned.
+
+Only a separate Codex closure verifier may approve the later committed
+closure state. Then the implementer records DAG PASS and pushes origin/main
+with a normal non-forced fast-forward push.
+
+The implementation now refuses to overwrite an independently verified
+library_manifest.json: the verify_circuits.py generator raises
+NC006_VERIFIED_RELEASE_IMMUTABLE. Reproduce raw generation in an isolated
+copy, not on top of the accepted release.
+
+Dependencies: Python 3, Git, PyTorch, frozen NC005 ExpandedISA checkpoint
+packages (5,981-parameter MLP), NC001 canonical contract and NC000 champion
+inventory. No original RLT Transformer retraining or promotion is involved.

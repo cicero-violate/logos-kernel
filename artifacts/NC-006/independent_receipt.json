@@ -1,0 +1,189 @@
+{
+  "baseline_inventory_checked": 60,
+  "corrective_proof": {
+    "exact_sets_checked": true,
+    "failing_receipts": 23,
+    "omitted": 0,
+    "original_total_failures": 487,
+    "preserved_failures": 487
+  },
+  "distinct_codex_verifier": "codex-cli:01a1af12-4331-7a43-9fc9-a61b050697dc",
+  "evidence": {
+    "branch_conformance.json": {
+      "bytes": 3625,
+      "path": "artifacts/NC-006/branch_conformance.json",
+      "sha256": "f21b6e33fdd59de0a7ea73887b0de7ca069683f11c2134c5f57e93393bdefb99"
+    },
+    "circuits.jsonl": {
+      "bytes": 62956,
+      "path": "artifacts/NC-006/circuits.jsonl",
+      "sha256": "9fabb7d2f3f4ed52523172fe3e32f46e30dfda5f7d84a79d28f431ce248c92f1"
+    },
+    "codex_verifier_final.json": {
+      "bytes": 8232,
+      "path": "artifacts/NC-006/codex_verifier_final.json",
+      "sha256": "3c9d2442adba7b6cc829acc9d5d91bf3e0efc56b6127c4e294b009d6f0173515"
+    },
+    "codex_verifier_trace.jsonl": {
+      "bytes": 171955,
+      "path": "artifacts/NC-006/codex_verifier_trace.jsonl",
+      "sha256": "933d54b95c9220eda8bce0f9ecf04ddd4d1c69bc7cd622303254d9e56336030f"
+    },
+    "codex_verifier_v2_final.json": {
+      "bytes": 9755,
+      "path": "artifacts/NC-006/codex_verifier_v2_final.json",
+      "sha256": "feeb4c082a09b6cae231e5d9fb38e57fee80aa16ab6610a5ea4c096b8b851070"
+    },
+    "codex_verifier_v2_trace.jsonl": {
+      "bytes": 151669,
+      "path": "artifacts/NC-006/codex_verifier_v2_trace.jsonl",
+      "sha256": "5b23d47a6b68286d2e1b5e0cb41fd6cbc8f7d13ffd5ea274c73ff78ea6ff9cc2"
+    },
+    "proof_receipts.jsonl": {
+      "bytes": 78581,
+      "path": "artifacts/NC-006/proof_receipts.jsonl",
+      "sha256": "62539e01f43a5fcb6488a28361bf1e566faad21aee51fae4b139b454da2bcd82"
+    },
+    "verifier_prompt.txt": {
+      "bytes": 4046,
+      "path": "artifacts/NC-006/verifier_prompt.txt",
+      "sha256": "136680bfd9b038b07951d163dc06dce4aff5915bfa78de6c43faf033fc916f48"
+    },
+    "verifier_v2_prompt.txt": {
+      "bytes": 3610,
+      "path": "artifacts/NC-006/verifier_v2_prompt.txt",
+      "sha256": "46aef53ef7412454921f9982700f9ca3f8de1944fe03aff10cac0a532d2114b4"
+    }
+  },
+  "identity_source": "Codex CLI thread.started records in original trace files",
+  "implementation_audited_commit": "611a18f081375fe3aae5040ad499dc4b126d6ec0",
+  "implementer_runtime_session": "1db9edb983ff4df9933612e7c826e55f",
+  "independent_result_details": {
+    "dag_tests": "19/19 PASS",
+    "independent_oracle": {
+      "checkpoint_loading": "Six clean torch.load(weights_only=True) loads into an independently declared 5981-parameter ExpandedISA-compatible topology",
+      "new_only": {
+        "seed11": "438/576 outputs; 9/9 meaning labels; 138 failures",
+        "seed19": "428/576 outputs; 9/9 meaning labels; 148 failures",
+        "seed29": "375/576 outputs; 9/9 meaning labels; 201 failures"
+      },
+      "output_sha256": "d86c8dc1ffc72d354a2364b0183307c6b07f3a5b108323302b5a6ba5891e6cbc",
+      "rehearsal": {
+        "seed11": "576/576 outputs; 9/9 meaning labels",
+        "seed19": "576/576 outputs; 9/9 meaning labels",
+        "seed29": "576/576 outputs; 9/9 meaning labels"
+      },
+      "script": "/tmp/nc006_second.py",
+      "script_sha256": "ee66163c939f3dbbce00c515a900efb1b09a25e9edc3969155b5b67faa48a56e",
+      "target_generator_reused": false
+    },
+    "ledger": {
+      "events": 53,
+      "head_sha256": "d95d814266b0ce9f9cf723b4ac82fbd6b97c1ed8a3701574385f4d815de30c63",
+      "nodes": 29,
+      "result": "PASS"
+    },
+    "nc006_tests": "10/10 PASS",
+    "prior_audit": {
+      "artifact_sha256": "3c9d2442adba7b6cc829acc9d5d91bf3e0efc56b6127c4e294b009d6f0173515",
+      "audited_commit": "ecdb2dc2004eb25b281bf9a1be95cdc9b11937d2",
+      "converted_to_pass": false,
+      "retained_as_failure": true,
+      "verdict": "FAIL"
+    },
+    "registry": {
+      "default_or_champion_promotion": false,
+      "entries": 61,
+      "neural_candidates": 60,
+      "new_only_failed_candidates_rejected": true,
+      "premature_independently_verified_labels": 0,
+      "proof_receipts": 60,
+      "receipt_ids_match_neural_candidates": true,
+      "rehearsal_local_bounded_candidates": 27,
+      "rehearsal_zero_bounded_candidates": 3,
+      "symbolic_references": 1,
+      "unique_ids": 61,
+      "version": "logos.neural-circuit/1"
+    }
+  },
+  "independent_source_oracle": "Codex independent fresh torch.load/ExpandedISA model plus independently authored local oracle",
+  "limits": [
+    "All local 64-feature combinations were training-seen, so the result is not evidence of unseen-feature generalization.",
+    "Finite local truth-table coverage does not establish arbitrary register, control-flow, or whole-program correctness.",
+    "The JZ/JNZ target, PC update, opcode selection and HALT remain host mechanisms.",
+    "Executing a supplied multiplication ROM is not neural invention of multiplication.",
+    "The verified models are ExpandedISA MLP checkpoints, not the selected RLT Transformer.",
+    "New-only arithmetic forgetting remains present and its failing candidates remain excluded.",
+    "This verdict supports only the declared bounded candidate status and does not promote a default or champion."
+  ],
+  "neural_host_boundary": {
+    "architecture": "5981-parameter MLP, not the original RLT Transformer",
+    "host": [
+      "Opcode selection",
+      "Bit sequencing",
+      "Carry propagation",
+      "Register routing",
+      "JZ/JNZ application and inversion",
+      "Branch target",
+      "Program-counter update",
+      "HALT",
+      "Supplied multiplication ROM"
+    ],
+    "neural": [
+      "Frozen ExpandedISA local primitive logits",
+      "Nine operation-meaning labels",
+      "Frozen 16-bit ZERO predicate"
+    ],
+    "symbolic_or_lookup_substituted_into_neural_output": false,
+    "zero16_is_neural_program_generation": false
+  },
+  "no_training_in_task": true,
+  "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "original_source_sha256": {
+    "NC000_inventory": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+    "NC001_canonical_isa": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "NC005_checkpoint_manifest": "b721b1a6c3a7d39fc02d0b3c787c4f559a8ccb94d4af249df57c7a0f4afe4624",
+    "NC005_curriculum": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d",
+    "NC005_independent_receipt": "b9fc3107a1838b2ce0fbebc6325a3d03af05fd6c4cfb277b101a35add58535fe",
+    "original_RLT_champion": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+  },
+  "prior_codex_failed_verifier": "codex-cli:01a1af0d-e74c-75a3-a746-ad494a358571",
+  "prior_fail_retained": {
+    "audited_commit": "ecdb2dc2004eb25b281bf9a1be95cdc9b11937d2",
+    "not_approved": true,
+    "omitted": 185,
+    "reason": "incomplete new_only failure traces",
+    "verdict": "FAIL"
+  },
+  "promotion_authorized": false,
+  "proof_strength": {
+    "arbitrary_machine_state_proof": false,
+    "branch": "Frozen neural ZERO predicate followed by host-controlled JZ/JNZ choice",
+    "champion_promotion_authorized": false,
+    "formal_weight_proof": false,
+    "generalized_algorithm_proof": false,
+    "local": "Observed finite-exhaustive CPU inference over all 64 six-bit feature combinations for each fixed operation and checkpoint",
+    "local_patterns_training_seen": true,
+    "original_rlt_transformer_proof": false,
+    "zero": "Observed finite-exhaustive CPU inference over all 65536 raw unsigned 16-bit inputs"
+  },
+  "schema": 1,
+  "source_repository_tracked_changes": {
+    "rlt": [],
+    "standalone_isa": []
+  },
+  "task": "NC-006",
+  "verdict": "PASS",
+  "verified_scope": {
+    "16_bit_neural_zero_per_rehearsal_seed": "65536/65536 x 3 seeds, finite observed",
+    "9_neural_local_ops_per_rehearsal_seed": "576/576 x 3 seeds; 64 training-seen features per op",
+    "host_JZ_and_JNZ_per_seed": "65536/65536 x 3 seeds; target/PC/HALT supplied by host",
+    "qualification": "30 bounded rehearsal circuits, excludes all new_only and symbolic from neural acceptance",
+    "unqualified_new_only_counts": {
+      "seed11": "438/576",
+      "seed19": "428/576",
+      "seed29": "375/576"
+    }
+  },
+  "verifier_changed_implementation": false
+}

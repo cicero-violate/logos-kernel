@@ -1,15 +1,30 @@
 {
+  "accepted_neural_count": 30,
   "arms": [
     "rehearsal",
     "new_only"
   ],
   "checkpoint_manifest_sha256": "b721b1a6c3a7d39fc02d0b3c787c4f559a8ccb94d4af249df57c7a0f4afe4624",
   "checkpoint_weights_modified": false,
-  "independent_verifier_status": "PENDING",
+  "excluded_neural_count": 30,
+  "independent_verification": {
+    "accepted_library": "artifacts/NC-006/accepted_library.json",
+    "accepted_library_sha256": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+    "audited_commit": "611a18f081375fe3aae5040ad499dc4b126d6ec0",
+    "corrected_failure_trace_omissions": 0,
+    "evidence_source_trace": "artifacts/NC-006/codex_verifier_v2_trace.jsonl",
+    "first_verdict": "FAIL (retained)",
+    "independent_receipt": "artifacts/NC-006/independent_receipt.json",
+    "independent_receipt_sha256": "cc6a3135196b4a2891dc321c2640550d6f065d473c61791412b5e3ab08d0dde2",
+    "prior_failure_trace_omissions": 185,
+    "second_verdict": "PASS",
+    "verifier": "codex-cli:01a1af12-4331-7a43-9fc9-a61b050697dc"
+  },
+  "independent_verifier_status": "PASS",
   "neural_circuits_count": 60,
   "neural_local_qualified_rehearsal": 27,
   "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
-  "rollback": "No weights written; original champion selection unchanged; registry remains unpromoted without distinct verifier",
+  "rollback": "No frozen weights changed. Original unified champion selection unchanged. Acceptance is scoped to 30 neural rehearsal candidates, not default champion promotion.",
   "scope_boundaries": [
     "64 feature configurations for each local neural primitive, all locally training-seen",
     "16bit learned is_zero predicate over 65536 exact register inputs",
@@ -176,7 +191,7 @@
       "zero_tested": 65536
     }
   },
-  "status": "IMPLEMENTER_PROPOSED_NOT_INDEPENDENTLY_VERIFIED",
+  "status": "INDEPENDENT_BOUNDED_VERIFIED_NOT_PROMOTED",
   "symbolic_references_count": 1,
   "task": "NC-006",
   "version": "logos.neural-circuit/1",

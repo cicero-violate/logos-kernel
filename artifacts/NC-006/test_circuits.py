@@ -110,14 +110,73 @@ class CircuitRegistryTests(unittest.TestCase):
   if not p.is_file():self.skipTest("measurements not complete")
   m=json.loads(p.read_text())
   self.assertEqual(m["task"],"NC-006")
-  self.assertEqual(m["status"],"IMPLEMENTER_PROPOSED_NOT_INDEPENDENTLY_VERIFIED")
+  self.assertEqual(m["status"],"INDEPENDENT_BOUNDED_VERIFIED_NOT_PROMOTED")
   self.assertEqual(m["neural_circuits_count"],60)
   self.assertEqual(m["neural_local_qualified_rehearsal"],27)
   self.assertEqual(m["zero_qualified_rehearsal"],3)
   self.assertFalse(m["checkpoint_weights_modified"])
-  self.assertEqual(m["independent_verifier_status"],"PENDING")
+  self.assertEqual(m["independent_verifier_status"],"PASS")
   for k,digest in m["source_sha256"].items():
    self.assertEqual(v.sha(m["source_files"][k]),digest)
+
+class IndependentReleaseTests(unittest.TestCase):
+ def test_authenticated_verifier_and_two_stage_failure_history(self):
+  import hashlib
+  base=v.HERE
+  release=json.loads((base/"independent_receipt.json").read_text())
+  audit1=json.loads((base/"codex_verifier_final.json").read_text())
+  audit2=json.loads((base/"codex_verifier_v2_final.json").read_text())
+  trace1=[json.loads(z) for z in (base/"codex_verifier_trace.jsonl").read_text().splitlines() if z.strip()]
+  trace2=[json.loads(z) for z in (base/"codex_verifier_v2_trace.jsonl").read_text().splitlines() if z.strip()]
+  id1=next(x["thread_id"] for x in trace1 if x.get("type")=="thread.started")
+  id2=next(x["thread_id"] for x in trace2 if x.get("type")=="thread.started")
+  self.assertNotEqual(id1,id2)
+  self.assertEqual(release["prior_codex_failed_verifier"],"codex-cli:"+id1)
+  self.assertEqual(release["distinct_codex_verifier"],"codex-cli:"+id2)
+  self.assertNotEqual(release["implementer_runtime_session"],"codex-cli:"+id2)
+  self.assertEqual(audit1["verdict"],"FAIL")
+  self.assertEqual(audit2["verdict"],"PASS")
+  self.assertEqual(release["prior_fail_retained"]["omitted"],185)
+  self.assertEqual(release["corrective_proof"]["preserved_failures"],487)
+  self.assertEqual(release["corrective_proof"]["omitted"],0)
+  self.assertEqual(release["implementation_audited_commit"],audit2["audited_commit"])
+  for item in release["evidence"].values():
+   path=v.ROOT/item["path"]
+   self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),item["sha256"])
+
+ def test_only_bounded_neural_rehearsal_circuits_accepted(self):
+  import hashlib
+  base=v.HERE
+  accepted=json.loads((base/"accepted_library.json").read_text())
+  manifest=json.loads((base/"library_manifest.json").read_text())
+  source=[json.loads(z) for z in (base/"circuits.jsonl").read_text().splitlines() if z.strip()]
+  receipts={z["circuit_id"]:z for z in rows("proof_receipts.jsonl")}
+  eligible={z["id"]:z for z in source if z.get("arm")=="rehearsal" and z.get("qualified_bounded")}
+  self.assertEqual(len(eligible),30)
+  self.assertEqual(len(accepted["accepted_neural"]),30)
+  self.assertEqual(accepted["excluded_neural_count"],30)
+  self.assertFalse(accepted["champion_promoted"])
+  self.assertEqual(accepted["state"],"BOUNDED_VERIFIED_NO_CHAMPION_PROMOTION")
+  self.assertEqual({z["id"] for z in accepted["accepted_neural"]},set(eligible))
+  self.assertTrue(all(z["arm"]=="rehearsal" and z["implementation_mode"]=="neural_inference"
+                      for z in accepted["accepted_neural"]))
+  self.assertEqual(manifest["accepted_neural_count"],30)
+  self.assertEqual(manifest["excluded_neural_count"],30)
+  self.assertEqual(manifest["independent_verification"]["accepted_library_sha256"],
+      hashlib.sha256((base/"accepted_library.json").read_bytes()).hexdigest())
+  for z in accepted["accepted_neural"]:
+   self.assertEqual(z["checkpoint_sha256"],eligible[z["id"]]["checkpoint_sha256"])
+   proof=receipts[z["id"]]
+   self.assertEqual(proof["measurement"]["correct"],proof["measurement"]["tested"])
+   self.assertEqual(proof["proof_status"],"FINITE_EXHAUSTIVE_OBSERVED")
+
+ def test_full_negative_failure_sets_preserved(self):
+  proof=rows("proof_receipts.jsonl")
+  fails=[r for r in proof if r["operation"]!="ZERO16" and r["measurement"]["failure_count"]]
+  self.assertEqual(len(fails),23)
+  self.assertEqual(sum(z["measurement"]["failure_count"] for z in fails),487)
+  self.assertEqual(sum(len(z["measurement"]["failure_examples"]) for z in fails),487)
+  self.assertEqual(sorted({z["circuit_id"].split(":")[0] for z in fails}),["new_only"])
 
 class BranchHostBoundaryTests(unittest.TestCase):
  def test_exhaustive_jz_jnz_neural_predicate_host_branch(self):
