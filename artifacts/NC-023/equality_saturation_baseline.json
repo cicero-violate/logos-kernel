@@ -1,0 +1,240 @@
+{
+  "analysis": {
+    "heldout_saturation_vs_greedy": "No held-out incremental static DAG operation win if saturation_better_than_greedy=0; equal or worse is not a discovery advantage",
+    "runtime_cost_limit": "Python wall timings include interpreter, proof checks and search; do not identify full CPU share under host contention."
+  },
+  "cost_model": {
+    "dag_ops": "unique operator AST subexpressions (ideal CSE graph)",
+    "proposer_cpu": "not directly measured; benchmark runner uses Python full CPU",
+    "python_ns_per_eval": "sequential AST interpreter; not a CPU architecture-independent latency model",
+    "tree_ops": "operator occurrences without sharing"
+  },
+  "input_dataset_sha256": "8a944ada4b2ab323433f1a7f10e63fb2244822d318cda89966ab164eed0328bd",
+  "limitations": [
+    "No neural proposal, learning or stochastic algorithm invention",
+    "Saturation is a bounded equivalence-class graph, not a congruence-closure e-graph implementation",
+    "Equality proof uses NC-020 exact oracle; independent reviewer must use a separately authored verifier",
+    "Finite 3/4/5-bit proof scope; no IEEE float rewrite; no stateful ISA effects",
+    "No proof of global minimum or independent measured hardware speedup",
+    "Benchmark families authored with deterministic source grammar; historical pretraining independence unknown",
+    "A lower static operator count is not sufficient evidence of end-to-end advantage"
+  ],
+  "nontrivial_improvements": [
+    {
+      "after": 3,
+      "before": 4,
+      "family": "int_sum_commute",
+      "greedy": 3,
+      "id": "a8b23e49ab81f087926a969d",
+      "split": "train"
+    },
+    {
+      "after": 5,
+      "before": 6,
+      "family": "int_sum_commute",
+      "greedy": 5,
+      "id": "3eca99e54c68547133feaa6e",
+      "split": "train"
+    },
+    {
+      "after": 3,
+      "before": 4,
+      "family": "int_sum_commute",
+      "greedy": 3,
+      "id": "2f07bb1eb5cbd0cbcaf74b98",
+      "split": "train"
+    },
+    {
+      "after": 5,
+      "before": 6,
+      "family": "int_sum_commute",
+      "greedy": 5,
+      "id": "c54b51916a96d34f19c90cad",
+      "split": "train"
+    },
+    {
+      "after": 3,
+      "before": 4,
+      "family": "int_sum_commute",
+      "greedy": 3,
+      "id": "b7a1d0f3a385954c2fad7726",
+      "split": "train"
+    },
+    {
+      "after": 5,
+      "before": 6,
+      "family": "int_sum_commute",
+      "greedy": 5,
+      "id": "fb44f341b0deddcf7676f2d4",
+      "split": "train"
+    },
+    {
+      "after": 4,
+      "before": 5,
+      "family": "int_add_associate",
+      "greedy": 4,
+      "id": "faa5a1c4ba849dbc4dc69a52",
+      "split": "train"
+    },
+    {
+      "after": 6,
+      "before": 7,
+      "family": "int_add_associate",
+      "greedy": 6,
+      "id": "f2158d78043a4c4fae25170a",
+      "split": "train"
+    },
+    {
+      "after": 4,
+      "before": 5,
+      "family": "int_add_associate",
+      "greedy": 4,
+      "id": "5651dddb9b54837f68cc37d9",
+      "split": "train"
+    },
+    {
+      "after": 6,
+      "before": 7,
+      "family": "int_add_associate",
+      "greedy": 6,
+      "id": "9558fd848881dd52a65b07ee",
+      "split": "train"
+    },
+    {
+      "after": 4,
+      "before": 5,
+      "family": "int_add_associate",
+      "greedy": 4,
+      "id": "75ea9466e5f319860e627803",
+      "split": "train"
+    },
+    {
+      "after": 6,
+      "before": 7,
+      "family": "int_add_associate",
+      "greedy": 6,
+      "id": "75354fc0de31c4d87a3177ba",
+      "split": "train"
+    },
+    {
+      "after": 3,
+      "before": 4,
+      "family": "int_distribute",
+      "greedy": 3,
+      "id": "642bc8719b04df75d5334b90",
+      "split": "train"
+    },
+    {
+      "after": 5,
+      "before": 6,
+      "family": "int_distribute",
+      "greedy": 5,
+      "id": "51295884119933c5d404ee47",
+      "split": "train"
+    },
+    {
+      "after": 3,
+      "before": 4,
+      "family": "int_distribute",
+      "greedy": 3,
+      "id": "a9cf8039494cb48c2fd85abb",
+      "split": "train"
+    },
+    {
+      "after": 5,
+      "before": 6,
+      "family": "int_distribute",
+      "greedy": 5,
+      "id": "b59731ed9124ad70e0e6cc7b",
+      "split": "train"
+    },
+    {
+      "after": 3,
+      "before": 4,
+      "family": "int_distribute",
+      "greedy": 3,
+      "id": "7536fdc46047b8ce443a3b6f",
+      "split": "train"
+    },
+    {
+      "after": 5,
+      "before": 6,
+      "family": "int_distribute",
+      "greedy": 5,
+      "id": "6d74dee6af477001fc4943b2",
+      "split": "train"
+    },
+    {
+      "after": 1,
+      "before": 2,
+      "family": "int_add_zero",
+      "greedy": 1,
+      "id": "625f85ccaca6eb1d73b53222",
+      "split": "train"
+    },
+    {
+      "after": 2,
+      "before": 4,
+      "family": "int_add_zero",
+      "greedy": 1,
+      "id": "b9b73cfa37a59eb6a026574d",
+      "split": "train"
+    }
+  ],
+  "search_policy": {
+    "greedy": "bounded first-improving local rewrite",
+    "max_equivalent_states": 32,
+    "max_subtree_rewrite_depth": 2,
+    "max_tree_nodes": 76,
+    "saturation": "bounded BFS of verified equal forms"
+  },
+  "source_sha256": {
+    "benchmark": "0c254d70d1319a0f9406fa900b9879289222ed65a77083cfedaff5e5f6802485",
+    "dataset": "d101fc2e9aaf36a698474fed8aa80696a0b869a2686eebe0e405c2e498490c3c",
+    "isa": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "optimizer": "078cf38ceea8306e2e238b5149d0e48a73f55e2d5f7cba1ee0ac3eeef2095011",
+    "runner": "13bc7a35463b8a60cd71c6164c1fb402eaebeb118b730530d7d54e36f62add57"
+  },
+  "splits": {
+    "test": {
+      "equivalent": 45,
+      "greedy_improved": 25,
+      "greedy_search_wall_ns": 722367810,
+      "greedy_total_dag_ops": 158,
+      "rejected_non_equivalent": 49,
+      "saturation_improved": 25,
+      "saturation_search_wall_ns": 1693391406,
+      "saturation_total_dag_ops": 158,
+      "source_total_dag_ops": 198,
+      "total": 94
+    },
+    "train": {
+      "equivalent": 54,
+      "greedy_improved": 42,
+      "greedy_search_wall_ns": 606883743,
+      "greedy_total_dag_ops": 133,
+      "rejected_non_equivalent": 54,
+      "saturation_improved": 42,
+      "saturation_search_wall_ns": 1378734123,
+      "saturation_total_dag_ops": 134,
+      "source_total_dag_ops": 198,
+      "total": 108
+    },
+    "validation": {
+      "equivalent": 36,
+      "greedy_improved": 24,
+      "greedy_search_wall_ns": 703725483,
+      "greedy_total_dag_ops": 78,
+      "rejected_non_equivalent": 36,
+      "saturation_improved": 24,
+      "saturation_search_wall_ns": 1258653332,
+      "saturation_total_dag_ops": 78,
+      "source_total_dag_ops": 126,
+      "total": 72
+    }
+  },
+  "status": "CANDIDATE_ONLY_NEEDS_INDEPENDENT_REVIEW",
+  "total_cases": 274,
+  "total_runner_wall_ns": 7229209953,
+  "version": "logos.nc023.symbolic/1"
+}

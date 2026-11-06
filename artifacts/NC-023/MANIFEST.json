@@ -1,0 +1,89 @@
+{
+  "benchmark": {
+    "heldout_dag_ops_after": 158,
+    "heldout_dag_ops_before": 198,
+    "heldout_equivalent_improved": 25,
+    "heldout_equivalent_total": 45,
+    "heldout_greedy_ops": 158,
+    "non_equivalent_cases_rejected": 139,
+    "per_split": {
+      "test": {
+        "equivalent": 45,
+        "greedy_improved": 25,
+        "greedy_search_wall_ns": 722367810,
+        "greedy_total_dag_ops": 158,
+        "rejected_non_equivalent": 49,
+        "saturation_improved": 25,
+        "saturation_search_wall_ns": 1693391406,
+        "saturation_total_dag_ops": 158,
+        "source_total_dag_ops": 198,
+        "total": 94
+      },
+      "train": {
+        "equivalent": 54,
+        "greedy_improved": 42,
+        "greedy_search_wall_ns": 606883743,
+        "greedy_total_dag_ops": 133,
+        "rejected_non_equivalent": 54,
+        "saturation_improved": 42,
+        "saturation_search_wall_ns": 1378734123,
+        "saturation_total_dag_ops": 134,
+        "source_total_dag_ops": 198,
+        "total": 108
+      },
+      "validation": {
+        "equivalent": 36,
+        "greedy_improved": 24,
+        "greedy_search_wall_ns": 703725483,
+        "greedy_total_dag_ops": 78,
+        "rejected_non_equivalent": 36,
+        "saturation_improved": 24,
+        "saturation_search_wall_ns": 1258653332,
+        "saturation_total_dag_ops": 78,
+        "source_total_dag_ops": 126,
+        "total": 72
+      }
+    },
+    "total_cases": 274
+  },
+  "candidate_role": "IMPLEMENTER",
+  "dataset_sha256": "8a944ada4b2ab323433f1a7f10e63fb2244822d318cda89966ab164eed0328bd",
+  "external_network_used": false,
+  "immutable_champion_modified": false,
+  "independent_reviewer_output": "artifacts/NC-023/independent_verification.json (not authored by implementer)",
+  "limits": [
+    "Source correctness internally checked using NC-020 exact oracle, not independent external certification",
+    "Bounded polynomial exact integer identities + exhaustively checked 3/4/5-bit bitvectors; no floating, flags, machine state",
+    "CSE cost is ideal theoretical DAG operation count, not actual hardware runtime; static improvements alone are not intelligence",
+    "Saturation matches greedy on heldout static DAG operations, while search effort is higher",
+    "No machine-generated novel program, no changed trained model weights, no new truth claims, no AGI",
+    "Do not count candidate attestations as independent verifier evidence"
+  ],
+  "method": "bounded verified equivalence-class graph, not complete e-graph; handwritten rules, no neural training",
+  "owner": "turn-e8a8e4289e7d4647bb84d3a60e9f083f",
+  "schema": "logos-kernel-nc023-candidate-v1",
+  "source_and_evidence_sha256": {
+    "artifacts/NC-023/README.md": "7abe03a1a623cab791489467d84d1a17e72a167fa83aff4c853443e70a3c2552",
+    "artifacts/NC-023/equality_saturation_baseline.json": "4d5de992b6473e90b5d086f307964c911d5699db3dd3c80fd1b90a7a56b50d19",
+    "artifacts/NC-023/equivalence_receipts.jsonl": "dc30ff854065c4c56689861ba592543e67a9d01e47978d1f3c2b283215397cbb",
+    "artifacts/NC-023/rewrite_rules.json": "76c16c4851e57d4f48b6297533d671a90835381b9332a7d0e106890225420b3e",
+    "artifacts/NC-023/run_baseline.py": "13bc7a35463b8a60cd71c6164c1fb402eaebeb118b730530d7d54e36f62add57",
+    "artifacts/NC-023/symbolic_search.py": "078cf38ceea8306e2e238b5149d0e48a73f55e2d5f7cba1ee0ac3eeef2095011",
+    "artifacts/NC-023/test_symbolic_search.py": "373c6f708a28beb743373600966eddf1d6a99f33988247231c42a4fc2e26b57d"
+  },
+  "status": "REQUEST_INDEPENDENT_REVIEW",
+  "task": "NC-023",
+  "tests": [
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s artifacts/NC-023 -p test_symbolic_search.py -q",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-023/run_baseline.py",
+    "python dag.py validate",
+    "python -m unittest -q test_dag test_pull"
+  ],
+  "upstream_source_sha256": {
+    "benchmark": "0c254d70d1319a0f9406fa900b9879289222ed65a77083cfedaff5e5f6802485",
+    "dataset": "d101fc2e9aaf36a698474fed8aa80696a0b869a2686eebe0e405c2e498490c3c",
+    "isa": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "optimizer": "078cf38ceea8306e2e238b5149d0e48a73f55e2d5f7cba1ee0ac3eeef2095011",
+    "runner": "13bc7a35463b8a60cd71c6164c1fb402eaebeb118b730530d7d54e36f62add57"
+  }
+}
