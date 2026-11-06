@@ -369,6 +369,21 @@ class StatelessContinuationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "declared task output"):
             dag.append(self._passing_review("my_receipt.json"))
 
+    def test_reviewer_can_recuse_without_a_verdict_or_rework(self):
+        dag.pull("author")
+        digest = event_request(self.root, "author")
+        dag.pull("reviewer")
+        with self.assertRaisesRegex(ValueError, "assigned reviewer"):
+            dag.append({"kind": "review_release", "id": "t", "reviewer": "someone-else", "note": "x"})
+        with self.assertRaisesRegex(ValueError, "reason"):
+            dag.append({"kind": "review_release", "id": "t", "reviewer": "reviewer", "note": " "})
+        dag.append({"kind": "review_release", "id": "t", "reviewer": "reviewer", "note": "same conversation wrote this"})
+        review = self.state()["review"]
+        self.assertEqual((review["state"], review["reviewer"], review["verdict"]), ("pending", None, None))
+        self.assertEqual(self.state()["owner"], "author")
+        next_turn = dag.pull("turn-3")
+        self.assertEqual((next_turn["role"], next_turn["candidate_sha256"]), ("VERIFIER", digest))
+
     def test_finished_task_cannot_be_taken_over(self):
         self.reviewed("PASS")
         turn = dag.pull("turn-2")

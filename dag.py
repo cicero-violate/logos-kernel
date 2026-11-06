@@ -316,6 +316,19 @@ def validate_event(ev, tasks):
         review["state"] = "claimed"
         return
 
+    if kind == "review_release":
+        # A reviewer who cannot be independent hands the review back: no verdict, no rework.
+        reviewer = _review_id(ev.get("reviewer"))
+        review = item["review"]
+        if (review is None or review["state"] != "claimed"
+                or _review_principal(review["reviewer"]) != _review_principal(reviewer)):
+            raise ValueError("only the assigned reviewer can release a claimed review")
+        if not isinstance(ev.get("note"), str) or not ev["note"].strip():
+            raise ValueError("review release requires a nonblank reason")
+        review["reviewer"] = None
+        review["state"] = "pending"
+        return
+
     if kind == "review_result":
         reviewer = _review_id(ev.get("reviewer"))
         candidate = _review_sha(ev.get("candidate_sha256"))
@@ -620,6 +633,11 @@ def main():
     review_result_cmd.add_argument("--evidence")
     review_result_cmd.add_argument("--note", default="")
 
+    release_review_cmd = sub.add_parser("release-review", help="recuse from a claimed review without a verdict")
+    release_review_cmd.add_argument("id")
+    release_review_cmd.add_argument("--reviewer", required=True)
+    release_review_cmd.add_argument("--note", required=True)
+
     claim = sub.add_parser("claim", help="exclusively claim a ready task")
     claim.add_argument("id")
     claim.add_argument("--owner", required=True)
@@ -672,6 +690,10 @@ def main():
         row = append(event)
         print(json.dumps({"role": "VERIFIER", "task": args.id,
                           "verdict": args.verdict, "git_commit": row["git_commit"]}, indent=2))
+        return
+    if args.cmd == "release-review":
+        row = append({"kind": "review_release", "id": args.id, "reviewer": args.reviewer, "note": args.note})
+        print(json.dumps({"role": "RECUSED", "task": args.id, "git_commit": row["git_commit"]}, indent=2))
         return
     if args.cmd == "sync":
         print(json.dumps(sync(), indent=2))
