@@ -1,0 +1,41 @@
+{
+  "candidate_modified": false,
+  "candidate_revision": "a8fd9ba5cd73408ff8cec57121b94fbf2479eeae",
+  "candidate_sha256": "aca9a788d2abfa886e610f5a353e7c4b6892e3e77181940a366ef136f8cc6516",
+  "champion_modified": false,
+  "limitations": [
+    "Only task-specific policy adaptation with behavioral I/O and verifier feedback",
+    "Finite 16-bit operand samples, not an exhaustive proof",
+    "No neural superiority over uniform random search; that control solved all four",
+    "Reported zero-shot transfer 0/12; not independently reproduced in this review",
+    "Frozen neural primitives perform arithmetic; host controls registers and termination",
+    "No new primitive, continual learning, general-purpose discovery or deployment proved",
+    "Separate reviewer uses the candidate loader and evaluator but independent operand samples and arithmetic oracle"
+  ],
+  "owner": "turn-280d9e6de38342cd876a1f667c98f759",
+  "replay_details": {
+    "frozen_neural_execution": true,
+    "new_per_task": 513,
+    "no_target_program_given_as_model_input": true,
+    "original_per_task": 256,
+    "saved_model_greedy_programs_match": true,
+    "task_names": [
+      "INC",
+      "DOUBLE",
+      "BOOLEAN_COMPOSITE",
+      "SHIFT_COMPOSITE"
+    ]
+  },
+  "reviewer": "turn-e959f8df50ed4ec5a3f2fcacddc3bef4",
+  "schema": "nc008-independent-review-v1",
+  "task": "NC-008",
+  "tests": {
+    "candidate_file_hashes": 11,
+    "forged_primitive_provenance_rejected": "4/4",
+    "original_disjoint_heldout": "1024/1024",
+    "replayed_test_suite": "5/5",
+    "reviewer_new_operand_pairs": "2052/2052",
+    "wrong_final_programs_rejected": "4/4"
+  },
+  "verdict": "PASS"
+}
