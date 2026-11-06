@@ -1,0 +1,127 @@
+{
+  "task": "NC-001",
+  "verdict": "HOLD",
+  "verifier_type": "distinct real independent read-only verifier; not implementer",
+  "independently_audited_commit": "fed2975f46bc8f20a93c93083028c7f07f459c92",
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python dag.py validate",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q test_dag",
+    "PYTHONDONTWRITEBYTECODE=1 python dag.py ready",
+    "PYTHONDONTWRITEBYTECODE=1 python dag.py list",
+    "git status --short",
+    "git rev-parse HEAD",
+    "sha256sum artifacts/NC-001/canonical_isa.py artifacts/NC-001/isa_spec.json artifacts/NC-001/test_isa.py artifacts/NC-001/conformance.json artifacts/NC-001/README.md artifacts/NC-000/inventory.json",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -v -s artifacts/NC-001 -p 'test_isa.py'",
+    "PYTHONDONTWRITEBYTECODE=1 python - <<'PY' ... independent 33-assertion oracle covering all opcodes, malformed inputs, serialization, AST, flags, shifts, branches, and step limits ... PY",
+    "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 status --short",
+    "git -C /workspace/experiments/lrt_split_algorithms_ablation_v1 rev-parse HEAD",
+    "git -C /workspace/experiments/latticeforge_neural_isa_test status --short",
+    "git -C /workspace/experiments/latticeforge_neural_isa_test rev-parse HEAD",
+    "sha256sum /workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+    "git log -1 --format=fuller --stat",
+    "git diff -- artifacts/NC-001",
+    "git diff --cached -- artifacts/NC-001"
+  ],
+  "independent_checks": {
+    "ledger": {
+      "validation": "PASS",
+      "events": 29,
+      "nodes": 18,
+      "head_sha256": "33914cbeb3106206e8befe0e18b35ce89e8090531e27012774432a5cac1f4660",
+      "task_owner": "1db9edb983ff4df9933612e7c826e55f"
+    },
+    "hashes": {
+      "canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+      "isa_spec.json": "11dce286b173b67fe75224378da3e22c3072c0353c0f10071d317be4df0c7710",
+      "test_isa.py": "ee8ae1dd873f7eee899e07476cd656545018d9eba08a912e8c307d29ba8187c8",
+      "conformance.json": "e752269c21e3dbf9d39113ce5b4d0949f815ec677b1c48fc04e214d76a8c9bec",
+      "README.md": "0aaf4c5c722fadd9a06b34d98586efa96d7b1920be023f21d5c66e55164f9df7",
+      "inventory.json": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f"
+    },
+    "contract": {
+      "version": "logos.isa/1",
+      "opcodes_defined_and_independently_exercised": "15/15",
+      "registers": [
+        "X",
+        "Y",
+        "R",
+        "T"
+      ],
+      "width": "1..64 bits",
+      "signedness": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "finding": "All opcode operands are explicit; missing/extra operands are rejected. Modular overflow, ADD carry, SUB no-borrow, signed overflow, logical/arithmetic shifts, absolute jumps, branch fall-through, HALT PC retention, invalid-PC failure, and bounded step-limit semantics are explicit."
+    },
+    "author_tests": {
+      "passed": 16,
+      "failed": 0,
+      "errors": 0,
+      "process": "fresh"
+    },
+    "dag_tests": {
+      "discovered": 17,
+      "passed": 12,
+      "failed": 0,
+      "errors": 5,
+      "cause": "Read-only environment provides no usable temporary directory; five tests failed before exercising their assertions."
+    },
+    "independent_ad_hoc": {
+      "assertions_passed": "33/33",
+      "opcodes_covered": "15/15",
+      "malformed_cases_rejected": "15/15",
+      "covered": [
+        "bool-as-int",
+        "duplicate JSON keys",
+        "nonfinite JSON number",
+        "missing operand",
+        "extra instruction field",
+        "invalid register",
+        "invalid branch target",
+        "missing HALT",
+        "unsigned SAR",
+        "mixed AST width",
+        "extra AST field",
+        "boolean/bitvector conflation",
+        "overflow carry",
+        "SUB no-borrow",
+        "negative two's-complement interpretation",
+        "SHR versus SAR",
+        "taken and fall-through branches",
+        "JMP loop and step limit"
+      ]
+    },
+    "serialization_and_ast": {
+      "canonical_exact_match": true,
+      "round_trip": true,
+      "generated_spec_matches_checked_in_spec": true,
+      "typed_ADD_AST_exact_match": true,
+      "strict_AST_validation": true
+    },
+    "champion": {
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "inventory_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "observed_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "match": true
+    },
+    "worktrees": {
+      "logos_kernel": "Contains permitted unrelated NC-000 staged/untracked evidence plus verifier-harness files; NC-001 files have no post-commit diff.",
+      "rlt_split_algorithms_ablation_v1": "NOT CLEAN: untracked capability_ladder_v3_rehearsal/generate.py",
+      "latticeforge_neural_isa_test": "clean"
+    },
+    "neural_boundary": "Audited NC-001 commit changes only six artifact source/document/test files. No checkpoint or trained-weight change and no neural inference was observed or invoked. Multiplication evidence is symbolic execution of a fixed ROM, not learned program invention."
+  },
+  "limitations": [
+    "Verification is bounded to 16 author tests and 33 independent assertions; it is not exhaustive over all reachable machine states.",
+    "The checked ISA and AST are engineered symbolic semantics, not a neural implementation.",
+    "Fixed-ROM multiplication does not demonstrate neural multiplication invention or program generation.",
+    "The reported exhaustive multiplication scope is only 4-bit 16x16 operands; sampled 8-bit coverage is not all 65,536 pairs.",
+    "Checkpoint hash identity establishes byte equality only, not scientific correctness.",
+    "No training, neural inference, or causal neural-semantic evaluation was performed."
+  ],
+  "failures": [
+    "The required 17 DAG unit tests did not fully pass: 5/17 errored because the read-only runtime had no usable temporary directory.",
+    "The RLT champion source worktree is not clean because capability_ladder_v3_rehearsal/generate.py is untracked; therefore the requested clean-worktree condition cannot be confirmed."
+  ]
+}

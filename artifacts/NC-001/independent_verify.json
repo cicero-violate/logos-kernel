@@ -1,0 +1,206 @@
+{
+  "can_pass": true,
+  "champion_checkpoint": {
+    "expected_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "observed_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+    "result": "PASS",
+    "tracked_modification": false
+  },
+  "closure_failures": [],
+  "closure_verdict": "PASS",
+  "closure_verified_dag_tests": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 17,
+    "result": "PASS",
+    "runtime_seconds": 0.395,
+    "total": 17
+  },
+  "closure_verified_isa_tests": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 16,
+    "process": "fresh",
+    "result": "PASS",
+    "runtime_seconds": 0.152,
+    "total": 16
+  },
+  "distinct_real_verifier": "codex-cli:01a1ae8b-04e3-72e2-99a6-583f0b225db6",
+  "exact_verifier_commands": {
+    "closure_agent": [
+      "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q test_dag",
+      "python dag.py validate",
+      "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-001 -p 'test_isa.py'",
+      "git rev-parse HEAD",
+      "git diff --name-only",
+      "git diff --cached --name-only",
+      "git status --porcelain",
+      "git diff --name-only -- artifacts/NC-001",
+      "git diff --cached --name-only -- artifacts/NC-001",
+      "git status --porcelain -- artifacts/NC-001",
+      "sha256sum /workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 rev-parse HEAD",
+      "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 diff --name-only",
+      "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 diff --cached --name-only",
+      "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 status --porcelain",
+      "git -C /workspace/experiments/latticeforge_neural_isa_test rev-parse HEAD",
+      "git -C /workspace/experiments/latticeforge_neural_isa_test diff --name-only",
+      "git -C /workspace/experiments/latticeforge_neural_isa_test diff --cached --name-only",
+      "git -C /workspace/experiments/latticeforge_neural_isa_test status --porcelain",
+      "Independent SHA-256 comparison of all 60 files recorded in artifacts/NC-000/inventory.json"
+    ],
+    "first_agent": [
+      "PYTHONDONTWRITEBYTECODE=1 python dag.py validate",
+      "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q test_dag",
+      "PYTHONDONTWRITEBYTECODE=1 python dag.py ready",
+      "PYTHONDONTWRITEBYTECODE=1 python dag.py list",
+      "git status --short",
+      "git rev-parse HEAD",
+      "sha256sum artifacts/NC-001/canonical_isa.py artifacts/NC-001/isa_spec.json artifacts/NC-001/test_isa.py artifacts/NC-001/conformance.json artifacts/NC-001/README.md artifacts/NC-000/inventory.json",
+      "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -v -s artifacts/NC-001 -p 'test_isa.py'",
+      "PYTHONDONTWRITEBYTECODE=1 python - <<'PY' ... independent 33-assertion oracle covering all opcodes, malformed inputs, serialization, AST, flags, shifts, branches, and step limits ... PY",
+      "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 status --short",
+      "git -C /workspace/experiments/lrt_split_algorithms_ablation_v1 rev-parse HEAD",
+      "git -C /workspace/experiments/latticeforge_neural_isa_test status --short",
+      "git -C /workspace/experiments/latticeforge_neural_isa_test rev-parse HEAD",
+      "sha256sum /workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "git log -1 --format=fuller --stat",
+      "git diff -- artifacts/NC-001",
+      "git diff --cached -- artifacts/NC-001"
+    ]
+  },
+  "implementation_commit": "fed2975f46bc8f20a93c93083028c7f07f459c92",
+  "independent_new_oracle_assertions": {
+    "assertions_passed": "33/33",
+    "covered": [
+      "bool-as-int",
+      "duplicate JSON keys",
+      "nonfinite JSON number",
+      "missing operand",
+      "extra instruction field",
+      "invalid register",
+      "invalid branch target",
+      "missing HALT",
+      "unsigned SAR",
+      "mixed AST width",
+      "extra AST field",
+      "boolean/bitvector conflation",
+      "overflow carry",
+      "SUB no-borrow",
+      "negative two's-complement interpretation",
+      "SHR versus SAR",
+      "taken and fall-through branches",
+      "JMP loop and step limit"
+    ],
+    "malformed_cases_rejected": "15/15",
+    "opcodes_covered": "15/15"
+  },
+  "initial_hold_reason": [
+    "The required 17 DAG unit tests did not fully pass: 5/17 errored because the read-only runtime had no usable temporary directory.",
+    "The RLT champion source worktree is not clean because capability_ladder_v3_rehearsal/generate.py is untracked; therefore the requested clean-worktree condition cannot be confirmed."
+  ],
+  "initial_independent_verifier": "codex-cli:01a1ae86-33bb-7a90-a4dd-b8ac7b9329a0",
+  "initial_verdict": "HOLD",
+  "inventory_check": {
+    "checked": 60,
+    "mismatches": [],
+    "result": "PASS",
+    "rlt_champion_files": 49,
+    "standalone_isa_files": 11
+  },
+  "ledger_owner_actual_runtime_session": "1db9edb983ff4df9933612e7c826e55f",
+  "limits": [
+    "The verification is bounded to 16 author tests and 33 independently authored assertions; it is not exhaustive over all reachable machine states.",
+    "The ISA and mathematical AST are engineered symbolic semantics, not a trained neural implementation.",
+    "Fixed-ROM multiplication does not demonstrate neural multiplication invention or program generation.",
+    "Four-bit multiplication coverage is exhaustive only over 16x16 operand pairs; sampled eight-bit coverage is not all 65,536 pairs.",
+    "Checkpoint hash equality proves byte identity, not scientific correctness.",
+    "No training, neural inference, promotion, or causal neural-semantic evaluation was performed."
+  ],
+  "model_boundary": "versioned ISA and mathematical AST + symbolic interpreter ONLY; no neural inference, training, instruction learning, program generation, or candidate substitution",
+  "no_champion_promotion": true,
+  "original_repositories": {
+    "isa": {
+      "head": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+      "inventory_head": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+      "result": "PASS",
+      "tracked_index_diff": [],
+      "tracked_working_tree_diff": [],
+      "untracked_unrelated_paths": []
+    },
+    "rlt": {
+      "head": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+      "interpretation": "The unrelated untracked path does not modify the tracked champion, tracked source files, or checkpoints.",
+      "inventory_head": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+      "result": "PASS",
+      "tracked_index_diff": [],
+      "tracked_working_tree_diff": [],
+      "untracked_unrelated_paths": [
+        "capability_ladder_v3_rehearsal/generate.py"
+      ]
+    }
+  },
+  "provenance_source_files": [
+    {
+      "bytes": 6292,
+      "path": "artifacts/NC-001/codex_verifier_final.json",
+      "sha256": "b7a957adc68a134a4cd45c438a8e8967edc8a1f88dfc8fcf96e89e2bd3d025a4"
+    },
+    {
+      "bytes": 7423,
+      "path": "artifacts/NC-001/codex_closure_final.json",
+      "sha256": "5554a4af6eed465a0a08a6cbd325618449905e2f5e9d9855bff4f36b763d91f2"
+    },
+    {
+      "bytes": 134230,
+      "path": "artifacts/NC-001/codex_verifier_trace.jsonl",
+      "sha256": "72c659b5bae8e1698669cb3a01aa51137d01075f2b416a2c45dc5dc83d99865a"
+    },
+    {
+      "bytes": 189052,
+      "path": "artifacts/NC-001/codex_closure_trace.jsonl",
+      "sha256": "25b80eaec9d9e6e1b0b509ae785707bb85a606c9d2cd79003b76ccc8aa53a375"
+    },
+    {
+      "bytes": 2127,
+      "path": "artifacts/NC-001/verifier_prompt.txt",
+      "sha256": "ccc1da0e05c1ceb2e5c3a8f43983ae3f71a22492f177832143c88949f9d57386"
+    },
+    {
+      "bytes": 2009,
+      "path": "artifacts/NC-001/verifier_closure_prompt.txt",
+      "sha256": "50e11715d3632d1f5e47aa728650a56b240ffe9ebe067ddc996f10d966f581ed"
+    },
+    {
+      "bytes": 4449,
+      "path": "artifacts/NC-001/conformance.json",
+      "sha256": "e752269c21e3dbf9d39113ce5b4d0949f815ec677b1c48fc04e214d76a8c9bec"
+    }
+  ],
+  "result": "PASS",
+  "schema": 1,
+  "source_sha256": {
+    "canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "isa_spec.json": "11dce286b173b67fe75224378da3e22c3072c0353c0f10071d317be4df0c7710",
+    "make_conformance.py": "33aa0aa9c105e485b2d6a38820b6f6b8dd608b56f4b94ab2a4a31728e9820294",
+    "test_isa.py": "ee8ae1dd873f7eee899e07476cd656545018d9eba08a912e8c307d29ba8187c8"
+  },
+  "task": "NC-001",
+  "tested_splits": {
+    "symbolic_4bit_fixed_rom": {
+      "correct": 256,
+      "failed_cases": [],
+      "result": "PASS",
+      "tested": 256
+    },
+    "symbolic_8bit_sampled_fixed_rom": {
+      "correct": 256,
+      "failed_cases": [],
+      "result": "PASS",
+      "tested": 256
+    }
+  },
+  "verdict": "INDEPENDENT_VERIFICATION_PASS",
+  "verifier_source": "local Codex CLI thread.started events in trace files"
+}

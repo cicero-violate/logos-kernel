@@ -1,0 +1,171 @@
+{
+  "task": "NC-001",
+  "verdict": "PASS",
+  "verifier_type": "distinct real independent Codex verifier; not implementer; no training or source/model/checkpoint modification",
+  "independently_audited_commit": "fed2975f46bc8f20a93c93083028c7f07f459c92",
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q test_dag",
+    "python dag.py validate",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-001 -p 'test_isa.py'",
+    "git rev-parse HEAD",
+    "git diff --name-only",
+    "git diff --cached --name-only",
+    "git status --porcelain",
+    "git diff --name-only -- artifacts/NC-001",
+    "git diff --cached --name-only -- artifacts/NC-001",
+    "git status --porcelain -- artifacts/NC-001",
+    "sha256sum /workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+    "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 rev-parse HEAD",
+    "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 diff --name-only",
+    "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 diff --cached --name-only",
+    "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 status --porcelain",
+    "git -C /workspace/experiments/latticeforge_neural_isa_test rev-parse HEAD",
+    "git -C /workspace/experiments/latticeforge_neural_isa_test diff --name-only",
+    "git -C /workspace/experiments/latticeforge_neural_isa_test diff --cached --name-only",
+    "git -C /workspace/experiments/latticeforge_neural_isa_test status --porcelain",
+    "Independent SHA-256 comparison of all 60 files recorded in artifacts/NC-000/inventory.json"
+  ],
+  "closure_checks": {
+    "dag_tests": {
+      "result": "PASS",
+      "passed": 17,
+      "total": 17,
+      "failures": 0,
+      "errors": 0,
+      "runtime_seconds": 0.395
+    },
+    "ledger_validation": {
+      "result": "PASS",
+      "nodes": 19,
+      "events": 30,
+      "head_sha256": "b936dc9b1ee112b69e4fe7dd1c45ad06249a6c7b73b31228bb0a68b725eb6903"
+    },
+    "isa_tests": {
+      "result": "PASS",
+      "passed": 16,
+      "total": 16,
+      "failures": 0,
+      "errors": 0,
+      "runtime_seconds": 0.152,
+      "process": "fresh"
+    },
+    "nc001_contract": {
+      "result": "PASS",
+      "version": "logos.isa/1",
+      "opcodes_defined": 15,
+      "registers": [
+        "X",
+        "Y",
+        "R",
+        "T"
+      ],
+      "width_bits": "1..64",
+      "signedness": [
+        "unsigned",
+        "twos_complement"
+      ],
+      "acceptance_supported": true,
+      "basis": "Canonical serialization, complete opcode contracts, malformed-input rejection, typed mathematical AST, integer/flag semantics, PC/branch/HALT behavior, state transitions, runtime loops, and bounded step behavior are covered by the author suite and prior independent assertions."
+    },
+    "nc001_tracked_files": {
+      "result": "PASS",
+      "working_tree_diff": [],
+      "index_diff": [],
+      "audited_commit_files": [
+        "artifacts/NC-001/README.md",
+        "artifacts/NC-001/canonical_isa.py",
+        "artifacts/NC-001/conformance.json",
+        "artifacts/NC-001/isa_spec.json",
+        "artifacts/NC-001/make_conformance.py",
+        "artifacts/NC-001/test_isa.py"
+      ]
+    },
+    "baseline_inventory_hashes": {
+      "result": "PASS",
+      "checked": 60,
+      "rlt_champion_files": 49,
+      "standalone_isa_files": 11,
+      "mismatches": []
+    },
+    "champion": {
+      "result": "PASS",
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "expected_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "observed_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "tracked_modification": false
+    },
+    "rlt_repository": {
+      "result": "PASS",
+      "head": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+      "inventory_head": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+      "tracked_working_tree_diff": [],
+      "tracked_index_diff": [],
+      "untracked_unrelated_paths": [
+        "capability_ladder_v3_rehearsal/generate.py"
+      ],
+      "interpretation": "The unrelated untracked path does not modify the tracked champion, tracked source files, or checkpoints."
+    },
+    "standalone_isa_repository": {
+      "result": "PASS",
+      "head": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+      "inventory_head": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+      "tracked_working_tree_diff": [],
+      "tracked_index_diff": [],
+      "untracked_unrelated_paths": []
+    },
+    "logos_kernel_unrelated_state": {
+      "staged_unrelated_paths": [
+        "artifacts/NC-000/baseline_receipt.json",
+        "artifacts/NC-000/interactive_review.json",
+        "artifacts/NC-000/runtime_provenance_attestation.json",
+        "artifacts/NC-000/verifier_diagnostics.json"
+      ],
+      "untracked_unrelated_paths": [
+        "artifacts/NC-000/interactive_replay.json",
+        "artifacts/NC-001/codex_closure_stderr.txt",
+        "artifacts/NC-001/codex_closure_trace.jsonl",
+        "artifacts/NC-001/codex_verifier_final.json",
+        "artifacts/NC-001/codex_verifier_stderr.txt",
+        "artifacts/NC-001/codex_verifier_trace.jsonl",
+        "artifacts/NC-001/verifier_closure_prompt.txt",
+        "artifacts/NC-001/verifier_prompt.txt"
+      ],
+      "interpretation": "These are separate evidence or verifier-harness paths. The six tracked NC-001 implementation files have no working-tree or index diff."
+    }
+  },
+  "prior_verification_thread": {
+    "result": "ACCEPTED_WITH_BOUNDED_SCOPE",
+    "independent_assertions": {
+      "passed": 33,
+      "total": 33,
+      "opcodes_exercised": "15/15",
+      "malformed_opcode_contracts_rejected": "15/15"
+    },
+    "covered": [
+      "canonical serialization and round-trip behavior",
+      "duplicate JSON keys and non-finite numbers",
+      "boolean-versus-integer rejection",
+      "missing and extra operands or fields",
+      "invalid registers and branch targets",
+      "explicit HALT requirement",
+      "typed AST validation and width consistency",
+      "boolean/bitvector type separation",
+      "modular overflow, carry, SUB no-borrow, and signed overflow",
+      "two's-complement interpretation",
+      "logical versus arithmetic shifts",
+      "taken and fall-through branches",
+      "JMP loops and bounded step limits"
+    ],
+    "acceptance_assessment": "Together with the independently rerun 16/16 author suite, the prior 33/33 assertions support the bounded NC-001 acceptance contract.",
+    "neural_claim": "None. The audited implementation is an engineered symbolic ISA, typed AST, and reference interpreter."
+  },
+  "limitations": [
+    "The verification is bounded to 16 author tests and 33 independently authored assertions; it is not exhaustive over all reachable machine states.",
+    "The ISA and mathematical AST are engineered symbolic semantics, not a trained neural implementation.",
+    "Fixed-ROM multiplication does not demonstrate neural multiplication invention or program generation.",
+    "Four-bit multiplication coverage is exhaustive only over 16x16 operand pairs; sampled eight-bit coverage is not all 65,536 pairs.",
+    "Checkpoint hash equality proves byte identity, not scientific correctness.",
+    "No training, neural inference, promotion, or causal neural-semantic evaluation was performed."
+  ],
+  "failures": []
+}

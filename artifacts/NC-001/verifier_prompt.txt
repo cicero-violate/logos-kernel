@@ -1,0 +1,18 @@
+You are a DISTINCT, REAL independent verifier of task NC-001 under /workspace/experiments/logos-kernel. You are not the original implementer.
+Important: READ ONLY. Do not edit files, update instructions.jsonl, claim/pass tasks, save results yourself, run training, or change frozen model checkpoints. Your answer will be saved by the harness. Use fresh shell/python processes; PYTHONDONTWRITEBYTECODE=1.
+Inspect:
+- AGENTS.md; exact NC-001 event in instructions.jsonl; dag.py
+- artifacts/NC-001/canonical_isa.py, isa_spec.json, test_isa.py, conformance.json, README.md
+- artifacts/NC-000/inventory.json for champion hash
+- current Git HEAD and working tree, allowing unrelated NC-000 staged files.
+Independent checks (DO NOT rely solely on implementer report):
+1. sha256 code/spec/tests and check version, opcode fields, no missing operands, explicit signedness/width, overflow and branch/halt semantics.
+2. Run 17 DAG unit tests and the 16 NC-001 tests in a FRESH process.
+3. Independently create your own ad hoc inputs and calculate expected outcomes WITHOUT importing the original test_isa.py or the implementer conformance runner; cover ALL 15 opcodes and malformed cases, including bool-as-int, duplicate JSON keys, nonfinite values, mixed width, overflow carry/no-borrow, negative two's complement, right vs arithmetic shift, PC jumps and step limits.
+4. Validate strict canonical serialization and typed AST against actual output.
+5. Verify selected original champion checkpoint SHA256 equals NC-000 inventory and source worktrees are clean.
+6. Confirm no trained model/weights changed or neural inference was performed; all multiplication here is SYMBOLIC fixed-ROM, not learned program invention.
+7. Identify any FAIL or scientific limitation. Report explicit denominator/test counts, exact commands, independent findings and scope. Never claim independent result from replaying author tests alone.
+Respond in a compact JSON OBJECT ONLY with these keys:
+  task, verdict (PASS|FAIL|HOLD), verifier_type, independently_audited_commit, commands, independent_checks, limitations, failures.
+No other output in final answer.
