@@ -1,48 +1,56 @@
-# Logos Kernel - append-only task DAG
+# Logos Kernel — append-only task DAG
 
-Canonical path: /workspace/experiments/logos-kernel/
+Canonical path: `/workspace/experiments/logos-kernel/`
 
-## Source of truth
+## Source of truth and ownership
 
-- instructions.jsonl: hash-chained append-only event log, one JSON object per line.
-- Task events are immutable DAG nodes; status events append transitions without rewriting nodes.
-- dag.py: standard-library CLI; flock, O_APPEND behavior, fsync, SHA-256 hash validation and dependency gates.
-- The task DAG is acyclic. Runtime instruction control-flow graphs may have loops.
-- Agents must use the CLI rather than editing the JSONL.
+- `instructions.jsonl` is a SHA-256 hash-chained, append-only event log. Existing events are never rewritten.
+- `dag.py` validates the task DAG and appends atomic `task`, `claim`, `release`, `status` and `reopen` events.
+- `AGENTS.md` is the mandatory entry point and complete agent protocol.
+- A claim records an **exclusive current owner**, not an alive worker or a job execution state.
+- No scheduler, heartbeat, lease, auto-timeout, fake workers or automatic reassignment.
+- The task DAG is acyclic; generated runtime instruction programs may contain CFG cycles.
 
-## Agent workflow
+## Agent commands
 
-    cd /workspace/experiments/logos-kernel
-    python dag.py validate
-    python dag.py ready
-    python dag.py list
-    python dag.py start NC-000 --agent worker-1
-    # After an independent verifier has created the cited evidence file:
-    python dag.py pass NC-000 --agent worker-1 --verifier verifier-2 --evidence artifacts/NC-000/baseline_receipt.json
-    python dag.py block NC-000 --agent worker-1 --note missing_dependency
-    python dag.py fail NC-000 --agent worker-1 --note acceptance_failed
-    python dag.py add-task --file new_task.json
+```bash
+cd /workspace/experiments/logos-kernel
+python dag.py validate
+python -m unittest -q test_dag
+python dag.py ready
+python dag.py list
 
-Tasks are not launched by the JSONL ledger. Agents should only take ready tasks; record actual results with append-only status events, commit the ledger after events, and attach verified receipts. To correct instructions, append a new task that supersedes the old task instead of editing history.
+# Set AGENT_ID from your actual connected agent identity.
+test -n "$AGENT_ID" || exit 2
+python dag.py claim NC-000 --owner "$AGENT_ID"
+# If leaving a task unfinished:
+python dag.py release NC-000 --by "$AGENT_ID" --reason "handoff"
 
-## Non-negotiable boundaries
+# Only after an independent verifier wrote the receipt:
+python dag.py pass NC-000 --owner "$AGENT_ID" --verifier "$VERIFIER_ID" --evidence artifacts/NC-000/baseline_receipt.json
+# Alternatives to PASS:
+python dag.py fail NC-000 --owner "$AGENT_ID" --note "failed acceptance"
+python dag.py block NC-000 --owner "$AGENT_ID" --note "external blocker"
+# Operator-only correction of invalid ownership:
+python dag.py release NC-000 --by "$OPERATOR_ID" --force --reason "confirmed abandoned claim"
+# Retry failed/blocked tasks after review:
+python dag.py reopen NC-000 --by "$OPERATOR_ID" --reason "blocker resolved"
 
-1. Freeze original champion and qualified ISA checkpoints before changing anything.
-2. Save topology, complete weights, optimizer, vocab, seeds, architecture, hashes and reload receipts; individual neuron values alone are insufficient.
-3. Distinguish neural arithmetic, Transformer controller, fixed ROM, symbolic verifier and genuinely generated programs.
-4. Local 320/320, exhaustive four-bit 256/256, sampled 8-bit 4,217 cases and exhaustive eight-bit 65,536 cases are different levels of evidence.
-5. Independent verification, counterexamples and all older-skill retention gates precede any promotion.
-6. Train small-to-big: primitives, math semantics, composition, invented operations, generated program CFG, observer feedback, shared recurrent Transformer, architecture optimization.
-7. Preserve source-checkpoint provenance and require matched data/compute ablations.
-8. No silent default champion switch; verify rollback.
+# Expand DAG: new_task_event.json must be a full kind=task object.
+python dag.py add-task --file /path/to/new_task_event.json
+```
 
-## Related repositories
+These are **command examples for alternative outcomes**, not one sequence to execute. Task `NC-000` must be ready; `AGENT_ID`, `VERIFIER_ID` and `OPERATOR_ID` must refer to real identities. Claim ownership cannot itself prove that the agent is running or that PASS evidence is correct.
 
-- /workspace/experiments/latticeforge_neural_isa_test/ : standalone neural ISA experiment.
-- /workspace/experiments/rlt_split_algorithms_ablation_v1/ : current RLT integration and reported rlt_attention_isa specialist.
-- Verify current source paths in NC-000. These are references only; not copied code or Git submodules.
+## Acceptance policy
 
-## Dependencies and limitations
+Save full neural weights, connectivity/topology, configuration, checkpoint and source hashes. Separate neural reasoning, fixed ROM, host execution, verification oracle and program invention. Keep old champions unchanged until independent evidence, matched ablations, retention tests and rollback justify promotion.
 
-Instruction repo dependencies: Python 3 standard library and Git. Neural training code lives in external projects and depends on their own model/data dependencies including PyTorch.
-Append-only hash chains and Git detect accidental alteration but not malicious full-chain rewrites by privileged writers. A protected offsite remote and signed commits provide stronger integrity. Hash integrity does not prove correctness. Passing tasks requires independent verifier evidence.
+Distinguish 320/320 local patterns, exhaustive four-bit MUL 256/256, sampled 8-bit MUL 4,217 cases and 8-bit exhaustive 65,536 pairs. Hash integrity is not scientific correctness or authentication.
+
+## Existing research inputs and dependencies
+
+- `/workspace/experiments/latticeforge_neural_isa_test/`
+- `/workspace/experiments/rlt_split_algorithms_ablation_v1/`
+
+This DAG repository requires **Python 3 standard library + Git**. Actual neural experiments require the dependencies of their original projects, typically PyTorch, architecture code and trained checkpoints. No files or models are copied here.
