@@ -96,7 +96,7 @@
     "altering one recorded correctness metric causes validate_results.py to reject it"
   ],
   "original_champion_bundle_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
-  "owner": "turn-1067d5804d9f4f05a322cb4f06ec8bb0",
+  "owner": "claude-code-turn-a6ea27cb7dad45f3b36664e8062d8225",
   "previous_review": {
     "event_seq": 168,
     "reason": "Previously undeclared independent receipt path was refused by DAG. No scientific failure was found in the reviewer replay.",
