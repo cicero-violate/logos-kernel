@@ -101,6 +101,23 @@ class StackTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             s.assert_matched_sizes(real, fake)
 
+    def test_separate_evaluator_covers_every_pair(self):
+        """A separate evaluator wrong on one pair must fail verification, wherever that pair is."""
+        from unittest import mock
+        expr, goal = ("ADD", ("X",), ("Y",)), ("LINEAR", 1, 1)
+        self.assertTrue(s.verified(expr, goal))
+        real, calls = s.reference_value, []
+        for bad in ((0, 0), (255, 254), (17, 200)):
+            def wrong(e, a, b, bad=bad):
+                calls.append(1)
+                return (real(e, a, b) + 1) & 255 if (a, b) == bad else real(e, a, b)
+            with mock.patch.object(s, "reference_value", wrong):
+                self.assertFalse(s.verified(expr, goal), bad)
+        calls.clear()
+        with mock.patch.object(s, "reference_value", lambda e, a, b: (calls.append((a, b)), real(e, a, b))[1]):
+            self.assertTrue(s.verified(expr, goal))
+        self.assertEqual(len(set(calls)), 65536)  # It recurses, so count distinct input pairs, not calls.
+
     def test_every_arm_gets_the_same_exam(self):
         # Reviewer counterexample: arms shared only 0 to 3 of 30 goals.
         for cls in (s.StructuredWorld, s.ArithmeticWorld, s.UnstructuredWorld):

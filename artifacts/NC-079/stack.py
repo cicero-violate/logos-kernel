@@ -206,17 +206,12 @@ def draw_goals(world, rng, count, split, excluded=()):
     return out
 
 
-def verified(expr, goal, sample_seed=1):
-    """Exhaustive check on all 65,536 pairs, then a cross-check with the separate integer evaluator."""
-    if not np.array_equal(np.asarray(evaluate(expr, VERIFY.x, VERIFY.y), dtype=np.int64) & MASK, goal_vector(goal, VERIFY.x, VERIFY.y)):
+def verified(expr, goal):
+    """Exhaustive on all 65,536 pairs by each of the two separately written evaluators."""
+    want = goal_vector(goal, VERIFY.x, VERIFY.y)
+    if not np.array_equal(np.asarray(evaluate(expr, VERIFY.x, VERIFY.y), dtype=np.int64) & MASK, want):
         return False
-    rng = random.Random(sample_seed)
-    for _ in range(1024):
-        a, b = rng.randrange(256), rng.randrange(256)
-        want = goal_vector(goal, np.int64(a), np.int64(b))
-        if reference_value(expr, a, b) != int(want):
-            return False
-    return True
+    return all(reference_value(expr, int(a), int(b)) == int(w) for a, b, w in zip(VERIFY.x, VERIFY.y, want))
 
 
 def harvest(solutions, cap=LIBRARY_CAP):
