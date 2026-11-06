@@ -3,14 +3,14 @@
  "task": "NC-061",
  "owner": "claude-code-turn-0f97bfac6651402eba375336293883b0",
  "source_sha256": {
-  "scoreboard.py": "3f5c307fc190f0475c48995724c58c34d71f80c23d1676415664ea641d652ea9",
+  "scoreboard.py": "5b08cb63d58134434f58800ee39d857dc3bbf1dcfaf36497c8805fff71003733",
   "controls.py": "68d5d041fe6e412906f185ec83ef69952d5480b5df564d08ef8f78ab635b7bcd",
-  "test_scoreboard.py": "ce1a08e74432b899219a725c1d8c27b93d53163c448316e5c7ddb101b7d7812a",
+  "test_scoreboard.py": "72fdc2ad6d2ac025128d64980a68a0b40d446e0c252cd1376c9970ec2f7afbda",
   "README.md": "d41572febbc9daf5ac79a03c0778bf52bece85f482a49cf07275b14d96b0ec84"
  },
  "evidence_sha256": {
-  "scoreboard_spec.json": "1f0fd64a8bd7d6a71bd6be017bf6cac2cb17b1142c180fe17f3804257df7bc14",
-  "control_results.json": "58bf91c69fb0d2885b51bbf02caebf367b94f9dd2b1132c27b33b60890cdbe1b"
+  "scoreboard_spec.json": "55c96e64d0b00320b5ba1448798a65b22e862003398355bb6e74ac6460028400",
+  "control_results.json": "9fd15de935053ab7cd8599bd7994206217cbb3d0d38f52a5508b430b3b735901"
  },
  "canonical_isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
  "control_verdicts": {
@@ -48,17 +48,16 @@
   "Retention is supplied by the caller and must be independently reproduced by the reviewer.",
   "Thresholds are preregistered judgement calls, not derived from a power analysis.",
   "CPU measured in-process can undercount work a candidate does in other processes, and a candidate's reported candidate count is only range-checked, so real runs need independent process metering.",
+  "Below the 0.05 second noise floor, CPU differences are treated as unmeasurable, so a very cheap candidate could use a large multiple of an even cheaper baseline within that 0.05 seconds.",
   "No improvement loop has used this scoreboard yet, so it has only been exercised on controls.",
   "Controls use public seeds so reviewers can reproduce them; a real run uses new_commitment()."
  ],
  "rework_of_review": {
   "verdict": "FAIL",
-  "reviewer": "turn-d8f5aaf8cc684bcaa9ceea0c9011fee7",
+  "reviewer": "turn-88ba832e79624",
   "fixed": [
-   "compare now gates on CPU measured by the scoreboard",
-   "spent must be an integer within budget",
-   "compounding requires growing gains"
+   "CPU limit is now the larger of baseline times 1.25 and a 0.05 second noise floor, not baseline plus a floor"
   ],
-  "note": "The reviewer's negative-control script asserts the old defects, so it should now stop at its first assertion."
+  "note": "The reviewers' negative-control scripts assert the old defects, so they should now fail at those assertions."
  }
 }

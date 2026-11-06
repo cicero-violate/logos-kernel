@@ -122,6 +122,15 @@ class CompareTests(unittest.TestCase):
         del unmeasured["cpu_seconds"]
         self.assertEqual(sb.compare(self.previous, [unmeasured] * 3)["verdict"], "NO_IMPROVEMENT")
 
+    def test_cheap_baseline_does_not_excuse_a_large_cpu_multiple(self):
+        # Second reviewer counterexample: 900 times the CPU passed through an additive floor.
+        cheap = [row(0.0, used=3, cpu=0.001)] * 3
+        self.assertEqual(sb.compare(cheap, [row(1.0, used=3, cpu=0.9)] * 3)["verdict"], "NO_IMPROVEMENT")
+        self.assertEqual(sb.compare(cheap, [row(1.0, used=3, cpu=0.051)] * 3)["verdict"], "NO_IMPROVEMENT")
+        self.assertEqual(sb.compare(cheap, [row(1.0, used=3, cpu=0.049)] * 3)["verdict"], "IMPROVEMENT")
+        self.assertEqual(sb.compare([row(0.0, cpu=100.0)] * 3, [row(1.0, cpu=125.0)] * 3)["verdict"], "IMPROVEMENT")
+        self.assertEqual(sb.compare([row(0.0, cpu=100.0)] * 3, [row(1.0, cpu=126.0)] * 3)["verdict"], "NO_IMPROVEMENT")
+
     def test_flat_or_tiny_gain_growth_is_not_compounding(self):
         # Reviewer counterexample: three equal gains were labelled COMPOUNDING.
         win = ["IMPROVEMENT"] * 3

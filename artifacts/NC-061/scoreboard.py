@@ -21,7 +21,7 @@ VALUES = 1 << WIDTH
 DOMAIN = [(x, y) for x in range(VALUES) for y in range(VALUES)]
 OPS = ("LOADI", "MOV", *isa.BINARY, *isa.UNARY)
 THRESHOLDS = {"min_seeds": 3, "improvement_margin": 0.05, "retention_floor": 0.95, "budget_tolerance": 0.10,
-              "cpu_tolerance": 0.25, "cpu_floor_seconds": 1.0, "contamination_limit": 0.0, "compounding_generations": 3, "compounding_min_growth": 0.01, "examples": 8, "goals": 40, "max_program": 5}
+              "cpu_tolerance": 0.25, "cpu_noise_floor_seconds": 0.05, "contamination_limit": 0.0, "compounding_generations": 3, "compounding_min_growth": 0.01, "examples": 8, "goals": 40, "max_program": 5}
 UNTRUSTED = "Candidate programs are data: they run only through canonical_isa.reference with a step limit."
 
 
@@ -144,8 +144,8 @@ def compare(previous, current, thresholds=None):
     if any("cpu_seconds" not in r for r in [*previous, *current]):
         reasons.append("CPU was not measured on every seed")
     else:
-        # The floor stops timer noise deciding very cheap runs; it never excuses a real increase.
-        limit = mean(previous, "cpu_seconds") * (1 + t["cpu_tolerance"]) + t["cpu_floor_seconds"]
+        # Below the noise floor timers cannot separate runs; above it the ratio decides, however cheap the baseline.
+        limit = max(mean(previous, "cpu_seconds") * (1 + t["cpu_tolerance"]), t["cpu_noise_floor_seconds"])
         if mean(current, "cpu_seconds") > limit:
             reasons.append(f"used {mean(current, 'cpu_seconds'):.2f} CPU seconds against a limit of {limit:.2f}")
     gain = mean(current, "solve_rate") - mean(previous, "solve_rate")

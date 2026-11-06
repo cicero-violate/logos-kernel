@@ -104,8 +104,8 @@
     "unseen_solved": 2,
     "candidates_used": 566,
     "budget_per_goal": 64,
-    "cpu_seconds": 0.077,
-    "cpu_seconds_per_solve": 0.0384,
+    "cpu_seconds": 0.11,
+    "cpu_seconds_per_solve": 0.0549,
     "invalid_programs": 0,
     "over_budget_goals": 0,
     "training_overlap": 0.0,
@@ -118,8 +118,8 @@
     "unseen_solved": 1,
     "candidates_used": 606,
     "budget_per_goal": 64,
-    "cpu_seconds": 0.059,
-    "cpu_seconds_per_solve": 0.0592,
+    "cpu_seconds": 0.069,
+    "cpu_seconds_per_solve": 0.0692,
     "invalid_programs": 0,
     "over_budget_goals": 0,
     "training_overlap": 0.0,
@@ -132,7 +132,7 @@
     "unseen_solved": 0,
     "candidates_used": 640,
     "budget_per_goal": 64,
-    "cpu_seconds": 0.094,
+    "cpu_seconds": 0.099,
     "cpu_seconds_per_solve": null,
     "invalid_programs": 0,
     "over_budget_goals": 0,
@@ -206,8 +206,8 @@
     "unseen_solved": 10,
     "candidates_used": 10,
     "budget_per_goal": 64,
-    "cpu_seconds": 0.001,
-    "cpu_seconds_per_solve": 0.0001,
+    "cpu_seconds": 0.0,
+    "cpu_seconds_per_solve": 0.0,
     "invalid_programs": 0,
     "over_budget_goals": 0,
     "training_overlap": 0.0,
@@ -335,7 +335,8 @@
    "verdict": "NO_IMPROVEMENT",
    "gain": 0.1,
    "reasons": [
-    "used 60.40 times the previous generation's candidates"
+    "used 60.40 times the previous generation's candidates",
+    "used 0.09 CPU seconds against a limit of 0.05"
    ]
   },
   "leaked_answer": {
