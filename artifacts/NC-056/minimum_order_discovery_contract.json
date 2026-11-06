@@ -1,0 +1,89 @@
+{
+  "arms": [
+    "mdl_search",
+    "autoregression",
+    "persistence",
+    "interpolation",
+    "random_candidates",
+    "no_invariant"
+  ],
+  "budgets": {
+    "candidate_verifications_per_arm": 128,
+    "cooperative_cpu_stopping_seconds_per_arm": 0.2,
+    "hard_cpu_seconds_per_batch": 30,
+    "hard_wall_seconds_per_batch": 45,
+    "max_observations": 64,
+    "max_output_bytes_per_batch": 16777216,
+    "max_query_horizon": 32,
+    "memory_bytes_per_batch": 536870912,
+    "rational_input_bits": 4096
+  },
+  "cases_per_seed": 26,
+  "dependencies": [
+    "Python3 standard library",
+    "Linux bubblewrap namespaces",
+    "Git for prefreeze checks",
+    "NC-055 benchmark definitions as read-only design input",
+    "NC-020 exact-semantics discipline"
+  ],
+  "fresh_seed_count": 3,
+  "hypothesis": "Lowest prefix-supported symbolic description may extrapolate better than fixed controls within equal allocated budgets; NO_GAIN remains valid.",
+  "independent_review_output": "artifacts/NC-056/independent_verification.json",
+  "limitations": [
+    "Unknown processes are not proven by finite prefix fit. No global minimality, general intelligence, neural discovery, RSI gain, or champion promotion.",
+    "Same candidate and CPU ceilings are allocated; consumed work differs. Fitting time counts in CPU, unsuccessful fitting attempts do not count as candidate verification calls.",
+    "Candidate and evaluator developed by one implementer; pending independent audit and fresh-secret-seed replication. Seed disclosure after run permits future replay but does not make implementer an independent reviewer.",
+    "Open grammar and generator families are known; fresh parameters, seeds, lengths and perturbations are unseen by participant, not necessarily unseen concepts.",
+    "Conservative structural signatures can reject observationally equivalent AR/periodic descriptions; forecast and recovery metrics are separate.",
+    "Noisy observations, future switching, aliased sampling and chaotic long horizons may fail. Report every failure and actual costs.",
+    "Cooperative per-arm CPU checks can overshoot during one bounded fitting/check operation; process CPU/memory/wall limits are hard."
+  ],
+  "minimality": "best found within explicitly enumerated grammar and checked budget only; no globally minimal-law certificate",
+  "owner": "turn-09e1ca315e6c47aa985ce71dcba8c97e",
+  "precision": "exact rational strings; Decimal90 logistic target; float forecast abs1e-6+rel1e-8 plus exact-equality report",
+  "prefix_lengths": [
+    16,
+    30
+  ],
+  "query_horizons": [
+    8,
+    24
+  ],
+  "search_grammar": {
+    "autoregression_orders": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "logistic_rate": "fitted from prefix; 0 < r <= 4.000001",
+    "periods": [
+      2,
+      12
+    ],
+    "polynomial_degrees": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "quadratic_modulus": [
+      2,
+      127
+    ],
+    "quadratic_offset": "inferred from first transition for each modulus"
+  },
+  "selection": "increasing algebraic description size; fitting prefix first two thirds; full free-prefix-rollout checks; smallest accepted description, residual tie-break",
+  "source_sha256": {
+    "README.md": "5a389149a85918fc733e26aaf0f086902c375804a148e809cfb3170868edcda9",
+    "discover.py": "b37ffa7472c3b6c6f6efcc7d2fe77868195f00d8d420dc88629b681872757720",
+    "evaluate.py": "28c37d9d0f1b65736b80e8dae414f8cfb69ea3f171f94936e9313d142875d99f",
+    "test_discover.py": "abe98e84e70f925d4968f9b888f62efee765e3fde744824e2fdc1e0e2c5be697",
+    "test_evaluate.py": "4a968b488a56b4441b0d6d1b58cec0a56e349e4be2608b4da8af0df42cebe7dd"
+  },
+  "status": "PREREGISTERED_BEFORE_HELDOUT_SEED_DRAW",
+  "task": "NC-056",
+  "total_cases": 78,
+  "version": 1
+}
