@@ -1,0 +1,17 @@
+{
+  "appended_this_run": 500,
+  "dependency_order": "PASS",
+  "existing_task_definitions_preserved": true,
+  "extension_tasks": 500,
+  "ledger_validation": {
+    "events": 1019,
+    "head_sha256": "bc7b3f6c1a3c4cc9c2e643a05277f1d831e03585048d2a848654fed40e2cd5ca",
+    "nodes": 886,
+    "status": "PASS"
+  },
+  "original_ledger_prefix_preserved": true,
+  "roadmap_sha256": "709577d50483b0e13ba867f61a454420ed87981c67158c7c8ca243abbadc2adb",
+  "scope": "Structural roadmap checks only; no experiment performed and no capability certified.",
+  "total_roadmap_stages": 660,
+  "unique_titles": 500
+}
