@@ -60,26 +60,32 @@ recurrence or invariant explains observations across unseen domains.
 - User's research goal is **mathematical understanding, abstraction, invariant discovery, creative conjecture**, not visual aesthetics or multimodal demos. Treat vision as optional evidence for learning stable laws, not as an objective by itself.
 - Immutable original RLT champion: `/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt`, SHA-256 `4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683`. Do not edit, retrain in place, or promote candidates without independent verifier and explicit approval.
 
-## New stateless tab: instructions
+## New stateless tab: verifier-first instructions
 
-1. Activate `$agent-event-lab`. Use disk/Git, **not** this snapshot as authority. Read `AGENTS.md`, `README.md`, `HANDOFF_NEXT_CHAT.md`, `instructions.jsonl` and the exact selected task record.
-2. Execute in Logos Kernel: `python dag.py validate`; `python -m unittest -q test_dag`; `python dag.py ready`; `python dag.py list`. Stop/report if any check fails. Inspect Git and running sessions/claim ownership.
-3. If asked to advance construction, select the **highest-ranked eligible unclaimed** task (expected `NC-044`, or `NC-048` if trainer work is already owned). Claim only with the **actual assigned agent identity**, never invented identity. Preserve `NC-028`.
-4. Implement in isolated candidate branch/worktree; log source files and code dependencies, data hashes, exact seed/budgets, negative controls, complete optimizer/RNG state when needed; never touch champion. Request a genuinely different agent for independent verification.
-5. If asked to pursue invariant discovery, select ready NC-055 with actual runtime ownership and follow NC-056–060 dependencies; do not append duplicates.
+This is only a snapshot. The active ledger, candidate hashes and runtime identity must be rechecked every turn; earlier task rankings below may now be stale.
 
-## Copy/paste starter prompt for a fresh ChatGPT tab
+1. Activate Event Lab. Read AGENTS.md, README.md, TAB_PROMPT.md, HANDOFF_NEXT_CHAT.md, instructions.jsonl, then the exact task's contract and artifacts.
+2. Run `python dag.py validate`; `python -m unittest -q test_dag`; `python dag.py list`; `python dag.py ready`; inspect Git, owner identities and unchanged champion.
+3. **Search for pending independent audits across all non-passed tasks first** (including claimed/blocked). A frozen candidate awaiting a truly separate verifier takes precedence over claiming a new task. `dag.py ready` is implementation-only.
+4. If reviewer is genuinely independent, act as VERIFIER without changing implementer ownership. Reproduce and attack the pinned revision; place the attributed receipt at the task's declared output path. Reviewer does not append PASS. If not independent, report HOLD and optionally implement a **different** eligible ready task.
+5. If no audit eligible for this real session, resume its legitimately owned task or claim the first ready unclaimed task. Never impersonate owners, release their claims, overwrite pre-existing artifacts or promote a champion.
+6. For invariant discovery, NC-055–NC-060 remain a dependency-ordered research track, not proof of completed discovery.
+
+## Copy/paste static prompt for a fresh ChatGPT tab
+
+See `TAB_PROMPT.md` for the maintained full prompt. Its role dispatch is **VERIFIER FIRST → IMPLEMENTER SECOND → HOLD**. Do not use an older prompt that starts by claiming the highest ready task.
 
 ```text
 $agent-event-lab
 Project: /workspace/experiments/logos-kernel/
-This tab is stateless. Recover all context from disk and Git.
-Read AGENTS.md, README.md, HANDOFF_NEXT_CHAT.md and instructions.jsonl.
-Validate DAG/hash chain, tests, Git status, owner claims, task readiness and independent evidence.
-Do not overwrite champion or pre-existing artifacts. Don't invent agent identities.
-Explain the first eligible task and any blockers. If authorized to implement, claim only with the real runtime identity.
-Scientific direction: smallest stable mathematical laws beneath changing observations; recurrent abstraction and verified out-of-sample transfer. Do not confuse small delta or smoothness with correctness.
-Report exact changes, commits, tests, independent verification and remaining limitations.
+Stateless: recover all context from disk/Git every turn.
+Read AGENTS.md, README.md, TAB_PROMPT.md, HANDOFF_NEXT_CHAT.md, instructions.jsonl.
+Validate DAG and tests; inspect Git, claims, results and actual runtime identity.
+FIRST find frozen candidates awaiting independent audit across CLAIMED/BLOCKED/PLANNED tasks; dag.py ready only shows implementation candidates.
+If truly independent, act as VERIFIER and reproduce the exact candidate; write an attributed receipt at the declared task path. Do not claim or approve your own code.
+Otherwise resume a legitimately owned task or claim the highest dependency-ready unclaimed task as IMPLEMENTER.
+If neither role legitimately possible, HOLD with exact blocker; never fabricate verifier identities or release other owners.
+Preserve RLT champion, existing artifacts and ledger; report exact changed files, commit, tests and proof scope.
 ```
 
 ## File and tooling dependencies
