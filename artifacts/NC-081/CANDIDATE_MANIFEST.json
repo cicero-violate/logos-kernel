@@ -1,0 +1,85 @@
+{
+ "schema_version": 1,
+ "task": "NC-081",
+ "owner": "claude-code-turn-fd62f7c9e6944473b8301203cfa21174",
+ "source_sha256": {
+  "selector.py": "4ad81a829783524a88fd470ea1b44b6b00e4396006c3e3df9ce2bff76a239308",
+  "test_selector.py": "7f941c49624a3f3641ae10e41587df7362f827529fe2089069094470b6fe52f5",
+  "README.md": "4cb9b03fb21be75d7b2caff143a4e7d997be8afb9743564bbc8bfd7254bbf7c1"
+ },
+ "evidence_sha256": {
+  "selector_results.json": "4058fc1d76a50b8f0d1405d9385862f3a820e2fee950e9e889de0f964bad866c",
+  "library_seed11.jsonl": "8c0957ed9064376bf7c4b252b084ea4368fc8e7ce23d41d10d20310858e40d77",
+  "library_seed19.jsonl": "ba3af714e08f4bab437577731a975ebb0bdce2743d90933ada2773161f545733",
+  "library_seed29.jsonl": "a614d90f7e72431ee569f5c4dfe959d9c1f8cf63d20ecb0f32ad96865dfe5a60"
+ },
+ "la015_library_py_sha256": "96b791cd1e6c28eb97508b4bcd463560641901e6228755f7943a5105b075b36c",
+ "checkpoint_sha256": {
+  "11": "eccb60f251615fc4ad88827b3189bfed2d67dd956e8aaa83833d41485b3a51da",
+  "19": "91a6c0a9a6892bf6de122a3282225164c910bcb759d75e3e70bbb5fca1f09a97",
+  "29": "c2354af20ae156db44be9547535fe4befe2c23590f442d7b0bf8be19f107969b"
+ },
+ "solved_per_seed": {
+  "all_concepts": [
+   4,
+   1,
+   0
+  ],
+  "model": [
+   2,
+   1,
+   0
+  ],
+  "random_pick": [
+   1,
+   0,
+   1
+  ],
+  "frequent": [
+   1,
+   1,
+   0
+  ],
+  "other_goal_examples": [
+   2,
+   1,
+   0
+  ],
+  "no_library": [
+   0,
+   0,
+   0
+  ],
+  "all_concepts_equal_total_cpu": [
+   5,
+   1,
+   1
+  ]
+ },
+ "outcome": "NO_GAIN: model selection did not beat all concepts on equal budgets or equal total CPU, and did not beat another goal's examples.",
+ "review_output_path": "artifacts/NC-081/independent_verification.json",
+ "reproduction": [
+  "OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-081/test_selector.py",
+  "See README.md for the full run."
+ ],
+ "negative_controls": [
+  "another goal's examples",
+  "random selection",
+  "most-frequent selection",
+  "no library",
+  "sealed-side functions excluded from training"
+ ],
+ "dependencies": [
+  "Python 3",
+  "NumPy",
+  "PyTorch CPU",
+  "logos-autonomy/discovery/library.py"
+ ],
+ "limitations": [
+  "Solve counts are very small, 0 to 5 of 300, so this cannot rule out a modest effect; an easier exam might measure one.",
+  "Dreams are combinations of concepts and may not resemble the sealed family, so this tests one training design, not neural guidance in general.",
+  "Top-12 and the dream design were not tuned.",
+  "Library snapshots were taken while LA-015's campaign was still running, and LA-015 has had no completed independent review.",
+  "CPU was measured under shared load."
+ ]
+}

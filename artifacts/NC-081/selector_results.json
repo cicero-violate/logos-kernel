@@ -1,0 +1,229 @@
+{
+ "schema": "logos.nc081.results/1",
+ "config": {
+  "dreams": 30000,
+  "steps": 3000,
+  "exam_goals": 300,
+  "budget": 8000,
+  "top_k": 12,
+  "out": "/workspace/experiments/logos-kernel/artifacts/NC-081"
+ },
+ "la015_library_py_sha256": "96b791cd1e6c28eb97508b4bcd463560641901e6228755f7943a5105b075b36c",
+ "seeds": {
+  "11": {
+   "library_sha256": "8c0957ed9064376bf7c4b252b084ea4368fc8e7ce23d41d10d20310858e40d77",
+   "library_head": "4b8b8fbf728b529239991d6c546162e079f672559f68366333abfcad3df870e8",
+   "concepts": 64,
+   "exam_goals": 300,
+   "exam_sha256": "29f81099b272afda57d84592877bfbba9f028097201d5a5da9feb6d2662fe8d3",
+   "training": {
+    "dreams": 30000,
+    "sealed_side_skipped": 26288,
+    "final_loss": 0.1012,
+    "train_cpu_seconds": 81.5
+   },
+   "inference_cpu_seconds": 0.0208,
+   "checkpoint_sha256": "eccb60f251615fc4ad88827b3189bfed2d67dd956e8aaa83833d41485b3a51da",
+   "arms": {
+    "all_concepts": {
+     "solved": 4,
+     "solved_goals": [
+      26,
+      148,
+      177,
+      256
+     ],
+     "candidates": 2379062,
+     "cpu_seconds": 20.45
+    },
+    "model": {
+     "solved": 2,
+     "solved_goals": [
+      56,
+      256
+     ],
+     "candidates": 2390626,
+     "cpu_seconds": 19.25
+    },
+    "random_pick": {
+     "solved": 1,
+     "solved_goals": [
+      148
+     ],
+     "candidates": 2393481,
+     "cpu_seconds": 16.9
+    },
+    "frequent": {
+     "solved": 1,
+     "solved_goals": [
+      256
+     ],
+     "candidates": 2393074,
+     "cpu_seconds": 17.7
+    },
+    "other_goal_examples": {
+     "solved": 2,
+     "solved_goals": [
+      26,
+      56
+     ],
+     "candidates": 2396403,
+     "cpu_seconds": 16.3
+    },
+    "no_library": {
+     "solved": 0,
+     "solved_goals": [],
+     "candidates": 2400000,
+     "cpu_seconds": 16.53
+    },
+    "all_concepts_equal_total_cpu": {
+     "solved": 5,
+     "solved_goals": [
+      26,
+      148,
+      177,
+      240,
+      256
+     ],
+     "candidates": 11711210,
+     "cpu_seconds": 79.62,
+     "budget_per_goal": 39609
+    }
+   }
+  },
+  "19": {
+   "library_sha256": "ba3af714e08f4bab437577731a975ebb0bdce2743d90933ada2773161f545733",
+   "library_head": "dbbebee11f1779c63530291e202c87eac1daf927e08dbb41da843357296bb2b4",
+   "concepts": 64,
+   "exam_goals": 300,
+   "exam_sha256": "2bc1b9bbe88d12ec6aec2fe8440f2f6c0d72459a5ba9390b1c858f5465d2c577",
+   "training": {
+    "dreams": 30000,
+    "sealed_side_skipped": 25278,
+    "final_loss": 0.1069,
+    "train_cpu_seconds": 75.9
+   },
+   "inference_cpu_seconds": 0.0332,
+   "checkpoint_sha256": "91a6c0a9a6892bf6de122a3282225164c910bcb759d75e3e70bbb5fca1f09a97",
+   "arms": {
+    "all_concepts": {
+     "solved": 1,
+     "solved_goals": [
+      291
+     ],
+     "candidates": 2392445,
+     "cpu_seconds": 19.23
+    },
+    "model": {
+     "solved": 1,
+     "solved_goals": [
+      291
+     ],
+     "candidates": 2392135,
+     "cpu_seconds": 16.19
+    },
+    "random_pick": {
+     "solved": 0,
+     "solved_goals": [],
+     "candidates": 2400000,
+     "cpu_seconds": 17.85
+    },
+    "frequent": {
+     "solved": 1,
+     "solved_goals": [
+      291
+     ],
+     "candidates": 2392664,
+     "cpu_seconds": 17.51
+    },
+    "other_goal_examples": {
+     "solved": 1,
+     "solved_goals": [
+      291
+     ],
+     "candidates": 2392774,
+     "cpu_seconds": 19.23
+    },
+    "no_library": {
+     "solved": 0,
+     "solved_goals": [],
+     "candidates": 2400000,
+     "cpu_seconds": 16.97
+    },
+    "all_concepts_equal_total_cpu": {
+     "solved": 1,
+     "solved_goals": [
+      291
+     ],
+     "candidates": 11809450,
+     "cpu_seconds": 84.46,
+     "budget_per_goal": 39495
+    }
+   }
+  },
+  "29": {
+   "library_sha256": "a614d90f7e72431ee569f5c4dfe959d9c1f8cf63d20ecb0f32ad96865dfe5a60",
+   "library_head": "593d467f0d115814360afe32dabc0c68b78ebfaeb6cdd975a01b16defb43b33a",
+   "concepts": 64,
+   "exam_goals": 300,
+   "exam_sha256": "5c630287111a72fa6955fa32aeca5ef5e65427a44a960bd96475e060742ab98f",
+   "training": {
+    "dreams": 30000,
+    "sealed_side_skipped": 24767,
+    "final_loss": 0.1037,
+    "train_cpu_seconds": 71.2
+   },
+   "inference_cpu_seconds": 0.0203,
+   "checkpoint_sha256": "c2354af20ae156db44be9547535fe4befe2c23590f442d7b0bf8be19f107969b",
+   "arms": {
+    "all_concepts": {
+     "solved": 0,
+     "solved_goals": [],
+     "candidates": 2400000,
+     "cpu_seconds": 14.46
+    },
+    "model": {
+     "solved": 0,
+     "solved_goals": [],
+     "candidates": 2400000,
+     "cpu_seconds": 12.7
+    },
+    "random_pick": {
+     "solved": 1,
+     "solved_goals": [
+      198
+     ],
+     "candidates": 2397786,
+     "cpu_seconds": 12.42
+    },
+    "frequent": {
+     "solved": 0,
+     "solved_goals": [],
+     "candidates": 2400000,
+     "cpu_seconds": 13.79
+    },
+    "other_goal_examples": {
+     "solved": 0,
+     "solved_goals": [],
+     "candidates": 2400000,
+     "cpu_seconds": 13.37
+    },
+    "no_library": {
+     "solved": 0,
+     "solved_goals": [],
+     "candidates": 2400000,
+     "cpu_seconds": 12.48
+    },
+    "all_concepts_equal_total_cpu": {
+     "solved": 1,
+     "solved_goals": [
+      198
+     ],
+     "candidates": 14221065,
+     "cpu_seconds": 99.4,
+     "budget_per_goal": 47410
+    }
+   }
+  }
+ }
+}
