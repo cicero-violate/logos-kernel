@@ -17,6 +17,127 @@
   "schema": 1,
   "status": "READY_FOR_DISTINCT_AGENT_VERIFICATION",
   "task": "NC-000",
+  "updated_implementer_replays": {
+    "baseline_receipt_exists": false,
+    "distinct_verifier_executed": false,
+    "guide_path": "artifacts/NC-000/REPLAY.md",
+    "runner_path": "artifacts/NC-000/replay_baseline.py",
+    "runner_sha256": "704fbceb267d660fe7ca13a5be4242485fa1b846d0d08241673815dfa491f93d",
+    "runs": {
+      "replay_full4217.json": {
+        "seed_counts": [
+          {
+            "eightbit": {
+              "correct": 4217,
+              "edge_pairs": 121,
+              "random_pairs": 4096,
+              "tested": 4217
+            },
+            "fourbit": {
+              "correct": 256,
+              "tested": 256
+            },
+            "local_truth": {
+              "correct": 320,
+              "tested": 320
+            },
+            "seed": 11
+          },
+          {
+            "eightbit": {
+              "correct": 4217,
+              "edge_pairs": 121,
+              "random_pairs": 4096,
+              "tested": 4217
+            },
+            "fourbit": {
+              "correct": 256,
+              "tested": 256
+            },
+            "local_truth": {
+              "correct": 320,
+              "tested": 320
+            },
+            "seed": 19
+          },
+          {
+            "eightbit": {
+              "correct": 4217,
+              "edge_pairs": 121,
+              "random_pairs": 4096,
+              "tested": 4217
+            },
+            "fourbit": {
+              "correct": 256,
+              "tested": 256
+            },
+            "local_truth": {
+              "correct": 320,
+              "tested": 320
+            },
+            "seed": 29
+          }
+        ],
+        "sha256": "c286ff49440dd76b6822c90ecc656d095bb6d78103f3192195e03e8715d3d4fc"
+      },
+      "replay_result.json": {
+        "seed_counts": [
+          {
+            "eightbit": {
+              "correct": 249,
+              "edge_pairs": 121,
+              "random_pairs": 128,
+              "tested": 249
+            },
+            "fourbit": {
+              "correct": 256,
+              "tested": 256
+            },
+            "local_truth": {
+              "correct": 320,
+              "tested": 320
+            },
+            "seed": 11
+          },
+          {
+            "eightbit": {
+              "correct": 249,
+              "edge_pairs": 121,
+              "random_pairs": 128,
+              "tested": 249
+            },
+            "fourbit": {
+              "correct": 256,
+              "tested": 256
+            },
+            "local_truth": {
+              "correct": 320,
+              "tested": 320
+            },
+            "seed": 19
+          },
+          {
+            "eightbit": {
+              "correct": 249,
+              "edge_pairs": 121,
+              "random_pairs": 128,
+              "tested": 249
+            },
+            "fourbit": {
+              "correct": 256,
+              "tested": 256
+            },
+            "local_truth": {
+              "correct": 320,
+              "tested": 320
+            },
+            "seed": 29
+          }
+        ],
+        "sha256": "cbbbc8a75efbcee2d63235961a3287170ee97976f98a7952ca5f68b87e949ac7"
+      }
+    }
+  },
   "verification_actions": [
     "Re-read AGENTS.md and validate instructions.jsonl; never rewrite history.",
     "A new real task owner may claim NC-000 after release, but must arrange verification by a separate real agent; owner must not certify their own work.",
