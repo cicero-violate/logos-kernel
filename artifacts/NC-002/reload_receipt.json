@@ -1,0 +1,78 @@
+{
+  "assertions": {
+    "passed": 20,
+    "tested": 20
+  },
+  "checkpoint_manifest_sha256": "6af2f9bcd362ab81405eef1f6523a304dc6714559358a67f2e3d3072213f789f",
+  "dependencies": [
+    "state_package.py",
+    "Python3",
+    "Git",
+    "PyTorch",
+    "NumPy",
+    "original pinned RLT and standalone ISA modules/checkpoints",
+    "artifacts/NC-000/inventory.json"
+  ],
+  "fresh_processes": 5,
+  "independent_verifier": null,
+  "models": [
+    {
+      "fresh_process_package_logits_equal": true,
+      "frozen_source_neural_logits_equal": true,
+      "model": "general_rlt",
+      "optimizer_state_entries": 48,
+      "original_historical_optimizer_restored": false,
+      "step2_loss_equal": true,
+      "step2_updated_weights_equal": true
+    },
+    {
+      "fresh_process_package_logits_equal": true,
+      "frozen_source_neural_logits_equal": true,
+      "model": "carry_gru",
+      "optimizer_state_entries": 9,
+      "original_historical_optimizer_restored": false,
+      "step2_loss_equal": true,
+      "step2_updated_weights_equal": true
+    },
+    {
+      "fresh_process_package_logits_equal": true,
+      "frozen_source_neural_logits_equal": true,
+      "model": "shared_rlt_isa",
+      "optimizer_state_entries": 40,
+      "original_historical_optimizer_restored": false,
+      "step2_loss_equal": true,
+      "step2_updated_weights_equal": true
+    },
+    {
+      "fresh_process_package_logits_equal": true,
+      "frozen_source_neural_logits_equal": true,
+      "model": "standalone_isa",
+      "optimizer_state_entries": 8,
+      "original_historical_optimizer_restored": false,
+      "step2_loss_equal": true,
+      "step2_updated_weights_equal": true
+    },
+    {
+      "fresh_process_package_logits_equal": true,
+      "frozen_source_neural_logits_equal": true,
+      "model": "standalone_controller_v2",
+      "optimizer_state_entries": 29,
+      "original_historical_optimizer_restored": false,
+      "step2_loss_equal": true,
+      "step2_updated_weights_equal": true
+    }
+  ],
+  "no_original_source_weights_modified": true,
+  "original_champion_sha256_after": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "original_champion_sha256_before": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "qualifications": [
+    "No original historical optimizer, RNG or scheduler state existed in baseline weight-only snapshots; cannot resume original historical update exactly.",
+    "Fresh optimizer state is saved and proved resumable after one explicitly synthetic, non-promotable training step.",
+    "Frozen logits reload exactly; not evidence that synthetic continuation improves learned capability.",
+    "CPU deterministic same-environment replay only, not cross-hardware bitwise proof.",
+    "Shared ISA remains experimental with fixed ROM and Python register wiring; no neural program invention.",
+    "Independent agent verification is mandatory before NC-002 ledger PASS."
+  ],
+  "result": "IMPLEMENTER_SELF_TEST_PASS_NOT_INDEPENDENT",
+  "task": "NC-002"
+}
