@@ -8,7 +8,8 @@
   "top_k": 12,
   "out": "/workspace/experiments/logos-kernel/artifacts/NC-081"
  },
- "la015_library_py_sha256": "96b791cd1e6c28eb97508b4bcd463560641901e6228755f7943a5105b075b36c",
+ "la015_library_py_sha256": "0c876a9e8d90e9401323b0068a66acc9b6d1e9f3051f22a771fe9d2a2d098b8a",
+ "la015_library_source": "logos-autonomy@b4a8d1b21e034f05372e73e28cfa34ea4ca380f6:discovery/library.py",
  "seeds": {
   "11": {
    "library_sha256": "8c0957ed9064376bf7c4b252b084ea4368fc8e7ce23d41d10d20310858e40d77",
@@ -20,9 +21,9 @@
     "dreams": 30000,
     "sealed_side_skipped": 26288,
     "final_loss": 0.1012,
-    "train_cpu_seconds": 81.5
+    "train_cpu_seconds": 105.9
    },
-   "inference_cpu_seconds": 0.0208,
+   "inference_cpu_seconds": 0.0293,
    "checkpoint_sha256": "eccb60f251615fc4ad88827b3189bfed2d67dd956e8aaa83833d41485b3a51da",
    "arms": {
     "all_concepts": {
@@ -34,7 +35,7 @@
       256
      ],
      "candidates": 2379062,
-     "cpu_seconds": 20.45
+     "cpu_seconds": 31.57
     },
     "model": {
      "solved": 2,
@@ -43,7 +44,7 @@
       256
      ],
      "candidates": 2390626,
-     "cpu_seconds": 19.25
+     "cpu_seconds": 32.75
     },
     "random_pick": {
      "solved": 1,
@@ -51,7 +52,7 @@
       148
      ],
      "candidates": 2393481,
-     "cpu_seconds": 16.9
+     "cpu_seconds": 24.72
     },
     "frequent": {
      "solved": 1,
@@ -59,7 +60,7 @@
       256
      ],
      "candidates": 2393074,
-     "cpu_seconds": 17.7
+     "cpu_seconds": 24.19
     },
     "other_goal_examples": {
      "solved": 2,
@@ -68,13 +69,13 @@
       56
      ],
      "candidates": 2396403,
-     "cpu_seconds": 16.3
+     "cpu_seconds": 34.43
     },
     "no_library": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 16.53
+     "cpu_seconds": 21.7
     },
     "all_concepts_equal_total_cpu": {
      "solved": 5,
@@ -85,9 +86,24 @@
       240,
       256
      ],
-     "candidates": 11711210,
-     "cpu_seconds": 79.62,
-     "budget_per_goal": 39609
+     "candidates": 13240195,
+     "cpu_seconds": 135.53,
+     "budget_per_goal": 44792,
+     "target_cpu_seconds": 138.68,
+     "tolerance": 0.1,
+     "matched": true,
+     "attempts": [
+      {
+       "budget_per_goal": 35142,
+       "solved": 5,
+       "cpu_seconds": 108.8
+      },
+      {
+       "budget_per_goal": 44792,
+       "solved": 5,
+       "cpu_seconds": 135.53
+      }
+     ]
     }
    }
   },
@@ -101,9 +117,9 @@
     "dreams": 30000,
     "sealed_side_skipped": 25278,
     "final_loss": 0.1069,
-    "train_cpu_seconds": 75.9
+    "train_cpu_seconds": 92.8
    },
-   "inference_cpu_seconds": 0.0332,
+   "inference_cpu_seconds": 0.028,
    "checkpoint_sha256": "91a6c0a9a6892bf6de122a3282225164c910bcb759d75e3e70bbb5fca1f09a97",
    "arms": {
     "all_concepts": {
@@ -112,7 +128,7 @@
       291
      ],
      "candidates": 2392445,
-     "cpu_seconds": 19.23
+     "cpu_seconds": 24.27
     },
     "model": {
      "solved": 1,
@@ -120,13 +136,13 @@
       291
      ],
      "candidates": 2392135,
-     "cpu_seconds": 16.19
+     "cpu_seconds": 22.42
     },
     "random_pick": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 17.85
+     "cpu_seconds": 24.09
     },
     "frequent": {
      "solved": 1,
@@ -134,7 +150,7 @@
       291
      ],
      "candidates": 2392664,
-     "cpu_seconds": 17.51
+     "cpu_seconds": 22.21
     },
     "other_goal_examples": {
      "solved": 1,
@@ -142,22 +158,32 @@
       291
      ],
      "candidates": 2392774,
-     "cpu_seconds": 19.23
+     "cpu_seconds": 22.6
     },
     "no_library": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 16.97
+     "cpu_seconds": 20.34
     },
     "all_concepts_equal_total_cpu": {
      "solved": 1,
      "solved_goals": [
       291
      ],
-     "candidates": 11809450,
-     "cpu_seconds": 84.46,
-     "budget_per_goal": 39495
+     "candidates": 11358857,
+     "cpu_seconds": 120.07,
+     "budget_per_goal": 37988,
+     "target_cpu_seconds": 115.25,
+     "tolerance": 0.1,
+     "matched": true,
+     "attempts": [
+      {
+       "budget_per_goal": 37988,
+       "solved": 1,
+       "cpu_seconds": 120.07
+      }
+     ]
     }
    }
   },
@@ -171,22 +197,22 @@
     "dreams": 30000,
     "sealed_side_skipped": 24767,
     "final_loss": 0.1037,
-    "train_cpu_seconds": 71.2
+    "train_cpu_seconds": 102.8
    },
-   "inference_cpu_seconds": 0.0203,
+   "inference_cpu_seconds": 0.0352,
    "checkpoint_sha256": "c2354af20ae156db44be9547535fe4befe2c23590f442d7b0bf8be19f107969b",
    "arms": {
     "all_concepts": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 14.46
+     "cpu_seconds": 29.78
     },
     "model": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 12.7
+     "cpu_seconds": 27.16
     },
     "random_pick": {
      "solved": 1,
@@ -194,34 +220,42 @@
       198
      ],
      "candidates": 2397786,
-     "cpu_seconds": 12.42
+     "cpu_seconds": 30.41
     },
     "frequent": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 13.79
+     "cpu_seconds": 26.6
     },
     "other_goal_examples": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 13.37
+     "cpu_seconds": 27.12
     },
     "no_library": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 12.48
+     "cpu_seconds": 25.98
     },
     "all_concepts_equal_total_cpu": {
-     "solved": 1,
-     "solved_goals": [
-      198
-     ],
-     "candidates": 14221065,
-     "cpu_seconds": 99.4,
-     "budget_per_goal": 47410
+     "solved": 0,
+     "solved_goals": [],
+     "candidates": 10476300,
+     "cpu_seconds": 117.38,
+     "budget_per_goal": 34921,
+     "target_cpu_seconds": 130.0,
+     "tolerance": 0.1,
+     "matched": true,
+     "attempts": [
+      {
+       "budget_per_goal": 34921,
+       "solved": 0,
+       "cpu_seconds": 117.38
+      }
+     ]
     }
    }
   }
