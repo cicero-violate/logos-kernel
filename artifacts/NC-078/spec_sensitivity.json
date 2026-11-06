@@ -1,0 +1,18 @@
+{
+ "seed": 11,
+ "train": {
+  "programs": 800,
+  "mean_log_likelihood_real": -16.181,
+  "gain_over_shuffled_outputs_nats": 0.059,
+  "gain_over_another_tasks_outputs_nats": 4.977,
+  "share_more_likely_with_real": 0.524
+ },
+ "heldout": {
+  "programs": 800,
+  "mean_log_likelihood_real": -20.476,
+  "gain_over_shuffled_outputs_nats": 0.128,
+  "gain_over_another_tasks_outputs_nats": 2.036,
+  "share_more_likely_with_real": 0.534
+ },
+ "reading": "A gain near zero means the model ignores the examples. Gains are in nats, so 2.3 means about 10 times more likely."
+}

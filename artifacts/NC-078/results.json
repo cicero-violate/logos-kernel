@@ -1,0 +1,406 @@
+{
+ "schema": "logos.nc078.results/1",
+ "config": {
+  "steps": 3000,
+  "batch": 128,
+  "lr": 0.002,
+  "train_programs": 40000,
+  "unseen": 40,
+  "named_limit": null,
+  "seeds": [
+   11,
+   19,
+   29
+  ],
+  "out": "/workspace/experiments/logos-kernel/artifacts/NC-078"
+ },
+ "budgets": [
+  64,
+  128,
+  256,
+  512
+ ],
+ "goals": {
+  "named": [
+   "INC",
+   "DEC",
+   "NEG",
+   "NOT",
+   "DOUBLE",
+   "TRIPLE",
+   "QUADRUPLE",
+   "ADD_PLUS_1",
+   "SUB_MINUS_1",
+   "ADD_DOUBLE_Y",
+   "AVERAGE_FLOOR",
+   "XOR_THEN_DOUBLE",
+   "NAND",
+   "NOR",
+   "XNOR",
+   "ANDNOT"
+  ],
+  "unseen": 40
+ },
+ "enumeration": {
+  "limit": 250000,
+  "needed": {
+   "DOUBLE": 257,
+   "NEG": 293,
+   "unseen_003": 294,
+   "unseen_027": 2142,
+   "unseen_020": 3054,
+   "unseen_021": 3070,
+   "unseen_022": 3086,
+   "unseen_004": 3582,
+   "unseen_001": 4014,
+   "unseen_031": 4926,
+   "unseen_029": 4974,
+   "unseen_010": 5870,
+   "unseen_023": 6318,
+   "QUADRUPLE": 11857,
+   "unseen_036": 11886,
+   "unseen_026": 11893,
+   "unseen_025": 12382,
+   "unseen_032": 13745,
+   "unseen_013": 15577,
+   "unseen_033": 15601,
+   "unseen_012": 16110,
+   "unseen_014": 17897,
+   "ADD_DOUBLE_Y": 17902,
+   "unseen_016": 25321,
+   "unseen_011": 26705,
+   "unseen_024": 26782,
+   "unseen_019": 40169,
+   "ANDNOT": 40190,
+   "unseen_018": 40193,
+   "XOR_THEN_DOUBLE": 47585,
+   "INC": 55022,
+   "DEC": 55038,
+   "unseen_008": 56878,
+   "unseen_015": 57374,
+   "unseen_009": 57825,
+   "unseen_017": 58270,
+   "unseen_035": 59217,
+   "NOT": 61537,
+   "unseen_007": 63857,
+   "TRIPLE": 65694,
+   "unseen_000": 66222,
+   "unseen_005": 69902
+  },
+  "solved_by_budget": {
+   "named": {
+    "64": 0,
+    "128": 0,
+    "256": 0,
+    "512": 2
+   },
+   "unseen": {
+    "64": 0,
+    "128": 0,
+    "256": 0,
+    "512": 1
+   }
+  }
+ },
+ "seeds": [
+  {
+   "info": {
+    "seed": 11,
+    "cpu_seconds": 2437.3,
+    "final_loss": 1.0885,
+    "parameters": 235139,
+    "checkpoint": "model_seed11.pt",
+    "checkpoint_sha256": "dda714d8f12b735221c0774ea2b71653a38fd5346b4a88c07b2e74e1fb5b90be",
+    "train_programs": 10795,
+    "train_functions": 2317
+   },
+   "arms": {
+    "neural": {
+     "cpu_seconds": 504.6,
+     "named": {
+      "64": 2,
+      "128": 4,
+      "256": 8,
+      "512": 9
+     },
+     "unseen": {
+      "64": 7,
+      "128": 13,
+      "256": 17,
+      "512": 25
+     },
+     "named_solved": [
+      "ADD_PLUS_1",
+      "ANDNOT",
+      "DEC",
+      "DOUBLE",
+      "INC",
+      "NEG",
+      "QUADRUPLE",
+      "TRIPLE",
+      "XOR_THEN_DOUBLE"
+     ],
+     "revisions": 0
+    },
+    "shuffled_examples": {
+     "cpu_seconds": 498.4,
+     "named": {
+      "64": 1,
+      "128": 3,
+      "256": 6,
+      "512": 6
+     },
+     "unseen": {
+      "64": 6,
+      "128": 11,
+      "256": 16,
+      "512": 27
+     },
+     "named_solved": [
+      "ADD_DOUBLE_Y",
+      "DOUBLE",
+      "INC",
+      "NEG",
+      "QUADRUPLE",
+      "XOR_THEN_DOUBLE"
+     ],
+     "revisions": 0
+    },
+    "untrained": {
+     "cpu_seconds": 712.7,
+     "named": {
+      "64": 0,
+      "128": 0,
+      "256": 0,
+      "512": 0
+     },
+     "unseen": {
+      "64": 0,
+      "128": 0,
+      "256": 0,
+      "512": 0
+     },
+     "named_solved": [],
+     "revisions": 0
+    },
+    "random": {
+     "cpu_seconds": 1.4,
+     "named": {
+      "64": 0,
+      "128": 0,
+      "256": 0,
+      "512": 1
+     },
+     "unseen": {
+      "64": 1,
+      "128": 1,
+      "256": 1,
+      "512": 2
+     },
+     "named_solved": [
+      "DOUBLE"
+     ],
+     "revisions": 0
+    }
+   }
+  },
+  {
+   "info": {
+    "seed": 19,
+    "cpu_seconds": 2235.0,
+    "final_loss": 1.076,
+    "parameters": 235139,
+    "checkpoint": "model_seed19.pt",
+    "checkpoint_sha256": "b26afb29d8eb93d11607f73e953f418cafd3ae69957982c6f58270abdcdf8d11",
+    "train_programs": 10813,
+    "train_functions": 2340
+   },
+   "arms": {
+    "neural": {
+     "cpu_seconds": 487.7,
+     "named": {
+      "64": 0,
+      "128": 0,
+      "256": 3,
+      "512": 5
+     },
+     "unseen": {
+      "64": 6,
+      "128": 10,
+      "256": 15,
+      "512": 19
+     },
+     "named_solved": [
+      "ANDNOT",
+      "DOUBLE",
+      "NOT",
+      "QUADRUPLE",
+      "XOR_THEN_DOUBLE"
+     ],
+     "revisions": 1
+    },
+    "shuffled_examples": {
+     "cpu_seconds": 550.3,
+     "named": {
+      "64": 2,
+      "128": 3,
+      "256": 5,
+      "512": 5
+     },
+     "unseen": {
+      "64": 8,
+      "128": 11,
+      "256": 17,
+      "512": 23
+     },
+     "named_solved": [
+      "DOUBLE",
+      "NEG",
+      "NOT",
+      "QUADRUPLE",
+      "XOR_THEN_DOUBLE"
+     ],
+     "revisions": 0
+    },
+    "untrained": {
+     "cpu_seconds": 786.8,
+     "named": {
+      "64": 0,
+      "128": 0,
+      "256": 0,
+      "512": 0
+     },
+     "unseen": {
+      "64": 0,
+      "128": 0,
+      "256": 0,
+      "512": 0
+     },
+     "named_solved": [],
+     "revisions": 0
+    },
+    "random": {
+     "cpu_seconds": 1.8,
+     "named": {
+      "64": 0,
+      "128": 1,
+      "256": 1,
+      "512": 2
+     },
+     "unseen": {
+      "64": 0,
+      "128": 0,
+      "256": 1,
+      "512": 2
+     },
+     "named_solved": [
+      "DOUBLE",
+      "NEG"
+     ],
+     "revisions": 0
+    }
+   }
+  },
+  {
+   "info": {
+    "seed": 29,
+    "cpu_seconds": 2147.8,
+    "final_loss": 1.1004,
+    "parameters": 235139,
+    "checkpoint": "model_seed29.pt",
+    "checkpoint_sha256": "b20b3b3fd30a554f4e992ef8fa5dc848fa199d0a7360d2e3ec25f0420ae32677",
+    "train_programs": 10745,
+    "train_functions": 2286
+   },
+   "arms": {
+    "neural": {
+     "cpu_seconds": 433.1,
+     "named": {
+      "64": 0,
+      "128": 1,
+      "256": 2,
+      "512": 7
+     },
+     "unseen": {
+      "64": 4,
+      "128": 9,
+      "256": 13,
+      "512": 20
+     },
+     "named_solved": [
+      "ADD_DOUBLE_Y",
+      "ANDNOT",
+      "DOUBLE",
+      "NEG",
+      "QUADRUPLE",
+      "TRIPLE",
+      "XOR_THEN_DOUBLE"
+     ],
+     "revisions": 1
+    },
+    "shuffled_examples": {
+     "cpu_seconds": 351.7,
+     "named": {
+      "64": 3,
+      "128": 5,
+      "256": 5,
+      "512": 7
+     },
+     "unseen": {
+      "64": 7,
+      "128": 11,
+      "256": 14,
+      "512": 19
+     },
+     "named_solved": [
+      "ADD_DOUBLE_Y",
+      "ANDNOT",
+      "DOUBLE",
+      "NEG",
+      "NOT",
+      "QUADRUPLE",
+      "XOR_THEN_DOUBLE"
+     ],
+     "revisions": 0
+    },
+    "untrained": {
+     "cpu_seconds": 569.7,
+     "named": {
+      "64": 0,
+      "128": 0,
+      "256": 0,
+      "512": 0
+     },
+     "unseen": {
+      "64": 0,
+      "128": 0,
+      "256": 0,
+      "512": 0
+     },
+     "named_solved": [],
+     "revisions": 0
+    },
+    "random": {
+     "cpu_seconds": 1.6,
+     "named": {
+      "64": 1,
+      "128": 2,
+      "256": 2,
+      "512": 2
+     },
+     "unseen": {
+      "64": 1,
+      "128": 1,
+      "256": 2,
+      "512": 3
+     },
+     "named_solved": [
+      "DOUBLE",
+      "NEG"
+     ],
+     "revisions": 0
+    }
+   }
+  }
+ ]
+}
