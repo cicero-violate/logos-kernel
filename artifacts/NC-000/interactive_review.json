@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "task": "NC-000",
+  "reviewed_utc": "2026-11-06T01:23:28Z",
+  "reviewer": {
+    "runtime": "current live interactive Codex session",
+    "runtime_session_id": null,
+    "identity_note": "No machine-readable session identifier was exposed to this review; none was invented."
+  },
+  "result": "MEASURED_ACCEPTANCE_VERIFIED_WITH_PROVENANCE_LIMITATION",
+  "pass_recommendation": "The frozen inventory and bounded baseline measurements justify NC-000 scientifically. The current Event Lab owner may append PASS only if it can independently confirm that codex-cli:01a1ae62-dbf3-72e1-af47-fb156aa0034b is the actual distinct verifier thread; repository artifacts alone do not authenticate that identity.",
+  "ledger": {
+    "validation": "PASS",
+    "nodes": 18,
+    "events": 27,
+    "head_sha256": "a72b707d2f276e6784cf66730d97fcea9b15ba1faaa4c0947d4fec0412f61b2e",
+    "unittest": "17/17 PASS",
+    "nc000_status": "planned",
+    "nc000_owner": "1db9edb983ff4df9933612e7c826e55f",
+    "duplicate_pass_present": false
+  },
+  "receipt_audit": {
+    "baseline_receipt_sha256": "cdc45ebf4232fca1d2279d664bdd43030244bce39ffbeabfd122bf4a7bb0a279",
+    "verifier_diagnostics_sha256": "ae8655bfd300c5e4412544df391ba2ebc1bec4c9e594511e404039ceecb1b23a",
+    "inventory_sha256": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+    "inventory_files_rehashed": 60,
+    "inventory_mismatches": [],
+    "provenance_finding": "baseline_receipt.json asserts the distinct verifier thread ID and says it was confirmed by an external thread.started event, but verifier_diagnostics.json retains verifier_identity=null and a blocker saying the ID had not yet been supplied. The numerical evidence is internally consistent; the claimed thread identity requires external runtime confirmation."
+  },
+  "repositories": {
+    "rlt_champion": {
+      "commit": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+      "matches_inventory": true,
+      "clean_after_review": true
+    },
+    "standalone_isa": {
+      "commit": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+      "matches_inventory": true,
+      "clean_after_review": true
+    },
+    "frozen_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "weights_modified_or_promoted": false
+  },
+  "independent_rerun": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-000/replay_baseline.py --seeds 11,19,29 --random8 4096 --output artifacts/NC-000/interactive_replay.json",
+    "output_sha256": "c286ff49440dd76b6822c90ecc656d095bb6d78103f3192195e03e8715d3d4fc",
+    "inventory": "60/60 hashes and byte counts matched",
+    "shared_rlt_isa": "For each seed 11,19,29: local truth 320/320, syntax 320/320, exhaustive four-bit MUL 256/256, sampled eight-bit MUL 4217/4217",
+    "rlt_attention_isa": "For each seed 11,19,29: local truth 320/320, syntax 320/320, exhaustive four-bit MUL 256/256, sampled eight-bit MUL 4217/4217",
+    "standalone_mlp": "10/10",
+    "controller_v1_negative_control": "6/14; the same 8 cases produced correct numeric values but failed to HALT within 75 steps",
+    "controller_v2": "14/14",
+    "fresh_cli": "addition 7+9=16; general-core subtraction 7-9 mod 256=254; shared_rlt_isa and rlt_attention_isa both halted in 29 steps with 13*11=143"
+  },
+  "limits": [
+    "The 4217 cases are sampled and contain 4084 distinct ordered pairs, not exhaustive coverage of all 65536 eight-bit pairs.",
+    "All three seeds use the same operand sample.",
+    "The multiplication program is a fixed ROM with Python register routing; this is not neural program invention.",
+    "The specialist results do not promote or requalify the weak seven-operation champion multiplication path.",
+    "This review did not call dag.py pass; only the current Event Lab owner may record the outcome."
+  ]
+}

@@ -1,0 +1,974 @@
+{
+  "acceptance_gates": {
+    "dag_validation_and_tests": true,
+    "explicit_shared_and_native_13x11": true,
+    "fresh_default_add_and_sub": true,
+    "inventory_60_of_60": true,
+    "native_three_seed_320_256_4217": true,
+    "negative_v1_failures_preserved": true,
+    "overall_measured": "PASS",
+    "shared_three_seed_320_256_4217": true,
+    "source_commits_exact_and_clean": true,
+    "standalone_mlp_and_v1_v2_halt_behavior": true
+  },
+  "blockers": [
+    "Actual Codex CLI thread ID has not yet been supplied by caller; baseline_receipt.json must not be created and verifier identity must not be asserted until then."
+  ],
+  "candidate_receipt_status": "ALL_MEASURED_ACCEPTANCE_GATES_PASS; BASELINE_RECEIPT_WITHHELD_PENDING_EXTERNAL_THREAD_ID",
+  "commands": [
+    "rtk python dag.py validate",
+    "rtk python -m unittest -q test_dag",
+    "rtk python dag.py ready",
+    "rtk python dag.py list",
+    "PYTHONDONTWRITEBYTECODE=1 rtk python /tmp/nc000_independent.py",
+    "rtk python run.py add 7 9 --width 8",
+    "rtk python run.py --seed 19 core sub 7 9 --width 8",
+    "rtk python run.py --seed 11 capability math --backend shared_rlt_isa --op mul --a 13 --b 11 --width 8 --experimental",
+    "rtk python run.py --seed 11 capability math --backend rlt_attention_isa --op mul --a 13 --b 11 --width 8 --experimental"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1 for model batch run",
+    "cuda": false,
+    "device": "cpu",
+    "python": "3.14.6",
+    "torch": "2.12.1"
+  },
+  "failed_cases": {
+    "all_other_measured_gates": [],
+    "standalone_v1": [
+      {
+        "a": 13,
+        "b": 11,
+        "halted": false,
+        "predicted": 143,
+        "steps": 75,
+        "target": 143
+      },
+      {
+        "a": 7,
+        "b": 9,
+        "halted": false,
+        "predicted": 63,
+        "steps": 75,
+        "target": 63
+      },
+      {
+        "a": 3,
+        "b": 2,
+        "halted": false,
+        "predicted": 6,
+        "steps": 75,
+        "target": 6
+      },
+      {
+        "a": 0,
+        "b": 0,
+        "halted": false,
+        "predicted": 0,
+        "steps": 75,
+        "target": 0
+      },
+      {
+        "a": 1,
+        "b": 0,
+        "halted": false,
+        "predicted": 0,
+        "steps": 75,
+        "target": 0
+      },
+      {
+        "a": 0,
+        "b": 255,
+        "halted": false,
+        "predicted": 0,
+        "steps": 75,
+        "target": 0
+      },
+      {
+        "a": 2,
+        "b": 3,
+        "halted": false,
+        "predicted": 6,
+        "steps": 75,
+        "target": 6
+      },
+      {
+        "a": 15,
+        "b": 15,
+        "halted": false,
+        "predicted": 225,
+        "steps": 75,
+        "target": 225
+      }
+    ]
+  },
+  "fresh_process_cli": {
+    "default_add_7_9": {
+      "algorithm": "carry_recurrence",
+      "expected": 16,
+      "passed": true,
+      "predicted": 16
+    },
+    "general_core_sub_7_9": {
+      "algorithm": "task_conditioned_rlt_TRAINED_640",
+      "expected_mod_256": 254,
+      "passed": true,
+      "predicted": 254
+    },
+    "rlt_attention_isa_13_11": {
+      "checkpoint_sha256": "51ffbab6674a503d4b8a7e7913a878daaad6a92509a78c80743838ad85e03546",
+      "expected": 143,
+      "halted": true,
+      "passed": true,
+      "predicted": 143,
+      "steps": 29
+    },
+    "shared_rlt_isa_13_11": {
+      "checkpoint_sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951",
+      "expected": 143,
+      "halted": true,
+      "passed": true,
+      "predicted": 143,
+      "steps": 29
+    }
+  },
+  "implementer": "Event Lab runtime session 1db9edb983ff4df9933612e7c826e55f",
+  "inventory": {
+    "checked": 60,
+    "checks": [
+      {
+        "actual_bytes": 1519075,
+        "actual_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+        "expected_bytes": 1519075,
+        "expected_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+        "match": true,
+        "path": "snapshots/current_unified_v3.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 5209,
+        "actual_sha256": "ca0ec6367535ea01264ccd00ffe1a32f4ebd65aaee364705e173193daf88ec83",
+        "expected_bytes": 5209,
+        "expected_sha256": "ca0ec6367535ea01264ccd00ffe1a32f4ebd65aaee364705e173193daf88ec83",
+        "match": true,
+        "path": "config.json",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 513,
+        "actual_sha256": "ef67ba9fbd9b60790376bc5370396711b6c176471081c6f4cc3fe15b1b11c315",
+        "expected_bytes": 513,
+        "expected_sha256": "ef67ba9fbd9b60790376bc5370396711b6c176471081c6f4cc3fe15b1b11c315",
+        "match": true,
+        "path": "PROMOTION.json",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 4370,
+        "actual_sha256": "5f829b3bd886530ba41c5c0bbf7a28004589e3f19fc7d1ad813279e4041c116b",
+        "expected_bytes": 4370,
+        "expected_sha256": "5f829b3bd886530ba41c5c0bbf7a28004589e3f19fc7d1ad813279e4041c116b",
+        "match": true,
+        "path": "snapshots/current_unified_v3.json",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 30866,
+        "actual_sha256": "b3467d7bdc851ba478a4237ca1f9edbdd7fc193ff3df1a48f93ddd3367ef6b42",
+        "expected_bytes": 30866,
+        "expected_sha256": "b3467d7bdc851ba478a4237ca1f9edbdd7fc193ff3df1a48f93ddd3367ef6b42",
+        "match": true,
+        "path": "outputs/new16/carry_recurrence_seed11.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 30866,
+        "actual_sha256": "80eb2066ce815b92596d6cbeefbe0bf4e07ac463440835843ca16d7e08a1fa4c",
+        "expected_bytes": 30866,
+        "expected_sha256": "80eb2066ce815b92596d6cbeefbe0bf4e07ac463440835843ca16d7e08a1fa4c",
+        "match": true,
+        "path": "outputs/new16/carry_recurrence_seed19.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 30866,
+        "actual_sha256": "29ad9f6635815d12b27435593089e4242d463a5caf269250a2bd7f050c7ab895",
+        "expected_bytes": 30866,
+        "expected_sha256": "29ad9f6635815d12b27435593089e4242d463a5caf269250a2bd7f050c7ab895",
+        "match": true,
+        "path": "outputs/new16/carry_recurrence_seed29.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 115198,
+        "actual_sha256": "802e4e871e298c8fa0b9166d89d1239e032c3531b8d65ab193069d3d7d6b3812",
+        "expected_bytes": 115198,
+        "expected_sha256": "802e4e871e298c8fa0b9166d89d1239e032c3531b8d65ab193069d3d7d6b3812",
+        "match": true,
+        "path": "snapshots/model_B1_seed11.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 115198,
+        "actual_sha256": "125a685da2d237b1a48631a9a56ea686bace4396520860b617683f4e939e45b1",
+        "expected_bytes": 115198,
+        "expected_sha256": "125a685da2d237b1a48631a9a56ea686bace4396520860b617683f4e939e45b1",
+        "match": true,
+        "path": "snapshots/model_B1_seed19.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 115198,
+        "actual_sha256": "536665cfffa3cef73c2aae30f6897ea73d639d4790f8cc0d5b98a69bf98145d9",
+        "expected_bytes": 115198,
+        "expected_sha256": "536665cfffa3cef73c2aae30f6897ea73d639d4790f8cc0d5b98a69bf98145d9",
+        "match": true,
+        "path": "snapshots/model_B1_seed29.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 144799,
+        "actual_sha256": "97dc443b5b1bc36f3ca6012100971b451960af34c4ced01a69438932390ceee0",
+        "expected_bytes": 144799,
+        "expected_sha256": "97dc443b5b1bc36f3ca6012100971b451960af34c4ced01a69438932390ceee0",
+        "match": true,
+        "path": "outputs/new16/length_adapter_seed11.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 144799,
+        "actual_sha256": "267941d8cb12a22319a7959b142c050f5b63f07589c71bb52246dca25778c62c",
+        "expected_bytes": 144799,
+        "expected_sha256": "267941d8cb12a22319a7959b142c050f5b63f07589c71bb52246dca25778c62c",
+        "match": true,
+        "path": "outputs/new16/length_adapter_seed19.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 144799,
+        "actual_sha256": "f92f6d871097221946dd96a222b76388b1cf9d4e19d7ad71a5b9596aa78a5986",
+        "expected_bytes": 144799,
+        "expected_sha256": "f92f6d871097221946dd96a222b76388b1cf9d4e19d7ad71a5b9596aa78a5986",
+        "match": true,
+        "path": "outputs/new16/length_adapter_seed29.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 66645,
+        "actual_sha256": "46d51b43096619ded84365b84634d2cfcf13bbd14490b4324325b403c5f0f465",
+        "expected_bytes": 66645,
+        "expected_sha256": "46d51b43096619ded84365b84634d2cfcf13bbd14490b4324325b403c5f0f465",
+        "match": true,
+        "path": "snapshots/model_legacy_fiveop_seed11.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 227459,
+        "actual_sha256": "c3b15024e6a6461141a31113ce9a51497e90670ef41a6036712210f7bf346b44",
+        "expected_bytes": 227459,
+        "expected_sha256": "c3b15024e6a6461141a31113ce9a51497e90670ef41a6036712210f7bf346b44",
+        "match": true,
+        "path": "snapshots/model_predictive_dag_seed11.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 117461,
+        "actual_sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884",
+        "expected_bytes": 117461,
+        "expected_sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884",
+        "match": true,
+        "path": "task_conditioned_rlt_v1/multitask_train_v1/outputs/seed11/seed11_conditioned_step640.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 115357,
+        "actual_sha256": "d9d157ef883554d130a62a715247d4c7fccff683502af01a4f5de7444f3d8f55",
+        "expected_bytes": 115357,
+        "expected_sha256": "d9d157ef883554d130a62a715247d4c7fccff683502af01a4f5de7444f3d8f55",
+        "match": true,
+        "path": "controlled_architecture_v1/full/RLT_scratch_seed11.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 117461,
+        "actual_sha256": "afd0d74857abb8f0ce98efcdb5ab9791ec2d01366573ae7040b9c100f4f9eba2",
+        "expected_bytes": 117461,
+        "expected_sha256": "afd0d74857abb8f0ce98efcdb5ab9791ec2d01366573ae7040b9c100f4f9eba2",
+        "match": true,
+        "path": "task_conditioned_rlt_v1/multitask_train_v1/outputs/seed19/seed19_conditioned_step640.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 115357,
+        "actual_sha256": "e8ee412e8a6abba5ab07ec48cfa0189bdeb9f7bb5fbdb14915714074972ad5c2",
+        "expected_bytes": 115357,
+        "expected_sha256": "e8ee412e8a6abba5ab07ec48cfa0189bdeb9f7bb5fbdb14915714074972ad5c2",
+        "match": true,
+        "path": "controlled_architecture_v1/full/RLT_scratch_seed19.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 117461,
+        "actual_sha256": "8574c1af3fa3354c78f6afff72d02c15b518ec2762435675af2bdd495049bc00",
+        "expected_bytes": 117461,
+        "expected_sha256": "8574c1af3fa3354c78f6afff72d02c15b518ec2762435675af2bdd495049bc00",
+        "match": true,
+        "path": "task_conditioned_rlt_v1/multitask_train_v1/outputs/seed29/seed29_conditioned_step640.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 115357,
+        "actual_sha256": "0e8a541fc912b419f77193a770dd0c7bf448e0f7ae6dec22e4d7b6ab4a03978b",
+        "expected_bytes": 115357,
+        "expected_sha256": "0e8a541fc912b419f77193a770dd0c7bf448e0f7ae6dec22e4d7b6ab4a03978b",
+        "match": true,
+        "path": "controlled_architecture_v1/full/RLT_scratch_seed29.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 45848,
+        "actual_sha256": "51ffbab6674a503d4b8a7e7913a878daaad6a92509a78c80743838ad85e03546",
+        "expected_bytes": 45848,
+        "expected_sha256": "51ffbab6674a503d4b8a7e7913a878daaad6a92509a78c80743838ad85e03546",
+        "match": true,
+        "path": "neural_isa_transfer_v1/rlt_micro_checkpoints/seed11_v2.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 45848,
+        "actual_sha256": "8c152adf64f639cc251fbf130b00e7a73a7d9c86f92023212d2965e7d18c0c28",
+        "expected_bytes": 45848,
+        "expected_sha256": "8c152adf64f639cc251fbf130b00e7a73a7d9c86f92023212d2965e7d18c0c28",
+        "match": true,
+        "path": "neural_isa_transfer_v1/rlt_micro_checkpoints/seed19_v2.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 45848,
+        "actual_sha256": "401a434f78f2cd9831923ab59a4151d21e602aac864aa4bdfd3b76396bd9f71a",
+        "expected_bytes": 45848,
+        "expected_sha256": "401a434f78f2cd9831923ab59a4151d21e602aac864aa4bdfd3b76396bd9f71a",
+        "match": true,
+        "path": "neural_isa_transfer_v1/rlt_micro_checkpoints/seed29_v2.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 71551,
+        "actual_sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951",
+        "expected_bytes": 71551,
+        "expected_sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951",
+        "match": true,
+        "path": "neural_isa_transfer_v1/unified_shared_v1/outputs/seed11/jointly_tuned.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 71551,
+        "actual_sha256": "1ca7edc7358d2132aa6ffedf17e281cfa060f989defffffeb9520945470ea1d0",
+        "expected_bytes": 71551,
+        "expected_sha256": "1ca7edc7358d2132aa6ffedf17e281cfa060f989defffffeb9520945470ea1d0",
+        "match": true,
+        "path": "neural_isa_transfer_v1/unified_shared_v1/outputs/seed19/jointly_tuned.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 71551,
+        "actual_sha256": "97e14244736759f2377433ef38ede534c25b414daf6f836bf2eb2ac72cf37e68",
+        "expected_bytes": 71551,
+        "expected_sha256": "97e14244736759f2377433ef38ede534c25b414daf6f836bf2eb2ac72cf37e68",
+        "match": true,
+        "path": "neural_isa_transfer_v1/unified_shared_v1/outputs/seed29/jointly_tuned.pt",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 27071,
+        "actual_sha256": "e39e973b8da75ad20f9d509221f3faabbb000dc5a92e34bef4096b3f5efb5d85",
+        "expected_bytes": 27071,
+        "expected_sha256": "e39e973b8da75ad20f9d509221f3faabbb000dc5a92e34bef4096b3f5efb5d85",
+        "match": true,
+        "path": "causal/weights.pt",
+        "repo": "standalone_isa"
+      },
+      {
+        "actual_bytes": 64845,
+        "actual_sha256": "44ccbfa69922129af8056c798c3df40baa34fd73692496a64d873669454c9cee",
+        "expected_bytes": 64845,
+        "expected_sha256": "44ccbfa69922129af8056c798c3df40baa34fd73692496a64d873669454c9cee",
+        "match": true,
+        "path": "transformer_controller/controller_weights.pt",
+        "repo": "standalone_isa"
+      },
+      {
+        "actual_bytes": 64845,
+        "actual_sha256": "85a35a6d50b8a14eb7b202a482835736f7ee1abfc466ecf92f0b142a6a2c6df1",
+        "expected_bytes": 64845,
+        "expected_sha256": "85a35a6d50b8a14eb7b202a482835736f7ee1abfc466ecf92f0b142a6a2c6df1",
+        "match": true,
+        "path": "transformer_controller/v2/controller_weights.pt",
+        "repo": "standalone_isa"
+      },
+      {
+        "actual_bytes": 27071,
+        "actual_sha256": "1f026f49144d0e7dc68a4c2039c83871e37e4d6c7732fa0d5c81421d8e60eea0",
+        "expected_bytes": 27071,
+        "expected_sha256": "1f026f49144d0e7dc68a4c2039c83871e37e4d6c7732fa0d5c81421d8e60eea0",
+        "match": true,
+        "path": "weights.pt",
+        "repo": "standalone_isa"
+      },
+      {
+        "actual_bytes": 8290,
+        "actual_sha256": "a2367bd1ab47edb13d3ee2ce0bbaeb1cd2071f85ff22298a114cee58d33285a0",
+        "expected_bytes": 8290,
+        "expected_sha256": "a2367bd1ab47edb13d3ee2ce0bbaeb1cd2071f85ff22298a114cee58d33285a0",
+        "match": true,
+        "path": "train.py",
+        "repo": "standalone_isa"
+      },
+      {
+        "actual_bytes": 9749,
+        "actual_sha256": "4a3b484ee97cc5799b4d15ed15bf4f504c2ccbb63453220dda1254efd04315e6",
+        "expected_bytes": 9749,
+        "expected_sha256": "4a3b484ee97cc5799b4d15ed15bf4f504c2ccbb63453220dda1254efd04315e6",
+        "match": true,
+        "path": "train_causal.py",
+        "repo": "standalone_isa"
+      },
+      {
+        "actual_bytes": 13600,
+        "actual_sha256": "3b86b4292293e13ee484d33557e9deaf7fc63e6ea6f6e1eca275f8627b7e6a67",
+        "expected_bytes": 13600,
+        "expected_sha256": "3b86b4292293e13ee484d33557e9deaf7fc63e6ea6f6e1eca275f8627b7e6a67",
+        "match": true,
+        "path": "transformer_controller/train_controller.py",
+        "repo": "standalone_isa"
+      },
+      {
+        "actual_bytes": 4967,
+        "actual_sha256": "a894dd50938872e0517cf2406362540dadb8d4a3f14a70afe8b38b1b0048804a",
+        "expected_bytes": 4967,
+        "expected_sha256": "a894dd50938872e0517cf2406362540dadb8d4a3f14a70afe8b38b1b0048804a",
+        "match": true,
+        "path": "transformer_controller/train_controller_v2.py",
+        "repo": "standalone_isa"
+      },
+      {
+        "actual_bytes": 1484,
+        "actual_sha256": "f08eab3c9338c6f815adce54e022b5802b9123e1f0c43bbc6f3727fcf998eebe",
+        "expected_bytes": 1484,
+        "expected_sha256": "f08eab3c9338c6f815adce54e022b5802b9123e1f0c43bbc6f3727fcf998eebe",
+        "match": true,
+        "path": "transformer_controller/verify.py",
+        "repo": "standalone_isa"
+      },
+      {
+        "actual_bytes": 2020,
+        "actual_sha256": "a0760e7abd0c6831009efb505d466d47dcdd158e0e0b76b6858b76f208251593",
+        "expected_bytes": 2020,
+        "expected_sha256": "a0760e7abd0c6831009efb505d466d47dcdd158e0e0b76b6858b76f208251593",
+        "match": true,
+        "path": "transformer_controller/verify_v2.py",
+        "repo": "standalone_isa"
+      },
+      {
+        "actual_bytes": 1486,
+        "actual_sha256": "af6243d7bbd04d26511e8e843151ad4beed1c3bb3d8b9129392316c0388e6ecc",
+        "expected_bytes": 1486,
+        "expected_sha256": "af6243d7bbd04d26511e8e843151ad4beed1c3bb3d8b9129392316c0388e6ecc",
+        "match": true,
+        "path": "verify.py",
+        "repo": "standalone_isa"
+      },
+      {
+        "actual_bytes": 20733,
+        "actual_sha256": "9575368f990ce7eb3f6481e159e80018e62240110f5ffa821d3aff61fc644b47",
+        "expected_bytes": 20733,
+        "expected_sha256": "9575368f990ce7eb3f6481e159e80018e62240110f5ffa821d3aff61fc644b47",
+        "match": true,
+        "path": "run.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 11487,
+        "actual_sha256": "f63f43fd32bd6fe67cdc5b4bee5e396f48b8428920dd15927ef8c7cae11bccc0",
+        "expected_bytes": 11487,
+        "expected_sha256": "f63f43fd32bd6fe67cdc5b4bee5e396f48b8428920dd15927ef8c7cae11bccc0",
+        "match": true,
+        "path": "system.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 6601,
+        "actual_sha256": "3c4abc18752236d3118487213fcfa1cf4a18e52e2ceb17ad52a0cdec141013c7",
+        "expected_bytes": 6601,
+        "expected_sha256": "3c4abc18752236d3118487213fcfa1cf4a18e52e2ceb17ad52a0cdec141013c7",
+        "match": true,
+        "path": "rlt_core.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 5398,
+        "actual_sha256": "99f70b03e2e864d1635ffdbd3ce56598d915bcc1673e1492964d3322714335fb",
+        "expected_bytes": 5398,
+        "expected_sha256": "99f70b03e2e864d1635ffdbd3ce56598d915bcc1673e1492964d3322714335fb",
+        "match": true,
+        "path": "task_conditioned_rlt.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 1384,
+        "actual_sha256": "12b417d403455169b8696aea38e9864fd58c51ec006a0cb7979e67afb512c6a6",
+        "expected_bytes": 1384,
+        "expected_sha256": "12b417d403455169b8696aea38e9864fd58c51ec006a0cb7979e67afb512c6a6",
+        "match": true,
+        "path": "neural_isa_transfer_v1/rlt_micro_v2.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 6845,
+        "actual_sha256": "8b68cd094c5ba2efffeac49e0d9448c2dc665573009d69b094851b3b5b0da697",
+        "expected_bytes": 6845,
+        "expected_sha256": "8b68cd094c5ba2efffeac49e0d9448c2dc665573009d69b094851b3b5b0da697",
+        "match": true,
+        "path": "neural_isa_transfer_v1/rlt_micro_runtime.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 4203,
+        "actual_sha256": "bc3431059416226c0b91390cb79a70c838744ee7e0c52847da1669115d0492ce",
+        "expected_bytes": 4203,
+        "expected_sha256": "bc3431059416226c0b91390cb79a70c838744ee7e0c52847da1669115d0492ce",
+        "match": true,
+        "path": "neural_isa_transfer_v1/verify_native_independent.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 3284,
+        "actual_sha256": "f63018899f4253240c889dd8a9b75a0d318ac088125d645ee9ce2324d1e762cf",
+        "expected_bytes": 3284,
+        "expected_sha256": "f63018899f4253240c889dd8a9b75a0d318ac088125d645ee9ce2324d1e762cf",
+        "match": true,
+        "path": "neural_isa_transfer_v1/unified_shared_v1/model.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 7499,
+        "actual_sha256": "28a4635afdee6924b273505fc4310d7db0bd52c724f6dc68040c8430191c9e34",
+        "expected_bytes": 7499,
+        "expected_sha256": "28a4635afdee6924b273505fc4310d7db0bd52c724f6dc68040c8430191c9e34",
+        "match": true,
+        "path": "neural_isa_transfer_v1/unified_shared_v1/runtime.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 5178,
+        "actual_sha256": "df0d66a1bc9ec6a58b23040de5958b8bbdba569178124c47b33da0dace77e0ba",
+        "expected_bytes": 5178,
+        "expected_sha256": "df0d66a1bc9ec6a58b23040de5958b8bbdba569178124c47b33da0dace77e0ba",
+        "match": true,
+        "path": "neural_isa_transfer_v1/unified_shared_v1/verify_shared.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 491,
+        "actual_sha256": "af051f01b6c553bc7efc6f4e200dd100f13284834f8c32a6e6d38232ea8ff1b5",
+        "expected_bytes": 491,
+        "expected_sha256": "af051f01b6c553bc7efc6f4e200dd100f13284834f8c32a6e6d38232ea8ff1b5",
+        "match": true,
+        "path": "neural_isa_transfer_v1/unified_shared_v1/config.json",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 3409,
+        "actual_sha256": "112c8e0cd4a32f299554917701686bc8df8233319232c9243ad3af73fff531d4",
+        "expected_bytes": 3409,
+        "expected_sha256": "112c8e0cd4a32f299554917701686bc8df8233319232c9243ad3af73fff531d4",
+        "match": true,
+        "path": "neural_isa_transfer_v1/FINAL_TRANSFER_DECISION.json",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 5829,
+        "actual_sha256": "65285c9b83e084769beb4530fe2597a9d61fb5bd694ebcbc29fe5982d5b5cdc9",
+        "expected_bytes": 5829,
+        "expected_sha256": "65285c9b83e084769beb4530fe2597a9d61fb5bd694ebcbc29fe5982d5b5cdc9",
+        "match": true,
+        "path": "neural_isa_transfer_v1/unified_shared_v1/DECISION.json",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 8324,
+        "actual_sha256": "a09af646e218c574a6d310197029c0c01c392f4ca7309cff375a52c77814a5a6",
+        "expected_bytes": 8324,
+        "expected_sha256": "a09af646e218c574a6d310197029c0c01c392f4ca7309cff375a52c77814a5a6",
+        "match": true,
+        "path": "UNIFIED_CAPABILITY_SNAPSHOT.json",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 4493,
+        "actual_sha256": "6a360ae13ed29daac9f48dad62ed41bc9881a3bbd645f4c7e8e6c12040cac6c3",
+        "expected_bytes": 4493,
+        "expected_sha256": "6a360ae13ed29daac9f48dad62ed41bc9881a3bbd645f4c7e8e6c12040cac6c3",
+        "match": true,
+        "path": "FINAL_VERIFICATION.json",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 1144,
+        "actual_sha256": "fb72523ea89f0990bb3fbe6dee1f62ee534bbf3287f76a3e4eff5e9e45118669",
+        "expected_bytes": 1144,
+        "expected_sha256": "fb72523ea89f0990bb3fbe6dee1f62ee534bbf3287f76a3e4eff5e9e45118669",
+        "match": true,
+        "path": "algorithms/carry_recurrence/module.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 1047,
+        "actual_sha256": "3c59e619e8da11d3d11588f134f2f5ce39b7a188b9e4f266f79c3b31affce8ad",
+        "expected_bytes": 1047,
+        "expected_sha256": "3c59e619e8da11d3d11588f134f2f5ce39b7a188b9e4f266f79c3b31affce8ad",
+        "match": true,
+        "path": "algorithms/carry_recurrence/MANIFEST.json",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 11029,
+        "actual_sha256": "433b5dbb7f220e430b512b355ef482f9eed0255cac0bfacd2a0759d2b6b26284",
+        "expected_bytes": 11029,
+        "expected_sha256": "433b5dbb7f220e430b512b355ef482f9eed0255cac0bfacd2a0759d2b6b26284",
+        "match": true,
+        "path": "task_conditioned_rlt_v1/multitask_train_v1/train.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 9587,
+        "actual_sha256": "d0e8e62b670d4e64923c3342ff653912f8621d421bccfdc3ec229886fac6df10",
+        "expected_bytes": 9587,
+        "expected_sha256": "d0e8e62b670d4e64923c3342ff653912f8621d421bccfdc3ec229886fac6df10",
+        "match": true,
+        "path": "task_conditioned_rlt_v1/multitask_train_v1/audit.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 4125,
+        "actual_sha256": "7af8cc1cbeccd7ca1290c0d5e5ec829c6c4ac62eac53aa76b9db9ad048541638",
+        "expected_bytes": 4125,
+        "expected_sha256": "7af8cc1cbeccd7ca1290c0d5e5ec829c6c4ac62eac53aa76b9db9ad048541638",
+        "match": true,
+        "path": "neural_isa_transfer_v1/train_rlt_micro_v2.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 7157,
+        "actual_sha256": "cfdaeb08a64a68baeb2d940de30e39047027d90b1ef65d6aae64995d9283f1e2",
+        "expected_bytes": 7157,
+        "expected_sha256": "cfdaeb08a64a68baeb2d940de30e39047027d90b1ef65d6aae64995d9283f1e2",
+        "match": true,
+        "path": "neural_isa_transfer_v1/unified_shared_v1/train.py",
+        "repo": "rlt_champion"
+      },
+      {
+        "actual_bytes": 2770,
+        "actual_sha256": "8858640bcf5ee57e5b927ec2071efed0146f495c7b0125f0ebb200fa03a76a5c",
+        "expected_bytes": 2770,
+        "expected_sha256": "8858640bcf5ee57e5b927ec2071efed0146f495c7b0125f0ebb200fa03a76a5c",
+        "match": true,
+        "path": "neural_isa_transfer_v1/unified_shared_v1/audit_novel.py",
+        "repo": "rlt_champion"
+      }
+    ],
+    "matched": 60,
+    "mismatches": []
+  },
+  "ledger_tests": {
+    "dag_validate": {
+      "events": 27,
+      "head_sha256": "a72b707d2f276e6784cf66730d97fcea9b15ba1faaa4c0947d4fec0412f61b2e",
+      "nodes": 18,
+      "status": "PASS"
+    },
+    "unittest": {
+      "correct": 17,
+      "status": "PASS",
+      "tested": 17
+    }
+  },
+  "limitations": [
+    "Logos Kernel HEAD differs from inventory because append-only ledger commits occurred after inventory creation; the worktree was clean and this is not a source-model change.",
+    "The three seeds reuse the identical 4217 operand pairs.",
+    "No all-65536 8-bit enumeration was executed.",
+    "Standalone v1 produces numerically correct values in eight failing cases but does not HALT within 75 steps; these remain failures. v1 total is 6/14; v2 is 14/14.",
+    "Original seven-operation general RLT multiplication is weak and was not promoted or requalified here.",
+    "No training, promotion, checkpoint mutation, source modification, or program invention was performed.",
+    "Identity authentication and scientific validity are not supplied by file existence or hashes."
+  ],
+  "neural_symbolic_boundary": {
+    "default_addition": "learned carry_recurrence GRU; post-prediction exact oracle verifies result",
+    "general_core": "joint seven-operation task-conditioned RLT; weak general MUL remains documented",
+    "oracle": "Python multiplication used only after rollout for scoring in these checks",
+    "program_invention": false,
+    "rlt_attention_isa": "fine-tuned RLT causal-attention arithmetic copy plus separate frozen TransformerPC; fixed ROM and Python register routing",
+    "shared_rlt_isa": "one shared causal-attention core with task-specific heads; fixed ROM and Python register routing",
+    "standalone": "causal NeuralISA MLP arithmetic plus separate TransformerPC; fixed ROM and Python register routing"
+  },
+  "pass_event_authorized": false,
+  "proof_scope": [
+    "Integrity: all 60 declared files independently matched SHA-256 and byte count.",
+    "Original source repositories matched exact inventory commits and were clean.",
+    "4-bit multiplication is exhaustive only over 256 ordered operand pairs.",
+    "8-bit multiplication is empirical over one reused 4217-pair operand set per seed, not exhaustive over 65536 pairs.",
+    "320 local cases are supervised primitive truth patterns, not all reachable machine states.",
+    "Correct execution of a supplied fixed ROM does not establish multiplication-program invention."
+  ],
+  "provenance": "separate Codex CLI agent; thread id awaiting external runtime evidence",
+  "repositories": {
+    "logos_kernel": {
+      "actual_commit": "08ed56918804571ec6b43fba64a0e86498bb64bd",
+      "expected_commit": "159e40eea312791be253bf8abb58af1bd6fbc7a0",
+      "status_porcelain": ""
+    },
+    "rlt_champion": {
+      "actual_commit": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+      "expected_commit": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+      "status_porcelain": ""
+    },
+    "standalone_isa": {
+      "actual_commit": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+      "expected_commit": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+      "status_porcelain": ""
+    }
+  },
+  "rlt_attention_isa": [
+    {
+      "checkpoint_sha256": "51ffbab6674a503d4b8a7e7913a878daaad6a92509a78c80743838ad85e03546",
+      "eightbit": {
+        "correct": 4217,
+        "tested": 4217
+      },
+      "fourbit": {
+        "correct": 256,
+        "tested": 256
+      },
+      "local_truth": {
+        "correct": 320,
+        "tested": 320
+      },
+      "seed": 11,
+      "syntax": {
+        "correct": 320,
+        "tested": 320
+      }
+    },
+    {
+      "checkpoint_sha256": "8c152adf64f639cc251fbf130b00e7a73a7d9c86f92023212d2965e7d18c0c28",
+      "eightbit": {
+        "correct": 4217,
+        "tested": 4217
+      },
+      "fourbit": {
+        "correct": 256,
+        "tested": 256
+      },
+      "local_truth": {
+        "correct": 320,
+        "tested": 320
+      },
+      "seed": 19,
+      "syntax": {
+        "correct": 320,
+        "tested": 320
+      }
+    },
+    {
+      "checkpoint_sha256": "401a434f78f2cd9831923ab59a4151d21e602aac864aa4bdfd3b76396bd9f71a",
+      "eightbit": {
+        "correct": 4217,
+        "tested": 4217
+      },
+      "fourbit": {
+        "correct": 256,
+        "tested": 256
+      },
+      "local_truth": {
+        "correct": 320,
+        "tested": 320
+      },
+      "seed": 29,
+      "syntax": {
+        "correct": 320,
+        "tested": 320
+      }
+    }
+  ],
+  "role": "independent verifier diagnostics; not final receipt",
+  "sample_definition": {
+    "all_65536_eight_bit_pairs_tested": false,
+    "eight_bit": "4096 pairs from random.Random(11052026+991122), followed by 121 ordered pairs over [0,1,2,3,7,15,31,63,127,128,255]",
+    "four_bit": "all ordered operand pairs 0..15 x 0..15",
+    "seed_sample_reuse": true,
+    "unique_eight_bit_coverage_not_multiplied_by_three": true
+  },
+  "schema_version": 1,
+  "shared_rlt_isa": [
+    {
+      "checkpoint_sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951",
+      "eightbit": {
+        "correct": 4217,
+        "tested": 4217
+      },
+      "fourbit": {
+        "correct": 256,
+        "tested": 256
+      },
+      "local_truth": {
+        "correct": 320,
+        "tested": 320
+      },
+      "seed": 11,
+      "syntax": {
+        "correct": 320,
+        "tested": 320
+      }
+    },
+    {
+      "checkpoint_sha256": "1ca7edc7358d2132aa6ffedf17e281cfa060f989defffffeb9520945470ea1d0",
+      "eightbit": {
+        "correct": 4217,
+        "tested": 4217
+      },
+      "fourbit": {
+        "correct": 256,
+        "tested": 256
+      },
+      "local_truth": {
+        "correct": 320,
+        "tested": 320
+      },
+      "seed": 19,
+      "syntax": {
+        "correct": 320,
+        "tested": 320
+      }
+    },
+    {
+      "checkpoint_sha256": "97e14244736759f2377433ef38ede534c25b414daf6f836bf2eb2ac72cf37e68",
+      "eightbit": {
+        "correct": 4217,
+        "tested": 4217
+      },
+      "fourbit": {
+        "correct": 256,
+        "tested": 256
+      },
+      "local_truth": {
+        "correct": 320,
+        "tested": 320
+      },
+      "seed": 29,
+      "syntax": {
+        "correct": 320,
+        "tested": 320
+      }
+    }
+  ],
+  "standalone": {
+    "controllers": [
+      {
+        "accuracy": 0.428571,
+        "checkpoint_sha256": "44ccbfa69922129af8056c798c3df40baa34fd73692496a64d873669454c9cee",
+        "correct": 6,
+        "failures": [
+          {
+            "a": 13,
+            "b": 11,
+            "halted": false,
+            "predicted": 143,
+            "steps": 75,
+            "target": 143
+          },
+          {
+            "a": 7,
+            "b": 9,
+            "halted": false,
+            "predicted": 63,
+            "steps": 75,
+            "target": 63
+          },
+          {
+            "a": 3,
+            "b": 2,
+            "halted": false,
+            "predicted": 6,
+            "steps": 75,
+            "target": 6
+          },
+          {
+            "a": 0,
+            "b": 0,
+            "halted": false,
+            "predicted": 0,
+            "steps": 75,
+            "target": 0
+          },
+          {
+            "a": 1,
+            "b": 0,
+            "halted": false,
+            "predicted": 0,
+            "steps": 75,
+            "target": 0
+          },
+          {
+            "a": 0,
+            "b": 255,
+            "halted": false,
+            "predicted": 0,
+            "steps": 75,
+            "target": 0
+          },
+          {
+            "a": 2,
+            "b": 3,
+            "halted": false,
+            "predicted": 6,
+            "steps": 75,
+            "target": 6
+          },
+          {
+            "a": 15,
+            "b": 15,
+            "halted": false,
+            "predicted": 225,
+            "steps": 75,
+            "target": 225
+          }
+        ],
+        "tested": 14,
+        "version": "v1"
+      },
+      {
+        "accuracy": 1.0,
+        "checkpoint_sha256": "85a35a6d50b8a14eb7b202a482835736f7ee1abfc466ecf92f0b142a6a2c6df1",
+        "correct": 14,
+        "failures": [],
+        "tested": 14,
+        "version": "v2"
+      }
+    ],
+    "local_truth": {
+      "correct": 320,
+      "tested": 320
+    },
+    "mlp_cases": {
+      "correct": 10,
+      "failed": [],
+      "tested": 10
+    },
+    "semantic": {
+      "correct": 320,
+      "tested": 320
+    }
+  },
+  "task": "NC-000",
+  "verifier_identity": null
+}

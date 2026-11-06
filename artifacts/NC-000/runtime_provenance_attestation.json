@@ -1,0 +1,42 @@
+{
+  "artifacts": {
+    "baseline_receipt.json": "cdc45ebf4232fca1d2279d664bdd43030244bce39ffbeabfd122bf4a7bb0a279",
+    "interactive_review.json": "8a3cb04ddd8105d27ffd84b540d980c822819e5e294eb905329f3b82bc18f930",
+    "inventory.json": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+    "verifier_diagnostics.json": "ae8655bfd300c5e4412544df391ba2ebc1bec4c9e594511e404039ceecb1b23a"
+  },
+  "checkpoint_change": false,
+  "implementer": "1db9edb983ff4df9933612e7c826e55f",
+  "kind": "external_runtime_provenance_attestation",
+  "limitations": [
+    "session ID evidence from local runtime logs, not cryptographic identity authentication",
+    "bounded measurement not a proof of all 65536 eight-bit pairs",
+    "the program ROM and Python host routing are predefined; no neural program invention"
+  ],
+  "runtime_evidence": [
+    {
+      "sha256": "47ff10268618d10a5bd6290743ef58b0847473d1ddb71e1b528d65b127703342",
+      "source": "original_captured_codex_cli_event_log",
+      "thread_started": [
+        "01a1ae62-dbf3-72e1-af47-fb156aa0034b"
+      ]
+    },
+    {
+      "sha256": "6a665ab9f867390d0bfe1f7ee702e3fb7d4d30a601d5dc8c0b549aa3d4ef300c",
+      "source": "resumed_captured_codex_cli_event_log",
+      "thread_started": [
+        "01a1ae62-dbf3-72e1-af47-fb156aa0034b"
+      ]
+    }
+  ],
+  "source_commits": {
+    "rlt_champion": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+    "standalone_isa": "feb001dbdb2e19fb5f123fe12116aec5503522fe"
+  },
+  "source_files_rehashed": 60,
+  "status": "PASS",
+  "task": "NC-000",
+  "verification_scope": "session ID confirmed from two Codex runtime thread.started logs, receipt and review hashes cross-checked, and manifest rehashed against unchanged source repositories",
+  "verified_at_utc": "2026-11-06T01:26:26.236944+00:00",
+  "verifier": "codex-cli:01a1ae62-dbf3-72e1-af47-fb156aa0034b"
+}

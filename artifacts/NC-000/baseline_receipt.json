@@ -1,0 +1,557 @@
+{
+  "acceptance_gates": {
+    "dag_validation_and_tests": true,
+    "explicit_shared_and_native_13x11": true,
+    "fresh_default_add_and_sub": true,
+    "inventory_60_of_60": true,
+    "native_three_seed_320_256_4217": true,
+    "negative_v1_failures_preserved": true,
+    "overall_measured": "PASS",
+    "shared_three_seed_320_256_4217": true,
+    "source_commits_exact_and_clean": true,
+    "standalone_mlp_and_v1_v2_halt_behavior": true
+  },
+  "artifact_hashes": {
+    "inventory": {
+      "path": "artifacts/NC-000/inventory.json",
+      "sha256": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f"
+    },
+    "verification_request": {
+      "path": "artifacts/NC-000/verification_request.json",
+      "sha256": "50f6f81878d00aa548606a0ef3970dd1b3a1370f000fa06a9d612f99e723dab4"
+    },
+    "verifier_diagnostics": {
+      "path": "artifacts/NC-000/verifier_diagnostics.json",
+      "sha256": "ae8655bfd300c5e4412544df391ba2ebc1bec4c9e594511e404039ceecb1b23a"
+    }
+  },
+  "authorization": {
+    "dag_pass_called": false,
+    "receipt_created": true,
+    "task_owner_must_review_and_record_ledger_outcome": true,
+    "training_or_promotion_performed": false
+  },
+  "backend_seed_results": {
+    "rlt_attention_isa": [
+      {
+        "checkpoint_sha256": "51ffbab6674a503d4b8a7e7913a878daaad6a92509a78c80743838ad85e03546",
+        "eightbit": {
+          "correct": 4217,
+          "tested": 4217
+        },
+        "fourbit": {
+          "correct": 256,
+          "tested": 256
+        },
+        "local_truth": {
+          "correct": 320,
+          "tested": 320
+        },
+        "seed": 11,
+        "syntax": {
+          "correct": 320,
+          "tested": 320
+        }
+      },
+      {
+        "checkpoint_sha256": "8c152adf64f639cc251fbf130b00e7a73a7d9c86f92023212d2965e7d18c0c28",
+        "eightbit": {
+          "correct": 4217,
+          "tested": 4217
+        },
+        "fourbit": {
+          "correct": 256,
+          "tested": 256
+        },
+        "local_truth": {
+          "correct": 320,
+          "tested": 320
+        },
+        "seed": 19,
+        "syntax": {
+          "correct": 320,
+          "tested": 320
+        }
+      },
+      {
+        "checkpoint_sha256": "401a434f78f2cd9831923ab59a4151d21e602aac864aa4bdfd3b76396bd9f71a",
+        "eightbit": {
+          "correct": 4217,
+          "tested": 4217
+        },
+        "fourbit": {
+          "correct": 256,
+          "tested": 256
+        },
+        "local_truth": {
+          "correct": 320,
+          "tested": 320
+        },
+        "seed": 29,
+        "syntax": {
+          "correct": 320,
+          "tested": 320
+        }
+      }
+    ],
+    "shared_rlt_isa": [
+      {
+        "checkpoint_sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951",
+        "eightbit": {
+          "correct": 4217,
+          "tested": 4217
+        },
+        "fourbit": {
+          "correct": 256,
+          "tested": 256
+        },
+        "local_truth": {
+          "correct": 320,
+          "tested": 320
+        },
+        "seed": 11,
+        "syntax": {
+          "correct": 320,
+          "tested": 320
+        }
+      },
+      {
+        "checkpoint_sha256": "1ca7edc7358d2132aa6ffedf17e281cfa060f989defffffeb9520945470ea1d0",
+        "eightbit": {
+          "correct": 4217,
+          "tested": 4217
+        },
+        "fourbit": {
+          "correct": 256,
+          "tested": 256
+        },
+        "local_truth": {
+          "correct": 320,
+          "tested": 320
+        },
+        "seed": 19,
+        "syntax": {
+          "correct": 320,
+          "tested": 320
+        }
+      },
+      {
+        "checkpoint_sha256": "97e14244736759f2377433ef38ede534c25b414daf6f836bf2eb2ac72cf37e68",
+        "eightbit": {
+          "correct": 4217,
+          "tested": 4217
+        },
+        "fourbit": {
+          "correct": 256,
+          "tested": 256
+        },
+        "local_truth": {
+          "correct": 320,
+          "tested": 320
+        },
+        "seed": 29,
+        "syntax": {
+          "correct": 320,
+          "tested": 320
+        }
+      }
+    ]
+  },
+  "changed_paths": [
+    "artifacts/NC-000/baseline_receipt.json"
+  ],
+  "checkpoints": [
+    {
+      "path": "snapshots/current_unified_v3.pt",
+      "repo": "rlt_champion",
+      "role": "selected_champion_bundle",
+      "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    {
+      "path": "causal/weights.pt",
+      "repo": "standalone_isa",
+      "role": "standalone_arithmetic_mlp",
+      "sha256": "e39e973b8da75ad20f9d509221f3faabbb000dc5a92e34bef4096b3f5efb5d85"
+    },
+    {
+      "path": "transformer_controller/controller_weights.pt",
+      "repo": "standalone_isa",
+      "role": "standalone_controller_v1",
+      "sha256": "44ccbfa69922129af8056c798c3df40baa34fd73692496a64d873669454c9cee"
+    },
+    {
+      "path": "transformer_controller/v2/controller_weights.pt",
+      "repo": "standalone_isa",
+      "role": "standalone_controller_v2",
+      "sha256": "85a35a6d50b8a14eb7b202a482835736f7ee1abfc466ecf92f0b142a6a2c6df1"
+    },
+    {
+      "path": "neural_isa_transfer_v1/rlt_micro_checkpoints/seed11_v2.pt",
+      "repo": "rlt_champion",
+      "role": "rlt_attention_isa_seed11",
+      "sha256": "51ffbab6674a503d4b8a7e7913a878daaad6a92509a78c80743838ad85e03546"
+    },
+    {
+      "path": "neural_isa_transfer_v1/rlt_micro_checkpoints/seed19_v2.pt",
+      "repo": "rlt_champion",
+      "role": "rlt_attention_isa_seed19",
+      "sha256": "8c152adf64f639cc251fbf130b00e7a73a7d9c86f92023212d2965e7d18c0c28"
+    },
+    {
+      "path": "neural_isa_transfer_v1/rlt_micro_checkpoints/seed29_v2.pt",
+      "repo": "rlt_champion",
+      "role": "rlt_attention_isa_seed29",
+      "sha256": "401a434f78f2cd9831923ab59a4151d21e602aac864aa4bdfd3b76396bd9f71a"
+    },
+    {
+      "path": "neural_isa_transfer_v1/unified_shared_v1/outputs/seed11/jointly_tuned.pt",
+      "repo": "rlt_champion",
+      "role": "shared_rlt_isa_seed11",
+      "sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951"
+    },
+    {
+      "path": "neural_isa_transfer_v1/unified_shared_v1/outputs/seed19/jointly_tuned.pt",
+      "repo": "rlt_champion",
+      "role": "shared_rlt_isa_seed19",
+      "sha256": "1ca7edc7358d2132aa6ffedf17e281cfa060f989defffffeb9520945470ea1d0"
+    },
+    {
+      "path": "neural_isa_transfer_v1/unified_shared_v1/outputs/seed29/jointly_tuned.pt",
+      "repo": "rlt_champion",
+      "role": "shared_rlt_isa_seed29",
+      "sha256": "97e14244736759f2377433ef38ede534c25b414daf6f836bf2eb2ac72cf37e68"
+    }
+  ],
+  "conclusion": "PASS for NC-000 frozen inventory and bounded baseline reproduction under the explicitly stated scopes and limits.",
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1 for model batch run",
+    "cuda": false,
+    "device": "cpu",
+    "python": "3.14.6",
+    "torch": "2.12.1"
+  },
+  "execution_boundaries": {
+    "default_addition": "learned carry_recurrence GRU; post-prediction exact oracle verifies result",
+    "fixed_program_ROM": [
+      "JZ_B",
+      "AND1",
+      "JZ_T",
+      "ADD",
+      "SHL",
+      "SHR",
+      "JMP",
+      "HALT"
+    ],
+    "general_core": "joint seven-operation task-conditioned RLT; weak general MUL remains documented",
+    "host_responsibilities": "Python supplies register routing, recurrent rollout, decoding, stopping loop, and post-prediction scoring.",
+    "multiplication_program_invented": false,
+    "neural_responsibilities": "The selected neural arithmetic/controller components predict local primitive results, instruction/PC transitions, and HALT according to each backend architecture.",
+    "oracle": "Python multiplication used only after rollout for scoring in these checks",
+    "program_invention": false,
+    "rlt_attention_isa": "fine-tuned RLT causal-attention arithmetic copy plus separate frozen TransformerPC; fixed ROM and Python register routing",
+    "shared_rlt_isa": "one shared causal-attention core with task-specific heads; fixed ROM and Python register routing",
+    "standalone": "causal NeuralISA MLP arithmetic plus separate TransformerPC; fixed ROM and Python register routing",
+    "symbolic_multiplication_used_in_inference": false
+  },
+  "fresh_process_results": {
+    "default_add_7_9": {
+      "algorithm": "carry_recurrence",
+      "expected": 16,
+      "passed": true,
+      "predicted": 16
+    },
+    "general_core_sub_7_9": {
+      "algorithm": "task_conditioned_rlt_TRAINED_640",
+      "expected_mod_256": 254,
+      "passed": true,
+      "predicted": 254
+    },
+    "rlt_attention_isa_13_11": {
+      "checkpoint_sha256": "51ffbab6674a503d4b8a7e7913a878daaad6a92509a78c80743838ad85e03546",
+      "expected": 143,
+      "halted": true,
+      "passed": true,
+      "predicted": 143,
+      "steps": 29
+    },
+    "shared_rlt_isa_13_11": {
+      "checkpoint_sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951",
+      "expected": 143,
+      "halted": true,
+      "passed": true,
+      "predicted": 143,
+      "steps": 29
+    }
+  },
+  "implementer": {
+    "runtime": "Event Lab",
+    "session_id": "1db9edb983ff4df9933612e7c826e55f"
+  },
+  "independence_statement": "The verifier independently executed the checks recorded in verifier_diagnostics.json from frozen weights. Implementer replay files and earlier claimed receipts were treated as context, not proof. No evidence is attributed to another verifier agent.",
+  "inventory_verification": {
+    "complete_per_file_results": "artifacts/NC-000/verifier_diagnostics.json",
+    "files_checked": 60,
+    "mismatches": [],
+    "sha256_and_byte_count_matches": 60
+  },
+  "ledger_validation": {
+    "dag_validate": {
+      "events": 27,
+      "head_sha256": "a72b707d2f276e6784cf66730d97fcea9b15ba1faaa4c0947d4fec0412f61b2e",
+      "nodes": 18,
+      "status": "PASS"
+    },
+    "unittest": {
+      "correct": 17,
+      "status": "PASS",
+      "tested": 17
+    }
+  },
+  "limitations": [
+    "Logos Kernel HEAD differs from inventory because append-only ledger commits occurred after inventory creation; the worktree was clean and this is not a source-model change.",
+    "The three seeds reuse the identical 4217 operand pairs.",
+    "No all-65536 8-bit enumeration was executed.",
+    "Standalone v1 produces numerically correct values in eight failing cases but does not HALT within 75 steps; these remain failures. v1 total is 6/14; v2 is 14/14.",
+    "Original seven-operation general RLT multiplication is weak and was not promoted or requalified here.",
+    "No training, promotion, checkpoint mutation, source modification, or program invention was performed.",
+    "Identity authentication and scientific validity are not supplied by file existence or hashes.",
+    "The 4,217 evaluations contain 4,084 distinct ordered operand pairs because deterministic random and edge sets contain duplicates.",
+    "The general seven-operation RLT has reported weak MUL performance (six-group mean 0.016167534722222224); specialist success is not champion promotion."
+  ],
+  "proof_scope": [
+    "Integrity: all 60 declared files independently matched SHA-256 and byte count.",
+    "Original source repositories matched exact inventory commits and were clean.",
+    "4-bit multiplication is exhaustive only over 256 ordered operand pairs.",
+    "8-bit multiplication is empirical over one reused 4217-pair operand set per seed, not exhaustive over 65536 pairs.",
+    "320 local cases are supervised primitive truth patterns, not all reachable machine states.",
+    "Correct execution of a supplied fixed ROM does not establish multiplication-program invention."
+  ],
+  "receipt_type": "standalone independent verification receipt",
+  "repositories": {
+    "logos_kernel": {
+      "clean_before_verifier_artifact_writes": true,
+      "commit_difference_reason": "append-only ledger commits after inventory creation",
+      "inventory_commit": "159e40eea312791be253bf8abb58af1bd6fbc7a0",
+      "verification_time_commit": "08ed56918804571ec6b43fba64a0e86498bb64bd"
+    },
+    "rlt_champion": {
+      "clean": true,
+      "commit": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+      "matches_inventory": true,
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1"
+    },
+    "standalone_isa": {
+      "clean": true,
+      "commit": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+      "matches_inventory": true,
+      "path": "/workspace/experiments/latticeforge_neural_isa_test"
+    }
+  },
+  "reproducible_commands": [
+    "rtk python dag.py validate",
+    "rtk python -m unittest -q test_dag",
+    "rtk python dag.py ready",
+    "rtk python dag.py list",
+    "PYTHONDONTWRITEBYTECODE=1 rtk python /tmp/nc000_independent.py",
+    "rtk python run.py add 7 9 --width 8",
+    "rtk python run.py --seed 19 core sub 7 9 --width 8",
+    "rtk python run.py --seed 11 capability math --backend shared_rlt_isa --op mul --a 13 --b 11 --width 8 --experimental",
+    "rtk python run.py --seed 11 capability math --backend rlt_attention_isa --op mul --a 13 --b 11 --width 8 --experimental",
+    "rtk python -c <independent assertions over verifier_diagnostics.json and deterministic sample; asserted 4217 generated and 4084 distinct>",
+    "rtk python -m json.tool artifacts/NC-000/baseline_receipt.json",
+    "rtk git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 status --porcelain",
+    "rtk git -C /workspace/experiments/latticeforge_neural_isa_test status --porcelain"
+  ],
+  "result": "PASS",
+  "sample_definitions": {
+    "eight_bit": {
+      "all_65536_pairs_tested": false,
+      "construction": "4096 outputs from random.Random(11052026+991122), then 121 ordered edge pairs over [0,1,2,3,7,15,31,63,127,128,255]",
+      "distinct_pairs": 4084,
+      "same_pairs_reused_across_seeds": true,
+      "tested": 4217
+    },
+    "four_bit": {
+      "distinct_pairs": 256,
+      "scope": "all ordered pairs 0..15 x 0..15; exhaustive for this finite operand scope",
+      "tested": 256
+    },
+    "local_truth": {
+      "scope": "five supervised primitive opcodes over all 64 six-bit local signal patterns; not all reachable machine states",
+      "tested": 320
+    }
+  },
+  "schema_version": 1,
+  "source_files": [
+    {
+      "path": "run.py",
+      "repo": "rlt_champion",
+      "sha256": "9575368f990ce7eb3f6481e159e80018e62240110f5ffa821d3aff61fc644b47"
+    },
+    {
+      "path": "system.py",
+      "repo": "rlt_champion",
+      "sha256": "f63f43fd32bd6fe67cdc5b4bee5e396f48b8428920dd15927ef8c7cae11bccc0"
+    },
+    {
+      "path": "rlt_core.py",
+      "repo": "rlt_champion",
+      "sha256": "3c4abc18752236d3118487213fcfa1cf4a18e52e2ceb17ad52a0cdec141013c7"
+    },
+    {
+      "path": "task_conditioned_rlt.py",
+      "repo": "rlt_champion",
+      "sha256": "99f70b03e2e864d1635ffdbd3ce56598d915bcc1673e1492964d3322714335fb"
+    },
+    {
+      "path": "neural_isa_transfer_v1/rlt_micro_v2.py",
+      "repo": "rlt_champion",
+      "sha256": "12b417d403455169b8696aea38e9864fd58c51ec006a0cb7979e67afb512c6a6"
+    },
+    {
+      "path": "neural_isa_transfer_v1/rlt_micro_runtime.py",
+      "repo": "rlt_champion",
+      "sha256": "8b68cd094c5ba2efffeac49e0d9448c2dc665573009d69b094851b3b5b0da697"
+    },
+    {
+      "path": "neural_isa_transfer_v1/verify_native_independent.py",
+      "repo": "rlt_champion",
+      "sha256": "bc3431059416226c0b91390cb79a70c838744ee7e0c52847da1669115d0492ce"
+    },
+    {
+      "path": "neural_isa_transfer_v1/unified_shared_v1/model.py",
+      "repo": "rlt_champion",
+      "sha256": "f63018899f4253240c889dd8a9b75a0d318ac088125d645ee9ce2324d1e762cf"
+    },
+    {
+      "path": "neural_isa_transfer_v1/unified_shared_v1/runtime.py",
+      "repo": "rlt_champion",
+      "sha256": "28a4635afdee6924b273505fc4310d7db0bd52c724f6dc68040c8430191c9e34"
+    },
+    {
+      "path": "neural_isa_transfer_v1/unified_shared_v1/verify_shared.py",
+      "repo": "rlt_champion",
+      "sha256": "df0d66a1bc9ec6a58b23040de5958b8bbdba569178124c47b33da0dace77e0ba"
+    },
+    {
+      "path": "train_causal.py",
+      "repo": "standalone_isa",
+      "sha256": "4a3b484ee97cc5799b4d15ed15bf4f504c2ccbb63453220dda1254efd04315e6"
+    },
+    {
+      "path": "transformer_controller/train_controller.py",
+      "repo": "standalone_isa",
+      "sha256": "3b86b4292293e13ee484d33557e9deaf7fc63e6ea6f6e1eca275f8627b7e6a67"
+    },
+    {
+      "path": "transformer_controller/train_controller_v2.py",
+      "repo": "standalone_isa",
+      "sha256": "a894dd50938872e0517cf2406362540dadb8d4a3f14a70afe8b38b1b0048804a"
+    }
+  ],
+  "standalone_results": {
+    "controller_v1": {
+      "accuracy": 0.428571,
+      "checkpoint_sha256": "44ccbfa69922129af8056c798c3df40baa34fd73692496a64d873669454c9cee",
+      "correct": 6,
+      "failures": [
+        {
+          "a": 13,
+          "b": 11,
+          "halted": false,
+          "predicted": 143,
+          "steps": 75,
+          "target": 143
+        },
+        {
+          "a": 7,
+          "b": 9,
+          "halted": false,
+          "predicted": 63,
+          "steps": 75,
+          "target": 63
+        },
+        {
+          "a": 3,
+          "b": 2,
+          "halted": false,
+          "predicted": 6,
+          "steps": 75,
+          "target": 6
+        },
+        {
+          "a": 0,
+          "b": 0,
+          "halted": false,
+          "predicted": 0,
+          "steps": 75,
+          "target": 0
+        },
+        {
+          "a": 1,
+          "b": 0,
+          "halted": false,
+          "predicted": 0,
+          "steps": 75,
+          "target": 0
+        },
+        {
+          "a": 0,
+          "b": 255,
+          "halted": false,
+          "predicted": 0,
+          "steps": 75,
+          "target": 0
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "halted": false,
+          "predicted": 6,
+          "steps": 75,
+          "target": 6
+        },
+        {
+          "a": 15,
+          "b": 15,
+          "halted": false,
+          "predicted": 225,
+          "steps": 75,
+          "target": 225
+        }
+      ],
+      "tested": 14,
+      "version": "v1"
+    },
+    "controller_v2": {
+      "accuracy": 1.0,
+      "checkpoint_sha256": "85a35a6d50b8a14eb7b202a482835736f7ee1abfc466ecf92f0b142a6a2c6df1",
+      "correct": 14,
+      "failures": [],
+      "tested": 14,
+      "version": "v2"
+    },
+    "local_truth": {
+      "correct": 320,
+      "tested": 320
+    },
+    "mlp_multiplication_probes": {
+      "correct": 10,
+      "failed": [],
+      "tested": 10
+    },
+    "semantic": {
+      "correct": 320,
+      "tested": 320
+    },
+    "v1_verdict": "FAIL: 6/14; eight numerically correct outputs did not HALT within 75 steps",
+    "v2_verdict": "PASS: 14/14 including HALT"
+  },
+  "task": "NC-000",
+  "verifier": {
+    "identity": "codex-cli:01a1ae62-dbf3-72e1-af47-fb156aa0034b",
+    "not_identity": "codex-cli:01a1ae6c-b5a1-7582-9ed3-562f24320c3d",
+    "provenance": "thread ID confirmed by external runtime thread.started event on resume",
+    "runtime": "separate actually executed Codex CLI agent"
+  }
+}

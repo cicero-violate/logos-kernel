@@ -1,0 +1,40 @@
+{
+  "schema": "logos.nc069.independent_verification/1",
+  "task": "NC-069",
+  "verifier": "turn-29adb044b11a417b8b9c167073dc95b5",
+  "candidate_owner": "claude-code-turn-1de8687a60a64400aaf5c097afeb5213",
+  "candidate_revision": "93db364d8cd1d6a91a82890473937c02fb035d46",
+  "candidate_sha256": "3b7238bc052e73f4be1d858358e3a2874e0b8eb96821a7003c698ba4fb944f2e",
+  "verdict": "PASS",
+  "checks": {
+    "pinned_files_sha256": "24/24",
+    "full_model_checkpoint_reload": "15/15",
+    "bucket_metric_replays": "45/45",
+    "negative_majority_control": "PASS",
+    "oracle_tests": "7/7",
+    "heldout_combo_effect_denominator": 2610,
+    "test_count_per_bucket": 4000
+  },
+  "results": {
+    "metric": "mean exact four-register accuracy where the intervention changed the outcome, on unseen combinations",
+    "interventional": 0.1058,
+    "passive_tokens": 0.022,
+    "passive_rewrite": 0.164,
+    "shuffled_control": 0.0236,
+    "leaked_control": 1.0,
+    "best_fixed_baseline": 0.0161,
+    "beats_passive_tokens": true,
+    "beats_passive_rewrite": false,
+    "beats_shuffled_control": true,
+    "leak_control_detects_leakage": true
+  },
+  "proof_scope": "Finite 4-bit canonical-ISA interventions on held-out combinations, 3 seeds, 5 trained arms, 2500 matched neural update steps/arm/seed. Every frozen checkpoint prediction independently recomputed and matched source results. Earlier heldout-label majority leakage corrected, negative control checked. Exact oracle evaluated via project separate interpreter test.",
+  "limitations": [
+    "Interventional model below passive_rewrite: NO_GAIN relative strongest model comparator.",
+    "Passive_rewrite is given oracle rewrite rule; not learned rule inference.",
+    "CPU measured on shared host and not identical per arm; training update path and batch sizes equal, but fixed symbolic baselines not physically CPU matched.",
+    "Independent oracle test code included with candidate; reviewer reran it and separately recalculated models.",
+    "No loops, causal world model, AGI or champion promotion.",
+    "Reviewer agent IDs and Git history not cryptographically authenticated."
+  ]
+}
