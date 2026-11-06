@@ -1,0 +1,108 @@
+{
+  "candidate_path": "artifacts/NC-080/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "60f35a463fb94c2c241f9306370c0a3552d047ab",
+  "candidate_sha256": "8a9463ccf5ecd65f94955f94b45cf44c2a9611e227f0f31c5f1f467059b0f2c4",
+  "dependencies": [
+    "Python 3",
+    "NumPy",
+    "PyTorch CPU",
+    "Git",
+    "artifacts/NC-080/neural_quotient.py",
+    "artifacts/NC-080/test_neural_quotient.py",
+    "artifacts/NC-080/library_snapshot.jsonl",
+    "artifacts/NC-080/operators_seed11.pt",
+    "artifacts/NC-080/operators_seed19.pt",
+    "artifacts/NC-080/operators_seed29.pt"
+  ],
+  "limitations": [
+    "All statements are for 8-bit X/Y; 65,536 combinations per concept, not unbounded arithmetic or unrestricted machine state",
+    "Host performs bit iteration, carry routing, expression composition and goal selection; network learned 224 local input/output rules, no new concepts invented",
+    "If exact 224-entry rule tables are already learned, compound correctness mainly proves host wiring, not neural generalization",
+    "LA-015 seed-11 library snapshot was frozen while its separate campaign was active; independent audit of that upstream campaign was not supplied here",
+    "Only 213 of 426 library solutions were evaluated in the sampled solution checks, while all 184 quotient canonical concepts were evaluated exhaustively",
+    "Hash chain and Git detect unintentional drift; they do not authenticate model identities or exclude malicious privileged modification",
+    "No champion promotion, deployment, neural proposal search, system service activation, external API or AGI result",
+    "The original five-test candidate unittest invocation was terminated by SIGTERM and is not counted as passed; independent full three-seed replay and focused controls did complete successfully"
+  ],
+  "negative_controls": [
+    "Permuted learned meaning breaks 120 of 224 local truth rows for each seed and 0 of 40 concept controls are universally correct",
+    "Untrained random model fails deep ADD expression and 0 of 40 concept controls universally correct",
+    "AND(X,255) differs from AND(X,254) and remains separate exact quotient class",
+    "64-probe approximate signatures are diagnostic only and never used for equality",
+    "Direct neural network and precached neural rule lookup produce equal decisions on full local truth table and 500 sampled paired inputs for every operator and seed"
+  ],
+  "next_action": "Separate stateless pull may FINALIZE NC-080 using this receipt; no model/host/library/champion changes are authorized by this PASS.",
+  "owner": "claude-code-turn-7e13619f8cc941dd8381206adde6e95e",
+  "proof_scope": "Independent frozen NC-080 candidate check: exact source/evidence/checkpoint SHA-256 at candidate Git revision and working tree; full independent retraining of three seeds 11/19/29 into a distinct temporary directory with bitwise-exact equality of all eight checkpoint tensors per seed; 224/224 exact learned bit-local truth rows for all seven operations per seed. All 184 canonical non-leaf concepts and 213 sampled library solutions were evaluated over the full 256 x 256 X/Y eight-bit input domain and matched the exact host evaluator for each seed, with zero wrong pairs. All 193 expressions were compared using full-domain exact behavioral quotient into 184 smallest canonical representatives; exact class membership was byte checked and near-equal negative kept distinct. Permuted meaning and untrained controls failed. This is finite eight-bit host-composed execution, not concept invention, autonomous neural program synthesis, continuous learning or general intelligence.",
+  "schema_version": 1,
+  "task": "NC-080",
+  "verdict": "PASS",
+  "verified": {
+    "dataset": {
+      "all_exact_class_members_byte_equal": true,
+      "canonical_representative_smallest": true,
+      "distinct_nonleaf_expressions": 193,
+      "exact_quotient_classes": 184,
+      "library_snapshot_sha256": "5d747eb32ca1254d9486c53a27dbe3727861fc6c98a5fd6b7b4f84ffce970387",
+      "library_solutions": 426,
+      "merged": 9
+    },
+    "frozen_integrity": {
+      "checkpoint_files": 3,
+      "evidence_files": 2,
+      "pinned_manifest": true,
+      "pinned_revision_match": true,
+      "source_files": 3
+    },
+    "full_candidate_reproduction_job": "2957534fa1cf2d30, completed exit_code 0, output FULL_FROZEN_EXPERIMENT_REPRODUCED",
+    "independent_checkpoint_local_table_job": "89a8b5c5c237047a, completed exit_code 0",
+    "independent_quotient_job": "dbb75b13c4176496, completed exit_code 0",
+    "reviewer_focused_controls_job": "7971656bb71ab1a1, completed exit_code 0: network_table equals direct network outputs for 224 inputs, 500 paired-input direct checks per operation and seed, deep expression full domain, permuted meaning 120/224 wrong local rows and untrained wrong",
+    "test_suite_attempt": "d49f3090fbb09f8e terminated with SIGTERM (-15) before printing unittest summary; NOT claimed PASS. Full three-seed reproduction and targeted controls completed independently.",
+    "three_seed_experiment": {
+      "11": {
+        "concepts_correct": 184,
+        "concepts_tested": 184,
+        "controls_tested": 40,
+        "input_pairs_per_concept": 65536,
+        "local_truth_correct": 224,
+        "local_truth_rows": 224,
+        "max_parameter_delta_retrained_vs_pinned": 0,
+        "permuted_meaning_exact_concepts": 0,
+        "solution_expressions_sampled": 213,
+        "solutions_correct": 213,
+        "trained_checkpoint_tensors": 8,
+        "untrained_exact_concepts": 0
+      },
+      "19": {
+        "concepts_correct": 184,
+        "concepts_tested": 184,
+        "controls_tested": 40,
+        "input_pairs_per_concept": 65536,
+        "local_truth_correct": 224,
+        "local_truth_rows": 224,
+        "max_parameter_delta_retrained_vs_pinned": 0,
+        "permuted_meaning_exact_concepts": 0,
+        "solution_expressions_sampled": 213,
+        "solutions_correct": 213,
+        "trained_checkpoint_tensors": 8,
+        "untrained_exact_concepts": 0
+      },
+      "29": {
+        "concepts_correct": 184,
+        "concepts_tested": 184,
+        "controls_tested": 40,
+        "input_pairs_per_concept": 65536,
+        "local_truth_correct": 224,
+        "local_truth_rows": 224,
+        "max_parameter_delta_retrained_vs_pinned": 0,
+        "permuted_meaning_exact_concepts": 0,
+        "solution_expressions_sampled": 213,
+        "solutions_correct": 213,
+        "trained_checkpoint_tensors": 8,
+        "untrained_exact_concepts": 0
+      }
+    }
+  },
+  "verifier": "turn-347bd464e80f4d6998fcab39fde4db13"
+}
