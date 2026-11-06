@@ -1,0 +1,201 @@
+{
+  "baseline_scores": {
+    "test": {
+      "finite_difference": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 12,
+        "mean_absolute_error": 5129647086.949554
+      },
+      "identity": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 0,
+        "mean_absolute_error": 5144757126.610661
+      },
+      "linear_recurrence": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 7,
+        "mean_absolute_error": 5519042480.499347
+      },
+      "persistence": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 4,
+        "mean_absolute_error": 5144242471.425288
+      },
+      "randomized": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 0,
+        "mean_absolute_error": 5144757134.306483
+      },
+      "zero": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 0,
+        "mean_absolute_error": 5144757134.222673
+      }
+    },
+    "train": {
+      "finite_difference": {
+        "bounded_discovery_pass": 0,
+        "denominator": 27,
+        "forecast_pass": 9,
+        "mean_absolute_error": 200329.48611111112
+      },
+      "identity": {
+        "bounded_discovery_pass": 0,
+        "denominator": 27,
+        "forecast_pass": 0,
+        "mean_absolute_error": 229758.97685185185
+      },
+      "linear_recurrence": {
+        "bounded_discovery_pass": 0,
+        "denominator": 27,
+        "forecast_pass": 7,
+        "mean_absolute_error": 886.7639324542326
+      },
+      "persistence": {
+        "bounded_discovery_pass": 0,
+        "denominator": 27,
+        "forecast_pass": 3,
+        "mean_absolute_error": 226100.1435185185
+      },
+      "randomized": {
+        "bounded_discovery_pass": 0,
+        "denominator": 27,
+        "forecast_pass": 0,
+        "mean_absolute_error": 229765.47309154173
+      },
+      "zero": {
+        "bounded_discovery_pass": 0,
+        "denominator": 27,
+        "forecast_pass": 0,
+        "mean_absolute_error": 229765.4398148148
+      }
+    },
+    "validation": {
+      "finite_difference": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 10,
+        "mean_absolute_error": 52255988.75054869
+      },
+      "identity": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 0,
+        "mean_absolute_error": 53315642.329237424
+      },
+      "linear_recurrence": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 10,
+        "mean_absolute_error": 2165.3511710269786
+      },
+      "persistence": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 4,
+        "mean_absolute_error": 53254439.8894488
+      },
+      "randomized": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 0,
+        "mean_absolute_error": 53315647.79004833
+      },
+      "zero": {
+        "bounded_discovery_pass": 0,
+        "denominator": 36,
+        "forecast_pass": 1,
+        "mean_absolute_error": 53315647.69391073
+      }
+    }
+  },
+  "controls": {
+    "constant_collapse_nontrivial_rejected": 27,
+    "oracle_only_positive_nontrivial": 27,
+    "short_prefix_interpolation": {
+      "bounded_discovery_pass": 0,
+      "failed_extrapolation": 15,
+      "tested": 18
+    },
+    "wrong_law_rejected": 36
+  },
+  "dependencies": [
+    "Python 3 standard library",
+    "Git CLI (ledger/commit only)",
+    "oracle.py",
+    "benchmark.py",
+    "test_benchmark.py"
+  ],
+  "family_counts": {
+    "test": {
+      "aliasing": 3,
+      "constant": 3,
+      "coupled_vector": 3,
+      "geometric": 3,
+      "logistic_chaos": 3,
+      "multi_frequency": 3,
+      "nonlinear_modular": 3,
+      "nonuniform_polynomial": 3,
+      "periodic": 3,
+      "polynomial": 3,
+      "random_noise": 3,
+      "switching": 3
+    },
+    "train": {
+      "aliasing": 3,
+      "constant": 3,
+      "coupled_vector": 3,
+      "geometric": 3,
+      "nonlinear_modular": 3,
+      "nonuniform_polynomial": 3,
+      "periodic": 3,
+      "polynomial": 3,
+      "random_noise": 3
+    },
+    "validation": {
+      "aliasing": 3,
+      "constant": 3,
+      "coupled_vector": 3,
+      "geometric": 3,
+      "logistic_chaos": 3,
+      "multi_frequency": 3,
+      "nonlinear_modular": 3,
+      "nonuniform_polynomial": 3,
+      "periodic": 3,
+      "polynomial": 3,
+      "random_noise": 3,
+      "switching": 3
+    }
+  },
+  "input_encoding": {
+    "test": "first_delta",
+    "train": "float64",
+    "validation": "decimal_text"
+  },
+  "measured_cpu_seconds": 0.019922,
+  "oracle_target_commitments": {
+    "test": "171cce4f94eb22d7cdbb13b71c1ff02b426d0bbd12dc41641744d1778379d8a7",
+    "train": "4e0c4b6f4eb76b46ede8f2677ad9ef942333d6e9073c1e2a5a9fab3352b9cb96",
+    "validation": "9c1ac4593e4b7fb4c860aae61cee12bb69091f57696e5c71bb043a5f7e563b96"
+  },
+  "python_version": "3.14.6",
+  "schema_version": 1,
+  "seed": 55061,
+  "source_sha256": {
+    "benchmark.py": "1c32b2ed5dc80cc75df741c8f2cdb26c07835b715d226ecf95f7fc2fe024f936",
+    "oracle.py": "ed310cb20260bab39f6ec92d7b72c036d80fd153af04bd44e0b24826d7adafb1",
+    "test_benchmark.py": "63080e50099db08c0c23cc5b6b7459bd5d947fc24149c6c608a878af87d12d04"
+  },
+  "split_counts": {
+    "test": 36,
+    "train": 27,
+    "validation": 36
+  },
+  "task": "NC-055"
+}

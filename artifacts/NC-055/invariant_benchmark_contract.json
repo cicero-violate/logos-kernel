@@ -1,0 +1,186 @@
+{
+  "baseline_methods": [
+    "zero",
+    "identity",
+    "persistence",
+    "finite_difference",
+    "linear_recurrence",
+    "randomized"
+  ],
+  "candidate_interface": "benchmark.py:forecast(public_case, baseline)",
+  "controls": {
+    "negative": "Every claimed law tested against wrong-name counterfactual and zero-collapse; nonlinear/noisy/aliasing/short-interpolation and nonuniform sampling challenge naive differences",
+    "negative_result_counts": {
+      "constant_collapse_nontrivial_rejected": 27,
+      "oracle_only_positive_nontrivial": 27,
+      "short_prefix_interpolation": {
+        "bounded_discovery_pass": 0,
+        "failed_extrapolation": 15,
+        "tested": 18
+      },
+      "wrong_law_rejected": 36
+    },
+    "positive": "Evaluator-only known oracle forecast/law tests rubric satisfiability; forbidden as participant baseline"
+  },
+  "dependencies": [
+    "Python 3 standard library",
+    "oracle.py",
+    "benchmark.py",
+    "test_benchmark.py",
+    "Git CLI for immutable candidate revision"
+  ],
+  "domain": "Finite seeded synthetic sample times; no network, API, GPU, unbounded search or untrusted execution",
+  "evaluator": "benchmark.py:grade(public_case, private_reference, candidate_submission)",
+  "families": {
+    "aliasing": {
+      "claim": "period-four underlying process; observed values constant only due to aliasing",
+      "definition": "x(t)=(rep+2)*[1,0,-1,0][(t+rep) mod 4]; observed at t=4i, query at t=4(n-1)+1..h",
+      "negative": "zero-delta and persistence forecasts falsified by changed sample rate",
+      "oracle": "Fraction exact"
+    },
+    "constant": {
+      "claim": "constant",
+      "definition": "x(t)=p",
+      "negative": "constant prediction applied to every nonconstant family is invalid",
+      "oracle": "Fraction exact"
+    },
+    "coupled_vector": {
+      "claim": "coupled vector recurrence",
+      "definition": "(a0,b0)=(p,rep+1); (a_(t+1),b_(t+1))=(b_t,a_t+b_t)",
+      "negative": "independent constant-state collapse",
+      "oracle": "Fraction exact"
+    },
+    "geometric": {
+      "claim": "constant multiplicative recurrence at unit interval",
+      "definition": "x(t)=(rep+1)*(2+(p mod 3))^t",
+      "negative": "periodic and switching counterexamples",
+      "oracle": "Fraction exact"
+    },
+    "logistic_chaos": {
+      "claim": "nonlinear logistic map (finite precision, no formal chaos proof)",
+      "definition": "x0=1/(5+rep+(p mod 3)); x_(t+1)=4*x_t*(1-x_t)",
+      "negative": "naive high-order difference is noise-sensitive",
+      "oracle": "Decimal precision 78 digits"
+    },
+    "multi_frequency": {
+      "claim": "period twelve",
+      "definition": "x(t)=[2,0,-2,0][(t+rep) mod 4]+[0,1,-1][(t+p) mod 3]",
+      "negative": "single-frequency extrapolation fails joint cycle",
+      "oracle": "Fraction exact"
+    },
+    "nonlinear_modular": {
+      "claim": "nonlinear modular recurrence; finite differences not generally small-order constant",
+      "definition": "x0=(p+rep) mod 97; x_(t+1)=(x_t^2+3) mod 97",
+      "negative": "polynomial extrapolation fails",
+      "oracle": "Fraction exact"
+    },
+    "nonuniform_polynomial": {
+      "claim": "time-aware degree-two polynomial",
+      "definition": "x(t)=p+(rep+1)*t+(rep+2)*t\u00b2 at sample t=i(i+1)/2",
+      "negative": "index-based differences cannot assume uniform sampling",
+      "oracle": "Fraction exact"
+    },
+    "periodic": {
+      "claim": "period four",
+      "definition": "x(t)=(rep+2)*[1,0,-1,0][(t+rep) mod 4]",
+      "negative": "step-four aliasing cannot prove underlying process constant",
+      "oracle": "Fraction exact"
+    },
+    "polynomial": {
+      "claim": "lowest polynomial order 1/2/3 in physical time, not sample index",
+      "definition": "rep0: p+t; rep1: p+2t+3t\u00b2; rep2: p+3t+4t\u00b2+t\u00b3",
+      "negative": "short degree-3 interpolation of arbitrary data does not justify polynomial law",
+      "oracle": "Fraction exact"
+    },
+    "random_noise": {
+      "claim": "NONE (no constructed low-order generative invariant)",
+      "definition": "x(t)=int(SHA256('noise:55061:p:rep:t')[:4]) mod 101 - 50",
+      "negative": "fit to observed prefix does not imply prediction",
+      "oracle": "Exact integer pseudorandom control"
+    },
+    "switching": {
+      "claim": "two-regime switching slope",
+      "definition": "x(t)=p+2*min(t,8+rep)-3*max(0,t-(8+rep))",
+      "negative": "global low-order polynomial fits one regime but is not structural identification",
+      "oracle": "Fraction exact"
+    }
+  },
+  "generator": "oracle.py",
+  "hard_limitations": [
+    "No OS-enforced sealed oracle or cryptographic hidden-evaluation service; trusted evaluation process must control module access.",
+    "Models can inspect public repository generator code if given filesystem access: source confidentiality is NOT guaranteed.",
+    "Fixed deterministic seeds can be memorized; use unpublished fresh generator seeds for live evaluation; this suite is a reproducible regression benchmark, not a secure competition.",
+    "No formal invariance or novelty proof, no learned model trained, no intervention causal identification, no independent reviewer approval yet.",
+    "No champion, model checkpoint, trainer service, or upstream artifacts touched."
+  ],
+  "held_out_families_train_excluded": [
+    "logistic_chaos",
+    "multi_frequency",
+    "switching"
+  ],
+  "parameter_note": "p ranges are pairwise disjoint; finite phase/rate choices necessarily reuse modulo classes. Parameter range separation does not imply total generative independence.",
+  "precision": {
+    "exact": "Fraction for every family except logistic_chaos",
+    "failure": "nonfinite numbers, wrong shape or horizon raise ValueError",
+    "high_precision": "Decimal(78) for logistic map",
+    "not_proved": "No symbolic theorem follows from finite observations or approximate float64 outcomes",
+    "pass_rule": "every scalar component abs(pred - target) <= 1e-6 + 1e-8 * abs(target)",
+    "public_observations": "float64 values and reversible decimal-text/first-difference encodings"
+  },
+  "primary_question": "Does a finite measured prefix support transferable invariants or recurrence laws rather than fit alone?",
+  "reproduction": [
+    "PYTHONPATH=artifacts/NC-055 python -m unittest -q test_benchmark",
+    "PYTHONPATH=artifacts/NC-055 python artifacts/NC-055/benchmark.py",
+    "python dag.py validate",
+    "python -m unittest -q test_dag",
+    "python -m unittest -q test_pull"
+  ],
+  "review_output_path": "artifacts/NC-055/independent_verification.json",
+  "review_status": "PENDING",
+  "schema_version": 1,
+  "scores": {
+    "CPU": "process CPU seconds measured in report; baseline implementation fixed and bounded",
+    "bounded_discovery_pass": "nontrivial deterministic family + private law match + all held-out numeric predictions within tolerance; empirical identification only, not formal proof",
+    "causal_prediction": "not established by observational replay; require intervention evidence separately",
+    "extrapolation": "bounded held-out numeric forecast pass rate and error",
+    "fit": "observed prefix fit; NOT a discovery",
+    "invariance": "family-wide robustness across 3 distinct parameters, encodings and horizons must be audited at aggregation level before stronger claims",
+    "structural_identification": "candidate names a law matching private oracle label; ordinary baselines do not claim one",
+    "transfer": "report train/val/test separately and train-heldout-family denominators; no guaranteed learned transfer"
+  },
+  "seed": 55061,
+  "split_contract": {
+    "test": {
+      "case_count": 36,
+      "input_encoding": "first_delta",
+      "observed_points": 13,
+      "parameter_range": [
+        29,
+        31
+      ],
+      "query_horizon": 8
+    },
+    "train": {
+      "case_count": 27,
+      "input_encoding": "float64",
+      "observed_points": 9,
+      "parameter_range": [
+        2,
+        4
+      ],
+      "query_horizon": 4
+    },
+    "validation": {
+      "case_count": 36,
+      "input_encoding": "decimal_text",
+      "observed_points": 11,
+      "parameter_range": [
+        13,
+        15
+      ],
+      "query_horizon": 6
+    }
+  },
+  "split_protection": "Candidate-facing views contain only past measured values and future query timestamps; private family labels, coefficients and future reference values remain within evaluator. Source code is available to a trusted local operator, so this is NOT tamper-resistant data secrecy.",
+  "task": "NC-055"
+}
