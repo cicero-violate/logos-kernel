@@ -1,0 +1,37 @@
+{
+  "blockers": [
+    "Six exact 40-character upstream Git commit SHAs not independently retrieved",
+    "Six upstream LICENSE file byte-hashes not acquired and checked against exact commits",
+    "DreamCoder submodule SHAs/licenses not audited; do not recursively initialize",
+    "TSCL and Stitch main-repo reuse permissions not established",
+    "Maintenance/compatibility cannot be inferred from a repository page alone",
+    "Benchmark asset provenance/licenses and actual evaluation resource consumption not measured",
+    "No independent reviewer has checked primary source revisions or run negative controls"
+  ],
+  "evidence_scope": "Read-only web metadata and local repository task contract; no pinned source, imported code or measured evaluation",
+  "independent_verification": "NOT_PERFORMED",
+  "local_constraints": {
+    "no_champion_mutation": true,
+    "no_clones": true,
+    "no_network": true,
+    "no_packages_installed": true,
+    "no_submodules": true,
+    "no_upstream_execution": true
+  },
+  "next_action": "Operator-authorized offline mirror/copy or controlled network metadata retrieval, then pin and audit SHA/licenses and request independent review",
+  "reviewer": "NONE",
+  "schema_version": "nc048-risk-v1",
+  "supply_chain_controls": [
+    "Deny by default: clone, pip/conda, cargo, submodule update, model downloads, scripts and external services",
+    "If authorized later, fetch only allowlisted exact revisions into isolated cache with disk quota and no auto-recursive submodules",
+    "Record full commit SHA, git tree SHA, LICENSE sha256, dependencies lockfile hash, known provenance and fetched byte count",
+    "Manually enumerate each submodule and its license; reject ambiguous license or binary weights",
+    "Run checks via isolated no-network unprivileged single CPU with hard wall/CPU/RAM/file/process limits",
+    "Keep heldout test material and independent verifier separate from teacher training and code",
+    "Pinned artifact URL does not imply verified authenticity; compare content hashes after fetch",
+    "Never overwrite or promote RLT champion without separate independent review and rollback"
+  ],
+  "task": "NC-048",
+  "test_limitations": "Schema validation tests detect internal inconsistency, not upstream authenticity or scientific correctness",
+  "verdict": "HOLD"
+}

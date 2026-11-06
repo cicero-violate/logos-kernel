@@ -1,0 +1,297 @@
+{
+  "authority": "Implementer inventory; NOT independent verification",
+  "execution_mode": "OFFLINE_METADATA_ONLY",
+  "generated_utc": "2026-11-06T11:25:59.448730+00:00",
+  "reference_policy": {
+    "candidate_benchmarks": "Locally authored, finite-domain arithmetic/Boolean AST cases only until external dataset licenses are checked",
+    "fallback": "Python 3 standard library reimplementation of ideas with independently written code and separate tests; DO NOT copy unverified code",
+    "license_compatibility": "PENDING_PER_REVISION",
+    "offline_limits": {
+      "cpu_seconds_per_case": 20,
+      "cpus": 1,
+      "disk_mib": 64,
+      "limit_basis": "Proposed hard caps, not measured usage",
+      "max_cases": 64,
+      "max_memory_mib": 512,
+      "max_total_cpu_seconds": 1200,
+      "wall_seconds_per_case": 30
+    },
+    "optional_evaluation_plan": {
+      "alp_gmm_toy": {
+        "cpu_seconds": 60,
+        "cpus": 1,
+        "disk_mib": 128,
+        "memory_mib": 1024,
+        "reason": "Old Gym/NumPy/sklearn dependencies; no RL environments",
+        "status": "DISABLED",
+        "wall_seconds": 90
+      },
+      "alphageometry_symbolic": {
+        "cpu_seconds": 45,
+        "cpus": 1,
+        "disk_mib": 128,
+        "memory_mib": 1024,
+        "reason": "Needs exact source/data pin and compatible dependencies; excludes 150M LM",
+        "status": "DISABLED",
+        "wall_seconds": 60
+      },
+      "dreamcoder_concept": {
+        "cpu_seconds": 60,
+        "cpus": 1,
+        "disk_mib": 128,
+        "memory_mib": 1024,
+        "reason": "Submodules, OCaml/Rust/Python dependencies; no full reproduce",
+        "status": "DISABLED",
+        "wall_seconds": 90
+      },
+      "stitch_bounded": {
+        "cpu_seconds": 90,
+        "cpus": 1,
+        "disk_mib": 256,
+        "memory_mib": 1024,
+        "reason": "Unverified main-repo LICENSE and commit; no cargo build",
+        "status": "DISABLED",
+        "wall_seconds": 120
+      },
+      "tscl_toy": {
+        "cpu_seconds": 40,
+        "cpus": 1,
+        "disk_mib": 64,
+        "memory_mib": 512,
+        "reason": "Unverified source license and revision",
+        "status": "DISABLED",
+        "wall_seconds": 60
+      },
+      "z3_optional": {
+        "cpu_seconds": 45,
+        "cpus": 1,
+        "disk_mib": 128,
+        "memory_mib": 512,
+        "reason": "No pinned binary, solver build or installed dependency attested",
+        "status": "DISABLED",
+        "wall_seconds": 60
+      }
+    },
+    "upstream_execution": "PROHIBITED_UNTIL_PINNED_AND_AUTHORIZED"
+  },
+  "references": [
+    {
+      "claimed_upstream": "Google DeepMind",
+      "commit_verified": false,
+      "evaluation_status": "BLOCKED_ON_IMMUTABLE_PIN_LICENSE_AND_OPERATOR_APPROVAL",
+      "id": "alphageometry",
+      "immutable_git_commit_sha40": null,
+      "license_classification_provisional": "Apache-2.0 (code, README claim); CC-BY-4.0 (other materials/checkpoints)",
+      "license_file_sha256": null,
+      "license_file_verified": false,
+      "offline_action": "READ_ONLY_METADATA",
+      "paper_url": "https://www.nature.com/articles/s41586-023-06747-5",
+      "permission_to_reuse_code": "NOT_CLEARED",
+      "reference_to_teacher_mapping": "Symbolic deduction and independent proof checking; not LM replication",
+      "repository_identity_status": "PUBLIC_PAGE_INSPECTED_NOT_PINNED",
+      "repository_url": "https://github.com/google-deepmind/alphageometry",
+      "runtime_status": "NOT_INSTALLED_NOT_EXECUTED",
+      "source_evidence_url": "https://github.com/google-deepmind/alphageometry",
+      "source_paths_to_verify": [
+        "dd.py",
+        "ar.py",
+        "ddar.py",
+        "rules.txt",
+        "defs.txt"
+      ],
+      "stdlib_reimplementation_idea": "stdlib typed-rule proof closure + finite counterexample checking",
+      "submodule_commit_shas": null,
+      "submodules_audited": false,
+      "upstream_risk": "High: download.sh, meliad external clone, JAX/TF, 150M checkpoint"
+    },
+    {
+      "claimed_upstream": "tambetm research code",
+      "commit_verified": false,
+      "evaluation_status": "BLOCKED_ON_IMMUTABLE_PIN_LICENSE_AND_OPERATOR_APPROVAL",
+      "id": "tscl",
+      "immutable_git_commit_sha40": null,
+      "license_classification_provisional": "UNKNOWN: repository landing page did not show LICENSE; do not copy code",
+      "license_file_sha256": null,
+      "license_file_verified": false,
+      "offline_action": "READ_ONLY_METADATA",
+      "paper_url": "https://arxiv.org/abs/1707.00183",
+      "permission_to_reuse_code": "NOT_CLEARED",
+      "reference_to_teacher_mapping": "Competence-progress curriculum for student tasks",
+      "repository_identity_status": "PUBLIC_PAGE_INSPECTED_NOT_PINNED",
+      "repository_url": "https://github.com/tambetm/TSCL",
+      "runtime_status": "NOT_INSTALLED_NOT_EXECUTED",
+      "source_evidence_url": "https://github.com/tambetm/TSCL",
+      "source_paths_to_verify": [
+        "addition/",
+        "minecraft/",
+        "README.md"
+      ],
+      "stdlib_reimplementation_idea": "stdlib finite-window progress estimates and regression-aware deterministic sampling",
+      "submodule_commit_shas": null,
+      "submodules_audited": false,
+      "upstream_risk": "High: unclear permissions, old code and Minecraft dependencies"
+    },
+    {
+      "claimed_upstream": "Flowers team",
+      "commit_verified": false,
+      "evaluation_status": "BLOCKED_ON_IMMUTABLE_PIN_LICENSE_AND_OPERATOR_APPROVAL",
+      "id": "alp-gmm",
+      "immutable_git_commit_sha40": null,
+      "license_classification_provisional": "MIT (repository metadata; verify license bytes)",
+      "license_file_sha256": null,
+      "license_file_verified": false,
+      "offline_action": "READ_ONLY_METADATA",
+      "paper_url": "https://proceedings.mlr.press/v100/portelas20a.html",
+      "permission_to_reuse_code": "NOT_CLEARED",
+      "reference_to_teacher_mapping": "Absolute learning-progress task ranking and unlearnable-region handling",
+      "repository_identity_status": "PUBLIC_PAGE_INSPECTED_NOT_PINNED",
+      "repository_url": "https://github.com/flowersteam/teachDeepRL",
+      "runtime_status": "NOT_INSTALLED_NOT_EXECUTED",
+      "source_evidence_url": "https://github.com/flowersteam/teachDeepRL/blob/master/teachDRL/teachers/algos/alp_gmm.py",
+      "source_paths_to_verify": [
+        "teachDRL/teachers/algos/alp_gmm.py"
+      ],
+      "stdlib_reimplementation_idea": "stdlib bounded task grid + absolute delta without GMM dependency",
+      "submodule_commit_shas": null,
+      "submodules_audited": false,
+      "upstream_risk": "Medium/high: old Gym/Box2D/NumPy/scikit-learn, BipedalWalker SAC pipelines"
+    },
+    {
+      "claimed_upstream": "DreamCoder research contributors",
+      "commit_verified": false,
+      "evaluation_status": "BLOCKED_ON_IMMUTABLE_PIN_LICENSE_AND_OPERATOR_APPROVAL",
+      "id": "dreamcoder",
+      "immutable_git_commit_sha40": null,
+      "license_classification_provisional": "MIT (repository metadata; check submodule license separately)",
+      "license_file_sha256": null,
+      "license_file_verified": false,
+      "offline_action": "READ_ONLY_METADATA",
+      "paper_url": "https://dspace.mit.edu/entities/publication/86d768ab-558f-4fb1-b92e-9288de643ccb",
+      "permission_to_reuse_code": "NOT_CLEARED",
+      "reference_to_teacher_mapping": "Wake-sleep, typed program enumeration and library abstraction",
+      "repository_identity_status": "PUBLIC_PAGE_INSPECTED_NOT_PINNED",
+      "repository_url": "https://github.com/ellisk42/ec",
+      "runtime_status": "NOT_INSTALLED_NOT_EXECUTED",
+      "source_evidence_url": "https://github.com/ellisk42/ec/blob/master/dreamcoder/dreamcoder.py",
+      "source_paths_to_verify": [
+        "dreamcoder/dreamcoder.py",
+        "dreamcoder/compression.py",
+        ".gitmodules"
+      ],
+      "stdlib_reimplementation_idea": "stdlib enumerator + verified reusable macros; NO recognition-model training",
+      "submodule_commit_shas": null,
+      "submodules_audited": false,
+      "upstream_risk": "High: .gitmodules, native Rust/OCaml, neural features and third-party models"
+    },
+    {
+      "claimed_upstream": "Stitch authors",
+      "commit_verified": false,
+      "evaluation_status": "BLOCKED_ON_IMMUTABLE_PIN_LICENSE_AND_OPERATOR_APPROVAL",
+      "id": "stitch",
+      "immutable_git_commit_sha40": null,
+      "license_classification_provisional": "UNKNOWN for main repository until LICENSE bytes pinned; related stitch-artifact MIT is not proof",
+      "license_file_sha256": null,
+      "license_file_verified": false,
+      "offline_action": "READ_ONLY_METADATA",
+      "paper_url": "https://dspace.mit.edu/entities/publication/06f180cd-a015-4102-b5bc-27bbe13d3823",
+      "permission_to_reuse_code": "NOT_CLEARED",
+      "reference_to_teacher_mapping": "Library-compression and minimum-description-length candidate selection",
+      "repository_identity_status": "PUBLIC_PAGE_INSPECTED_NOT_PINNED",
+      "repository_url": "https://github.com/mlb2251/stitch",
+      "runtime_status": "NOT_INSTALLED_NOT_EXECUTED",
+      "source_evidence_url": "https://github.com/mlb2251/stitch/blob/main/README.md",
+      "source_paths_to_verify": [
+        "src/compression.rs",
+        "src/bin/compress.rs",
+        "src/expr.rs"
+      ],
+      "stdlib_reimplementation_idea": "stdlib verified frequent-subtree extraction on typed ASTs",
+      "submodule_commit_shas": null,
+      "submodules_audited": false,
+      "upstream_risk": "Medium/high: Cargo/native build, optional Python bindings and separate artifact datasets"
+    },
+    {
+      "claimed_upstream": "Microsoft Research / Z3 contributors",
+      "commit_verified": false,
+      "evaluation_status": "BLOCKED_ON_IMMUTABLE_PIN_LICENSE_AND_OPERATOR_APPROVAL",
+      "id": "z3",
+      "immutable_git_commit_sha40": null,
+      "license_classification_provisional": "MIT (README claim; verify LICENSE.txt bytes)",
+      "license_file_sha256": null,
+      "license_file_verified": false,
+      "offline_action": "READ_ONLY_METADATA",
+      "paper_url": null,
+      "permission_to_reuse_code": "NOT_CLEARED",
+      "reference_to_teacher_mapping": "SMT counterexample oracle with strict timeouts and typed semantics",
+      "repository_identity_status": "PUBLIC_PAGE_INSPECTED_NOT_PINNED",
+      "repository_url": "https://github.com/Z3Prover/z3",
+      "runtime_status": "NOT_INSTALLED_NOT_EXECUTED",
+      "source_evidence_url": "https://github.com/Z3Prover/z3/blob/master/README.md",
+      "source_paths_to_verify": [
+        "LICENSE.txt",
+        "examples/python/",
+        "src/api/"
+      ],
+      "stdlib_reimplementation_idea": "stdlib exhaustive finite-domain reference first; optional isolated SMT",
+      "submodule_commit_shas": null,
+      "submodules_audited": false,
+      "upstream_risk": "Medium: native C++ build/solver process and arbitrary input limits"
+    }
+  ],
+  "schema_version": "nc048-reference-audit-v1",
+  "source_integrity": {
+    "immutable_upstream_revisions_verified": 0,
+    "license_file_sha256_verified": 0,
+    "local_clones_created": 0,
+    "model_weights_downloaded": false,
+    "network_dependencies_installed": false,
+    "note": "Public repository pages inspected, but no immutable SHA or license bytes acquired. Branch names and web links MUST NOT be treated as pins.",
+    "upstream_code_executed": false,
+    "upstream_submodules_verified": 0
+  },
+  "status": "INCOMPLETE_PINNING",
+  "task": "NC-048",
+  "teacher_interface": {
+    "hard_gates": [
+      "No heldout answers in teacher input",
+      "No teacher-as-verifier",
+      "Only independently proved finite scopes may be labeled proven",
+      "No unverified models or upstream source executed",
+      "Synthetically generated benchmark labels remain separate from external research artifacts"
+    ],
+    "input_fields": [
+      "task_id",
+      "family",
+      "typed_ast",
+      "finite_semantics",
+      "seed",
+      "max_steps",
+      "allowed_operators",
+      "budget_cpu_seconds",
+      "budget_memory_mib"
+    ],
+    "observation_fields": [
+      "student_id",
+      "task_id",
+      "candidate_hash",
+      "teacher_proposal_hash",
+      "training_split_id",
+      "heldout_split_id",
+      "execution_trace_hash",
+      "counterexample_hash",
+      "measured_reward",
+      "proof_scope",
+      "verifier_identity",
+      "verifier_receipt_hash"
+    ],
+    "output_fields": [
+      "selected_task_id",
+      "selection_reason",
+      "sampling_probability",
+      "priority",
+      "budget_cpu_seconds",
+      "sampling_seed"
+    ],
+    "schema": "typed-curriculum-v1"
+  }
+}
