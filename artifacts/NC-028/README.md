@@ -18,7 +18,7 @@ autonomous discovery release or a newly trained general-purpose solver.
   This is neither a VM nor a separate UID/network namespace. Full adversarial
   security is **not independently established**.
 - `propose_worker.py`: immutable NC-007 controller weights produce action
-  tokens autoregressively. The worker contains **no target recipes** or
+  tokens autoregressively, with optional bounded rejection-only reranking. The worker contains **no target recipes** or
   evaluation oracle. Unknown goal strings are rejected, not mapped to a
   hand-coded solution.
 - `execute_worker.py`: after a proposal is frozen, a *separate* contained
@@ -43,8 +43,23 @@ No neural weight, original RLT champion, registry, or global default is changed.
 Proof scope is finite sampled unsigned 16-bit arithmetic, not all 2^32 pairs.
 
 The process/FSIZE containment changes have only local regression coverage.
-The feedback-conditioned candidate revision, structurally unseen model
-proposal, and matched-CPU baselines remain **UNIMPLEMENTED**.
+A bounded rejection-only **frozen-controller reranker** is now implemented
+in `propose_worker.py`: with prior rejected complete action sequences it
+enumerates alternative neural-logit-scored sequences (max 5 actions, beam 32),
+without giving the proposer expected answers. `feedback_trial.py` records
+three isolated probes: a genuine finite sampled known-goal check, refusal of
+a structurally unseen goal, and a **clearly labeled synthetic observation-bit-flip**
+negative control forcing one alternative. This is NOT a trained
+feedback-conditioned model: reranking does not update weights and the
+counterexample values do not condition logits. It does NOT constitute novel
+task generalization or an effective natural counterexample-revision loop.
+Any synthetic-fault case is excluded from performance claims.
+
+A learned counterexample-conditioned policy, structurally unseen model
+proposal, independently accepted end-to-end feedback success and **matched
+CPU/wall-budget baselines** remain **UNIMPLEMENTED**. Equal maximum proposal
+counts and eight evaluation pairs do not establish equal compute budgets.
+The frozen known-goal training coverage makes neural invention unsupported.
 
 The sandbox and scientific evidence require a **distinct real independent
 verifier** before NC-028 can pass. No self-approval, no external network, no
@@ -57,6 +72,7 @@ failure/feasibility study only.
 cd /workspace/experiments/logos-kernel
 PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-028 -p 'test_*.py'
 PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/arena.py
+PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/feedback_trial.py
 python dag.py validate
 ```
 

@@ -1,0 +1,236 @@
+{
+  "champion_sha256_unchanged": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "conclusion": "Reranked frozen model after rejection; no learned feedback or structurally novel goal",
+  "control_type": "synthetic observation fault injection, not natural neural correction",
+  "schema": "logos.nc028.feedback-probe/1",
+  "source_sha256": {
+    "arena.py": "68d54f2695581ab110a34d308676e0e07c8e2e0a969b2f9b6ea8b3e297cf11d4",
+    "execute_worker.py": "54aaf3676719a18b12f01b491322c1325be493eb04c0dc846ceb0e4dcbe7a21d",
+    "feedback_trial.py": "8dcdc3764f375d7d596cfd05379bfbd97c3326ad86d7c4ec3ae2df2ee19a1052",
+    "isolation.py": "25f06b6a8b06d1bcf81edcacfbfe2690a47b0f51a2ceb367f33ea4ee1f6bdc31",
+    "propose_worker.py": "7b524c43fc185c0606da4d8b339dd2168dc3c75aaffb0fe48f9a4a1e171b0752"
+  },
+  "status": "NO_DISCOVERY",
+  "trials": [
+    {
+      "attempts": [
+        {
+          "action_sha256": "17e8ad4bf7a287a4532785ff320e5d2b67327beb9782a77dcf536f8e2440daa3",
+          "actions": [
+            "ADD_XX",
+            "HALT"
+          ],
+          "attempt": 1,
+          "correct": 8,
+          "counterexamples": [],
+          "execution_cost": {
+            "cpu_seconds": 1.544847,
+            "nonprotocol_stdout_lines": 1,
+            "returncode": 0,
+            "wall_seconds": 1.5715701879234985
+          },
+          "learned_feedback": false,
+          "model_generated": true,
+          "proposal_cost": {
+            "cpu_seconds": 1.560624,
+            "nonprotocol_stdout_lines": 1,
+            "returncode": 0,
+            "wall_seconds": 1.6234151870012283
+          },
+          "proposal_request_fields": [
+            "goal",
+            "seed"
+          ],
+          "proposal_status": "PROPOSED",
+          "result": "MATCHES_FINITE_SAMPLES",
+          "source_class": "supervised_frozen_neural_controller",
+          "tested": 8
+        }
+      ],
+      "fault_injection": false,
+      "goal": "DOUBLE",
+      "heldout_pairs_sha256": "7682870780ab74d154016939b65fa620bb79ecff170ed47954ceb19884cda64c",
+      "learned_feedback": false,
+      "novel_discoveries": 0,
+      "revisions": 0,
+      "seed": 11
+    },
+    {
+      "attempts": [
+        {
+          "actions": [],
+          "attempt": 1,
+          "correct": 0,
+          "counterexamples": [],
+          "learned_feedback": false,
+          "model_generated": false,
+          "proposal_cost": {
+            "cpu_seconds": 1.5701149999999995,
+            "nonprotocol_stdout_lines": 1,
+            "returncode": 0,
+            "wall_seconds": 1.6214246760355309
+          },
+          "proposal_request_fields": [
+            "goal",
+            "seed"
+          ],
+          "proposal_status": "UNSUPPORTED_GOAL",
+          "result": "CANNOT_PROPOSE",
+          "source_class": "supervised_frozen_neural_controller",
+          "tested": 8
+        }
+      ],
+      "fault_injection": false,
+      "goal": "UNSEEN_XOR_DOUBLE_PLUS_Y",
+      "heldout_pairs_sha256": "568badc6a20a315fa63f14cd7be1f04d4ff5cd08f05659602f44e5f8d0bbc9d9",
+      "learned_feedback": false,
+      "novel_discoveries": 0,
+      "revisions": 0,
+      "seed": 11
+    },
+    {
+      "attempts": [
+        {
+          "action_sha256": "17e8ad4bf7a287a4532785ff320e5d2b67327beb9782a77dcf536f8e2440daa3",
+          "actions": [
+            "ADD_XX",
+            "HALT"
+          ],
+          "attempt": 1,
+          "correct": 7,
+          "counterexamples": [
+            {
+              "expected": 2868,
+              "observed": 2869,
+              "pair_index": 0,
+              "x": 1434,
+              "y": 32265
+            }
+          ],
+          "execution_cost": {
+            "cpu_seconds": 1.427454,
+            "nonprotocol_stdout_lines": 1,
+            "returncode": 0,
+            "wall_seconds": 1.4722041110508144
+          },
+          "learned_feedback": false,
+          "model_generated": true,
+          "negative_control": "INJECTED_FIRST_OBSERVATION_BIT_FLIP",
+          "proposal_cost": {
+            "cpu_seconds": 1.5735270000000003,
+            "nonprotocol_stdout_lines": 1,
+            "returncode": 0,
+            "wall_seconds": 1.6215380759676918
+          },
+          "proposal_request_fields": [
+            "goal",
+            "seed"
+          ],
+          "proposal_status": "PROPOSED",
+          "result": "COUNTEREXAMPLE",
+          "source_class": "supervised_frozen_neural_controller",
+          "tested": 8
+        },
+        {
+          "action_sha256": "87b4bcef34ca1bf7fd3dd54f0db7a84e8f2902221663b21ca89e1e0480247e3e",
+          "actions": [
+            "ADD_XX",
+            "ADD_RY",
+            "HALT"
+          ],
+          "attempt": 2,
+          "correct": 0,
+          "counterexamples": [
+            {
+              "expected": 2868,
+              "observed": 35133,
+              "pair_index": 0,
+              "x": 1434,
+              "y": 32265
+            },
+            {
+              "expected": 53758,
+              "observed": 1078,
+              "pair_index": 1,
+              "x": 59647,
+              "y": 12856
+            },
+            {
+              "expected": 44594,
+              "observed": 28840,
+              "pair_index": 2,
+              "x": 22297,
+              "y": 49782
+            },
+            {
+              "expected": 22208,
+              "observed": 33252,
+              "pair_index": 3,
+              "x": 43872,
+              "y": 11044
+            },
+            {
+              "expected": 54656,
+              "observed": 13712,
+              "pair_index": 4,
+              "x": 60096,
+              "y": 24592
+            },
+            {
+              "expected": 336,
+              "observed": 9188,
+              "pair_index": 5,
+              "x": 168,
+              "y": 8852
+            },
+            {
+              "expected": 2528,
+              "observed": 60686,
+              "pair_index": 6,
+              "x": 34032,
+              "y": 58158
+            },
+            {
+              "expected": 43238,
+              "observed": 27013,
+              "pair_index": 7,
+              "x": 21619,
+              "y": 49311
+            }
+          ],
+          "execution_cost": {
+            "cpu_seconds": 1.4776819999999997,
+            "nonprotocol_stdout_lines": 1,
+            "returncode": 0,
+            "wall_seconds": 1.5215685460716486
+          },
+          "learned_feedback": false,
+          "model_generated": true,
+          "proposal_cost": {
+            "cpu_seconds": 1.5338749999999992,
+            "nonprotocol_stdout_lines": 1,
+            "returncode": 0,
+            "wall_seconds": 1.5711368770571426
+          },
+          "proposal_request_fields": [
+            "goal",
+            "rejected_actions",
+            "seed"
+          ],
+          "proposal_status": "PROPOSED",
+          "result": "COUNTEREXAMPLE",
+          "source_class": "supervised_frozen_neural_controller",
+          "tested": 8
+        }
+      ],
+      "fault_injection": true,
+      "goal": "DOUBLE",
+      "heldout_pairs_sha256": "7682870780ab74d154016939b65fa620bb79ecff170ed47954ceb19884cda64c",
+      "learned_feedback": false,
+      "novel_discoveries": 0,
+      "revisions": 1,
+      "seed": 11
+    }
+  ],
+  "verification": "IMPLEMENTER_ONLY_NOT_INDEPENDENT"
+}

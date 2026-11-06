@@ -1,0 +1,66 @@
+{
+  "agent": "turn-0ddee2cf0a0244b68c2986231e84092a",
+  "champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "completed": [
+    "Bounded frozen neural-logit reranking after excluding rejected action programs",
+    "Malformed feedback and structurally unknown goal refusal controls",
+    "Isolated feedback feasibility trace, synthetic fault labelled explicitly",
+    "Recomputed sandbox source hashes and 36-record pilot on frozen model",
+    "Confirmed original champion hash unchanged"
+  ],
+  "dependencies": [
+    "Python 3.14 stdlib",
+    "PyTorch",
+    "NumPy",
+    "Linux Landlock ABI >=5",
+    "libseccomp.so.2",
+    "artifacts/NC-000/001/005/006/007",
+    "immutable RLT champion"
+  ],
+  "files_sha256": {
+    "README.md": "bd02a6bb8391361882d5d8901f3c6d9bbb3524ba54d9a4dceb6920802fdeff16",
+    "feedback_probe.json": "2443775638608129990e8a70bcfc620b387dd89b3c390c0d1e6b854b3e87da94",
+    "feedback_trial.py": "8dcdc3764f375d7d596cfd05379bfbd97c3326ad86d7c4ec3ae2df2ee19a1052",
+    "pilot_results.json": "d05bc83524211aa94ba4b8298372f75bd30ec91e2d412bdf7b4e2491ee21b980",
+    "proposal_trace.jsonl": "7802148afd422259128125a5d6bd34697a72945029447cd550b752a7f42bd8c6",
+    "propose_worker.py": "7b524c43fc185c0606da4d8b339dd2168dc3c75aaffb0fe48f9a4a1e171b0752",
+    "sandbox_manifest.json": "b0a542ddf8300b326c9922b82b6f53d33c1d7a467beb228430ed6ecd16a64800",
+    "test_feedback.py": "946486b3cdba0668f57902ae4166f25f9456728d10fa54764c4758941e1ead90"
+  },
+  "independent_verdict": "FAIL_REMAINS_UNRESOLVED",
+  "limitations": "Finite 16-bit sampled operands; previous supervised goal/recipe coverage. Reranking never updates neural weights. No model invention.",
+  "pilot_counts": {
+    "fixed_ADD_XY": {
+      "correct": 0,
+      "tested": 96,
+      "total_cpu_seconds": 18.179360999999997
+    },
+    "supervised_neural_controller": {
+      "correct": 72,
+      "tested": 96,
+      "total_cpu_seconds": 31.450175999999985
+    },
+    "uniform_random_one_step": {
+      "correct": 8,
+      "tested": 96,
+      "total_cpu_seconds": 18.229143000000008
+    }
+  },
+  "reference_reviewer": "turn-8fabf26f40a34a119f958694cd2cb213",
+  "review_request_published": false,
+  "role": "IMPLEMENTER",
+  "scientific_outcome": "NO_DISCOVERY",
+  "status": "PARTIAL_NOT_READY_FOR_REVIEW",
+  "still_failing": [
+    "No trained counterexample-conditioned model: only rejected-program exclusion",
+    "No structurally unseen goal neural proposal",
+    "No scientifically successful natural counterexample-driven revision",
+    "Host baselines have unequal observed CPU costs, so no matched-budget claim",
+    "No independent PASS or release authorization"
+  ],
+  "synthetic_negative_control_statuses": [
+    "COUNTEREXAMPLE",
+    "COUNTEREXAMPLE"
+  ],
+  "task": "NC-028"
+}

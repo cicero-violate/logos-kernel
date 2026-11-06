@@ -38,7 +38,7 @@
     "primitives_seed11.pt": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
     "primitives_seed19.pt": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
     "primitives_seed29.pt": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
-    "propose_worker.py": "cfccedf5ac091b915a75059a7f99d8598dba1b8574c280c3bd52f08b9b941940",
+    "propose_worker.py": "7b524c43fc185c0606da4d8b339dd2168dc3c75aaffb0fe48f9a4a1e171b0752",
     "unified_RLT_champion": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
   },
   "status": "IMPLEMENTER_UNVERIFIED",

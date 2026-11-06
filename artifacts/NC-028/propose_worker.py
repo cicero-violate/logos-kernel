@@ -1,7 +1,10 @@
 """Frozen NC-007 controller inference. No target recipe or oracle is loaded.
 
 Dependencies: PyTorch, checkpoint controller_seed{11,19,29}.pt, Python stdlib.
-Input: JSON {seed, goal}; output: neural autoregressive action tokens only.
+Input: JSON {seed, goal, rejected_actions?}; output: bounded frozen-model proposals.
+
+Rejected-action feedback excludes prior complete candidates; it does NOT
+update neural weights, add unknown goal representations, or establish discovery.
 """
 import json, sys
 import torch
@@ -26,9 +29,52 @@ class FrozenController(nn.Module):
     def forward(self,g,p,prev):
         return self.decoder(torch.cat((self.goal(g),self.position(p),self.previous(prev)),dim=-1))
 
+def next_distinct(model, goal, rejected):
+    """Bounded CPU beam of frozen-model tokens; no oracle/target access."""
+    rejected = {tuple(a) for a in rejected}
+    beam = [(0.0, (), len(ACTIONS))]
+    completed = []
+    with torch.no_grad():
+        for pos in range(STEPS):
+            following = []
+            for score, seq, prev in beam:
+                logits = model(torch.tensor([GOALS.index(goal)]),
+                               torch.tensor([pos]), torch.tensor([prev]))
+                logp = torch.log_softmax(logits[0], dim=-1)
+                choices = torch.topk(logp, k=4).indices.tolist()
+                for idx in choices:
+                    candidate = seq + (ACTIONS[idx],)
+                    val = score + float(logp[idx].item())
+                    if ACTIONS[idx] == "HALT":
+                        if len(candidate) >= 2 and candidate not in rejected:
+                            completed.append((val, candidate))
+                    elif pos + 1 < STEPS:
+                        following.append((val, candidate, idx))
+            following.sort(key=lambda item: (-item[0], item[1]))
+            beam = following[:32]
+    completed.sort(key=lambda item: (-item[0], item[1]))
+    return list(completed[0][1]) if completed else None
+
+
+def validate_rejections(data):
+    if set(data) not in ({"seed", "goal"}, {"seed", "goal", "rejected_actions"}):
+        raise ValueError("invalid proposal input schema")
+    prior = data.get("rejected_actions", [])
+    if type(prior) is not list or len(prior) > 4:
+        raise ValueError("invalid rejected_actions")
+    for candidate in prior:
+        if (type(candidate) is not list or not 2 <= len(candidate) <= STEPS
+                or any(type(tok) is not str or tok not in ACTIONS for tok in candidate)
+                or candidate[-1] != "HALT"
+                or "HALT" in candidate[:-1]):
+            raise ValueError("invalid rejected program")
+    return prior
+
+
 def main():
     data=json.load(sys.stdin)
-    if set(data)!={"seed","goal"} or type(data["seed"]) is not int or not isinstance(data["goal"],str):
+    prior = validate_rejections(data)
+    if type(data["seed"]) is not int or not isinstance(data["goal"],str):
         raise ValueError("invalid proposal input schema")
     seed,goal=data["seed"],data["goal"]
     if seed not in (11,19,29):
@@ -54,7 +100,18 @@ def main():
             actions.append(token)
             if token=="HALT":break
             prev=ACTIONS.index(token)
-    status="PROPOSED" if actions[-1]=="HALT" and len(actions)>1 else "INVALID_HALT"
-    print(json.dumps({"status":status,"actions":actions,"model_generated":True,
+    if prior:
+        # A negative verdict can exclude complete prior programs. The new
+        # tokens still come exclusively from frozen-controller logits.
+        # This is bounded model-guided reranking, not learned feedback.
+        actions = next_distinct(model, goal, prior)
+    status = ("NO_ALTERNATIVE" if actions is None
+              else "PROPOSED" if actions[-1] == "HALT" and len(actions)>1
+              else "INVALID_HALT")
+    print(json.dumps({"status":status,"actions":actions or [],
+                      "model_generated":bool(actions),
+                      "feedback_mode":"excluded_prior_programs_only",
+                      "learned_feedback":False,
+                      "structurally_unseen_goal":False,
                       "source":"NC-007 supervised frozen controller","seed":seed,"goal":goal}))
 if __name__=="__main__":main()
