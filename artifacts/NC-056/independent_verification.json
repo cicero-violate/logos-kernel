@@ -1,0 +1,397 @@
+{
+  "candidate_manifest_path": "artifacts/NC-056/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "01eaf8851d96ff1a21571ae7cdaa0caaa5736b23",
+  "candidate_sha256": "3736d1d6fc142e9bfa590b7fe483cfad130d2fa0b0edd77b438260da12363b5e",
+  "exact_tests": [
+    {
+      "command": "python dag.py validate",
+      "result": "PASS, 79 nodes and 187 events before review claim"
+    },
+    {
+      "command": "python -m unittest -q test_dag",
+      "result": "19/19 PASS"
+    },
+    {
+      "command": "python -m unittest -q test_pull",
+      "result": "20/20 PASS"
+    },
+    {
+      "command": "python -m unittest discover -s artifacts/NC-056 -p test_*.py -v",
+      "result": "16/16 PASS"
+    },
+    {
+      "command": "python artifacts/NC-056/evaluate.py --replay-seeds artifacts/NC-056/heldout_law_recovery.json --output artifacts/NC-056/reviewer_replay.json",
+      "result": "PASS, 78 cases, all discrete aggregate scores and per-seed scores reproduced"
+    },
+    {
+      "command": "python artifacts/NC-056/evaluate.py --output artifacts/NC-056/reviewer_fresh.json",
+      "result": "PASS, 78 new cases from 3 newly drawn seeds"
+    }
+  ],
+  "fresh": {
+    "controls": {
+      "cases": 78,
+      "constant_spoof_rejected": 78,
+      "corrupted_forecast_rejected": 78
+    },
+    "family_mdl": {
+      "aliasing": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 3,
+        "candidate_checks": 762,
+        "cases": 6,
+        "forecast_pass": 0,
+        "maximum_error": 32.0
+      },
+      "constant": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 4,
+        "candidate_checks": 761,
+        "cases": 6,
+        "forecast_pass": 6,
+        "maximum_error": 0.0
+      },
+      "coupled_vector": {
+        "bounded_law_recovery": 6,
+        "budget_exhaustions": 0,
+        "candidate_checks": 150,
+        "cases": 6,
+        "forecast_pass": 6,
+        "maximum_error": 0.0
+      },
+      "geometric": {
+        "bounded_law_recovery": 6,
+        "budget_exhaustions": 0,
+        "candidate_checks": 75,
+        "cases": 6,
+        "forecast_pass": 6,
+        "maximum_error": 0.0
+      },
+      "logistic_chaos": {
+        "bounded_law_recovery": 6,
+        "budget_exhaustions": 0,
+        "candidate_checks": 75,
+        "cases": 6,
+        "forecast_pass": 6,
+        "maximum_error": 2.800298881666663e-11
+      },
+      "multi_frequency": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 0,
+        "candidate_checks": 75,
+        "cases": 6,
+        "forecast_pass": 6,
+        "maximum_error": 0.0
+      },
+      "noisy_polynomial": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 0,
+        "candidate_checks": 69,
+        "cases": 6,
+        "forecast_pass": 0,
+        "maximum_error": 21674159.998999998
+      },
+      "nonlinear_modular": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 0,
+        "candidate_checks": 568,
+        "cases": 6,
+        "forecast_pass": 2,
+        "maximum_error": 38.0
+      },
+      "nonuniform_polynomial": {
+        "bounded_law_recovery": 6,
+        "budget_exhaustions": 0,
+        "candidate_checks": 30,
+        "cases": 6,
+        "forecast_pass": 6,
+        "maximum_error": 0.0
+      },
+      "periodic": {
+        "bounded_law_recovery": 6,
+        "budget_exhaustions": 1,
+        "candidate_checks": 185,
+        "cases": 6,
+        "forecast_pass": 6,
+        "maximum_error": 0.0
+      },
+      "polynomial": {
+        "bounded_law_recovery": 6,
+        "budget_exhaustions": 0,
+        "candidate_checks": 140,
+        "cases": 6,
+        "forecast_pass": 6,
+        "maximum_error": 0.0
+      },
+      "random_noise": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 0,
+        "candidate_checks": 69,
+        "cases": 6,
+        "forecast_pass": 0,
+        "maximum_error": 80.0
+      },
+      "switching": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 0,
+        "candidate_checks": 543,
+        "cases": 6,
+        "forecast_pass": 0,
+        "maximum_error": 100.0
+      }
+    },
+    "per_seed": {
+      "4760033563697486560": {
+        "autoregression": {
+          "bounded_law_recovery": 2,
+          "cases": 26,
+          "forecast_pass": 7
+        },
+        "interpolation": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 8
+        },
+        "mdl_search": {
+          "bounded_law_recovery": 12,
+          "cases": 26,
+          "forecast_pass": 18
+        },
+        "no_invariant": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 0
+        },
+        "persistence": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 3
+        },
+        "random_candidates": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 3
+        }
+      },
+      "8673208781788847282": {
+        "autoregression": {
+          "bounded_law_recovery": 2,
+          "cases": 26,
+          "forecast_pass": 5
+        },
+        "interpolation": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 7
+        },
+        "mdl_search": {
+          "bounded_law_recovery": 12,
+          "cases": 26,
+          "forecast_pass": 16
+        },
+        "no_invariant": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 0
+        },
+        "persistence": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 2
+        },
+        "random_candidates": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 2
+        }
+      },
+      "9415799006217675814": {
+        "autoregression": {
+          "bounded_law_recovery": 2,
+          "cases": 26,
+          "forecast_pass": 4
+        },
+        "interpolation": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 6
+        },
+        "mdl_search": {
+          "bounded_law_recovery": 12,
+          "cases": 26,
+          "forecast_pass": 16
+        },
+        "no_invariant": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 0
+        },
+        "persistence": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 2
+        },
+        "random_candidates": {
+          "bounded_law_recovery": 0,
+          "cases": 26,
+          "forecast_pass": 2
+        }
+      }
+    },
+    "result_sha256": "406fcb77c101e535cad8eac1a647645cd0ee80e7697615ff551c821673347445",
+    "totals": {
+      "autoregression": {
+        "bounded_law_recovery": 6,
+        "budget_exhaustions": 0,
+        "candidate_checks": 18,
+        "cases": 78,
+        "cpu_seconds": 0.0736685759999999,
+        "forecast_pass": 16
+      },
+      "interpolation": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 0,
+        "candidate_checks": 84,
+        "cases": 78,
+        "cpu_seconds": 0.08907497000000011,
+        "forecast_pass": 21
+      },
+      "mdl_search": {
+        "bounded_law_recovery": 36,
+        "budget_exhaustions": 8,
+        "candidate_checks": 3502,
+        "cases": 78,
+        "cpu_seconds": 2.097969092,
+        "forecast_pass": 50
+      },
+      "no_invariant": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 0,
+        "candidate_checks": 84,
+        "cases": 78,
+        "cpu_seconds": 0.013925562999999974,
+        "forecast_pass": 0
+      },
+      "persistence": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 0,
+        "candidate_checks": 84,
+        "cases": 78,
+        "cpu_seconds": 0.019428719000000066,
+        "forecast_pass": 7
+      },
+      "random_candidates": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 6,
+        "candidate_checks": 9984,
+        "cases": 78,
+        "cpu_seconds": 3.2144368159999996,
+        "forecast_pass": 7
+      }
+    },
+    "trace_sha256": "cd0cd2608df59643a51ac3d9a5342cccf974c22b6e6b7de9c34f83c5221479aa"
+  },
+  "independent_adversarial_controls": {
+    "fresh_constant_spoof_rejected": 78,
+    "fresh_corrupt_forecast_rejected": 78,
+    "fresh_degree_four_polynomial_8_step_transfer": true,
+    "fresh_piecewise_shift_rejected_as_polynomial": true,
+    "fresh_random_noise_rejected": true,
+    "future_oracle_metadata_rejected": true,
+    "published_replay_constant_spoof_rejected": 78,
+    "published_replay_corrupt_forecast_rejected": 78,
+    "query_time_change_did_not_force_recurring_law": true
+  },
+  "limitations": [
+    "Structural recovery is finite-family and heuristic: no global minimality or unknown physical-law proof; some observationally equivalent periodic/AR laws are scored differently.",
+    "Equal allocated stopping ceilings (128 candidate verification calls and 0.20 cooperative CPU seconds per arm); not equal consumed CPU, and model fitting may consume CPU without candidate checks.",
+    "Fresh heldout generators use undisclosed seed values only until evaluation; evaluator families and method grammar are openly specified; no fully unseen conceptual family generalization.",
+    "Fresh MDL failures: aliasing 0/6 forecast; noisy polynomial 0/6; random noise 0/6; switching 0/6; nonlinear modular only 2/6 forecasts and 0/6 structural recoveries.",
+    "No independent external attestation of agent identity, no claim of protected Git immutability, no AGI/RSI, no training or weights, no promotion."
+  ],
+  "next_action": "Record reviewer PASS via dag.py review-result. Separate future FINALIZER must confirm this exact receipt and run dag.py pass.",
+  "owner": "turn-09e1ca315e6c47aa985ce71dcba8c97e",
+  "proof_scope": "Independently verified finite, bounded, frozen-grammar prefix-only symbolic law search on 3 disclosed replay seeds and 3 new reviewer seeds (26 cases per seed, 13 families, 16/30 observed points, 8/24-step futures) using exact rational observations apart from Decimal90 logistic target. PASS certifies the task acceptance within this finite benchmark, not universal/minimal physical-law discovery.",
+  "provenance": {
+    "candidate_14_input_files_equal_pinned_commit": true,
+    "fresh_seed_ids": [
+      9415799006217675814,
+      8673208781788847282,
+      4760033563697486560
+    ],
+    "fresh_seeds_disjoint_from_replay": true,
+    "manifest_sha256_recomputed": "3736d1d6fc142e9bfa590b7fe483cfad130d2fa0b0edd77b438260da12363b5e",
+    "no_champion_update": true,
+    "replay_seed_ids": [
+      12485129418501646850,
+      18135362552029795812,
+      8329353114388429606
+    ],
+    "sandbox_isolated": true,
+    "source_and_upstream_sha256_mismatches": []
+  },
+  "replay": {
+    "aggregate_discrete_metrics_identical": true,
+    "controls": {
+      "cases": 78,
+      "constant_spoof_rejected": 78,
+      "corrupted_forecast_rejected": 78
+    },
+    "per_seed_discrete_metrics_identical": true,
+    "result_sha256": "cff13e94dda7543ec31633afc32113239b64e15fae34c88ba04d71399343b6d9",
+    "totals": {
+      "autoregression": {
+        "bounded_law_recovery": 6,
+        "budget_exhaustions": 0,
+        "candidate_checks": 17,
+        "cases": 78,
+        "cpu_seconds": 0.08025978500000046,
+        "forecast_pass": 15
+      },
+      "interpolation": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 0,
+        "candidate_checks": 84,
+        "cases": 78,
+        "cpu_seconds": 0.1055482600000004,
+        "forecast_pass": 22
+      },
+      "mdl_search": {
+        "bounded_law_recovery": 35,
+        "budget_exhaustions": 7,
+        "candidate_checks": 3113,
+        "cases": 78,
+        "cpu_seconds": 2.1397889819999993,
+        "forecast_pass": 48
+      },
+      "no_invariant": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 0,
+        "candidate_checks": 84,
+        "cases": 78,
+        "cpu_seconds": 0.013692992999999987,
+        "forecast_pass": 0
+      },
+      "persistence": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 0,
+        "candidate_checks": 84,
+        "cases": 78,
+        "cpu_seconds": 0.009522256000000048,
+        "forecast_pass": 7
+      },
+      "random_candidates": {
+        "bounded_law_recovery": 0,
+        "budget_exhaustions": 6,
+        "candidate_checks": 9984,
+        "cases": 78,
+        "cpu_seconds": 3.6077792509999993,
+        "forecast_pass": 7
+      }
+    },
+    "trace_sha256": "b2dfced01b226544f66e8989da31651164060770a95f5cdaf483186881ee4a09"
+  },
+  "task": "NC-056",
+  "verdict": "PASS",
+  "verifier": "turn-5a5076fda6d24580be772febdea8f92a"
+}
