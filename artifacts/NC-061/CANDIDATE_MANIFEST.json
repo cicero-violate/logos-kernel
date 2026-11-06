@@ -1,0 +1,53 @@
+{
+ "schema_version": 1,
+ "task": "NC-061",
+ "owner": "claude-code-turn-0f97bfac6651402eba375336293883b0",
+ "source_sha256": {
+  "scoreboard.py": "e0c0f4a681e75f99bc81866120dd31469f4f88efacc5ce449c82ea524e7d196b",
+  "controls.py": "68d5d041fe6e412906f185ec83ef69952d5480b5df564d08ef8f78ab635b7bcd",
+  "test_scoreboard.py": "425c5e6f35ea448994cfc68ecc4a60ad6bf686ab4042117ce187c6d5f46a1223",
+  "README.md": "d41572febbc9daf5ac79a03c0778bf52bece85f482a49cf07275b14d96b0ec84"
+ },
+ "evidence_sha256": {
+  "scoreboard_spec.json": "f16c095cd297797731358605431901f056440c3a8ad6ebdfca0493cc4c8b90a8",
+  "control_results.json": "df4933db9f308989fba1c8cf33493049c0d06beda0dc1b12eb940ebe3c7f2f0f"
+ },
+ "canonical_isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+ "control_verdicts": {
+  "constant": "NO_IMPROVEMENT",
+  "known_good": "IMPROVEMENT",
+  "random_search": "NO_IMPROVEMENT",
+  "leaked_answer": "CONTAMINATED",
+  "regressed": "NO_IMPROVEMENT",
+  "memorizer": "NO_IMPROVEMENT",
+  "budget_cheat": "INVALID"
+ },
+ "review_output_path": "artifacts/NC-061/independent_receipt.json",
+ "reproduction": [
+  "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-061/test_scoreboard.py",
+  "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-061/controls.py"
+ ],
+ "negative_controls": [
+  "constant output",
+  "random search",
+  "leaked answers declared in training data",
+  "regressed retention",
+  "memorizer of training functions",
+  "budget cheat",
+  "a program that fits every example but is wrong elsewhere",
+  "tampered seed, nonce, generator and thresholds"
+ ],
+ "dependencies": [
+  "Python 3 standard library",
+  "artifacts/NC-001/canonical_isa.py"
+ ],
+ "limitations": [
+  "Agents sharing this machine and user can read local files, so sealing detects changes after commitment but cannot stop a loop that reads an unprotected reveal. Keep the reveal away from the loop until the candidate is frozen.",
+  "Training overlap relies on the training keys a candidate declares, so undeclared training data is not detected.",
+  "The goal domain is 4-bit functions of two inputs from short programs. It measures this domain only and says nothing about general intelligence.",
+  "Retention is supplied by the caller and must be independently reproduced by the reviewer.",
+  "Thresholds are preregistered judgement calls, not derived from a power analysis.",
+  "No improvement loop has used this scoreboard yet, so it has only been exercised on controls.",
+  "Controls use public seeds so reviewers can reproduce them; a real run uses new_commitment()."
+ ]
+}

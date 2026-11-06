@@ -1,0 +1,370 @@
+{
+ "schema": "logos.nc061.controls/1",
+ "goals_per_seed": 10,
+ "seeds": [
+  11,
+  19,
+  29
+ ],
+ "budget": 64,
+ "scores": {
+  "constant": [
+   {
+    "solved": 0,
+    "total": 10,
+    "solve_rate": 0.0,
+    "unseen_solved": 0,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.153,
+    "cpu_seconds_per_solve": null,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 0,
+    "total": 10,
+    "solve_rate": 0.0,
+    "unseen_solved": 0,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.109,
+    "cpu_seconds_per_solve": null,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 0,
+    "total": 10,
+    "solve_rate": 0.0,
+    "unseen_solved": 0,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.116,
+    "cpu_seconds_per_solve": null,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   }
+  ],
+  "known_good": [
+   {
+    "solved": 10,
+    "total": 10,
+    "solve_rate": 1.0,
+    "unseen_solved": 10,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.477,
+    "cpu_seconds_per_solve": 0.0477,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 10,
+    "total": 10,
+    "solve_rate": 1.0,
+    "unseen_solved": 10,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.478,
+    "cpu_seconds_per_solve": 0.0478,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 10,
+    "total": 10,
+    "solve_rate": 1.0,
+    "unseen_solved": 10,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.374,
+    "cpu_seconds_per_solve": 0.0374,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   }
+  ],
+  "random_search": [
+   {
+    "solved": 2,
+    "total": 10,
+    "solve_rate": 0.2,
+    "unseen_solved": 2,
+    "candidates_used": 566,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.168,
+    "cpu_seconds_per_solve": 0.0839,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 1,
+    "total": 10,
+    "solve_rate": 0.1,
+    "unseen_solved": 1,
+    "candidates_used": 606,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.121,
+    "cpu_seconds_per_solve": 0.1213,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 0,
+    "total": 10,
+    "solve_rate": 0.0,
+    "unseen_solved": 0,
+    "candidates_used": 640,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.107,
+    "cpu_seconds_per_solve": null,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   }
+  ],
+  "leaked_answer": [
+   {
+    "solved": 10,
+    "total": 10,
+    "solve_rate": 1.0,
+    "unseen_solved": 0,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.43,
+    "cpu_seconds_per_solve": 0.043,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 1.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 10,
+    "total": 10,
+    "solve_rate": 1.0,
+    "unseen_solved": 0,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.514,
+    "cpu_seconds_per_solve": 0.0514,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 1.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 10,
+    "total": 10,
+    "solve_rate": 1.0,
+    "unseen_solved": 0,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.384,
+    "cpu_seconds_per_solve": 0.0385,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 1.0,
+    "retention": 1.0
+   }
+  ],
+  "regressed": [
+   {
+    "solved": 10,
+    "total": 10,
+    "solve_rate": 1.0,
+    "unseen_solved": 10,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.338,
+    "cpu_seconds_per_solve": 0.0338,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 0.5
+   },
+   {
+    "solved": 10,
+    "total": 10,
+    "solve_rate": 1.0,
+    "unseen_solved": 10,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.58,
+    "cpu_seconds_per_solve": 0.058,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 0.5
+   },
+   {
+    "solved": 10,
+    "total": 10,
+    "solve_rate": 1.0,
+    "unseen_solved": 10,
+    "candidates_used": 10,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.341,
+    "cpu_seconds_per_solve": 0.0341,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 0.5
+   }
+  ],
+  "memorizer": [
+   {
+    "solved": 0,
+    "total": 10,
+    "solve_rate": 0.0,
+    "unseen_solved": 0,
+    "candidates_used": 300,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.003,
+    "cpu_seconds_per_solve": null,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 0,
+    "total": 10,
+    "solve_rate": 0.0,
+    "unseen_solved": 0,
+    "candidates_used": 300,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.004,
+    "cpu_seconds_per_solve": null,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 0,
+    "total": 10,
+    "solve_rate": 0.0,
+    "unseen_solved": 0,
+    "candidates_used": 300,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.002,
+    "cpu_seconds_per_solve": null,
+    "invalid_programs": 0,
+    "over_budget_goals": 0,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   }
+  ],
+  "budget_cheat": [
+   {
+    "solved": 0,
+    "total": 10,
+    "solve_rate": 0.0,
+    "unseen_solved": 0,
+    "candidates_used": 6400,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.0,
+    "cpu_seconds_per_solve": null,
+    "invalid_programs": 0,
+    "over_budget_goals": 10,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 0,
+    "total": 10,
+    "solve_rate": 0.0,
+    "unseen_solved": 0,
+    "candidates_used": 6400,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.0,
+    "cpu_seconds_per_solve": null,
+    "invalid_programs": 0,
+    "over_budget_goals": 10,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   },
+   {
+    "solved": 0,
+    "total": 10,
+    "solve_rate": 0.0,
+    "unseen_solved": 0,
+    "candidates_used": 6400,
+    "budget_per_goal": 64,
+    "cpu_seconds": 0.0,
+    "cpu_seconds_per_solve": null,
+    "invalid_programs": 0,
+    "over_budget_goals": 10,
+    "training_overlap": 0.0,
+    "retention": 1.0
+   }
+  ]
+ },
+ "verdicts_against_constant_baseline": {
+  "constant": {
+   "verdict": "NO_IMPROVEMENT",
+   "gain": 0.0,
+   "reasons": [
+    "gain 0.000 is below the margin 0.05",
+    "did not beat the previous generation on most seeds"
+   ]
+  },
+  "known_good": {
+   "verdict": "IMPROVEMENT",
+   "gain": 1.0,
+   "reasons": []
+  },
+  "random_search": {
+   "verdict": "NO_IMPROVEMENT",
+   "gain": 0.1,
+   "reasons": [
+    "used 60.40 times the previous generation's candidates"
+   ]
+  },
+  "leaked_answer": {
+   "verdict": "CONTAMINATED",
+   "reasons": [
+    "sealed goals appear in declared training data"
+   ]
+  },
+  "regressed": {
+   "verdict": "NO_IMPROVEMENT",
+   "gain": 1.0,
+   "reasons": [
+    "retention 0.500 is below the floor 0.95"
+   ]
+  },
+  "memorizer": {
+   "verdict": "NO_IMPROVEMENT",
+   "gain": 0.0,
+   "reasons": [
+    "used 30.00 times the previous generation's candidates",
+    "gain 0.000 is below the margin 0.05",
+    "did not beat the previous generation on most seeds"
+   ]
+  },
+  "budget_cheat": {
+   "verdict": "INVALID",
+   "reasons": [
+    "candidate exceeded its budget"
+   ]
+  }
+ }
+}
