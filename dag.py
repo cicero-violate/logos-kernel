@@ -123,18 +123,21 @@ def ticket_order(pair):
 def choose_pull_event(tasks, agent):
     """Choose under the ledger append lock. Never equate a role string with independence."""
     agent = _review_id(agent)
+    principal = _review_principal(agent)
     ordered = sorted(tasks.items(), key=ticket_order)
     for task_id, item in ordered:
         review = item["review"]
-        if review and review["state"] == "claimed" and review["reviewer"] == agent:
-            return {"role": "VERIFIER", "task": task_id, "reused": True, "candidate_sha256": review["candidate_sha256"]}
+        if review and review["state"] == "claimed" and _review_principal(review["reviewer"]) == principal:
+            return {"role": "VERIFIER", "task": task_id, "reused": True,
+                    "candidate_sha256": review["candidate_sha256"], "reviewer": review["reviewer"]}
     for task_id, item in ordered:
         review = item["review"]
-        if review and review["state"] == "pending" and _review_principal(review["owner"]) != _review_principal(agent) and item["status"] != "passed":
+        if review and review["state"] == "pending" and _review_principal(review["owner"]) != principal and item["status"] != "passed":
             return {"kind": "review_claim", "id": task_id, "reviewer": agent, "candidate_sha256": review["candidate_sha256"]}
     for task_id, item in ordered:
-        if item["owner"] == agent and item["status"] in ("planned", "working"):
-            return {"role": "IMPLEMENTER", "task": task_id, "reused": True}
+        if item["owner"] is not None and _review_principal(item["owner"]) == principal and item["status"] in ("planned", "working"):
+            # Later writes match the ledger label exactly, so report it.
+            return {"role": "IMPLEMENTER", "task": task_id, "reused": True, "owner": item["owner"]}
     for task_id, item in ordered:
         if item["status"] == "planned" and item["owner"] is None and dependencies_passed(item, tasks):
             return {"kind": "claim", "id": task_id, "owner": agent}

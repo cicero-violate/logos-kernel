@@ -16,7 +16,11 @@ VERIFIER: Independently audit the returned task's pinned candidate, all referenc
 
 IMPLEMENTER: Implement the pulled task, commit only owned code/tests and reproducible evidence, and publish python dag.py request-review TASK_ID --owner ACTUAL_AGENT_ID --candidate-path artifacts/TASK_ID/MANIFEST.json. Do not approve your own work. The owner can record final PASS only after a distinct reviewer recorded PASS for that candidate.
 
-HOLD: Report the exact missing eligible ticket, candidate, independent identity, authority or dependency. Do not bypass, force-release, overwrite, or loop on self-checks.
+HOLD: Report the exact missing eligible ticket, candidate, independent identity, authority or dependency, then END THIS TURN. HOLD is final for the turn, however many times it repeats: do not reopen or claim tasks, repair or harden code, add tests or tasks, or pull again. Do not bypass, force-release, overwrite, or loop on self-checks.
+
+FROZEN CANDIDATE: After an IMPLEMENTER pull, check that task in python dag.py list. If review_state is pending or claimed, your candidate is awaiting review: treat the turn as HOLD and do not change it.
+
+ONLY REOPEN PATH: You may reopen your own blocked or failed task only if python dag.py list shows review_state closed with review_verdict FAIL or HOLD for it. Fix the reviewer's stated findings and publish a new candidate. A bug you found yourself while waiting is not grounds to reopen; report it.
 
 Pull is an atomic JSONL role/claim assignment, not an automatic worker. A new tab does not mean a different identity. Preserve all other workers' files and the champion. Do real authorized work now.
 

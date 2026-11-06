@@ -114,6 +114,37 @@ class PullTests(unittest.TestCase):
         selection = dag.choose_pull_event(state, identity)
         self.assertNotEqual(selection.get("kind"), "review_claim")
 
+    def test_event_lab_alias_reuses_existing_assignment(self):
+        # Both spellings of one session must resolve to its existing ticket,
+        # never to a second claim, and must report the label the ledger requires.
+        identity = "a" * 32
+        alias = "chatgpt-session-" + identity
+        reviewer = "d" * 32
+        def state_of(items):
+            previous = dag.ZERO
+            lines = []
+            for i, ev in enumerate(items, 1):
+                body = {"seq": i, "event": ev}
+                row = {**body, "prev_sha256": previous, "sha256": dag.hash_event(previous, body)}
+                lines.append(dag.canon(row))
+                previous = row["sha256"]
+            return dag.audit("\n".join(lines) + "\n")[0]
+        for ledger_label, pulled_label in ((identity, alias), (alias, identity)):
+            state = state_of([task(), task("u"), {"kind": "claim", "id": "t", "owner": ledger_label}])
+            self.assertEqual(dag.choose_pull_event(state, pulled_label),
+                             {"role": "IMPLEMENTER", "task": "t", "reused": True, "owner": ledger_label})
+        for ledger_label, pulled_label in ((reviewer, "chatgpt-session-" + reviewer),
+                                           ("chatgpt-session-" + reviewer, reviewer)):
+            state = state_of([task(), {"kind": "claim", "id": "t", "owner": identity},
+                              {"kind": "review_request", "id": "t", "owner": identity,
+                               "candidate_path": "artifacts/t/candidate.json",
+                               "candidate_sha256": "b" * 64, "revision": "c" * 40},
+                              {"kind": "review_claim", "id": "t", "reviewer": ledger_label,
+                               "candidate_sha256": "b" * 64}])
+            self.assertEqual(dag.choose_pull_event(state, pulled_label),
+                             {"role": "VERIFIER", "task": "t", "reused": True,
+                              "candidate_sha256": "b" * 64, "reviewer": ledger_label})
+
     def test_three_stateless_tabs_per_repository_concurrent_pull(self):
         # Three real logical roles may compete without fixed assignments:
         # one existing implementer, one independent reviewer, one new implementer.
