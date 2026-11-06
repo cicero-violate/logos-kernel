@@ -1,0 +1,54 @@
+{
+  "arms": [
+    "new_only",
+    "rehearsal",
+    "blocked_replay"
+  ],
+  "authority": "NC-046 kernel implementation only, NO live TR-002 claim or trainer-DAG write",
+  "cpu_seconds_soft_process_ceiling": 120,
+  "examples_per_seed_arm": 192,
+  "holdout": {
+    "cases_per_group": 12,
+    "groups": [
+      "carry8",
+      "iid16"
+    ],
+    "tasks": [
+      "add",
+      "xor",
+      "sub",
+      "mul",
+      "lt"
+    ],
+    "unordered_pair_disjointness": true
+  },
+  "limits": [
+    "Canary uses only stage 1/2 first block per stage, not 144-step NC-022 training or comprehensive evaluation",
+    "No new mathematical discovery or verified lemma ingested",
+    "No production trainer authorization",
+    "No OS-level memory quota",
+    "CPU thread count does not make host-load timings equal",
+    "Original champion is read-only and never overwritten"
+  ],
+  "match": "rehearsal and blocked_replay equal exact per-stage, pair, width, operation exposure; new_only same total update/example count",
+  "no_promotion": true,
+  "primary_metric": "mean exact old-skill accuracy over 2 groups and add/xor/sub",
+  "reference": "NC-022 independent 3-seed 25089-parameter RLT baseline; strict_result=NO_GAIN",
+  "replay": "two independent interruptions at step 1 and step 2; compare uninterrupted model tensor SHA, all losses, all heldout predictions; reject duplicate steps and corrupted checkpoint",
+  "schema": "nc046-canary-1",
+  "seeds": [
+    11,
+    19,
+    29
+  ],
+  "stages": [
+    1,
+    2
+  ],
+  "strict_success": "for each of 3 seeds: rehearsal mean > both new_only and blocked_replay mean by >=0.01; does not alone establish statistical significance or transfer",
+  "task": "NC-046",
+  "tensor_threads": 1,
+  "training_pairs_source": "artifacts/NC-022/train_and_holdout_ledger.json",
+  "two_updates_per_stage": true,
+  "updates_per_seed_arm": 4
+}

@@ -1,0 +1,297 @@
+{
+  "champion_unchanged": true,
+  "checkpoint_count": 36,
+  "excluded_claims": [
+    "approved TR-002 episode",
+    "resident continuous trainer",
+    "atomic trainer DAG job liveness",
+    "general mathematical transfer",
+    "neural program discovery",
+    "champion promotion",
+    "independent reviewer PASS"
+  ],
+  "independent_verification": null,
+  "limitations": [
+    "No production TR-002 run: current task unapproved and NC-045 live-job liveness is not ledger atomic.",
+    "Per-step checkpoint persistence does not prove exactly-once *physical* gradient execution if crash occurs before durable checkpoint.",
+    "Host CPU thread count and process RLIMIT_CPU are bounded; memory and energy not hardware-calibrated.",
+    "Fixed data from previously verified NC-022 only; no arbitrary external data ingestion or new mathematical discovery.",
+    "Rehearsal advantage not reproduced across three seeds; NO_GAIN in a 4-update pilot.",
+    "Reviewer must independently inspect raw checkpoints and code; this is implementer-authored evidence."
+  ],
+  "next_action": "Assign later NC-046 implementer via normal pull after release, first solve approved trainer episode and atomic job-liveness gate without bypass; rerun controlled tests; only then publish review request with new candidate.",
+  "observed_result": "NO_GAIN; strict rehearsal gain unreplicated",
+  "owner": "turn-0c396fcc1c87405e9696bcf2f02819db",
+  "pinned_source_files_sha256": {
+    "PROTOCOL.json": {
+      "bytes": 1854,
+      "sha256": "d64de0800b193b725428d96c80cbc6ba6abc9975d1cd99d9b8dc6084890c92ed"
+    },
+    "README.md": {
+      "bytes": 4206,
+      "sha256": "bf52873dabaf636e2aed7544c6f8995a470da31995b79161b3e7adb748d04968"
+    },
+    "audit_pilot.py": {
+      "bytes": 6272,
+      "sha256": "c71990a5f72e2ee63a360bc1619e799db0de261dbc2748c3c6c1ef79ef3df122"
+    },
+    "restart_replay_receipt.json": {
+      "bytes": 9611,
+      "sha256": "f93ca4090d38d8bc0af0658b05088fb0cde5d3c7ca708cab808a33471535e2a9"
+    },
+    "run_pilot.py": {
+      "bytes": 5560,
+      "sha256": "a4ea8b6f51ef4a7c74f3db83d040c1ec0fafc8e68b09417c289b64f966b69989"
+    },
+    "test_trainer_worker.py": {
+      "bytes": 4861,
+      "sha256": "f750ef48bbeec3fb0755675e767fd8e4669945fe448f1c250f0105bbdba3299d"
+    },
+    "trainer_pipeline.json": {
+      "bytes": 81490,
+      "sha256": "e920982f58c3495b5b91ebabfcb32b28f132889db127b6cd474d678c0cc48a78"
+    },
+    "trainer_worker.py": {
+      "bytes": 15308,
+      "sha256": "0f78a99aab322e6a160fec516d789dce843a8b74466bcaf1b912d045686dbc56"
+    }
+  },
+  "raw_checkpoint_hashes": {
+    "11:blocked_replay": {
+      "runs/pilot-seed11-blocked_replay/case.json": {
+        "bytes": 944,
+        "sha256": "a47dd18f82bdd8fe4554822c5054f70b1c5b18bf0d76884d3c17d0a7a5f4ef13"
+      },
+      "runs/pilot-seed11-blocked_replay/step0000-0bf36191b435cead0571c1554712213785efb09308da895c2190455e619c02f1.pt": {
+        "bytes": 371965,
+        "sha256": "0bf36191b435cead0571c1554712213785efb09308da895c2190455e619c02f1"
+      },
+      "runs/pilot-seed11-blocked_replay/step0001-fded494c0df06b874c71a47f32e1d4acc957b29744f9eafe4e86fee3cabd7061.pt": {
+        "bytes": 374205,
+        "sha256": "fded494c0df06b874c71a47f32e1d4acc957b29744f9eafe4e86fee3cabd7061"
+      },
+      "runs/pilot-seed11-blocked_replay/step0002-dca4a3b33908c7c636ea9dfd71781be2634315c37b9bc5c5aeb89ceff70b03b2.pt": {
+        "bytes": 376381,
+        "sha256": "dca4a3b33908c7c636ea9dfd71781be2634315c37b9bc5c5aeb89ceff70b03b2"
+      },
+      "runs/pilot-seed11-blocked_replay/step0003-4af9429c0f028f71e847027731cfe64607eff87a8d47fe10ff186a75247b407b.pt": {
+        "bytes": 378621,
+        "sha256": "4af9429c0f028f71e847027731cfe64607eff87a8d47fe10ff186a75247b407b"
+      }
+    },
+    "11:new_only": {
+      "runs/pilot-seed11-new_only/case.json": {
+        "bytes": 938,
+        "sha256": "215df52dd5ccdff8912fd630b5d1c1df1bd24ee9399d1074bc0866ecbcd852a5"
+      },
+      "runs/pilot-seed11-new_only/step0000-ca23364e62776022055729b9bc6dbd02674c584770a10c4daf8e80f01bb3e278.pt": {
+        "bytes": 371965,
+        "sha256": "ca23364e62776022055729b9bc6dbd02674c584770a10c4daf8e80f01bb3e278"
+      },
+      "runs/pilot-seed11-new_only/step0001-ddafe5688e1d4d3f104e8b7520fa600ab551bc1caa2f1aef92900604e30874d7.pt": {
+        "bytes": 374205,
+        "sha256": "ddafe5688e1d4d3f104e8b7520fa600ab551bc1caa2f1aef92900604e30874d7"
+      },
+      "runs/pilot-seed11-new_only/step0002-0ed6b9f7c0e20fa9af7a709a7150561e67052e43df22b6c0436b1d868b8d8d1b.pt": {
+        "bytes": 376381,
+        "sha256": "0ed6b9f7c0e20fa9af7a709a7150561e67052e43df22b6c0436b1d868b8d8d1b"
+      },
+      "runs/pilot-seed11-new_only/step0003-57d73aa220f4b4386702e2779f624c655cdcd5e451d5790f12d21ae3efb7a37f.pt": {
+        "bytes": 378621,
+        "sha256": "57d73aa220f4b4386702e2779f624c655cdcd5e451d5790f12d21ae3efb7a37f"
+      }
+    },
+    "11:rehearsal": {
+      "runs/pilot-seed11-rehearsal/case.json": {
+        "bytes": 939,
+        "sha256": "092393ce0bb1a16637e991940b2ff31e0392d37b4378e8852038170a56c4c8b3"
+      },
+      "runs/pilot-seed11-rehearsal/step0000-5da14f89fd4bafb16c614f9dac030bf8af03100a3650d931f79661094776a36a.pt": {
+        "bytes": 371965,
+        "sha256": "5da14f89fd4bafb16c614f9dac030bf8af03100a3650d931f79661094776a36a"
+      },
+      "runs/pilot-seed11-rehearsal/step0001-456aacbbada27b85e2781bf3e863dda9bee35ef89c46eede6d6a118f95b3372c.pt": {
+        "bytes": 374205,
+        "sha256": "456aacbbada27b85e2781bf3e863dda9bee35ef89c46eede6d6a118f95b3372c"
+      },
+      "runs/pilot-seed11-rehearsal/step0002-0b817565c89f9b61aa93d2e91927fac8fb8799a40d5b6a3f6e0b14b1199e39d6.pt": {
+        "bytes": 376445,
+        "sha256": "0b817565c89f9b61aa93d2e91927fac8fb8799a40d5b6a3f6e0b14b1199e39d6"
+      },
+      "runs/pilot-seed11-rehearsal/step0003-71f0722bbbe5f6347ae5fdfd2aa4189b3be1e401b3088775ed67005f57d1dc76.pt": {
+        "bytes": 378749,
+        "sha256": "71f0722bbbe5f6347ae5fdfd2aa4189b3be1e401b3088775ed67005f57d1dc76"
+      }
+    },
+    "19:blocked_replay": {
+      "runs/pilot-seed19-blocked_replay/case.json": {
+        "bytes": 944,
+        "sha256": "32d346bc8cc7d43a8f46ef0b3f6a7d815b83785a4f4834a4595b923fc2639c76"
+      },
+      "runs/pilot-seed19-blocked_replay/step0000-c9b26e9a33fdf2d73f513ef75d0b8d798db62e24addfc684ee06b78672724d08.pt": {
+        "bytes": 371965,
+        "sha256": "c9b26e9a33fdf2d73f513ef75d0b8d798db62e24addfc684ee06b78672724d08"
+      },
+      "runs/pilot-seed19-blocked_replay/step0001-ff7056ae694c012964237815eadcf5f1bc2ad4b42d1ca1b9a6a181ff50012bed.pt": {
+        "bytes": 374205,
+        "sha256": "ff7056ae694c012964237815eadcf5f1bc2ad4b42d1ca1b9a6a181ff50012bed"
+      },
+      "runs/pilot-seed19-blocked_replay/step0002-020796445421ce1a120c2a549cf9a28ab880682127bea789dd3b220bd76dcd28.pt": {
+        "bytes": 376381,
+        "sha256": "020796445421ce1a120c2a549cf9a28ab880682127bea789dd3b220bd76dcd28"
+      },
+      "runs/pilot-seed19-blocked_replay/step0003-2e3c86090dda4d0bf832db66d610e8e29ebcecd0958813d62051f635c9d031e8.pt": {
+        "bytes": 378621,
+        "sha256": "2e3c86090dda4d0bf832db66d610e8e29ebcecd0958813d62051f635c9d031e8"
+      }
+    },
+    "19:new_only": {
+      "runs/pilot-seed19-new_only/case.json": {
+        "bytes": 938,
+        "sha256": "fcf1492ee31e47c3c827ec56dbb72865ae037d2c1ddce4796e34530f86d22eba"
+      },
+      "runs/pilot-seed19-new_only/step0000-71d0005c8948bb04b23d28426f134c4aa130bf796fb413968a5912ce947cbf4e.pt": {
+        "bytes": 371965,
+        "sha256": "71d0005c8948bb04b23d28426f134c4aa130bf796fb413968a5912ce947cbf4e"
+      },
+      "runs/pilot-seed19-new_only/step0001-e8d768fe6d51e065da470e10b781e78dd35f60395419cbb86c3a76d3d2c57a51.pt": {
+        "bytes": 374205,
+        "sha256": "e8d768fe6d51e065da470e10b781e78dd35f60395419cbb86c3a76d3d2c57a51"
+      },
+      "runs/pilot-seed19-new_only/step0002-6c9f41785d8f9362b4c3af7340f91a4b254c10781c076516d4a45cbfd459dd6b.pt": {
+        "bytes": 376381,
+        "sha256": "6c9f41785d8f9362b4c3af7340f91a4b254c10781c076516d4a45cbfd459dd6b"
+      },
+      "runs/pilot-seed19-new_only/step0003-9d4791e2c4687cd56e5e563f6025c9e03567a538c6c33aa0a8025447a1f79a0c.pt": {
+        "bytes": 378621,
+        "sha256": "9d4791e2c4687cd56e5e563f6025c9e03567a538c6c33aa0a8025447a1f79a0c"
+      }
+    },
+    "19:rehearsal": {
+      "runs/pilot-seed19-rehearsal/case.json": {
+        "bytes": 939,
+        "sha256": "73dd5cdfc942e3c1f264fda2b22f453b78fc44a329fbb5f651f2fcd7ae48eeca"
+      },
+      "runs/pilot-seed19-rehearsal/step0000-7c68eca4a372ade2fed99bcec5301971b383c9adac93052c6d0a3746b98cd64a.pt": {
+        "bytes": 371965,
+        "sha256": "7c68eca4a372ade2fed99bcec5301971b383c9adac93052c6d0a3746b98cd64a"
+      },
+      "runs/pilot-seed19-rehearsal/step0001-9aae83b44de0bc34b27eeb43262b7b1c4b3798b8c4e46107bb2497b873ea6091.pt": {
+        "bytes": 374205,
+        "sha256": "9aae83b44de0bc34b27eeb43262b7b1c4b3798b8c4e46107bb2497b873ea6091"
+      },
+      "runs/pilot-seed19-rehearsal/step0002-21df30346b278c6ddff81d3651b404092ca473cf0c2556657b86a08882fa2ed0.pt": {
+        "bytes": 376445,
+        "sha256": "21df30346b278c6ddff81d3651b404092ca473cf0c2556657b86a08882fa2ed0"
+      },
+      "runs/pilot-seed19-rehearsal/step0003-cb92e5b5bcdd982c7851259c51cfee14835837c4ddceae8a62f3babc4ce4f2a4.pt": {
+        "bytes": 378685,
+        "sha256": "cb92e5b5bcdd982c7851259c51cfee14835837c4ddceae8a62f3babc4ce4f2a4"
+      }
+    },
+    "29:blocked_replay": {
+      "runs/pilot-seed29-blocked_replay/case.json": {
+        "bytes": 944,
+        "sha256": "a4e387584a99eb34870a5aeb1c481b25afe9530421d1462d0204c5f45615ce7e"
+      },
+      "runs/pilot-seed29-blocked_replay/step0000-1740ab3580bfc7e779499374f94d3b88bb9e5872302a9b5d372d0dede5b06553.pt": {
+        "bytes": 371965,
+        "sha256": "1740ab3580bfc7e779499374f94d3b88bb9e5872302a9b5d372d0dede5b06553"
+      },
+      "runs/pilot-seed29-blocked_replay/step0001-93d6ecde99a176d983e8d971b2707690ac7a4702f83bacfcad98b1cc929371ca.pt": {
+        "bytes": 374205,
+        "sha256": "93d6ecde99a176d983e8d971b2707690ac7a4702f83bacfcad98b1cc929371ca"
+      },
+      "runs/pilot-seed29-blocked_replay/step0002-60815e567e4e286ff76390f9f849a6118a1b54a237c12c2a7894c57799dee395.pt": {
+        "bytes": 376381,
+        "sha256": "60815e567e4e286ff76390f9f849a6118a1b54a237c12c2a7894c57799dee395"
+      },
+      "runs/pilot-seed29-blocked_replay/step0003-ae5702b22f92a261ac57b883cd75ce98cce82b5039d5319985c078f7fb6f436b.pt": {
+        "bytes": 378621,
+        "sha256": "ae5702b22f92a261ac57b883cd75ce98cce82b5039d5319985c078f7fb6f436b"
+      }
+    },
+    "29:new_only": {
+      "runs/pilot-seed29-new_only/case.json": {
+        "bytes": 938,
+        "sha256": "bf31cc2131965aca8cc767e22d4af2139d49f86032eac2e6235a972a08d9e310"
+      },
+      "runs/pilot-seed29-new_only/step0000-98b96ed0bd3ea982bc4d3b534714e096ad8160b887d155e6e8fc08586ef0ed08.pt": {
+        "bytes": 371965,
+        "sha256": "98b96ed0bd3ea982bc4d3b534714e096ad8160b887d155e6e8fc08586ef0ed08"
+      },
+      "runs/pilot-seed29-new_only/step0001-546d51141121a52007845f6d2847f0a78e976f0c5650f3d43b5f5abdd9008c5e.pt": {
+        "bytes": 374205,
+        "sha256": "546d51141121a52007845f6d2847f0a78e976f0c5650f3d43b5f5abdd9008c5e"
+      },
+      "runs/pilot-seed29-new_only/step0002-8d2c8a042512b71db3e581cf4e384b0b851b67ed7b1b81d8b4a0930745e526a5.pt": {
+        "bytes": 376381,
+        "sha256": "8d2c8a042512b71db3e581cf4e384b0b851b67ed7b1b81d8b4a0930745e526a5"
+      },
+      "runs/pilot-seed29-new_only/step0003-36ffb2ad5078147492960c373f77cb9d7b42594a8201ef2a3d0e1871217337d2.pt": {
+        "bytes": 378621,
+        "sha256": "36ffb2ad5078147492960c373f77cb9d7b42594a8201ef2a3d0e1871217337d2"
+      }
+    },
+    "29:rehearsal": {
+      "runs/pilot-seed29-rehearsal/case.json": {
+        "bytes": 939,
+        "sha256": "6d624cd6eacd6793bedffc4628050b006f53e966ad363e490d26efa0b66d4b11"
+      },
+      "runs/pilot-seed29-rehearsal/step0000-a0eb2026964c5054cae2643301e607c4056b719bf503f55d6992af851189284e.pt": {
+        "bytes": 371965,
+        "sha256": "a0eb2026964c5054cae2643301e607c4056b719bf503f55d6992af851189284e"
+      },
+      "runs/pilot-seed29-rehearsal/step0001-60b97d5a1d85a6b0a43fdce485e615cb282a336d742a100acaea04b5d0e17d1f.pt": {
+        "bytes": 374205,
+        "sha256": "60b97d5a1d85a6b0a43fdce485e615cb282a336d742a100acaea04b5d0e17d1f"
+      },
+      "runs/pilot-seed29-rehearsal/step0002-a63a90e5ff5b9ae71aac9186674861b577a6f54ef2a3db8ea3f6af9383749054.pt": {
+        "bytes": 376445,
+        "sha256": "a63a90e5ff5b9ae71aac9186674861b577a6f54ef2a3db8ea3f6af9383749054"
+      },
+      "runs/pilot-seed29-rehearsal/step0003-a0ca5517bd24df0b68ed768deb56a8d7a8fcff1c9f7c0ffcbfb3ba2b433501fc.pt": {
+        "bytes": 378685,
+        "sha256": "a0ca5517bd24df0b68ed768deb56a8d7a8fcff1c9f7c0ffcbfb3ba2b433501fc"
+      }
+    }
+  },
+  "reproduce": [
+    "PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python -m unittest discover -s artifacts/NC-046 -p test_trainer_worker.py -q (fresh checkout)",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-046/audit_pilot.py (existing evidence)",
+    "python dag.py validate",
+    "python -m unittest -q test_dag",
+    "python -m unittest -q test_pull"
+  ],
+  "restart_receipt_sha256": "f93ca4090d38d8bc0af0658b05088fb0cde5d3c7ca708cab808a33471535e2a9",
+  "review_ready": false,
+  "review_request_published": false,
+  "role": "IMPLEMENTER",
+  "runtime_dependencies": [
+    "Python 3.10+ stdlib (fcntl/resource), Linux/POSIX filesystem fsync+flock, Git",
+    "PyTorch CPU, NumPy",
+    "artifacts/NC-046/trainer_worker.py, run_pilot.py, audit_pilot.py, test_trainer_worker.py, PROTOCOL.json",
+    "artifacts/NC-022/rlt_rehearsal.py, PROTOCOL.json, train_and_holdout_ledger.json, independent_receipt.json",
+    "artifacts/NC-000/inventory.json",
+    "/workspace/experiments/rlt_split_algorithms_ablation_v1/task_conditioned_rlt.py, rlt_core.py, snapshots/current_unified_v3.pt",
+    "/workspace/experiments/logos-trainer/trainer_dag.py, training.jsonl (read-only)"
+  ],
+  "schema": "logos-kernel-nc046-partial-v1",
+  "scoped_replay": "3 seeds x 3 frozen task arms, 4 updates/arm/seed, 192 examples each, two interrupted/restarted trajectories",
+  "source_dependency_provenance": {
+    "champion": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "data": "1c60767d692e09587293cdb964e0b40919905ac78b1c47aaf7eafaa042da94a3",
+    "model": "2d07d82b1659320356addd8a0f54e130ad200891b6a1990fbed073ce79f96ded"
+  },
+  "status": "INCOMPLETE_PRODUCTION_GATE_BLOCKED_NOT_REQUESTING_REVIEW",
+  "task": "NC-046",
+  "trainer_ledger_unchanged": true,
+  "training_status": "ISOLATED_CANARY_ONLY_NOT_AUTHORIZED_LIVE_EPISODE",
+  "unmet_acceptance": [
+    "No user/operator authorization for TR-002 (currently approved=false, depends on unsealed TR-001; placeholder zero source/data hashes).",
+    "NC-045 training ledger still has no atomic running-job state; release/takeover during active worker could be unsafe if merely relying on separate flock.",
+    "No approved trainer-DAG episode checkpoint registration or multi-episode provenance ledger yet.",
+    "No independently produced review receipt; self-audit is implementer-side only.",
+    "NC-022 synthetic arithmetic pairs are previously verified, but do not represent new mathematical discoveries."
+  ]
+}

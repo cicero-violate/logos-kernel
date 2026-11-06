@@ -1,0 +1,18 @@
+{
+  "arm": "rehearsal",
+  "schema": "NC046-canary-1",
+  "scope": "isolated unapproved CPU canary, not trainer-ledger episode",
+  "seed": 29,
+  "source_data_sha256": "1c60767d692e09587293cdb964e0b40919905ac78b1c47aaf7eafaa042da94a3",
+  "source_hashes": {
+    "architecture": "99f70b03e2e864d1635ffdbd3ce56598d915bcc1673e1492964d3322714335fb",
+    "backbone": "3c4abc18752236d3118487213fcfa1cf4a18e52e2ceb17ad52a0cdec141013c7",
+    "champion": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "dataset": "1c60767d692e09587293cdb964e0b40919905ac78b1c47aaf7eafaa042da94a3",
+    "experiment": "2d07d82b1659320356addd8a0f54e130ad200891b6a1990fbed073ce79f96ded",
+    "protocol": "152a2435601083c663c8c4ec3c25caf0d3bcb5f3a977cb19f9cf4dddaf690a9f"
+  },
+  "step_plan_sha256": "786b7a33a0e31d1da4d4b21a9ee49d230c69732ea433590b5f581ce6d89e114f",
+  "steps": 4,
+  "trainer_ledger_id": "trainer-c5032383d28343858c2d6c1e1875292d"
+}
