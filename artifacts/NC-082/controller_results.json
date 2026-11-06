@@ -1,0 +1,361 @@
+{
+ "schema": "logos.nc082.results/1",
+ "config": {
+  "library": "artifacts/NC-082/library_snapshot.jsonl",
+  "seeds": [
+   11,
+   19,
+   29
+  ],
+  "steps": 8000,
+  "batch": 128,
+  "concepts": 120,
+  "out": "artifacts/NC-082"
+ },
+ "library_sha256": "700faee6a29f79cbd2036d14ab51fee530958e399202b95826dec9ddf8359180",
+ "concept_programs_available": 155,
+ "concept_programs_tested": 120,
+ "program_lengths": [
+  3,
+  17
+ ],
+ "boundary": "The Transformer predicts opcode, operands, destination, immediate and next PC. NC-080 operators compute ALU bits. The host keeps registers, feeds predictions forward and iterates bits.",
+ "seeds": {
+  "11": {
+   "steps": 8000,
+   "batch": 128,
+   "final_loss": 0.0006,
+   "train_cpu_seconds": 8350.0,
+   "parameters": 289564,
+   "held_out_collisions_in_20000_sampled_programs": 0,
+   "concept_programs_fully_correct": 120,
+   "concept_rollouts_correct": 1920,
+   "concept_rollouts_total": 1920,
+   "per_length": {
+    "3": [
+     4,
+     4
+    ],
+    "4": [
+     8,
+     8
+    ],
+    "5": [
+     8,
+     8
+    ],
+    "6": [
+     17,
+     17
+    ],
+    "7": [
+     16,
+     16
+    ],
+    "9": [
+     10,
+     10
+    ],
+    "10": [
+     14,
+     14
+    ],
+    "11": [
+     8,
+     8
+    ],
+    "12": [
+     9,
+     9
+    ],
+    "13": [
+     11,
+     11
+    ],
+    "15": [
+     4,
+     4
+    ],
+    "16": [
+     7,
+     7
+    ],
+    "17": [
+     4,
+     4
+    ]
+   },
+   "multiply": {
+    "correct": 256,
+    "total": 256,
+    "halted": 256,
+    "max_steps": 59
+   },
+   "multiply_teacher_forced": {
+    "steps": 1674,
+    "errors": {}
+   },
+   "other_branching_programs": {
+    "popcount": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 44
+    },
+    "select_y_if_x": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 4
+    },
+    "low_bit_count": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 46
+    },
+    "add_x_low_y_times": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 66
+    }
+   },
+   "blank_program_control": {
+    "programs_fully_correct": 0,
+    "programs": 20,
+    "multiply": {
+     "correct": 0,
+     "total": 64,
+     "halted": 0,
+     "max_steps": 160
+    }
+   },
+   "checkpoint_sha256": "d7140f783a059425cc86ed4a1cb731f6aa13b1d747d04a503e36a94bddf25b38"
+  },
+  "19": {
+   "steps": 8000,
+   "batch": 128,
+   "final_loss": 0.0004,
+   "train_cpu_seconds": 8468.0,
+   "parameters": 289564,
+   "held_out_collisions_in_20000_sampled_programs": 0,
+   "concept_programs_fully_correct": 120,
+   "concept_rollouts_correct": 1920,
+   "concept_rollouts_total": 1920,
+   "per_length": {
+    "3": [
+     4,
+     4
+    ],
+    "4": [
+     8,
+     8
+    ],
+    "5": [
+     8,
+     8
+    ],
+    "6": [
+     17,
+     17
+    ],
+    "7": [
+     16,
+     16
+    ],
+    "9": [
+     10,
+     10
+    ],
+    "10": [
+     14,
+     14
+    ],
+    "11": [
+     7,
+     7
+    ],
+    "12": [
+     10,
+     10
+    ],
+    "13": [
+     11,
+     11
+    ],
+    "15": [
+     4,
+     4
+    ],
+    "16": [
+     9,
+     9
+    ],
+    "17": [
+     2,
+     2
+    ]
+   },
+   "multiply": {
+    "correct": 256,
+    "total": 256,
+    "halted": 256,
+    "max_steps": 59
+   },
+   "multiply_teacher_forced": {
+    "steps": 1674,
+    "errors": {}
+   },
+   "other_branching_programs": {
+    "popcount": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 44
+    },
+    "select_y_if_x": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 4
+    },
+    "low_bit_count": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 46
+    },
+    "add_x_low_y_times": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 66
+    }
+   },
+   "blank_program_control": {
+    "programs_fully_correct": 0,
+    "programs": 20,
+    "multiply": {
+     "correct": 0,
+     "total": 64,
+     "halted": 0,
+     "max_steps": 160
+    }
+   },
+   "checkpoint_sha256": "f7e4ac1611cfaad85032a73f96e7b499c987d6136d82e7f1b808054a54252d2d"
+  },
+  "29": {
+   "steps": 8000,
+   "batch": 128,
+   "final_loss": 0.0004,
+   "train_cpu_seconds": 8329.4,
+   "parameters": 289564,
+   "held_out_collisions_in_20000_sampled_programs": 0,
+   "concept_programs_fully_correct": 120,
+   "concept_rollouts_correct": 1920,
+   "concept_rollouts_total": 1920,
+   "per_length": {
+    "3": [
+     4,
+     4
+    ],
+    "4": [
+     8,
+     8
+    ],
+    "5": [
+     8,
+     8
+    ],
+    "6": [
+     17,
+     17
+    ],
+    "7": [
+     16,
+     16
+    ],
+    "9": [
+     10,
+     10
+    ],
+    "10": [
+     14,
+     14
+    ],
+    "11": [
+     8,
+     8
+    ],
+    "12": [
+     8,
+     8
+    ],
+    "13": [
+     12,
+     12
+    ],
+    "15": [
+     4,
+     4
+    ],
+    "16": [
+     10,
+     10
+    ],
+    "17": [
+     1,
+     1
+    ]
+   },
+   "multiply": {
+    "correct": 256,
+    "total": 256,
+    "halted": 256,
+    "max_steps": 59
+   },
+   "multiply_teacher_forced": {
+    "steps": 1674,
+    "errors": {}
+   },
+   "other_branching_programs": {
+    "popcount": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 44
+    },
+    "select_y_if_x": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 4
+    },
+    "low_bit_count": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 46
+    },
+    "add_x_low_y_times": {
+     "correct": 256,
+     "total": 256,
+     "halted": 256,
+     "max_steps": 66
+    }
+   },
+   "blank_program_control": {
+    "programs_fully_correct": 0,
+    "programs": 20,
+    "multiply": {
+     "correct": 0,
+     "total": 64,
+     "halted": 0,
+     "max_steps": 160
+    }
+   },
+   "checkpoint_sha256": "a02c68413116ddd51cfbdfbedbd601928e9eadac2729a441caf2212b04665985"
+  }
+ }
+}
