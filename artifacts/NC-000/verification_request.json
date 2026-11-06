@@ -1,0 +1,34 @@
+{
+  "do_not_auto_pass": true,
+  "generated_utc": "2026-11-06T00:36:49.417321+00:00",
+  "implementer_agent_runtime_session": "1db9edb983ff4df9933612e7c826e55f",
+  "implementer_inventory_path": "artifacts/NC-000/inventory.json",
+  "implementer_inventory_sha256": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+  "implementer_smoke_path": "artifacts/NC-000/implementer_smoke.json",
+  "known_limits_and_discrepancies": [
+    "Standalone Transformer controller v1 fails 8 of 14 in clean-process rollout; corrected v2 succeeds 14/14.",
+    "8-bit 4217-case tests are not full enumeration of 65536 operand pairs.",
+    "Fixed program ROM and Python state routing are not neural program synthesis.",
+    "The original seven-task champion has weak 16-bit multiplication; specialized ISA architecture is experimental, not promoted.",
+    "Fresh-process implementation checks by the inventory author are not independent agent verification."
+  ],
+  "output_receipt_path": "artifacts/NC-000/baseline_receipt.json",
+  "required_verifier": "A real independent agent distinct from the agent recording the final PASS; never fabricate either identity.",
+  "schema": 1,
+  "status": "READY_FOR_DISTINCT_AGENT_VERIFICATION",
+  "task": "NC-000",
+  "verification_actions": [
+    "Re-read AGENTS.md and validate instructions.jsonl; never rewrite history.",
+    "A new real task owner may claim NC-000 after release, but must arrange verification by a separate real agent; owner must not certify their own work.",
+    "Verify all inventory source repository commits and independently SHA-256 every file listed in inventory.",
+    "Run python -m unittest -q test_dag and python dag.py validate.",
+    "In fresh processes rerun RLT current champion addition and selected general core inference.",
+    "In a fresh process load standalone causal/weights.pt and verify numeric multiplication; distinguish MLP from native RLT attention.",
+    "In separate fresh processes test transformer_controller v1 and v2; record the v1 6/14 vs v2 14/14 difference if reproduced.",
+    "Run root run.py explicit shared_rlt_isa and rlt_attention_isa inference; assert 13 * 11 == 143 without symbolic execution in the model.",
+    "Record the exact command, environment, seed, model checkpoint hash, numerators/denominators, failures, model-vs-ROM boundary, scope, and limitations.",
+    "Verify source repos and champion remain untouched; do not run training or commit model weights as part of NC-000.",
+    "Create the receipt under artifacts/NC-000/baseline_receipt.json with real implementer/verifier identities.",
+    "Only then call python dag.py pass NC-000 --owner REAL_CURRENT_OWNER --verifier REAL_DISTINCT_VERIFIER --evidence artifacts/NC-000/baseline_receipt.json."
+  ]
+}

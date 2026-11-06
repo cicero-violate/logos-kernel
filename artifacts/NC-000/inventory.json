@@ -1,0 +1,589 @@
+{
+  "champion": {
+    "active_addition_algorithm": "carry_recurrence",
+    "bundle": "snapshots/current_unified_v3.pt",
+    "general_core_reported_mul_six_group_mean": 0.016167534722222224,
+    "general_core_training_updates": 640,
+    "seed_list": [
+      11,
+      19,
+      29
+    ],
+    "selected_bundle_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "selected_general_core": "task_conditioned_rlt",
+    "selected_params": 25089,
+    "trained_operations": 7,
+    "unchanged": true
+  },
+  "created_utc": "2026-11-06T00:35:05.296476+00:00",
+  "files": [
+    {
+      "bytes": 1519075,
+      "expected_match": true,
+      "expected_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "path": "snapshots/current_unified_v3.pt",
+      "repo": "rlt_champion",
+      "role": "immutable_unified_bundle",
+      "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    {
+      "bytes": 5209,
+      "expected_match": true,
+      "expected_sha256": "ca0ec6367535ea01264ccd00ffe1a32f4ebd65aaee364705e173193daf88ec83",
+      "path": "config.json",
+      "repo": "rlt_champion",
+      "role": "active_configuration",
+      "sha256": "ca0ec6367535ea01264ccd00ffe1a32f4ebd65aaee364705e173193daf88ec83"
+    },
+    {
+      "bytes": 513,
+      "expected_match": true,
+      "expected_sha256": "ef67ba9fbd9b60790376bc5370396711b6c176471081c6f4cc3fe15b1b11c315",
+      "path": "PROMOTION.json",
+      "repo": "rlt_champion",
+      "role": "addition_promotion",
+      "sha256": "ef67ba9fbd9b60790376bc5370396711b6c176471081c6f4cc3fe15b1b11c315"
+    },
+    {
+      "bytes": 4370,
+      "path": "snapshots/current_unified_v3.json",
+      "repo": "rlt_champion",
+      "role": "snapshot_reference",
+      "sha256": "5f829b3bd886530ba41c5c0bbf7a28004589e3f19fc7d1ad813279e4041c116b"
+    },
+    {
+      "bytes": 30866,
+      "expected_match": true,
+      "expected_sha256": "b3467d7bdc851ba478a4237ca1f9edbdd7fc193ff3df1a48f93ddd3367ef6b42",
+      "path": "outputs/new16/carry_recurrence_seed11.pt",
+      "repo": "rlt_champion",
+      "role": "source_weight_carry_recurrence_seed11",
+      "sha256": "b3467d7bdc851ba478a4237ca1f9edbdd7fc193ff3df1a48f93ddd3367ef6b42"
+    },
+    {
+      "bytes": 30866,
+      "expected_match": true,
+      "expected_sha256": "80eb2066ce815b92596d6cbeefbe0bf4e07ac463440835843ca16d7e08a1fa4c",
+      "path": "outputs/new16/carry_recurrence_seed19.pt",
+      "repo": "rlt_champion",
+      "role": "source_weight_carry_recurrence_seed19",
+      "sha256": "80eb2066ce815b92596d6cbeefbe0bf4e07ac463440835843ca16d7e08a1fa4c"
+    },
+    {
+      "bytes": 30866,
+      "expected_match": true,
+      "expected_sha256": "29ad9f6635815d12b27435593089e4242d463a5caf269250a2bd7f050c7ab895",
+      "path": "outputs/new16/carry_recurrence_seed29.pt",
+      "repo": "rlt_champion",
+      "role": "source_weight_carry_recurrence_seed29",
+      "sha256": "29ad9f6635815d12b27435593089e4242d463a5caf269250a2bd7f050c7ab895"
+    },
+    {
+      "bytes": 115198,
+      "expected_match": true,
+      "expected_sha256": "802e4e871e298c8fa0b9166d89d1239e032c3531b8d65ab193069d3d7d6b3812",
+      "path": "snapshots/model_B1_seed11.pt",
+      "repo": "rlt_champion",
+      "role": "source_weight_RLT_B1_seed11",
+      "sha256": "802e4e871e298c8fa0b9166d89d1239e032c3531b8d65ab193069d3d7d6b3812"
+    },
+    {
+      "bytes": 115198,
+      "expected_match": true,
+      "expected_sha256": "125a685da2d237b1a48631a9a56ea686bace4396520860b617683f4e939e45b1",
+      "path": "snapshots/model_B1_seed19.pt",
+      "repo": "rlt_champion",
+      "role": "source_weight_RLT_B1_seed19",
+      "sha256": "125a685da2d237b1a48631a9a56ea686bace4396520860b617683f4e939e45b1"
+    },
+    {
+      "bytes": 115198,
+      "expected_match": true,
+      "expected_sha256": "536665cfffa3cef73c2aae30f6897ea73d639d4790f8cc0d5b98a69bf98145d9",
+      "path": "snapshots/model_B1_seed29.pt",
+      "repo": "rlt_champion",
+      "role": "source_weight_RLT_B1_seed29",
+      "sha256": "536665cfffa3cef73c2aae30f6897ea73d639d4790f8cc0d5b98a69bf98145d9"
+    },
+    {
+      "bytes": 144799,
+      "expected_match": true,
+      "expected_sha256": "97dc443b5b1bc36f3ca6012100971b451960af34c4ced01a69438932390ceee0",
+      "path": "outputs/new16/length_adapter_seed11.pt",
+      "repo": "rlt_champion",
+      "role": "source_weight_length_adapter_seed11",
+      "sha256": "97dc443b5b1bc36f3ca6012100971b451960af34c4ced01a69438932390ceee0"
+    },
+    {
+      "bytes": 144799,
+      "expected_match": true,
+      "expected_sha256": "267941d8cb12a22319a7959b142c050f5b63f07589c71bb52246dca25778c62c",
+      "path": "outputs/new16/length_adapter_seed19.pt",
+      "repo": "rlt_champion",
+      "role": "source_weight_length_adapter_seed19",
+      "sha256": "267941d8cb12a22319a7959b142c050f5b63f07589c71bb52246dca25778c62c"
+    },
+    {
+      "bytes": 144799,
+      "expected_match": true,
+      "expected_sha256": "f92f6d871097221946dd96a222b76388b1cf9d4e19d7ad71a5b9596aa78a5986",
+      "path": "outputs/new16/length_adapter_seed29.pt",
+      "repo": "rlt_champion",
+      "role": "source_weight_length_adapter_seed29",
+      "sha256": "f92f6d871097221946dd96a222b76388b1cf9d4e19d7ad71a5b9596aa78a5986"
+    },
+    {
+      "bytes": 66645,
+      "expected_match": true,
+      "expected_sha256": "46d51b43096619ded84365b84634d2cfcf13bbd14490b4324325b403c5f0f465",
+      "path": "snapshots/model_legacy_fiveop_seed11.pt",
+      "repo": "rlt_champion",
+      "role": "source_weight_five_op_dag",
+      "sha256": "46d51b43096619ded84365b84634d2cfcf13bbd14490b4324325b403c5f0f465"
+    },
+    {
+      "bytes": 227459,
+      "expected_match": true,
+      "expected_sha256": "c3b15024e6a6461141a31113ce9a51497e90670ef41a6036712210f7bf346b44",
+      "path": "snapshots/model_predictive_dag_seed11.pt",
+      "repo": "rlt_champion",
+      "role": "source_weight_unknown_rule",
+      "sha256": "c3b15024e6a6461141a31113ce9a51497e90670ef41a6036712210f7bf346b44"
+    },
+    {
+      "bytes": 117461,
+      "expected_match": true,
+      "expected_sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884",
+      "path": "task_conditioned_rlt_v1/multitask_train_v1/outputs/seed11/seed11_conditioned_step640.pt",
+      "repo": "rlt_champion",
+      "role": "general_rlt_trained_seed11",
+      "sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884"
+    },
+    {
+      "bytes": 115357,
+      "expected_match": true,
+      "expected_sha256": "d9d157ef883554d130a62a715247d4c7fccff683502af01a4f5de7444f3d8f55",
+      "path": "controlled_architecture_v1/full/RLT_scratch_seed11.pt",
+      "repo": "rlt_champion",
+      "role": "general_rlt_backbone_seed11",
+      "sha256": "d9d157ef883554d130a62a715247d4c7fccff683502af01a4f5de7444f3d8f55"
+    },
+    {
+      "bytes": 117461,
+      "expected_match": true,
+      "expected_sha256": "afd0d74857abb8f0ce98efcdb5ab9791ec2d01366573ae7040b9c100f4f9eba2",
+      "path": "task_conditioned_rlt_v1/multitask_train_v1/outputs/seed19/seed19_conditioned_step640.pt",
+      "repo": "rlt_champion",
+      "role": "general_rlt_trained_seed19",
+      "sha256": "afd0d74857abb8f0ce98efcdb5ab9791ec2d01366573ae7040b9c100f4f9eba2"
+    },
+    {
+      "bytes": 115357,
+      "expected_match": true,
+      "expected_sha256": "e8ee412e8a6abba5ab07ec48cfa0189bdeb9f7bb5fbdb14915714074972ad5c2",
+      "path": "controlled_architecture_v1/full/RLT_scratch_seed19.pt",
+      "repo": "rlt_champion",
+      "role": "general_rlt_backbone_seed19",
+      "sha256": "e8ee412e8a6abba5ab07ec48cfa0189bdeb9f7bb5fbdb14915714074972ad5c2"
+    },
+    {
+      "bytes": 117461,
+      "expected_match": true,
+      "expected_sha256": "8574c1af3fa3354c78f6afff72d02c15b518ec2762435675af2bdd495049bc00",
+      "path": "task_conditioned_rlt_v1/multitask_train_v1/outputs/seed29/seed29_conditioned_step640.pt",
+      "repo": "rlt_champion",
+      "role": "general_rlt_trained_seed29",
+      "sha256": "8574c1af3fa3354c78f6afff72d02c15b518ec2762435675af2bdd495049bc00"
+    },
+    {
+      "bytes": 115357,
+      "expected_match": true,
+      "expected_sha256": "0e8a541fc912b419f77193a770dd0c7bf448e0f7ae6dec22e4d7b6ab4a03978b",
+      "path": "controlled_architecture_v1/full/RLT_scratch_seed29.pt",
+      "repo": "rlt_champion",
+      "role": "general_rlt_backbone_seed29",
+      "sha256": "0e8a541fc912b419f77193a770dd0c7bf448e0f7ae6dec22e4d7b6ab4a03978b"
+    },
+    {
+      "bytes": 45848,
+      "expected_match": true,
+      "expected_sha256": "51ffbab6674a503d4b8a7e7913a878daaad6a92509a78c80743838ad85e03546",
+      "path": "neural_isa_transfer_v1/rlt_micro_checkpoints/seed11_v2.pt",
+      "repo": "rlt_champion",
+      "role": "native_isa_attention_seed11",
+      "sha256": "51ffbab6674a503d4b8a7e7913a878daaad6a92509a78c80743838ad85e03546"
+    },
+    {
+      "bytes": 45848,
+      "expected_match": true,
+      "expected_sha256": "8c152adf64f639cc251fbf130b00e7a73a7d9c86f92023212d2965e7d18c0c28",
+      "path": "neural_isa_transfer_v1/rlt_micro_checkpoints/seed19_v2.pt",
+      "repo": "rlt_champion",
+      "role": "native_isa_attention_seed19",
+      "sha256": "8c152adf64f639cc251fbf130b00e7a73a7d9c86f92023212d2965e7d18c0c28"
+    },
+    {
+      "bytes": 45848,
+      "expected_match": true,
+      "expected_sha256": "401a434f78f2cd9831923ab59a4151d21e602aac864aa4bdfd3b76396bd9f71a",
+      "path": "neural_isa_transfer_v1/rlt_micro_checkpoints/seed29_v2.pt",
+      "repo": "rlt_champion",
+      "role": "native_isa_attention_seed29",
+      "sha256": "401a434f78f2cd9831923ab59a4151d21e602aac864aa4bdfd3b76396bd9f71a"
+    },
+    {
+      "bytes": 71551,
+      "expected_match": true,
+      "expected_sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951",
+      "path": "neural_isa_transfer_v1/unified_shared_v1/outputs/seed11/jointly_tuned.pt",
+      "repo": "rlt_champion",
+      "role": "shared_isa_attention_seed11",
+      "sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951"
+    },
+    {
+      "bytes": 71551,
+      "expected_match": true,
+      "expected_sha256": "1ca7edc7358d2132aa6ffedf17e281cfa060f989defffffeb9520945470ea1d0",
+      "path": "neural_isa_transfer_v1/unified_shared_v1/outputs/seed19/jointly_tuned.pt",
+      "repo": "rlt_champion",
+      "role": "shared_isa_attention_seed19",
+      "sha256": "1ca7edc7358d2132aa6ffedf17e281cfa060f989defffffeb9520945470ea1d0"
+    },
+    {
+      "bytes": 71551,
+      "expected_match": true,
+      "expected_sha256": "97e14244736759f2377433ef38ede534c25b414daf6f836bf2eb2ac72cf37e68",
+      "path": "neural_isa_transfer_v1/unified_shared_v1/outputs/seed29/jointly_tuned.pt",
+      "repo": "rlt_champion",
+      "role": "shared_isa_attention_seed29",
+      "sha256": "97e14244736759f2377433ef38ede534c25b414daf6f836bf2eb2ac72cf37e68"
+    },
+    {
+      "bytes": 27071,
+      "expected_match": true,
+      "expected_sha256": "e39e973b8da75ad20f9d509221f3faabbb000dc5a92e34bef4096b3f5efb5d85",
+      "path": "causal/weights.pt",
+      "repo": "standalone_isa",
+      "role": "standalone_saved_checkpoint",
+      "sha256": "e39e973b8da75ad20f9d509221f3faabbb000dc5a92e34bef4096b3f5efb5d85"
+    },
+    {
+      "bytes": 64845,
+      "expected_match": true,
+      "expected_sha256": "44ccbfa69922129af8056c798c3df40baa34fd73692496a64d873669454c9cee",
+      "path": "transformer_controller/controller_weights.pt",
+      "repo": "standalone_isa",
+      "role": "standalone_saved_checkpoint",
+      "sha256": "44ccbfa69922129af8056c798c3df40baa34fd73692496a64d873669454c9cee"
+    },
+    {
+      "bytes": 64845,
+      "expected_match": true,
+      "expected_sha256": "85a35a6d50b8a14eb7b202a482835736f7ee1abfc466ecf92f0b142a6a2c6df1",
+      "path": "transformer_controller/v2/controller_weights.pt",
+      "repo": "standalone_isa",
+      "role": "standalone_saved_checkpoint",
+      "sha256": "85a35a6d50b8a14eb7b202a482835736f7ee1abfc466ecf92f0b142a6a2c6df1"
+    },
+    {
+      "bytes": 27071,
+      "expected_match": true,
+      "expected_sha256": "1f026f49144d0e7dc68a4c2039c83871e37e4d6c7732fa0d5c81421d8e60eea0",
+      "path": "weights.pt",
+      "repo": "standalone_isa",
+      "role": "standalone_saved_checkpoint",
+      "sha256": "1f026f49144d0e7dc68a4c2039c83871e37e4d6c7732fa0d5c81421d8e60eea0"
+    },
+    {
+      "bytes": 8290,
+      "path": "train.py",
+      "repo": "standalone_isa",
+      "role": "standalone_ISA_source",
+      "sha256": "a2367bd1ab47edb13d3ee2ce0bbaeb1cd2071f85ff22298a114cee58d33285a0"
+    },
+    {
+      "bytes": 9749,
+      "path": "train_causal.py",
+      "repo": "standalone_isa",
+      "role": "standalone_ISA_source",
+      "sha256": "4a3b484ee97cc5799b4d15ed15bf4f504c2ccbb63453220dda1254efd04315e6"
+    },
+    {
+      "bytes": 13600,
+      "path": "transformer_controller/train_controller.py",
+      "repo": "standalone_isa",
+      "role": "standalone_ISA_source",
+      "sha256": "3b86b4292293e13ee484d33557e9deaf7fc63e6ea6f6e1eca275f8627b7e6a67"
+    },
+    {
+      "bytes": 4967,
+      "path": "transformer_controller/train_controller_v2.py",
+      "repo": "standalone_isa",
+      "role": "standalone_ISA_source",
+      "sha256": "a894dd50938872e0517cf2406362540dadb8d4a3f14a70afe8b38b1b0048804a"
+    },
+    {
+      "bytes": 1484,
+      "path": "transformer_controller/verify.py",
+      "repo": "standalone_isa",
+      "role": "standalone_ISA_source",
+      "sha256": "f08eab3c9338c6f815adce54e022b5802b9123e1f0c43bbc6f3727fcf998eebe"
+    },
+    {
+      "bytes": 2020,
+      "path": "transformer_controller/verify_v2.py",
+      "repo": "standalone_isa",
+      "role": "standalone_ISA_source",
+      "sha256": "a0760e7abd0c6831009efb505d466d47dcdd158e0e0b76b6858b76f208251593"
+    },
+    {
+      "bytes": 1486,
+      "path": "verify.py",
+      "repo": "standalone_isa",
+      "role": "standalone_ISA_source",
+      "sha256": "af6243d7bbd04d26511e8e843151ad4beed1c3bb3d8b9129392316c0388e6ecc"
+    },
+    {
+      "bytes": 20733,
+      "path": "run.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "9575368f990ce7eb3f6481e159e80018e62240110f5ffa821d3aff61fc644b47"
+    },
+    {
+      "bytes": 11487,
+      "path": "system.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "f63f43fd32bd6fe67cdc5b4bee5e396f48b8428920dd15927ef8c7cae11bccc0"
+    },
+    {
+      "bytes": 6601,
+      "path": "rlt_core.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "3c4abc18752236d3118487213fcfa1cf4a18e52e2ceb17ad52a0cdec141013c7"
+    },
+    {
+      "bytes": 5398,
+      "path": "task_conditioned_rlt.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "99f70b03e2e864d1635ffdbd3ce56598d915bcc1673e1492964d3322714335fb"
+    },
+    {
+      "bytes": 1384,
+      "path": "neural_isa_transfer_v1/rlt_micro_v2.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "12b417d403455169b8696aea38e9864fd58c51ec006a0cb7979e67afb512c6a6"
+    },
+    {
+      "bytes": 6845,
+      "path": "neural_isa_transfer_v1/rlt_micro_runtime.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "8b68cd094c5ba2efffeac49e0d9448c2dc665573009d69b094851b3b5b0da697"
+    },
+    {
+      "bytes": 4203,
+      "path": "neural_isa_transfer_v1/verify_native_independent.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "bc3431059416226c0b91390cb79a70c838744ee7e0c52847da1669115d0492ce"
+    },
+    {
+      "bytes": 3284,
+      "path": "neural_isa_transfer_v1/unified_shared_v1/model.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "f63018899f4253240c889dd8a9b75a0d318ac088125d645ee9ce2324d1e762cf"
+    },
+    {
+      "bytes": 7499,
+      "path": "neural_isa_transfer_v1/unified_shared_v1/runtime.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "28a4635afdee6924b273505fc4310d7db0bd52c724f6dc68040c8430191c9e34"
+    },
+    {
+      "bytes": 5178,
+      "path": "neural_isa_transfer_v1/unified_shared_v1/verify_shared.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "df0d66a1bc9ec6a58b23040de5958b8bbdba569178124c47b33da0dace77e0ba"
+    },
+    {
+      "bytes": 491,
+      "path": "neural_isa_transfer_v1/unified_shared_v1/config.json",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "af051f01b6c553bc7efc6f4e200dd100f13284834f8c32a6e6d38232ea8ff1b5"
+    },
+    {
+      "bytes": 3409,
+      "path": "neural_isa_transfer_v1/FINAL_TRANSFER_DECISION.json",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "112c8e0cd4a32f299554917701686bc8df8233319232c9243ad3af73fff531d4"
+    },
+    {
+      "bytes": 5829,
+      "path": "neural_isa_transfer_v1/unified_shared_v1/DECISION.json",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "65285c9b83e084769beb4530fe2597a9d61fb5bd694ebcbc29fe5982d5b5cdc9"
+    },
+    {
+      "bytes": 8324,
+      "path": "UNIFIED_CAPABILITY_SNAPSHOT.json",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "a09af646e218c574a6d310197029c0c01c392f4ca7309cff375a52c77814a5a6"
+    },
+    {
+      "bytes": 4493,
+      "path": "FINAL_VERIFICATION.json",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "6a360ae13ed29daac9f48dad62ed41bc9881a3bbd645f4c7e8e6c12040cac6c3"
+    },
+    {
+      "bytes": 1144,
+      "path": "algorithms/carry_recurrence/module.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "fb72523ea89f0990bb3fbe6dee1f62ee534bbf3287f76a3e4eff5e9e45118669"
+    },
+    {
+      "bytes": 1047,
+      "path": "algorithms/carry_recurrence/MANIFEST.json",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "3c59e619e8da11d3d11588f134f2f5ce39b7a188b9e4f266f79c3b31affce8ad"
+    },
+    {
+      "bytes": 11029,
+      "path": "task_conditioned_rlt_v1/multitask_train_v1/train.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "433b5dbb7f220e430b512b355ef482f9eed0255cac0bfacd2a0759d2b6b26284"
+    },
+    {
+      "bytes": 9587,
+      "path": "task_conditioned_rlt_v1/multitask_train_v1/audit.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "d0e8e62b670d4e64923c3342ff653912f8621d421bccfdc3ec229886fac6df10"
+    },
+    {
+      "bytes": 4125,
+      "path": "neural_isa_transfer_v1/train_rlt_micro_v2.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "7af8cc1cbeccd7ca1290c0d5e5ec829c6c4ac62eac53aa76b9db9ad048541638"
+    },
+    {
+      "bytes": 7157,
+      "path": "neural_isa_transfer_v1/unified_shared_v1/train.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "cfdaeb08a64a68baeb2d940de30e39047027d90b1ef65d6aae64995d9283f1e2"
+    },
+    {
+      "bytes": 2770,
+      "path": "neural_isa_transfer_v1/unified_shared_v1/audit_novel.py",
+      "repo": "rlt_champion",
+      "role": "baseline_source_or_scientific_contract",
+      "sha256": "8858640bcf5ee57e5b927ec2071efed0146f495c7b0125f0ebb200fa03a76a5c"
+    }
+  ],
+  "hash_validation": {
+    "all_expected_match": true,
+    "checked": 60,
+    "mismatches_or_missing": []
+  },
+  "implementer_smoke_path": "artifacts/NC-000/implementer_smoke.json",
+  "independent_verification": {
+    "do_not_pass_without_receipt": true,
+    "receipt_path": "artifacts/NC-000/baseline_receipt.json",
+    "required": true,
+    "status": "PENDING",
+    "verifier": null
+  },
+  "limitations": [
+    "Smoke tests above performed by implementer, not by independent verifier.",
+    "Current demonstrated exact 4-bit multiplication covers 256 inputs, 8-bit 4217 tests are not exhaustive 65536.",
+    "Three seeds share 4217 operand pairs; multiplying by seeds is not more distinct test coverage.",
+    "The fixed ROM and Python host supply the multiplication algorithm and register wiring; model did not invent multiplication.",
+    "The original selected RLT general core has weak multiplication; specialist qualification does not mean champion promotion.",
+    "v1 standalone Transformer controller checkpoint fails this 14-case clean-process rollout; corrected v2 passes.",
+    "No AGI, arbitrary-width exact multiplication, operation invention or general-language reasoning claim is justified.",
+    "Checkpoint hash identity does not prove scientific correctness; program execution does not prove neural generalization."
+  ],
+  "neural_versus_symbolic_boundary": {
+    "experimental_rlt_attention_isa": "fine-tuned copy of pretrained RLT CausalEncoder arithmetic; separate frozen TransformerPC; ROM fixed",
+    "experimental_shared_rlt_isa": "one 14425-param shared causal-attention Transformer core for control and ISA arithmetic; task-specific heads; ROM fixed",
+    "production_default_addition": "carry_recurrence learned GRU; exact verification outside neural forward",
+    "program_invention": false,
+    "reference_oracle": "used after inference for evaluation; not interchangeable with neural execution",
+    "selected_general_math_core": "task_conditioned_rlt 25089-param one jointly trained seven-operation RLT; weak MUL and parity",
+    "standalone_causal_isa": "causal NeuralISA MLP arithmetic, separate TransformerPC v2 control, fixed 8-op ROM, Python register state"
+  },
+  "owner_eventlab_session_id": "1db9edb983ff4df9933612e7c826e55f",
+  "reported_evidence_not_new_independent_verification": [
+    "FINAL_VERIFICATION.json",
+    "neural_isa_transfer_v1/FINAL_TRANSFER_DECISION.json",
+    "neural_isa_transfer_v1/unified_shared_v1/RELEASE_AUDIT.json",
+    "neural_isa_transfer_v1/unified_shared_v1/DECISION.json",
+    "standalone ISA: causal/independent_verify.json",
+    "standalone ISA: transformer_controller/v2/independent_verify.json"
+  ],
+  "repository_commits": {
+    "logos_kernel": "159e40eea312791be253bf8abb58af1bd6fbc7a0",
+    "rlt_champion": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+    "standalone_isa": "feb001dbdb2e19fb5f123fe12116aec5503522fe"
+  },
+  "roots": {
+    "logos_kernel": "/workspace/experiments/logos-kernel",
+    "rlt_champion": "/workspace/experiments/rlt_split_algorithms_ablation_v1",
+    "standalone_isa": "/workspace/experiments/latticeforge_neural_isa_test"
+  },
+  "schema_version": 1,
+  "sources_and_runtime_dependencies": {
+    "dag": "dag.py; test_dag.py; instructions.jsonl; Python 3 standard library; Git",
+    "native_rlt_isa": "rlt_micro_runtime.py; rlt_micro_v2.py; pretrained RLT weights; vendor controller; PyTorch",
+    "rlt_inference": "run.py; system.py; rlt_core.py; task_conditioned_rlt.py; algorithms/; config.json; .pt checkpoints; PyTorch",
+    "shared_rlt_isa": "unified_shared_v1/model.py; runtime.py; frozen ROM host; jointly_tuned.pt; PyTorch",
+    "standalone_isa": "train_causal.py; transformer_controller/train_controller.py; causal/weights.pt; transformer_controller/v2/controller_weights.pt; PyTorch"
+  },
+  "specialist_reported_scores": {
+    "native_rlt_attention_isa": {
+      "eight_bit_each_seed": "4217/4217",
+      "four_bit_each_seed": "256/256",
+      "seeds": [
+        11,
+        19,
+        29
+      ]
+    },
+    "shared_rlt_isa_jointly_tuned": {
+      "additional_within_run_disjoint_each_seed": "2048/2048",
+      "eight_bit_each_seed": "4217/4217",
+      "four_bit_each_seed": "256/256",
+      "four_bit_proof_scope": "finite operand-pair enumeration only",
+      "seeds": [
+        11,
+        19,
+        29
+      ]
+    },
+    "standalone_MLP_isa": {
+      "eight_bit": "4217/4217 sampled + edge cases",
+      "four_bit": "256/256 exhaustive pairs",
+      "local_patterns": "320 patterns supervised"
+    }
+  },
+  "status": "IMPLEMENTED_PENDING_DISTINCT_VERIFIER",
+  "task": "NC-000"
+}

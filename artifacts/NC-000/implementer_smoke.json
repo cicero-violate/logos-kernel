@@ -1,0 +1,87 @@
+{
+  "agent_session_id": "1db9edb983ff4df9933612e7c826e55f",
+  "checks": [
+    {
+      "events_before_claim": 18,
+      "name": "dag_integrity_before_claim",
+      "nodes": 16,
+      "result": "PASS"
+    },
+    {
+      "name": "dag_unit_tests_before_claim",
+      "passed": 14,
+      "result": "PASS",
+      "total": 14
+    },
+    {
+      "command": "python run.py add 7 9 --width 8",
+      "name": "default_addition",
+      "note": "Exact output not retained; stdout succeeded",
+      "result": "PASS_exit_0"
+    },
+    {
+      "command": "python run.py --seed 19 core sub 7 9 --width 8",
+      "name": "seven_operation_shared_general_core",
+      "note": "Exact output not retained; stdout succeeded",
+      "result": "PASS_exit_0"
+    },
+    {
+      "command": "python read-only heredoc with train_causal.NeuralISA and neural_multiply; 10 specified edge pairs",
+      "correct": 10,
+      "name": "standalone_frozen_causal_MLP",
+      "result": "PASS",
+      "tested": 10
+    },
+    {
+      "command": "python read-only heredoc loading transformer_controller/controller_weights.pt and causal/weights.pt",
+      "correct": 6,
+      "failure_mode": "8 cases did not HALT by 75 steps; numerically matching unfinished cases are failures",
+      "name": "standalone_frozen_transformer_controller_v1",
+      "result": "FAIL_LEGACY_V1",
+      "tested": 14
+    },
+    {
+      "command": "python read-only heredoc loading transformer_controller/v2/controller_weights.pt and causal/weights.pt",
+      "correct": 14,
+      "name": "standalone_frozen_transformer_controller_v2",
+      "result": "PASS",
+      "tested": 14
+    },
+    {
+      "command": "python run.py capability math --backend shared_rlt_isa --op mul --a 13 --b 11 --width 8 --experimental",
+      "correct": 1,
+      "halted": true,
+      "name": "experimental_shared_rlt_isa",
+      "prediction": 143,
+      "result": "PASS",
+      "steps": 29,
+      "tested": 1
+    },
+    {
+      "command": "python run.py capability math --backend rlt_attention_isa --op mul --a 13 --b 11 --width 8 --experimental",
+      "correct": 1,
+      "halted": true,
+      "name": "experimental_rlt_attention_isa",
+      "prediction": 143,
+      "result": "PASS",
+      "steps": 29,
+      "tested": 1
+    }
+  ],
+  "environment": {
+    "cuda_available": false,
+    "device": "CPU",
+    "python": "3.14.6",
+    "torch": "2.12.1"
+  },
+  "independent_verifier": null,
+  "is_independent_verification": false,
+  "not_rerun": [
+    "320/320 ISA local every seed",
+    "256/256 four-bit exhaustive every seed",
+    "4217/4217 sampled eight-bit every seed",
+    "65536/65536 exhaustive eight-bit"
+  ],
+  "status": "IMPLEMENTER_REPRODUCED_SUBSET_NOT_INDEPENDENT",
+  "task": "NC-000"
+}
