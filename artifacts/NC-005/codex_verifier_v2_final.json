@@ -1,0 +1,224 @@
+{
+  "task": "NC-005",
+  "verdict": "PASS",
+  "verifier_type": {
+    "role": "distinct real independent Codex CLI scientific verifier",
+    "runtime_identity_source": "/home/cicero-arch-omen/.codex/sessions/2026/11/05/rollout-2026-11-05T22-32-43-01a1aeea-7525-7463-834f-7a0d78080be7.jsonl session_meta/thread.started record",
+    "runtime_identity": "01a1aeea-7525-7463-834f-7a0d78080be7",
+    "event_lab_owner": "1db9edb983ff4df9933612e7c826e55f",
+    "identity_is_distinct": true,
+    "ledger_modified": false,
+    "training_performed": false,
+    "project_evidence_modified": false
+  },
+  "audited_commit": {
+    "sha": "cf5c4893ba708937b4b88114bdd7a8dc5c487a53",
+    "superseded_commit_excluded": "f7f544d",
+    "working_head_matches": true,
+    "tracked_NC005_sources_and_receipts_match_commit": true,
+    "source_sha256": {
+      "README.md": "ee89a6defb4e768de037fcd0fda4fd998d43bf38f5cf2cf58b800bd640038aad",
+      "curriculum.py": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d",
+      "trace_training.py": "bbd72158241a24658cf4eff82dc5cc2230cbade904bb5bbfdc0d245b89ff438c",
+      "analyze_retention.py": "444afaf155cebfd60ce471299675d5f65903c6bc17edf1da62fe2104e007a6a8",
+      "make_manifest.py": "3b7ebd336d464e8b314a65806c7ff5e49e7f3c9f8d2ac6cd1ef585d802858116",
+      "verify_fresh.py": "ad51dcb883e633d95a26b47d9205149d5e6f57b93090e0a9b76f83ec95e1884e",
+      "test_curriculum.py": "c812c318351c75bbc179345d3d3f3d11bc74fa7dbacdb067419c51a174a16007",
+      "audit_budget.py": "218e2174bcdd7e356789e94a4210817cf23f3ec320fd183e608e3af50feba0d6"
+    },
+    "receipt_sha256": {
+      "curriculum_receipts.jsonl": "d4ff22c4bada0e5ed93860c6c1cdf8161877a050c155deceea4def22c7130353",
+      "training_report.json": "df7902c21afee69b1bc543ac86841b7d9d382a694fb6cccc09d50b9f8b79c713",
+      "retention_matrix.json": "a3e1eac474d68cefbd4ee2b39dd7439031d1be7b3d3715b25a1062e6beaa1d8f",
+      "fresh_reload.json": "3b73ff2d42c70049424cafbbd5ad2df9e85f1f6a24b0f8b205c82d52f908682b",
+      "compute_budget.json": "cf8cc39086174398adf36622118dc029745ac9ca489994c86e8c1aa927b855c6",
+      "checkpoint_manifest.json": "b721b1a6c3a7d39fc02d0b3c787c4f559a8ccb94d4af249df57c7a0f4afe4624"
+    }
+  },
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python dag.py validate",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q test_dag",
+    "PYTHONDONTWRITEBYTECODE=1 python dag.py ready",
+    "PYTHONDONTWRITEBYTECODE=1 python dag.py list",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-005 -p test_curriculum.py",
+    "PYTHONDONTWRITEBYTECODE=1 python /tmp/nc005_independent_verify.py",
+    "git show, git diff, git rev-parse, sha256sum, and fresh torch.load inspections"
+  ],
+  "independent_checks": {
+    "ledger_validation": {
+      "result": "PASS",
+      "nodes": 19,
+      "events": 38,
+      "head_sha256": "c24d403f1cc36d3b756702e29095e17b1e9c42a93450a34072db512cd395d2c3"
+    },
+    "tests": {
+      "test_dag": "17/17 PASS",
+      "test_curriculum": "9/9 PASS"
+    },
+    "checkpoint_integrity": {
+      "original_NC000_files": "60/60 independently SHA256 and size matched",
+      "RLT_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "RLT_champion_unchanged": true,
+      "RLT_repository_commit": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+      "standalone_ISA_repository_commit": "feb001dbdb2e19fb5f123fe12116aec5503522fe",
+      "original_repository_tracked_worktree_and_index_differences": 0,
+      "unrelated_untracked_files_treated_as_model_changes": false,
+      "NC004_source_checkpoints": {
+        "seed11": "50dbad914ae2ca5d11259885c64f65fa8f3ad6f2bf4ed7bd15acf067287e2b65",
+        "seed19": "3c0c3f95501660a7952affcd5254f9bd39de79d2ba04b6f685d66fff4663fb9d",
+        "seed29": "b6f561a6cda9679f17e32a4947f3fbff69b9ca2b2f32df0b44c5b789d8ae4d15"
+      },
+      "warm_start_source_references": "6/6 arm/seed source references matched the three seed-specific NC004 hashes",
+      "final_stage_packages": {
+        "rehearsal_seed11": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
+        "rehearsal_seed19": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
+        "rehearsal_seed29": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
+        "new_only_seed11": "6675f6a040132e6cbf7a601334685a8eb7691f991abf19ee9034140328911e4a",
+        "new_only_seed19": "b93aed6b333d5d88d175539e36e76e71b9bba3b3a6bb1c1e64e78ad05bad41bf",
+        "new_only_seed29": "ecedf4f9ad4ced022a8f77dce5e9097523e4a7273a428df0ff8d6679a4e4b9c7"
+      },
+      "all_stage_packages": "42/42 package hashes matched checkpoint_manifest.json; all contained complete model, nonempty optimizer, torch RNG, Python RNG and NumPy RNG state",
+      "independent_state_hashes_computed": "42/42 model, optimizer and combined RNG states",
+      "hashed_manifest_receipt": "b721b1a6c3a7d39fc02d0b3c787c4f559a8ccb94d4af249df57c7a0f4afe4624",
+      "independent_raw_audit_sha256": "2a6ff9e26dcc39d11c0770de5e45d1948e8575427282cae581d78b1cf7cd216d",
+      "pilot_checkpoints": "42 archived packages inspected only as unqualified preliminary evidence and excluded from verdict"
+    },
+    "matched_graph_schedule": {
+      "per_model_bit_and_meaning_graph_executions": 473600,
+      "per_model_zero_graph_executions": 192000,
+      "interpretation": "sample/graph executions, not measured FLOPs, wall time, latency or energy",
+      "same_stage_graph_types_both_arms": true,
+      "stage03_to_stage04": "For all six models every bit and meaning tensor was exactly equal; only is_zero.0.weight, is_zero.0.bias, is_zero.2.weight and is_zero.2.bias changed."
+    },
+    "final_rehearsal_local_truth": {
+      "bit": "1728/1728",
+      "meaning": "1728/1728",
+      "scope": "3 seeds × 9 operations × 64 complete local patterns"
+    },
+    "fresh_16bit_arithmetic": {
+      "pair_construction": "256 deterministic pairs per seed, including 0, 1, 255, 32768 and 65535; model predictions were collected before independent references were computed",
+      "per_operation": {
+        "ADD": "768/768",
+        "SUB": "768/768",
+        "AND": "768/768",
+        "OR": "768/768",
+        "XOR": "768/768",
+        "AND1": "768/768",
+        "SHL": "768/768",
+        "SHR": "768/768",
+        "SAR": "768/768"
+      },
+      "SUB_final_no_borrow": "768/768",
+      "failed_cases": []
+    },
+    "zero_predicate": {
+      "rehearsal_seed11": "65536/65536",
+      "rehearsal_seed19": "65536/65536",
+      "rehearsal_seed29": "65536/65536",
+      "aggregate": "196608/196608",
+      "failed_cases": [],
+      "scope": "learned 16-bit zero predicate only"
+    },
+    "supplied_sequence_programs": {
+      "subtract_then_xor": "768/768",
+      "xor_then_double": "768/768",
+      "failed_cases": [],
+      "routing": "host supplied"
+    },
+    "fixed_ROM_multiplication": {
+      "four_bit_exhaustive": "768/768, 0 unhalted",
+      "distinct_eight_bit_samples": "768/768, 0 unhalted",
+      "failed_cases": [],
+      "scope": "fixed host shift-and-add ROM using neural primitive logits and neural zero predicate"
+    },
+    "stage_retention_replay": {
+      "source": "fresh reload of every original stage checkpoint",
+      "rehearsal_bit_retention": "11136/11136",
+      "rehearsal_meaning_retention": "11136/11136",
+      "rehearsal_regressions": [],
+      "stage_denominators_per_seed": [448, 448, 512, 576, 576, 576, 576]
+    },
+    "trajectory_training": {
+      "corrected_sequence_training": "stage_input samples trace_training.create intermediate signal targets",
+      "corrected_loop_training": "stage_input samples trace_training.create intermediate signal targets",
+      "pilot_behavior": "pilot stage_input replayed local_table rows for sequence/loop phases and is unqualified",
+      "sequence_teacher": "host-provided programs and arithmetic trace generator",
+      "loop_teacher": "host-provided fixed shift-and-add program and trace",
+      "program_invention_demonstrated": false
+    }
+  },
+  "regressions_and_controls": {
+    "rehearsal": {
+      "regressions": [],
+      "all_bounded_acceptance_gates_passed": true
+    },
+    "new_only": {
+      "status": "negative forgetting control, not qualified",
+      "prior_bit_retention": "7198/11136",
+      "meaning_labels": "11136/11136",
+      "failed_stages": "21/21 seed-stage comparisons",
+      "per_seed_stage_correct_over_denominator": {
+        "seed11": ["408/448", "288/448", "390/512", "274/576", "274/576", "418/576", "438/576"],
+        "seed19": ["400/448", "293/448", "401/512", "231/576", "231/576", "420/576", "428/576"],
+        "seed29": ["379/448", "323/448", "392/512", "226/576", "226/576", "383/576", "375/576"]
+      },
+      "later_partial_recovery": "Sequence and loop trace training recovered some local rules but never restored complete prior truth tables.",
+      "final_16bit_examples": {
+        "seed11": {
+          "SUB": "8/256",
+          "SUB_no_borrow": "128/256"
+        },
+        "seed19": {
+          "SUB": "13/256",
+          "SUB_no_borrow": "256/256"
+        },
+        "seed29": {
+          "SUB": "8/256",
+          "SUB_no_borrow": "123/256"
+        }
+      }
+    },
+    "comparison_contract": "Seeds, initialization, optimizer type/rate, batch size, update budget, stage order and graph types are matched. Training-example exposure intentionally differs because rehearsal is the intervention; this is not an exact data-matched ablation."
+  },
+  "scientific_boundaries": {
+    "qualified_claim": "Bounded three-seed progressive-learning retention for this expanded 5981-parameter neural ISA MLP plus learned zero predicate.",
+    "neural_components": [
+      "local bit/result and carry/no-borrow logits",
+      "operation meaning logits causally consumed by the bit MLP",
+      "16-bit is-zero predicate"
+    ],
+    "host_components": [
+      "program selection",
+      "opcode dispatch",
+      "PC target and JZ/JNZ inversion",
+      "register routing",
+      "flags",
+      "HALT",
+      "fixed multiplication ROM",
+      "sequence and loop teacher traces"
+    ],
+    "not_demonstrated": [
+      "learned full PC controller",
+      "new program invention",
+      "arbitrary loop synthesis",
+      "OOD local primitive truth-table transfer",
+      "universal reasoning",
+      "AGI",
+      "Transformer superiority"
+    ],
+    "promotion": "No champion/default promotion authorized or performed."
+  },
+  "limitations": [
+    "The NC005 model is an expanded MLP, not the selected RLT Transformer champion.",
+    "Five old operations were already fully pretrained.",
+    "All 64 local patterns for each operation appear in training.",
+    "Program selection, PC control, routing, flags, HALT and ROM remain host mechanisms.",
+    "Sequence and loop programs and their training traces are host supplied.",
+    "Source-pretraining overlap with evaluation operands is not disproven.",
+    "Matched graph-execution counts are not measured FLOPs or time.",
+    "The rehearsal and new_only arms intentionally have different example exposure.",
+    "The archived pilot and its 42 checkpoints are preliminary and unqualified.",
+    "Results cover three fixed seeds and declared bounded tests, not arbitrary programs or machine states."
+  ],
+  "failures": []
+}
