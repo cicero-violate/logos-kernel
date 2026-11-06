@@ -29,7 +29,7 @@
         "bounded_discovery_pass": 0,
         "denominator": 36,
         "forecast_pass": 0,
-        "mean_absolute_error": 5144757134.306483
+        "mean_absolute_error": 5144757134.274883
       },
       "zero": {
         "bounded_discovery_pass": 0,
@@ -67,7 +67,7 @@
         "bounded_discovery_pass": 0,
         "denominator": 27,
         "forecast_pass": 0,
-        "mean_absolute_error": 229765.47309154173
+        "mean_absolute_error": 229765.52679800117
       },
       "zero": {
         "bounded_discovery_pass": 0,
@@ -105,7 +105,7 @@
         "bounded_discovery_pass": 0,
         "denominator": 36,
         "forecast_pass": 0,
-        "mean_absolute_error": 53315647.76284337
+        "mean_absolute_error": 53315647.77562139
       },
       "zero": {
         "bounded_discovery_pass": 0,
@@ -143,13 +143,6 @@
     },
     "wrong_law_rejected": 36
   },
-  "dependencies": [
-    "Python 3 standard library",
-    "Git CLI (ledger/commit only)",
-    "oracle.py",
-    "benchmark.py",
-    "test_benchmark.py"
-  ],
   "family_counts": {
     "test": {
       "aliasing": 3,
@@ -196,26 +189,122 @@
     "train": "float64",
     "validation": "decimal_text"
   },
-  "measured_cpu_seconds": 0.030777,
-  "oracle_target_commitment_method": "SHA256 UTF-8 compact sorted-key JSON array of {case_id,reference_exact} entries in oracle.cases(split) order",
+  "isolation_controls": {
+    "bubblewrap_public_only": {
+      "oracle_import_blocked": true,
+      "source_read_blocked": true,
+      "test_evaluated": 36,
+      "train_evaluated": 27,
+      "validation_evaluated": 36
+    },
+    "old_id_only_periodic_positive": {
+      "denominator": 9,
+      "explanation": "family/rep cannot be recovered from case ID using prior published seed grid",
+      "passed": 0
+    },
+    "old_published_id_dictionary": {
+      "denominator": 99,
+      "explanation": "99 HMAC-SHA256 opaque IDs: previously reversible SHA256(seed,family,split,rep) cannot be matched without evaluator key",
+      "matches": 0
+    },
+    "scope": "This blocks direct ID inversion and oracle filesystem access only inside Linux bubblewrap; published deterministic regression data may still be reconstructed or memorized from public observations and formulas."
+  },
+  "measured_cpu_seconds": 0.032384,
+  "oracle_target_commitment_method": "SHA256 of compact sorted-key JSON array of reference_exact entries in canonical generator order, EXCLUDING ephemeral case IDs; fixture integrity only, not confidentiality",
   "oracle_target_commitments": {
-    "test": "b9d9e3c8dc4822f00c7dbd4e8b65c37def2a539960fcd4854934ee2b663e6fc0",
-    "train": "1d8f46af0fc46607de5497f44f60ccc8dbb9b47368164a6b5d2fe89c40d68069",
-    "validation": "b107afd78f8f6800227b0c32a51b87e61f3d40f119087584d834d925d079553d"
+    "test": "147c5589c8cb7ea4b90a3974b5107eb40010a48a07c628f3ba5a73dad58c6d02",
+    "train": "f360a15f31a4f5c194ff499dd1efc832ab322781978fa0487c54ba1596179f82",
+    "validation": "b1e8c98b4980afb7211ded0f512e484a1c6b0a70f072b29b288fe1a9e7b49a58"
+  },
+  "per_family_controls": {
+    "aliasing": {
+      "oracle_only_informative_positive": 0,
+      "prefix_constant_negative_rejected": 0,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    },
+    "constant": {
+      "oracle_only_informative_positive": 0,
+      "prefix_constant_negative_rejected": 0,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    },
+    "coupled_vector": {
+      "oracle_only_informative_positive": 3,
+      "prefix_constant_negative_rejected": 3,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    },
+    "geometric": {
+      "oracle_only_informative_positive": 3,
+      "prefix_constant_negative_rejected": 3,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    },
+    "logistic_chaos": {
+      "oracle_only_informative_positive": 3,
+      "prefix_constant_negative_rejected": 3,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    },
+    "multi_frequency": {
+      "oracle_only_informative_positive": 3,
+      "prefix_constant_negative_rejected": 3,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    },
+    "nonlinear_modular": {
+      "oracle_only_informative_positive": 2,
+      "prefix_constant_negative_rejected": 3,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    },
+    "nonuniform_polynomial": {
+      "oracle_only_informative_positive": 3,
+      "prefix_constant_negative_rejected": 3,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    },
+    "periodic": {
+      "oracle_only_informative_positive": 3,
+      "prefix_constant_negative_rejected": 3,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    },
+    "polynomial": {
+      "oracle_only_informative_positive": 3,
+      "prefix_constant_negative_rejected": 3,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    },
+    "random_noise": {
+      "oracle_only_informative_positive": 0,
+      "prefix_constant_negative_rejected": 0,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    },
+    "switching": {
+      "oracle_only_informative_positive": 3,
+      "prefix_constant_negative_rejected": 3,
+      "test_denominator": 3,
+      "wrong_law_negative_rejected": 3
+    }
   },
   "proof_limitations": [
-    "No learned model evaluated; this is a finite reproducible synthetic benchmark.",
-    "Truth-side variation gate prevents constant-output scores even with a correct law string.",
-    "One modular test case converges to a constant fixed point: oracle forecast correct, law not identifiable over withheld horizon.",
-    "No sealed filesystem oracle, authentication, formal theorem, or unseen-seed generalization."
+    "Candidate execution is isolated by Linux bubblewrap, if available; failure to mount sandbox causes fail-closed error.",
+    "HMAC ID key is ephemeral in host memory; IDs vary between runs. Identical fixed fixture content and metrics remain reproducible, but ID strings are not.",
+    "Open-source generator with fixed published seed permits offline lookup from observed prefixes; this is a deterministic regression suite, not a hidden/unseen-seed generalization test.",
+    "No authenticated verifier, high-assurance kernel security proof, formal invariant theorem or champion promotion."
   ],
   "python_version": "3.14.6",
   "schema_version": 1,
   "seed": 55061,
   "source_sha256": {
-    "benchmark.py": "d559d8ad847fd4970f139ad0fa02967b3633dbae10c1d103b4baa0f98cf1ec34",
-    "oracle.py": "898dd83bd45d4b9cab0001bf53563cc59d974d25f9b34b08ea075e13c8335816",
-    "test_benchmark.py": "c22cdbcb0d346e0c2ee5d9ad64ddeaefe4134e6e7465cfd30e16d51badbcc70d"
+    "benchmark.py": "04250a97923d921aa6f49de6ed1f38b5d627e8e67f878545279c57ebc8efa8b3",
+    "oracle.py": "f2e18fbe222ecec9767aea886a9fcac84edf43e08308fc6f24159406073b3510",
+    "sandbox_evaluator.py": "90c2fcabd9431af739865b36ef09549bcfd367c2355938959e03d1fb9f1be616",
+    "test_benchmark.py": "c22cdbcb0d346e0c2ee5d9ad64ddeaefe4134e6e7465cfd30e16d51badbcc70d",
+    "test_isolation.py": "afdadd77e55a3cc19e61f2d2da6c7ce54b0aef88002eebdc1fd2a65aeee4879b"
   },
   "split_counts": {
     "test": 36,

@@ -7,8 +7,28 @@
     "linear_recurrence",
     "randomized"
   ],
-  "candidate_interface": "benchmark.py:forecast(public_case, baseline)",
+  "candidate_interface": "sandbox_evaluator.py:evaluate(program, split), JSONL candidate receives only encoded public cases; trusted legacy benchmark.py:forecast remains in-process and is NOT sealed",
   "controls": {
+    "isolation": {
+      "bubblewrap_public_only": {
+        "oracle_import_blocked": true,
+        "source_read_blocked": true,
+        "test_evaluated": 36,
+        "train_evaluated": 27,
+        "validation_evaluated": 36
+      },
+      "old_id_only_periodic_positive": {
+        "denominator": 9,
+        "explanation": "family/rep cannot be recovered from case ID using prior published seed grid",
+        "passed": 0
+      },
+      "old_published_id_dictionary": {
+        "denominator": 99,
+        "explanation": "99 HMAC-SHA256 opaque IDs: previously reversible SHA256(seed,family,split,rep) cannot be matched without evaluator key",
+        "matches": 0
+      },
+      "scope": "This blocks direct ID inversion and oracle filesystem access only inside Linux bubblewrap; published deterministic regression data may still be reconstructed or memorized from public observations and formulas."
+    },
     "negative": "Across ALL train/validation/test cases, reject zero and oracle-assisted first-future constant forecasts with correct-law label; retain wrong-law and short-prefix challenges",
     "negative_result_counts": {
       "constant_collapse_all_splits": {
@@ -38,6 +58,80 @@
       },
       "wrong_law_rejected": 36
     },
+    "per_family": {
+      "aliasing": {
+        "oracle_only_informative_positive": 0,
+        "prefix_constant_negative_rejected": 0,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      },
+      "constant": {
+        "oracle_only_informative_positive": 0,
+        "prefix_constant_negative_rejected": 0,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      },
+      "coupled_vector": {
+        "oracle_only_informative_positive": 3,
+        "prefix_constant_negative_rejected": 3,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      },
+      "geometric": {
+        "oracle_only_informative_positive": 3,
+        "prefix_constant_negative_rejected": 3,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      },
+      "logistic_chaos": {
+        "oracle_only_informative_positive": 3,
+        "prefix_constant_negative_rejected": 3,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      },
+      "multi_frequency": {
+        "oracle_only_informative_positive": 3,
+        "prefix_constant_negative_rejected": 3,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      },
+      "nonlinear_modular": {
+        "oracle_only_informative_positive": 2,
+        "prefix_constant_negative_rejected": 3,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      },
+      "nonuniform_polynomial": {
+        "oracle_only_informative_positive": 3,
+        "prefix_constant_negative_rejected": 3,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      },
+      "periodic": {
+        "oracle_only_informative_positive": 3,
+        "prefix_constant_negative_rejected": 3,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      },
+      "polynomial": {
+        "oracle_only_informative_positive": 3,
+        "prefix_constant_negative_rejected": 3,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      },
+      "random_noise": {
+        "oracle_only_informative_positive": 0,
+        "prefix_constant_negative_rejected": 0,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      },
+      "switching": {
+        "oracle_only_informative_positive": 3,
+        "prefix_constant_negative_rejected": 3,
+        "test_denominator": 3,
+        "wrong_law_negative_rejected": 3
+      }
+    },
     "positive": "Oracle-only perfect forecast+law passes only when held-out trajectory has informative variation; 26/27 nontrivial test cases pass, one is unidentifiable at fixed point"
   },
   "dependencies": [
@@ -48,7 +142,15 @@
     "Git CLI for immutable candidate revision"
   ],
   "domain": "Finite seeded synthetic sample times; no network, API, GPU, unbounded search or untrusted execution",
-  "evaluator": "benchmark.py:grade(public_case, private_reference, candidate_submission)",
+  "evaluator": "sandbox_evaluator.py trusted host grades candidate output with benchmark.py:grade after OS-isolated subprocess exits",
+  "execution_boundaries": {
+    "fail_closed": "missing or nonfunctioning bubblewrap or malformed submissions abort; never fallback to an unsandboxed child",
+    "limits": "5s CPU, 15s wall, 512MiB address space, 1MiB stdout/file size, 64 file descriptors, 64KiB candidate source",
+    "not_guaranteed": "kernel exploit resistance, authenticated remote judge, erased prior knowledge of published fixtures, same-UID process isolation outside sandbox",
+    "reproducibility": "numeric fixture and reports deterministic; per-evaluation 256-bit HMAC key remains memory-only, so opaque IDs vary across processes",
+    "trusted": "oracle.py; benchmark.py:grade; evaluator HMAC secret in host process",
+    "untrusted": "candidate.py in bwrap mount, PID, network, IPC and user namespaces; /usr /lib /lib64 readonly, /app/candidate.py readonly, temp empty"
+  },
   "families": {
     "aliasing": {
       "claim": "period-four underlying process; observed values constant only due to aliasing",
@@ -123,24 +225,24 @@
       "oracle": "Fraction exact"
     }
   },
-  "generator": "oracle.py",
+  "generator": "oracle.py (host only; never mounted into participant bubblewrap)",
   "hard_limitations": [
-    "No OS-enforced sealed oracle or cryptographic hidden-evaluation service; trusted evaluation process must control module access.",
-    "Models can inspect public repository generator code if given filesystem access: source confidentiality is NOT guaranteed.",
-    "Fixed deterministic seeds can be memorized; use unpublished fresh generator seeds for live evaluation; this suite is a reproducible regression benchmark, not a secure competition.",
-    "No formal invariance or novelty proof, no learned model trained, no intervention causal identification, no independent reviewer approval yet.",
-    "No champion, model checkpoint, trainer service, or upstream artifacts touched."
+    "Published deterministic generator, 12 law definitions and fixed seed can be memorized or reconstructed from public observation prefixes; not an unseen-case sealed benchmark.",
+    "Source/secret exclusion applies ONLY to untrusted candidate code actually run by sandbox_evaluator.py under functional bubblewrap; direct in-process use of oracle.py has no confidentiality boundary.",
+    "Keyed HMAC defeats a dictionary inversion of case_id but does not prove genuine mathematical inference; a source-aware solver can still use published formulas.",
+    "User and candidate source outside the sandbox are not prevented from inspecting the open repository; no authenticated remote evaluation or tamper-proof attestations.",
+    "Benchmark identifies bounded empirical patterns, not formal invariants, causal laws, general intelligence or model invention; no champion modified."
   ],
   "held_out_families_train_excluded": [
     "logistic_chaos",
     "multi_frequency",
     "switching"
   ],
-  "oracle_target_commitment_method": "SHA256 UTF-8 compact sorted-key JSON array of {case_id,reference_exact} entries in oracle.cases(split) order",
+  "oracle_target_commitment_method": "SHA256 of compact sorted-key JSON array of reference_exact entries in canonical generator order, EXCLUDING ephemeral case IDs; fixture integrity only, not confidentiality",
   "oracle_target_commitments": {
-    "test": "b9d9e3c8dc4822f00c7dbd4e8b65c37def2a539960fcd4854934ee2b663e6fc0",
-    "train": "1d8f46af0fc46607de5497f44f60ccc8dbb9b47368164a6b5d2fe89c40d68069",
-    "validation": "b107afd78f8f6800227b0c32a51b87e61f3d40f119087584d834d925d079553d"
+    "test": "147c5589c8cb7ea4b90a3974b5107eb40010a48a07c628f3ba5a73dad58c6d02",
+    "train": "f360a15f31a4f5c194ff499dd1efc832ab322781978fa0487c54ba1596179f82",
+    "validation": "b1e8c98b4980afb7211ded0f512e484a1c6b0a70f072b29b288fe1a9e7b49a58"
   },
   "parameter_note": "p ranges are pairwise disjoint; finite phase/rate choices necessarily reuse modulo classes. Parameter range separation does not imply total generative independence.",
   "precision": {
@@ -154,15 +256,15 @@
   },
   "primary_question": "Does a finite measured prefix support transferable invariants or recurrence laws rather than fit alone?",
   "reproduction": [
-    "PYTHONPATH=artifacts/NC-055 python -m unittest -q test_benchmark",
+    "PYTHONPATH=artifacts/NC-055 python -m unittest -q test_benchmark test_isolation",
     "PYTHONPATH=artifacts/NC-055 python artifacts/NC-055/benchmark.py",
     "python dag.py validate",
     "python -m unittest -q test_dag",
     "python -m unittest -q test_pull"
   ],
-  "review_history": "Prior independent_verification.json is a genuine FAIL for the older candidate; new manifest requires a new independent verification receipt.",
+  "review_history": "Independent prior FAIL confirmed 99/99 public SHA256 ID inversion and 9/9 periodic score exploitation; new implementation adds ephemeral HMAC IDs and Linux bubblewrap candidate isolation, subject to new independent review.",
   "review_output_path": "artifacts/NC-055/independent_verification.json",
-  "review_status": "PENDING_NEW_INDEPENDENT_REVIEW_AFTER_FAIL",
+  "review_status": "AWAITING_NEW_INDEPENDENT_VERIFICATION_AFTER_FAIL",
   "schema_version": 1,
   "scores": {
     "CPU": "process CPU seconds measured in report; baseline implementation fixed and bounded",
@@ -176,9 +278,11 @@
   },
   "seed": 55061,
   "source_sha256": {
-    "benchmark.py": "d559d8ad847fd4970f139ad0fa02967b3633dbae10c1d103b4baa0f98cf1ec34",
-    "oracle.py": "898dd83bd45d4b9cab0001bf53563cc59d974d25f9b34b08ea075e13c8335816",
-    "test_benchmark.py": "c22cdbcb0d346e0c2ee5d9ad64ddeaefe4134e6e7465cfd30e16d51badbcc70d"
+    "benchmark.py": "04250a97923d921aa6f49de6ed1f38b5d627e8e67f878545279c57ebc8efa8b3",
+    "oracle.py": "f2e18fbe222ecec9767aea886a9fcac84edf43e08308fc6f24159406073b3510",
+    "sandbox_evaluator.py": "90c2fcabd9431af739865b36ef09549bcfd367c2355938959e03d1fb9f1be616",
+    "test_benchmark.py": "c22cdbcb0d346e0c2ee5d9ad64ddeaefe4134e6e7465cfd30e16d51badbcc70d",
+    "test_isolation.py": "afdadd77e55a3cc19e61f2d2da6c7ce54b0aef88002eebdc1fd2a65aeee4879b"
   },
   "split_contract": {
     "test": {
@@ -214,6 +318,6 @@
       "query_horizon": 6
     }
   },
-  "split_protection": "Candidate-facing views contain only past measured values and future query timestamps; private family labels, coefficients and future reference values remain within evaluator. Source code is available to a trusted local operator, so this is NOT tamper-resistant data secrecy.",
+  "split_protection": "Participant process receives only a shuffled, encoded public JSONL stream with HMAC case IDs. Linux bubblewrap excludes oracle, workspace, network and host env; evaluated fixed fixture is still open/published and can be offline-memorized.",
   "task": "NC-055"
 }

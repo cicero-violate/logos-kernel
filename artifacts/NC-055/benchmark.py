@@ -134,7 +134,9 @@ def forecast(case, name):
             future_uniform = all(t == times[-1] + step * (i + 1) for i,t in enumerate(query))
             predictions = _recurrence(ys, len(query)) if uniform and future_uniform else [ys[-1]] * len(query)
         else:
-            seed = int(hashlib.sha256((case["case_id"] + ":" + str(d)).encode()).hexdigest()[:16], 16)
+            seed_data = json.dumps({"times":times,"observations":obs,"queries":query,"dimension":d},
+                                   sort_keys=True,separators=(",", ":"))
+            seed = int(hashlib.sha256(seed_data.encode()).hexdigest()[:16], 16)
             rng = random.Random(seed)
             predictions = [rng.uniform(-1, 1) for _ in query]
         for i, value in enumerate(predictions):

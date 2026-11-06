@@ -1,14 +1,26 @@
-"""NC-055 private reference generator. Do not pass this module or truth data to candidates.
+"""NC-055 trusted reference generator, NOT a sealed oracle by itself.
 
-Python standard library only; secrecy is API separation, NOT filesystem isolation.
+For untrusted participant code, use sandbox_evaluator.py. Open-source finite
+fixtures remain reconstructible from observed values and published formulas.
 """
 from decimal import Decimal, localcontext
 from fractions import Fraction
 import hashlib
+import hmac
+import secrets
 import math
 import random
 
 SEED = 55061
+# Ephemeral per evaluator process; NEVER serialize this value or pass it to candidates.
+# HMAC prevents direct public-ID dictionary reversal of the published family grid.
+# The key is NOT an authentication token and does not hide published generators.
+_ID_KEY = secrets.token_bytes(32)
+
+def _opaque_case_id(family, split, rep):
+    message = f"NC055:v2:{family}:{split}:{rep}".encode("utf-8")
+    return hmac.new(_ID_KEY, message, hashlib.sha256).hexdigest()[:32]
+
 SPLITS = {
     "train": {"param_base": 2, "observed": 9, "horizon": 4},
     "validation": {"param_base": 13, "observed": 11, "horizon": 6},
@@ -120,7 +132,7 @@ def make_case(family, split, rep):
         return _vector(t, p, rep) if family == "coupled_vector" else _scalar(family, t, p, rep)
     obs = [val(t) for t in observed_t]
     truth = [val(t) for t in query_t]
-    case_id = hashlib.sha256(f"NC055:{SEED}:{family}:{split}:{rep}".encode()).hexdigest()[:20]
+    case_id = _opaque_case_id(family, split, rep)
     public = {
         "case_id": case_id, "split": split, "shape": "vector2" if family == "coupled_vector" else "scalar",
         "observed_times": observed_t, "observed_values": [_as_public(v) for v in obs],
