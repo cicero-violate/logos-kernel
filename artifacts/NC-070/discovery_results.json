@@ -1,0 +1,9078 @@
+{
+  "algorithm": "finite-version-space greedy expected-survivors (not neural)",
+  "evaluation_rows": [
+    {
+      "arm": "active",
+      "case_index": 0,
+      "cpu_seconds": 0.00595112,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 1,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 0,
+      "cpu_seconds": 0.00568484,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 1,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 0,
+      "cpu_seconds": 0.005366455,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 1,
+      "cpu_seconds": 0.005668616,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 0,
+      "remaining_graphs": 4,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 1,
+      "cpu_seconds": 0.005547266,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 12,
+      "remaining_graphs": 2,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 1,
+      "cpu_seconds": 0.00515282,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 13,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 2,
+      "cpu_seconds": 0.005545651,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 16,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 2,
+      "cpu_seconds": 0.006089723,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 18,
+      "remaining_graphs": 2,
+      "seed": 11,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 2,
+      "cpu_seconds": 0.005369084,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 33,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 3,
+      "cpu_seconds": 0.005777764,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 25,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 3,
+      "cpu_seconds": 0.00550354,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 56,
+      "remaining_graphs": 2,
+      "seed": 11,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 3,
+      "cpu_seconds": 0.005252214,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 38,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 4,
+      "cpu_seconds": 0.005894788,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 28,
+      "remaining_graphs": 2,
+      "seed": 11,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 4,
+      "cpu_seconds": 0.005707908,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 28,
+      "remaining_graphs": 2,
+      "seed": 11,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 4,
+      "cpu_seconds": 0.005277827,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 41,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 5,
+      "cpu_seconds": 0.005678888,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 37,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 5,
+      "cpu_seconds": 0.005681942,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 37,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 5,
+      "cpu_seconds": 0.005512341,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 25,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 6,
+      "cpu_seconds": 0.005940581,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 57,
+      "remaining_graphs": 4,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 6,
+      "cpu_seconds": 0.005958172,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 42,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 6,
+      "cpu_seconds": 0.005350157,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 34,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 7,
+      "cpu_seconds": 0.005699622,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 7,
+      "cpu_seconds": 0.005744581,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 47,
+      "remaining_graphs": 2,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 7,
+      "cpu_seconds": 0.005059682,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 54,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 8,
+      "cpu_seconds": 0.005820473,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 47,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 8,
+      "cpu_seconds": 0.005878357,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 43,
+      "remaining_graphs": 4,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 8,
+      "cpu_seconds": 0.005542365,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 7,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 9,
+      "cpu_seconds": 0.006029252,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 49,
+      "remaining_graphs": 4,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 9,
+      "cpu_seconds": 0.005766785,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 49,
+      "remaining_graphs": 4,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 9,
+      "cpu_seconds": 0.005307119,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 39,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 10,
+      "cpu_seconds": 0.005799626,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 34,
+      "remaining_graphs": 2,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 10,
+      "cpu_seconds": 0.005585047,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 50,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 10,
+      "cpu_seconds": 0.005288863,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 12,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 11,
+      "cpu_seconds": 0.005494111,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 53,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 11,
+      "cpu_seconds": 0.005280188,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 53,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 11,
+      "cpu_seconds": 0.005410246,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 25,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 12,
+      "cpu_seconds": 0.006122015,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 12,
+      "cpu_seconds": 0.00576308,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 12,
+      "cpu_seconds": 0.005287274,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 43,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 13,
+      "cpu_seconds": 0.0057783,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 63,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 13,
+      "cpu_seconds": 0.006088531,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 63,
+      "remaining_graphs": 1,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 13,
+      "cpu_seconds": 0.005554562,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 32,
+      "remaining_graphs": 64,
+      "seed": 11,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 0,
+      "cpu_seconds": 0.005626944,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 1,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 0,
+      "cpu_seconds": 0.005812412,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 1,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 0,
+      "cpu_seconds": 0.00541063,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 55,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 1,
+      "cpu_seconds": 0.005979007,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 0,
+      "remaining_graphs": 4,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 1,
+      "cpu_seconds": 0.005655309,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 12,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 1,
+      "cpu_seconds": 0.005345614,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 12,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 2,
+      "cpu_seconds": 0.005619759,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 16,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 2,
+      "cpu_seconds": 0.006024171,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 19,
+      "remaining_graphs": 4,
+      "seed": 19,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 2,
+      "cpu_seconds": 0.005448432,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 41,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 3,
+      "cpu_seconds": 0.005924012,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 25,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 3,
+      "cpu_seconds": 0.005898287,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 25,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 3,
+      "cpu_seconds": 0.005745745,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 2,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 4,
+      "cpu_seconds": 0.005926285,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 26,
+      "remaining_graphs": 2,
+      "seed": 19,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 4,
+      "cpu_seconds": 0.005811771,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 28,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 4,
+      "cpu_seconds": 0.005376279,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 12,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 5,
+      "cpu_seconds": 0.005580419,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 37,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 5,
+      "cpu_seconds": 0.005965734,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 37,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 5,
+      "cpu_seconds": 0.005536238,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 50,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 6,
+      "cpu_seconds": 0.006091996,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 57,
+      "remaining_graphs": 4,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 6,
+      "cpu_seconds": 0.005872989,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 57,
+      "remaining_graphs": 4,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 6,
+      "cpu_seconds": 0.005657589,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 40,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 7,
+      "cpu_seconds": 0.00610387,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 7,
+      "cpu_seconds": 0.005921079,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 30,
+      "remaining_graphs": 2,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 7,
+      "cpu_seconds": 0.005367569,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 8,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 8,
+      "cpu_seconds": 0.006131472,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 47,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 8,
+      "cpu_seconds": 0.005825394,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 2,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 8,
+      "cpu_seconds": 0.005679113,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 27,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 9,
+      "cpu_seconds": 0.006074706,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 49,
+      "remaining_graphs": 4,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 9,
+      "cpu_seconds": 0.006122827,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 49,
+      "remaining_graphs": 4,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 9,
+      "cpu_seconds": 0.005420782,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 47,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 10,
+      "cpu_seconds": 0.005955516,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 34,
+      "remaining_graphs": 2,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 10,
+      "cpu_seconds": 0.006009151,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 50,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 10,
+      "cpu_seconds": 0.005566229,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 14,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 11,
+      "cpu_seconds": 0.005732432,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 53,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 11,
+      "cpu_seconds": 0.005822057,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 53,
+      "remaining_graphs": 2,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 11,
+      "cpu_seconds": 0.00541866,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 24,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 12,
+      "cpu_seconds": 0.005672882,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 12,
+      "cpu_seconds": 0.005734573,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 12,
+      "cpu_seconds": 0.005176251,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 7,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 13,
+      "cpu_seconds": 0.005775977,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 63,
+      "remaining_graphs": 1,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 13,
+      "cpu_seconds": 0.005860011,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 43,
+      "remaining_graphs": 4,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 13,
+      "cpu_seconds": 0.005462518,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 12,
+      "remaining_graphs": 64,
+      "seed": 19,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 0,
+      "cpu_seconds": 0.005757838,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 1,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 0,
+      "cpu_seconds": 0.005862936,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 1,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 0,
+      "cpu_seconds": 0.005437881,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 1,
+      "cpu_seconds": 0.005835694,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 15,
+      "remaining_graphs": 4,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 1,
+      "cpu_seconds": 0.00578666,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 15,
+      "remaining_graphs": 4,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 1,
+      "cpu_seconds": 0.005131887,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 61,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 2,
+      "cpu_seconds": 0.005457044,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 16,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 2,
+      "cpu_seconds": 0.005536183,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 17,
+      "remaining_graphs": 4,
+      "seed": 29,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 2,
+      "cpu_seconds": 0.005082094,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 19,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 3,
+      "cpu_seconds": 0.005481582,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 25,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 3,
+      "cpu_seconds": 0.005276476,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 24,
+      "remaining_graphs": 2,
+      "seed": 29,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 3,
+      "cpu_seconds": 0.005031753,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 3,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 4,
+      "cpu_seconds": 0.005213546,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 26,
+      "remaining_graphs": 2,
+      "seed": 29,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 4,
+      "cpu_seconds": 0.00502776,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 28,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 4,
+      "cpu_seconds": 0.004800654,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 11,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 5,
+      "cpu_seconds": 0.005093755,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 37,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 5,
+      "cpu_seconds": 0.005159249,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 37,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 5,
+      "cpu_seconds": 0.004853872,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 58,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 6,
+      "cpu_seconds": 0.005357233,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 60,
+      "remaining_graphs": 4,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 6,
+      "cpu_seconds": 0.00536241,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 42,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 6,
+      "cpu_seconds": 0.00506636,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 61,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 7,
+      "cpu_seconds": 0.005340709,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 7,
+      "cpu_seconds": 0.005271164,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 30,
+      "remaining_graphs": 2,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 7,
+      "cpu_seconds": 0.005040762,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 25,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 8,
+      "cpu_seconds": 0.005277586,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 47,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 8,
+      "cpu_seconds": 0.00499854,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 2,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 8,
+      "cpu_seconds": 0.004836295,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 7,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 9,
+      "cpu_seconds": 0.005275306,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 51,
+      "remaining_graphs": 4,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 9,
+      "cpu_seconds": 0.005208542,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 49,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 9,
+      "cpu_seconds": 0.004908613,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 50,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 10,
+      "cpu_seconds": 0.005232728,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 50,
+      "remaining_graphs": 2,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 10,
+      "cpu_seconds": 0.004959648,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 50,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 10,
+      "cpu_seconds": 0.00466864,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 61,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 11,
+      "cpu_seconds": 0.005084038,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 53,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 11,
+      "cpu_seconds": 0.00487325,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 53,
+      "remaining_graphs": 2,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 11,
+      "cpu_seconds": 0.004671323,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 13,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 12,
+      "cpu_seconds": 0.005176493,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 12,
+      "cpu_seconds": 0.005015328,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 12,
+      "cpu_seconds": 0.004721293,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 42,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 13,
+      "cpu_seconds": 0.005155006,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 63,
+      "remaining_graphs": 1,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 13,
+      "cpu_seconds": 0.005100905,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 43,
+      "remaining_graphs": 4,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 13,
+      "cpu_seconds": 0.004681734,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 5,
+      "remaining_graphs": 64,
+      "seed": 29,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 0,
+      "cpu_seconds": 0.005361793,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 1,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 0,
+      "cpu_seconds": 0.005159847,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 1,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 0,
+      "cpu_seconds": 0.004743208,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 1,
+      "cpu_seconds": 0.005042867,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 0,
+      "remaining_graphs": 4,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 1,
+      "cpu_seconds": 0.00498071,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 12,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 1,
+      "cpu_seconds": 0.004822141,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 14,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 2,
+      "cpu_seconds": 0.004964216,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 16,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 2,
+      "cpu_seconds": 0.00603353,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 19,
+      "remaining_graphs": 4,
+      "seed": 31,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 2,
+      "cpu_seconds": 0.004690605,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 40,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 3,
+      "cpu_seconds": 0.005170679,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 25,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 3,
+      "cpu_seconds": 0.004712348,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 24,
+      "remaining_graphs": 2,
+      "seed": 31,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 3,
+      "cpu_seconds": 0.004676517,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 19,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 4,
+      "cpu_seconds": 0.005133723,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 26,
+      "remaining_graphs": 2,
+      "seed": 31,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 4,
+      "cpu_seconds": 0.005209237,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 26,
+      "remaining_graphs": 2,
+      "seed": 31,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 4,
+      "cpu_seconds": 0.004884949,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 13,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 5,
+      "cpu_seconds": 0.005293283,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 37,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 5,
+      "cpu_seconds": 0.004953185,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 37,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 5,
+      "cpu_seconds": 0.00484343,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 59,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 6,
+      "cpu_seconds": 0.005565373,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 42,
+      "remaining_graphs": 4,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 6,
+      "cpu_seconds": 0.006238924,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 36,
+      "remaining_graphs": 4,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 6,
+      "cpu_seconds": 0.006017621,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 12,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 7,
+      "cpu_seconds": 0.007226264,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 7,
+      "cpu_seconds": 0.007065066,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 2,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 7,
+      "cpu_seconds": 0.005253391,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 9,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 8,
+      "cpu_seconds": 0.005467939,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 47,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 8,
+      "cpu_seconds": 0.006714691,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 2,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 8,
+      "cpu_seconds": 0.006489006,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 17,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 9,
+      "cpu_seconds": 0.00550603,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 51,
+      "remaining_graphs": 4,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 9,
+      "cpu_seconds": 0.005423983,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 51,
+      "remaining_graphs": 4,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 9,
+      "cpu_seconds": 0.005731264,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 60,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 10,
+      "cpu_seconds": 0.00615941,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 34,
+      "remaining_graphs": 2,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 10,
+      "cpu_seconds": 0.006046977,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 49,
+      "remaining_graphs": 2,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 10,
+      "cpu_seconds": 0.004784216,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 7,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 11,
+      "cpu_seconds": 0.005295384,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 53,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 11,
+      "cpu_seconds": 0.005391052,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 58,
+      "remaining_graphs": 2,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 11,
+      "cpu_seconds": 0.004991246,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 59,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 12,
+      "cpu_seconds": 0.005232466,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 12,
+      "cpu_seconds": 0.005159771,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 4,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 12,
+      "cpu_seconds": 0.004684643,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 39,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 13,
+      "cpu_seconds": 0.005285499,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 63,
+      "remaining_graphs": 1,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 13,
+      "cpu_seconds": 0.004823796,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 31,
+      "remaining_graphs": 4,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 13,
+      "cpu_seconds": 0.004612904,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 18,
+      "remaining_graphs": 64,
+      "seed": 31,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 0,
+      "cpu_seconds": 0.005025589,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 1,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 0,
+      "cpu_seconds": 0.004979051,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 1,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 0,
+      "cpu_seconds": 0.004407608,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 16,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 1,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 1,
+      "cpu_seconds": 0.004941778,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 0,
+      "remaining_graphs": 4,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 1,
+      "cpu_seconds": 0.00507583,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 12,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 1,
+      "cpu_seconds": 0.010350565,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 8,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 12,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 2,
+      "cpu_seconds": 0.005303686,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 16,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 2,
+      "cpu_seconds": 0.005092236,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 18,
+      "remaining_graphs": 2,
+      "seed": 43,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 2,
+      "cpu_seconds": 0.004922539,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 42,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "truth_graph_id": 16,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 3,
+      "cpu_seconds": 0.005028188,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 25,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 3,
+      "cpu_seconds": 0.005215713,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 26,
+      "remaining_graphs": 4,
+      "seed": 43,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 3,
+      "cpu_seconds": 0.005146983,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 23,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 25,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 4,
+      "cpu_seconds": 0.005582446,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 28,
+      "remaining_graphs": 2,
+      "seed": 43,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 4,
+      "cpu_seconds": 0.005301147,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 28,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 4,
+      "cpu_seconds": 0.00488461,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 58,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 28,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 5,
+      "cpu_seconds": 0.005399038,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 37,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 5,
+      "cpu_seconds": 0.00497688,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 41,
+      "remaining_graphs": 2,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 5,
+      "cpu_seconds": 0.004845954,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 50,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 37,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 6,
+      "cpu_seconds": 0.005260728,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 57,
+      "remaining_graphs": 4,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 6,
+      "cpu_seconds": 0.005350944,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 40,
+      "remaining_graphs": 4,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 6,
+      "cpu_seconds": 0.00487181,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 41,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 42,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 7,
+      "cpu_seconds": 0.005308391,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 7,
+      "cpu_seconds": 0.00494931,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 46,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 7,
+      "cpu_seconds": 0.005023124,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 14,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 46,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 8,
+      "cpu_seconds": 0.005508096,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 47,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 8,
+      "cpu_seconds": 0.005103318,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 47,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 8,
+      "cpu_seconds": 0.005021309,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 3,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 47,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 9,
+      "cpu_seconds": 0.005127716,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 51,
+      "remaining_graphs": 4,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 9,
+      "cpu_seconds": 0.005272061,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predicted_graph_id": 49,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 9,
+      "cpu_seconds": 0.005307883,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 59,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "truth_graph_id": 49,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 10,
+      "cpu_seconds": 0.005244301,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 50,
+      "remaining_graphs": 2,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "random",
+      "case_index": 10,
+      "cpu_seconds": 0.00499898,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "predicted_graph_id": 50,
+      "remaining_graphs": 2,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 10,
+      "cpu_seconds": 0.004860548,
+      "edge_f1": 0.6666666666666666,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "truth_graph_id": 50,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 11,
+      "cpu_seconds": 0.005096711,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 53,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 11,
+      "cpu_seconds": 0.005188011,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "predicted_graph_id": 53,
+      "remaining_graphs": 2,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 0
+    },
+    {
+      "arm": "passive",
+      "case_index": 11,
+      "cpu_seconds": 0.004951697,
+      "edge_f1": 0.3333333333333333,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 12,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "truth_graph_id": 53,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 12,
+      "cpu_seconds": 0.004866702,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 12,
+      "cpu_seconds": 0.005143518,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predicted_graph_id": 62,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 12,
+      "cpu_seconds": 0.004928985,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 27,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "truth_graph_id": 62,
+      "unique": 0
+    },
+    {
+      "arm": "active",
+      "case_index": 13,
+      "cpu_seconds": 0.00504964,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 63,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 1
+    },
+    {
+      "arm": "random",
+      "case_index": 13,
+      "cpu_seconds": 0.005158222,
+      "edge_f1": 1.0,
+      "exact": 1,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "predicted_graph_id": 63,
+      "remaining_graphs": 1,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 1
+    },
+    {
+      "arm": "passive",
+      "case_index": 13,
+      "cpu_seconds": 0.004818612,
+      "edge_f1": 0.0,
+      "exact": 0,
+      "experiments": 3,
+      "oracle_calls": 3,
+      "predicted_edges": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "predicted_graph_id": 32,
+      "remaining_graphs": 64,
+      "seed": 43,
+      "truth_edges": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "truth_graph_id": 63,
+      "unique": 0
+    }
+  ],
+  "graph_family": "all 64 labeled rooted 4-register trees, identity-copy structural equations",
+  "heldout_definition": "SHA-256 split of 64 program/graph keys, salt NC-070/v1, graphs unused for fit",
+  "heldout_graph_count": 14,
+  "heldout_ids": [
+    1,
+    12,
+    16,
+    25,
+    28,
+    37,
+    42,
+    46,
+    47,
+    49,
+    50,
+    53,
+    62,
+    63
+  ],
+  "hypothesis_count": 64,
+  "limitations": [
+    "All 64 graph hypotheses and copy-equation family are supplied, so inference is finite hypothesis elimination, not discovery of a new graph family",
+    "Each graph receives repeated seeds; confidence intervals resample graphs, not individual rows",
+    "Exogenous inputs are binary 0/1 within the canonical 4-bit ISA, and the policy can intervene on any register",
+    "Passive observations are designed to be identical for all graphs; active superiority is narrow and by construction",
+    "Candidate graphs may include heldout graph structures in the model's hypothesis set; heldout means true environment was not used for fitting or decisions",
+    "Matched planning-work/oracle calls do not automatically mean measured CPU parity; measured ratios and an explicit gate are reported",
+    "No graph-identification guarantee beyond this finite family; no AGI, new mathematical discovery or champion promotion"
+  ],
+  "observational_equivalence": {
+    "all_64_hypotheses_passively_equivalent": true,
+    "distinguishing_intervention": {
+      "exogenous_bit": 0,
+      "register": "Y",
+      "value": 1
+    },
+    "graph_a": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "graph_b": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "interventional_outcome_a": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "interventional_outcome_b": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "passive_distribution": [
+      {
+        "outcome": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "prob": 0.5
+      },
+      {
+        "outcome": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "prob": 0.5
+      }
+    ]
+  },
+  "per_seed": {
+    "11": {
+      "active": {
+        "denominator": 14,
+        "exact": 11,
+        "unique": 9
+      },
+      "passive": {
+        "denominator": 14,
+        "exact": 0,
+        "unique": 0
+      },
+      "random": {
+        "denominator": 14,
+        "exact": 10,
+        "unique": 7
+      }
+    },
+    "19": {
+      "active": {
+        "denominator": 14,
+        "exact": 10,
+        "unique": 9
+      },
+      "passive": {
+        "denominator": 14,
+        "exact": 1,
+        "unique": 0
+      },
+      "random": {
+        "denominator": 14,
+        "exact": 9,
+        "unique": 7
+      }
+    },
+    "29": {
+      "active": {
+        "denominator": 14,
+        "exact": 10,
+        "unique": 9
+      },
+      "passive": {
+        "denominator": 14,
+        "exact": 0,
+        "unique": 0
+      },
+      "random": {
+        "denominator": 14,
+        "exact": 8,
+        "unique": 7
+      }
+    },
+    "31": {
+      "active": {
+        "denominator": 14,
+        "exact": 10,
+        "unique": 9
+      },
+      "passive": {
+        "denominator": 14,
+        "exact": 0,
+        "unique": 0
+      },
+      "random": {
+        "denominator": 14,
+        "exact": 5,
+        "unique": 3
+      }
+    },
+    "43": {
+      "active": {
+        "denominator": 14,
+        "exact": 11,
+        "unique": 9
+      },
+      "passive": {
+        "denominator": 14,
+        "exact": 0,
+        "unique": 0
+      },
+      "random": {
+        "denominator": 14,
+        "exact": 10,
+        "unique": 8
+      }
+    }
+  },
+  "rounds": 3,
+  "schema": "logos.nc070.discovery/1",
+  "seeds": [
+    11,
+    19,
+    29,
+    31,
+    43
+  ],
+  "summary": {
+    "active": {
+      "accuracy": 0.7428571428571429,
+      "correct_per_cpu_second": 134.16496,
+      "correct_per_oracle_experiment": 0.24762,
+      "cpu_seconds": 0.38758,
+      "exact": 52,
+      "graph_cluster_bootstrap_accuracy_ci95": [
+        0.54286,
+        0.91429
+      ],
+      "mean_edge_f1": 0.90952,
+      "oracle_experiments": 210,
+      "total": 70,
+      "uniquely_identified": 45
+    },
+    "cpu_accounting": {
+      "active_vs_passive_cpu_ratio": 1.0594,
+      "active_vs_random_cpu_ratio": 1.0047,
+      "matched_measured_cpu_20pct": true,
+      "note": "Planner calls and oracle-call counts are matched; observed CPU may diverge as version spaces shrink. If 20% tolerance fails, do not claim measured CPU parity.",
+      "same_full_hypothesis_counterfactual_simulations_per_round": 256,
+      "same_oracle_calls_per_arm": 210
+    },
+    "paired_active_minus_random": {
+      "accuracy_difference": 0.14286,
+      "graph_cluster_bootstrap_ci95": [
+        -0.14286,
+        0.42857
+      ],
+      "sampling_unit": "heldout graph, retaining all seed replicates"
+    },
+    "passive": {
+      "accuracy": 0.014285714285714285,
+      "correct_per_cpu_second": 2.73341,
+      "correct_per_oracle_experiment": 0.00476,
+      "cpu_seconds": 0.36584,
+      "exact": 1,
+      "mean_edge_f1": 0.22381,
+      "oracle_experiments": 210,
+      "total": 70,
+      "uniquely_identified": 0
+    },
+    "random": {
+      "accuracy": 0.6,
+      "correct_per_cpu_second": 108.87228,
+      "correct_per_oracle_experiment": 0.2,
+      "cpu_seconds": 0.38577,
+      "exact": 42,
+      "graph_cluster_bootstrap_accuracy_ci95": [
+        0.42857,
+        0.75714
+      ],
+      "mean_edge_f1": 0.85238,
+      "oracle_experiments": 210,
+      "total": 70,
+      "uniquely_identified": 32
+    }
+  },
+  "true_graphs_visible_to_policy": false
+}

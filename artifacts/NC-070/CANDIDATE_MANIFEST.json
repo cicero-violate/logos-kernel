@@ -1,0 +1,183 @@
+{
+  "all_candidate_graphs": 64,
+  "champion_modified": false,
+  "confidence_interval": {
+    "accuracy_difference": 0.14286,
+    "graph_cluster_bootstrap_ci95": [
+      -0.14286,
+      0.42857
+    ],
+    "sampling_unit": "heldout graph, retaining all seed replicates"
+  },
+  "cpu_gate": {
+    "active_vs_passive_cpu_ratio": 1.0594,
+    "active_vs_random_cpu_ratio": 1.0047,
+    "matched_measured_cpu_20pct": true,
+    "note": "Planner calls and oracle-call counts are matched; observed CPU may diverge as version spaces shrink. If 20% tolerance fails, do not claim measured CPU parity.",
+    "same_full_hypothesis_counterfactual_simulations_per_round": 256,
+    "same_oracle_calls_per_arm": 210
+  },
+  "cpu_seconds": {
+    "active": 0.38758,
+    "passive": 0.36584,
+    "random": 0.38577
+  },
+  "dependencies": [
+    "Python 3 standard library",
+    "Git",
+    "artifacts/NC-069/causal_benchmark.py",
+    "artifacts/NC-001/canonical_isa.py"
+  ],
+  "dependencies_sha256": {
+    "artifacts/NC-001/canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "artifacts/NC-069/causal_benchmark.py": "f992952e8cf5f989bc3ade546fed08b44494c58815807c4d334f7f1385706cb9"
+  },
+  "evidence_sha256": {
+    "budget_sweep.json": "ea4ffeef9f5304d80c40ca6d61e8bfd925b0b81e330dc355d565dde1ebca9e90",
+    "discovery_results.json": "417af1f1523fe769510e2e373cde09f2d1a395e32fc845ff6a7aa5c0d46dae4b",
+    "experiment_traces.jsonl": "fd69326d4c82bec69acf5728d9ab7d1d600b7664fed37938b5d683d3e27f5731"
+  },
+  "experiments_per_case": 3,
+  "heldout_graphs": 14,
+  "limitations": [
+    "All 64 graph hypotheses and copy-equation family are supplied, so inference is finite hypothesis elimination, not discovery of a new graph family",
+    "Each graph receives repeated seeds; confidence intervals resample graphs, not individual rows",
+    "Exogenous inputs are binary 0/1 within the canonical 4-bit ISA, and the policy can intervene on any register",
+    "Passive observations are designed to be identical for all graphs; active superiority is narrow and by construction",
+    "Candidate graphs may include heldout graph structures in the model's hypothesis set; heldout means true environment was not used for fitting or decisions",
+    "Matched planning-work/oracle calls do not automatically mean measured CPU parity; measured ratios and an explicit gate are reported",
+    "No graph-identification guarantee beyond this finite family; no AGI, new mathematical discovery or champion promotion",
+    "CPU excludes candidate family enumeration and per-case ISA compilation; those are common setup costs",
+    "Controls intentionally compute the active planner score but ignore it to equalize planning work",
+    "Source has not been independently verified at manifest submission; a different reviewer must reproduce and judge",
+    "Graph-bootstrap 95% interval active minus random includes zero: no statistically robust active superiority"
+  ],
+  "negative_controls": [
+    "All 64 models have identical passive observations; specific do() separates distinct graph structures",
+    "Uniform random distinct-node interventions, matched to active in oracle count and candidate-simulation workload",
+    "Passive observation with same ISA oracle-call count and same counterfactual planning workload",
+    "Independent scalar SCM simulator versus ISA oracle on all 512 graph/action/bit configurations",
+    "Implausible oracle response excludes every candidate and fails closed",
+    "Altered true graph label and altered intervention response each fail deterministic replay"
+  ],
+  "observational_equivalence": {
+    "all_64_hypotheses_passively_equivalent": true,
+    "distinguishing_intervention": {
+      "exogenous_bit": 0,
+      "register": "Y",
+      "value": 1
+    },
+    "graph_a": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "graph_b": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "interventional_outcome_a": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "interventional_outcome_b": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "passive_distribution": [
+      {
+        "outcome": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "prob": 0.5
+      },
+      {
+        "outcome": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "prob": 0.5
+      }
+    ]
+  },
+  "oracle_calls_per_arm": 210,
+  "outcome": "NO_CONFIRMED_GAIN_OVER_RANDOM (active point estimate greater; 95% graph-clustered CI includes zero)",
+  "owner": "turn-dc3fa55acffd4a99ad68a6e4afc5b1e1",
+  "recovered_graphs": {
+    "active": {
+      "correct": 52,
+      "denominator": 70,
+      "uniquely_identified": 45
+    },
+    "passive": {
+      "correct": 1,
+      "denominator": 70,
+      "uniquely_identified": 0
+    },
+    "random": {
+      "correct": 42,
+      "denominator": 70,
+      "uniquely_identified": 32
+    }
+  },
+  "reproduction": [
+    "PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m unittest -q artifacts/NC-070/test_discovery.py artifacts/NC-070/test_evidence.py",
+    "PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python artifacts/NC-070/discovery.py --seeds 11 19 29 31 43 --rounds 3 --out /tmp/nc070-review",
+    "PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python artifacts/NC-070/recompute.py artifacts/NC-070",
+    "PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python artifacts/NC-070/run_budget_sweep.py --out /tmp/nc070-budget-review.json"
+  ],
+  "review_output_path": "artifacts/NC-070/independent_receipt.json",
+  "schema_version": 1,
+  "seeds": [
+    11,
+    19,
+    29,
+    31,
+    43
+  ],
+  "source_sha256": {
+    "README.md": "dcbed01d6a7f2ca498cfc793377ebb9398bc76a67301e31c2498731517abd44d",
+    "discovery.py": "094c8f7444f900a1723827a442581bcc37b93fded09197f3a65aea3ee959208e",
+    "recompute.py": "3b3c2f207286af70fdfeb0260a6a13e4cd3980a7d2c80f91a3f32a7814abd89a",
+    "run_budget_sweep.py": "7dc6e055ed24f1e6ecc7622dc7aa86ed4666ac5fa201fde1f0d37335a74c1376",
+    "test_discovery.py": "419b4d2b0756c2b614d41ecd019a866fa01df1dbeb69f4f83670187c5e516d47",
+    "test_evidence.py": "26293998c4b50e47a2747444643207941a79b78cb726efa63b186b501722444a"
+  },
+  "task": "NC-070",
+  "tests": {
+    "NC070_unittest": "12/12 PASS",
+    "all_graph_action_isa_oracle_checks": 512,
+    "dag_tests": "19/19 PASS",
+    "independently_regenerated_eval_rows": 210,
+    "independently_regenerated_intervention_traces": 630,
+    "pull_tests": "20/20 PASS"
+  }
+}

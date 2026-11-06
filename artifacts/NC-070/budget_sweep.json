@@ -1,0 +1,264 @@
+{
+  "all_policy_inputs_exclude_true_graph": true,
+  "curve": [
+    {
+      "cpu_accounting": {
+        "active_vs_passive_cpu_ratio": 1.0714,
+        "active_vs_random_cpu_ratio": 1.0,
+        "matched_measured_cpu_20pct": true,
+        "note": "Planner calls and oracle-call counts are matched; observed CPU may diverge as version spaces shrink. If 20% tolerance fails, do not claim measured CPU parity.",
+        "same_full_hypothesis_counterfactual_simulations_per_round": 256,
+        "same_oracle_calls_per_arm": 0
+      },
+      "interventions_per_case": 0,
+      "paired_active_minus_random": {
+        "accuracy_difference": 0.0,
+        "graph_cluster_bootstrap_ci95": [
+          0.0,
+          0.0
+        ],
+        "sampling_unit": "heldout graph, retaining all seed replicates"
+      },
+      "per_arm": {
+        "active": {
+          "accuracy": 0.014285714285714285,
+          "correct_per_cpu_second": 6568.57593,
+          "correct_per_oracle_experiment": null,
+          "cpu_seconds": 0.00015,
+          "exact": 1,
+          "graph_cluster_bootstrap_accuracy_ci95": [
+            0.0,
+            0.04286
+          ],
+          "mean_edge_f1": 0.22381,
+          "oracle_experiments": 0,
+          "total": 70,
+          "uniquely_identified": 0
+        },
+        "passive": {
+          "accuracy": 0.014285714285714285,
+          "correct_per_cpu_second": 6962.18836,
+          "correct_per_oracle_experiment": null,
+          "cpu_seconds": 0.00014,
+          "exact": 1,
+          "mean_edge_f1": 0.22381,
+          "oracle_experiments": 0,
+          "total": 70,
+          "uniquely_identified": 0
+        },
+        "random": {
+          "accuracy": 0.014285714285714285,
+          "correct_per_cpu_second": 6878.14675,
+          "correct_per_oracle_experiment": null,
+          "cpu_seconds": 0.00015,
+          "exact": 1,
+          "graph_cluster_bootstrap_accuracy_ci95": [
+            0.0,
+            0.04286
+          ],
+          "mean_edge_f1": 0.22381,
+          "oracle_experiments": 0,
+          "total": 70,
+          "uniquely_identified": 0
+        }
+      }
+    },
+    {
+      "cpu_accounting": {
+        "active_vs_passive_cpu_ratio": 1.2145,
+        "active_vs_random_cpu_ratio": 1.0063,
+        "matched_measured_cpu_20pct": true,
+        "note": "Planner calls and oracle-call counts are matched; observed CPU may diverge as version spaces shrink. If 20% tolerance fails, do not claim measured CPU parity.",
+        "same_full_hypothesis_counterfactual_simulations_per_round": 256,
+        "same_oracle_calls_per_arm": 70
+      },
+      "interventions_per_case": 1,
+      "paired_active_minus_random": {
+        "accuracy_difference": 0.04286,
+        "graph_cluster_bootstrap_ci95": [
+          -0.04286,
+          0.14286
+        ],
+        "sampling_unit": "heldout graph, retaining all seed replicates"
+      },
+      "per_arm": {
+        "active": {
+          "accuracy": 0.11428571428571428,
+          "correct_per_cpu_second": 54.68625,
+          "correct_per_oracle_experiment": 0.11429,
+          "cpu_seconds": 0.14629,
+          "exact": 8,
+          "graph_cluster_bootstrap_accuracy_ci95": [
+            0.02857,
+            0.22857
+          ],
+          "mean_edge_f1": 0.44286,
+          "oracle_experiments": 70,
+          "total": 70,
+          "uniquely_identified": 0
+        },
+        "passive": {
+          "accuracy": 0.014285714285714285,
+          "correct_per_cpu_second": 8.30203,
+          "correct_per_oracle_experiment": 0.01429,
+          "cpu_seconds": 0.12045,
+          "exact": 1,
+          "mean_edge_f1": 0.22381,
+          "oracle_experiments": 70,
+          "total": 70,
+          "uniquely_identified": 0
+        },
+        "random": {
+          "accuracy": 0.07142857142857142,
+          "correct_per_cpu_second": 34.39255,
+          "correct_per_oracle_experiment": 0.07143,
+          "cpu_seconds": 0.14538,
+          "exact": 5,
+          "graph_cluster_bootstrap_accuracy_ci95": [
+            0.02857,
+            0.12857
+          ],
+          "mean_edge_f1": 0.45238,
+          "oracle_experiments": 70,
+          "total": 70,
+          "uniquely_identified": 0
+        }
+      }
+    },
+    {
+      "cpu_accounting": {
+        "active_vs_passive_cpu_ratio": 1.1295,
+        "active_vs_random_cpu_ratio": 1.0143,
+        "matched_measured_cpu_20pct": true,
+        "note": "Planner calls and oracle-call counts are matched; observed CPU may diverge as version spaces shrink. If 20% tolerance fails, do not claim measured CPU parity.",
+        "same_full_hypothesis_counterfactual_simulations_per_round": 256,
+        "same_oracle_calls_per_arm": 140
+      },
+      "interventions_per_case": 2,
+      "paired_active_minus_random": {
+        "accuracy_difference": 0.08571,
+        "graph_cluster_bootstrap_ci95": [
+          -0.11429,
+          0.3
+        ],
+        "sampling_unit": "heldout graph, retaining all seed replicates"
+      },
+      "per_arm": {
+        "active": {
+          "accuracy": 0.37142857142857144,
+          "correct_per_cpu_second": 92.86825,
+          "correct_per_oracle_experiment": 0.18571,
+          "cpu_seconds": 0.27997,
+          "exact": 26,
+          "graph_cluster_bootstrap_accuracy_ci95": [
+            0.2,
+            0.55714
+          ],
+          "mean_edge_f1": 0.70476,
+          "oracle_experiments": 140,
+          "total": 70,
+          "uniquely_identified": 10
+        },
+        "passive": {
+          "accuracy": 0.014285714285714285,
+          "correct_per_cpu_second": 4.03441,
+          "correct_per_oracle_experiment": 0.00714,
+          "cpu_seconds": 0.24787,
+          "exact": 1,
+          "mean_edge_f1": 0.22381,
+          "oracle_experiments": 140,
+          "total": 70,
+          "uniquely_identified": 0
+        },
+        "random": {
+          "accuracy": 0.2857142857142857,
+          "correct_per_cpu_second": 72.45487,
+          "correct_per_oracle_experiment": 0.14286,
+          "cpu_seconds": 0.27603,
+          "exact": 20,
+          "graph_cluster_bootstrap_accuracy_ci95": [
+            0.15714,
+            0.41429
+          ],
+          "mean_edge_f1": 0.6619,
+          "oracle_experiments": 140,
+          "total": 70,
+          "uniquely_identified": 9
+        }
+      }
+    },
+    {
+      "cpu_accounting": {
+        "active_vs_passive_cpu_ratio": 1.0696,
+        "active_vs_random_cpu_ratio": 1.0092,
+        "matched_measured_cpu_20pct": true,
+        "note": "Planner calls and oracle-call counts are matched; observed CPU may diverge as version spaces shrink. If 20% tolerance fails, do not claim measured CPU parity.",
+        "same_full_hypothesis_counterfactual_simulations_per_round": 256,
+        "same_oracle_calls_per_arm": 210
+      },
+      "interventions_per_case": 3,
+      "paired_active_minus_random": {
+        "accuracy_difference": 0.14286,
+        "graph_cluster_bootstrap_ci95": [
+          -0.14286,
+          0.42857
+        ],
+        "sampling_unit": "heldout graph, retaining all seed replicates"
+      },
+      "per_arm": {
+        "active": {
+          "accuracy": 0.7428571428571429,
+          "correct_per_cpu_second": 131.63155,
+          "correct_per_oracle_experiment": 0.24762,
+          "cpu_seconds": 0.39504,
+          "exact": 52,
+          "graph_cluster_bootstrap_accuracy_ci95": [
+            0.54286,
+            0.91429
+          ],
+          "mean_edge_f1": 0.90952,
+          "oracle_experiments": 210,
+          "total": 70,
+          "uniquely_identified": 45
+        },
+        "passive": {
+          "accuracy": 0.014285714285714285,
+          "correct_per_cpu_second": 2.7076,
+          "correct_per_oracle_experiment": 0.00476,
+          "cpu_seconds": 0.36933,
+          "exact": 1,
+          "mean_edge_f1": 0.22381,
+          "oracle_experiments": 210,
+          "total": 70,
+          "uniquely_identified": 0
+        },
+        "random": {
+          "accuracy": 0.6,
+          "correct_per_cpu_second": 107.29368,
+          "correct_per_oracle_experiment": 0.2,
+          "cpu_seconds": 0.39145,
+          "exact": 42,
+          "graph_cluster_bootstrap_accuracy_ci95": [
+            0.42857,
+            0.75714
+          ],
+          "mean_edge_f1": 0.85238,
+          "oracle_experiments": 210,
+          "total": 70,
+          "uniquely_identified": 32
+        }
+      }
+    }
+  ],
+  "graph_family": "exactly 64 four-register rooted-tree copy SCMs compiled to canonical ISA",
+  "heldout_graphs": 14,
+  "limits": "Graph clustered 95% bootstrap CIs may include zero; no robust active-over-random benefit claimed in those cases.",
+  "schema": "logos.nc070.budget-sweep/1",
+  "seeds": [
+    11,
+    19,
+    29,
+    31,
+    43
+  ]
+}
