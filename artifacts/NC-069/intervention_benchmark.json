@@ -1,0 +1,102 @@
+{
+ "schema": "logos.nc069.benchmark/1",
+ "isa_version": "logos.isa/1",
+ "width": 4,
+ "signedness": "twos_complement",
+ "program_body_length": [
+  3,
+  6
+ ],
+ "branch_rate": 0.15,
+ "split_salt": "NC-069/split/v1",
+ "kinds": [
+  "none",
+  "change_input",
+  "set_register",
+  "skip_step",
+  "replace_instruction"
+ ],
+ "test_generation_seed": 1000,
+ "held_out_combinations": [
+  "change_input|Y",
+  "replace_instruction|ADD|SUB",
+  "replace_instruction|AND1|LOADI",
+  "replace_instruction|AND1|SAR",
+  "replace_instruction|AND1|SUB",
+  "replace_instruction|AND|MOV",
+  "replace_instruction|JNZ|MOV",
+  "replace_instruction|JZ|ADD",
+  "replace_instruction|JZ|SHR",
+  "replace_instruction|JZ|XOR",
+  "replace_instruction|LOADI|AND",
+  "replace_instruction|MOV|LOADI",
+  "replace_instruction|MOV|SAR",
+  "replace_instruction|OR|XOR",
+  "replace_instruction|SAR|ADD",
+  "replace_instruction|SAR|AND",
+  "replace_instruction|SAR|SHR",
+  "replace_instruction|SHL|ADD",
+  "replace_instruction|SHL|LOADI",
+  "replace_instruction|SHL|SAR",
+  "replace_instruction|SHL|SHR",
+  "replace_instruction|SHR|ADD",
+  "replace_instruction|SHR|LOADI",
+  "replace_instruction|SHR|OR",
+  "replace_instruction|SHR|SAR",
+  "replace_instruction|SHR|SUB",
+  "replace_instruction|SHR|XOR",
+  "replace_instruction|SUB|AND",
+  "replace_instruction|SUB|LOADI",
+  "replace_instruction|SUB|SAR",
+  "replace_instruction|SUB|SHR",
+  "replace_instruction|XOR|MOV",
+  "replace_instruction|XOR|SHL",
+  "set_register|ADD",
+  "set_register|JMP",
+  "set_register|MOV",
+  "skip_step|AND",
+  "skip_step|SAR",
+  "skip_step|SHR",
+  "skip_step|XOR"
+ ],
+ "buckets": {
+  "heldout_combo": {
+   "samples": 4000,
+   "outcome_changed": 2610,
+   "by_kind": {
+    "none": 0,
+    "change_input": 1023,
+    "set_register": 851,
+    "skip_step": 1215,
+    "replace_instruction": 911
+   }
+  },
+  "heldout_program": {
+   "samples": 4000,
+   "outcome_changed": 2428,
+   "by_kind": {
+    "none": 0,
+    "change_input": 1045,
+    "set_register": 1107,
+    "skip_step": 902,
+    "replace_instruction": 946
+   }
+  },
+  "factual": {
+   "samples": 4000,
+   "outcome_changed": 0,
+   "by_kind": {
+    "none": 4000,
+    "change_input": 0,
+    "set_register": 0,
+    "skip_step": 0,
+    "replace_instruction": 0
+   }
+  }
+ },
+ "test_sets_sha256": {
+  "heldout_combo": "9c7407dde563ed29eca3670d2996a716882024db46f37b8998f0d7f9aaeeccda",
+  "heldout_program": "c8e78523d3624f5484390542ba17862bcf3ee7812c0dedff4acfa7eff4144181",
+  "factual": "5d6ffcaf70c6523e578da7e7b4d4df7aa4989421b774106577609d33c95ff25d"
+ }
+}

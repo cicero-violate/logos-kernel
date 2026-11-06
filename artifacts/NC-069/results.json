@@ -1,0 +1,1157 @@
+{
+ "schema": "logos.nc069.results/1",
+ "config": {
+  "steps": 2500,
+  "batch": 128,
+  "lr": 0.002,
+  "train_samples": 30000,
+  "test_samples": 4000,
+  "seeds": [
+   11,
+   19,
+   29
+  ],
+  "out": "/workspace/experiments/logos-kernel/artifacts/NC-069"
+ },
+ "held_out_combinations": [
+  "change_input|Y",
+  "replace_instruction|ADD|SUB",
+  "replace_instruction|AND1|LOADI",
+  "replace_instruction|AND1|SAR",
+  "replace_instruction|AND1|SUB",
+  "replace_instruction|AND|MOV",
+  "replace_instruction|JNZ|MOV",
+  "replace_instruction|JZ|ADD",
+  "replace_instruction|JZ|SHR",
+  "replace_instruction|JZ|XOR",
+  "replace_instruction|LOADI|AND",
+  "replace_instruction|MOV|LOADI",
+  "replace_instruction|MOV|SAR",
+  "replace_instruction|OR|XOR",
+  "replace_instruction|SAR|ADD",
+  "replace_instruction|SAR|AND",
+  "replace_instruction|SAR|SHR",
+  "replace_instruction|SHL|ADD",
+  "replace_instruction|SHL|LOADI",
+  "replace_instruction|SHL|SAR",
+  "replace_instruction|SHL|SHR",
+  "replace_instruction|SHR|ADD",
+  "replace_instruction|SHR|LOADI",
+  "replace_instruction|SHR|OR",
+  "replace_instruction|SHR|SAR",
+  "replace_instruction|SHR|SUB",
+  "replace_instruction|SHR|XOR",
+  "replace_instruction|SUB|AND",
+  "replace_instruction|SUB|LOADI",
+  "replace_instruction|SUB|SAR",
+  "replace_instruction|SUB|SHR",
+  "replace_instruction|XOR|MOV",
+  "replace_instruction|XOR|SHL",
+  "set_register|ADD",
+  "set_register|JMP",
+  "set_register|MOV",
+  "skip_step|AND",
+  "skip_step|SAR",
+  "skip_step|SHR",
+  "skip_step|XOR"
+ ],
+ "baselines": {
+  "heldout_combo": {
+   "copy_input": {
+    "correct": 142,
+    "total": 4000,
+    "accuracy": 0.0355,
+    "ci95": [
+     0.0302,
+     0.0417
+    ],
+    "effect_correct": 42,
+    "effect_total": 2610,
+    "effect_accuracy": 0.0161,
+    "effect_ci95": [
+     0.0119,
+     0.0217
+    ]
+   },
+   "factual_oracle": {
+    "correct": 1390,
+    "total": 4000,
+    "accuracy": 0.3475,
+    "ci95": [
+     0.3329,
+     0.3624
+    ],
+    "effect_correct": 0,
+    "effect_total": 2610,
+    "effect_accuracy": 0.0,
+    "effect_ci95": [
+     -0.0,
+     0.0015
+    ]
+   },
+   "majority": {
+    "correct": 24,
+    "total": 4000,
+    "accuracy": 0.006,
+    "ci95": [
+     0.004,
+     0.0089
+    ],
+    "effect_correct": 6,
+    "effect_total": 2610,
+    "effect_accuracy": 0.0023,
+    "effect_ci95": [
+     0.0011,
+     0.005
+    ]
+   }
+  },
+  "heldout_program": {
+   "copy_input": {
+    "correct": 143,
+    "total": 4000,
+    "accuracy": 0.0357,
+    "ci95": [
+     0.0304,
+     0.042
+    ],
+    "effect_correct": 31,
+    "effect_total": 2428,
+    "effect_accuracy": 0.0128,
+    "effect_ci95": [
+     0.009,
+     0.0181
+    ]
+   },
+   "factual_oracle": {
+    "correct": 1572,
+    "total": 4000,
+    "accuracy": 0.393,
+    "ci95": [
+     0.378,
+     0.4082
+    ],
+    "effect_correct": 0,
+    "effect_total": 2428,
+    "effect_accuracy": 0.0,
+    "effect_ci95": [
+     0.0,
+     0.0016
+    ]
+   },
+   "majority": {
+    "correct": 23,
+    "total": 4000,
+    "accuracy": 0.0057,
+    "ci95": [
+     0.0038,
+     0.0086
+    ],
+    "effect_correct": 9,
+    "effect_total": 2428,
+    "effect_accuracy": 0.0037,
+    "effect_ci95": [
+     0.002,
+     0.007
+    ]
+   }
+  },
+  "factual": {
+   "copy_input": {
+    "correct": 189,
+    "total": 4000,
+    "accuracy": 0.0473,
+    "ci95": [
+     0.0411,
+     0.0543
+    ],
+    "effect_correct": 0,
+    "effect_total": 0,
+    "effect_accuracy": null,
+    "effect_ci95": [
+     null,
+     null
+    ]
+   },
+   "factual_oracle": {
+    "correct": 4000,
+    "total": 4000,
+    "accuracy": 1.0,
+    "ci95": [
+     0.999,
+     1.0
+    ],
+    "effect_correct": 0,
+    "effect_total": 0,
+    "effect_accuracy": null,
+    "effect_ci95": [
+     null,
+     null
+    ]
+   },
+   "majority": {
+    "correct": 15,
+    "total": 4000,
+    "accuracy": 0.0037,
+    "ci95": [
+     0.0023,
+     0.0062
+    ],
+    "effect_correct": 0,
+    "effect_total": 0,
+    "effect_accuracy": null,
+    "effect_ci95": [
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "runs": [
+  {
+   "arm": "interventional",
+   "seed": 11,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 680.0,
+   "wall_seconds": 220.7,
+   "final_loss": 0.9447,
+   "checkpoint": "interventional_seed11.pt",
+   "checkpoint_sha256": "2f9cc75c2594a951e3ba4c40d51a5a5b4f135c19f7026d5456f0b69ac994e5f9",
+   "cpu_seconds_per_heldout_correct": 1.051,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 647,
+     "total": 4000,
+     "accuracy": 0.1618,
+     "ci95": [
+      0.1507,
+      0.1735
+     ],
+     "effect_correct": 386,
+     "effect_total": 2610,
+     "effect_accuracy": 0.1479,
+     "effect_ci95": [
+      0.1348,
+      0.162
+     ]
+    },
+    "heldout_program": {
+     "correct": 597,
+     "total": 4000,
+     "accuracy": 0.1492,
+     "ci95": [
+      0.1385,
+      0.1606
+     ],
+     "effect_correct": 322,
+     "effect_total": 2428,
+     "effect_accuracy": 0.1326,
+     "effect_ci95": [
+      0.1197,
+      0.1467
+     ]
+    },
+    "factual": {
+     "correct": 698,
+     "total": 4000,
+     "accuracy": 0.1745,
+     "ci95": [
+      0.1631,
+      0.1866
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "passive_tokens",
+   "seed": 11,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 636.4,
+   "wall_seconds": 202.7,
+   "final_loss": 0.9863,
+   "checkpoint": "passive_tokens_seed11.pt",
+   "checkpoint_sha256": "d6bafe0353488a6c9973bd2370c98b6e28ee58f97cdc760c19e9b1eaefd4b545",
+   "cpu_seconds_per_heldout_correct": 1.8132,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 351,
+     "total": 4000,
+     "accuracy": 0.0877,
+     "ci95": [
+      0.0794,
+      0.0969
+     ],
+     "effect_correct": 59,
+     "effect_total": 2610,
+     "effect_accuracy": 0.0226,
+     "effect_ci95": [
+      0.0176,
+      0.029
+     ]
+    },
+    "heldout_program": {
+     "correct": 406,
+     "total": 4000,
+     "accuracy": 0.1015,
+     "ci95": [
+      0.0925,
+      0.1112
+     ],
+     "effect_correct": 54,
+     "effect_total": 2428,
+     "effect_accuracy": 0.0222,
+     "effect_ci95": [
+      0.0171,
+      0.0289
+     ]
+    },
+    "factual": {
+     "correct": 751,
+     "total": 4000,
+     "accuracy": 0.1878,
+     "ci95": [
+      0.1759,
+      0.2001
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "passive_rewrite",
+   "seed": 11,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 627.2,
+   "wall_seconds": 196.8,
+   "final_loss": 0.9863,
+   "checkpoint": "passive_rewrite_seed11.pt",
+   "checkpoint_sha256": "050aaddc83db2131ef43f4636723bcbbe8309ee3328a57bb381e917d6947b131",
+   "cpu_seconds_per_heldout_correct": 0.7919,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 792,
+     "total": 4000,
+     "accuracy": 0.198,
+     "ci95": [
+      0.1859,
+      0.2106
+     ],
+     "effect_correct": 494,
+     "effect_total": 2610,
+     "effect_accuracy": 0.1893,
+     "effect_ci95": [
+      0.1747,
+      0.2048
+     ]
+    },
+    "heldout_program": {
+     "correct": 760,
+     "total": 4000,
+     "accuracy": 0.19,
+     "ci95": [
+      0.1781,
+      0.2025
+     ],
+     "effect_correct": 428,
+     "effect_total": 2428,
+     "effect_accuracy": 0.1763,
+     "effect_ci95": [
+      0.1616,
+      0.1919
+     ]
+    },
+    "factual": {
+     "correct": 751,
+     "total": 4000,
+     "accuracy": 0.1878,
+     "ci95": [
+      0.1759,
+      0.2001
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "shuffled_control",
+   "seed": 11,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 749.4,
+   "wall_seconds": 249.4,
+   "final_loss": 1.4532,
+   "checkpoint": "shuffled_control_seed11.pt",
+   "checkpoint_sha256": "c13b9488902b5d80c684f09b571ac717c27a289b63c6f2702b2682bbe61f1814",
+   "cpu_seconds_per_heldout_correct": 2.4571,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 305,
+     "total": 4000,
+     "accuracy": 0.0762,
+     "ci95": [
+      0.0684,
+      0.0849
+     ],
+     "effect_correct": 57,
+     "effect_total": 2610,
+     "effect_accuracy": 0.0218,
+     "effect_ci95": [
+      0.0169,
+      0.0282
+     ]
+    },
+    "heldout_program": {
+     "correct": 331,
+     "total": 4000,
+     "accuracy": 0.0828,
+     "ci95": [
+      0.0746,
+      0.0917
+     ],
+     "effect_correct": 58,
+     "effect_total": 2428,
+     "effect_accuracy": 0.0239,
+     "effect_ci95": [
+      0.0185,
+      0.0308
+     ]
+    },
+    "factual": {
+     "correct": 637,
+     "total": 4000,
+     "accuracy": 0.1593,
+     "ci95": [
+      0.1482,
+      0.1709
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "leaked_control",
+   "seed": 11,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 834.7,
+   "wall_seconds": 289.5,
+   "final_loss": 0.001,
+   "checkpoint": "leaked_control_seed11.pt",
+   "checkpoint_sha256": "305e3ef0e18639e226302c4f8ed9ba28075f4c3a7b0709bad9e2c24686a58c32",
+   "cpu_seconds_per_heldout_correct": 0.2087,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 4000,
+     "total": 4000,
+     "accuracy": 1.0,
+     "ci95": [
+      0.999,
+      1.0
+     ],
+     "effect_correct": 2610,
+     "effect_total": 2610,
+     "effect_accuracy": 1.0,
+     "effect_ci95": [
+      0.9985,
+      1.0
+     ]
+    },
+    "heldout_program": {
+     "correct": 4000,
+     "total": 4000,
+     "accuracy": 1.0,
+     "ci95": [
+      0.999,
+      1.0
+     ],
+     "effect_correct": 2428,
+     "effect_total": 2428,
+     "effect_accuracy": 1.0,
+     "effect_ci95": [
+      0.9984,
+      1.0
+     ]
+    },
+    "factual": {
+     "correct": 4000,
+     "total": 4000,
+     "accuracy": 1.0,
+     "ci95": [
+      0.999,
+      1.0
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "interventional",
+   "seed": 19,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 1018.4,
+   "wall_seconds": 383.7,
+   "final_loss": 1.1796,
+   "checkpoint": "interventional_seed19.pt",
+   "checkpoint_sha256": "971187ad50d266f0438c316a5c843d6ce4331e8066157ec7a1d5b3c8568f4463",
+   "cpu_seconds_per_heldout_correct": 2.3464,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 434,
+     "total": 4000,
+     "accuracy": 0.1085,
+     "ci95": [
+      0.0992,
+      0.1185
+     ],
+     "effect_correct": 269,
+     "effect_total": 2610,
+     "effect_accuracy": 0.1031,
+     "effect_ci95": [
+      0.092,
+      0.1153
+     ]
+    },
+    "heldout_program": {
+     "correct": 439,
+     "total": 4000,
+     "accuracy": 0.1098,
+     "ci95": [
+      0.1004,
+      0.1198
+     ],
+     "effect_correct": 251,
+     "effect_total": 2428,
+     "effect_accuracy": 0.1034,
+     "effect_ci95": [
+      0.0919,
+      0.1161
+     ]
+    },
+    "factual": {
+     "correct": 499,
+     "total": 4000,
+     "accuracy": 0.1247,
+     "ci95": [
+      0.1149,
+      0.1354
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "passive_tokens",
+   "seed": 19,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 1095.4,
+   "wall_seconds": 436.5,
+   "final_loss": 1.2121,
+   "checkpoint": "passive_tokens_seed19.pt",
+   "checkpoint_sha256": "d3076662fdd772f949364b90258832f4d843283f1c7497d7040f24f62786531d",
+   "cpu_seconds_per_heldout_correct": 4.1808,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 262,
+     "total": 4000,
+     "accuracy": 0.0655,
+     "ci95": [
+      0.0582,
+      0.0736
+     ],
+     "effect_correct": 65,
+     "effect_total": 2610,
+     "effect_accuracy": 0.0249,
+     "effect_ci95": [
+      0.0196,
+      0.0316
+     ]
+    },
+    "heldout_program": {
+     "correct": 237,
+     "total": 4000,
+     "accuracy": 0.0592,
+     "ci95": [
+      0.0523,
+      0.067
+     ],
+     "effect_correct": 45,
+     "effect_total": 2428,
+     "effect_accuracy": 0.0185,
+     "effect_ci95": [
+      0.0139,
+      0.0247
+     ]
+    },
+    "factual": {
+     "correct": 494,
+     "total": 4000,
+     "accuracy": 0.1235,
+     "ci95": [
+      0.1137,
+      0.1341
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "passive_rewrite",
+   "seed": 19,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 1119.5,
+   "wall_seconds": 460.6,
+   "final_loss": 1.2121,
+   "checkpoint": "passive_rewrite_seed19.pt",
+   "checkpoint_sha256": "c40b6398f5602c8342b5f23364ceef0a652e55908c59f0693d27248aa6b75f4c",
+   "cpu_seconds_per_heldout_correct": 2.3179,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 483,
+     "total": 4000,
+     "accuracy": 0.1207,
+     "ci95": [
+      0.111,
+      0.1312
+     ],
+     "effect_correct": 295,
+     "effect_total": 2610,
+     "effect_accuracy": 0.113,
+     "effect_ci95": [
+      0.1014,
+      0.1257
+     ]
+    },
+    "heldout_program": {
+     "correct": 459,
+     "total": 4000,
+     "accuracy": 0.1148,
+     "ci95": [
+      0.1052,
+      0.125
+     ],
+     "effect_correct": 261,
+     "effect_total": 2428,
+     "effect_accuracy": 0.1075,
+     "effect_ci95": [
+      0.0958,
+      0.1204
+     ]
+    },
+    "factual": {
+     "correct": 494,
+     "total": 4000,
+     "accuracy": 0.1235,
+     "ci95": [
+      0.1137,
+      0.1341
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "shuffled_control",
+   "seed": 19,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 1002.2,
+   "wall_seconds": 380.8,
+   "final_loss": 1.5131,
+   "checkpoint": "shuffled_control_seed19.pt",
+   "checkpoint_sha256": "1cf2e3ab470b663f250bae9676ce1a9449f06361bb382c1bfd68b720dcdb9c62",
+   "cpu_seconds_per_heldout_correct": 4.041,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 248,
+     "total": 4000,
+     "accuracy": 0.062,
+     "ci95": [
+      0.0549,
+      0.0699
+     ],
+     "effect_correct": 71,
+     "effect_total": 2610,
+     "effect_accuracy": 0.0272,
+     "effect_ci95": [
+      0.0216,
+      0.0342
+     ]
+    },
+    "heldout_program": {
+     "correct": 274,
+     "total": 4000,
+     "accuracy": 0.0685,
+     "ci95": [
+      0.0611,
+      0.0767
+     ],
+     "effect_correct": 61,
+     "effect_total": 2428,
+     "effect_accuracy": 0.0251,
+     "effect_ci95": [
+      0.0196,
+      0.0321
+     ]
+    },
+    "factual": {
+     "correct": 411,
+     "total": 4000,
+     "accuracy": 0.1027,
+     "ci95": [
+      0.0937,
+      0.1125
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "leaked_control",
+   "seed": 19,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 900.3,
+   "wall_seconds": 316.6,
+   "final_loss": 0.001,
+   "checkpoint": "leaked_control_seed19.pt",
+   "checkpoint_sha256": "7bcb45e90b56abe3d93b9e50b1cbfa3cbcb268fbfd5c885deaa18a00f7af7008",
+   "cpu_seconds_per_heldout_correct": 0.2251,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 4000,
+     "total": 4000,
+     "accuracy": 1.0,
+     "ci95": [
+      0.999,
+      1.0
+     ],
+     "effect_correct": 2610,
+     "effect_total": 2610,
+     "effect_accuracy": 1.0,
+     "effect_ci95": [
+      0.9985,
+      1.0
+     ]
+    },
+    "heldout_program": {
+     "correct": 4000,
+     "total": 4000,
+     "accuracy": 1.0,
+     "ci95": [
+      0.999,
+      1.0
+     ],
+     "effect_correct": 2428,
+     "effect_total": 2428,
+     "effect_accuracy": 1.0,
+     "effect_ci95": [
+      0.9984,
+      1.0
+     ]
+    },
+    "factual": {
+     "correct": 4000,
+     "total": 4000,
+     "accuracy": 1.0,
+     "ci95": [
+      0.999,
+      1.0
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "interventional",
+   "seed": 29,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 954.1,
+   "wall_seconds": 339.7,
+   "final_loss": 1.111,
+   "checkpoint": "interventional_seed29.pt",
+   "checkpoint_sha256": "49f578992fd45439cd43e29ea7cb41f902bb2aaf5f64c0ab8a1de8c1fd798d5c",
+   "cpu_seconds_per_heldout_correct": 2.9908,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 319,
+     "total": 4000,
+     "accuracy": 0.0798,
+     "ci95": [
+      0.0718,
+      0.0886
+     ],
+     "effect_correct": 173,
+     "effect_total": 2610,
+     "effect_accuracy": 0.0663,
+     "effect_ci95": [
+      0.0574,
+      0.0765
+     ]
+    },
+    "heldout_program": {
+     "correct": 394,
+     "total": 4000,
+     "accuracy": 0.0985,
+     "ci95": [
+      0.0896,
+      0.1081
+     ],
+     "effect_correct": 205,
+     "effect_total": 2428,
+     "effect_accuracy": 0.0844,
+     "effect_ci95": [
+      0.074,
+      0.0962
+     ]
+    },
+    "factual": {
+     "correct": 475,
+     "total": 4000,
+     "accuracy": 0.1187,
+     "ci95": [
+      0.1091,
+      0.1291
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "passive_tokens",
+   "seed": 29,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 914.9,
+   "wall_seconds": 318.9,
+   "final_loss": 0.9745,
+   "checkpoint": "passive_tokens_seed29.pt",
+   "checkpoint_sha256": "fc043656019750e32bcda1131badf48654bc9ef04036b816a49c7f24e6fb0fa9",
+   "cpu_seconds_per_heldout_correct": 2.8151,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 325,
+     "total": 4000,
+     "accuracy": 0.0813,
+     "ci95": [
+      0.0732,
+      0.0901
+     ],
+     "effect_correct": 48,
+     "effect_total": 2610,
+     "effect_accuracy": 0.0184,
+     "effect_ci95": [
+      0.0139,
+      0.0243
+     ]
+    },
+    "heldout_program": {
+     "correct": 360,
+     "total": 4000,
+     "accuracy": 0.09,
+     "ci95": [
+      0.0815,
+      0.0993
+     ],
+     "effect_correct": 52,
+     "effect_total": 2428,
+     "effect_accuracy": 0.0214,
+     "effect_ci95": [
+      0.0164,
+      0.028
+     ]
+    },
+    "factual": {
+     "correct": 799,
+     "total": 4000,
+     "accuracy": 0.1998,
+     "ci95": [
+      0.1877,
+      0.2124
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "passive_rewrite",
+   "seed": 29,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 1126.4,
+   "wall_seconds": 459.1,
+   "final_loss": 0.9745,
+   "checkpoint": "passive_rewrite_seed29.pt",
+   "checkpoint_sha256": "f17d0bd883189803e69e2f909e3099ef42406d1d55873f43d2b08a55603011de",
+   "cpu_seconds_per_heldout_correct": 1.3975,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 806,
+     "total": 4000,
+     "accuracy": 0.2015,
+     "ci95": [
+      0.1894,
+      0.2142
+     ],
+     "effect_correct": 495,
+     "effect_total": 2610,
+     "effect_accuracy": 0.1897,
+     "effect_ci95": [
+      0.1751,
+      0.2051
+     ]
+    },
+    "heldout_program": {
+     "correct": 791,
+     "total": 4000,
+     "accuracy": 0.1978,
+     "ci95": [
+      0.1857,
+      0.2104
+     ],
+     "effect_correct": 442,
+     "effect_total": 2428,
+     "effect_accuracy": 0.182,
+     "effect_ci95": [
+      0.1672,
+      0.1979
+     ]
+    },
+    "factual": {
+     "correct": 799,
+     "total": 4000,
+     "accuracy": 0.1998,
+     "ci95": [
+      0.1877,
+      0.2124
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "shuffled_control",
+   "seed": 29,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 997.0,
+   "wall_seconds": 366.1,
+   "final_loss": 1.4552,
+   "checkpoint": "shuffled_control_seed29.pt",
+   "checkpoint_sha256": "24792f5c3dcae2aa74a49559bbfab9a43596c94cadd586904d6a15a2cc90ab98",
+   "cpu_seconds_per_heldout_correct": 3.8643,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 258,
+     "total": 4000,
+     "accuracy": 0.0645,
+     "ci95": [
+      0.0573,
+      0.0725
+     ],
+     "effect_correct": 57,
+     "effect_total": 2610,
+     "effect_accuracy": 0.0218,
+     "effect_ci95": [
+      0.0169,
+      0.0282
+     ]
+    },
+    "heldout_program": {
+     "correct": 254,
+     "total": 4000,
+     "accuracy": 0.0635,
+     "ci95": [
+      0.0564,
+      0.0715
+     ],
+     "effect_correct": 54,
+     "effect_total": 2428,
+     "effect_accuracy": 0.0222,
+     "effect_ci95": [
+      0.0171,
+      0.0289
+     ]
+    },
+    "factual": {
+     "correct": 446,
+     "total": 4000,
+     "accuracy": 0.1115,
+     "ci95": [
+      0.1021,
+      0.1216
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  {
+   "arm": "leaked_control",
+   "seed": 29,
+   "parameters": 77312,
+   "train_samples": 30000,
+   "steps": 2500,
+   "cpu_seconds": 1096.2,
+   "wall_seconds": 419.8,
+   "final_loss": 0.001,
+   "checkpoint": "leaked_control_seed29.pt",
+   "checkpoint_sha256": "4734257f9eeaaea78a55ab6656dec56494239980170d3949eecf5d538f9b7055",
+   "cpu_seconds_per_heldout_correct": 0.2741,
+   "buckets": {
+    "heldout_combo": {
+     "correct": 4000,
+     "total": 4000,
+     "accuracy": 1.0,
+     "ci95": [
+      0.999,
+      1.0
+     ],
+     "effect_correct": 2610,
+     "effect_total": 2610,
+     "effect_accuracy": 1.0,
+     "effect_ci95": [
+      0.9985,
+      1.0
+     ]
+    },
+    "heldout_program": {
+     "correct": 4000,
+     "total": 4000,
+     "accuracy": 1.0,
+     "ci95": [
+      0.999,
+      1.0
+     ],
+     "effect_correct": 2428,
+     "effect_total": 2428,
+     "effect_accuracy": 1.0,
+     "effect_ci95": [
+      0.9984,
+      1.0
+     ]
+    },
+    "factual": {
+     "correct": 4000,
+     "total": 4000,
+     "accuracy": 1.0,
+     "ci95": [
+      0.999,
+      1.0
+     ],
+     "effect_correct": 0,
+     "effect_total": 0,
+     "effect_accuracy": null,
+     "effect_ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  }
+ ]
+}

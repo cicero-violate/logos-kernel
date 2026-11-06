@@ -1,0 +1,197 @@
+{
+ "summary": {
+  "interventional": {
+   "seeds": [
+    11,
+    19,
+    29
+   ],
+   "cpu_seconds_mean": 884.2,
+   "heldout_combo": {
+    "accuracy_mean": 0.1167,
+    "accuracy_min": 0.0798,
+    "accuracy_max": 0.1618,
+    "effect_accuracy_mean": 0.1058
+   },
+   "heldout_program": {
+    "accuracy_mean": 0.1192,
+    "accuracy_min": 0.0985,
+    "accuracy_max": 0.1492,
+    "effect_accuracy_mean": 0.1068
+   },
+   "factual": {
+    "accuracy_mean": 0.1393,
+    "accuracy_min": 0.1187,
+    "accuracy_max": 0.1745,
+    "effect_accuracy_mean": null
+   }
+  },
+  "passive_tokens": {
+   "seeds": [
+    11,
+    19,
+    29
+   ],
+   "cpu_seconds_mean": 882.2,
+   "heldout_combo": {
+    "accuracy_mean": 0.0782,
+    "accuracy_min": 0.0655,
+    "accuracy_max": 0.0877,
+    "effect_accuracy_mean": 0.022
+   },
+   "heldout_program": {
+    "accuracy_mean": 0.0836,
+    "accuracy_min": 0.0592,
+    "accuracy_max": 0.1015,
+    "effect_accuracy_mean": 0.0207
+   },
+   "factual": {
+    "accuracy_mean": 0.1704,
+    "accuracy_min": 0.1235,
+    "accuracy_max": 0.1998,
+    "effect_accuracy_mean": null
+   }
+  },
+  "passive_rewrite": {
+   "seeds": [
+    11,
+    19,
+    29
+   ],
+   "cpu_seconds_mean": 957.7,
+   "heldout_combo": {
+    "accuracy_mean": 0.1734,
+    "accuracy_min": 0.1207,
+    "accuracy_max": 0.2015,
+    "effect_accuracy_mean": 0.164
+   },
+   "heldout_program": {
+    "accuracy_mean": 0.1675,
+    "accuracy_min": 0.1148,
+    "accuracy_max": 0.1978,
+    "effect_accuracy_mean": 0.1553
+   },
+   "factual": {
+    "accuracy_mean": 0.1704,
+    "accuracy_min": 0.1235,
+    "accuracy_max": 0.1998,
+    "effect_accuracy_mean": null
+   }
+  },
+  "shuffled_control": {
+   "seeds": [
+    11,
+    19,
+    29
+   ],
+   "cpu_seconds_mean": 916.2,
+   "heldout_combo": {
+    "accuracy_mean": 0.0676,
+    "accuracy_min": 0.062,
+    "accuracy_max": 0.0762,
+    "effect_accuracy_mean": 0.0236
+   },
+   "heldout_program": {
+    "accuracy_mean": 0.0716,
+    "accuracy_min": 0.0635,
+    "accuracy_max": 0.0828,
+    "effect_accuracy_mean": 0.0237
+   },
+   "factual": {
+    "accuracy_mean": 0.1245,
+    "accuracy_min": 0.1027,
+    "accuracy_max": 0.1593,
+    "effect_accuracy_mean": null
+   }
+  },
+  "leaked_control": {
+   "seeds": [
+    11,
+    19,
+    29
+   ],
+   "cpu_seconds_mean": 943.7,
+   "heldout_combo": {
+    "accuracy_mean": 1.0,
+    "accuracy_min": 1.0,
+    "accuracy_max": 1.0,
+    "effect_accuracy_mean": 1.0
+   },
+   "heldout_program": {
+    "accuracy_mean": 1.0,
+    "accuracy_min": 1.0,
+    "accuracy_max": 1.0,
+    "effect_accuracy_mean": 1.0
+   },
+   "factual": {
+    "accuracy_mean": 1.0,
+    "accuracy_min": 1.0,
+    "accuracy_max": 1.0,
+    "effect_accuracy_mean": null
+   }
+  }
+ },
+ "comparison": {
+  "metric": "mean exact four-register accuracy where the intervention changed the outcome, on unseen combinations",
+  "interventional": 0.1058,
+  "passive_tokens": 0.022,
+  "passive_rewrite": 0.164,
+  "shuffled_control": 0.0236,
+  "leaked_control": 1.0,
+  "best_fixed_baseline": 0.0161,
+  "beats_passive_tokens": true,
+  "beats_passive_rewrite": false,
+  "beats_shuffled_control": true,
+  "leak_control_detects_leakage": true
+ },
+ "baselines_heldout_combo": {
+  "copy_input": {
+   "correct": 142,
+   "total": 4000,
+   "accuracy": 0.0355,
+   "ci95": [
+    0.0302,
+    0.0417
+   ],
+   "effect_correct": 42,
+   "effect_total": 2610,
+   "effect_accuracy": 0.0161,
+   "effect_ci95": [
+    0.0119,
+    0.0217
+   ]
+  },
+  "factual_oracle": {
+   "correct": 1390,
+   "total": 4000,
+   "accuracy": 0.3475,
+   "ci95": [
+    0.3329,
+    0.3624
+   ],
+   "effect_correct": 0,
+   "effect_total": 2610,
+   "effect_accuracy": 0.0,
+   "effect_ci95": [
+    -0.0,
+    0.0015
+   ]
+  },
+  "majority": {
+   "correct": 24,
+   "total": 4000,
+   "accuracy": 0.006,
+   "ci95": [
+    0.004,
+    0.0089
+   ],
+   "effect_correct": 6,
+   "effect_total": 2610,
+   "effect_accuracy": 0.0023,
+   "effect_ci95": [
+    0.0011,
+    0.005
+   ]
+  }
+ }
+}
