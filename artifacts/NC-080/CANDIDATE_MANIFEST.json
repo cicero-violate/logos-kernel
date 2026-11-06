@@ -1,0 +1,42 @@
+{
+ "schema_version": 1,
+ "task": "NC-080",
+ "owner": "claude-code-turn-7e13619f8cc941dd8381206adde6e95e",
+ "source_sha256": {
+  "neural_quotient.py": "6cb194f4cd8bc7658eb83e0b6f4cb7fd08dfaa5be8603d12a291cddb76285421",
+  "test_neural_quotient.py": "61fc866d066b8de9c636bd08810fa278c98813483cf09a3b004c81b372982617",
+  "README.md": "e021b3eb174dff2b10549d6e220471ab88345f0190a389b41c21e056d2eea197"
+ },
+ "evidence_sha256": {
+  "neural_quotient_results.json": "c91c2c6887e57fd48435ffa20bcf71892c1df26539405315c3580a53d4723723",
+  "library_snapshot.jsonl": "5d747eb32ca1254d9486c53a27dbe3727861fc6c98a5fd6b7b4f84ffce970387"
+ },
+ "checkpoint_sha256": {
+  "11": "8552f68d115b804398e6442fba4fb7e7fa9419847af55086cda13d300342087c",
+  "19": "a10d2b37e13e1be52c2aaccf34fa68d23c2549b915e6d95d921d6e7176ce8536",
+  "29": "7abd17b1436d03b18dc6525e42333895001eae7fd92f25762f0224c2c4ea6417"
+ },
+ "review_output_path": "artifacts/NC-080/independent_verification.json",
+ "reproduction": [
+  "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-080/test_neural_quotient.py",
+  "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-080/neural_quotient.py --library artifacts/NC-080/library_snapshot.jsonl --out /tmp/nc080-replay"
+ ],
+ "negative_controls": [
+  "permuted meaning layer",
+  "untrained network",
+  "near-equal functions kept in separate classes"
+ ],
+ "dependencies": [
+  "Python 3",
+  "NumPy",
+  "PyTorch CPU"
+ ],
+ "limitations": [
+  "Once the local table is exact, correct composition follows from it, so concept accuracy mainly confirms the wiring and is not separate generalization evidence.",
+  "The host iterates bits, routes carries and wires concepts. Concepts came from verified search; the network invented none of them.",
+  "Execution uses a lookup of the network's own outputs on all 224 possible inputs; a test confirms it equals running the network directly.",
+  "Only one LA-015 snapshot, from seed 11, taken while its campaign was still running; the snapshot has had no independent LA-015 review.",
+  "No neural proposer yet, so this does not improve search, and the exact quotient removed only about 5% of subexpressions here.",
+  "8-bit domain only."
+ ]
+}

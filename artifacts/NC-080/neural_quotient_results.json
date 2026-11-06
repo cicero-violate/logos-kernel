@@ -1,0 +1,144 @@
+{
+ "schema": "logos.nc080.results/1",
+ "library_sha256": "5d747eb32ca1254d9486c53a27dbe3727861fc6c98a5fd6b7b4f84ffce970387",
+ "library_solutions": 426,
+ "distinct_subexpressions": 193,
+ "exact_quotient_classes": 184,
+ "largest_canonical_size": 174,
+ "approximate_signature": {
+  "exact_classes": 184,
+  "probe_signature_classes": 184
+ },
+ "neural_scope": "The network computes each bit from local inputs. The host iterates bits, routes carries, and wires concepts.",
+ "seeds": {
+  "11": {
+   "stages": [
+    {
+     "operations": [
+      "ADD"
+     ],
+     "local_accuracy": 1.0
+    },
+    {
+     "operations": [
+      "ADD",
+      "SUB",
+      "SHL",
+      "SHR"
+     ],
+     "local_accuracy": 1.0
+    },
+    {
+     "operations": [
+      "ADD",
+      "SUB",
+      "AND",
+      "OR",
+      "XOR",
+      "SHL",
+      "SHR"
+     ],
+     "local_accuracy": 1.0
+    }
+   ],
+   "local_truth_rows": 224,
+   "final_local_accuracy": 1.0,
+   "concepts_tested": 184,
+   "concepts_exact_on_all_pairs": 184,
+   "wrong_pairs_total": 0,
+   "failures": [],
+   "solutions_checked": 213,
+   "solutions_exact_on_all_pairs": 213,
+   "permuted_meaning_exact": 0,
+   "untrained_exact": 0,
+   "controls_tested": 40,
+   "checkpoint_sha256": "8552f68d115b804398e6442fba4fb7e7fa9419847af55086cda13d300342087c"
+  },
+  "19": {
+   "stages": [
+    {
+     "operations": [
+      "ADD"
+     ],
+     "local_accuracy": 1.0
+    },
+    {
+     "operations": [
+      "ADD",
+      "SUB",
+      "SHL",
+      "SHR"
+     ],
+     "local_accuracy": 1.0
+    },
+    {
+     "operations": [
+      "ADD",
+      "SUB",
+      "AND",
+      "OR",
+      "XOR",
+      "SHL",
+      "SHR"
+     ],
+     "local_accuracy": 1.0
+    }
+   ],
+   "local_truth_rows": 224,
+   "final_local_accuracy": 1.0,
+   "concepts_tested": 184,
+   "concepts_exact_on_all_pairs": 184,
+   "wrong_pairs_total": 0,
+   "failures": [],
+   "solutions_checked": 213,
+   "solutions_exact_on_all_pairs": 213,
+   "permuted_meaning_exact": 0,
+   "untrained_exact": 0,
+   "controls_tested": 40,
+   "checkpoint_sha256": "a10d2b37e13e1be52c2aaccf34fa68d23c2549b915e6d95d921d6e7176ce8536"
+  },
+  "29": {
+   "stages": [
+    {
+     "operations": [
+      "ADD"
+     ],
+     "local_accuracy": 1.0
+    },
+    {
+     "operations": [
+      "ADD",
+      "SUB",
+      "SHL",
+      "SHR"
+     ],
+     "local_accuracy": 1.0
+    },
+    {
+     "operations": [
+      "ADD",
+      "SUB",
+      "AND",
+      "OR",
+      "XOR",
+      "SHL",
+      "SHR"
+     ],
+     "local_accuracy": 1.0
+    }
+   ],
+   "local_truth_rows": 224,
+   "final_local_accuracy": 1.0,
+   "concepts_tested": 184,
+   "concepts_exact_on_all_pairs": 184,
+   "wrong_pairs_total": 0,
+   "failures": [],
+   "solutions_checked": 213,
+   "solutions_exact_on_all_pairs": 213,
+   "permuted_meaning_exact": 0,
+   "untrained_exact": 0,
+   "controls_tested": 40,
+   "checkpoint_sha256": "7abd17b1436d03b18dc6525e42333895001eae7fd92f25762f0224c2c4ea6417"
+  }
+ }
+}
