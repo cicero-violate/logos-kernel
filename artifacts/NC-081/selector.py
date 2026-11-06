@@ -18,11 +18,25 @@ import torch
 from torch import nn
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[2]
-LIB = ROOT / "logos-autonomy" / "discovery" / "library.py"
-_spec = importlib.util.spec_from_file_location("la015_library", LIB)
-lib = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(lib)  # Read-only import of pinned logos-autonomy code; nothing is written there.
+LIB = HERE / "la015_library_pinned.py"
+LIB_SHA256 = "0c876a9e8d90e9401323b0068a66acc9b6d1e9f3051f22a771fe9d2a2d098b8a"
+LIB_SOURCE = "logos-autonomy@b4a8d1b21e034f05372e73e28cfa34ea4ca380f6:discovery/library.py"
+TOLERANCE = 0.10  # Fixed before the run: the baseline's measured CPU must land within 10% of the model's total.
+CALIBRATION_TRIES = 5
+
+
+def load_pinned(path, sha256):
+    """Refuse to run on anything but the exact pinned library, before any training starts."""
+    found = hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    if found != sha256:
+        raise SystemExit(f"pinned library mismatch: expected {sha256}, found {found}")
+    spec = importlib.util.spec_from_file_location("la015_library", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+lib = load_pinned(LIB, LIB_SHA256)
 
 EXAMPLES = 16
 BITS = 8
@@ -154,6 +168,18 @@ def solve(goal, seeds, budget, xs, ys):
     return (expression is not None and lib.verify(expression, goal)), spent
 
 
+def calibrate(run, target_cpu, start_budget, tolerance=TOLERANCE, tries=CALIBRATION_TRIES):
+    """Find a budget whose measured CPU is within tolerance of the target. Every attempt is kept, and matched says if one landed."""
+    budget, attempts = start_budget, []
+    for _ in range(tries):
+        result = run(budget)
+        attempts.append({"budget_per_goal": budget, "solved": result["solved"], "cpu_seconds": result["cpu_seconds"]})
+        if abs(result["cpu_seconds"] - target_cpu) <= tolerance * target_cpu:
+            return {**result, "budget_per_goal": budget, "target_cpu_seconds": round(target_cpu, 2), "tolerance": tolerance, "matched": True, "attempts": attempts}
+        budget = max(1, int(budget * target_cpu / max(result["cpu_seconds"], 1e-6)))
+    return {**result, "budget_per_goal": attempts[-1]["budget_per_goal"], "target_cpu_seconds": round(target_cpu, 2), "tolerance": tolerance, "matched": False, "attempts": attempts}
+
+
 def goal_features(goal):
     return features([lib.goal_value(goal, int(x), int(y)) for x, y in zip(*XS16)])
 
@@ -174,13 +200,11 @@ def run_seed(seed, path, a):
         scores = model(torch.tensor(np.stack([goal_features(g) for g in goals]))).numpy()
     inference = time.process_time() - started
     picks = lambda row: [concepts[i] for i in np.argsort(-row, kind="stable")[:a.top_k]]
-    # Candidates per CPU second for all-concepts, used to convert training CPU into extra search budget.
     arms = {"all_concepts": lambda i: (concepts, a.budget), "model": lambda i: (picks(scores[i]), a.budget),
             "random_pick": lambda i: (rng.sample(concepts, min(a.top_k, len(concepts))), a.budget),
             "frequent": lambda i: (frequent, a.budget), "other_goal_examples": lambda i: (picks(scores[(i + 1) % len(goals)]), a.budget),
             "no_library": lambda i: ([], a.budget)}
     out = {}
-    rate = None
     for arm, choose in arms.items():
         began = time.process_time()
         solved, used = [], 0
@@ -192,20 +216,21 @@ def run_seed(seed, path, a):
                 solved.append(i)
         cpu = time.process_time() - began
         out[arm] = {"solved": len(solved), "solved_goals": solved, "candidates": used, "cpu_seconds": round(cpu, 2)}
-        if arm == "all_concepts":
-            rate = max(1.0, used / max(cpu, 1e-6))
         print(seed, arm, len(solved), "of", len(goals), "cpu", round(cpu, 1), flush=True)
-    # Equal total CPU: all concepts also get the model's training and inference time, as extra candidates per goal.
-    extra = int(rate * (info["train_cpu_seconds"] + inference) / len(goals))
-    began = time.process_time()
-    solved, used = [], 0
-    for i, goal in enumerate(goals):
-        ok, spent = solve(goal, concepts, a.budget + extra, xs, ys)
-        used += spent
-        if ok:
-            solved.append(i)
-    out["all_concepts_equal_total_cpu"] = {"solved": len(solved), "solved_goals": solved, "candidates": used, "cpu_seconds": round(time.process_time() - began, 2), "budget_per_goal": a.budget + extra}
-    print(seed, "all_concepts_equal_total_cpu", len(solved), "of", len(goals), "budget", a.budget + extra, flush=True)
+    # Equal total CPU: all concepts get the model's training, inference and search time, confirmed by measuring the arm itself.
+    target = info["train_cpu_seconds"] + inference + out["model"]["cpu_seconds"]
+    def baseline(budget):
+        began = time.process_time()
+        solved, used = [], 0
+        for i, goal in enumerate(goals):
+            ok, spent = solve(goal, concepts, budget, xs, ys)
+            used += spent
+            if ok:
+                solved.append(i)
+        return {"solved": len(solved), "solved_goals": solved, "candidates": used, "cpu_seconds": round(time.process_time() - began, 2)}
+    start = max(a.budget, int(a.budget * target / max(out["all_concepts"]["cpu_seconds"], 1e-6)))
+    out["all_concepts_equal_total_cpu"] = calibrate(baseline, target, start)
+    print(seed, "all_concepts_equal_total_cpu", out["all_concepts_equal_total_cpu"]["solved"], "of", len(goals), "matched", out["all_concepts_equal_total_cpu"]["matched"], out["all_concepts_equal_total_cpu"]["attempts"], flush=True)
     torch.save({"state": model.state_dict(), "seed": seed}, a.out / f"selector_seed{seed}.pt")
     return {"library_sha256": hashlib.sha256(Path(path).read_bytes()).hexdigest(), "library_head": log.head, "concepts": len(concepts), "exam_goals": len(goals),
             "exam_sha256": hashlib.sha256(json.dumps(goals).encode()).hexdigest(), "training": info, "inference_cpu_seconds": round(inference, 4),
@@ -225,7 +250,7 @@ def main():
     torch.set_num_threads(1)
     a.out.mkdir(parents=True, exist_ok=True)
     report = {"schema": "logos.nc081.results/1", "config": {k: str(v) if isinstance(v, Path) else v for k, v in vars(a).items() if k != "libraries"},
-              "la015_library_py_sha256": hashlib.sha256(LIB.read_bytes()).hexdigest(), "seeds": {}}
+              "la015_library_py_sha256": hashlib.sha256(LIB.read_bytes()).hexdigest(), "la015_library_source": LIB_SOURCE, "seeds": {}}
     for item in a.libraries:
         seed, path = item.split("=", 1)
         snapshot = a.out / f"library_seed{seed}.jsonl"

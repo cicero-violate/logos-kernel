@@ -1,7 +1,9 @@
 """Run: OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-081/test_selector.py"""
 import random
 import sys
+import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 import numpy as np
@@ -14,6 +16,36 @@ CONCEPTS = [("SHL", ("X",)), ("ADD", ("X",), ("Y",)), ("SUB", ("SHL", ("X",)), (
 
 
 class SelectorTests(unittest.TestCase):
+    def test_a_changed_library_is_refused_before_training(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            changed = Path(tmp) / "library.py"
+            changed.write_bytes(sel.LIB.read_bytes() + b"\n")
+            with self.assertRaisesRegex(SystemExit, "pinned library mismatch"):
+                sel.load_pinned(changed, sel.LIB_SHA256)
+        self.assertEqual(sel.load_pinned(sel.LIB, sel.LIB_SHA256).MASK, lib.MASK)
+
+    def test_second_evaluator_covers_the_whole_domain(self):
+        calls, real = [], lib.run_stack
+        def count(code, x, y):
+            calls.append(1)
+            return real(code, x, y)
+        with mock.patch.object(lib, "run_stack", count):
+            self.assertTrue(lib.verify(("ADD", ("X",), ("Y",)), ("linear", 1, 1, 1)))
+        self.assertEqual(len(calls), 65536)
+
+    def test_calibration_reports_measured_cpu_and_refuses_a_false_match(self):
+        seen = []
+        def linear(budget):
+            seen.append(budget)
+            return {"solved": 1, "cpu_seconds": budget / 100}
+        good = sel.calibrate(linear, 100.0, 5000)
+        self.assertTrue(good["matched"])
+        self.assertLessEqual(abs(good["cpu_seconds"] - 100), 10)
+        self.assertEqual(len(seen), 2)
+        stuck = sel.calibrate(lambda budget: {"solved": 0, "cpu_seconds": 300.0}, 100.0, 5000)
+        self.assertFalse(stuck["matched"])
+        self.assertEqual(len(stuck["attempts"]), sel.CALIBRATION_TRIES)
+
     def test_function_key_matches_the_library_goal_key(self):
         rng = random.Random(1)
         for _ in range(40):
