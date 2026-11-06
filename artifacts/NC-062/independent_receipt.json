@@ -1,0 +1,82 @@
+{
+  "acceptance": {
+    "criterion_1": "PASS: 54 discovery examples / 9 generation-seed slots; 6 accepted already-known operator programs and 0 new programs. Correct NO_DISCOVERY declared, 48 failed training goals and 90 exact counterexamples recorded.",
+    "criterion_2": "PASS: independently replayed nine clean 10-goal sealed evals from frozen checkpoints and no-training baseline using actual NC-028 sandbox; independent training from g0 through g3 over 3 seeds reproduced all 12 model hashes and 72 updates. Same goal set and one proposal each, process CPU candidate 42.613s, control 40.545s. Matched budget within NC-061 tolerance.",
+    "criterion_3": "PASS: library removal/no-training arm scored 0/90 alongside candidate 0/90. No causal gain attributed to library; four initial concepts remain unchanged over ten versions."
+  },
+  "candidate_revision": "694405639446bce328ad39a7e856989a589b0079",
+  "candidate_sha256": "cbd0bd49d39c7fe90ac1dac4f1a476016e6c9a56b83b779a403cb558f17f3187",
+  "evidence": {
+    "checkpoint_replay_count": 12,
+    "clean_eval_sha256": "03148fc3b3a267a1156580b61073f2a98312ed7a6f4f2c5cdde39915a96fd6a5",
+    "full_v2_ablation_solves": 0,
+    "full_v2_candidate_solves": 0,
+    "gradient_updates_reproduced": 72,
+    "manifest_sha256": "cbd0bd49d39c7fe90ac1dac4f1a476016e6c9a56b83b779a403cb558f17f3187",
+    "new_discoveries": 0,
+    "original_contaminated_sha256": "2f4efda78c2aa3a85ca6a25acd4b039a1c20a232876961a51b2d1242d4e88288",
+    "original_v1_contaminated_scores": 8,
+    "sealed_goal_count": 90,
+    "secondary_diagnostic_controls": 36,
+    "source_dependencies": {
+      "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "artifacts/NC-001/canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+      "artifacts/NC-009/operator_promotions.jsonl": "64644db1894cf369c7769d1076ffb177dba6b8aada7e20cb153d98d906c52db9",
+      "artifacts/NC-009/promote.py": "15d2f80c7ddac13dc0fa6fa6830827d7dec113754aa0e54b339a4a85d4036600",
+      "artifacts/NC-028/isolation.py": "cbdaa657434e6f190944d5694b40f0e21bb3954b81a311fd2c178d591b596fda",
+      "artifacts/NC-061/scoreboard.py": "34fcdecd35e05547e7ea562882426bd54a5f39c828cbb8f3a32275e3511412fe"
+    }
+  },
+  "limitations": [
+    "Original v1 scoreboard was contaminated in 8 of 9 rows; all three generation comparisons CONTAMINATED and excluded. V2 is prospective mitigation after candidate freeze, not a replacement for original preregistration.",
+    "Known 4-class operator classifier is not novel operator invention; no new program was registered, no gradient CEGIS or growing library.",
+    "Retention=1.0 is immutable catalog preservation, not measured neural old-skill retention.",
+    "Sealed commitments are local and do not provide independent external timing, remote attestation, or separate-UID secrecy.",
+    "Primary CPU measurements are sandbox child-process usage and subject to host load; fixed/random/symbolic host baselines are not equal CPU cost and are diagnostic only.",
+    "No champion promotion, globally changed registry, external API, or claim of AGI."
+  ],
+  "negative_controls": [
+    "Independent exclusion of four training-library function hashes and six prior training-only discovery keys, first 10 selected from prospectively committed 40-goal pool per seed/generation",
+    "Verified seed/generator/nonce/threshold commitment tamper refusal in replay",
+    "Same frozen models and same sealed goals for both one-proposal primary arms",
+    "All 36 secondary fixed/random/symbolic control records labeled diagnostic and CPU-unmatched",
+    "Verified 48 failed training goals and unchanged hash-linked 4-concept library",
+    "Unit-test rejection of unknown model tokens, sample-only false positives, invalid model rankings, and registry hash-chain tampering"
+  ],
+  "owner": "turn-cb84af5cc3054e79af7776e1ac0af3c8",
+  "proof_scope": "PASS of a bounded negative-result 4-bit known-template experiment only. Reproduced three generations across seeds 11, 19, 29 from all 12 pinned candidate checkpoints; exact independent CPU SGD replay matched 12/12 model state hashes and 72 gradient steps. Replayed all 18 frozen CPU sandbox inference arms across nine clean sealed evaluations and independently recomputed NC-061 exact scores and decisions: 0/90 candidate and 0/90 no-training baseline, zero training overlap, three NO_IMPROVEMENT verdicts, NO_COMPOUNDING. This does not prove new mathematics, novel program synthesis, generalization, a self-improving learner, AGI, or superiority to unmatched controls.",
+  "schema": "logos.nc062.independent-review/1",
+  "task": "NC-062",
+  "tests": [
+    {
+      "command": "python dag.py validate",
+      "status": "PASS (888 nodes, 1072 events before reviewer receipt)"
+    },
+    {
+      "command": "python -m unittest -q test_dag",
+      "status": "PASS 19/19"
+    },
+    {
+      "command": "python -m unittest -q test_pull",
+      "status": "PASS 20/20"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s artifacts/NC-062 -p 'test_loop.py' -q",
+      "status": "PASS 10/10"
+    },
+    {
+      "command": "independent SHA256 source/checkpoint/evidence/dependency and pinned Git revision audit",
+      "status": "PASS 10 source, 12 checkpoint, 15 evidence, 6 dependency, and manifest SHA"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -c \"import sys;sys.path.insert(0,'artifacts/NC-062');import audit_clean_eval;print(audit_clean_eval.verify(full=True))\"",
+      "status": "PASS 9 scorer replays, 18 sandbox inference arms, all sealed revealed commitments, all goals disjoint, official scoreboard verdicts"
+    },
+    {
+      "command": "independent r.spawn(init/train) reproduction from frozen parent model states for seeds 11,19,29 and generations 0-3",
+      "status": "PASS 12/12 model sha256, 72 SGD updates; generated no files"
+    }
+  ],
+  "verdict": "PASS",
+  "verifier": "turn-f23dd361d26c4e39a165894617db676d"
+}
