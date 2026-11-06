@@ -6,7 +6,7 @@
   "controller_architecture": "goal+position+previous action embeddings -> MLP next token",
   "controller_input_scope": "known formal macro goal ID; no operand inputs; no unseen goal families",
   "data_dependency_dags_separate_from_runtime_cfg": true,
-  "elapsed_training_and_eval_seconds": 2.887248453043867,
+  "elapsed_training_and_eval_seconds": 2.3906454340321943,
   "frozen_original_neural_weights_unchanged": true,
   "gradient_updates_per_seed": 350,
   "host_loop": {
@@ -457,7 +457,7 @@
     "rehearsal:seed29:XOR:v1": 4
   },
   "source_sha256": {
-    "compose.py": "f82f30931ae5422884b9f6099d8aa84b0438c083080516fea4bd67415fe7c315",
+    "compose.py": "3fb777f2cb8e1ab8dee5fff3f78893d5515f679fdcc8742a7bdf15a1b7e66e00",
     "nc001_canonical_isa": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
     "nc005_checkpoint_manifest": "b721b1a6c3a7d39fc02d0b3c787c4f559a8ccb94d4af249df57c7a0f4afe4624",
     "nc005_curriculum": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d",
@@ -467,13 +467,13 @@
   "task": "NC-007",
   "total_train_examples_per_seed": 30,
   "trace_entries": 36,
-  "trace_file_sha256": "b3f2a2e2efa9a82e0ee719748b601a462345f2ab926e2df673287ac92f9a1db5",
+  "trace_file_sha256": "ea68cd98bebb5eefa19b32f5ab8a480bff5810529d32bd32ae7b7d6c95a0fc9b",
   "training": [
     {
       "after_training_exact_macros": 11,
       "before_training_exact_macros": 0,
       "checkpoint_path": "artifacts/NC-007/checkpoints/controller_seed11.pt",
-      "checkpoint_sha256": "7f9eabc6b59dd6814cae84fc8ed5e93f4052929858cb1a81e49e7e49b7c8fd45",
+      "checkpoint_sha256": "6ec7dfdbb7fe47c05d1eb470d915d0e963de731009bc317ab87e0ffad27464d6",
       "frozen_neural": {
         "checkpoint_path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage06.pt",
         "checkpoint_sha256": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
@@ -486,14 +486,14 @@
       "supervision_rows": 30,
       "teacher_forced_final_loss": 1.169434926850954e-05,
       "total_macros": 11,
-      "training_seconds": 0.4940057590138167,
+      "training_seconds": 0.3430673369439319,
       "training_updates": 350
     },
     {
       "after_training_exact_macros": 11,
       "before_training_exact_macros": 0,
       "checkpoint_path": "artifacts/NC-007/checkpoints/controller_seed19.pt",
-      "checkpoint_sha256": "5a00aca8ddebbc58c62460bcdd500bd6cdf490188087f16ee234d6f05246f454",
+      "checkpoint_sha256": "5bb0a9b523f618972153e83eea38221eaa745f233aa1c529c24d35653a6fb92f",
       "frozen_neural": {
         "checkpoint_path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage06.pt",
         "checkpoint_sha256": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
@@ -506,14 +506,14 @@
       "supervision_rows": 30,
       "teacher_forced_final_loss": 1.4221525816537905e-05,
       "total_macros": 11,
-      "training_seconds": 0.42328610201366246,
+      "training_seconds": 0.34342201898107305,
       "training_updates": 350
     },
     {
       "after_training_exact_macros": 11,
       "before_training_exact_macros": 0,
       "checkpoint_path": "artifacts/NC-007/checkpoints/controller_seed29.pt",
-      "checkpoint_sha256": "c87d07f4955e3fbe0f2f7afdef9eafdfc6ece58d9821b8c113a86436ec5abe2c",
+      "checkpoint_sha256": "92da66944c2353dae90e0381160e89646c9f0ad6052f4c66f8c3e8014feedc74",
       "frozen_neural": {
         "checkpoint_path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage06.pt",
         "checkpoint_sha256": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
@@ -526,7 +526,7 @@
       "supervision_rows": 30,
       "teacher_forced_final_loss": 1.6303676602547057e-05,
       "total_macros": 11,
-      "training_seconds": 0.4191903800237924,
+      "training_seconds": 0.3632372369756922,
       "training_updates": 350
     }
   ],

@@ -1,6 +1,7 @@
 """Dependencies: Python3, NumPy, PyTorch, compose.py, NC-001, frozen NC-005
 checkpoints, NC-006 library, NC-007 controller checkpoints and trace JSONL."""
 import collections
+import copy
 import json
 import sys
 import unittest
@@ -78,6 +79,42 @@ class CompositionTests(unittest.TestCase):
         wrong,_,_=c.execute_neural(model,("AND1_X","HALT"),pairs,registry)
         self.assertNotEqual(wrong,pred)
         self.assertEqual(len(refs),1)
+    def test_tampered_primitive_provenance_rejected(self):
+        model,registry,_=c.load_frozen(11)
+        token="ADD_XX"
+        variants={
+          "wrong_checkpoint_sha":("checkpoint_sha256","0"*64),
+          "new_only_arm":("arm","new_only"),
+          "symbolic_fallback_mode":("implementation_mode","symbolic"),
+          "wrong_opcode":("operation","XOR"),
+          "wrong_seed":("seed",19),
+          "wrong_source_id":("id","forged-neural-source")
+        }
+        for name,(field,value) in variants.items():
+            with self.subTest(mutation=name):
+                forged=copy.deepcopy(registry)
+                forged[token][field]=value
+                with self.assertRaisesRegex(ValueError,"NC007_UNVERIFIED_PRIMITIVE_PROVENANCE"):
+                    c.execute_neural(model,(token,"HALT"),[(9,4)],forged)
+        naked=c.frozen.ExpandedISA().eval()
+        with self.assertRaisesRegex(ValueError,"NC007_MODEL_WITHOUT_VERIFIED_PROVENANCE"):
+            c.execute_neural(naked,(token,"HALT"),[(9,4)],registry)
+    def test_tampering_later_step_fails_before_any_compute(self):
+        model,registry,_=c.load_frozen(11)
+        forged=copy.deepcopy(registry)
+        forged["ADD_RX"]["operation"]="OR"
+        original=c.frozen.step_numeric
+        calls=[]
+        def monitor(*args,**kwargs):
+            calls.append(True)
+            return original(*args,**kwargs)
+        c.frozen.step_numeric=monitor
+        try:
+            with self.assertRaisesRegex(ValueError,"NC007_UNVERIFIED_PRIMITIVE_PROVENANCE"):
+                c.execute_neural(model,("ADD_XX","ADD_RX","HALT"),[(3,9)],forged)
+            self.assertEqual(calls,[])
+        finally:
+            c.frozen.step_numeric=original
     def test_invalid_program_fails_closed(self):
         model,registry,_=c.load_frozen(11)
         for program in ((),("ADD_XX",),("HALT",),("BAD","HALT"),

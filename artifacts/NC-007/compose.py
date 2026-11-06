@@ -168,6 +168,14 @@ def load_frozen(seed):
     model=frozen.ExpandedISA().cpu().eval()
     model.load_state_dict(payload["model"],strict=True)
     model.requires_grad_(False)
+    # Bind the exact accepted source records to the verified loaded model,
+    # independently of the mutable mapping handed to the executor.
+    # This is a provenance check, not authentication against malicious Python
+    # code with write access to model internals.
+    model._nc007_provenance={
+        "seed":seed,"checkpoint_sha256":ck["sha256"],
+        "accepted_library_sha256":file_sha(LIB_PATH),
+        "registered_actions":json.loads(canonical(registry))}
     return model,registry,{"checkpoint_path":str(path.relative_to(ROOT)),
                             "checkpoint_sha256":ck["sha256"],
                             "library_sha256":file_sha(LIB_PATH),
@@ -246,13 +254,31 @@ def execute_neural(frozen_model,program,pairs,registry):
     """Model-generated choices affect computation, never oracle replacement."""
     if not program or len(program)<2 or program[-1]!="HALT" or "HALT" in program[:-1]:
         raise ValueError("unterminated/malformed controller-generated program")
+    trust=getattr(frozen_model,"_nc007_provenance",None)
+    if type(trust) is not dict or type(trust.get("registered_actions")) is not dict:
+        raise ValueError("NC007_MODEL_WITHOUT_VERIFIED_PROVENANCE")
+    if file_sha(LIB_PATH)!=trust["accepted_library_sha256"]:
+        raise ValueError("NC007_ACCEPTED_LIBRARY_CHANGED")
+    # Fail closed before any neural execution: one corrupted entry must reject
+    # the entire candidate program, never execute and report forged identity.
+    for token in program[:-1]:
+        if token not in ACTIONS or token not in registry:
+            raise ValueError("unregistered, non-neural or unknown token")
+        op,a,b=ACTIONS[token]
+        entry=registry[token]
+        expected=trust["registered_actions"].get(token)
+        if type(entry) is not dict or entry!=expected or (
+                entry.get("operation")!=op or
+                entry.get("seed")!=trust["seed"] or
+                entry.get("arm")!="rehearsal" or
+                entry.get("implementation_mode")!="neural_inference" or
+                entry.get("checkpoint_sha256")!=trust["checkpoint_sha256"]):
+            raise ValueError("NC007_UNVERIFIED_PRIMITIVE_PROVENANCE")
     state=bit_constants(pairs)
     source_refs=[]
     t0=time.perf_counter_ns()
     with torch.no_grad():
         for token in program[:-1]:
-            if token not in ACTIONS or token not in registry:
-                raise ValueError("unregistered, non-neural or unknown token")
             op,a,b=ACTIONS[token]
             x=state[a];y=state[b] if b is not None else None
             result,_=frozen.step_numeric(frozen_model,op,x,y)

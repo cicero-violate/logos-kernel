@@ -58,3 +58,10 @@ checkpoint/trace output. Do NOT rerun after independent verification.
 Bounded 16-bit operand samples are not exhaustive 2^32 operand-pair proof.
 This does not demonstrate learned PC/HALT, runtime loops, discovered programs,
 general reasoning or new-language competence. Do not promote the champion.
+
+Provenance fail-closed gate: each selected action is compared against an
+independently copied, SHA-256-verified accepted library binding attached to
+the exact frozen model at load. Tampered checkpoint hash, seed, arm, mode,
+source ID or opcode rejects the entire program before neural execution.
+This is software integrity for this trusted local runtime, not a substitute
+for cryptographic signature verification or hostile-process isolation.
