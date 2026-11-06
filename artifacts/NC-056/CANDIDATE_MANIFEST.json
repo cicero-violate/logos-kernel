@@ -1,0 +1,165 @@
+{
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s artifacts/NC-056 -p \"test_*.py\" -v",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-056/evaluate.py --replay-seeds artifacts/NC-056/heldout_law_recovery.json --output artifacts/NC-056/reviewer_replay.json",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-056/evaluate.py --output artifacts/NC-056/reviewer_fresh.json"
+  ],
+  "declared_review_output": "artifacts/NC-056/independent_verification.json",
+  "dependencies": [
+    "Python stdlib",
+    "Linux bubblewrap",
+    "Git; no GPU, network, external model API or upstream writes"
+  ],
+  "known_failures": {
+    "aliasing": {
+      "bounded_law_recovery": 0,
+      "budget_exhaustions": 3,
+      "candidate_checks": 745,
+      "cases": 6,
+      "cpu_seconds": 0.4050227440000001,
+      "forecast_pass": 0,
+      "maximum_error": 38.0
+    },
+    "noisy_polynomial": {
+      "bounded_law_recovery": 0,
+      "budget_exhaustions": 0,
+      "candidate_checks": 69,
+      "cases": 6,
+      "cpu_seconds": 0.04302823899999997,
+      "forecast_pass": 0,
+      "maximum_error": 14368464.001
+    },
+    "nonlinear_modular": {
+      "bounded_law_recovery": 0,
+      "budget_exhaustions": 0,
+      "candidate_checks": 467,
+      "cases": 6,
+      "cpu_seconds": 0.29191582300000013,
+      "forecast_pass": 1,
+      "maximum_error": 68.0
+    },
+    "periodic": {
+      "bounded_law_recovery": 5,
+      "budget_exhaustions": 0,
+      "candidate_checks": 71,
+      "cases": 6,
+      "cpu_seconds": 0.029992393999999895,
+      "forecast_pass": 5,
+      "maximum_error": 13.0
+    },
+    "random_noise": {
+      "bounded_law_recovery": 0,
+      "budget_exhaustions": 0,
+      "candidate_checks": 69,
+      "cases": 6,
+      "cpu_seconds": 0.042909260999999976,
+      "forecast_pass": 0,
+      "maximum_error": 98.0
+    },
+    "switching": {
+      "bounded_law_recovery": 0,
+      "budget_exhaustions": 0,
+      "candidate_checks": 444,
+      "cases": 6,
+      "cpu_seconds": 0.22894657000000002,
+      "forecast_pass": 0,
+      "maximum_error": 100.0
+    }
+  },
+  "limitations": [
+    "Unknown processes are not proven by finite prefix fit. No global minimality, general intelligence, neural discovery, RSI gain, or champion promotion.",
+    "Same candidate and CPU ceilings are allocated; consumed work differs. Fitting time counts in CPU, unsuccessful fitting attempts do not count as candidate verification calls.",
+    "Candidate and evaluator developed by one implementer; pending independent audit and fresh-secret-seed replication. Seed disclosure after run permits future replay but does not make implementer an independent reviewer.",
+    "Open grammar and generator families are known; fresh parameters, seeds, lengths and perturbations are unseen by participant, not necessarily unseen concepts.",
+    "Conservative structural signatures can reject observationally equivalent AR/periodic descriptions; forecast and recovery metrics are separate.",
+    "Noisy observations, future switching, aliased sampling and chaotic long horizons may fail. Report every failure and actual costs.",
+    "Cooperative per-arm CPU checks can overshoot during one bounded fitting/check operation; process CPU/memory/wall limits are hard."
+  ],
+  "negative_controls": {
+    "cases": 78,
+    "constant_spoof_rejected": 78,
+    "corrupted_forecast_rejected": 78
+  },
+  "no_champion_change": true,
+  "no_independent_review_yet": true,
+  "owner": "turn-09e1ca315e6c47aa985ce71dcba8c97e",
+  "proof_scope": "three fresh post-freeze evaluator seeds, unseen parameters and 16/30-prefix, 8/24-horizon trajectories; exact rational observations except Decimal90 logistic; oracle excluded from participant sandbox",
+  "reviewer_receipt_in_input_manifest": false,
+  "same_seed_replay": "identical discrete outcomes/check counts across all six arms; times and opaque IDs differ",
+  "source_and_evidence_sha256": {
+    "artifacts/NC-056/README.md": "5a389149a85918fc733e26aaf0f086902c375804a148e809cfb3170868edcda9",
+    "artifacts/NC-056/discover.py": "b37ffa7472c3b6c6f6efcc7d2fe77868195f00d8d420dc88629b681872757720",
+    "artifacts/NC-056/evaluate.py": "98239405213a32c76247fa1dc0b03e5fc4f838b44205bc073c9ab1fae8496516",
+    "artifacts/NC-056/heldout_law_recovery.json": "9715a5c1cf8e55c516c595708ef6eaa40a6ffbbcfd39d2583d9885d3f2e6059d",
+    "artifacts/NC-056/heldout_law_recovery_traces.jsonl": "188fbd9c1efb8b0dd3dd36f7446877a6b520d682134f19ad2cd101fa3e8db69b",
+    "artifacts/NC-056/implementer_replay.json": "50948222764e151bd89d0463f1a3db1374fdf496076de835d3529e3fa96b52d1",
+    "artifacts/NC-056/implementer_replay_traces.jsonl": "c605192c4b5e571db20fff26c094b8a2baebd4474111d6838725bba49f679afa",
+    "artifacts/NC-056/minimum_order_discovery_contract.json": "d3e9eb6391572784b4f32dc477419f0af9c0fae19da5175665f860de91787797",
+    "artifacts/NC-056/test_discover.py": "abe98e84e70f925d4968f9b888f62efee765e3fde744824e2fdc1e0e2c5be697",
+    "artifacts/NC-056/test_evaluate.py": "4a968b488a56b4441b0d6d1b58cec0a56e349e4be2608b4da8af0df42cebe7dd",
+    "artifacts/NC-056/v1_path_bug/heldout_law_recovery.json": "25b76f9ba91f67441bfd8ba0e261c658512b0229e137c8e14ee1d382976aa62c",
+    "artifacts/NC-056/v1_path_bug/heldout_law_recovery_traces.jsonl": "b0585fbec4cf2fcfcdbf48cf6c09754a8ada1ce67088678475e361693fdc9bfe",
+    "artifacts/NC-056/v1_path_bug/implementer_replay_traces.jsonl": "445ab8debec38604c9fdd37d9caf97fbd90289144543e00f7e3be71246fa6733",
+    "artifacts/NC-056/v1_path_bug/minimum_order_discovery_contract.json": "00b8ec1f7a7831e95bf82c9e8d78bccf4882086470cae40c8d062808895d71fa"
+  },
+  "source_commit": "458b64eea413037116921a21c8f9745e6fe203f1",
+  "status": "IMPLEMENTER_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+  "task": "NC-056",
+  "tests_passed": 16,
+  "totals": {
+    "autoregression": {
+      "bounded_law_recovery": 6,
+      "budget_exhaustions": 0,
+      "candidate_checks": 17,
+      "cases": 78,
+      "cpu_seconds": 0.07951014699999995,
+      "forecast_pass": 15
+    },
+    "interpolation": {
+      "bounded_law_recovery": 0,
+      "budget_exhaustions": 0,
+      "candidate_checks": 84,
+      "cases": 78,
+      "cpu_seconds": 0.0966385099999999,
+      "forecast_pass": 22
+    },
+    "mdl_search": {
+      "bounded_law_recovery": 35,
+      "budget_exhaustions": 7,
+      "candidate_checks": 3113,
+      "cases": 78,
+      "cpu_seconds": 1.811179422,
+      "forecast_pass": 48
+    },
+    "no_invariant": {
+      "bounded_law_recovery": 0,
+      "budget_exhaustions": 0,
+      "candidate_checks": 84,
+      "cases": 78,
+      "cpu_seconds": 0.010063841000000184,
+      "forecast_pass": 0
+    },
+    "persistence": {
+      "bounded_law_recovery": 0,
+      "budget_exhaustions": 0,
+      "candidate_checks": 84,
+      "cases": 78,
+      "cpu_seconds": 0.011775583000000034,
+      "forecast_pass": 7
+    },
+    "random_candidates": {
+      "bounded_law_recovery": 0,
+      "budget_exhaustions": 6,
+      "candidate_checks": 9984,
+      "cases": 78,
+      "cpu_seconds": 3.0923065920000004,
+      "forecast_pass": 7
+    }
+  },
+  "upstream_design_inputs_sha256": {
+    "artifacts/NC-020/benchmark.py": "0c254d70d1319a0f9406fa900b9879289222ed65a77083cfedaff5e5f6802485",
+    "artifacts/NC-055/benchmark.py": "04250a97923d921aa6f49de6ed1f38b5d627e8e67f878545279c57ebc8efa8b3",
+    "artifacts/NC-055/invariant_benchmark_contract.json": "811cd0c354794d15e1e3732e03d3c81afd372816859031188c8fe0dfadf7945c",
+    "artifacts/NC-055/oracle.py": "f2e18fbe222ecec9767aea886a9fcac84edf43e08308fc6f24159406073b3510"
+  }
+}
