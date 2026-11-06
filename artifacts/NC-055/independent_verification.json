@@ -1,141 +1,59 @@
 {
   "candidate_manifest": "artifacts/NC-055/MANIFEST.json",
-  "candidate_manifest_sha256": "24cb75ee53a59ef5a18836ffd52c6991afe95787a095f3b817ab4f96df67ed80",
-  "candidate_owner": "turn-b53e292ee3e44b38882cd02b26e4cd27",
-  "candidate_revision": "08256e00b7db363c0ad87253b7b39f6c5b77d665",
-  "candidate_source_commit": "a9761c13a59bec1dd615d7a92d06627083ac66f6",
+  "candidate_manifest_sha256": "a062c6a291f377d4e64ba45c7cbb76bae57b913247b72fabf437e946bd9e9081",
+  "candidate_revision": "966502bdf827343ce93cbe43c5c91d78ff7fec08",
+  "candidate_source_commit": "8c7f9b1193c82cf6b30d44870a98736a69bec725",
   "dependencies": [
     "Python 3 standard library",
     "Git CLI",
     "artifacts/NC-055/oracle.py",
     "artifacts/NC-055/benchmark.py",
-    "artifacts/NC-055/test_benchmark.py"
+    "artifacts/NC-055/test_benchmark.py",
+    "artifacts/NC-055/invariant_benchmark_contract.json"
   ],
   "evidence_sha256": {
-    "artifacts/NC-055/invariant_benchmark_contract.json": "ba3a97ee0ec7df90f868332d943e7b1233d08e9da447fc9cfc2f382321d2cc3a",
-    "artifacts/NC-055/split_and_negative_control_report.json": "45577ec206d350ebfe1b6fc15a69a51f8988eb81fa49c8ab092c38e4516dcd93"
+    "artifacts/NC-055/invariant_benchmark_contract.json": "a5dc7a75ccd8ad2f13d1b31498d2349cf6228dcb0a5586dc1d0f0acd1e4ad81b",
+    "artifacts/NC-055/split_and_negative_control_report.json": "7acd5f2f58946b3ca2c17ff2e7a9709ab7215bb3c7c92e2d1826a9fefa11029a"
   },
   "failed_acceptance": {
-    "counterexample": {
-      "case_id": "346bf2e517dd1a721ed2",
-      "family": "periodic",
-      "future_targets": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "grade_result": {
-        "bounded_discovery_pass": true,
-        "claimed_law_matches": true,
-        "forecast_pass": true,
-        "maximum_absolute_error": 0.0,
-        "mean_absolute_error": 0.0,
-        "proof_scope": "heldout forecast plus private law match; no formal theorem or authenticated witness"
-      },
-      "observed_times": [
-        2,
-        4,
-        6,
-        8,
-        10,
-        12,
-        14,
-        16,
-        18,
-        20,
-        22
-      ],
-      "observed_values": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "parameters": {
-        "p": 14,
-        "rep": 1,
-        "seed": 55061
-      },
-      "query_times": [
-        24,
-        26,
-        28,
-        30,
-        32,
-        34
-      ],
-      "rep": 1,
-      "split": "validation",
-      "submitted": {
-        "forecast": [
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "law": "period_four",
-        "proof": null
-      }
+    "criterion": "No hidden labels revealed to learner; private oracle sealed from candidate inference; structural identification not obtained by reading hidden generation identity",
+    "mechanism": "public case_id = SHA256(f\"NC055:{SEED}:{family}:{split}:{rep}\")[:20]; SEED=55061, family list and identifier recipe are readable in the same repository. The candidate can enumerate 12 families x 3 reps to invert each ID and obtain family and rep. Candidate then computes periodic futures and correct law label directly from published family definition, no inference or learning.",
+    "observed": {
+      "label_denominator": 99,
+      "label_recovery": 99,
+      "periodic_denominator": 9,
+      "periodic_discovery_pass": 9
     },
-    "coverage_gap": "Published 27/27 constant-collapse rejections only cover test split, not validation or train. Across all splits one of 72 nontrivial cases falsely certifies collapse.",
-    "criterion": "constant-output predictors cannot obtain a passing discovery score",
-    "mechanism": "validation rep=1 samples period-four process at even times in zero phase; all observed and withheld values equal 0. Constant-zero prediction plus a correct law string gets bounded_discovery_pass=True despite zero information about nonconstant dynamics.",
-    "reproduction_command": "PYTHONPATH=artifacts/NC-055 python -c \"import oracle,benchmark; p,q=oracle.make_case('periodic','validation',1); print(benchmark.grade(p,q,{'forecast':[0.0]*6,'law':'period_four','proof':None}))\"",
-    "required_rework": "Prevent aliased degenerate validation case or reject discovery on nonidentifying all-zero observations; test constant collapse over all splits; regenerate report, manifest and commit fresh candidate."
+    "reproduction_command": "cd /workspace/experiments/logos-kernel && PYTHONPATH=artifacts/NC-055 python - <<'PY'\nimport hashlib,json,oracle,benchmark\nc=json.load(open(\"artifacts/NC-055/invariant_benchmark_contract.json\"))\nfor split in oracle.SPLITS:\n for public,priv in oracle.cases(split):\n  matches=[(f,r) for f in c[\"families\"] for r in range(3) if hashlib.sha256(f\"NC055:{c['seed']}:{f}:{public['split']}:{r}\".encode()).hexdigest()[:20]==public[\"case_id\"]]\n  assert matches==[(priv[\"family\"],priv[\"parameters\"][\"rep\"])]\n  if matches[0][0]==\"periodic\":\n   rep=matches[0][1]\n   pred=[float((1,0,-1,0)[(t+rep)%4]*(rep+2)) for t in public[\"query_times\"]]\n   assert benchmark.grade(public,priv,{\"forecast\":pred,\"law\":\"period_four\"})[\"bounded_discovery_pass\"]\nPY",
+    "required_rework": "Remove or keyed-HMAC-protect reversible case identifiers with an evaluator-secret key absent from candidate artifacts; isolate private generator and secrets from candidate execution, regenerate reproducibility commitments without disclosing the key, and rerun label-recovery and oracle-free positive-score attacks. If no source isolation is provided, explicitly scope this as an open regression fixture rather than a hidden-label benchmark; do not claim sealed oracle."
   },
   "independent_checks": {
-    "benchmark_report_reproduced": "99 cases; 18 baseline score tables; splits 27 train/36 validation/36 test; published control counts match",
-    "constant_output_false_discovery_passes_all_splits": [
-      {
-        "case_id": "346bf2e517dd1a721ed2",
-        "family": "periodic",
-        "rep": 1,
-        "split": "validation"
-      }
-    ],
-    "dag_validate": "PASS; 61 nodes and 113 events before review claim",
-    "manifest_and_all_sources_evidence_match_worktree_and_pinned_revision": true,
-    "nontrivial_cases_all_splits": 72,
-    "published_controls_test_split_only": {
-      "constant_collapse_nontrivial_rejected": 27,
-      "oracle_only_positive_nontrivial": 27,
-      "short_prefix_interpolation": {
-        "bounded_discovery_pass": 0,
-        "failed_extrapolation": 15,
-        "tested": 18
-      },
-      "wrong_law_rejected": 36
-    },
-    "test_benchmark": "13/13 PASS",
-    "test_dag": "19/19 PASS",
-    "test_pull": "17/17 PASS"
+    "benchmark_report": "99 cases; 12 families; 6 fixed CPU baselines; family, split, score, control tables reproduced exactly",
+    "ledger_validation": "PASS (61 nodes, 121 events before review-result)",
+    "manifest_and_pinned_source_hashes": "all match current files and candidate_revision; exact sources/evidence also match source_commit",
+    "negative_controls": "72/72 oracle-assisted constant predictions rejected over all splits; all reported controls reproduced",
+    "oracle_target_commitments": "train, validation and test all match regenerated exact targets",
+    "source_label_attack": "99/99 family/rep labels recovered from participant-facing case_id, public split and published seed/family metadata",
+    "source_label_attack_periodic": "9/9 periodic cases earn bounded_discovery_pass from decoded rep and published law formula without training or observing samples",
+    "tests": "test_dag 19/19; test_pull 17/17; test_benchmark 16/16 PASS"
   },
+  "owner": "turn-30467f9ce04840009251d73b10165cc7",
+  "prior_review_receipt_sha256": "8a0045c823d26e37d9ba41ba6bb751187305dc8dec917a0fd958cd1cb9c5d41f",
   "proof_scope": {
-    "champion_untouched": true,
-    "not_verified": "Formal proof, neural discovery, source confidentiality, sandbox isolation, identity authentication, generalization to unseen seeds.",
-    "verified": "Exact pinned source/evidence hashes, 99-case score replay, true acceptance counterexample."
+    "champion_untouched": "No champion paths changed by this verifier.",
+    "negative_control_limit": "Constant-forecast rejection prevents collapse but does not stop label-based oracle replay.",
+    "not_verified": "Tamper-resistant OS oracle confinement, authenticated identities, model learning, statistical generalization to unseen secret seeds, formal invariant proofs, or any original champion promotion.",
+    "verified": "Candidate hashes and revisions, deterministic benchmark generation and exact oracle commitments, published control tables, concrete case-ID inversion and oracle-free positive-score exploitation."
   },
-  "reviewer": "turn-8bc0afcebd164e1e98d721c254e7df53",
   "role": "VERIFIER",
   "schema_version": 1,
   "source_sha256": {
-    "artifacts/NC-055/benchmark.py": "1c32b2ed5dc80cc75df741c8f2cdb26c07835b715d226ecf95f7fc2fe024f936",
-    "artifacts/NC-055/oracle.py": "ed310cb20260bab39f6ec92d7b72c036d80fd153af04bd44e0b24826d7adafb1",
-    "artifacts/NC-055/test_benchmark.py": "63080e50099db08c0c23cc5b6b7459bd5d947fc24149c6c608a878af87d12d04"
+    "artifacts/NC-055/benchmark.py": "d559d8ad847fd4970f139ad0fa02967b3633dbae10c1d103b4baa0f98cf1ec34",
+    "artifacts/NC-055/oracle.py": "898dd83bd45d4b9cab0001bf53563cc59d974d25f9b34b08ea075e13c8335816",
+    "artifacts/NC-055/test_benchmark.py": "c22cdbcb0d346e0c2ee5d9ad64ddeaefe4134e6e7465cfd30e16d51badbcc70d"
   },
   "task": "NC-055",
-  "time_utc": "2026-11-06T12:01:54.766813+00:00",
-  "verdict": "FAIL"
+  "time_utc": "2026-11-06T12:55:24.278616+00:00",
+  "verdict": "FAIL",
+  "verifier": "turn-fb95d668458d475690f4d16eeb9087c2"
 }
