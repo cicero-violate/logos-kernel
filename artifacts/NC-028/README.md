@@ -9,8 +9,14 @@ autonomous discovery release or a newly trained general-purpose solver.
   dependencies; writable paths are limited to private `scratch/` and
   `/dev/null`. libseccomp blocks socket, network, ptrace, inode-metadata mutation, and several namespace
   syscalls. RLIMIT caps wall-clock, CPU, file size, address space, and open FDs.
-  No GPU. This is neither a VM nor a separate UID/network namespace. Full
-  adversarial security is **not independently established**.
+  Process creation is denied through fork/vfork, process-form clone, and
+  clone3; pthread-style CLONE_THREAD is permitted. RLIMIT_NPROC=2048 is a
+  **per-real-UID host ceiling**, not an isolated per-sandbox quota. stdout
+  and stderr use regular scratch-backed files so RLIMIT_FSIZE=4 MiB applies,
+  rather than memory-unbounded pipes. This does **not** establish cgroup
+  containment, per-sandbox task limits, or trusted-UID separation. No GPU.
+  This is neither a VM nor a separate UID/network namespace. Full adversarial
+  security is **not independently established**.
 - `propose_worker.py`: immutable NC-007 controller weights produce action
   tokens autoregressively. The worker contains **no target recipes** or
   evaluation oracle. Unknown goal strings are rejected, not mapped to a
@@ -23,7 +29,8 @@ autonomous discovery release or a newly trained general-purpose solver.
   pairs per (seed, task), three frozen controller seeds, plus fixed
   deterministic and random host-controlled baselines. Each arm has one
   proposed program, max five action tokens, same eight pairs. Wall and CPU
-  costs are **not identical** across arms. Referee numeric formulas stay in
+  costs are **not identical** across arms; results do **not** establish
+  matched-CPU superiority. Referee numeric formulas stay in
   the parent host, outside the proposal process.
 
 ## Acceptance restrictions
@@ -34,6 +41,10 @@ interface**. Report `NO_DISCOVERY` irrespective of known-goal numeric accuracy.
 A known recipe recalled on new operands is NOT a discovered new operator.
 No neural weight, original RLT champion, registry, or global default is changed.
 Proof scope is finite sampled unsigned 16-bit arithmetic, not all 2^32 pairs.
+
+The process/FSIZE containment changes have only local regression coverage.
+The feedback-conditioned candidate revision, structurally unseen model
+proposal, and matched-CPU baselines remain **UNIMPLEMENTED**.
 
 The sandbox and scientific evidence require a **distinct real independent
 verifier** before NC-028 can pass. No self-approval, no external network, no

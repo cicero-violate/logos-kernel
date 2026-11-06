@@ -10,6 +10,45 @@ isolator = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(isolator)
 
 class IsolationTests(unittest.TestCase):
+    def test_fork_denied_and_declared_resource_limits(self):
+        # os.fork routes through clone on modern glibc; a child must never
+        # escape the tracked process after a timeout.
+        program = """
+import errno,os,resource,threading
+try:
+    child=os.fork()
+except OSError as e:
+    assert e.errno in (errno.EPERM,errno.ENOSYS), e
+else:
+    if child==0:os._exit(88)
+    os.waitpid(child,0)
+    raise AssertionError('FORK_ESCAPE')
+assert resource.getrlimit(resource.RLIMIT_NPROC)==(2048,2048)
+assert resource.getrlimit(resource.RLIMIT_FSIZE)==(4*1024**2,4*1024**2)
+out=[]
+t=threading.Thread(target=lambda:out.append('THREAD_OK'))
+t.start()
+t.join()
+assert out==['THREAD_OK']
+print('FORK_DENIED PROCESS_CAP FSIZE_MATCH THREAD_OK',flush=True)
+"""
+        cp=isolator.run(["-c",program], timeout=15)
+        self.assertEqual(cp.returncode,0,cp.stderr)
+        self.assertIn("FORK_DENIED PROCESS_CAP FSIZE_MATCH THREAD_OK",cp.stdout)
+
+    def test_posix_spawn_denied_and_output_budget(self):
+        # posix_spawn may use clone(CLONE_VM|CLONE_VFORK); still a child.
+        cp=isolator.run(["-c", "import os; os.posix_spawn('/usr/bin/true',['true'],{})"],
+                        timeout=15)
+        self.assertNotEqual(cp.returncode,0)
+        self.assertNotIn("SECURITY_ESCAPE",cp.stdout)
+        # RLIMIT_FSIZE must cap regular-file-backed stdout; pipes bypass it.
+        flood=isolator.run(["-c",
+               "import os; chunk=b'x'*1048576; [os.write(1,chunk) for _ in range(7)]"],
+               timeout=15)
+        self.assertNotEqual(flood.returncode,0,"output beyond the cap escaped")
+        self.assertLessEqual(len(flood.stdout),4*1024**2)
+
     def test_read_write_network_denial_and_crash(self):
         assert isolator.landlock_abi() >= 5
         program = """

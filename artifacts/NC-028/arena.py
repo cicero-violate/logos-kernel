@@ -12,7 +12,8 @@ SEEDS=(11,19,29)
 MASK=65535
 GOALS=("DOUBLE","INC","XOR_ADD_X","UNSEEN_XOR_DOUBLE_PLUS_Y")
 BUDGET={"wall_seconds_per_subprocess":35,"cpu_seconds":24,"address_space_bytes":8*1024**3,
-        "file_size_bytes":0,"max_action_tokens":5,"max_proposals_per_goal":1,
+        "file_size_bytes":4*1024**2,"per_real_uid_tasks_limit":2048,
+        "process_creation":"seccomp fork/vfork/clone process denied; clone3 ENOSYS","max_action_tokens":5,"max_proposals_per_goal":1,
         "heldout_pairs_per_task":8,"gpu":False,"network":False}
 def hash_file(p):
     h=hashlib.sha256()

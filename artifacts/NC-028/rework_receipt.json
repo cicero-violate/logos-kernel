@@ -1,0 +1,87 @@
+{
+  "agent": "turn-e3f66512b2e047b1836755d20dd61fb9",
+  "candidate_ready_for_review": false,
+  "champion_promoted": false,
+  "disposition": "release unfinished ticket for legitimate future rework, without claim of PASS",
+  "independent_verdict": "NOT_REVIEWED_AFTER_REWORK",
+  "locally_corrected": [
+    "fork/vfork/clone process spawn denied; clone3 ENOSYS",
+    "per-real-UID RLIMIT_NPROC=2048 (not per-sandbox bound)",
+    "4MiB RLIMIT_FSIZE manifest fidelity and scratch-backed bounded stdout/stderr"
+  ],
+  "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "pilot": {
+    "champion_unchanged": true,
+    "counts": {
+      "fixed_ADD_XY": {
+        "correct": 0,
+        "exec_cpu_seconds": 17.89143599999999,
+        "exec_wall_seconds": 18.408112208126113,
+        "proposal_cpu_seconds": 0,
+        "proposal_wall_seconds": 0,
+        "proposals": 12,
+        "tested": 96
+      },
+      "supervised_neural_controller": {
+        "correct": 72,
+        "exec_cpu_seconds": 13.47350600000001,
+        "exec_wall_seconds": 13.846824579057284,
+        "proposal_cpu_seconds": 17.861241999999976,
+        "proposal_wall_seconds": 18.467176376259886,
+        "proposals": 12,
+        "tested": 96
+      },
+      "uniform_random_one_step": {
+        "correct": 8,
+        "exec_cpu_seconds": 17.67325100000002,
+        "exec_wall_seconds": 18.2556128250435,
+        "proposal_cpu_seconds": 0,
+        "proposal_wall_seconds": 0,
+        "proposals": 12,
+        "tested": 96
+      }
+    },
+    "heldout": {
+      "DOUBLE": 24,
+      "INC": 24,
+      "UNSEEN_XOR_DOUBLE_PLUS_Y": 24,
+      "XOR_ADD_X": 24
+    },
+    "new_discoveries": 0,
+    "status": "NO_DISCOVERY"
+  },
+  "prior_independent_review": {
+    "receipt": "artifacts/NC-028/verifier_audit_turn_8fabf26f40a34a119f958694cd2cb213.json",
+    "reviewer": "turn-8fabf26f40a34a119f958694cd2cb213",
+    "verdict": "FAIL"
+  },
+  "reproduce": "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/arena.py",
+  "role": "IMPLEMENTER",
+  "schema": "logos.nc028.implementer-rework/1",
+  "sources_and_evidence_sha256": {
+    "README.md": "77d8312aa7bb0cfb77d30bf85dd16c6757020f3bba91b72778291bf74c2ed945",
+    "VERIFIER_REQUEST.md": "a33a4b7de68e78a1f87ef620988c1ce64f75d8942b27df22bfd363654d98973d",
+    "arena.py": "68d54f2695581ab110a34d308676e0e07c8e2e0a969b2f9b6ea8b3e297cf11d4",
+    "discovery_release_contract.json": "d7da794d81c68237a444b381242911ac8114f31c96f5e8b40c515b71a62a188d",
+    "implementation_failures.jsonl": "b657ed18abf6777b6f7e61606fd1a901ea97e20a703b534f794c9c6cac16400a",
+    "isolation.py": "25f06b6a8b06d1bcf81edcacfbfe2690a47b0f51a2ceb367f33ea4ee1f6bdc31",
+    "pilot_results.json": "f2d6f86a8ecdf06eef39350f0a6cedb54f8548951168069edf311a56823d55e5",
+    "proposal_trace.jsonl": "4f2f5031398ebfa9de50f0a3678c66da15d7e06dc20c541b1cd629ee71327228",
+    "sandbox_manifest.json": "2216e2696bdf2ff6ea88b04d1f20580e346c7d28866e10866bf64d5530a228b1",
+    "test_isolation.py": "2efc3352d9b233924fccae4f18a5a1ee3a0644edc43804d78537b7165c16c1c7"
+  },
+  "still_failed": [
+    "no feedback-conditioned neural candidate revision",
+    "no neural proposal on structurally unseen goals",
+    "baseline CPU/wall budgets unequal; no matched-compute scientific result",
+    "no new independent reviewer PASS",
+    "Landlock+seccomp does not prove full malicious isolation"
+  ],
+  "task": "NC-028",
+  "tests": {
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-028 -p 'test_*.py'": "8/8 PASS",
+    "python -m unittest -q test_dag": "19/19 PASS",
+    "python -m unittest -q test_pull": "17/17 PASS",
+    "python dag.py validate": "PASS (61 tasks, 105 events during check)"
+  }
+}

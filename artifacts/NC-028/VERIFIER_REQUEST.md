@@ -17,7 +17,10 @@ From a clean, detached checkout of the exact NC-028 implementation commit:
 5. Verify the proposer process has zero evaluation answer/recipe input. Ensure
    no host-generated program was credited to the neural proposer; test unknown
    goal, repeated HALT, malformed token, and missing HALT.
-6. Independently inspect seccomp syscall deny-list, Landlock read/write access,
+6. Independently probe fork(), posix_spawn(), clone process flags, clone3,
+   output-flood under inherited scratch-backed file descriptors, and actual
+   RLIMIT_NPROC/FSIZE values. NPROC is per real UID, not a cgroup quota.
+   Inspect seccomp syscall deny-list, Landlock read/write access,
    lack of network, bounded CPU/AS/FSIZE/FDs, permissions, scratch confinement,
    and crash recovery on the actual host. Exercise bypass candidates and
    report what isolation does NOT establish.

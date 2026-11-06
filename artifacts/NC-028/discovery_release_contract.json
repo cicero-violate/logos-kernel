@@ -7,12 +7,14 @@
   "budget": {
     "address_space_bytes": 8589934592,
     "cpu_seconds": 24,
-    "file_size_bytes": 0,
+    "file_size_bytes": 4194304,
     "gpu": false,
     "heldout_pairs_per_task": 8,
     "max_action_tokens": 5,
     "max_proposals_per_goal": 1,
     "network": false,
+    "per_real_uid_tasks_limit": 2048,
+    "process_creation": "seccomp fork/vfork/clone process denied; clone3 ENOSYS",
     "wall_seconds_per_subprocess": 35
   },
   "evaluation_seed": 20261106,
