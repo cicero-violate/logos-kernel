@@ -1,0 +1,79 @@
+{
+  "task": "NC-007",
+  "verdict": "PASS",
+  "real_closure_thread_id": "01a1af4f-cb23-7713-9cc0-74a95028542b",
+  "audited_commit": "3cd05cbcb9d4e5a69d29931932773a1a3c759a44",
+  "checks": {
+    "scope": "Committed-closure consistency audit only",
+    "head_exact_match": true,
+    "ledger_validation": "PASS; 29 nodes, 57 events",
+    "test_dag": "19/19 passed with exit code 0 using TMPDIR=/dev/shm",
+    "test_composition": "14/14 passed with exit code 0",
+    "committed_nc007_blobs": "17/17 exact",
+    "runtime_identities": {
+      "implementer": "1db9edb983ff4df9933612e7c826e55f",
+      "original_hold_verifier": "01a1af45-0681-73f0-b8ee-8ee54ee8cf90",
+      "corrected_pass_verifier": "01a1af4a-91ec-73d2-8480-0486190f7a41",
+      "closure_verifier": "01a1af4f-cb23-7713-9cc0-74a95028542b",
+      "all_distinct": true,
+      "raw_trace_thread_started_lines_match_receipts": true,
+      "forged_identity_detected": false
+    },
+    "reported_results": {
+      "generated_programs": "33/33",
+      "sampled_numeric_outputs": "8448/8448",
+      "separate_host_loop_cfg": "768/768 across 3 records",
+      "corrected_fresh_operands": "990/990",
+      "provenance_corruption_variants": "9/9 rejected before the first neural call",
+      "supervised_recipes": 11,
+      "training_seen_local_primitive_patterns": 64
+    },
+    "execution_boundaries": {
+      "symbolic_oracle_fallback_observed": false,
+      "new_model_or_champion_promotion": false,
+      "runtime_loop_control": "host-controlled",
+      "algorithm_invention_claimed": false
+    }
+  },
+  "original_hold_binding": {
+    "verdict": "HOLD",
+    "audited_source_commit": "2ff9c53b3a3b4b93070e808fbfc97a4d54be36a3",
+    "preservation_commit": "e523ae7a0613a09d9eb5279c68dd53256a82195d",
+    "final_sha256": "00a04c422b8fba98af430e1fbb44658e75239eadf23144bca954c938db3f33d8",
+    "trace_sha256": "084ed1d518d30386624b9698479f6a812537e4c30fe7e908b2f0e060fa83fe94",
+    "four_original_provenance_failures_preserved": true,
+    "unmodified_and_hash_bound": true
+  },
+  "corrected_pass_binding": {
+    "verdict": "PASS",
+    "audited_source_commit": "97426e53aaffa6541540753c2fdf2b5e6ad0e042",
+    "final_sha256": "b587ede161909283f0996ec34c9270f7a2e3e3b7dedbe00cf1d0ad4704eac399",
+    "trace_sha256": "5b83751da08b69a1e232c5d8f671e4f075250deb4f903162053096ad8f677200",
+    "implementer_assembled_receipt_hash_binding": true,
+    "provenance_controls_preserved": true
+  },
+  "source_and_checkpoint_integrity": {
+    "nc005_manifest_entries_rehashed": "99/99",
+    "nc006_accepted_library_records": "30/30 bound to expected frozen stage06 checkpoints",
+    "accepted_library_sha256": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+    "original_rlt_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "original_rlt_champion_unchanged": true,
+    "controller_state_sha256": {
+      "seed11": "6ec7dfdbb7fe47c05d1eb470d915d0e963de731009bc317ab87e0ffad27464d6",
+      "seed19": "5bb0a9b523f618972153e83eea38221eaa745f233aa1c529c24d35653a6fb92f",
+      "seed29": "92da66944c2353dae90e0381160e89646c9f0ad6052f4c66f8c3e8014feedc74"
+    },
+    "three_distinct_task_local_controller_states": true,
+    "composition_receipt_sha256": "2f37cb7030e4d39b31ab970bd1045b33d8689381ac1ab15ea47c3199f587b431",
+    "composition_traces_sha256": "ea68cd98bebb5eefa19b32f5ab8a480bff5810529d32bd32ae7b7d6c95a0fc9b",
+    "all_audited_worktree_files_match_committed_blobs": true
+  },
+  "limitations": [
+    "This PASS establishes closure consistency, hash binding and preservation at the specified committed HEAD; it is not a fresh training run or independent source-implementation approval.",
+    "The results are bounded sampled uint16 evaluations, not exhaustive coverage of all operand pairs.",
+    "The controllers recall 11 supervised recipes over locally training-seen primitive patterns; they do not demonstrate algorithm invention, unseen-goal generalization or a unified Transformer.",
+    "Register routing, constants, bit iteration, carry propagation, HALT decoding and loop control remain host-defined.",
+    "No DAG PASS was appended and no files, commits, models, approvals or promotion state were modified."
+  ],
+  "failures": []
+}

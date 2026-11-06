@@ -1,0 +1,108 @@
+{
+  "RLT_champion_promoted": false,
+  "audited_receipt_commit": "3cd05cbcb9d4e5a69d29931932773a1a3c759a44",
+  "code_dependencies": [
+    "Python 3",
+    "PyTorch",
+    "NumPy",
+    "artifacts/NC-007/compose.py",
+    "artifacts/NC-007/test_composition.py",
+    "artifacts/NC-007/checkpoints/controller_seed11.pt",
+    "artifacts/NC-007/checkpoints/controller_seed19.pt",
+    "artifacts/NC-007/checkpoints/controller_seed29.pt",
+    "artifacts/NC-005/curriculum.py",
+    "artifacts/NC-006/accepted_library.json",
+    "artifacts/NC-001/canonical_isa.py",
+    "dag.py",
+    "instructions.jsonl"
+  ],
+  "committed_closure_pass": {
+    "audited_commit": "3cd05cbcb9d4e5a69d29931932773a1a3c759a44",
+    "final_path": "artifacts/NC-007/codex_closure_final.json",
+    "final_sha256": "724f0a25ba60d7a58d15769255c26d5744c14d7efcdcf6c162ae1c2d451bc7cf",
+    "runtime_id": "01a1af4f-cb23-7713-9cc0-74a95028542b",
+    "trace_path": "artifacts/NC-007/codex_closure_trace.jsonl",
+    "trace_sha256": "67431492d473ce3bb50e0fd96163d5ed78362e1aa8f352e45033bc7cb9c7c7e0",
+    "verdict": "PASS"
+  },
+  "composition_trace_sha256": "ea68cd98bebb5eefa19b32f5ab8a480bff5810529d32bd32ae7b7d6c95a0fc9b",
+  "corrected_pass": {
+    "final_sha256": "b587ede161909283f0996ec34c9270f7a2e3e3b7dedbe00cf1d0ad4704eac399",
+    "runtime_id": "01a1af4a-91ec-73d2-8480-0486190f7a41",
+    "source_commit": "97426e53aaffa6541540753c2fdf2b5e6ad0e042",
+    "trace_sha256": "5b83751da08b69a1e232c5d8f671e4f075250deb4f903162053096ad8f677200",
+    "verdict": "PASS"
+  },
+  "created_utc": "2026-11-06T05:26:10.756483+00:00",
+  "implementation_receipt_sha256": "2f37cb7030e4d39b31ab970bd1045b33d8689381ac1ab15ea47c3199f587b431",
+  "implementer_session": "1db9edb983ff4df9933612e7c826e55f",
+  "independent_receipt_sha256": "55915540ef3841915ee4ae6850304045f968d5dfbb196ed94ec03f5c533e7c32",
+  "limitations": [
+    "This PASS establishes closure consistency, hash binding and preservation at the specified committed HEAD; it is not a fresh training run or independent source-implementation approval.",
+    "The results are bounded sampled uint16 evaluations, not exhaustive coverage of all operand pairs.",
+    "The controllers recall 11 supervised recipes over locally training-seen primitive patterns; they do not demonstrate algorithm invention, unseen-goal generalization or a unified Transformer.",
+    "Register routing, constants, bit iteration, carry propagation, HALT decoding and loop control remain host-defined.",
+    "No DAG PASS was appended and no files, commits, models, approvals or promotion state were modified."
+  ],
+  "neural_original_weights_changed": false,
+  "original_hold": {
+    "final_sha256": "00a04c422b8fba98af430e1fbb44658e75239eadf23144bca954c938db3f33d8",
+    "preserved_commit": "e523ae7a0613a09d9eb5279c68dd53256a82195d",
+    "runtime_id": "01a1af45-0681-73f0-b8ee-8ee54ee8cf90",
+    "source_commit": "2ff9c53b3a3b4b93070e808fbfc97a4d54be36a3",
+    "trace_sha256": "084ed1d518d30386624b9698479f6a812537e4c30fe7e908b2f0e060fa83fe94",
+    "verdict": "HOLD"
+  },
+  "receipt_is": "Implementer-assembled hash binding to independent THIRD read-only Codex closure verdict; not self-generated independent certification.",
+  "schema": "logos.nc007.closure-evidence/1",
+  "source_and_checkpoint_integrity": {
+    "accepted_library_sha256": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+    "all_audited_worktree_files_match_committed_blobs": true,
+    "composition_receipt_sha256": "2f37cb7030e4d39b31ab970bd1045b33d8689381ac1ab15ea47c3199f587b431",
+    "composition_traces_sha256": "ea68cd98bebb5eefa19b32f5ab8a480bff5810529d32bd32ae7b7d6c95a0fc9b",
+    "controller_state_sha256": {
+      "seed11": "6ec7dfdbb7fe47c05d1eb470d915d0e963de731009bc317ab87e0ffad27464d6",
+      "seed19": "5bb0a9b523f618972153e83eea38221eaa745f233aa1c529c24d35653a6fb92f",
+      "seed29": "92da66944c2353dae90e0381160e89646c9f0ad6052f4c66f8c3e8014feedc74"
+    },
+    "nc005_manifest_entries_rehashed": "99/99",
+    "nc006_accepted_library_records": "30/30 bound to expected frozen stage06 checkpoints",
+    "original_rlt_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "original_rlt_champion_unchanged": true,
+    "three_distinct_task_local_controller_states": true
+  },
+  "status": "PASS",
+  "task": "NC-007",
+  "tests": {
+    "committed_nc007_blobs": "17/17 exact",
+    "execution_boundaries": {
+      "algorithm_invention_claimed": false,
+      "new_model_or_champion_promotion": false,
+      "runtime_loop_control": "host-controlled",
+      "symbolic_oracle_fallback_observed": false
+    },
+    "head_exact_match": true,
+    "ledger_validation": "PASS; 29 nodes, 57 events",
+    "reported_results": {
+      "corrected_fresh_operands": "990/990",
+      "generated_programs": "33/33",
+      "provenance_corruption_variants": "9/9 rejected before the first neural call",
+      "sampled_numeric_outputs": "8448/8448",
+      "separate_host_loop_cfg": "768/768 across 3 records",
+      "supervised_recipes": 11,
+      "training_seen_local_primitive_patterns": 64
+    },
+    "runtime_identities": {
+      "all_distinct": true,
+      "closure_verifier": "01a1af4f-cb23-7713-9cc0-74a95028542b",
+      "corrected_pass_verifier": "01a1af4a-91ec-73d2-8480-0486190f7a41",
+      "forged_identity_detected": false,
+      "implementer": "1db9edb983ff4df9933612e7c826e55f",
+      "original_hold_verifier": "01a1af45-0681-73f0-b8ee-8ee54ee8cf90",
+      "raw_trace_thread_started_lines_match_receipts": true
+    },
+    "scope": "Committed-closure consistency audit only",
+    "test_composition": "14/14 passed with exit code 0",
+    "test_dag": "19/19 passed with exit code 0 using TMPDIR=/dev/shm"
+  }
+}

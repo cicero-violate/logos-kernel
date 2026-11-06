@@ -1,0 +1,19 @@
+THIRD DISTINCT READ-ONLY NC-007 CODEX CLI COMMITTED-CLOSURE VERIFIER.
+Target exact committed receipt HEAD: 3cd05cbcb9d4e5a69d29931932773a1a3c759a44.
+Implementer identity: 1db9edb983ff4df9933612e7c826e55f.
+Previous first Codex scientific HOLD: 01a1af45-0681-73f0-b8ee-8ee54ee8cf90.
+Previous second Codex corrected scientific PASS: 01a1af4a-91ec-73d2-8480-0486190f7a41.
+You MUST use your new ACTUAL Codex thread.started ID, distinct from all above.
+Only audit closure consistency, not a fresh training or source implementation.
+No project modifications, ledger updates, Git commits, file writes, training, model promotion, or approvals. Read-only ephemeral Python check is allowed, TMPDIR=/dev/shm.
+
+Read AGENTS.md, NC-007 JSONL task, all NC-007 receipts and raw independent verifier final files plus first line of each raw Codex trace and their exact committed bytes. Verify first HOLD and its four failures remain unmodified, second PASS and all provenance controls, and implementer-assembled independent_receipt.json are properly hash bound, with real distinct runtime thread IDs and exact audited source commits. Reject forged identities.
+Validate current HEAD matches 3cd05cb and all audited NC-007 code/traces/checkpoints/receipt match committed Git blobs. Confirm entire source dataset/checkpoints integrity: NC005 selected frozen stage06 and NC006 accepted library, original RLT champion hash unchanged; 3 separate task-local controller states hashed.
+Run:
+  python dag.py validate
+  TMPDIR=/dev/shm python -m unittest -q test_dag
+  PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-007 -p test_composition.py
+Confirm exact 19/19 and 14/14 with real exit code zero.
+Independently check receipt source references and denominators: 33 generated programs, 8,448/8,448 sampled outputs; separate 3 host-loop CFG records 768/768; corrected independent 990/990 fresh new operands; 9/9 corruption variants rejected before first neural call. Confirm no symbolic oracle fallback or new model promotion. Confirm 11 supervised recipes and local 64 training-seen primitive patterns; no algorithm invention claim.
+If any mandatory check missing or failed, return HOLD/FAIL, not PASS. Your verdict is closure consistency only, not independent source approval, and you may not append DAG PASS.
+Final output must be ONE JSON object with fields: task, verdict (PASS|HOLD|FAIL), real_closure_thread_id, audited_commit, checks, original_hold_binding, corrected_pass_binding, source_and_checkpoint_integrity, limitations, failures.
