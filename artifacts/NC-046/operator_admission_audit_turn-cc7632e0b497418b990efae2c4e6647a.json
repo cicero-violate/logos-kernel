@@ -1,0 +1,99 @@
+{
+  "blocking_prerequisites": [
+    "TR-002 not approved, zero source/data pins; TR-001 canary dependency not sealed",
+    "No host-attested process liveness atomically bound to trainer DAG job transitions; expired lease takeover remains unsafe",
+    "No independently authorized real training episode or external sealed review on successor checkpoint"
+  ],
+  "champion_matches_pin": true,
+  "created_utc": "2026-11-06T15:40:08.132721+00:00",
+  "dependencies": [
+    "Python 3 standard library",
+    "Git",
+    "trainer_dag.py status (read-only)",
+    "artifacts/NC-046/MANIFEST.json and pinned files",
+    "original read-only champion checkpoint"
+  ],
+  "existing_implementer_canary": {
+    "audit_command": "PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python artifacts/NC-046/audit_pilot.py",
+    "audit_result": "PASS 36 checkpoint hashes, 2 restart replays; NO_GAIN; implementer audit only",
+    "independent_review": false,
+    "pinned_file_integrity": {
+      "PROTOCOL.json": {
+        "actual": "d64de0800b193b725428d96c80cbc6ba6abc9975d1cd99d9b8dc6084890c92ed",
+        "expected": "d64de0800b193b725428d96c80cbc6ba6abc9975d1cd99d9b8dc6084890c92ed",
+        "matched": true
+      },
+      "README.md": {
+        "actual": "bf52873dabaf636e2aed7544c6f8995a470da31995b79161b3e7adb748d04968",
+        "expected": "bf52873dabaf636e2aed7544c6f8995a470da31995b79161b3e7adb748d04968",
+        "matched": true
+      },
+      "audit_pilot.py": {
+        "actual": "c71990a5f72e2ee63a360bc1619e799db0de261dbc2748c3c6c1ef79ef3df122",
+        "expected": "c71990a5f72e2ee63a360bc1619e799db0de261dbc2748c3c6c1ef79ef3df122",
+        "matched": true
+      },
+      "restart_replay_receipt.json": {
+        "actual": "f93ca4090d38d8bc0af0658b05088fb0cde5d3c7ca708cab808a33471535e2a9",
+        "expected": "f93ca4090d38d8bc0af0658b05088fb0cde5d3c7ca708cab808a33471535e2a9",
+        "matched": true
+      },
+      "run_pilot.py": {
+        "actual": "a4ea8b6f51ef4a7c74f3db83d040c1ec0fafc8e68b09417c289b64f966b69989",
+        "expected": "a4ea8b6f51ef4a7c74f3db83d040c1ec0fafc8e68b09417c289b64f966b69989",
+        "matched": true
+      },
+      "test_trainer_worker.py": {
+        "actual": "f750ef48bbeec3fb0755675e767fd8e4669945fe448f1c250f0105bbdba3299d",
+        "expected": "f750ef48bbeec3fb0755675e767fd8e4669945fe448f1c250f0105bbdba3299d",
+        "matched": true
+      },
+      "trainer_pipeline.json": {
+        "actual": "e920982f58c3495b5b91ebabfcb32b28f132889db127b6cd474d678c0cc48a78",
+        "expected": "e920982f58c3495b5b91ebabfcb32b28f132889db127b6cd474d678c0cc48a78",
+        "matched": true
+      },
+      "trainer_worker.py": {
+        "actual": "0f78a99aab322e6a160fec516d789dce843a8b74466bcaf1b912d045686dbc56",
+        "expected": "0f78a99aab322e6a160fec516d789dce843a8b74466bcaf1b912d045686dbc56",
+        "matched": true
+      }
+    },
+    "reported_neural_result": "NO_GAIN, no champion promotion",
+    "source_owner": "turn-0c396fcc1c87405e9696bcf2f02819db",
+    "test_command": "PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python -m unittest discover -s artifacts/NC-046 -p test_trainer_worker.py -q",
+    "test_result": "PASS 7/7, broker job 5ce2284884eaed90"
+  },
+  "frozen_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "limitations": [
+    "Read-only admission check, not an independent reviewer receipt or candidate proof",
+    "Only original isolated canary rechecked; 26-step untracked per-turn data under NC-046/turn-cc... is intentionally not claimed or committed",
+    "Exact replay of accepted checkpoints does not imply exactly-once physical gradient execution before durable commit",
+    "No new training episode, automatic service, candidate promotion, privileged execution or cross-project write"
+  ],
+  "next_actions": [
+    "Operator-authorize TR-002 with non-placeholder source/data and frozen independently audited train/validation/test split",
+    "Implement host-authenticated PID/job liveness with atomic trainer DAG claim/status/checkpoint transitions and stale-worker fencing",
+    "Run approved isolated matched CPU training, independent replay and retention review before requesting NC-046 PASS"
+  ],
+  "outcome": "UNFINISHED_RELEASE_REQUIRED",
+  "owner": "turn-cc7632e0b497418b990efae2c4e6647a",
+  "role": "IMPLEMENTER",
+  "schema": "logos-nc046-admission-blocker-v1",
+  "ticket": "NC-046",
+  "trainer_dag_readonly": {
+    "TR-002": {
+      "approved": false,
+      "claimed_at": null,
+      "data_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "job_state": "not_started",
+      "owner": null,
+      "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "execution": "not_enabled",
+    "git_synced": true,
+    "head_sha256": "f3c3e3406154b68a9cedfb40dbedd4920a35a0ed81c119dc2a304609c7419043",
+    "ledger_id": "trainer-c5032383d28343858c2d6c1e1875292d",
+    "seq": 4
+  }
+}
