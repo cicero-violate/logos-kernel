@@ -1,0 +1,138 @@
+{
+ "schema_version": 1,
+ "task": "NC-078",
+ "owner": "claude-code-turn-6f9b9559b2fe445e8fe0de17820f7900",
+ "source_sha256": {
+  "synth.py": "713f218009c2550810f2ab33754eab59d3aac42e05d37cb68a3fe4cdff8458cc",
+  "train_synth.py": "f47d7f2506cea1fa1b7658b89fb23052cd7dda0e1037012eb07d6d4d56f2ae3a",
+  "test_synth.py": "a156540b6f5bb71659e3ad026ecd8620bdf05361f1aaaeb163a0d363ea7b7cdb",
+  "spec_sensitivity.py": "8f363394352d16fad89d971cd6e50c4b8137621524592cb43a21bacacb64bb01",
+  "analyze.py": "c9213f3d6d8193f9d56f22d0e5a165cc124aac9a8a2f7f90dca32592182c8eae"
+ },
+ "evidence_sha256": {
+  "results.json": "efd517525b793d593f8d55bd4de6ccfb42d496bb7a2cfdd75d4337a60daeecc4",
+  "analysis.json": "4b454e67f998b4b4487257fac444205a0266f607ce77297984483aaad9958860",
+  "spec_sensitivity.json": "c5f8ca3f4a3fdf6d622ccaed1cbdcf8f1ae97e59aa626821e79912665e189eac",
+  "proposals.jsonl": "d00f62fa4a3692b2c3e138136e643f552f98bbca7caf8716fc64b08cfd39a505"
+ },
+ "checkpoint_sha256": {
+  "model_seed11.pt": "dda714d8f12b735221c0774ea2b71653a38fd5346b4a88c07b2e74e1fb5b90be",
+  "model_seed19.pt": "b26afb29d8eb93d11607f73e953f418cafd3ae69957982c6f58270abdcdf8d11",
+  "model_seed29.pt": "b20b3b3fd30a554f4e992ef8fa5dc848fa199d0a7360d2e3ec25f0420ae32677"
+ },
+ "canonical_isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+ "results_at_512_candidates": {
+  "neural": {
+   "named_of_16": [
+    9,
+    5,
+    7
+   ],
+   "unseen_of_40": [
+    25,
+    19,
+    20
+   ]
+  },
+  "shuffled_examples": {
+   "named_of_16": [
+    6,
+    5,
+    7
+   ],
+   "unseen_of_40": [
+    27,
+    23,
+    19
+   ]
+  },
+  "untrained": {
+   "named_of_16": [
+    0,
+    0,
+    0
+   ],
+   "unseen_of_40": [
+    0,
+    0,
+    0
+   ]
+  },
+  "random": {
+   "named_of_16": [
+    1,
+    2,
+    2
+   ],
+   "unseen_of_40": [
+    2,
+    2,
+    3
+   ]
+  }
+ },
+ "other_task_outputs_ablation": {
+  "11": {
+   "named": 2,
+   "unseen": 8
+  },
+  "19": {
+   "named": 3,
+   "unseen": 7
+  },
+  "29": {
+   "named": 3,
+   "unseen": 5
+  }
+ },
+ "equal_cpu": {
+  "enumeration_candidates_per_cpu_second": 29430,
+  "neural_mean_cpu_seconds_per_goal": 8.48,
+  "enumeration_candidates_in_that_cpu": 249696,
+  "enumeration_solved": {
+   "named": 10,
+   "unseen": 32
+  },
+  "neural_mean_solved": {
+   "named": 7,
+   "unseen": 21.3
+  },
+  "goals": {
+   "named": 16,
+   "unseen": 40
+  },
+  "caveats": [
+   "Training CPU is extra and is not counted for the neural arm.",
+   "Both arms ran under shared load, so CPU figures are approximate.",
+   "Enumeration capped at its control limit, so it may undercount."
+  ]
+ },
+ "outcome": "Far better than random per candidate on functions excluded from training; examples help, mostly through output values. On equal CPU it should not be presumed to beat enumeration; see equal_cpu.",
+ "review_output_path": "artifacts/NC-078/independent_receipt.json",
+ "reproduction": [
+  "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-078/test_synth.py",
+  "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-078/train_synth.py --out /tmp/nc078-replay",
+  "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-078/analyze.py"
+ ],
+ "negative_controls": [
+  "shuffled examples, which keep the output-value mix",
+  "another task's outputs",
+  "untrained model",
+  "uniform random programs",
+  "shortest-first enumeration",
+  "every training program computing a held-out function excluded by truth table"
+ ],
+ "dependencies": [
+  "Python 3",
+  "NumPy",
+  "PyTorch CPU",
+  "artifacts/NC-001/canonical_isa.py"
+ ],
+ "limitations": [
+  "4-bit functions of two inputs from programs of at most 4 instructions, so results are re-derivations and not new mathematics.",
+  "Goal programs come from the same generator family as training, so a learned prior over programs helps by construction.",
+  "CPU was measured under shared load and is approximate; training CPU of about 2,300 seconds per seed is extra.",
+  "Held-out named goals are few, 16, with wide uncertainty.",
+  "Spec sensitivity was measured on samples, and analysis results use one shuffle per seed."
+ ]
+}
