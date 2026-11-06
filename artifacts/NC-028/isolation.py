@@ -151,9 +151,9 @@ def _block_network_and_escape():
     finally:
         lib.seccomp_release(ctx)
 
-def _child_policy():
+def _child_policy(cpu_seconds=24):
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
-    resource.setrlimit(resource.RLIMIT_CPU, (24, 25))
+    resource.setrlimit(resource.RLIMIT_CPU, (cpu_seconds, cpu_seconds + 1))
     resource.setrlimit(resource.RLIMIT_FSIZE, (4*1024**2, 4*1024**2))
     # Per-real-UID task cap, not a cgroup limit: insufficient against
     # globally shared UID pressure or privileged processes on its own.
@@ -163,7 +163,7 @@ def _child_policy():
     _lock_fs()
     _block_network_and_escape()
 
-def run(argv, payload=None, timeout=35):
+def run(argv, payload=None, timeout=35, cpu_seconds=24):
     env = {
         "PATH": "/usr/bin", "LANG": "C", "PYTHONDONTWRITEBYTECODE": "1",
         "TMPDIR": str(ROOT / "artifacts/NC-028/scratch"),
@@ -172,6 +172,8 @@ def run(argv, payload=None, timeout=35):
     }
     if not (0 < timeout <= 35):
         raise ValueError("sandbox timeout must be within 35 seconds")
+    if type(cpu_seconds) is not int or not (1 <= cpu_seconds <= 24):
+        raise ValueError("sandbox CPU limit must be 1..24 integer seconds")
     scratch = ROOT / "artifacts/NC-028/scratch"
     # A pipe captured by subprocess.run has no RLIMIT_FSIZE protection and
     # can exhaust host memory. Regular scratch-backed file descriptors are
@@ -182,7 +184,7 @@ def run(argv, payload=None, timeout=35):
             [sys.executable, "-I", "-B", *argv],
             input=payload, text=True, stdout=stdout_file, stderr=stderr_file,
             cwd=str(ROOT), env=env, close_fds=True,
-            preexec_fn=_child_policy, timeout=timeout,
+            preexec_fn=lambda: _child_policy(cpu_seconds), timeout=timeout,
         )
         stdout_file.seek(0)
         stderr_file.seek(0)

@@ -83,3 +83,41 @@ python dag.py validate
 `/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt`.
 The `isolation.py` runner currently depends on these exact host paths; it is
 not portable without updating and verifying the allowlist.
+
+## Additional unseen-goal neural baseline (implementer-only)
+
+`train_lexical.py` trains a small character/ngram neural controller on the
+**11 supervised NC-007 macro labels only** and writes
+`lexical_controller.pt`; it excludes the full structural evaluation goal
+`UNSEEN_XOR_DOUBLE_PLUS_Y`. This is a supervised textual transfer baseline,
+**not** proof of neural algorithm invention. `lexical_model.py` is a separate
+sandboxed inference worker with no program table, formula oracle or target
+recipe. It maps unseen goal text to bounded neural token logits.
+
+On a failed *separate* 8-example feedback split, the temporary model performs
+12 bounded negative-only SGD steps to reduce the probability of the rejected
+action sequence; a second proposed program is scored independently on an
+untouched 8-example heldout split. The transmitted feedback contains only the
+rejected actions and (correct,tested) counts, never target programs or expected
+numeric outputs. The original training checkpoint and RLT champion stay frozen.
+
+`novel_trial.py` preallocates the **same** 12 CPU-second and 20 wall-second
+limits, two candidate opportunities and 16 probe/evaluation cases to neural,
+fixed-host and seeded-random-host arms; each sandbox child receives a reduced
+CPU cap. It records actual CPU/wall for every call. **Actual consumed compute is
+not equal across arms**, so this is an equal-cap/opportunity comparison, not an
+equal-consumed-CPU result. No broader discovery or performance superiority is
+claimed. Distinct independent review remains required.
+
+Run:
+```bash
+cd /workspace/experiments/logos-kernel
+PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/train_lexical.py
+PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-028/novel_trial.py
+PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-028 -p 'test_*.py'
+```
+
+Extra dependencies: Python stdlib, PyTorch CPU, pinned
+`artifacts/NC-007/composition_receipt.json` and frozen NC-006/007 executor
+and checkpoint dependencies already enumerated above, Linux Landlock ABI >=5,
+libseccomp.so.2, and private `artifacts/NC-028/scratch`.

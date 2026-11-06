@@ -7,7 +7,7 @@
     "arena.py": "68d54f2695581ab110a34d308676e0e07c8e2e0a969b2f9b6ea8b3e297cf11d4",
     "execute_worker.py": "54aaf3676719a18b12f01b491322c1325be493eb04c0dc846ceb0e4dcbe7a21d",
     "feedback_trial.py": "8dcdc3764f375d7d596cfd05379bfbd97c3326ad86d7c4ec3ae2df2ee19a1052",
-    "isolation.py": "25f06b6a8b06d1bcf81edcacfbfe2690a47b0f51a2ceb367f33ea4ee1f6bdc31",
+    "isolation.py": "cbdaa657434e6f190944d5694b40f0e21bb3954b81a311fd2c178d591b596fda",
     "propose_worker.py": "7b524c43fc185c0606da4d8b339dd2168dc3c75aaffb0fe48f9a4a1e171b0752"
   },
   "status": "NO_DISCOVERY",
@@ -24,18 +24,18 @@
           "correct": 8,
           "counterexamples": [],
           "execution_cost": {
-            "cpu_seconds": 1.544847,
+            "cpu_seconds": 1.5332770000000004,
             "nonprotocol_stdout_lines": 1,
             "returncode": 0,
-            "wall_seconds": 1.5715701879234985
+            "wall_seconds": 1.5713728190166876
           },
           "learned_feedback": false,
           "model_generated": true,
           "proposal_cost": {
-            "cpu_seconds": 1.560624,
+            "cpu_seconds": 1.6409449999999999,
             "nonprotocol_stdout_lines": 1,
             "returncode": 0,
-            "wall_seconds": 1.6234151870012283
+            "wall_seconds": 1.6715533989481628
           },
           "proposal_request_fields": [
             "goal",
@@ -65,10 +65,10 @@
           "learned_feedback": false,
           "model_generated": false,
           "proposal_cost": {
-            "cpu_seconds": 1.5701149999999995,
+            "cpu_seconds": 1.5856050000000002,
             "nonprotocol_stdout_lines": 1,
             "returncode": 0,
-            "wall_seconds": 1.6214246760355309
+            "wall_seconds": 1.6219901699805632
           },
           "proposal_request_fields": [
             "goal",
@@ -108,19 +108,19 @@
             }
           ],
           "execution_cost": {
-            "cpu_seconds": 1.427454,
+            "cpu_seconds": 1.5069780000000002,
             "nonprotocol_stdout_lines": 1,
             "returncode": 0,
-            "wall_seconds": 1.4722041110508144
+            "wall_seconds": 1.5714441899908707
           },
           "learned_feedback": false,
           "model_generated": true,
           "negative_control": "INJECTED_FIRST_OBSERVATION_BIT_FLIP",
           "proposal_cost": {
-            "cpu_seconds": 1.5735270000000003,
+            "cpu_seconds": 1.5274509999999992,
             "nonprotocol_stdout_lines": 1,
             "returncode": 0,
-            "wall_seconds": 1.6215380759676918
+            "wall_seconds": 1.5710462150163949
           },
           "proposal_request_fields": [
             "goal",
@@ -199,18 +199,18 @@
             }
           ],
           "execution_cost": {
-            "cpu_seconds": 1.4776819999999997,
+            "cpu_seconds": 1.5501440000000013,
             "nonprotocol_stdout_lines": 1,
             "returncode": 0,
-            "wall_seconds": 1.5215685460716486
+            "wall_seconds": 1.6212657199939713
           },
           "learned_feedback": false,
           "model_generated": true,
           "proposal_cost": {
-            "cpu_seconds": 1.5338749999999992,
+            "cpu_seconds": 1.4292480000000003,
             "nonprotocol_stdout_lines": 1,
             "returncode": 0,
-            "wall_seconds": 1.5711368770571426
+            "wall_seconds": 1.4714487600140274
           },
           "proposal_request_fields": [
             "goal",

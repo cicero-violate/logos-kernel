@@ -1,0 +1,248 @@
+{
+  "arm_totals": {
+    "fixed_host": {
+      "attempts": 2,
+      "cpu_seconds": 3.2610849999999996,
+      "feedback_correct": 0,
+      "feedback_tested": 16,
+      "heldout_correct": 0,
+      "heldout_tested": 16,
+      "wall_seconds": 3.365760004031472
+    },
+    "lexical_neural": {
+      "attempts": 2,
+      "cpu_seconds": 6.526678,
+      "feedback_correct": 0,
+      "feedback_tested": 16,
+      "heldout_correct": 0,
+      "heldout_tested": 16,
+      "wall_seconds": 6.678547080140561
+    },
+    "random_host": {
+      "attempts": 2,
+      "cpu_seconds": 3.8753520000000012,
+      "feedback_correct": 0,
+      "feedback_tested": 16,
+      "heldout_correct": 0,
+      "heldout_tested": 16,
+      "wall_seconds": 3.970780431991443
+    }
+  },
+  "attempts": [
+    {
+      "actions": [
+        "ADD_XX",
+        "ADD_RY",
+        "HALT"
+      ],
+      "aggregate_cpu_seconds": 3.304916,
+      "aggregate_wall_seconds": 3.3649091260740533,
+      "arm": "lexical_neural",
+      "attempt": 1,
+      "execution_cost": {
+        "cpu_seconds": 1.6576819999999999,
+        "returncode": 0,
+        "status": "OK",
+        "wall_seconds": 1.6828888669842854
+      },
+      "feedback_correct": 0,
+      "feedback_method": "none",
+      "feedback_tested": 8,
+      "heldout_correct": 0,
+      "heldout_tested": 8,
+      "model_generated": true,
+      "policy_weights_after": "f77d29eb168ffc9e09b9008626b4e4b587ed55dfad6ff8afc8324028449758b6",
+      "policy_weights_before": "f77d29eb168ffc9e09b9008626b4e4b587ed55dfad6ff8afc8324028449758b6",
+      "proposal_cost": {
+        "cpu_seconds": 1.647234,
+        "returncode": 0,
+        "status": "OK",
+        "wall_seconds": 1.682020259089768
+      },
+      "proposal_status": "PROPOSED",
+      "status": "TESTED"
+    },
+    {
+      "actions": [
+        "ADD_X1",
+        "HALT"
+      ],
+      "aggregate_cpu_seconds": 6.526678,
+      "aggregate_wall_seconds": 6.678547080140561,
+      "arm": "lexical_neural",
+      "attempt": 2,
+      "execution_cost": {
+        "cpu_seconds": 1.6173980000000006,
+        "returncode": 0,
+        "status": "OK",
+        "wall_seconds": 1.6807057240512222
+      },
+      "feedback_correct": 0,
+      "feedback_method": "rejection-gradient",
+      "feedback_tested": 8,
+      "heldout_correct": 0,
+      "heldout_tested": 8,
+      "model_generated": true,
+      "policy_weights_after": "86cef146f095622eb5a5aac80aca899b355d646af904788eb65a8f6eda79ebbb",
+      "policy_weights_before": "f77d29eb168ffc9e09b9008626b4e4b587ed55dfad6ff8afc8324028449758b6",
+      "proposal_cost": {
+        "cpu_seconds": 1.604364,
+        "returncode": 0,
+        "status": "OK",
+        "wall_seconds": 1.6329322300152853
+      },
+      "proposal_status": "PROPOSED",
+      "status": "TESTED"
+    },
+    {
+      "actions": [
+        "ADD_XY",
+        "HALT"
+      ],
+      "aggregate_cpu_seconds": 1.6634840000000004,
+      "aggregate_wall_seconds": 1.7298506409861147,
+      "arm": "fixed_host",
+      "attempt": 1,
+      "execution_cost": {
+        "cpu_seconds": 1.6634840000000004,
+        "returncode": 0,
+        "status": "OK",
+        "wall_seconds": 1.7298506409861147
+      },
+      "feedback_correct": 0,
+      "feedback_method": "none",
+      "feedback_tested": 8,
+      "heldout_correct": 0,
+      "heldout_tested": 8,
+      "model_generated": false,
+      "policy_weights_after": null,
+      "policy_weights_before": null,
+      "proposal_cost": {
+        "cpu_seconds": 0.0,
+        "status": "HOST",
+        "wall_seconds": 0.0
+      },
+      "proposal_status": "HOST_BASELINE",
+      "status": "TESTED"
+    },
+    {
+      "actions": [
+        "ADD_XX",
+        "HALT"
+      ],
+      "aggregate_cpu_seconds": 3.2610849999999996,
+      "aggregate_wall_seconds": 3.365760004031472,
+      "arm": "fixed_host",
+      "attempt": 2,
+      "execution_cost": {
+        "cpu_seconds": 1.5976009999999992,
+        "returncode": 0,
+        "status": "OK",
+        "wall_seconds": 1.6359093630453572
+      },
+      "feedback_correct": 0,
+      "feedback_method": "none",
+      "feedback_tested": 8,
+      "heldout_correct": 0,
+      "heldout_tested": 8,
+      "model_generated": false,
+      "policy_weights_after": null,
+      "policy_weights_before": null,
+      "proposal_cost": {
+        "cpu_seconds": 0.0,
+        "status": "HOST",
+        "wall_seconds": 0.0
+      },
+      "proposal_status": "HOST_BASELINE",
+      "status": "TESTED"
+    },
+    {
+      "actions": [
+        "SUB_XY",
+        "HALT"
+      ],
+      "aggregate_cpu_seconds": 1.8707820000000002,
+      "aggregate_wall_seconds": 1.9340079029789194,
+      "arm": "random_host",
+      "attempt": 1,
+      "execution_cost": {
+        "cpu_seconds": 1.8707820000000002,
+        "returncode": 0,
+        "status": "OK",
+        "wall_seconds": 1.9340079029789194
+      },
+      "feedback_correct": 0,
+      "feedback_method": "none",
+      "feedback_tested": 8,
+      "heldout_correct": 0,
+      "heldout_tested": 8,
+      "model_generated": false,
+      "policy_weights_after": null,
+      "policy_weights_before": null,
+      "proposal_cost": {
+        "cpu_seconds": 0.0,
+        "status": "HOST",
+        "wall_seconds": 0.0
+      },
+      "proposal_status": "HOST_BASELINE",
+      "status": "TESTED"
+    },
+    {
+      "actions": [
+        "XOR_XY",
+        "HALT"
+      ],
+      "aggregate_cpu_seconds": 3.8753520000000012,
+      "aggregate_wall_seconds": 3.970780431991443,
+      "arm": "random_host",
+      "attempt": 2,
+      "execution_cost": {
+        "cpu_seconds": 2.004570000000001,
+        "returncode": 0,
+        "status": "OK",
+        "wall_seconds": 2.0367725290125236
+      },
+      "feedback_correct": 0,
+      "feedback_method": "none",
+      "feedback_tested": 8,
+      "heldout_correct": 0,
+      "heldout_tested": 8,
+      "model_generated": false,
+      "policy_weights_after": null,
+      "policy_weights_before": null,
+      "proposal_cost": {
+        "cpu_seconds": 0.0,
+        "status": "HOST",
+        "wall_seconds": 0.0
+      },
+      "proposal_status": "HOST_BASELINE",
+      "status": "TESTED"
+    }
+  ],
+  "champion_sha256_unchanged": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "checkpoint_sha256": "6437f72373800d2ed0d847835ad7065a21759c81b9f96bc4d1286e83a0360728",
+  "comparability": "EQUAL ALLOCATED CAPS AND OPPORTUNITIES; ACTUAL CPU CONSUMPTION UNEQUAL",
+  "cpu_budget_per_arm": 12.0,
+  "feedback_method": "negative-only online neural weight update; not full counterexample-guided synthesis",
+  "feedback_pairs_sha256": "568badc6a20a315fa63f14cd7be1f04d4ff5cd08f05659602f44e5f8d0bbc9d9",
+  "goal": "UNSEEN_XOR_DOUBLE_PLUS_Y",
+  "heldout_pairs_sha256": "24877aae64a8ffd94726b4edc4be006d906f0e7047300f147eb8e08541ddcfe2",
+  "independent_verdict": "PENDING",
+  "max_attempts_per_arm": 2,
+  "new_discoveries": 0,
+  "novel_program_success": false,
+  "schema": "logos.nc028.unseen-feedback-benchmark/1",
+  "scoring": "separate 8-example feedback and untouched 8-example heldout sets",
+  "seed": 11,
+  "source_sha256": {
+    "execute_worker.py": "54aaf3676719a18b12f01b491322c1325be493eb04c0dc846ceb0e4dcbe7a21d",
+    "isolation.py": "cbdaa657434e6f190944d5694b40f0e21bb3954b81a311fd2c178d591b596fda",
+    "lexical_model.py": "4bcccea614f362621a7d9f6977dec0697ad8ea51c82567f934cc843dbc6b5cdb",
+    "novel_trial.py": "38647b133ffc185ee9d3d8ab5f953dcd9be1148f2fac8c88763c6d1fea77d30c",
+    "train_lexical.py": "63638b643324ee726218c69564cc40bf49b19cc6086f0cd14227df8549aaa299"
+  },
+  "status": "NO_DISCOVERY",
+  "train_label_leakage": false,
+  "training_style": "supervised known macro labels, then OOD goal-name proposal",
+  "wall_budget_per_arm": 20.0
+}
