@@ -1,0 +1,54 @@
+{
+  "acceptance": {
+    "active_minus_random_point_estimate": 0.14286,
+    "cases_per_arm": 70,
+    "correct_graphs": {
+      "active": 52,
+      "passive": 1,
+      "random": 42
+    },
+    "graph_clustered_bootstrap_ci95": [
+      -0.14286,
+      0.42857
+    ],
+    "heldout_graphs": 14,
+    "matched_measured_cpu_20pct": true,
+    "observationally_equivalent_graphs_intervention_distinguishes": true,
+    "oracle_calls_per_arm": 210,
+    "outcome": "NO_CONFIRMED_GAIN_OVER_RANDOM",
+    "seeds": [
+      11,
+      19,
+      29,
+      31,
+      43
+    ]
+  },
+  "candidate_path": "artifacts/NC-070/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "6b1573419025a814091e98e38facfdd8c311bfff",
+  "candidate_sha256": "1bd52254766605f54a370f0c7e443ad1897e624e4631f718096fa7e809692060",
+  "champion_modified": false,
+  "limitations": [
+    "True graph hidden from policy, but entire 64-hypothesis universe is supplied; no unseen graph-family transfer",
+    "Observed active advantage over random has graph-clustered 95% CI spanning zero",
+    "Matched computation excludes common candidate graph enumeration and ISA compilation",
+    "Host CPU varies; matched work does not imply identical timing",
+    "Tests establish bounded finite-sample and finite-family correctness, not open-world causality or AGI",
+    "Git hashes establish version consistency, not authenticated reviewer identity or hostile host integrity"
+  ],
+  "owner": "turn-dc3fa55acffd4a99ad68a6e4afc5b1e1",
+  "proof_scope": "Reproduced finite-hypothesis intervention-based causal graph identification on 14 heldout four-register copy-tree ISA structures across five seeds with three interventions each (70 cases and 210 oracle calls per arm). Verified 630 intervention traces and active expected-survivor policy scores independently, 210 evaluation rows, source provenance, matched CPU, negative controls, and bounded confidence interval. Not causal discovery beyond the 64 supplied graph hypotheses; no statistically confirmed improvement over random, no AGI, no champion promotion.",
+  "task": "NC-070",
+  "tests": {
+    "budget_sweep": "0,1,2,3 interventions; CPU_MATCH all",
+    "candidate_unittest": "12/12 PASS",
+    "dag_unittest": "19/19 PASS",
+    "dag_validate": "PASS nodes=890 events=1112 preclaim",
+    "independent_reviewer_checks": "630/630 oracle and planning-score checks; 11/11 source/dependency/evidence files byte-equal at pinned revision",
+    "negative_controls": "False oracle, mutated graph label, mutated observation: rejected by freshly rerun candidate tests",
+    "pull_unittest": "20/20 PASS",
+    "recompute": "210/210 evaluation rows; 630/630 traces"
+  },
+  "verdict": "PASS",
+  "verifier": "turn-6380b0c69fe64c2b94a4f6a2defdf5cd"
+}
