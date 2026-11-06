@@ -1,0 +1,38 @@
+{
+  "dependencies": [
+    "Python 3",
+    "NumPy",
+    "PyTorch CPU",
+    "Git",
+    "NC-001/canonical_isa.py",
+    "synth.py",
+    "train_synth.py",
+    "three pinned checkpoints",
+    "results.json"
+  ],
+  "evidence": {
+    "replay_chain_sha256": "3d98c0a94facf03e3df851cbad5ce622ce7b287b58e04d5a4afcc707bbb08ec4",
+    "required_count": 504,
+    "resume_verified": "4 goals then 2 in fresh process",
+    "sampled_count": 6,
+    "seed11_first6_frozen_exact": true,
+    "unit_tests": "3/3 PASS"
+  },
+  "limitations": [
+    "Full independent checkpoint-to-count replay not completed",
+    "The first 6 goals do not establish the later 498",
+    "No review PASS, no candidate republished, no champion promotion"
+  ],
+  "next_action": "Run full replay for seeds 11,19,29 to COMPLETE then obtain independent verification; consult REPLAY_HANDOFF.md",
+  "original_candidate_sha256": "59e695a4bf1215a3b2d4ba0b524469848f129a0fc8facc6f398b9b79fcae39e3",
+  "owner": "turn-8551efc10a3a4840aceb5af7364a27fd",
+  "schema": "logos.nc078.partial-rework/1",
+  "source_and_evidence_sha256": {
+    "REPLAY_HANDOFF.md": "59e1d16124611ae2c2e686954361660966d852e663d912f8685216ef27f537f5",
+    "replay_checkpoints.py": "e8abb18113c06fe3808370d283277cac2ba52dfddfa66b63fcd0746f65d4fd25",
+    "replay_seed11_first6.json": "887c8d181e8e726fe52fcf0262629323950cd242f5fb56df7350b73b54f2066d",
+    "test_replay_checkpoints.py": "3c9b96e12d0bd4e7dfc325d2b9a6ddd5e199c6e389f003391bdd5f0d33274b0e"
+  },
+  "task": "NC-078",
+  "verdict": "INCOMPLETE"
+}
