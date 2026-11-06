@@ -1,0 +1,70 @@
+{
+ "schema_version": 1,
+ "task": "NC-079",
+ "owner": "claude-code-turn-0f828173bcf24622a4099422ec73a053",
+ "source_sha256": {
+  "stack.py": "545787235d5b3b2dba7228ce937dbed8f6e402a4695c74c4c8d0a69ae2a6f7ff",
+  "run_compounding.py": "76ebdb22e09dc3e3caa542b02056876b76de40a9206674dbc80f87f88e36e4c2",
+  "run_curriculum.py": "f85ef0b206bc42dda5c9140aa6e0260ecdb2d45fb93608683460f3843841cff5",
+  "test_stack.py": "b7aaa3901fb846d6a1bc2ddad1678536aa93913d7716042926dcd0175cf37227",
+  "README.md": "55ff6e3a027befd9cadc61ad8950dc3b2650a6e53b4b5264deb59cf02a49db5a"
+ },
+ "evidence_sha256": {
+  "compounding_results.json": "ee72d947d8f1a4db2614fffc8189f06e342c833e9c9fd189f5eeb94700c437eb",
+  "curriculum_results.json": "e4efd0a4969d3b386f642b5e95534cc36d4b627569a2ad90726684a753ba623c"
+ },
+ "scoreboard_sha256": "34fcdecd35e05547e7ea562882426bd54a5f39c828cbb8f3a32275e3511412fe",
+ "main_verdicts": {
+  "structured": {
+   "vs_none": "IMPROVEMENT",
+   "vs_random": "IMPROVEMENT",
+   "compounding": "NO_COMPOUNDING"
+  },
+  "arithmetic": {
+   "vs_none": "NO_IMPROVEMENT",
+   "vs_random": "NO_IMPROVEMENT",
+   "compounding": "NO_COMPOUNDING"
+  },
+  "unstructured": {
+   "vs_none": "NO_IMPROVEMENT",
+   "vs_random": "NO_IMPROVEMENT",
+   "compounding": "NO_COMPOUNDING"
+  }
+ },
+ "curriculum_verdicts": {
+  "final_vs_none": "IMPROVEMENT",
+  "final_vs_random_library": "IMPROVEMENT",
+  "final_vs_no_ladder": "IMPROVEMENT"
+ },
+ "curriculum_compounding": {
+  "verdict": "NO_COMPOUNDING",
+  "reason": "a generation in the window did not improve"
+ },
+ "review_output_path": "artifacts/NC-079/independent_verification.json",
+ "reproduction": [
+  "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-079/test_stack.py",
+  "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-079/run_compounding.py --out /tmp/nc079-main.json",
+  "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-079/run_curriculum.py --out /tmp/nc079-curriculum.json"
+ ],
+ "negative_controls": [
+  "no library",
+  "random library of matching sizes",
+  "library without a ladder",
+  "a world with no shared structure",
+  "sealed and training goals split by function hash",
+  "verification across all 65,536 pairs plus a separate integer evaluator"
+ ],
+ "dependencies": [
+  "Python 3",
+  "NumPy",
+  "artifacts/NC-061/scoreboard.py"
+ ],
+ "limitations": [
+  "The structured world is built to reward reuse, and the ladder was designed knowing the arithmetic family; an automatic curriculum is a stronger test, which LA-015 attempts.",
+  "Goals are 8-bit functions and solutions are mostly known constant multiplications, so this is not new mathematics.",
+  "Sealed goals derive from public seeds so a reviewer can regenerate them, unlike a private NC-061 commitment.",
+  "Search matches expressions on 64 probes, with exhaustive verification only of what it returns.",
+  "The separate evaluator matches a canonical ISA program in tests but expressions are not compiled to ISA programs.",
+  "Library capped at 48 concepts, and CPU was measured under shared load."
+ ]
+}
