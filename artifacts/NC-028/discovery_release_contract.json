@@ -1,0 +1,34 @@
+{
+  "baseline_controls": [
+    "fixed_ADD_XY",
+    "uniform_random_one_step",
+    "supervised_neural_controller"
+  ],
+  "budget": {
+    "address_space_bytes": 8589934592,
+    "cpu_seconds": 24,
+    "file_size_bytes": 0,
+    "gpu": false,
+    "heldout_pairs_per_task": 8,
+    "max_action_tokens": 5,
+    "max_proposals_per_goal": 1,
+    "network": false,
+    "wall_seconds_per_subprocess": 35
+  },
+  "evaluation_seed": 20261106,
+  "frozen_primitive_contract": "NC-006 accepted_library.json",
+  "heldout_specifications": [
+    "DOUBLE",
+    "INC",
+    "XOR_ADD_X",
+    "UNSEEN_XOR_DOUBLE_PLUS_Y"
+  ],
+  "no_new_skill_proof": true,
+  "novel_family": "UNSEEN_XOR_DOUBLE_PLUS_Y: model vocabulary does not support it",
+  "oracle_execution": "host computes independent arithmetic reference after proposal emission",
+  "promotion": "disabled; future NC-009 and human approval",
+  "requires_independent_verifier": true,
+  "schema": "logos.nc028.contract/1",
+  "task": "NC-028",
+  "task_input": "known goal name only; never target sequence, target output or oracle label"
+}

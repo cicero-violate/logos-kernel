@@ -1,0 +1,44 @@
+{
+  "candidate_execution": "typed whitelisted NC-007 actions over frozen NC-006 neural primitives",
+  "isolation": "Landlock ABI >=5 + seccomp socket/escape deny",
+  "limits": {
+    "address_space_bytes": 8589934592,
+    "cpu_seconds": 24,
+    "file_size_bytes": 0,
+    "gpu": false,
+    "heldout_pairs_per_task": 8,
+    "max_action_tokens": 5,
+    "max_proposals_per_goal": 1,
+    "network": false,
+    "wall_seconds_per_subprocess": 35
+  },
+  "permission_gates": {
+    "automatic_deployment": false,
+    "champion_promotion": false,
+    "external_network": false,
+    "filesystem_mutation": false
+  },
+  "proposer": "NC-007 supervised controller only; no unseen goal token support",
+  "sandbox_mode": "read-only allowlisted filesystem, denied socket syscalls; no namespace/VM",
+  "schema": "logos.nc028.sandbox/1",
+  "source_sha256": {
+    "../NC-001/canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "../NC-005/curriculum.py": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d",
+    "../NC-006/accepted_library.json": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+    "../NC-006/library_manifest.json": "3de331da820d66f7c7e8e80adcf3badd2dae9de342ba7760d9ec2263d1d178d7",
+    "../NC-007/compose.py": "3fb777f2cb8e1ab8dee5fff3f78893d5515f679fdcc8742a7bdf15a1b7e66e00",
+    "arena.py": "743d6af5a64ca1eb06f8671a5de8b009fbeadf7c478cca1e534a3476b7a8cf58",
+    "controller_seed11.pt": "6ec7dfdbb7fe47c05d1eb470d915d0e963de731009bc317ab87e0ffad27464d6",
+    "controller_seed19.pt": "5bb0a9b523f618972153e83eea38221eaa745f233aa1c529c24d35653a6fb92f",
+    "controller_seed29.pt": "92da66944c2353dae90e0381160e89646c9f0ad6052f4c66f8c3e8014feedc74",
+    "execute_worker.py": "54aaf3676719a18b12f01b491322c1325be493eb04c0dc846ceb0e4dcbe7a21d",
+    "isolation.py": "86341098718bd39e1ae03b2f23b5341f40ec9ddd012df07677a32f45f30713ab",
+    "primitives_seed11.pt": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
+    "primitives_seed19.pt": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
+    "primitives_seed29.pt": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
+    "propose_worker.py": "cfccedf5ac091b915a75059a7f99d8598dba1b8574c280c3bd52f08b9b941940",
+    "unified_RLT_champion": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+  },
+  "status": "IMPLEMENTER_UNVERIFIED",
+  "task": "NC-028"
+}

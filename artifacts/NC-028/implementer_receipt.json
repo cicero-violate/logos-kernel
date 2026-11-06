@@ -1,0 +1,104 @@
+{
+  "claim_commit": "9ffcab434ed343974c2fd96c339a9eb60664da22",
+  "created_utc": "2026-11-06T06:39:22.063875+00:00",
+  "evidence_sha256": {
+    "discovery_release_contract.json": "34da04dd81f65b246f0270f94761daa8a6dbce028769d52890dda0ebf7384a83",
+    "implementation_failures.jsonl": "d512e04a6869ed96a44d5c962589843495e28979588f29aff4aa9429b98a73da",
+    "pilot_results.json": "ae1b052a16a019188c649bc1812aeab85e680ce85e3434819deecd25b972dc06",
+    "proposal_trace.jsonl": "a0d4899fa2a0c12ba70642d3c945a6de3f5411187a4c58ef0483e442c18a8fe2",
+    "sandbox_manifest.json": "bd11c2fb5f075194c83f757fdbbf17a64e2ff8f9535c4ba7c2d81687dac7c0af"
+  },
+  "independent_verdict": "HOLD",
+  "independent_verifier": null,
+  "limits": [
+    "No neural structural discovery; frozen controller only recognizes supervised goal IDs",
+    "Baseline arm proposals and heldout case counts matched but CPU cost NOT matched",
+    "Same-UID Landlock+seccomp is not an independently certified VM/namespace boundary",
+    "No feedback-conditioned policy revision; one proposal per task and budget exhaustion",
+    "No real distinct NC-028 verifier available: independent_receipt.json intentionally absent"
+  ],
+  "model_structural_unseen_goal_cases": {
+    "correct": 0,
+    "reason": "UNSUPPORTED_GOAL, no program emitted",
+    "tested": 24
+  },
+  "model_supervised_known_goal_cases": {
+    "correct": 72,
+    "tested": 72
+  },
+  "next_action": "Distinct independent reviewer must audit committed code, reproduce adversarial sandbox and numeric results, then emit actual PASS/FAIL/HOLD; owner may close only on real PASS.",
+  "owner": "1db9edb983ff4df9933612e7c826e55f",
+  "promotion_authorized": false,
+  "role": "IMPLEMENTER",
+  "runtime": {
+    "linux": "6.12.10-1-lts",
+    "python": "3.14.6"
+  },
+  "sandbox_probes": [
+    "socket/network denied",
+    "outside-home read denied",
+    "source write denied",
+    "metadata chmod denied",
+    "malformed actions and HALT denied",
+    "deliberate subprocess crash does not alter champion"
+  ],
+  "schema": "logos.nc028.implementer-evidence/1",
+  "scientific_verdict": "NO_DISCOVERY",
+  "score_by_arm": {
+    "fixed_ADD_XY": {
+      "correct": 0,
+      "exec_cpu_seconds": 20.471055000000007,
+      "exec_wall_seconds": 20.80867625802057,
+      "proposal_cpu_seconds": 0,
+      "proposal_wall_seconds": 0,
+      "proposals": 12,
+      "tested": 96
+    },
+    "supervised_neural_controller": {
+      "correct": 72,
+      "exec_cpu_seconds": 15.367247,
+      "exec_wall_seconds": 15.5566173918196,
+      "proposal_cpu_seconds": 19.812000999999988,
+      "proposal_wall_seconds": 20.13394204893848,
+      "proposals": 12,
+      "tested": 96
+    },
+    "uniform_random_one_step": {
+      "correct": 8,
+      "exec_cpu_seconds": 20.132346000000013,
+      "exec_wall_seconds": 20.389147857087664,
+      "proposal_cpu_seconds": 0,
+      "proposal_wall_seconds": 0,
+      "proposals": 12,
+      "tested": 96
+    }
+  },
+  "security_boundary": "Landlock+seccomp on same host/UID; no namespace or VM; bounded typed actions, no program source evaluation",
+  "source_sha256": {
+    "../NC-001/canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "../NC-005/curriculum.py": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d",
+    "../NC-006/accepted_library.json": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+    "../NC-006/library_manifest.json": "3de331da820d66f7c7e8e80adcf3badd2dae9de342ba7760d9ec2263d1d178d7",
+    "../NC-007/compose.py": "3fb777f2cb8e1ab8dee5fff3f78893d5515f679fdcc8742a7bdf15a1b7e66e00",
+    "arena.py": "743d6af5a64ca1eb06f8671a5de8b009fbeadf7c478cca1e534a3476b7a8cf58",
+    "controller_seed11.pt": "6ec7dfdbb7fe47c05d1eb470d915d0e963de731009bc317ab87e0ffad27464d6",
+    "controller_seed19.pt": "5bb0a9b523f618972153e83eea38221eaa745f233aa1c529c24d35653a6fb92f",
+    "controller_seed29.pt": "92da66944c2353dae90e0381160e89646c9f0ad6052f4c66f8c3e8014feedc74",
+    "execute_worker.py": "54aaf3676719a18b12f01b491322c1325be493eb04c0dc846ceb0e4dcbe7a21d",
+    "isolation.py": "86341098718bd39e1ae03b2f23b5341f40ec9ddd012df07677a32f45f30713ab",
+    "primitives_seed11.pt": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
+    "primitives_seed19.pt": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
+    "primitives_seed29.pt": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
+    "propose_worker.py": "cfccedf5ac091b915a75059a7f99d8598dba1b8574c280c3bd52f08b9b941940",
+    "unified_RLT_champion": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+  },
+  "status": "LOCAL_TESTS_PASS_INDEPENDENT_AUDIT_REQUIRED",
+  "task": "NC-028",
+  "tests": {
+    "DAG": "19/19 PASS",
+    "NC-006": "13/13 PASS",
+    "NC-007": "14/14 PASS",
+    "NC-020": "14/14 PASS",
+    "NC-028_self_tests": "6/6 PASS"
+  }
+}
