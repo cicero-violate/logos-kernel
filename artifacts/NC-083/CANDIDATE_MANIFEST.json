@@ -1,0 +1,117 @@
+{
+ "schema_version": 1,
+ "task": "NC-083",
+ "owner": "claude-code-turn-0c2d6138dacf4416b5ed004627e81616",
+ "outcome": "NO_GAIN: from 1570 operations, the exact table saved 108, search at equal total CPU 48, the learned proposer 3, another program's tokens 1, random proposals 0, NC-023 rewrites 0.",
+ "source_sha256": {
+  "shorten.py": "713bd0abda6090d11dd440f1d64b0a68076f4e230473cfab98524f96ba7447c5",
+  "test_shorten.py": "3a7bd5f8882b37a2b2c208746bee7e5838ae72aa2be224ba8319cc49ed300fbe",
+  "README.md": "2ca8eb3eb82838f640a4e8e162249b751a2b48b6d13e8ba77c761c2a9957140f",
+  "la015_library_pinned.py": "0c876a9e8d90e9401323b0068a66acc9b6d1e9f3051f22a771fe9d2a2d098b8a"
+ },
+ "evidence_sha256": {
+  "shorten_results.json": "ae082ac81b07b9562867e2bac925bb99bf9d251061588fc229c094f99026eebc",
+  "library_seed11.jsonl": "700faee6a29f79cbd2036d14ab51fee530958e399202b95826dec9ddf8359180",
+  "library_seed19.jsonl": "3166d050d0cd65e4af8db7d679589efd6abcf119429b4387aa182c6d095b5353",
+  "library_seed29.jsonl": "7a9426f6696ccf65af932e4afe17acd05bcf56f2f0f8c3dfe22bbd0f95025c92"
+ },
+ "checkpoint_sha256": {
+  "11": "5dca4eebeaba5fe62859dbea8fd6bdaa92087ee807951b1915abb64091f2cf34",
+  "19": "61b24d4df7618600d163131bb800c46baa0f8d60d647344bc39e45bd077a1841",
+  "29": "a92c450c8b10b870504b36385081efe219cf6de67c394d5efcc31b60eb1aded3"
+ },
+ "nc082_checkpoint_sha256": {
+  "controller_seed11.pt": "d7140f783a059425cc86ed4a1cb731f6aa13b1d747d04a503e36a94bddf25b38",
+  "controller_seed19.pt": "f7e4ac1611cfaad85032a73f96e7b499c987d6136d82e7f1b808054a54252d2d",
+  "controller_seed29.pt": "a02c68413116ddd51cfbdfbedbd601928e9eadac2729a441caf2212b04665985"
+ },
+ "total_ops_per_seed": {
+  "model": [
+   577,
+   455,
+   535
+  ],
+  "other_program_control": [
+   578,
+   456,
+   535
+  ],
+  "random_proposals": [
+   578,
+   456,
+   536
+  ],
+  "exact_table": [
+   548,
+   424,
+   490
+  ],
+  "nc023_saturation": [
+   578,
+   456,
+   536
+  ],
+  "search_equal_total_cpu": [
+   570,
+   436,
+   516
+  ]
+ },
+ "source_ops_per_seed": [
+  578,
+  456,
+  536
+ ],
+ "execution_on_nc082": {
+  "model": {
+   "programs": 7,
+   "steps_before": 1280,
+   "steps_after": 1216,
+   "rollouts_correct": 224,
+   "rollouts": 224,
+   "does_not_fit": 2
+  },
+  "exact_table": {
+   "programs": 53,
+   "steps_before": 10464,
+   "steps_after": 8864,
+   "rollouts_correct": 1696,
+   "rollouts": 1696,
+   "does_not_fit": 4
+  }
+ },
+ "equal_cpu_tolerance": "Fixed before the run: measured search CPU within 10% of the learned arm's table, training and proposal CPU.",
+ "review_output_path": "artifacts/NC-083/independent_verification.json",
+ "reproduction": [
+  "See README.md."
+ ],
+ "negative_controls": [
+  "another program's tokens",
+  "random proposals",
+  "a proposal wrong on one pair is rejected",
+  "a second evaluator wrong on one pair fails final confirmation",
+  "a changed library is refused",
+  "no held-out function appears in training pairs"
+ ],
+ "dependencies": [
+  "Python 3",
+  "NumPy",
+  "PyTorch CPU",
+  "artifacts/NC-001",
+  "artifacts/NC-020",
+  "artifacts/NC-023",
+  "artifacts/NC-080",
+  "artifacts/NC-082"
+ ],
+ "limitations": [
+  "The proposer's training labels come from the exact table, whose forms reach 7 nodes. It was taught to imitate the table, so this exam gives it little chance to beat the table, and it does not test a proposer trained on larger targets or on search results. It shows this design failed, not that learning cannot help.",
+  "Held-out status applies to each exam program's whole function. Its subexpressions, which are what proposers act on, can compute training-side functions.",
+  "NC-023 was given 10 CPU seconds per program and timed out on 14, 1 and 3 of 40 by seed, keeping the source there. It works on whole programs under its own rule set, unlike the other arms, so its zero reflects this exam and limit and does not rate NC-023 generally.",
+  "The exact table holds 200,000 forms keyed on 512 sampled pairs, with every use confirmed on all pairs. Its constants are limited to 17 values.",
+  "Exact-table CPU excludes nothing but is very small because the search space it covers is small; larger forms would cost far more.",
+  "Search at equal CPU ran at very large budgets per subexpression, and the frame runs at most 2 passes.",
+  "Operation savings are small relative to source size: about 7% for the best arm.",
+  "Execution counts cover only programs that fit NC-082's 24-instruction, 8-register machine, 53 for the table arm and 7 for the learned arm, on 16 inputs each, and NC-082 has not yet passed review.",
+  "CPU was measured under shared load."
+ ]
+}
