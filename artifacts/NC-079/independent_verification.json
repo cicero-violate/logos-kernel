@@ -1,101 +1,382 @@
 {
-  "task": "NC-079",
+  "candidate_path": "artifacts/NC-079/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "37bcb0ebc1a4c3ad62e097230cadbf1f8e9606ae",
+  "candidate_sha256": "8144fe88617670b1a6c8595f8430f6c08ebcc7bdf5a7e57295990b104ec59dbf",
+  "findings": [
+    {
+      "all_curriculum_mismatches": {
+        "11": [
+          {
+            "generation": 2,
+            "random": 11,
+            "real": 27
+          },
+          {
+            "generation": 3,
+            "random": 11,
+            "real": 37
+          },
+          {
+            "generation": 4,
+            "random": 11,
+            "real": 43
+          },
+          {
+            "generation": 5,
+            "random": 11,
+            "real": 44
+          },
+          {
+            "generation": 6,
+            "random": 11,
+            "real": 48
+          },
+          {
+            "generation": 7,
+            "random": 11,
+            "real": 48
+          },
+          {
+            "generation": 8,
+            "random": 11,
+            "real": 48
+          },
+          {
+            "generation": 9,
+            "random": 11,
+            "real": 48
+          }
+        ],
+        "19": [
+          {
+            "generation": 2,
+            "random": 10,
+            "real": 27
+          },
+          {
+            "generation": 3,
+            "random": 10,
+            "real": 41
+          },
+          {
+            "generation": 4,
+            "random": 10,
+            "real": 47
+          },
+          {
+            "generation": 5,
+            "random": 10,
+            "real": 48
+          },
+          {
+            "generation": 6,
+            "random": 10,
+            "real": 48
+          },
+          {
+            "generation": 7,
+            "random": 10,
+            "real": 48
+          },
+          {
+            "generation": 8,
+            "random": 10,
+            "real": 48
+          },
+          {
+            "generation": 9,
+            "random": 10,
+            "real": 48
+          }
+        ],
+        "29": [
+          {
+            "generation": 2,
+            "random": 8,
+            "real": 27
+          },
+          {
+            "generation": 3,
+            "random": 8,
+            "real": 42
+          },
+          {
+            "generation": 4,
+            "random": 8,
+            "real": 48
+          },
+          {
+            "generation": 5,
+            "random": 8,
+            "real": 48
+          },
+          {
+            "generation": 6,
+            "random": 8,
+            "real": 48
+          },
+          {
+            "generation": 7,
+            "random": 8,
+            "real": 48
+          },
+          {
+            "generation": 8,
+            "random": 8,
+            "real": 48
+          },
+          {
+            "generation": 9,
+            "random": 8,
+            "real": 48
+          }
+        ]
+      },
+      "all_main_mismatches": {
+        "structured/11": [
+          {
+            "generation": 2,
+            "random": 21,
+            "real": 20
+          },
+          {
+            "generation": 3,
+            "random": 30,
+            "real": 31
+          },
+          {
+            "generation": 4,
+            "random": 48,
+            "real": 34
+          },
+          {
+            "generation": 5,
+            "random": 48,
+            "real": 42
+          }
+        ],
+        "structured/19": [
+          {
+            "generation": 2,
+            "random": 45,
+            "real": 48
+          }
+        ],
+        "structured/29": [
+          {
+            "generation": 2,
+            "random": 31,
+            "real": 34
+          },
+          {
+            "generation": 3,
+            "random": 32,
+            "real": 45
+          },
+          {
+            "generation": 4,
+            "random": 33,
+            "real": 48
+          },
+          {
+            "generation": 5,
+            "random": 37,
+            "real": 48
+          }
+        ],
+        "unstructured/11": [
+          {
+            "generation": 2,
+            "random": 10,
+            "real": 9
+          },
+          {
+            "generation": 3,
+            "random": 12,
+            "real": 11
+          },
+          {
+            "generation": 4,
+            "random": 12,
+            "real": 11
+          },
+          {
+            "generation": 5,
+            "random": 16,
+            "real": 13
+          },
+          {
+            "generation": 6,
+            "random": 16,
+            "real": 13
+          },
+          {
+            "generation": 7,
+            "random": 20,
+            "real": 15
+          }
+        ],
+        "unstructured/19": [
+          {
+            "generation": 2,
+            "random": 14,
+            "real": 13
+          },
+          {
+            "generation": 3,
+            "random": 14,
+            "real": 13
+          },
+          {
+            "generation": 4,
+            "random": 17,
+            "real": 15
+          },
+          {
+            "generation": 5,
+            "random": 24,
+            "real": 21
+          },
+          {
+            "generation": 6,
+            "random": 27,
+            "real": 24
+          },
+          {
+            "generation": 7,
+            "random": 33,
+            "real": 29
+          }
+        ],
+        "unstructured/29": [
+          {
+            "generation": 3,
+            "random": 14,
+            "real": 11
+          },
+          {
+            "generation": 4,
+            "random": 20,
+            "real": 15
+          },
+          {
+            "generation": 5,
+            "random": 20,
+            "real": 16
+          },
+          {
+            "generation": 6,
+            "random": 23,
+            "real": 21
+          },
+          {
+            "generation": 7,
+            "random": 29,
+            "real": 24
+          }
+        ]
+      },
+      "criterion": "Compare against a random library of equal size to the learned library at matched generation/seed/world",
+      "curriculum_final_examples": {
+        "seed11": {
+          "random": 11,
+          "real": 48
+        },
+        "seed19": {
+          "random": 10,
+          "real": 48
+        },
+        "seed29": {
+          "random": 8,
+          "real": 48
+        }
+      },
+      "id": "F1",
+      "main_examples": {
+        "structured/11/generation2": {
+          "random": 21,
+          "real": 20
+        },
+        "structured/29/generation4": {
+          "random": 33,
+          "real": 48
+        },
+        "unstructured/19/generation7": {
+          "random": 33,
+          "real": 29
+        }
+      },
+      "mechanism": "run_compounding.py:run_arm and run_curriculum.py:run_arm compute real=harvest(solutions) separately inside each arm. random_library(other,real) matches sizes of the random arm's own historically solved concepts, not the library arm's concepts. Different learning trajectories cause different concept counts and size distributions. test_random_library_matches_exact_sizes only tests the generator for one provided list, not equality across experimental arms.",
+      "reproduction": "Read pinned compounding_results.json and curriculum_results.json. For each seed and generation, compare runs[world][library][seed][g][library_size] with runs[world][random_library][seed][g][library_size], and similarly curriculum runs[library][seed] vs runs[random_library][seed]. Inspect independent per-arm harvest in both run_arm implementations.",
+      "severity": "acceptance_failure"
+    }
+  ],
+  "limitations": [
+    "Existing full experiment results were not independently re-executed in their entirety; the full rerun was stopped on a confirmed design failure",
+    "Measured CPU is sensitive to shared host load and not independently reproduced",
+    "Exhaustive numerical comparison uses the NumPy evaluator on all 65536 8-bit pairs; separate Python integer evaluator samples 1024 pairs, so separate-evaluator exhaustiveness is not established",
+    "Hash pinning detects accidental content changes, not collusion or external compromise",
+    "Failing the random-library comparison does not itself falsify reported raw solve rates or all possible library usefulness"
+  ],
   "owner": "claude-code-turn-0f828173bcf24622a4099422ec73a053",
-  "verifier": "turn-8bd2ce85bec7435aae93995be074fe11",
-  "verdict": "FAIL",
-  "candidate_sha256": "80ce02fef142593c7cdb146491373a382503554b1a3b2eb958dc170928d63cc2",
-  "candidate_revision": "49688607321edc4e8fc3390348c5eab80ff56512",
-  "proof_scope": "Independent source and artifact hash audit, 8 unit tests, and first-generation 30-goal negative-control probes for three worlds at seed 11. Full 3-seed default runs were not repeated because the control requirements already fail. This receipt does not claim that the reported solve rates are false or that recursive learning is impossible.",
+  "previous_round_receipt_sha256": "8a72c59df43198767457aaad810c060d56d0ac021e33d4c90f1f22fc6fdd995f",
+  "proof_scope": "Independent audit of pinned source, manifest and scoreboard; 19 DAG, 20 pull and 9 NC-079 tests; independent sealed/train cross-check for all three worlds and seeds 11/19/29; recomputation of scoreboard final verdicts; negative control comparison of random-arm concept counts against real-library counts for all stored generation rows. Full three-seed experiments were initiated but cancelled after a reproducible experimental-design violation was established. No full result reproduction, CPU reproducibility or unrestricted theoretical claim is asserted.",
+  "required_rework": [
+    "Precompute real-library concept lists at each world/seed/generation and freeze their count and exact expression-size multiset as reference before constructing the random arm; do not permit the control arm to choose its own target sizes",
+    "Add an experiment-level regression test asserting identical per-generation library_size AND exact size multiset for the real-versus-random matched arms across three seeds",
+    "Republish all multi-seed results and CPU-budget verdicts with equal-size random controls, then request independent review",
+    "Document whether the separate evaluator must also run exhaustively for all 65536 input pairs to meet task acceptance"
+  ],
+  "schema_version": 2,
+  "supported_findings": [
+    "Candidate frozen source/evidence/scoreboard hashes are consistent",
+    "Deterministic sealed exams match across arm-independent draws and train-vs-sealed split is disjoint for checked seeds/worlds",
+    "Unit random_library helper returns exactly the input shape sizes when provided a fixed list",
+    "Stored scoreboard final verdicts mechanically reproduce; all world analyses report NO_COMPOUNDING, not a positive compounding claim"
+  ],
+  "task": "NC-079",
   "tests": [
     {
       "name": "python dag.py validate",
-      "result": "PASS; 887 nodes before review"
+      "result": "PASS 890 task nodes, 1089 ledger events before review claim"
     },
     {
       "name": "python -m unittest -q test_dag",
-      "result": "PASS; 19 tests"
+      "result": "PASS 19/19"
     },
     {
       "name": "python -m unittest -q test_pull",
-      "result": "PASS; 20 tests"
+      "result": "PASS 20/20"
     },
     {
       "name": "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-079/test_stack.py",
-      "result": "PASS; 8 tests"
+      "result": "PASS 9/9"
     },
     {
-      "name": "source/evidence hashes and scoreboard SHA-256 against manifest",
-      "result": "PASS"
+      "name": "Pinned manifest SHA-256, five source hashes against working file and candidate Git revision, two report hashes, scoreboard hash",
+      "result": "MATCH"
     },
     {
-      "name": "source byte hashes at candidate_revision",
-      "result": "PASS"
+      "name": "Fresh shared-sealed and disjoint-training controls: structured/arithmetic/unstructured x seeds 11/19/29",
+      "result": "PASS 9/9 same seeded sealed exam; zero function-hash overlap"
     },
     {
-      "name": "cross-arm identical sealed-goal probe",
-      "result": "FAIL"
+      "name": "Independent scoreboard.compare re-evaluation of final-versus-control verdicts",
+      "result": "PASS 6/6 comparison verdict JSONs match the frozen evidence"
     },
     {
-      "name": "random-library exact-size-matching probe",
-      "result": "FAIL"
+      "name": "Cross-arm library size match, main structured and unstructured worlds",
+      "result": "FAIL: 6/6 world-seed pairs have mismatched generations"
+    },
+    {
+      "name": "Cross-arm library size match, curriculum world",
+      "result": "FAIL: 3/3 seed pairs mismatch after generation 1"
+    },
+    {
+      "name": "Full fresh three-seed campaign rerun",
+      "result": "NOT COMPLETED; stopped early when explicit matched-control criterion was disproved"
     }
   ],
-  "counterexamples": [
-    {
-      "condition": "Arms must be compared on matched sealed goals to isolate the library intervention",
-      "finding": "Both experiment scripts incorporate arm in the RNG seed, so each arm receives a different sealed exam. With seed 11, only 0\u20133 of 30 functions overlap across control-vs-library exams in each world.",
-      "first_generation_intersections_of_30": {
-        "structured": {
-          "library_vs_none": 3,
-          "library_vs_random_library": 3
-        },
-        "arithmetic": {
-          "library_vs_none": 2,
-          "library_vs_random_library": 2
-        },
-        "unstructured": {
-          "library_vs_none": 0,
-          "library_vs_random_library": 0
-        }
-      },
-      "locations": [
-        "run_compounding.py:run_arm",
-        "run_curriculum.py:run_arm"
-      ]
-    },
-    {
-      "condition": "Random library must have equal concept sizes as the actual library",
-      "finding": "Random generator fails exact size-matching because building binary nodes does not preserve requested total node count; the existing unit test checks only the number of concepts.",
-      "target_vs_random_size": [
-        [
-          3,
-          4
-        ],
-        [
-          3,
-          3
-        ],
-        [
-          5,
-          7
-        ]
-      ],
-      "location": "stack.py:random_library"
-    }
-  ],
-  "supported_findings": [
-    "Candidate input sources and results are hash consistent with declared manifest",
-    "Existing 8 NC-079 tests pass",
-    "Stored analysis reports NO_COMPOUNDING, which is appropriately not a claim of compounding"
-  ],
-  "limits": [
-    "Candidate scores cannot support matched-control improvement claims until the same exam lists and size-matched random controls are enforced",
-    "The separate integer reference evaluator is sampled at 64 pairs, whereas the full 65536-pair check uses NumPy evaluate",
-    "No original full-default 3-seed rerun performed; blocked by reproducible experimental-design violations"
-  ],
-  "repair": [
-    "Precompute identical per-world/per-generation/per-seed sealed goal sets independently of arm, then compare outcomes on paired goals",
-    "Construct random library expressions with exactly equal total node sizes and match size distribution to the real library arm, with explicit tests",
-    "Rerun three-seed full experiment and curriculum under frozen common exams, verify CPU/candidate budgets and independently validate verdicts"
-  ]
+  "verdict": "FAIL",
+  "verifier": "turn-5864b46da0fc46538b0fd846f7455bb4"
 }
