@@ -1,0 +1,106 @@
+{
+  "baseline_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-009/test_promote.py",
+    "result": "11/11 PASS"
+  },
+  "candidate": {
+    "path": "artifacts/NC-009/CANDIDATE_MANIFEST.json",
+    "revision": "b888974ae911ba0fa17f39a7a5e8479ce046999a",
+    "sha256": "6553f4444c4384208ecad3499ea767c14d2bea1ea88e0d7b1b65ad3e1fdf86f6"
+  },
+  "candidate_modified": false,
+  "checkpoint_note": "NC-008 four checkpoint files match referenced SHA-256; no checkpoint modified.",
+  "findings": [
+    {
+      "acceptance": "older versions immutable / append-only registry integrity",
+      "expected": "Reject historical row because stored chain_sha256 no longer equals chain(zero_digest, row_without_chain)",
+      "id": "F1",
+      "impact": "A modified old row is trusted; a new promotion can be chained to its stale digest. No history-chain validation on append.",
+      "input": "Copy operator_promotions.jsonl first row; change source to FORGED-HISTORICAL-ENTRY without recomputing chain_sha256; call process([DOUBLE ADD_XX HALT], [(0,0),(1,1),(65535,123)], existing=[tampered_row]) without writing any candidate file.",
+      "observed": {
+        "decision": "PROMOTED",
+        "new_operator_ids": [
+          "DOUBLE:v1"
+        ],
+        "prior_chain_valid": false
+      },
+      "severity": "blocking"
+    },
+    {
+      "acceptance": "malformed inputs rejected with traceable failed cases",
+      "expected": "Explicit REJECTED audit decision, not crash and absent audit record",
+      "id": "F2",
+      "impact": "Untrusted malformed proposal can terminate promotion and avoid durable rejection trail.",
+      "input": "Call process([{\"task\":\"INC\",\"source\":\"review/scratch\",\"program\":None or 42}], [(0,0),(1,2)])",
+      "observed": [
+        {
+          "detail": "'NoneType' object is not iterable",
+          "observed": "UNCAUGHT_TypeError",
+          "program": null
+        },
+        {
+          "detail": "'int' object is not iterable",
+          "observed": "UNCAUGHT_TypeError",
+          "program": 42
+        }
+      ],
+      "severity": "blocking"
+    },
+    {
+      "acceptance": "malformed and unknown instruction tokens rejected",
+      "expected": "REJECTED malformed trailing opcode",
+      "id": "F3",
+      "impact": "body_of stops at first HALT and never validates trailing source-program tokens; unknown token is silently accepted as a promoted operator.",
+      "input": [
+        "ADD_X1",
+        "HALT",
+        "BAD_OPCODE"
+      ],
+      "observed": "PROMOTED",
+      "severity": "additional"
+    }
+  ],
+  "finite_program_checks": {
+    "failed_program_pairs": 0,
+    "operators": [
+      "INC:v1",
+      "DOUBLE:v1",
+      "BOOLEAN_COMPOSITE:v1",
+      "SHIFT_COMPOSITE:v1"
+    ],
+    "pairs_per_operator": 131082,
+    "scope": "65,536 8-bit pairs, ten corners, 65,536 deterministic sampled 16-bit pairs; symbolic executor only"
+  },
+  "hash_checks": {
+    "NC-008/proposals.jsonl": true,
+    "NC-009/README.md": true,
+    "NC-009/operator_promotions.jsonl": true,
+    "NC-009/promote.py": true,
+    "NC-009/promotion_audit.json": true,
+    "NC-009/test_promote.py": true,
+    "artifacts/NC-008/policy_boolean_composite.pt": true,
+    "artifacts/NC-008/policy_double.pt": true,
+    "artifacts/NC-008/policy_inc.pt": true,
+    "artifacts/NC-008/policy_shift_composite.pt": true
+  },
+  "kernel_champion_modified": false,
+  "limitations": [
+    "Finite symbolic validation does not establish neural execution or new primitive invention.",
+    "The 16-bit sample is not exhaustive over all 2^32 input pairs.",
+    "The registry uses unauthenticated local hash chaining, not trusted signatures or external append-only storage.",
+    "F1/F2/F3 were run in memory and did not mutate the candidate or live registry."
+  ],
+  "owner": "claude-code-turn-6fab0d6a43294c558ed9b1c62f2f0d92",
+  "proof_scope": "Pinned Git manifest/source/evidence hashes, four NC-008 checkpoint bytes, 11 existing unit tests and four finite symbolic candidate checks reproduce. Additional fresh in-memory negative controls expose accepted modified history and malformed program fail-open/crash. This is not neural execution, unbounded proof or signed agent identity.",
+  "reproduction": [
+    "python dag.py validate",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-009/test_promote.py",
+    "From a scratch import of artifacts/NC-009/promote.py, mutate one existing in-memory row source without recomputing chain_sha256 and call process() with a valid distinct DOUBLE candidate; observe PROMOTED.",
+    "Call process() with program=None and program=42; observe uncaught TypeError.",
+    "Call process() with program=[\"ADD_X1\",\"HALT\",\"BAD_OPCODE\"]; observe PROMOTED."
+  ],
+  "schema_version": 1,
+  "task": "NC-009",
+  "verdict": "FAIL",
+  "verifier": "turn-ead5b8e058f048e1a90ddf2a0f31b9a8"
+}
