@@ -1,0 +1,786 @@
+{
+  "kind": "priorities",
+  "reason": "User requested TOP 150+ AGI progression in JSONL. Add the 160-stage proposed roadmap (69 existing + 91 new); preserve existing relative priorities and all ownership. New stages are hypotheses with independent gates, not guaranteed AGI. Index: plans/agi_progression_160/roadmap.jsonl.",
+  "assignments": [
+    {
+      "id": "NC-029",
+      "priority": "P0",
+      "rank": 1
+    },
+    {
+      "id": "NC-023",
+      "priority": "P0",
+      "rank": 2
+    },
+    {
+      "id": "NC-061",
+      "priority": "P0",
+      "rank": 3
+    },
+    {
+      "id": "NC-069",
+      "priority": "P0",
+      "rank": 4
+    },
+    {
+      "id": "NC-070",
+      "priority": "P0",
+      "rank": 5
+    },
+    {
+      "id": "NC-071",
+      "priority": "P0",
+      "rank": 6
+    },
+    {
+      "id": "NC-008",
+      "priority": "P0",
+      "rank": 7
+    },
+    {
+      "id": "NC-078",
+      "priority": "P0",
+      "rank": 8
+    },
+    {
+      "id": "NC-009",
+      "priority": "P0",
+      "rank": 9
+    },
+    {
+      "id": "NC-062",
+      "priority": "P0",
+      "rank": 10
+    },
+    {
+      "id": "NC-077",
+      "priority": "P0",
+      "rank": 11
+    },
+    {
+      "id": "NC-045",
+      "priority": "P0",
+      "rank": 12
+    },
+    {
+      "id": "NC-046",
+      "priority": "P0",
+      "rank": 13
+    },
+    {
+      "id": "NC-047",
+      "priority": "P0",
+      "rank": 14
+    },
+    {
+      "id": "NC-063",
+      "priority": "P0",
+      "rank": 15
+    },
+    {
+      "id": "NC-074",
+      "priority": "P0",
+      "rank": 16
+    },
+    {
+      "id": "NC-072",
+      "priority": "P0",
+      "rank": 17
+    },
+    {
+      "id": "NC-073",
+      "priority": "P0",
+      "rank": 18
+    },
+    {
+      "id": "NC-075",
+      "priority": "P1",
+      "rank": 19
+    },
+    {
+      "id": "NC-076",
+      "priority": "P1",
+      "rank": 20
+    },
+    {
+      "id": "NC-024",
+      "priority": "P0",
+      "rank": 21
+    },
+    {
+      "id": "NC-025",
+      "priority": "P0",
+      "rank": 22
+    },
+    {
+      "id": "NC-026",
+      "priority": "P0",
+      "rank": 23
+    },
+    {
+      "id": "NC-056",
+      "priority": "P0",
+      "rank": 24
+    },
+    {
+      "id": "NC-057",
+      "priority": "P0",
+      "rank": 25
+    },
+    {
+      "id": "NC-030",
+      "priority": "P0",
+      "rank": 26
+    },
+    {
+      "id": "NC-064",
+      "priority": "P1",
+      "rank": 27
+    },
+    {
+      "id": "NC-048",
+      "priority": "P1",
+      "rank": 28
+    },
+    {
+      "id": "NC-049",
+      "priority": "P1",
+      "rank": 29
+    },
+    {
+      "id": "NC-050",
+      "priority": "P1",
+      "rank": 30
+    },
+    {
+      "id": "NC-051",
+      "priority": "P1",
+      "rank": 31
+    },
+    {
+      "id": "NC-052",
+      "priority": "P1",
+      "rank": 32
+    },
+    {
+      "id": "NC-053",
+      "priority": "P1",
+      "rank": 33
+    },
+    {
+      "id": "NC-065",
+      "priority": "P2",
+      "rank": 34
+    },
+    {
+      "id": "NC-066",
+      "priority": "P2",
+      "rank": 35
+    },
+    {
+      "id": "NC-040",
+      "priority": "P2",
+      "rank": 36
+    },
+    {
+      "id": "NC-041",
+      "priority": "P2",
+      "rank": 37
+    },
+    {
+      "id": "NC-042",
+      "priority": "P2",
+      "rank": 38
+    },
+    {
+      "id": "NC-043",
+      "priority": "P2",
+      "rank": 39
+    },
+    {
+      "id": "NC-067",
+      "priority": "P2",
+      "rank": 40
+    },
+    {
+      "id": "NC-058",
+      "priority": "P2",
+      "rank": 41
+    },
+    {
+      "id": "NC-059",
+      "priority": "P2",
+      "rank": 42
+    },
+    {
+      "id": "NC-060",
+      "priority": "P2",
+      "rank": 43
+    },
+    {
+      "id": "NC-021",
+      "priority": "P3",
+      "rank": 44
+    },
+    {
+      "id": "NC-010",
+      "priority": "P3",
+      "rank": 45
+    },
+    {
+      "id": "NC-011",
+      "priority": "P3",
+      "rank": 46
+    },
+    {
+      "id": "NC-012",
+      "priority": "P3",
+      "rank": 47
+    },
+    {
+      "id": "NC-013",
+      "priority": "P3",
+      "rank": 48
+    },
+    {
+      "id": "NC-014",
+      "priority": "P3",
+      "rank": 49
+    },
+    {
+      "id": "NC-015",
+      "priority": "P3",
+      "rank": 50
+    },
+    {
+      "id": "NC-068",
+      "priority": "P3",
+      "rank": 51
+    },
+    {
+      "id": "NC-027",
+      "priority": "P3",
+      "rank": 52
+    },
+    {
+      "id": "NC-031",
+      "priority": "P3",
+      "rank": 53
+    },
+    {
+      "id": "NC-032",
+      "priority": "P3",
+      "rank": 54
+    },
+    {
+      "id": "NC-033",
+      "priority": "P4",
+      "rank": 55
+    },
+    {
+      "id": "NC-034",
+      "priority": "P4",
+      "rank": 56
+    },
+    {
+      "id": "NC-035",
+      "priority": "P4",
+      "rank": 57
+    },
+    {
+      "id": "NC-036",
+      "priority": "P4",
+      "rank": 58
+    },
+    {
+      "id": "NC-037",
+      "priority": "P4",
+      "rank": 59
+    },
+    {
+      "id": "NC-038",
+      "priority": "P4",
+      "rank": 60
+    },
+    {
+      "id": "NC-039",
+      "priority": "P4",
+      "rank": 61
+    },
+    {
+      "id": "NC-018",
+      "priority": "P4",
+      "rank": 62
+    },
+    {
+      "id": "NC-016",
+      "priority": "P5",
+      "rank": 63
+    },
+    {
+      "id": "NC-017",
+      "priority": "P5",
+      "rank": 64
+    },
+    {
+      "id": "NC-054",
+      "priority": "P5",
+      "rank": 65
+    },
+    {
+      "id": "AGI-001",
+      "priority": "P1",
+      "rank": 66
+    },
+    {
+      "id": "AGI-002",
+      "priority": "P1",
+      "rank": 67
+    },
+    {
+      "id": "AGI-003",
+      "priority": "P1",
+      "rank": 68
+    },
+    {
+      "id": "AGI-004",
+      "priority": "P1",
+      "rank": 69
+    },
+    {
+      "id": "AGI-005",
+      "priority": "P1",
+      "rank": 70
+    },
+    {
+      "id": "AGI-006",
+      "priority": "P1",
+      "rank": 71
+    },
+    {
+      "id": "AGI-007",
+      "priority": "P1",
+      "rank": 72
+    },
+    {
+      "id": "AGI-008",
+      "priority": "P1",
+      "rank": 73
+    },
+    {
+      "id": "AGI-009",
+      "priority": "P1",
+      "rank": 74
+    },
+    {
+      "id": "AGI-010",
+      "priority": "P1",
+      "rank": 75
+    },
+    {
+      "id": "AGI-011",
+      "priority": "P2",
+      "rank": 76
+    },
+    {
+      "id": "AGI-012",
+      "priority": "P2",
+      "rank": 77
+    },
+    {
+      "id": "AGI-013",
+      "priority": "P2",
+      "rank": 78
+    },
+    {
+      "id": "AGI-014",
+      "priority": "P2",
+      "rank": 79
+    },
+    {
+      "id": "AGI-015",
+      "priority": "P2",
+      "rank": 80
+    },
+    {
+      "id": "AGI-016",
+      "priority": "P2",
+      "rank": 81
+    },
+    {
+      "id": "AGI-017",
+      "priority": "P2",
+      "rank": 82
+    },
+    {
+      "id": "AGI-018",
+      "priority": "P2",
+      "rank": 83
+    },
+    {
+      "id": "AGI-019",
+      "priority": "P2",
+      "rank": 84
+    },
+    {
+      "id": "AGI-020",
+      "priority": "P2",
+      "rank": 85
+    },
+    {
+      "id": "AGI-021",
+      "priority": "P2",
+      "rank": 86
+    },
+    {
+      "id": "AGI-022",
+      "priority": "P2",
+      "rank": 87
+    },
+    {
+      "id": "AGI-023",
+      "priority": "P2",
+      "rank": 88
+    },
+    {
+      "id": "AGI-024",
+      "priority": "P2",
+      "rank": 89
+    },
+    {
+      "id": "AGI-025",
+      "priority": "P2",
+      "rank": 90
+    },
+    {
+      "id": "AGI-026",
+      "priority": "P2",
+      "rank": 91
+    },
+    {
+      "id": "AGI-027",
+      "priority": "P2",
+      "rank": 92
+    },
+    {
+      "id": "AGI-028",
+      "priority": "P2",
+      "rank": 93
+    },
+    {
+      "id": "AGI-029",
+      "priority": "P2",
+      "rank": 94
+    },
+    {
+      "id": "AGI-030",
+      "priority": "P2",
+      "rank": 95
+    },
+    {
+      "id": "AGI-031",
+      "priority": "P2",
+      "rank": 96
+    },
+    {
+      "id": "AGI-032",
+      "priority": "P2",
+      "rank": 97
+    },
+    {
+      "id": "AGI-033",
+      "priority": "P2",
+      "rank": 98
+    },
+    {
+      "id": "AGI-034",
+      "priority": "P2",
+      "rank": 99
+    },
+    {
+      "id": "AGI-035",
+      "priority": "P2",
+      "rank": 100
+    },
+    {
+      "id": "AGI-036",
+      "priority": "P2",
+      "rank": 101
+    },
+    {
+      "id": "AGI-037",
+      "priority": "P2",
+      "rank": 102
+    },
+    {
+      "id": "AGI-038",
+      "priority": "P2",
+      "rank": 103
+    },
+    {
+      "id": "AGI-039",
+      "priority": "P2",
+      "rank": 104
+    },
+    {
+      "id": "AGI-040",
+      "priority": "P2",
+      "rank": 105
+    },
+    {
+      "id": "AGI-041",
+      "priority": "P2",
+      "rank": 106
+    },
+    {
+      "id": "AGI-042",
+      "priority": "P2",
+      "rank": 107
+    },
+    {
+      "id": "AGI-043",
+      "priority": "P2",
+      "rank": 108
+    },
+    {
+      "id": "AGI-044",
+      "priority": "P2",
+      "rank": 109
+    },
+    {
+      "id": "AGI-045",
+      "priority": "P2",
+      "rank": 110
+    },
+    {
+      "id": "AGI-046",
+      "priority": "P2",
+      "rank": 111
+    },
+    {
+      "id": "AGI-047",
+      "priority": "P2",
+      "rank": 112
+    },
+    {
+      "id": "AGI-048",
+      "priority": "P2",
+      "rank": 113
+    },
+    {
+      "id": "AGI-049",
+      "priority": "P2",
+      "rank": 114
+    },
+    {
+      "id": "AGI-050",
+      "priority": "P2",
+      "rank": 115
+    },
+    {
+      "id": "AGI-051",
+      "priority": "P2",
+      "rank": 116
+    },
+    {
+      "id": "AGI-052",
+      "priority": "P2",
+      "rank": 117
+    },
+    {
+      "id": "AGI-053",
+      "priority": "P2",
+      "rank": 118
+    },
+    {
+      "id": "AGI-054",
+      "priority": "P2",
+      "rank": 119
+    },
+    {
+      "id": "AGI-055",
+      "priority": "P2",
+      "rank": 120
+    },
+    {
+      "id": "AGI-056",
+      "priority": "P2",
+      "rank": 121
+    },
+    {
+      "id": "AGI-057",
+      "priority": "P2",
+      "rank": 122
+    },
+    {
+      "id": "AGI-058",
+      "priority": "P2",
+      "rank": 123
+    },
+    {
+      "id": "AGI-059",
+      "priority": "P2",
+      "rank": 124
+    },
+    {
+      "id": "AGI-060",
+      "priority": "P2",
+      "rank": 125
+    },
+    {
+      "id": "AGI-061",
+      "priority": "P3",
+      "rank": 126
+    },
+    {
+      "id": "AGI-062",
+      "priority": "P3",
+      "rank": 127
+    },
+    {
+      "id": "AGI-063",
+      "priority": "P3",
+      "rank": 128
+    },
+    {
+      "id": "AGI-064",
+      "priority": "P3",
+      "rank": 129
+    },
+    {
+      "id": "AGI-065",
+      "priority": "P3",
+      "rank": 130
+    },
+    {
+      "id": "AGI-066",
+      "priority": "P3",
+      "rank": 131
+    },
+    {
+      "id": "AGI-067",
+      "priority": "P3",
+      "rank": 132
+    },
+    {
+      "id": "AGI-068",
+      "priority": "P3",
+      "rank": 133
+    },
+    {
+      "id": "AGI-069",
+      "priority": "P3",
+      "rank": 134
+    },
+    {
+      "id": "AGI-070",
+      "priority": "P3",
+      "rank": 135
+    },
+    {
+      "id": "AGI-071",
+      "priority": "P3",
+      "rank": 136
+    },
+    {
+      "id": "AGI-072",
+      "priority": "P3",
+      "rank": 137
+    },
+    {
+      "id": "AGI-073",
+      "priority": "P3",
+      "rank": 138
+    },
+    {
+      "id": "AGI-074",
+      "priority": "P3",
+      "rank": 139
+    },
+    {
+      "id": "AGI-075",
+      "priority": "P3",
+      "rank": 140
+    },
+    {
+      "id": "AGI-076",
+      "priority": "P3",
+      "rank": 141
+    },
+    {
+      "id": "AGI-077",
+      "priority": "P3",
+      "rank": 142
+    },
+    {
+      "id": "AGI-078",
+      "priority": "P3",
+      "rank": 143
+    },
+    {
+      "id": "AGI-079",
+      "priority": "P3",
+      "rank": 144
+    },
+    {
+      "id": "AGI-080",
+      "priority": "P3",
+      "rank": 145
+    },
+    {
+      "id": "AGI-081",
+      "priority": "P3",
+      "rank": 146
+    },
+    {
+      "id": "AGI-082",
+      "priority": "P3",
+      "rank": 147
+    },
+    {
+      "id": "AGI-083",
+      "priority": "P3",
+      "rank": 148
+    },
+    {
+      "id": "AGI-084",
+      "priority": "P3",
+      "rank": 149
+    },
+    {
+      "id": "AGI-085",
+      "priority": "P3",
+      "rank": 150
+    },
+    {
+      "id": "AGI-086",
+      "priority": "P3",
+      "rank": 151
+    },
+    {
+      "id": "AGI-087",
+      "priority": "P3",
+      "rank": 152
+    },
+    {
+      "id": "AGI-088",
+      "priority": "P3",
+      "rank": 153
+    },
+    {
+      "id": "AGI-089",
+      "priority": "P3",
+      "rank": 154
+    },
+    {
+      "id": "AGI-090",
+      "priority": "P3",
+      "rank": 155
+    },
+    {
+      "id": "AGI-091",
+      "priority": "P3",
+      "rank": 156
+    }
+  ]
+}

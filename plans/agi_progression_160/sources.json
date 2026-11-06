@@ -1,0 +1,31 @@
+{
+  "accessed": "2026-11-06",
+  "sources": [
+    {
+      "title": "On the Measure of Intelligence",
+      "url": "https://arxiv.org/abs/1911.01547v2",
+      "use": "Skill acquisition, priors and experience should be measured separately from trained task scores."
+    },
+    {
+      "title": "Levels of AGI",
+      "url": "https://arxiv.org/abs/2311.02462v5",
+      "use": "Separate breadth, depth and autonomy in the operational rubric."
+    },
+    {
+      "title": "Measuring AI Ability to Complete Long Software Tasks",
+      "url": "https://arxiv.org/abs/2503.14499v4",
+      "use": "Measure completion horizons and their uncertainty; software results alone do not establish generality."
+    },
+    {
+      "title": "DreamCoder",
+      "url": "https://arxiv.org/abs/2006.08381v1",
+      "use": "Treat reusable program libraries and learned proposal policies as testable mechanisms."
+    },
+    {
+      "title": "Towards Causal Representation Learning",
+      "url": "https://arxiv.org/abs/2102.11107v1",
+      "use": "Test causal representations through interventions and transfer, not association alone."
+    }
+  ],
+  "scope": "References support design choices; the 160-stage roadmap and its priority are the assistant's synthesis, not a proven AGI recipe."
+}
