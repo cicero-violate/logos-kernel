@@ -1,0 +1,215 @@
+{
+  "all_training_primitives_trained_on_all_local_truth_patterns": true,
+  "cases_per_op_model": 256,
+  "deterministic_host_components": [
+    "AST rendering",
+    "flag formulas",
+    "PC increment",
+    "HALT",
+    "register wiring"
+  ],
+  "frozen_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "full_transition_correct": 7680,
+  "full_transition_tested": 7680,
+  "learned_neural_components": [
+    "math class logits",
+    "arithmetic result"
+  ],
+  "result": "IMPLEMENTER_HOST_ASSISTED_FULL_TRANSITION_CONFORMANCE",
+  "rows": {
+    "coupled_seed11": {
+      "ADD": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "AND1": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "OR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHL": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      }
+    },
+    "coupled_seed19": {
+      "ADD": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "AND1": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "OR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHL": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      }
+    },
+    "coupled_seed29": {
+      "ADD": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "AND1": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "OR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHL": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      }
+    },
+    "detached_seed11": {
+      "ADD": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "AND1": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "OR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHL": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      }
+    },
+    "detached_seed19": {
+      "ADD": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "AND1": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "OR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHL": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      }
+    },
+    "detached_seed29": {
+      "ADD": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "AND1": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "OR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHL": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      },
+      "SHR": {
+        "correct_full_transition": 256,
+        "failed_examples": [],
+        "math_AST_match": true,
+        "tested": 256
+      }
+    }
+  },
+  "symbolic_reference": "NC-001 canonical_isa.reference independent post-prediction",
+  "task": "NC-004"
+}

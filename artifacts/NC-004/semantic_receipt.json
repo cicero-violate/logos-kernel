@@ -1,0 +1,1647 @@
+{
+  "all_canonical_ops": [
+    "ADD",
+    "AND",
+    "AND1",
+    "HALT",
+    "JMP",
+    "JNZ",
+    "JZ",
+    "LOADI",
+    "MOV",
+    "OR",
+    "SAR",
+    "SHL",
+    "SHR",
+    "SUB",
+    "XOR"
+  ],
+  "baseline_source_sha256": "4a3b484ee97cc5799b4d15ed15bf4f504c2ccbb63453220dda1254efd04315e6",
+  "canonical_isa_source_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+  "canonical_isa_version": "logos.isa/1",
+  "experimental": true,
+  "host_assisted_full_state_conformance": {
+    "correct": 7680,
+    "sha256": "e7c797b6b8626670e77dc9770645d947c715d0a71b80debb8eabd3b95b04d08a",
+    "tested": 7680
+  },
+  "learned_ops": [
+    "ADD",
+    "SHL",
+    "SHR",
+    "AND1",
+    "OR"
+  ],
+  "limits": [
+    "Only five of 15 canonical ISA operations trained",
+    "All 320 local primitive patterns seen in training",
+    "Fixed host register, PC/HALT, flag formulas and typed AST rendering",
+    "No end-to-end model invention or all-eightbit exhaustive proof",
+    "No default champion change or historical optimizer state recovery claim"
+  ],
+  "matched_training": {
+    "no_performance_advantage_claimed": true,
+    "original_parameter_initialization": "same RNG seed and same NeuralISA parent.__init__ for both arms",
+    "paired_seeds": [
+      11,
+      19,
+      29
+    ],
+    "runs_each_arm": 3,
+    "updates_each": 1500
+  },
+  "models": {
+    "coupled_seed11": {
+      "arm": "coupled",
+      "canonical_ast_labels": {
+        "ADD": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "ADD",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "AND1": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "AND1",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "OR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "OR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHL": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHL",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        }
+      },
+      "compositions": {
+        "double_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      },
+      "gradient": {
+        "meaning_head_in_numeric_graph": true,
+        "meaning_weight_gradient_l1": 2.0774425593117485e-06,
+        "numeric_loss": 0.00021522841416299343
+      },
+      "intervention": {
+        "intervened_correct": 136,
+        "numerical_correctness_degradation": 184,
+        "original_correct": 320,
+        "outputs_changed": 184,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "seed": 11,
+      "single_op_full16_state_value": {
+        "ADD": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "AND1": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "OR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHL": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        }
+      }
+    },
+    "coupled_seed19": {
+      "arm": "coupled",
+      "canonical_ast_labels": {
+        "ADD": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "ADD",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "AND1": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "AND1",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "OR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "OR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHL": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHL",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        }
+      },
+      "compositions": {
+        "double_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      },
+      "gradient": {
+        "meaning_head_in_numeric_graph": true,
+        "meaning_weight_gradient_l1": 1.764579337759642e-06,
+        "numeric_loss": 0.0005412459140643477
+      },
+      "intervention": {
+        "intervened_correct": 136,
+        "numerical_correctness_degradation": 184,
+        "original_correct": 320,
+        "outputs_changed": 184,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "seed": 19,
+      "single_op_full16_state_value": {
+        "ADD": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "AND1": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "OR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHL": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        }
+      }
+    },
+    "coupled_seed29": {
+      "arm": "coupled",
+      "canonical_ast_labels": {
+        "ADD": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "ADD",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "AND1": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "AND1",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "OR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "OR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHL": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHL",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        }
+      },
+      "compositions": {
+        "double_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      },
+      "gradient": {
+        "meaning_head_in_numeric_graph": true,
+        "meaning_weight_gradient_l1": 1.2144222409915528e-06,
+        "numeric_loss": 0.00022531028662342578
+      },
+      "intervention": {
+        "intervened_correct": 136,
+        "numerical_correctness_degradation": 184,
+        "original_correct": 320,
+        "outputs_changed": 184,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "seed": 29,
+      "single_op_full16_state_value": {
+        "ADD": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "AND1": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "OR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHL": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        }
+      }
+    },
+    "detached_seed11": {
+      "arm": "detached",
+      "canonical_ast_labels": {
+        "ADD": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "ADD",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "AND1": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "AND1",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "OR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "OR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHL": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHL",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        }
+      },
+      "compositions": {
+        "double_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      },
+      "gradient": {
+        "meaning_head_in_numeric_graph": false,
+        "meaning_weight_gradient_l1": 0.0,
+        "numeric_loss": 0.00047023716615512967
+      },
+      "intervention": {
+        "intervened_correct": 320,
+        "numerical_correctness_degradation": 0,
+        "original_correct": 320,
+        "outputs_changed": 0,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "seed": 11,
+      "single_op_full16_state_value": {
+        "ADD": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "AND1": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "OR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHL": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        }
+      }
+    },
+    "detached_seed19": {
+      "arm": "detached",
+      "canonical_ast_labels": {
+        "ADD": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "ADD",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "AND1": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "AND1",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "OR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "OR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHL": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHL",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        }
+      },
+      "compositions": {
+        "double_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      },
+      "gradient": {
+        "meaning_head_in_numeric_graph": false,
+        "meaning_weight_gradient_l1": 0.0,
+        "numeric_loss": 0.0005112538929097354
+      },
+      "intervention": {
+        "intervened_correct": 320,
+        "numerical_correctness_degradation": 0,
+        "original_correct": 320,
+        "outputs_changed": 0,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "seed": 19,
+      "single_op_full16_state_value": {
+        "ADD": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "AND1": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "OR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHL": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        }
+      }
+    },
+    "detached_seed29": {
+      "arm": "detached",
+      "canonical_ast_labels": {
+        "ADD": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "ADD",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.add",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "AND1": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "AND1",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.and1",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "OR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "OR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              },
+              {
+                "kind": "bv.read",
+                "name": "Y",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.or",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHL": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHL",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shl",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        },
+        "SHR": {
+          "expected_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          },
+          "matches_reference": true,
+          "predicted_meaning": "SHR",
+          "predicted_typed_ast": {
+            "args": [
+              {
+                "kind": "bv.read",
+                "name": "X",
+                "signedness": "unsigned",
+                "width": 16
+              }
+            ],
+            "kind": "bv.shr",
+            "signedness": "unsigned",
+            "width": 16
+          }
+        }
+      },
+      "compositions": {
+        "double_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "double_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "half_plus_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "half_plus_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        },
+        "lowbit_or_eightbit_sample": {
+          "correct": 512,
+          "failures": [],
+          "tested": 512
+        },
+        "lowbit_or_fourbit_all": {
+          "correct": 256,
+          "failures": [],
+          "tested": 256
+        }
+      },
+      "gradient": {
+        "meaning_head_in_numeric_graph": false,
+        "meaning_weight_gradient_l1": 0.0,
+        "numeric_loss": 0.0004772596585098654
+      },
+      "intervention": {
+        "intervened_correct": 320,
+        "numerical_correctness_degradation": 0,
+        "original_correct": 320,
+        "outputs_changed": 0,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "seed": 29,
+      "single_op_full16_state_value": {
+        "ADD": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "AND1": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "OR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHL": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        },
+        "SHR": {
+          "correct_value": 256,
+          "failures": [],
+          "host_pc_halt_flags_unlearned": true,
+          "tested": 256
+        }
+      }
+    }
+  },
+  "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "original_champion_unchanged": true,
+  "promoted": false,
+  "scope": "five_of_fifteen_canonical_ISA_primitives",
+  "semantics_boundary": {
+    "composition": "user-supplied fixed 2-instruction programs, not model invented",
+    "host": "deterministic canonical-typed-AST rendering, operand/register routing, flags and PC/HALT",
+    "learned": "ISA five-class meaning logits and 16-bit bit-transition arithmetic",
+    "oracle": "canonical_isa.reference called only after neural answer",
+    "unqualified": "remaining 10 canonical ISA opcodes, learned flags/PC/HALT, exact 64-bit semantics"
+  },
+  "task": "NC-004",
+  "three_seeds": [
+    11,
+    19,
+    29
+  ],
+  "training_local_patterns": 320,
+  "training_local_patterns_seen": 320,
+  "training_updates_per_arm_seed": 1500
+}

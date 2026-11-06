@@ -1,0 +1,381 @@
+{
+  "arm_list": [
+    "coupled",
+    "detached"
+  ],
+  "canonical_isa_version": "logos.isa/1",
+  "claims_not_permitted": [
+    "all 15 ISA opcodes learned",
+    "learned PC/HALT/flags",
+    "unseen local primitive combinations",
+    "program synthesis",
+    "general reasoning"
+  ],
+  "comparative_conclusion": "equal tested accuracies; coupled has causal meaning-to-execution, detached does not",
+  "full_state_conformance_sha256": "e7c797b6b8626670e77dc9770645d947c715d0a71b80debb8eabd3b95b04d08a",
+  "kind": "experimental_new_training_not_champion",
+  "models": [
+    {
+      "arm": "coupled",
+      "checkpoint": "coupled_seed11.pt",
+      "checkpoint_sha256": "50dbad914ae2ca5d11259885c64f65fa8f3ad6f2bf4ed7bd15acf067287e2b65",
+      "history": [
+        {
+          "cumulative_updates": 300,
+          "last_total_loss": 0.004060028120875359,
+          "phase": "ADD",
+          "updates": 300,
+          "whole_320_math_labels_correct": 64,
+          "whole_320_numeric_correct": 132
+        },
+        {
+          "cumulative_updates": 650,
+          "last_total_loss": 0.005256887525320053,
+          "phase": "SHIFTS",
+          "updates": 350,
+          "whole_320_math_labels_correct": 192,
+          "whole_320_numeric_correct": 261
+        },
+        {
+          "cumulative_updates": 1500,
+          "last_total_loss": 0.0017393863527104259,
+          "phase": "ALL",
+          "updates": 850,
+          "whole_320_math_labels_correct": 320,
+          "whole_320_numeric_correct": 320
+        }
+      ],
+      "intervention": {
+        "intervened_correct": 136,
+        "numerical_correctness_degradation": 184,
+        "original_correct": 320,
+        "outputs_changed": 184,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "numeric_gradient": {
+        "meaning_head_in_numeric_graph": true,
+        "meaning_weight_gradient_l1": 2.0774425593117485e-06,
+        "numeric_loss": 0.00021522841416299343
+      },
+      "parameter_count": 5665,
+      "seed": 11,
+      "updates": 1500
+    },
+    {
+      "arm": "detached",
+      "checkpoint": "detached_seed11.pt",
+      "checkpoint_sha256": "49f57af270e39e01ae8fa48020aba1c7dbd7b85af895e3e023ea7fd4e801918d",
+      "history": [
+        {
+          "cumulative_updates": 300,
+          "last_total_loss": 0.004062619060277939,
+          "phase": "ADD",
+          "updates": 300,
+          "whole_320_math_labels_correct": 64,
+          "whole_320_numeric_correct": 88
+        },
+        {
+          "cumulative_updates": 650,
+          "last_total_loss": 0.006314439699053764,
+          "phase": "SHIFTS",
+          "updates": 350,
+          "whole_320_math_labels_correct": 192,
+          "whole_320_numeric_correct": 245
+        },
+        {
+          "cumulative_updates": 1500,
+          "last_total_loss": 0.001819764613173902,
+          "phase": "ALL",
+          "updates": 850,
+          "whole_320_math_labels_correct": 320,
+          "whole_320_numeric_correct": 320
+        }
+      ],
+      "intervention": {
+        "intervened_correct": 320,
+        "numerical_correctness_degradation": 0,
+        "original_correct": 320,
+        "outputs_changed": 0,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "numeric_gradient": {
+        "meaning_head_in_numeric_graph": false,
+        "meaning_weight_gradient_l1": 0.0,
+        "numeric_loss": 0.00047023716615512967
+      },
+      "parameter_count": 5665,
+      "seed": 11,
+      "updates": 1500
+    },
+    {
+      "arm": "coupled",
+      "checkpoint": "coupled_seed19.pt",
+      "checkpoint_sha256": "3c0c3f95501660a7952affcd5254f9bd39de79d2ba04b6f685d66fff4663fb9d",
+      "history": [
+        {
+          "cumulative_updates": 300,
+          "last_total_loss": 0.003751765238121152,
+          "phase": "ADD",
+          "updates": 300,
+          "whole_320_math_labels_correct": 64,
+          "whole_320_numeric_correct": 132
+        },
+        {
+          "cumulative_updates": 650,
+          "last_total_loss": 0.006807881873100996,
+          "phase": "SHIFTS",
+          "updates": 350,
+          "whole_320_math_labels_correct": 192,
+          "whole_320_numeric_correct": 247
+        },
+        {
+          "cumulative_updates": 1500,
+          "last_total_loss": 0.002136383904144168,
+          "phase": "ALL",
+          "updates": 850,
+          "whole_320_math_labels_correct": 320,
+          "whole_320_numeric_correct": 320
+        }
+      ],
+      "intervention": {
+        "intervened_correct": 136,
+        "numerical_correctness_degradation": 184,
+        "original_correct": 320,
+        "outputs_changed": 184,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "numeric_gradient": {
+        "meaning_head_in_numeric_graph": true,
+        "meaning_weight_gradient_l1": 1.764579337759642e-06,
+        "numeric_loss": 0.0005412459140643477
+      },
+      "parameter_count": 5665,
+      "seed": 19,
+      "updates": 1500
+    },
+    {
+      "arm": "detached",
+      "checkpoint": "detached_seed19.pt",
+      "checkpoint_sha256": "72987fa0f6a4c4b94af404ab12a8fab34e91e8ef2f2065355fe13d56cb7aaf0d",
+      "history": [
+        {
+          "cumulative_updates": 300,
+          "last_total_loss": 0.0038057907950133085,
+          "phase": "ADD",
+          "updates": 300,
+          "whole_320_math_labels_correct": 64,
+          "whole_320_numeric_correct": 88
+        },
+        {
+          "cumulative_updates": 650,
+          "last_total_loss": 0.009713579900562763,
+          "phase": "SHIFTS",
+          "updates": 350,
+          "whole_320_math_labels_correct": 192,
+          "whole_320_numeric_correct": 229
+        },
+        {
+          "cumulative_updates": 1500,
+          "last_total_loss": 0.0019180565141141415,
+          "phase": "ALL",
+          "updates": 850,
+          "whole_320_math_labels_correct": 320,
+          "whole_320_numeric_correct": 320
+        }
+      ],
+      "intervention": {
+        "intervened_correct": 320,
+        "numerical_correctness_degradation": 0,
+        "original_correct": 320,
+        "outputs_changed": 0,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "numeric_gradient": {
+        "meaning_head_in_numeric_graph": false,
+        "meaning_weight_gradient_l1": 0.0,
+        "numeric_loss": 0.0005112538929097354
+      },
+      "parameter_count": 5665,
+      "seed": 19,
+      "updates": 1500
+    },
+    {
+      "arm": "coupled",
+      "checkpoint": "coupled_seed29.pt",
+      "checkpoint_sha256": "b6f561a6cda9679f17e32a4947f3fbff69b9ca2b2f32df0b44c5b789d8ae4d15",
+      "history": [
+        {
+          "cumulative_updates": 300,
+          "last_total_loss": 0.003131686942651868,
+          "phase": "ADD",
+          "updates": 300,
+          "whole_320_math_labels_correct": 64,
+          "whole_320_numeric_correct": 132
+        },
+        {
+          "cumulative_updates": 650,
+          "last_total_loss": 0.00493359612300992,
+          "phase": "SHIFTS",
+          "updates": 350,
+          "whole_320_math_labels_correct": 192,
+          "whole_320_numeric_correct": 252
+        },
+        {
+          "cumulative_updates": 1500,
+          "last_total_loss": 0.0017278855666518211,
+          "phase": "ALL",
+          "updates": 850,
+          "whole_320_math_labels_correct": 320,
+          "whole_320_numeric_correct": 320
+        }
+      ],
+      "intervention": {
+        "intervened_correct": 136,
+        "numerical_correctness_degradation": 184,
+        "original_correct": 320,
+        "outputs_changed": 184,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "numeric_gradient": {
+        "meaning_head_in_numeric_graph": true,
+        "meaning_weight_gradient_l1": 1.2144222409915528e-06,
+        "numeric_loss": 0.00022531028662342578
+      },
+      "parameter_count": 5665,
+      "seed": 29,
+      "updates": 1500
+    },
+    {
+      "arm": "detached",
+      "checkpoint": "detached_seed29.pt",
+      "checkpoint_sha256": "d1ae65c38f079d003014b400403a853dc539996b4e77f2ae847fdca7cf3141dd",
+      "history": [
+        {
+          "cumulative_updates": 300,
+          "last_total_loss": 0.0031502959318459034,
+          "phase": "ADD",
+          "updates": 300,
+          "whole_320_math_labels_correct": 64,
+          "whole_320_numeric_correct": 88
+        },
+        {
+          "cumulative_updates": 650,
+          "last_total_loss": 0.007072350010275841,
+          "phase": "SHIFTS",
+          "updates": 350,
+          "whole_320_math_labels_correct": 192,
+          "whole_320_numeric_correct": 248
+        },
+        {
+          "cumulative_updates": 1500,
+          "last_total_loss": 0.001754281809553504,
+          "phase": "ALL",
+          "updates": 850,
+          "whole_320_math_labels_correct": 320,
+          "whole_320_numeric_correct": 320
+        }
+      ],
+      "intervention": {
+        "intervened_correct": 320,
+        "numerical_correctness_degradation": 0,
+        "original_correct": 320,
+        "outputs_changed": 0,
+        "tested": 320
+      },
+      "local": {
+        "math_labels_correct": 320,
+        "math_labels_tested": 320,
+        "numeric_correct": 320,
+        "numeric_tested": 320
+      },
+      "numeric_gradient": {
+        "meaning_head_in_numeric_graph": false,
+        "meaning_weight_gradient_l1": 0.0,
+        "numeric_loss": 0.0004772596585098654
+      },
+      "parameter_count": 5665,
+      "seed": 29,
+      "updates": 1500
+    }
+  ],
+  "original_champion_checkpoint_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "original_weights_modified": false,
+  "promoted": false,
+  "runbook_sha256": "edfd61a03fe7b771c75cb5ada3bb77d1fc89fe5d01250dc4dfd2fccaf360cc1e",
+  "seed_list": [
+    11,
+    19,
+    29
+  ],
+  "semantic_receipt_sha256": "8192b8f5764357b03ebb443115e5acc3e4fd697cdacbe60e55f18e33a52bb95a",
+  "source_files": {
+    "/workspace/experiments/latticeforge_neural_isa_test/train_causal.py": "4a3b484ee97cc5799b4d15ed15bf4f504c2ccbb63453220dda1254efd04315e6",
+    "/workspace/experiments/logos-kernel/artifacts/NC-000/inventory.json": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+    "/workspace/experiments/logos-kernel/artifacts/NC-001/canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c"
+  },
+  "state_conformance_impl_sha256": "31dd814585f24a7e19e7c11eedd6691ea679f84f6fbe3c3faedf613bd165c2c4",
+  "steps_each": 1500,
+  "task": "NC-004",
+  "test_suite_sha256": "05dc231bda77f91f401fd7b7a24a0e5f8af2967ec3f6db2b217ad23aec16d431",
+  "training_curriculum": [
+    [
+      "ADD",
+      [
+        "ADD"
+      ],
+      300
+    ],
+    [
+      "SHIFTS",
+      [
+        "ADD",
+        "SHL",
+        "SHR"
+      ],
+      350
+    ],
+    [
+      "ALL",
+      [
+        "ADD",
+        "SHL",
+        "SHR",
+        "AND1",
+        "OR"
+      ],
+      850
+    ]
+  ],
+  "training_data_note": "all 320 local patterns trained, not held-out local generalization",
+  "training_impl_sha256": "73263696cb678aa97256672d05b6ae20053093d24a2fde3ca734a460c2484fce"
+}
