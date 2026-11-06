@@ -1,0 +1,46 @@
+{
+  "command": "python -m unittest discover -s artifacts/NC-044 -p 'test_isolation.py' -q",
+  "control_files": [
+    {
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "sha256_at_evidence_capture": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    {
+      "path": "/workspace/experiments/logos-kernel/artifacts/NC-022/independent_receipt.json",
+      "sha256_at_evidence_capture": "79d2f8dbb60ac18b2df2c84f85104b1d25bd8c0d63c424f922f2a8360dca9825"
+    },
+    {
+      "path": "/workspace/experiments/logos-kernel/instructions.jsonl",
+      "sha256_at_evidence_capture": "501a935e2cc77965b5cb12ec5ae9721738ad3dbbb780dfc9293a19db229f39c9"
+    }
+  ],
+  "exit_code": 0,
+  "failures": 0,
+  "limitations": [
+    "This file reports implementer tests only; independent_verification.json is reserved for another agent",
+    "Resource caps have per-process and polling limitations described in contract",
+    "No neural candidate trained: probe_worker.py is a deterministic sandbox canary",
+    "No assertion of authorized dataset provenance for arbitrary --input",
+    "Control-file hashes are point-in-time snapshots, not a proof that concurrent writers were absent across the test interval"
+  ],
+  "output": "Ran 12 tests in 5.803s; OK",
+  "owner": "turn-246279f7a8f445569a0742634a5d4e13",
+  "result": "PASS",
+  "schema": "logos-kernel-nc044-isolation-tests-v1",
+  "task": "NC-044",
+  "test_count": 12,
+  "tested_features": [
+    "frozen champion/NC022 hashes",
+    "ancestor symlink and path traversal rejection",
+    "input hash mutation rejection",
+    "host champion, NC-022 verifier receipt, NC-044 reviewer receipt path and DAG write denial in real bwrap",
+    "pause/resume optimizer/RNG replay equivalence",
+    "cancel rejects restart",
+    "per-run exclusive flock",
+    "wall timeout",
+    "per-process address space limit",
+    "per-file output quota",
+    "checkpoint tampering rejection",
+    "pinned source tampering rejection"
+  ]
+}

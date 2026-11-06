@@ -1,0 +1,86 @@
+{
+  "dependencies": [
+    "Python 3 standard library",
+    "Linux bubblewrap (/usr/bin/bwrap)",
+    "Git for evidence and DAG",
+    "artifacts/NC-022/independent_receipt.json",
+    "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt"
+  ],
+  "identity": {
+    "authentication": "IDs and PID/UID are recorded, but do not attest distinct human/session identity. Same-UID host actors remain trusted.",
+    "os_provenance": [
+      "launcher UID",
+      "creator PID",
+      "sandbox PID"
+    ],
+    "run_id": "random run-<32 hex> per run",
+    "worker_id": "random worker-<32 hex> per run"
+  },
+  "provenance": {
+    "inherited_untracked_sources": [
+      "trainer_isolation.py",
+      "probe_worker.py",
+      "test_isolation.py"
+    ],
+    "new_owner": "turn-246279f7a8f445569a0742634a5d4e13",
+    "prior_claim": "turn-f1e9d7517d9d43e08c016fe14d5b0796",
+    "provenance_limit": "Original authorship of inherited untracked files not independently established; current owner audited and adopted them after stale-claim takeover"
+  },
+  "purpose": "Local CPU-only unprivileged candidate sandbox; never promote or modify champion",
+  "quotas": {
+    "cpu_seconds": "RLIMIT_CPU per process 1..3600",
+    "disk_mb": "RLIMIT_FSIZE per file 1..1024 plus periodic aggregate output scan",
+    "file_descriptors": 128,
+    "limitation": "Not cgroup aggregate caps: forked processes or burst writes could temporarily exceed total CPU, memory, disk or process limits. No process count cap.",
+    "memory_mb": "RLIMIT_AS per process 64..8192",
+    "nice": "best-effort +15",
+    "wall_seconds": "parent monotonic timeout 1..3600"
+  },
+  "read_only": {
+    "champion": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+    "nc022_receipt": "/workspace/experiments/logos-kernel/artifacts/NC-022/independent_receipt.json",
+    "nc022_sha256": "79d2f8dbb60ac18b2df2c84f85104b1d25bd8c0d63c424f922f2a8360dca9825",
+    "optional_inputs": "name:absolute path:sha256; integrity only, NOT independent review authorization",
+    "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "source": "absolute no-symlink file, hashed on creation and rechecked before launch"
+  },
+  "roles": {
+    "IMPLEMENTER": "Owns source/test changes; cannot approve itself",
+    "TRAINER": "Run only a version-pinned source in its own sandbox output root",
+    "VERIFIER": "Separate pulled reviewer with explicit independent receipt; no mount into trainer"
+  },
+  "schema": "logos-kernel-nc044-trainer-contract-v1",
+  "security_limits": [
+    "No elevated privileges or systemd service",
+    "Source and extra-input SHA alone do NOT establish independent dataset approval; default test mounts zero extra datasets",
+    "Caller can request arbitrary --input path; use only operator-approved datasets; enforce an approval allowlist in NC-045 before untrusted data ingestion",
+    "Same-UID host actor can edit parent files; this is not host-level identity authorization",
+    "No training of a new neural successor and no promotion claim in NC-044; this is a deterministic isolation canary",
+    "Not an attested verifier service"
+  ],
+  "state": {
+    "cancel": "cooperative /output/cancel.request; worker exits 76; no restart",
+    "checkpoint": "/output/checkpoint.json (worker-owned optimizer and RNG state)",
+    "interruption": "orphan/unverified checkpoint fails closed; automatic crash recovery is not claimed",
+    "last_report": "last_execution.json with checkpoint hash, exit status and timing",
+    "pause": "cooperative /output/pause.request; worker exits 75",
+    "restart": "clean checkpoint replay tested for equivalence with uninterrupted run",
+    "resume": "checkpoint hash verification and worker exits 0 if successful",
+    "rollback": "Original champion is never written or promoted; rollback is preserving its pinned bytes, not restoring a modified default",
+    "run_manifest": "run.json (hashes, quotas, creator and worker IDs)"
+  },
+  "task": "NC-044",
+  "version": 1,
+  "write_boundary": {
+    "mode": "bubblewrap read-only host /usr and pinned inputs; /output only writable bind; unshared network/PID",
+    "mount_guest": "/output",
+    "per_run_host": "/workspace/.local/state/logos-kernel-trainer/run-<32 hex>/output",
+    "separate_from": [
+      "champion",
+      "source repo",
+      "DAG JSONL",
+      "verifier receipts",
+      "other run outputs"
+    ]
+  }
+}

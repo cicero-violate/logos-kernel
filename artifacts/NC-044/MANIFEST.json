@@ -1,0 +1,62 @@
+{
+  "acceptance_receipts": {
+    "contract": "artifacts/NC-044/trainer_isolation_contract.json",
+    "implementer_tests": "artifacts/NC-044/isolation_tests.json",
+    "independent_verifier_output": "artifacts/NC-044/independent_verification.json (not authored by implementer)"
+  },
+  "base_git_head": "098ad209cce85d40e249ee5d32941834e17107ff",
+  "candidate_role": "IMPLEMENTER",
+  "dependencies": [
+    "Python 3",
+    "Linux bubblewrap",
+    "Git",
+    "NC-002",
+    "NC-003",
+    "NC-022"
+  ],
+  "frozen_inputs": {
+    "champion": {
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    "nc022_receipt": {
+      "path": "artifacts/NC-022/independent_receipt.json",
+      "sha256": "79d2f8dbb60ac18b2df2c84f85104b1d25bd8c0d63c424f922f2a8360dca9825"
+    }
+  },
+  "limits": [
+    "Inherited untracked source files from stale owner: adoption, original authorship unverified",
+    "Bubblewrap required; no unprivileged cross-host identity attestation",
+    "Canary is not an actual candidate model training improvement",
+    "Arbitrary --input hashes verify bytes but not dataset authorization; no extra datasets used by tests",
+    "RLIMIT per process and polling-based disk limit, not hard aggregate cgroups",
+    "Interrupted runs without a verified last report fail closed; do not claim transparent crash resume",
+    "No independent verdict yet; defer to reviewer",
+    "Control-file hashes are snapshots and cannot exclude unrelated simultaneous Git/DAG writes"
+  ],
+  "owner": "turn-246279f7a8f445569a0742634a5d4e13",
+  "reproduction": [
+    "python dag.py validate",
+    "python -m unittest -q test_dag",
+    "python -m unittest -q test_pull",
+    "python -m unittest discover -s artifacts/NC-044 -p 'test_isolation.py' -q"
+  ],
+  "runtime": {
+    "checkpoint": "runtime generated, never modifies original",
+    "output": "/workspace/.local/state/logos-kernel-trainer/run-*/output",
+    "tests": "artifacts/NC-044/test_isolation.py",
+    "trainer_launcher": "artifacts/NC-044/trainer_isolation.py",
+    "worker_source": "artifacts/NC-044/probe_worker.py"
+  },
+  "schema": "logos-kernel-nc044-candidate-v1",
+  "source_and_evidence_sha256": {
+    "artifacts/NC-044/isolation_tests.json": "430054928b0f368728dbe4a72c64a2449e7fa7ab107f439313554a63c370f7b1",
+    "artifacts/NC-044/probe_worker.py": "1d091270b67f79f07a95260d908dd55f6fdf19c85872bf07029b7a2879f34bf9",
+    "artifacts/NC-044/test_isolation.py": "8105cd7ded206b166e8765997dc28b54dec944b658d73b0db95e6c97c72f58ff",
+    "artifacts/NC-044/trainer_isolation.py": "2cd516666e0c183aa60c3059c642ad06ad73df0a452f6906ef07c19b042909e5",
+    "artifacts/NC-044/trainer_isolation_contract.json": "4ecae26cb8dbfdfd51816f289546dfee0e5c5d5e42e3f50ee108092f8472bfc3"
+  },
+  "source_control_policy": "Commit explicitly NC-044 files only, never staged or preexisting files of other tickets",
+  "status": "REQUEST_INDEPENDENT_REVIEW",
+  "task": "NC-044"
+}
