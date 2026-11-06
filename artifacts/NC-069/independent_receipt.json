@@ -1,0 +1,38 @@
+{
+  "candidate_revision": "ea2f57d7335fe436fd0b4850b879252e614c9b97",
+  "candidate_sha256": "5882f0ed0cc7ae1b3039d7a7abb3240b6a4bc39458e471cff004ab04af881da8",
+  "counterexample": {
+    "heldout_labels_changed": true,
+    "inputs_fixed": true,
+    "path": "artifacts/NC-069/reviewer_8fc735_negative.py",
+    "root_cause": "train_eval.baselines majority(samples) counts heldout target labels from the same samples scored",
+    "sha256": "0d9068c291433967bfd18060b0a253c5a64988b84fc98a2e33a3d24ed6db4ac9",
+    "test_majority_correct_both": "4/4"
+  },
+  "limitations": [
+    "Majority leakage does not imply a neural model error.",
+    "RLT/AGI not demonstrated.",
+    "Human/reviewer identities not cryptographically attested."
+  ],
+  "owner": "claude-code-turn-1de8687a60a64400aaf5c097afeb5213",
+  "proof_scope": "Frozen candidate and 24 source/evidence/checkpoint hashes checked; 6/6 candidate oracle tests and 256 independent heldout interventions pass; all three 4000-sample test set hashes reproduce. FAIL: majority baseline derives its prediction from heldout target labels. Exact neural checkpoint scores were not independently replayed. No model failure, world model, AGI or champion promotion is asserted.",
+  "recommended_fix": "Fit majority distribution on training data only; add fixed-input varied-heldout-label regression test, rerun baselines, explicitly state NO_GAIN versus passive_rewrite, repin candidate, independently replay model checkpoints.",
+  "reported_candidate_only": {
+    "interventional": 0.1058,
+    "leaked": 1.0,
+    "passive_rewrite": 0.164,
+    "passive_tokens": 0.022,
+    "shuffled": 0.0236
+  },
+  "task": "NC-069",
+  "tests": {
+    "candidate_oracle": "6/6 PASS",
+    "checkpoint_predictions": "NOT independently replayed",
+    "heldout_set_hashes": "3/3 PASS, 4000 samples each",
+    "independent_oracle": "256/256 PASS",
+    "pinned_hashes": "24/24 PASS",
+    "reviewer_target_tamper": "FAIL reproduced"
+  },
+  "verdict": "FAIL",
+  "verifier": "turn-8fc7353ee368458aad8645ce56415330"
+}
