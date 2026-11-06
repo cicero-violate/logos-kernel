@@ -67,10 +67,29 @@ class StackTests(unittest.TestCase):
         self.assertLessEqual(len(lib), s.LIBRARY_CAP)
         self.assertTrue(all(s.size(e) > 1 for e in lib))
 
-    def test_random_library_matches_count_without_copying_content(self):
-        real = [("ADD", ("X",), ("Y",)), ("SHL", ("SHL", ("X",)))]
-        fake = s.random_library(random.Random(1), real)
-        self.assertEqual(len(fake), len(real))
+    def test_random_library_matches_exact_sizes(self):
+        # Reviewer counterexample: requested sizes 3 and 5 produced 4 and 7.
+        targets = (2, 3, 3, 4, 5, 7, 9, 13, 25, 40)
+        like = [self._of_size(n) for n in targets]
+        for trial in range(30):
+            fake = s.random_library(random.Random(trial), like)
+            self.assertEqual([s.size(e) for e in fake], list(targets))
+
+    @staticmethod
+    def _of_size(n):
+        expr = ("X",)
+        for _ in range(n - 1):
+            expr = ("SHL", expr)
+        return expr
+
+    def test_every_arm_gets_the_same_exam(self):
+        # Reviewer counterexample: arms shared only 0 to 3 of 30 goals.
+        for cls in (s.StructuredWorld, s.ArithmeticWorld, s.UnstructuredWorld):
+            world = cls(11)
+            first = s.draw_goals(world, s.exam_rng(world.name, 11, 0, "sealed"), 30, "sealed")
+            again = s.draw_goals(cls(11), s.exam_rng(world.name, 11, 0, "sealed"), 30, "sealed")
+            self.assertEqual(first, again)
+            self.assertNotEqual(first, s.draw_goals(world, s.exam_rng(world.name, 11, 1, "sealed"), 30, "sealed"))
 
 
 if __name__ == "__main__":

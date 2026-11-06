@@ -18,12 +18,12 @@ THRESHOLDS = dict(s.sb.THRESHOLDS)
 
 def run_arm(world_cls, arm, seed, a, x, y):
     world = world_cls(seed)
-    rng = random.Random(f"{world.name}|{arm}|{seed}|goals")
     other = random.Random(f"{arm}|{seed}|library")
     solutions, library, seen, rows = [], [], set(), []
     retention_goals = []
     for generation in range(a.generations):
-        row, learned = s.run_generation(world, library, a.budget, rng, x, y, a.train_goals, a.sealed_goals, seen)
+        row, learned = s.run_generation(world, library, a.budget, s.exam_rng(world.name, seed, generation, "sealed"),
+                                        s.exam_rng(world.name, seed, generation, "train"), x, y, a.train_goals, a.sealed_goals, seen)
         kept = sum(s.search(s.goal_vector(g, x, y), library, a.budget, x, y)[0] is not None for g in retention_goals)
         row["retention"] = kept / len(retention_goals) if retention_goals else 1.0
         row["generation"] = generation

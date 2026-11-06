@@ -29,6 +29,21 @@ class ControllerTests(unittest.TestCase):
                 x, y = rng.randrange(256), rng.randrange(256)
                 self.assertEqual(c.exact_run(program, x, y), c.nq.reference_value(expr, x, y) if hasattr(c.nq, "reference_value") else self._value(expr, x, y))
 
+    def test_branching_programs_compute_what_they_claim(self):
+        rng = random.Random(6)
+        for name, (program, want) in c.branching_programs().items():
+            self.assertLessEqual(len(program), c.MAX_LEN)
+            for _ in range(300):
+                x, y = rng.randrange(256), rng.randrange(256)
+                self.assertEqual(c.exact_run(program, x, y), want(x, y), name)
+
+    def test_branch_curriculum_balances_the_zero_test(self):
+        rng = random.Random(7)
+        _, pc, regs, targets = c.batch_rows(rng, 2000, branch_fraction=1.0)
+        self.assertTrue(all(o == c.OP["JZ"] for o in targets["op"].tolist()))
+        tested = regs[torch.arange(2000), targets["a"]]
+        self.assertAlmostEqual((tested == 0).float().mean().item(), 0.5, delta=0.05)
+
     def _value(self, expr, x, y):
         import numpy as np
         return int(c.nq.exact_eval(expr, {}) [x * 256 + y])

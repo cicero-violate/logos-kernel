@@ -1,0 +1,111 @@
+{
+ "schema": "logos.nc082.results/1",
+ "config": {
+  "library": "/tmp/claude-1000/-workspace-experiments/8a11a3d1-b1d0-40ec-876b-573dbc7dacb0/scratchpad/l11-final.jsonl",
+  "seeds": [
+   11,
+   19,
+   29
+  ],
+  "steps": 8000,
+  "batch": 128,
+  "concepts": 120,
+  "out": "/workspace/experiments/logos-kernel/artifacts/NC-082"
+ },
+ "library_sha256": "700faee6a29f79cbd2036d14ab51fee530958e399202b95826dec9ddf8359180",
+ "concept_programs_available": 155,
+ "concept_programs_tested": 120,
+ "program_lengths": [
+  3,
+  17
+ ],
+ "boundary": "The Transformer predicts opcode, operands, destination, immediate and next PC. NC-080 operators compute ALU bits. The host keeps registers, feeds predictions forward and iterates bits.",
+ "seeds": {
+  "11": {
+   "steps": 8000,
+   "batch": 128,
+   "final_loss": 0.0593,
+   "train_cpu_seconds": 3563.2,
+   "parameters": 289564,
+   "held_out_collisions_in_20000_sampled_programs": 0,
+   "concept_programs_fully_correct": 120,
+   "concept_rollouts_correct": 1920,
+   "concept_rollouts_total": 1920,
+   "per_length": {
+    "3": [
+     4,
+     4
+    ],
+    "4": [
+     8,
+     8
+    ],
+    "5": [
+     8,
+     8
+    ],
+    "6": [
+     17,
+     17
+    ],
+    "7": [
+     16,
+     16
+    ],
+    "9": [
+     10,
+     10
+    ],
+    "10": [
+     14,
+     14
+    ],
+    "11": [
+     8,
+     8
+    ],
+    "12": [
+     8,
+     8
+    ],
+    "13": [
+     11,
+     11
+    ],
+    "14": [
+     1,
+     1
+    ],
+    "15": [
+     4,
+     4
+    ],
+    "16": [
+     10,
+     10
+    ],
+    "17": [
+     1,
+     1
+    ]
+   },
+   "multiply": {
+    "correct": 7,
+    "total": 256,
+    "halted": 256,
+    "max_steps": 28
+   },
+   "blank_program_control": {
+    "programs_fully_correct": 0,
+    "programs": 20,
+    "multiply": {
+     "correct": 1,
+     "total": 64,
+     "halted": 8,
+     "max_steps": 160
+    }
+   },
+   "checkpoint_sha256": "b725e2f71a03aa587beebd9c3229618236738fdca19ce252477008b73fb75667"
+  }
+ }
+}

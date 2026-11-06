@@ -59,6 +59,16 @@ def multiply_program():
             ("SHL", 0, 0, 0, 0), ("SHR", 1, 0, 1, 0), ("JMP", 0, 0, 0, 2), ("HALT", 0, 0, 0, 0)]
 
 
+def branching_programs():
+    """Held-out loops and branches beside multiply, each paired with what it should compute. Result in r2; never used in training."""
+    popcount = [("LOADI", 0, 0, 2, 0), ("LOADI", 0, 0, 3, 1), ("JZ", 0, 0, 0, 8), ("AND", 0, 3, 4, 0), ("ADD", 2, 4, 2, 0), ("SHR", 0, 0, 0, 0), ("JMP", 0, 0, 0, 2), ("HALT", 0, 0, 0, 0), ("HALT", 0, 0, 0, 0)]
+    select = [("JZ", 0, 0, 0, 3), ("OR", 1, 1, 2, 0), ("JMP", 0, 0, 0, 4), ("XOR", 1, 1, 2, 0), ("HALT", 0, 0, 0, 0)]
+    low_bit_count = [("LOADI", 0, 0, 2, 0), ("LOADI", 0, 0, 3, 1), ("AND", 0, 3, 4, 0), ("JZ", 4, 0, 0, 7), ("ADD", 2, 3, 2, 0), ("SHR", 0, 0, 0, 0), ("JMP", 0, 0, 0, 2), ("JZ", 0, 0, 0, 10), ("SHR", 0, 0, 0, 0), ("JMP", 0, 0, 0, 2), ("HALT", 0, 0, 0, 0)]
+    countdown = [("LOADI", 0, 0, 5, 15), ("AND", 1, 5, 1, 0), ("LOADI", 0, 0, 2, 0), ("LOADI", 0, 0, 3, 1), ("JZ", 1, 0, 0, 8), ("ADD", 2, 0, 2, 0), ("SUB", 1, 3, 1, 0), ("JMP", 0, 0, 0, 4), ("HALT", 0, 0, 0, 0)]
+    return {"popcount": (popcount, lambda x, y: bin(x).count("1")), "select_y_if_x": (select, lambda x, y: y if x else 0),
+            "low_bit_count": (low_bit_count, lambda x, y: bin(x).count("1")), "add_x_low_y_times": (countdown, lambda x, y: (x * (y & 15)) & 255)}
+
+
 def compile_concept(expr):
     """Compile an expression to straight-line code with r0=X, r1=Y and the result in r2, or None if it does not fit."""
     order, seen = [], set()
@@ -171,12 +181,19 @@ class Controller(nn.Module):
         return {k: head(z) for k, head in self.heads.items()}
 
 
-def batch_rows(rng, size):
+def batch_rows(rng, size, branch_fraction=0.5):
+    """A share of examples sit on a JZ with its register balanced between zero and nonzero, half the nonzero ones a single bit.
+    A branch is the one step that reads a register's value, and without this the zero test stays near chance."""
     programs, pcs, regs, targets = [], [], [], {k: [] for k in ("op", "a", "b", "dst", "imm", "next")}
     for _ in range(size):
         program = random_program(rng)
         pc = rng.randrange(len(program))
         values = [0 if rng.random() < 0.25 else rng.randrange(256) for _ in range(REGS)]
+        if rng.random() < branch_fraction:
+            pc = rng.randrange(len(program) - 1)
+            program[pc] = ("JZ", rng.randrange(REGS), 0, 0, rng.randint(0, len(program) - 1))
+            kind = rng.randrange(4)
+            values[program[pc][1]] = 0 if kind < 2 else 1 << rng.randrange(8) if kind == 2 else rng.randrange(1, 256)
         item = program[pc]
         programs.append(encode_program(program))
         pcs.append(pc)
@@ -267,6 +284,41 @@ def rollout(model, alu, program, inputs):
     return regs[:, 2].tolist(), done.tolist(), steps.tolist()
 
 
+@torch.no_grad()
+def step_errors(model, program, inputs):
+    """Teacher-forced diagnostic: one-step errors per field along exact traces, since a single wrong step ruins a rollout."""
+    encoded = torch.tensor(encode_program(program))
+    errors, steps = {}, 0
+    for x, y in inputs:
+        regs = [0] * REGS
+        regs[0], regs[1] = x, y
+        pc = 0
+        for _ in range(STEP_LIMIT):
+            item = program[pc]
+            out = model(encoded[None], torch.tensor([pc]), torch.tensor([regs]))
+            picks = {k: v.argmax(1).item() for k, v in out.items()}
+            want = {"op": OP[item[0]], "next": exact_step(item, regs, pc)}
+            if item[0] in ALU:
+                want.update(a=item[1], dst=item[3])
+                if item[0] not in ("SHL", "SHR"):
+                    want["b"] = item[2]
+            elif item[0] == "LOADI":
+                want.update(dst=item[3], imm=item[4])
+            steps += 1
+            for key, value in want.items():
+                if picks[key] != value:
+                    name = f"{item[0]}.{key}"
+                    errors[name] = errors.get(name, 0) + 1
+            if item[0] == "HALT":
+                break
+            if item[0] in ALU:
+                regs[item[3]] = exact_alu(item[0], regs[item[1]], regs[item[2]])
+            elif item[0] == "LOADI":
+                regs[item[3]] = item[4]
+            pc = want["next"]
+    return {"steps": steps, "errors": errors}
+
+
 def evaluate_program(model, alu, program, inputs):
     got, done, steps = rollout(model, alu, program, inputs)
     want = [exact_run(program, x, y) for x, y in inputs]
@@ -308,7 +360,8 @@ def main():
         snapshot.write_bytes(a.library.read_bytes())
     concepts, available = test_programs(snapshot, a.concepts)
     mul = multiply_program()
-    held_out = {program_key(q) for q in concepts} | {program_key(mul)}
+    branching = {name: program for name, (program, _) in branching_programs().items()}
+    held_out = {program_key(q) for q in concepts} | {program_key(mul)} | {program_key(q) for q in branching.values()}
     rng = random.Random("NC-082/inputs")
     inputs = [(rng.randrange(256), rng.randrange(256)) for _ in range(16)]
     mul_inputs = [(rng.randrange(256), rng.randrange(256)) for _ in range(MUL_INPUTS)]
@@ -321,6 +374,8 @@ def main():
         rows = [evaluate_program(model, alu, q, inputs) for q in concepts]
         perfect = sum(r["correct"] == r["total"] for r in rows)
         multiply = evaluate_program(model, alu, mul, mul_inputs)
+        multiply_steps = step_errors(model, mul, mul_inputs[:32])
+        loops = {name: evaluate_program(model, alu, program, mul_inputs) for name, program in branching.items()}
         model.blank = True
         blank_rows = [evaluate_program(model, alu, q, inputs) for q in concepts[:: max(1, len(concepts) // 20)]]
         blank_mul = evaluate_program(model, alu, mul, mul_inputs[:64])
@@ -329,10 +384,10 @@ def main():
         torch.save({"state": model.state_dict(), "seed": seed}, checkpoint)
         report["seeds"][str(seed)] = {**info, "concept_programs_fully_correct": perfect, "concept_rollouts_correct": sum(r["correct"] for r in rows), "concept_rollouts_total": sum(r["total"] for r in rows),
                                       "per_length": {str(n): [sum(r["correct"] == r["total"] for r, q in zip(rows, concepts) if len(q) == n), sum(len(q) == n for q in concepts)] for n in sorted({len(q) for q in concepts})},
-                                      "multiply": multiply, "blank_program_control": {"programs_fully_correct": sum(r["correct"] == r["total"] for r in blank_rows), "programs": len(blank_rows), "multiply": blank_mul},
+                                      "multiply": multiply, "multiply_teacher_forced": multiply_steps, "other_branching_programs": loops, "blank_program_control": {"programs_fully_correct": sum(r["correct"] == r["total"] for r in blank_rows), "programs": len(blank_rows), "multiply": blank_mul},
                                       "checkpoint_sha256": hashlib.sha256(checkpoint.read_bytes()).hexdigest()}
         (a.out / "controller_results.json").write_text(json.dumps(report, indent=1))
-        print(seed, "loss", info["final_loss"], "concepts", perfect, "of", len(concepts), "multiply", multiply["correct"], "of", multiply["total"], "halted", multiply["halted"], "blank", report["seeds"][str(seed)]["blank_program_control"]["programs_fully_correct"], blank_mul["correct"], "cpu", info["train_cpu_seconds"], flush=True)
+        print(seed, "loss", info["final_loss"], "concepts", perfect, "of", len(concepts), "multiply", multiply["correct"], "of", multiply["total"], "halted", multiply["halted"], "steperrs", multiply_steps["errors"], "loops", {k: v["correct"] for k, v in loops.items()}, "blank", report["seeds"][str(seed)]["blank_program_control"]["programs_fully_correct"], blank_mul["correct"], "cpu", info["train_cpu_seconds"], flush=True)
     print("DONE", flush=True)
 
 

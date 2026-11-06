@@ -30,11 +30,10 @@ class Ladder:
 
 def run_arm(arm, seed, a, x, y):
     hard = s.ArithmeticWorld(seed)
-    rng = random.Random(f"curriculum|{arm}|{seed}")
     other = random.Random(f"curriculum|{arm}|{seed}|library")
     solutions, library, seen, retention, rows = [], [], set(), [], []
     for generation in range(a.generations):
-        sealed = s.draw_goals(hard, rng, a.sealed_goals, "sealed")
+        sealed = s.draw_goals(hard, s.exam_rng("curriculum", seed, generation, "sealed"), a.sealed_goals, "sealed")
         solved, used, cpu = 0, 0, 0.0
         best = 0
         for goal in sealed:
@@ -49,7 +48,7 @@ def run_arm(arm, seed, a, x, y):
                      "candidates_used": used, "cpu_seconds": round(cpu, 3), "over_budget_goals": 0, "training_overlap": 0.0,
                      "retention": kept / len(retention) if retention else 1.0, "library_size": len(library), "largest_solution": best})
         teacher = hard if arm == "library_no_ladder" else Ladder(generation)
-        train = s.draw_goals(teacher, rng, a.train_goals, "train", excluded=seen)
+        train = s.draw_goals(teacher, s.exam_rng(f"curriculum|{teacher.name}", seed, generation, "train"), a.train_goals, "train", excluded=seen)
         seen |= {s.goal_key(g) for g in train}
         for goal in train:
             expr = s.search(s.goal_vector(goal, x, y), library, a.budget, x, y)[0]

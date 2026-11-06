@@ -3,38 +3,91 @@
  "task": "NC-079",
  "owner": "claude-code-turn-0f828173bcf24622a4099422ec73a053",
  "source_sha256": {
-  "stack.py": "545787235d5b3b2dba7228ce937dbed8f6e402a4695c74c4c8d0a69ae2a6f7ff",
-  "run_compounding.py": "76ebdb22e09dc3e3caa542b02056876b76de40a9206674dbc80f87f88e36e4c2",
-  "run_curriculum.py": "f85ef0b206bc42dda5c9140aa6e0260ecdb2d45fb93608683460f3843841cff5",
-  "test_stack.py": "b7aaa3901fb846d6a1bc2ddad1678536aa93913d7716042926dcd0175cf37227",
-  "README.md": "55ff6e3a027befd9cadc61ad8950dc3b2650a6e53b4b5264deb59cf02a49db5a"
+  "stack.py": "0107d78b183c0753f9a2b1970df75e124fe5cf29359026a02326091839173807",
+  "run_compounding.py": "645f4e9a19f88b7aecf5d23200a657496e7d294cb43036fcfe3f32fe28ae678b",
+  "run_curriculum.py": "adbd1b5551729e8dd8cd3f39abb1e5154c70d4121eab646b4b98ea9a154d6611",
+  "test_stack.py": "cdaa1aef202e1fb2a58b909a3b74433be9e680247c346e3c295952f60a3bfb07",
+  "README.md": "769dcceb9c452f65fb7a48d2ec0e613ca0c7f221b181001f1500d40169de0ab3"
  },
  "evidence_sha256": {
-  "compounding_results.json": "ee72d947d8f1a4db2614fffc8189f06e342c833e9c9fd189f5eeb94700c437eb",
-  "curriculum_results.json": "e4efd0a4969d3b386f642b5e95534cc36d4b627569a2ad90726684a753ba623c"
+  "compounding_results.json": "613fd8730dae48bcd365e33fc1781473c008f6c0706573c738bab7c0a462e021",
+  "curriculum_results.json": "1f728409fef6ac7a3cc5e38fb4c437a96f0d8080afa88bd0b06730e3630e7472"
  },
  "scoreboard_sha256": "34fcdecd35e05547e7ea562882426bd54a5f39c828cbb8f3a32275e3511412fe",
  "main_verdicts": {
   "structured": {
-   "vs_none": "IMPROVEMENT",
-   "vs_random": "IMPROVEMENT",
+   "final_vs_none": {
+    "verdict": "NO_IMPROVEMENT",
+    "gain": 0.2333,
+    "reasons": [
+     "retention 0.933 is below the floor 0.95"
+    ]
+   },
+   "final_vs_random_library": {
+    "verdict": "NO_IMPROVEMENT",
+    "gain": 0.3889,
+    "reasons": [
+     "retention 0.933 is below the floor 0.95"
+    ]
+   },
    "compounding": "NO_COMPOUNDING"
   },
   "arithmetic": {
-   "vs_none": "NO_IMPROVEMENT",
-   "vs_random": "NO_IMPROVEMENT",
+   "final_vs_none": {
+    "verdict": "NO_IMPROVEMENT",
+    "gain": 0.0,
+    "reasons": [
+     "gain 0.000 is below the margin 0.05",
+     "did not beat the previous generation on most seeds"
+    ]
+   },
+   "final_vs_random_library": {
+    "verdict": "NO_IMPROVEMENT",
+    "gain": 0.0,
+    "reasons": [
+     "gain 0.000 is below the margin 0.05",
+     "did not beat the previous generation on most seeds"
+    ]
+   },
    "compounding": "NO_COMPOUNDING"
   },
   "unstructured": {
-   "vs_none": "NO_IMPROVEMENT",
-   "vs_random": "NO_IMPROVEMENT",
+   "final_vs_none": {
+    "verdict": "NO_IMPROVEMENT",
+    "gain": 0.0,
+    "reasons": [
+     "gain 0.000 is below the margin 0.05",
+     "did not beat the previous generation on most seeds"
+    ]
+   },
+   "final_vs_random_library": {
+    "verdict": "NO_IMPROVEMENT",
+    "gain": 0.0444,
+    "reasons": [
+     "gain 0.044 is below the margin 0.05"
+    ]
+   },
    "compounding": "NO_COMPOUNDING"
   }
  },
  "curriculum_verdicts": {
-  "final_vs_none": "IMPROVEMENT",
-  "final_vs_random_library": "IMPROVEMENT",
-  "final_vs_no_ladder": "IMPROVEMENT"
+  "final_vs_none": {
+   "verdict": "IMPROVEMENT",
+   "gain": 0.2111,
+   "reasons": []
+  },
+  "final_vs_random_library": {
+   "verdict": "NO_IMPROVEMENT",
+   "gain": 0.2111,
+   "reasons": [
+    "used 2.19 CPU seconds against a limit of 2.00"
+   ]
+  },
+  "final_vs_no_ladder": {
+   "verdict": "IMPROVEMENT",
+   "gain": 0.2111,
+   "reasons": []
+  }
  },
  "curriculum_compounding": {
   "verdict": "NO_COMPOUNDING",
@@ -65,6 +118,9 @@
   "Sealed goals derive from public seeds so a reviewer can regenerate them, unlike a private NC-061 commitment.",
   "Search matches expressions on 64 probes, with exhaustive verification only of what it returns.",
   "The separate evaluator matches a canonical ISA program in tests but expressions are not compiled to ISA programs.",
-  "Library capped at 48 concepts, and CPU was measured under shared load."
+  "Library capped at 48 concepts, and CPU was measured under shared load.",
+  "Structured gains of 0.233 and 0.389 are refused by the 0.95 retention floor; the curriculum's gain over the random library is refused on CPU by about 10%, measured under shared load. Both stand as NO_IMPROVEMENT rather than being argued away.",
+  "Seed 19's structured library reaches 1.0 while the others stay near 0.3, so the mean is seed-dependent.",
+  "The curriculum library ends near 0.2 after 10 generations; no compounding was established in any world."
  ]
 }

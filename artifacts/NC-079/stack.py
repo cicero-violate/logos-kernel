@@ -211,7 +211,7 @@ def verified(expr, goal, sample_seed=1):
     if not np.array_equal(np.asarray(evaluate(expr, VERIFY.x, VERIFY.y), dtype=np.int64) & MASK, goal_vector(goal, VERIFY.x, VERIFY.y)):
         return False
     rng = random.Random(sample_seed)
-    for _ in range(64):
+    for _ in range(1024):
         a, b = rng.randrange(256), rng.randrange(256)
         want = goal_vector(goal, np.int64(a), np.int64(b))
         if reference_value(expr, a, b) != int(want):
@@ -231,20 +231,25 @@ def harvest(solutions, cap=LIBRARY_CAP):
 
 
 def random_library(rng, like):
-    """Same count and sizes as the real library, with content unrelated to any solution."""
+    """Same count and exactly the same sizes as the real library, with content unrelated to any solution."""
     def build(n):
         if n <= 1:
             return rng.choice(LEAVES)
-        if rng.random() < .2:
+        if n == 2 or rng.random() < .2:
             return (rng.choice(tuple(UNARY)), build(n - 1))
-        left = rng.randrange(1, n)
-        return (rng.choice(tuple(BINARY)), build(left), build(max(1, n - 1 - left)))
+        left = rng.randrange(1, n - 1)
+        return (rng.choice(tuple(BINARY)), build(left), build(n - 1 - left))
     return [build(size(e)) for e in like]
 
 
-def run_generation(world, library, budget, rng, x, y, train_count, sealed_count, seen):
+def exam_rng(world_name, seed, generation, kind):
+    """Goals never depend on the arm, so every arm of a seed faces the same sealed exam and training goals."""
+    return random.Random(f"{world_name}|{seed}|{generation}|{kind}")
+
+
+def run_generation(world, library, budget, sealed_rng, train_rng, x, y, train_count, sealed_count, seen):
     """One generation: score the frozen library on sealed goals, then grow it from new training goals only."""
-    sealed = draw_goals(world, rng, sealed_count, "sealed")
+    sealed = draw_goals(world, sealed_rng, sealed_count, "sealed")
     def attempt(goals):
         solved, used, cpu = [], 0, 0.0
         for goal in goals:
@@ -258,7 +263,7 @@ def run_generation(world, library, budget, rng, x, y, train_count, sealed_count,
     row = {"solved": len(solved), "total": len(sealed), "solve_rate": len(solved) / max(1, len(sealed)), "candidates_used": used,
            "cpu_seconds": round(cpu, 3), "over_budget_goals": 0, "training_overlap": 0.0, "library_size": len(library),
            "largest_solution": max((size(e) for e in solved), default=0), "largest_concept": max((size(e) for e in library), default=0)}
-    train = draw_goals(world, rng, train_count, "train", excluded=seen)
+    train = draw_goals(world, train_rng, train_count, "train", excluded=seen)
     seen |= {goal_key(g) for g in train}
     learned, _, _ = attempt(train)
     return row, learned
