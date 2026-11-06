@@ -86,6 +86,10 @@ def _times(family, split, count):
     if family in {"nonlinear_modular", "logistic_chaos", "switching", "coupled_vector", "random_noise", "geometric"}:
         return list(range(count))
     step = {"train": 1, "validation": 2, "test": 3}[split]
+    # Period-four identification needs a sampling stride coprime to four.
+    # Intentional aliasing remains isolated in the dedicated aliasing family.
+    if family == "periodic" and step % 2 == 0:
+        step += 1
     start = {"train": 0, "validation": 2, "test": 5}[split]
     return [start + step * i for i in range(count)]
 

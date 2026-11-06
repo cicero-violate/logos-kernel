@@ -142,6 +142,22 @@ def forecast(case, name):
     return {"forecast": [v[0] if dims == 1 else v for v in result],
             "law": None, "proof": None}
 
+def _identifying_variation(reference):
+    """Flat held-out trajectories cannot identify a nonconstant dynamical law.
+
+    Require separation beyond twice the scoring tolerance: no constant
+    prediction that passes every reference point can satisfy this gate.
+    """
+    if len(reference) < 2:
+        return False
+    first = reference[0] if isinstance(reference[0], list) else [reference[0]]
+    for value in reference[1:]:
+        current = value if isinstance(value, list) else [value]
+        if any(abs(x-y) > 2 * (ABS_TOL + REL_TOL * max(abs(x), abs(y)))
+               for x,y in zip(current, first)):
+            return True
+    return False
+
 def grade(public, private, submitted):
     """Oracle-side grading: forecast accuracy is NOT a proof or discovery."""
     pred = submitted.get("forecast")
@@ -168,11 +184,14 @@ def grade(public, private, submitted):
     # Formal theorem proof is NOT established from a matching name.
     # This is bounded empirical identification, NOT a theorem certificate.
     # Do not trust candidate-supplied "proof" strings as independent evidence.
-    discovery_pass = bool(passed and law_matches and private["nontrivial_positive"])
+    identifying_variation = _identifying_variation(truth)
+    discovery_pass = bool(passed and law_matches and private["nontrivial_positive"]
+                          and identifying_variation)
     return {
         "forecast_pass": bool(passed), "mean_absolute_error":total/(len(truth)*dimension),
         "maximum_absolute_error":max_error, "claimed_law_matches":law_matches,
-        "bounded_discovery_pass":discovery_pass, "proof_scope":"heldout forecast plus private law match; no formal theorem or authenticated witness",
+        "bounded_discovery_pass":discovery_pass, "identifying_variation":identifying_variation,
+        "proof_scope":"heldout forecast plus private law match and informative variation; no formal theorem or authenticated witness",
     }
 
 def run():
@@ -197,14 +216,17 @@ def run():
             }
     # Oracle-only positive and deliberately falsified controls; NEVER participant baselines.
     test_cases = list(oracle.cases("test"))
-    positive = negative = constant_collapse_reject = 0
+    positive = nonidentifying_nontrivial = negative = constant_collapse_reject = 0
     for public, priv in test_cases:
         perfect = {"forecast":priv["reference_values"], "law":priv["law"],
                    "proof":"heldout_recurrence_witness"}
         score = grade(public, priv, perfect)
         if priv["nontrivial_positive"]:
-            assert score["bounded_discovery_pass"]
-            positive += 1
+            if score["bounded_discovery_pass"]:
+                positive += 1
+            else:
+                assert not score["identifying_variation"]
+                nonidentifying_nontrivial += 1
         falsified = dict(perfect, law="intentionally_wrong_law")
         assert not grade(public,priv,falsified)["bounded_discovery_pass"]
         negative += 1
@@ -213,14 +235,38 @@ def run():
             v == 0.0 or v == [0.0,0.0] for v in priv["reference_values"])
         if priv["nontrivial_positive"] and not grade(public,priv,collapsed)["bounded_discovery_pass"]:
             constant_collapse_reject += 1
+    # Previously test-only: a validation periodic trajectory was all zero
+    # under stride-two sampling, falsely certifying a constant forecast.
+    collapse_all_splits = {}
+    for split in oracle.SPLITS:
+        tested = rejected = oracle_assisted_rejected = 0
+        for public, priv in oracle.cases(split):
+            if not priv["nontrivial_positive"]:
+                continue
+            tested += 1
+            zero = 0.0 if public["shape"] == "scalar" else [0.0, 0.0]
+            collapsed = {"forecast": [zero] * len(public["query_times"]), "law": priv["law"], "proof": None}
+            if grade(public, priv, collapsed)["bounded_discovery_pass"]:
+                raise AssertionError(f"constant-collapse false discovery: {split}:{public['case_id']}")
+            rejected += 1
+            # Stronger oracle-assisted attack: return the first *future* target
+            # at every horizon point, along with the correct law label.
+            assisted = dict(collapsed, forecast=[priv["reference_values"][0]] * len(public["query_times"]))
+            if grade(public, priv, assisted)["bounded_discovery_pass"]:
+                raise AssertionError(f"oracle-assisted constant falsely certified: {split}:{public['case_id']}")
+            oracle_assisted_rejected += 1
+        collapse_all_splits[split] = {"tested": tested, "rejected": rejected,
+                                      "oracle_assisted_constant_rejected": oracle_assisted_rejected}
     interpolation_cases = [(p,v) for p,v in test_cases if v["family"] in
                            {"periodic","multi_frequency","nonlinear_modular","switching","random_noise","aliasing"}]
     interpolation_failed = sum(not grade(p,v,forecast(p,"finite_difference"))["forecast_pass"]
                                for p,v in interpolation_cases)
     data["controls"] = {
         "oracle_only_positive_nontrivial":positive,
+        "oracle_only_nonidentifying_nontrivial":nonidentifying_nontrivial,
         "wrong_law_rejected":negative,
         "constant_collapse_nontrivial_rejected":constant_collapse_reject,
+        "constant_collapse_all_splits":collapse_all_splits,
         "short_prefix_interpolation": {"tested":len(interpolation_cases),
             "failed_extrapolation":interpolation_failed,
             "bounded_discovery_pass":0}

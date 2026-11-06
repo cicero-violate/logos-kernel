@@ -40,7 +40,8 @@ class InvariantBenchmarkTests(unittest.TestCase):
 
     def test_negative_and_positive_control_denominators(self):
         result=benchmark.run()
-        self.assertEqual(result["controls"]["oracle_only_positive_nontrivial"],27)
+        self.assertEqual(result["controls"]["oracle_only_positive_nontrivial"],26)
+        self.assertEqual(result["controls"]["oracle_only_nonidentifying_nontrivial"],1)
         self.assertEqual(result["controls"]["wrong_law_rejected"],36)
         self.assertEqual(result["controls"]["constant_collapse_nontrivial_rejected"],27)
         for split, scores in result["baseline_scores"].items():
@@ -48,6 +49,43 @@ class InvariantBenchmarkTests(unittest.TestCase):
                 self.assertEqual(metric["denominator"],result["split_counts"][split])
                 self.assertEqual(metric["bounded_discovery_pass"],0)
                 self.assertGreaterEqual(metric["forecast_pass"],0)
+
+    def test_no_constant_collapse_false_discovery_across_every_split(self):
+        expected = {"train": 18, "validation": 27, "test": 27}
+        for split, target in expected.items():
+            count = 0
+            for public, private in oracle.cases(split):
+                if not private["nontrivial_positive"]:
+                    continue
+                count += 1
+                zero = 0.0 if public["shape"] == "scalar" else [0.0, 0.0]
+                submitted = {"forecast": [zero] * len(public["query_times"]),
+                             "law": private["law"], "proof": None}
+                self.assertFalse(benchmark.grade(public, private, submitted)["bounded_discovery_pass"],
+                                 (split, private["family"], private["parameters"]["rep"]))
+                assisted = dict(submitted, forecast=[private["reference_values"][0]]*len(public["query_times"]))
+                self.assertFalse(benchmark.grade(public, private, assisted)["bounded_discovery_pass"],
+                                 (split, private["family"], "oracle-assisted"))
+            self.assertEqual(count, target)
+        self.assertEqual(benchmark.run()["controls"]["constant_collapse_all_splits"],
+                         {split: {"tested": n, "rejected": n, "oracle_assisted_constant_rejected": n}
+                          for split, n in expected.items()})
+
+    def test_fixed_point_forecast_is_correct_but_not_law_discovery(self):
+        public, private = oracle.make_case("nonlinear_modular", "test", 0)
+        self.assertEqual(len(set(private["reference_values"])), 1)
+        perfect = {"forecast": private["reference_values"], "law": private["law"]}
+        score = benchmark.grade(public, private, perfect)
+        self.assertTrue(score["forecast_pass"])
+        self.assertFalse(score["identifying_variation"])
+        self.assertFalse(score["bounded_discovery_pass"])
+
+    def test_validation_periodic_sampling_exposes_nonconstant_phase(self):
+        public, private = oracle.make_case("periodic", "validation", 1)
+        self.assertGreater(len(set(public["observed_values"])), 1)
+        self.assertGreater(len(set(private["reference_values"])), 1)
+        self.assertTrue(benchmark.grade(public, private,
+                        {"forecast": private["reference_values"], "law": private["law"]})["bounded_discovery_pass"])
 
     def test_aliasing_fools_constant_prefix_not_future(self):
         public,private=oracle.make_case("aliasing","test",0)

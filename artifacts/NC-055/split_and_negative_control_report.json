@@ -80,44 +80,62 @@
       "finite_difference": {
         "bounded_discovery_pass": 0,
         "denominator": 36,
-        "forecast_pass": 10,
-        "mean_absolute_error": 52255988.75054869
+        "forecast_pass": 9,
+        "mean_absolute_error": 52255964.75054869
       },
       "identity": {
         "bounded_discovery_pass": 0,
         "denominator": 36,
         "forecast_pass": 0,
-        "mean_absolute_error": 53315642.329237424
+        "mean_absolute_error": 53315643.43108927
       },
       "linear_recurrence": {
         "bounded_discovery_pass": 0,
         "denominator": 36,
-        "forecast_pass": 10,
-        "mean_absolute_error": 2165.3511710269786
+        "forecast_pass": 8,
+        "mean_absolute_error": 2165.351171061836
       },
       "persistence": {
         "bounded_discovery_pass": 0,
         "denominator": 36,
-        "forecast_pass": 4,
-        "mean_absolute_error": 53254439.8894488
+        "forecast_pass": 3,
+        "mean_absolute_error": 53254439.95889325
       },
       "randomized": {
         "bounded_discovery_pass": 0,
         "denominator": 36,
         "forecast_pass": 0,
-        "mean_absolute_error": 53315647.79004833
+        "mean_absolute_error": 53315647.76284337
       },
       "zero": {
         "bounded_discovery_pass": 0,
         "denominator": 36,
-        "forecast_pass": 1,
-        "mean_absolute_error": 53315647.69391073
+        "forecast_pass": 0,
+        "mean_absolute_error": 53315647.65224406
       }
     }
   },
   "controls": {
+    "constant_collapse_all_splits": {
+      "test": {
+        "oracle_assisted_constant_rejected": 27,
+        "rejected": 27,
+        "tested": 27
+      },
+      "train": {
+        "oracle_assisted_constant_rejected": 18,
+        "rejected": 18,
+        "tested": 18
+      },
+      "validation": {
+        "oracle_assisted_constant_rejected": 27,
+        "rejected": 27,
+        "tested": 27
+      }
+    },
     "constant_collapse_nontrivial_rejected": 27,
-    "oracle_only_positive_nontrivial": 27,
+    "oracle_only_nonidentifying_nontrivial": 1,
+    "oracle_only_positive_nontrivial": 26,
     "short_prefix_interpolation": {
       "bounded_discovery_pass": 0,
       "failed_extrapolation": 15,
@@ -178,19 +196,26 @@
     "train": "float64",
     "validation": "decimal_text"
   },
-  "measured_cpu_seconds": 0.019922,
+  "measured_cpu_seconds": 0.030777,
+  "oracle_target_commitment_method": "SHA256 UTF-8 compact sorted-key JSON array of {case_id,reference_exact} entries in oracle.cases(split) order",
   "oracle_target_commitments": {
-    "test": "171cce4f94eb22d7cdbb13b71c1ff02b426d0bbd12dc41641744d1778379d8a7",
-    "train": "4e0c4b6f4eb76b46ede8f2677ad9ef942333d6e9073c1e2a5a9fab3352b9cb96",
-    "validation": "9c1ac4593e4b7fb4c860aae61cee12bb69091f57696e5c71bb043a5f7e563b96"
+    "test": "b9d9e3c8dc4822f00c7dbd4e8b65c37def2a539960fcd4854934ee2b663e6fc0",
+    "train": "1d8f46af0fc46607de5497f44f60ccc8dbb9b47368164a6b5d2fe89c40d68069",
+    "validation": "b107afd78f8f6800227b0c32a51b87e61f3d40f119087584d834d925d079553d"
   },
+  "proof_limitations": [
+    "No learned model evaluated; this is a finite reproducible synthetic benchmark.",
+    "Truth-side variation gate prevents constant-output scores even with a correct law string.",
+    "One modular test case converges to a constant fixed point: oracle forecast correct, law not identifiable over withheld horizon.",
+    "No sealed filesystem oracle, authentication, formal theorem, or unseen-seed generalization."
+  ],
   "python_version": "3.14.6",
   "schema_version": 1,
   "seed": 55061,
   "source_sha256": {
-    "benchmark.py": "1c32b2ed5dc80cc75df741c8f2cdb26c07835b715d226ecf95f7fc2fe024f936",
-    "oracle.py": "ed310cb20260bab39f6ec92d7b72c036d80fd153af04bd44e0b24826d7adafb1",
-    "test_benchmark.py": "63080e50099db08c0c23cc5b6b7459bd5d947fc24149c6c608a878af87d12d04"
+    "benchmark.py": "d559d8ad847fd4970f139ad0fa02967b3633dbae10c1d103b4baa0f98cf1ec34",
+    "oracle.py": "898dd83bd45d4b9cab0001bf53563cc59d974d25f9b34b08ea075e13c8335816",
+    "test_benchmark.py": "c22cdbcb0d346e0c2ee5d9ad64ddeaefe4134e6e7465cfd30e16d51badbcc70d"
   },
   "split_counts": {
     "test": 36,
