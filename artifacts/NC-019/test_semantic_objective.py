@@ -74,6 +74,11 @@ class SemanticContractTests(unittest.TestCase):
          for x in self.contract["families"]]
   yes=s.equivalence_score(cases)
   self.assertEqual(yes["balanced_accuracy"],.5)
+  labels={z["id"]:z["expected_equivalence"] for z in self.contract["families"]}
+  registered=s.equivalence_score(cases,expected_labels=labels)
+  self.assertTrue(registered["independent_label_registry_bound"])
+  with self.assertRaises(s.InvalidScore):
+   s.equivalence_score(cases[:-1],expected_labels=labels)
   self.assertEqual(yes["FP"],7)
   no=s.equivalence_score([{**x,"prediction":False} for x in cases])
   self.assertEqual(no["balanced_accuracy"],.5)
@@ -118,19 +123,32 @@ class SemanticContractTests(unittest.TestCase):
       "halted":True,"execution_mode":"symbolic","postprediction_oracle_only":True},
   ]
   result=s.transfer_score(cases,heldout)
-  self.assertEqual((result["correct"],result["tested"]),(1,2))
+  # Untrusted candidate claims yield ZERO credit by default.
+  self.assertEqual((result["correct"],result["tested"]),(0,2))
+  externally_observed=s.transfer_score(
+   cases,heldout, trusted_execution_check=lambda item:item["case_id"]=="a",
+   registered_case_ids={"a","b"})
+  self.assertEqual((externally_observed["correct"],externally_observed["tested"]),(1,2))
   cases[0]["halted"]=False
-  self.assertEqual(s.transfer_score(cases,heldout)["correct"],0)
+  self.assertEqual(s.transfer_score(cases,heldout,
+    trusted_execution_check=lambda item:item["case_id"]=="a",
+    registered_case_ids={"a","b"})["correct"],0)
+  with self.assertRaises(s.InvalidScore):
+   s.transfer_score(cases,heldout,
+     trusted_execution_check=lambda item:True,registered_case_ids={"a","b","c"})
   with self.assertRaises(s.InvalidScore):s.transfer_score(cases,{"UNSEEN"})
  def test_retention_requires_fixed_old_denominators(self):
-  base={"ADD":{"correct":100,"tested":100},"XOR":{"correct":80,"tested":80}}
-  current={"ADD":{"correct":99,"tested":100},"XOR":{"correct":80,"tested":80}}
+  base={"ADD":{"correct":100,"tested":100,"case_set_sha256":"a"*64,"skill_contract_sha256":"c"*64},
+        "XOR":{"correct":80,"tested":80,"case_set_sha256":"b"*64,"skill_contract_sha256":"d"*64}}
+  current={"ADD":{**base["ADD"],"correct":99},"XOR":dict(base["XOR"])}
   score=s.retention_score(base,current)
   self.assertFalse(score["all_retained"])
   self.assertAlmostEqual(score["by_skill"]["ADD"]["forgetting"],.01)
   with self.assertRaises(s.InvalidScore):s.retention_score(base,{"ADD":current["ADD"]})
   with self.assertRaises(s.InvalidScore):s.retention_score(base,{
-   "ADD":{"correct":99,"tested":101},"XOR":{"correct":80,"tested":80}})
+   "ADD":{**base["ADD"],"correct":99,"tested":101},"XOR":dict(base["XOR"])})
+  changed_cases={"ADD":{**base["ADD"],"case_set_sha256":"f"*64},"XOR":dict(base["XOR"])}
+  with self.assertRaises(s.InvalidScore):s.retention_score(base,changed_cases)
  def test_claims_demand_real_independent_proof_not_self_report(self):
   goals={"E_XOR_ASSOCIATIVITY","E_ADD_SUB_REASSOCIATION"}
   claim={"family":"E_XOR_ASSOCIATIVITY","proof_scope":"finite_exhaustive",
@@ -141,19 +159,42 @@ class SemanticContractTests(unittest.TestCase):
   self.assertEqual(score["verified_new_families"],0)
   claim["independently_verified"]=True
   claim["verifier"]="independent:real-runtime"
+  # Even plausible verifier names and 64-char hashes are UNTRUSTED.
   score=s.verified_gain([claim],goals,set(),"implementer")
+  self.assertEqual(score["verified_new_families"],0)
+  # A trusted evaluator-only callback can authorize a simulated test fixture.
+  # This is NOT an authentic model proof in production.
+  score=s.verified_gain([claim],goals,set(),"implementer",
+      trusted_proof_check=lambda item:item["family"]=="E_XOR_ASSOCIATIVITY")
   self.assertEqual(score["verified_new_families"],1)
   score=s.verified_gain([claim],goals,{"E_XOR_ASSOCIATIVITY"},"implementer")
   self.assertEqual(score["verified_new_families"],0)
+ def test_fabricated_proof_metadata_never_credited(self):
+  forged={"family":"E_XOR_ASSOCIATIVITY","proof_scope":"finite_exhaustive",
+    "independently_verified":True,"verifier":"fictional:made-up-agent",
+    "receipt_sha256":"a"*64,"executable_result_correct":True,
+    "source_mode":"neural_generated","reused_fixed_rom":False,
+    "frozen_checkpoint_hash":"b"*64}
+  result=s.verified_gain([forged],{"E_XOR_ASSOCIATIVITY"},set(),"actual-owner")
+  self.assertEqual(result["verified_new_families"],0)
+  self.assertFalse(result["credited"])
+  forged["frozen_checkpoint_hash"]="not-an-actual-checkpoint"
+  result=s.verified_gain([forged],{"E_XOR_ASSOCIATIVITY"},set(),"actual-owner",
+    trusted_proof_check=lambda item: True)
+  self.assertEqual(result["verified_new_families"],0)
+
  def test_efficiency_nonexecution_and_missing_cost_rejected(self):
   cost={name:1 for name in s.COST_FIELDS}
   cost["total_elapsed_critical_path_seconds"]=4
-  result=s.efficiency_score(2,cost)
+  with self.assertRaises(s.InvalidScore):
+   s.efficiency_score(2,cost)
+  result=s.efficiency_score(2,cost,trusted_gain_check=lambda n:n==2)
   self.assertEqual(result["verified_families_per_second"],.5)
   self.assertEqual(result["energy_status"],"NOT_MEASURED")
   for change in ("total_elapsed_critical_path_seconds","proposals","verifier_calls"):
    missing=dict(cost);missing[change]=0
-   with self.assertRaises(s.InvalidScore):s.efficiency_score(2,missing)
+   with self.assertRaises(s.InvalidScore):
+    s.efficiency_score(2,missing,trusted_gain_check=lambda n:n==2)
   missing=dict(cost);del missing["model_bytes"]
   with self.assertRaises(s.InvalidScore):s.efficiency_score(2,missing)
  def test_semantic_pareto_priority(self):

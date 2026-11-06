@@ -22,7 +22,7 @@
   "id": "NC-019",
   "metric_definitions": {
     "retention": {
-      "denominators": "old_skill_cases > 0; every prior verified skill separately and every stage",
+      "denominators": "old_skill_cases > 0; frozen case_set_sha256 and skill_contract_sha256 must match before and after; every prior verified skill separately and every stage",
       "forgetting_formula": "max(0, accuracy_before - accuracy_after)",
       "formula": "correct_and_verified_old_skill_cases_at_stage_t / frozen_registered_old_skill_cases",
       "gate": "zero regression on exactly proven prior scope; otherwise report lost cases and no promotion",
@@ -45,7 +45,7 @@
         "verifier_calls",
         "total_energy_joules_if_measured"
       ],
-      "denominators": "total_wall_seconds > 0 and candidate_evaluations > 0",
+      "denominators": "total_wall_seconds > 0, proposals > 0, verifier_calls > 0; any positive gain numerator requires trusted_gain_check from independent evaluator",
       "dominance": "A dominates B only if A passes all semantic/retention gates, is no worse on all reported capability scores/cost metrics, and strictly better on at least one",
       "formula": "distinct_verified_new_families / total_wall_seconds, with numerator and denominator separately reported",
       "metric": "verified_discovery_per_fully_accounted_compute_and_pareto_front",
@@ -65,10 +65,11 @@
       "negative": "one exact typed counterexample under same semantics",
       "nonexecution": "invalid; count as incorrect on that case, no abstention bonus",
       "positive": "ground-truth equivalent under declared bitvector semantics",
-      "require": "record TP,TN,FP,FN, per-family numerators, proof scopes, counterexamples"
+      "require": "record TP,TN,FP,FN, abstentions, per-family numerators, proof scopes, counterexamples and externally supplied complete case-label registry"
     },
     "unseen_composition": {
-      "denominators": "registered_heldout_cases > 0; report by family, width, sign and seed",
+      "denominators": "registered_heldout_cases > 0, exact expected case ID set must match; report by family, width, sign and seed",
+      "external_execution_provenance": "candidate-supplied neural execution flags are untrusted; independent evaluator supplies trusted_execution_check callback, otherwise zero transfer credit",
       "formula": "number_of_exact_heldout_outputs_with_valid_type_and_termination / total_registered_heldout_cases",
       "metric": "exact_verified_output_accuracy_on_family_heldout",
       "nonexecution": "0 correct; timeout, missing output or type mismatch counts as failed case",
@@ -78,6 +79,7 @@
     "verified_capability_gain": {
       "baseline": "freeze code, checkpoint, family list and proof scope before training",
       "denominators": "pre_registered_new_goal_families > 0",
+      "external_proof_authentication": "No candidate proof/verifier name/hash can earn gain by itself. A trusted independent verifier callback must inspect real proof, runtime identity, checkpoint and source; otherwise credit zero.",
       "formula": "count(new_versioned_heldout_families_with_independent_equivalence_proof_and_correct_executable_result AND absent_from_frozen_baseline) / count(preregistered_new_goal_families)",
       "metric": "newly certified distinct operators or rewrite families, not examples or cached programs",
       "proof": "each gain needs typed contract, exact checkpoint/source hash, independent proof or explicit finite-exhaustive scope, counterexample search, non-regression",

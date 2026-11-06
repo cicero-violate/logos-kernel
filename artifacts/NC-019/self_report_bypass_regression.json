@@ -1,0 +1,27 @@
+{
+  "champion_modified": false,
+  "failing_original_reproduction": {
+    "claim": {
+      "executable_result_correct": true,
+      "family": "E_XOR_ASSOCIATIVITY",
+      "frozen_checkpoint_hash": "not-an-actual-checkpoint",
+      "independently_verified": true,
+      "proof_scope": "finite_exhaustive",
+      "receipt_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "reused_fixed_rom": false,
+      "source_mode": "neural_generated",
+      "verifier": "fictional:made-up-agent"
+    },
+    "expected": 0,
+    "original_credited_new_families": 1
+  },
+  "finding": "A generated proof flag, invented verifier name, 64-character fake receipt hash and fake checkpoint identifier could earn verified_gain credit in initial commit 9566da1.",
+  "neural_training_claim": false,
+  "original_implementation_commit": "9566da1c0e85176fd9cea4fe5afe119b66c16c56",
+  "post_fix_expected_credit_without_authentication": 0,
+  "post_fix_regression": "test_fabricated_proof_metadata_never_credited",
+  "remaining_trust_boundary": "Callback supplied by an independent evaluator must inspect real proof traces, source and checkpoint hashes and actual verifier runtime identity. A hostile caller supplying a fake callback remains outside the local scorer's authentication capability.",
+  "repair": "verified_gain now requires evaluator-only trusted_proof_check callback and strict frozen hash validation; transfer_score similarly requires trusted_execution_check. Without callbacks, candidate self-report earns zero transfer and zero verified new capability.",
+  "severity": "ACCEPTANCE_CONTRACT_VIOLATION",
+  "task": "NC-019"
+}

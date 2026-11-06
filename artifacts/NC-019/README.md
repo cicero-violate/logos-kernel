@@ -20,3 +20,9 @@ Run from /workspace/experiments/logos-kernel:
 Dependencies: Python3 stdlib, NC-001 canonical_isa.py plus frozen NC-000/
 NC-004/NC-005 source/receipt artifacts and original RLT champion weights
 for integrity hashes only; PyTorch and trained models are NOT loaded.
+
+Fail-closed score rules: candidate-provided self-verifier identities, fake receipt
+hashes, self-asserted neural outputs and missing case-set hashes do not earn
+verified gain, transfer or retention credit. External trusted verifier callbacks
+must independently bind actual execution/proof traces; this scorer cannot
+authenticate agent identities from strings. See self_report_bypass_regression.json.
