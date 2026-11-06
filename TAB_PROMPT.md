@@ -1,6 +1,7 @@
 Activate [$agent-event-lab](app://asdk_app_6ae1a9c0a9648191b604b2003bcffefa)
 
 Project: /workspace/experiments/logos-kernel
+Topology: exactly 3 independent stateless ChatGPT tabs for THIS repo; 6 total across two isolated repositories. Each tab recovers state and pulls dynamically; roles are never fixed. Each tab must use its own actual Event Lab session identity.
 This turn is STATELESS. Recover from AGENTS.md, README.md, HANDOFF_NEXT_CHAT.md, TAB_PROMPT.md, instructions.jsonl, current Git and artifacts.
 
 Use the Event Lab runtime's REAL agent/session identity. Never invent one.

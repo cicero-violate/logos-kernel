@@ -1,6 +1,7 @@
 import hashlib
 import json
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -112,6 +113,59 @@ class PullTests(unittest.TestCase):
                                 "candidate_sha256": "b"*64}, state)
         selection = dag.choose_pull_event(state, identity)
         self.assertNotEqual(selection.get("kind"), "review_claim")
+
+    def test_three_stateless_tabs_per_repository_concurrent_pull(self):
+        # Three real logical roles may compete without fixed assignments:
+        # one existing implementer, one independent reviewer, one new implementer.
+        # Processes model separately started stateless ChatGPT tabs. They do
+        # not establish authenticated browser sessions or real independence.
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            repo(root)
+            with patch.object(dag, "ROOT", root), patch.object(dag, "LOG", root / "instructions.jsonl"):
+                dag.append(task("u"))
+                self.assertEqual(dag.pull("session-A")["task"], "t")
+                event_request(root, "session-A")
+
+            code = (
+                "import json,sys; from pathlib import Path; "
+                "sys.path.insert(0,sys.argv[1]); import dag; "
+                "dag.ROOT=Path(sys.argv[2]); dag.LOG=dag.ROOT/'instructions.jsonl'; "
+                "print(json.dumps(dag.pull(sys.argv[3])))"
+            )
+            agents = ("session-A", "session-B", "session-C")
+            commands = [
+                subprocess.Popen(
+                    [sys.executable, "-c", code, str(Path(dag.__file__).resolve().parent), str(root), agent],
+                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                for agent in agents
+            ]
+            receipts = []
+            for agent, process in zip(agents, commands):
+                stdout, stderr = process.communicate(timeout=30)
+                self.assertEqual(process.returncode, 0, agent + ": " + stderr)
+                receipts.append(json.loads(stdout))
+            self.assertCountEqual([r["role"] for r in receipts],
+                                  ["IMPLEMENTER", "IMPLEMENTER", "VERIFIER"])
+            self.assertEqual(receipts[0]["task"], "t")
+            self.assertTrue(receipts[0]["reused"])
+            self.assertEqual([r["task"] for r in receipts if r["role"] == "VERIFIER"], ["t"])
+            self.assertCountEqual([r["task"] for r in receipts if r["role"] == "IMPLEMENTER"],
+                                  ["t", "u"])
+            with patch.object(dag, "ROOT", root), patch.object(dag, "LOG", root / "instructions.jsonl"):
+                state, count, _ = dag.audit((root / "instructions.jsonl").read_text())
+                self.assertEqual(count, 6)
+                self.assertEqual(state["t"]["owner"], "session-A")
+                self.assertIn(state["t"]["review"]["reviewer"], agents[1:])
+                self.assertEqual(state["u"]["owner"],
+                                 next(agent for agent, r in zip(agents, receipts)
+                                      if r["role"] == "IMPLEMENTER" and r["task"] == "u"))
+                for agent, receipt in zip(agents, receipts):
+                    replay = dag.pull(agent)
+                    self.assertEqual(replay["task"], receipt["task"])
+                    self.assertEqual(replay["role"], receipt["role"])
+                    self.assertTrue(replay["reused"])
+                self.assertEqual(dag.audit((root / "instructions.jsonl").read_text())[1], count)
 
     def test_request_candidate_hash_is_checked_before_append(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -16,6 +16,10 @@ This repository is a task DAG for progressive neural learning, operation composi
 
 ## Pull-based tickets: mandatory dispatch
 
+**Deployment topology:** 3 stateless ChatGPT tabs dedicated to this repository (6 across the two isolated repositories). All tabs run the same pull command; no permanent verifier/implementer roles. Each requires a distinct actual Event Lab session identity. This DAG does not create browser tabs or authenticate session strings.
+
+
+
 **Never decide the role manually.** The single assignment entry point for both repositories is:
 
 ```bash
