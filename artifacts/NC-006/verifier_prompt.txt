@@ -1,0 +1,25 @@
+NC-006 separate real independent scientific verifier under the Logos-Kernel DAG.
+
+You are NOT the task owner (Event Lab runtime owner 1db9edb983ff4df9933612e7c826e55f). Your actual Codex CLI thread.started ID is the verifier identity. Read AGENTS.md, README.md, exact NC-006 full task in instructions.jsonl.
+
+Audited immutable commit: ecdb2dc2004eb25b281bf9a1be95cdc9b11937d2
+Audited files: artifacts/NC-006/verify_circuits.py, verify_branch.py, test_circuits.py, circuits.jsonl, proof_receipts.jsonl, library_manifest.json, branch_conformance.json, README.md.
+
+READ ONLY scientific verification: do not mutate Git, DAG, source/model weights, checkpoint packages, circuit entries, or evaluation receipts. Temporary Python scripts under /tmp for independent oracle are allowed. DO NOT train a model or claim source model invented the procedures. Harness writes your final JSON and trace only; don't create independent_receipt.json.
+
+REQUIREMENTS (verdict PASS only if scientific checks genuinely pass):
+1. Fresh-run python dag.py validate, python -m unittest -q test_dag (expect 19) and PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-006 -p test_circuits.py (expect 10).
+2. Independently recompute SHA256 for all 60 NC-000 inventoried files and six frozen NC-005 final-stage packages (three rehearsal, three new_only), verify original RLT champion SHA256 matches inventory and no tracked source/weight changes.
+3. Independently load all SIX frozen source NC-005 ExpandedISA neural models in a clean process using model class and torch.load state_dict, not NC-006/verify_circuits.frozen_model. Independently generate all 64 six-binary-feature configurations for EVERY ONE of the nine operators per checkpoint, calculate pure integer oracle bits and carry with your own formulas, count 576 exact local feature predictions and 9 semantic opcode labels per seed, and record actual failed cases of the new_only arm. Do not call NC006 expected/local_neural, NC005 local_table/primitive_target or use NC006 saved measurements as the source of predictions.
+4. Independently run frozen learned ZERO head on all 65536 distinct raw 16-bit values per rehearsal seed, optionally all new_only as control. Compare actual model output against value==0 only AFTER logits; report exact 65536 numerators, failures, one positive/65535 negative counts. Verify JZ/JNZ host application of neural zero decisions and an inversion intervention; don't imply opcode choice/PC target is trained.
+5. Audit circuits.jsonl 60 neural candidates + 1 symbolic reference, proof_receipts.jsonl 60 measured neural entries; exact model hashes and versioned contracts, measured denominators, full failure traces for new_only, exclusion of nonqualifying entries, no fictitious lookup/symbolic fallback and no formal weight proof. If protocol marks candidate as VERIFIED before your audit, fail.
+6. Check scientific boundaries: local 64 feature combinations were TRAINING SEEN; exhaustive finite local coverage is NOT general program-level proof, 16-bit JZ predicate is learned but PC target/branch opcode/HALT host-controlled, NC005 model is 5981-param MLP not original RLT Transformer, full-source multiplication ROM is host-supplied. No model invention or default champion promotion.
+7. Require negative controls: new_only SHOULD FAIL some local primitives; preserved rehearsal correct; flip neural zero predicate degrades JZ. If there are unexplained differences from the recorded source weights, return FAIL/HOLD, not fabricated PASS.
+8. Record actual independent commands, seeds, model/output source SHA256, actual numeric test counts, mode/proof scope and failed examples. Runtime thread ID must come from actual Codex trace, not text you invent.
+
+FINAL JSON OBJECT ONLY:
+task, verdict (PASS|HOLD|FAIL), verifier_type, audited_commit, commands,
+independent_checks, negative_controls, source_integrity, neural_host_boundary,
+proof_scope, limitations, failures.
+
+Do NOT write task PASS to DAG; separate owner does so only after verifying your actual output.

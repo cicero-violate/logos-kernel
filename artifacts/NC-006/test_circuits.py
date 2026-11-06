@@ -96,10 +96,13 @@ class CircuitRegistryTests(unittest.TestCase):
     self.assertEqual(m["tested"],65536)
     self.assertEqual(m["positive_tested"],1)
     self.assertEqual(m["negative_tested"],65535)
+    self.assertEqual(len(m["failed_cases"]),m["failure_count"])
    else:
     self.assertEqual(m["tested"],64)
     self.assertEqual(m["output_bit_tested"],128)
     self.assertEqual(m["failure_count"],m["tested"]-m["correct"])
+    self.assertEqual(len(m["failure_examples"]),m["failure_count"],
+      "every failing frozen neural input must be recorded, not top-k truncated")
     self.assertTrue(m["float_logit_finiteness"])
    self.assertTrue(p["no_fallback_or_synthetic_result"])
  def test_manifest_contract_and_original_preservation(self):

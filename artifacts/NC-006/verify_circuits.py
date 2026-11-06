@@ -89,7 +89,7 @@ def local_neural(model,op):
    "output_bit_accuracy":int((predicted==expected_bits).sum()),"output_bit_tested":128,
    "meaning_label_correct":predicted_op==c.INDEX[op],
    "meaning_predicted":OPS[predicted_op],
-   "failure_count":len(failures),"failure_examples":failures[:16],
+   "failure_count":len(failures),"failure_examples":failures,
    "float_logit_finiteness":bool(torch.isfinite(actual_logits).all()),
    "all_64_local_features_supervised_in_source_training":True}
 
@@ -114,7 +114,7 @@ def exhaustive_zero(model):
    "true_negative":negative,"negative_tested":65535,
    "false_positive":sum(not v["expected_zero"] for v in wrong),
    "false_negative":sum(v["expected_zero"] for v in wrong),
-   "failed_cases":wrong[:16],"failure_count":len(wrong),
+   "failed_cases":wrong,"failure_count":len(wrong),
    "scope":"exhaustive all raw 16-bit inputs to frozen learned ZERO head",
    "not_learned":"JZ/JNZ opcode selection, PC, target and HALT host-provided"}
 

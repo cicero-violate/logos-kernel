@@ -1,0 +1,186 @@
+{
+  "task": "NC-006",
+  "verdict": "FAIL",
+  "verifier_type": {
+    "type": "separate_real_independent_scientific_verifier",
+    "codex_thread_started_id": "01a1af0d-e74c-75a3-a746-ad494a358571",
+    "task_owner": "1db9edb983ff4df9933612e7c826e55f",
+    "identity_distinct_from_owner": true
+  },
+  "audited_commit": "ecdb2dc2004eb25b281bf9a1be95cdc9b11937d2",
+  "commands": [
+    "python dag.py validate",
+    "python -m unittest -q test_dag",
+    "python dag.py ready",
+    "python dag.py list",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-006 -p test_circuits.py",
+    "PYTHONDONTWRITEBYTECODE=1 python /tmp/nc006_independent.py > /tmp/nc006_independent_output.json",
+    "sha256sum /tmp/nc006_independent.py /tmp/nc006_independent_output.json artifacts/NC-006/verify_circuits.py artifacts/NC-006/verify_branch.py artifacts/NC-006/test_circuits.py artifacts/NC-006/circuits.jsonl artifacts/NC-006/proof_receipts.jsonl artifacts/NC-006/library_manifest.json artifacts/NC-006/branch_conformance.json artifacts/NC-006/README.md",
+    "git status --porcelain=v1 --untracked-files=no",
+    "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 status --porcelain=v1 --untracked-files=no",
+    "git -C /workspace/experiments/latticeforge_neural_isa_test status --porcelain=v1 --untracked-files=no"
+  ],
+  "independent_checks": {
+    "dag_validation": {
+      "result": "PASS",
+      "nodes": 29,
+      "events": 53,
+      "head_sha256": "d95d814266b0ce9f9cf723b4ac82fbd6b97c1ed8a3701574385f4d815de30c63"
+    },
+    "dag_unit_tests": {
+      "result": "PASS",
+      "passed": 19,
+      "tested": 19
+    },
+    "nc006_unit_tests": {
+      "result": "PASS",
+      "passed": 10,
+      "tested": 10
+    },
+    "independent_oracle": {
+      "script": "/tmp/nc006_independent.py",
+      "script_sha256": "bd5b483aa7f3c768d952e4ecb096de6a56b24e6e9beed038e9e132884146fe19",
+      "output": "/tmp/nc006_independent_output.json",
+      "output_sha256": "9de8c8a4b16314dcd1314258210f61e5f1f2535efab90224fe3edd5f808058c0",
+      "prediction_source": "Clean-process torch.load(weights_only=True), ExpandedISA construction, strict state_dict loading, direct meaning/bit/is_zero module inference, and independently authored integer formulas",
+      "prohibited_helpers_used": false,
+      "model_parameter_count": 5981,
+      "local_results": {
+        "rehearsal_seed11": "576/576 local predictions; 9/9 semantic labels",
+        "rehearsal_seed19": "576/576 local predictions; 9/9 semantic labels",
+        "rehearsal_seed29": "576/576 local predictions; 9/9 semantic labels",
+        "new_only_seed11": "438/576 local predictions; 9/9 semantic labels; 138 failures",
+        "new_only_seed19": "428/576 local predictions; 9/9 semantic labels; 148 failures",
+        "new_only_seed29": "375/576 local predictions; 9/9 semantic labels; 201 failures"
+      },
+      "zero_results": {
+        "rehearsal_seed11": "65536/65536; 1/1 positive; 65535/65535 negative",
+        "rehearsal_seed19": "65536/65536; 1/1 positive; 65535/65535 negative",
+        "rehearsal_seed29": "65536/65536; 1/1 positive; 65535/65535 negative",
+        "new_only_seed11": "65536/65536 control",
+        "new_only_seed19": "65536/65536 control",
+        "new_only_seed29": "65536/65536 control"
+      },
+      "branch_results_per_rehearsal_seed": {
+        "JZ": "65536/65536",
+        "JNZ": "65536/65536",
+        "inverted_zero_JZ": "0/65536",
+        "inverted_zero_JNZ": "0/65536"
+      }
+    },
+    "registry_audit": {
+      "circuits": 61,
+      "neural_candidates": 60,
+      "symbolic_references": 1,
+      "proof_receipts": 60,
+      "unique_ids": 61,
+      "receipt_ids_match_neural_candidates": true,
+      "checkpoint_hashes_match": true,
+      "premature_verified_status_found": false,
+      "manifest_status": "IMPLEMENTER_PROPOSED_NOT_INDEPENDENTLY_VERIFIED",
+      "independent_verifier_status": "PENDING",
+      "formal_weight_proof_claimed": false,
+      "symbolic_or_lookup_fallback_found": false,
+      "failure_trace_completeness": "FAIL"
+    }
+  },
+  "negative_controls": {
+    "new_only_failures_present": true,
+    "new_only_totals": {
+      "seed11": "438/576",
+      "seed19": "428/576",
+      "seed29": "375/576"
+    },
+    "rehearsal_preserved": true,
+    "rehearsal_total_per_seed": "576/576",
+    "zero_inversion_degrades_JZ": true,
+    "inverted_JZ_per_rehearsal_seed": "0/65536"
+  },
+  "source_integrity": {
+    "nc000_inventory_files": {
+      "matched": 60,
+      "tested": 60,
+      "mismatches": []
+    },
+    "original_rlt_champion_sha256": {
+      "expected": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "actual": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    "six_final_checkpoint_sha256": {
+      "rehearsal_seed11": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
+      "rehearsal_seed19": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
+      "rehearsal_seed29": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
+      "new_only_seed11": "6675f6a040132e6cbf7a601334685a8eb7691f991abf19ee9034140328911e4a",
+      "new_only_seed19": "b93aed6b333d5d88d175539e36e76e71b9bba3b3a6bb1c1e64e78ad05bad41bf",
+      "new_only_seed29": "ecedf4f9ad4ced022a8f77dce5e9097523e4a7273a428df0ff8d6679a4e4b9c7"
+    },
+    "all_six_checkpoint_hashes_and_sizes_match": true,
+    "audited_files_match_commit": true,
+    "tracked_source_or_weight_changes_found": false,
+    "preexisting_non_source_staged_changes": [
+      "artifacts/NC-000/baseline_receipt.json",
+      "artifacts/NC-000/interactive_review.json",
+      "artifacts/NC-000/runtime_provenance_attestation.json",
+      "artifacts/NC-000/verifier_diagnostics.json"
+    ]
+  },
+  "neural_host_boundary": {
+    "learned": "Frozen NC-005 ExpandedISA local primitive logits, opcode-meaning labels, and 16-bit is-zero predicate",
+    "host_controlled": [
+      "Opcode selection",
+      "Bit sequencing",
+      "Carry propagation",
+      "Register routing and updates",
+      "JZ/JNZ application",
+      "Branch target",
+      "Program-counter arithmetic",
+      "HALT",
+      "Full-source multiplication ROM"
+    ],
+    "architecture": "5981-parameter MLP, not the original RLT Transformer",
+    "model_invention_claim_supported": false,
+    "default_champion_promotion_supported": false
+  },
+  "proof_scope": {
+    "local_primitives": "Observed finite exhaustive inference over all 64 six-binary-feature configurations for each of nine operators per checkpoint; these configurations were training-seen",
+    "zero_predicate": "Observed finite exhaustive inference over all 65536 raw unsigned 16-bit values",
+    "branch": "Neural zero predicate followed by host-controlled JZ/JNZ decisions",
+    "program_level_proof": false,
+    "formal_weight_proof": false
+  },
+  "limitations": [
+    "Exhaustive training-seen local feature coverage is not unseen generalization or arbitrary program-level correctness.",
+    "The branch opcode, target, PC update and HALT are not trained outputs.",
+    "The MLP is not the selected RLT Transformer.",
+    "Executing a host-supplied multiplication ROM is not neural invention.",
+    "No source model procedure invention or champion promotion is established."
+  ],
+  "failures": [
+    {
+      "requirement": "Full failure traces for new_only controls",
+      "reason": "proof_receipts.jsonl truncates failure_examples to at most 16 per failing operator, while failure_count reports larger denominators.",
+      "affected_receipts": 13,
+      "actual_new_only_failures": 487,
+      "stored_failure_examples": 302,
+      "omitted_failure_examples": 185,
+      "by_seed": {
+        "seed11": {
+          "actual": 138,
+          "stored": 90,
+          "omitted": 48
+        },
+        "seed19": {
+          "actual": 148,
+          "stored": 99,
+          "omitted": 49
+        },
+        "seed29": {
+          "actual": 201,
+          "stored": 113,
+          "omitted": 88
+        }
+      },
+      "conclusion": "The numerical measurements reproduce, but the immutable audited receipt does not satisfy the explicitly required complete new_only failure trace. PASS is therefore prohibited."
+    }
+  ]
+}

@@ -72,3 +72,15 @@ Formal neural weight proofs and full-program correctness are NOT claimed;
 proof strength is finite-exhaustive observed inference on the exact declared
 domain and frozen software environment. An external independent agent must
 verify and promote only scoped entries after tests and source hashes pass.
+
+## Independent FAIL and remedy
+
+The FIRST distinct Codex audit of ecdb2dc independently reproduced all
+neural results but returned FAIL: failure_examples was truncated to 16 per
+failing new_only operator. That omitted 185 of 487 observed failures across
+13 affected receipts. No PASS or library release was recorded. The repaired
+verifier writes the FULL input/observed/expected trace for every failed
+finite local configuration and adds a hard completeness assertion in tests.
+The original failed verifier output and trace are retained as evidence, NOT
+accepted as a PASS. A second distinct real agent must verify the corrected
+commit before any bounded library release.

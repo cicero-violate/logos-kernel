@@ -102,7 +102,7 @@
   },
   "source_sha256": {
     "NC005_architecture": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d",
-    "NC006_verifier": "72c64a95246b33fd62160b0ab2308135f324eec33330ae526a422d564a83087c"
+    "NC006_verifier": "532e8cfee355a6b734fef3273b76b15f1931d2911ffe7c5a5d9a159af91c97b4"
   },
   "task": "NC-006",
   "width": 16
