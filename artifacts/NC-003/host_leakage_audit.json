@@ -1,0 +1,267 @@
+{
+  "classification": "SOURCE_AUDIT_AND_EVIDENCE_BOUNDARY_NOT_FORMAL_NONLEAKAGE_PROOF",
+  "dataset_counts": {
+    "eightbit_coverage_percent": 6.231689453125,
+    "eightbit_duplicate_evaluations": 133,
+    "eightbit_evaluations": 4217,
+    "eightbit_full_domain": 65536,
+    "eightbit_unique_operand_pairs": 4084,
+    "fourbit_all_256_pairs": true,
+    "new_2048_disjoint_set_not_proven_disjoint_from_original_pretraining": true,
+    "original_pretraining_operand_overlap_excluded": false,
+    "same_operand_list_reused_across_all_seeds": true
+  },
+  "exhaustive_plan": {
+    "acceptance_scope": "Full 65,536 operand-pair enumeration would still not prove all arbitrary machine/register/CFG states, general math reasoning, or autonomous program synthesis",
+    "arms": [
+      "jointly_tuned"
+    ],
+    "branch_coverage_plan": "Instrument PC=0 JZ_B, PC=2 JZ_T with zero/nonzero values, explicit PC=6 loop, PC=7 HALT; include off-distribution register snapshots for all eight PCs and both branch directions, with PC/flag correctness and 75-step bounds",
+    "counterexample_handling": "Persist every failure with operands, full trace and hash; any failed/unhalted case blocks whole-arm unconditional correctness and champion promotion",
+    "domain": "unsigned 8-bit ordered operand pairs (a,b), total=256*256=65536",
+    "enumeration": "index 0..65535 -> a=floor(index/256), b=index mod 256",
+    "pairs_per_shard": 1024,
+    "seeds": [
+      11,
+      19,
+      29
+    ],
+    "shards": 64,
+    "status": "PROPOSED_NOT_EXECUTED",
+    "teacher_forcing_leakage_plan": "Cross-check train/validation controller state hashes, exclude known train pairs, create unseen combinations of PC, registers, and branch directions; report pretraining overlap as UNKNOWN until recovered",
+    "verify_fields": [
+      "checkpoint/source SHA",
+      "predicted register result",
+      "neural halted",
+      "cycle_count <=75",
+      "predicted opcode/PC trace",
+      "postprediction oracle"
+    ]
+  },
+  "implementation": "NC003 host only calls frozen neural logits and updates registers using predicted instruction; no teacher opcode/PC is substituted",
+  "intervention_contract": {
+    "control": "8 fixed operand probes",
+    "flip_decoded_PC_prediction": "must change correctness; no oracle substituted",
+    "unmodified": "control accuracy should exceed both ablations",
+    "zero_neural_arithmetic": "must degrade numeric correctness; no symbolic arithmetic fallback"
+  },
+  "limitations": [
+    "Source AST/syntax checks and interventions only support stated boundaries, not a formal information-flow proof",
+    "All 320 local cases were supervised during training",
+    "The controller saw fixed teacher ROM and simulated program states",
+    "Eight-bit 4217-case dataset has duplicates; report evaluations versus unique pairs",
+    "Historical source RLT pretrained with MUL",
+    "No off-distribution eight-bit exhaustive run done in NC003 unless documented separately",
+    "No champion promotion permitted before separate independent verifier"
+  ],
+  "report_version": 1,
+  "risk_table": [
+    {
+      "boundary": "neural arithmetic",
+      "leakage": "Complete local 6-bit truth table is in training; cannot call truth-table transfer novel reasoning",
+      "observation": "Source arithmetic uses trained RLT attention logits with local bit features and predicted math-code embedding; 320/320 patterns supervised",
+      "verdict": "KNOWN_TRAINED"
+    },
+    {
+      "boundary": "neural controller",
+      "leakage": "Teacher-forced controller states and ROM exposed in training; no independent program invention",
+      "observation": "Predicts opcode, PC and HALT from shared attention over fixed ROM, register tokens and current PC",
+      "verdict": "KNOWN_TEACHER_SUPERVISED"
+    },
+    {
+      "boundary": "host routing",
+      "leakage": "Python supplies program logic, bit indexing and register updates; host work is essential to multiplication",
+      "observation": "Host dispatches predicted decoded opcode to fixed AND1/ADD/SHL/SHR local steps, wires X/Y/R/T registers, loops at most 75",
+      "verdict": "HOST_PROVIDED_PROGRAM"
+    },
+    {
+      "boundary": "program ROM",
+      "leakage": "No generated program and no learned arbitrary CFG",
+      "observation": "8 named fixed operations JZ_B,AND1,JZ_T,ADD,SHL,SHR,JMP,HALT provided in controller input",
+      "verdict": "FIXED_PROGRAM"
+    },
+    {
+      "boundary": "reference oracle",
+      "leakage": "Code inspection cannot establish lack of hidden training contamination; tests must be causally intervened",
+      "observation": "Only computes product a*b AFTER neural rollout in verifier; compares halted flag and value",
+      "verdict": "POSTPREDICTION_ONLY_IN_NEW_VERIFIER"
+    },
+    {
+      "boundary": "source original RLT",
+      "leakage": "No pristine zero-MUL-training baseline, no source pretraining pair exclusion",
+      "observation": "Pretrained seven-task Transformer contains multiplication supervision before transfer",
+      "verdict": "PRETRAINED_MUL_PRIOR"
+    }
+  ],
+  "source_records": {
+    "NC003_new_host": {
+      "imports": [
+        "__future__",
+        "argparse",
+        "collections",
+        "hashlib",
+        "itertools",
+        "json",
+        "model",
+        "os",
+        "pathlib",
+        "platform",
+        "random",
+        "sys",
+        "torch"
+      ],
+      "line_count": 290,
+      "sha256": "687da1a0b253eb4ac060f7af237e625f80f51d1f884e6230020923595127b8ee",
+      "source": "/workspace/experiments/logos-kernel/artifacts/NC-003/replay_independent.py"
+    },
+    "independent_host_used_historically": {
+      "imports": [
+        "hybrid",
+        "json",
+        "pathlib",
+        "random",
+        "torch",
+        "train_causal",
+        "train_controller"
+      ],
+      "line_count": 90,
+      "sha256": "71776d21a7e1975a76ad0860f06825730ce65c21fa9cf13d68dad3d29cf0b325",
+      "source": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/verify_hybrid_independent.py"
+    },
+    "qualified_runtime": {
+      "imports": [
+        "__future__",
+        "hashlib",
+        "json",
+        "neural_isa_transfer_v1.unified_shared_v1.model",
+        "pathlib",
+        "torch"
+      ],
+      "line_count": 171,
+      "sha256": "28a4635afdee6924b273505fc4310d7db0bd52c724f6dc68040c8430191c9e34",
+      "source": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/unified_shared_v1/runtime.py"
+    },
+    "shared_model": {
+      "imports": [
+        "__future__",
+        "pathlib",
+        "rlt_core",
+        "rlt_micro_v2",
+        "sys",
+        "torch"
+      ],
+      "line_count": 70,
+      "sha256": "f63018899f4253240c889dd8a9b75a0d318ac088125d645ee9ce2324d1e762cf",
+      "source": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/unified_shared_v1/model.py"
+    },
+    "shared_training": {
+      "imports": [
+        "__future__",
+        "argparse",
+        "hashlib",
+        "json",
+        "model",
+        "pathlib",
+        "random",
+        "sys",
+        "time",
+        "torch",
+        "torch.nn",
+        "train_causal",
+        "train_controller",
+        "train_controller_v2"
+      ],
+      "line_count": 154,
+      "sha256": "cfdaeb08a64a68baeb2d940de30e39047027d90b1ef65d6aae64995d9283f1e2",
+      "source": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/unified_shared_v1/train.py"
+    },
+    "source_math_encoder": {
+      "imports": [
+        "__future__",
+        "pathlib",
+        "rlt_core",
+        "sys",
+        "task_conditioned_rlt",
+        "torch",
+        "train_causal"
+      ],
+      "line_count": 69,
+      "sha256": "354ade9053da46a3dc949f36b9eb464df250abff48b9495e8e0799cc8554d432",
+      "source": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/rlt_micro.py"
+    },
+    "source_math_encoder_v2": {
+      "imports": [
+        "__future__",
+        "rlt_micro",
+        "torch"
+      ],
+      "line_count": 29,
+      "sha256": "12b417d403455169b8696aea38e9864fd58c51ec006a0cb7979e67afb512c6a6",
+      "source": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/rlt_micro_v2.py"
+    },
+    "teacher_controller": {
+      "imports": [
+        "argparse",
+        "json",
+        "pathlib",
+        "random",
+        "sys",
+        "time",
+        "torch",
+        "torch.nn",
+        "train_causal"
+      ],
+      "line_count": 298,
+      "sha256": "3b86b4292293e13ee484d33557e9deaf7fc63e6ea6f6e1eca275f8627b7e6a67",
+      "source": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/vendor/transformer_controller/train_controller.py"
+    }
+  },
+  "training_provenance": {
+    "frozen_shared": {
+      "11": {
+        "direct_MUL_answer_targets_reported": 0,
+        "heldout_state_examples": 3645,
+        "source_record_sha256": "3663e98360cb2cc562cb7abf2c308675bdf38bdce05198bd73b732650b8d1cdc",
+        "train_state_examples": 6577,
+        "updates": 1560
+      },
+      "19": {
+        "direct_MUL_answer_targets_reported": 0,
+        "heldout_state_examples": 3696,
+        "source_record_sha256": "7ec5e8b94782685016cb05c3b016df3d0a1300e80ef1699014871e4e583938b0",
+        "train_state_examples": 6473,
+        "updates": 1560
+      },
+      "29": {
+        "direct_MUL_answer_targets_reported": 0,
+        "heldout_state_examples": 3674,
+        "source_record_sha256": "ad51490ac06a671e6b290dff803786a2b0e0f96f9649f42b730b1cc5814b78aa",
+        "train_state_examples": 6543,
+        "updates": 1560
+      }
+    },
+    "jointly_tuned": {
+      "11": {
+        "direct_MUL_answer_targets_reported": 0,
+        "heldout_state_examples": 3645,
+        "source_record_sha256": "4029ad9858f25214500a0cd636e420fa71c5194099f8b9a41d7ef72590cd580d",
+        "train_state_examples": 6577,
+        "updates": 1560
+      },
+      "19": {
+        "direct_MUL_answer_targets_reported": 0,
+        "heldout_state_examples": 3696,
+        "source_record_sha256": "20dddee683090c2b67794fa4b113a41385fc81300737506c9f43461677e1b6f5",
+        "train_state_examples": 6473,
+        "updates": 1560
+      },
+      "29": {
+        "direct_MUL_answer_targets_reported": 0,
+        "heldout_state_examples": 3674,
+        "source_record_sha256": "2dc187c287a54bd53448d2050cea0a187659e1440778a9a3b9eced80dafbb569",
+        "train_state_examples": 6543,
+        "updates": 1560
+      }
+    }
+  }
+}

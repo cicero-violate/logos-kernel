@@ -1,0 +1,1650 @@
+{
+  "arm_results": {
+    "frozen_shared": [
+      {
+        "all_320_truth_patterns_supervised": true,
+        "arm": "frozen_shared",
+        "controller_teacher_contains_program_states": true,
+        "eightbit": {
+          "branch_counts": {
+            "PC0_nonzero": 29246,
+            "PC0_zero": 4217,
+            "PC2_nonzero": 16786,
+            "PC2_zero": 12460
+          },
+          "controller_decision_steps": 200696,
+          "correct": 4217,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 4217,
+          "op_rom_agreement": {
+            "correct": 200696,
+            "tested": 200696
+          },
+          "pc_teacher_agreement": {
+            "correct": 200696,
+            "tested": 200696
+          },
+          "tested": 4217,
+          "unhalted": 0
+        },
+        "eightcase_control": {
+          "controller_decision_steps": 309,
+          "correct": 8,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 45,
+            "PC0_zero": 8,
+            "PC2_nonzero": 23,
+            "PC2_zero": 22
+          },
+          "op_rom_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "fixed_rom": [
+          "JZ_B",
+          "AND1",
+          "JZ_T",
+          "ADD",
+          "SHL",
+          "SHR",
+          "JMP",
+          "HALT"
+        ],
+        "fourbit": {
+          "branch_counts": {
+            "PC0_nonzero": 784,
+            "PC0_zero": 256,
+            "PC2_nonzero": 512,
+            "PC2_zero": 272
+          },
+          "controller_decision_steps": 5728,
+          "correct": 256,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 256,
+          "op_rom_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "pc_teacher_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "tested": 256,
+          "unhalted": 0
+        },
+        "local_isa": {
+          "correct": 320,
+          "fail_rows": [],
+          "tested": 320
+        },
+        "no_input_mul_answer_labels_during_this_integration": true,
+        "no_teacher_PC_or_next_action_in_forward": true,
+        "opcode_semantics": {
+          "correct": 320,
+          "tested": 320
+        },
+        "original_pretrained_RLT_included_mul_training": true,
+        "parameter_count": 14425,
+        "pc_corruption_control": {
+          "controller_decision_steps": 32,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 32,
+            "tested": 32
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 0,
+            "tested": 32
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "seed": 11,
+        "sha256": "cbe423063da42c1a7bc6bc30c490790a1edc47d99af04079f674529d0faddf93",
+        "source_pretrained_sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884",
+        "status": "PASS",
+        "weights": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/unified_shared_v1/outputs/seed11/frozen_shared.pt",
+        "zero_arithmetic_control": {
+          "controller_decision_steps": 64,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC0_zero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "tested": 8,
+          "unhalted": 0
+        }
+      },
+      {
+        "all_320_truth_patterns_supervised": true,
+        "arm": "frozen_shared",
+        "controller_teacher_contains_program_states": true,
+        "eightbit": {
+          "branch_counts": {
+            "PC0_nonzero": 29246,
+            "PC0_zero": 4217,
+            "PC2_nonzero": 16786,
+            "PC2_zero": 12460
+          },
+          "controller_decision_steps": 200697,
+          "correct": 4216,
+          "failure_count": 1,
+          "failures": [
+            {
+              "a": 177,
+              "actual": 19293,
+              "b": 77,
+              "halted": true,
+              "oracle": 13629
+            }
+          ],
+          "halted": 4217,
+          "op_rom_agreement": {
+            "correct": 200697,
+            "tested": 200697
+          },
+          "pc_teacher_agreement": {
+            "correct": 200696,
+            "tested": 200697
+          },
+          "tested": 4217,
+          "unhalted": 0
+        },
+        "eightcase_control": {
+          "controller_decision_steps": 309,
+          "correct": 8,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 45,
+            "PC0_zero": 8,
+            "PC2_nonzero": 23,
+            "PC2_zero": 22
+          },
+          "op_rom_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "fixed_rom": [
+          "JZ_B",
+          "AND1",
+          "JZ_T",
+          "ADD",
+          "SHL",
+          "SHR",
+          "JMP",
+          "HALT"
+        ],
+        "fourbit": {
+          "branch_counts": {
+            "PC0_nonzero": 784,
+            "PC0_zero": 256,
+            "PC2_nonzero": 512,
+            "PC2_zero": 272
+          },
+          "controller_decision_steps": 5728,
+          "correct": 256,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 256,
+          "op_rom_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "pc_teacher_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "tested": 256,
+          "unhalted": 0
+        },
+        "local_isa": {
+          "correct": 320,
+          "fail_rows": [],
+          "tested": 320
+        },
+        "no_input_mul_answer_labels_during_this_integration": true,
+        "no_teacher_PC_or_next_action_in_forward": true,
+        "opcode_semantics": {
+          "correct": 320,
+          "tested": 320
+        },
+        "original_pretrained_RLT_included_mul_training": true,
+        "parameter_count": 14425,
+        "pc_corruption_control": {
+          "controller_decision_steps": 32,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 32,
+            "tested": 32
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 0,
+            "tested": 32
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "seed": 19,
+        "sha256": "00460f45a207f8e2a12f57abbf5318ffb9545ade30340b712c9b463d52b096e1",
+        "source_pretrained_sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884",
+        "status": "FAIL",
+        "weights": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/unified_shared_v1/outputs/seed19/frozen_shared.pt",
+        "zero_arithmetic_control": {
+          "controller_decision_steps": 64,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC0_zero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "tested": 8,
+          "unhalted": 0
+        }
+      },
+      {
+        "all_320_truth_patterns_supervised": true,
+        "arm": "frozen_shared",
+        "controller_teacher_contains_program_states": true,
+        "eightbit": {
+          "branch_counts": {
+            "PC0_nonzero": 29246,
+            "PC0_zero": 4220,
+            "PC2_nonzero": 16786,
+            "PC2_zero": 12463
+          },
+          "controller_decision_steps": 200714,
+          "correct": 4217,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 4217,
+          "op_rom_agreement": {
+            "correct": 200714,
+            "tested": 200714
+          },
+          "pc_teacher_agreement": {
+            "correct": 200711,
+            "tested": 200714
+          },
+          "tested": 4217,
+          "unhalted": 0
+        },
+        "eightcase_control": {
+          "controller_decision_steps": 309,
+          "correct": 8,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 45,
+            "PC0_zero": 8,
+            "PC2_nonzero": 23,
+            "PC2_zero": 22
+          },
+          "op_rom_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "fixed_rom": [
+          "JZ_B",
+          "AND1",
+          "JZ_T",
+          "ADD",
+          "SHL",
+          "SHR",
+          "JMP",
+          "HALT"
+        ],
+        "fourbit": {
+          "branch_counts": {
+            "PC0_nonzero": 784,
+            "PC0_zero": 256,
+            "PC2_nonzero": 512,
+            "PC2_zero": 272
+          },
+          "controller_decision_steps": 5728,
+          "correct": 256,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 256,
+          "op_rom_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "pc_teacher_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "tested": 256,
+          "unhalted": 0
+        },
+        "local_isa": {
+          "correct": 320,
+          "fail_rows": [],
+          "tested": 320
+        },
+        "no_input_mul_answer_labels_during_this_integration": true,
+        "no_teacher_PC_or_next_action_in_forward": true,
+        "opcode_semantics": {
+          "correct": 320,
+          "tested": 320
+        },
+        "original_pretrained_RLT_included_mul_training": true,
+        "parameter_count": 14425,
+        "pc_corruption_control": {
+          "controller_decision_steps": 32,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 32,
+            "tested": 32
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 0,
+            "tested": 32
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "seed": 29,
+        "sha256": "feccba2875cb1b3ba68b3e57b8e64a66199c0d7e8af4ed7b99c213370b1846df",
+        "source_pretrained_sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884",
+        "status": "PASS",
+        "weights": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/unified_shared_v1/outputs/seed29/frozen_shared.pt",
+        "zero_arithmetic_control": {
+          "controller_decision_steps": 64,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC0_zero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "tested": 8,
+          "unhalted": 0
+        }
+      }
+    ],
+    "jointly_tuned": [
+      {
+        "all_320_truth_patterns_supervised": true,
+        "arm": "jointly_tuned",
+        "controller_teacher_contains_program_states": true,
+        "eightbit": {
+          "branch_counts": {
+            "PC0_nonzero": 29246,
+            "PC0_zero": 4217,
+            "PC2_nonzero": 16786,
+            "PC2_zero": 12460
+          },
+          "controller_decision_steps": 200696,
+          "correct": 4217,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 4217,
+          "op_rom_agreement": {
+            "correct": 200696,
+            "tested": 200696
+          },
+          "pc_teacher_agreement": {
+            "correct": 200696,
+            "tested": 200696
+          },
+          "tested": 4217,
+          "unhalted": 0
+        },
+        "eightcase_control": {
+          "controller_decision_steps": 309,
+          "correct": 8,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 45,
+            "PC0_zero": 8,
+            "PC2_nonzero": 23,
+            "PC2_zero": 22
+          },
+          "op_rom_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "fixed_rom": [
+          "JZ_B",
+          "AND1",
+          "JZ_T",
+          "ADD",
+          "SHL",
+          "SHR",
+          "JMP",
+          "HALT"
+        ],
+        "fourbit": {
+          "branch_counts": {
+            "PC0_nonzero": 784,
+            "PC0_zero": 256,
+            "PC2_nonzero": 512,
+            "PC2_zero": 272
+          },
+          "controller_decision_steps": 5728,
+          "correct": 256,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 256,
+          "op_rom_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "pc_teacher_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "tested": 256,
+          "unhalted": 0
+        },
+        "local_isa": {
+          "correct": 320,
+          "fail_rows": [],
+          "tested": 320
+        },
+        "no_input_mul_answer_labels_during_this_integration": true,
+        "no_teacher_PC_or_next_action_in_forward": true,
+        "opcode_semantics": {
+          "correct": 320,
+          "tested": 320
+        },
+        "original_pretrained_RLT_included_mul_training": true,
+        "parameter_count": 14425,
+        "pc_corruption_control": {
+          "controller_decision_steps": 32,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 32,
+            "tested": 32
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 0,
+            "tested": 32
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "seed": 11,
+        "sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951",
+        "source_pretrained_sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884",
+        "status": "PASS",
+        "weights": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/unified_shared_v1/outputs/seed11/jointly_tuned.pt",
+        "zero_arithmetic_control": {
+          "controller_decision_steps": 64,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC0_zero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "tested": 8,
+          "unhalted": 0
+        }
+      },
+      {
+        "all_320_truth_patterns_supervised": true,
+        "arm": "jointly_tuned",
+        "controller_teacher_contains_program_states": true,
+        "eightbit": {
+          "branch_counts": {
+            "PC0_nonzero": 29246,
+            "PC0_zero": 4217,
+            "PC2_nonzero": 16786,
+            "PC2_zero": 12460
+          },
+          "controller_decision_steps": 200696,
+          "correct": 4217,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 4217,
+          "op_rom_agreement": {
+            "correct": 200696,
+            "tested": 200696
+          },
+          "pc_teacher_agreement": {
+            "correct": 200696,
+            "tested": 200696
+          },
+          "tested": 4217,
+          "unhalted": 0
+        },
+        "eightcase_control": {
+          "controller_decision_steps": 309,
+          "correct": 8,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 45,
+            "PC0_zero": 8,
+            "PC2_nonzero": 23,
+            "PC2_zero": 22
+          },
+          "op_rom_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "fixed_rom": [
+          "JZ_B",
+          "AND1",
+          "JZ_T",
+          "ADD",
+          "SHL",
+          "SHR",
+          "JMP",
+          "HALT"
+        ],
+        "fourbit": {
+          "branch_counts": {
+            "PC0_nonzero": 784,
+            "PC0_zero": 256,
+            "PC2_nonzero": 512,
+            "PC2_zero": 272
+          },
+          "controller_decision_steps": 5728,
+          "correct": 256,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 256,
+          "op_rom_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "pc_teacher_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "tested": 256,
+          "unhalted": 0
+        },
+        "local_isa": {
+          "correct": 320,
+          "fail_rows": [],
+          "tested": 320
+        },
+        "no_input_mul_answer_labels_during_this_integration": true,
+        "no_teacher_PC_or_next_action_in_forward": true,
+        "opcode_semantics": {
+          "correct": 320,
+          "tested": 320
+        },
+        "original_pretrained_RLT_included_mul_training": true,
+        "parameter_count": 14425,
+        "pc_corruption_control": {
+          "controller_decision_steps": 32,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 32,
+            "tested": 32
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 0,
+            "tested": 32
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "seed": 19,
+        "sha256": "1ca7edc7358d2132aa6ffedf17e281cfa060f989defffffeb9520945470ea1d0",
+        "source_pretrained_sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884",
+        "status": "PASS",
+        "weights": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/unified_shared_v1/outputs/seed19/jointly_tuned.pt",
+        "zero_arithmetic_control": {
+          "controller_decision_steps": 64,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC0_zero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "tested": 8,
+          "unhalted": 0
+        }
+      },
+      {
+        "all_320_truth_patterns_supervised": true,
+        "arm": "jointly_tuned",
+        "controller_teacher_contains_program_states": true,
+        "eightbit": {
+          "branch_counts": {
+            "PC0_nonzero": 29246,
+            "PC0_zero": 4217,
+            "PC2_nonzero": 16786,
+            "PC2_zero": 12460
+          },
+          "controller_decision_steps": 200696,
+          "correct": 4217,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 4217,
+          "op_rom_agreement": {
+            "correct": 200696,
+            "tested": 200696
+          },
+          "pc_teacher_agreement": {
+            "correct": 200696,
+            "tested": 200696
+          },
+          "tested": 4217,
+          "unhalted": 0
+        },
+        "eightcase_control": {
+          "controller_decision_steps": 309,
+          "correct": 8,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 45,
+            "PC0_zero": 8,
+            "PC2_nonzero": 23,
+            "PC2_zero": 22
+          },
+          "op_rom_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 309,
+            "tested": 309
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "fixed_rom": [
+          "JZ_B",
+          "AND1",
+          "JZ_T",
+          "ADD",
+          "SHL",
+          "SHR",
+          "JMP",
+          "HALT"
+        ],
+        "fourbit": {
+          "branch_counts": {
+            "PC0_nonzero": 784,
+            "PC0_zero": 256,
+            "PC2_nonzero": 512,
+            "PC2_zero": 272
+          },
+          "controller_decision_steps": 5728,
+          "correct": 256,
+          "failure_count": 0,
+          "failures": [],
+          "halted": 256,
+          "op_rom_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "pc_teacher_agreement": {
+            "correct": 5728,
+            "tested": 5728
+          },
+          "tested": 256,
+          "unhalted": 0
+        },
+        "local_isa": {
+          "correct": 320,
+          "fail_rows": [],
+          "tested": 320
+        },
+        "no_input_mul_answer_labels_during_this_integration": true,
+        "no_teacher_PC_or_next_action_in_forward": true,
+        "opcode_semantics": {
+          "correct": 320,
+          "tested": 320
+        },
+        "original_pretrained_RLT_included_mul_training": true,
+        "parameter_count": 14425,
+        "pc_corruption_control": {
+          "controller_decision_steps": 32,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 32,
+            "tested": 32
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 0,
+            "tested": 32
+          },
+          "tested": 8,
+          "unhalted": 0
+        },
+        "seed": 29,
+        "sha256": "97e14244736759f2377433ef38ede534c25b414daf6f836bf2eb2ac72cf37e68",
+        "source_pretrained_sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884",
+        "status": "PASS",
+        "weights": "/workspace/experiments/rlt_split_algorithms_ablation_v1/neural_isa_transfer_v1/unified_shared_v1/outputs/seed29/jointly_tuned.pt",
+        "zero_arithmetic_control": {
+          "controller_decision_steps": 64,
+          "correct": 0,
+          "failure_count": 8,
+          "failures": [
+            {
+              "a": 13,
+              "actual": 0,
+              "b": 11,
+              "halted": true,
+              "oracle": 143
+            },
+            {
+              "a": 255,
+              "actual": 0,
+              "b": 255,
+              "halted": true,
+              "oracle": 65025
+            },
+            {
+              "a": 37,
+              "actual": 0,
+              "b": 63,
+              "halted": true,
+              "oracle": 2331
+            },
+            {
+              "a": 128,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16384
+            },
+            {
+              "a": 16,
+              "actual": 0,
+              "b": 16,
+              "halted": true,
+              "oracle": 256
+            },
+            {
+              "a": 7,
+              "actual": 0,
+              "b": 9,
+              "halted": true,
+              "oracle": 63
+            },
+            {
+              "a": 127,
+              "actual": 0,
+              "b": 128,
+              "halted": true,
+              "oracle": 16256
+            },
+            {
+              "a": 3,
+              "actual": 0,
+              "b": 2,
+              "halted": true,
+              "oracle": 6
+            }
+          ],
+          "halted": 8,
+          "neural_forward_and_logits_only": true,
+          "observed_branch_state_counts": {
+            "PC0_nonzero": 8,
+            "PC0_zero": 8,
+            "PC2_zero": 8
+          },
+          "op_rom_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "oracle_is_post_prediction_only": true,
+          "pc_teacher_agreement": {
+            "correct": 64,
+            "tested": 64
+          },
+          "tested": 8,
+          "unhalted": 0
+        }
+      }
+    ]
+  },
+  "evaluation": {
+    "eightbit": {
+      "all_65536_pairs": false,
+      "edge_cross_product": 121,
+      "random": 4096,
+      "sampling_seed": 12043148,
+      "shared_pairs_across_seeds": true,
+      "tested": 4217
+    },
+    "fourbit": {
+      "exhaustive": true,
+      "tested": 256
+    }
+  },
+  "excluded_arms": [
+    "frozen_shared"
+  ],
+  "limitations": [
+    "Only 256 four-bit pairs exhaustive; 4217 eight-bit pairs sampled/structured, not 65536 exhaustive",
+    "All 320 local binary patterns supervised; this cannot establish Boolean rule transfer",
+    "Controller training supervised fixed ROM states; teacher-forcing/train-state leakage not ruled out by testing",
+    "Predicted controller instructions and local arithmetic logits executed by Python host fixed ROM and wiring",
+    "Original seven-task pretrained RLT already trained on multiplication; no pristine pretraining-disjoint proof",
+    "Frozen_shared seed19 historical 4216/4217 is an actual failure; cannot promote that arm",
+    "No model weights trained, checkpoint promoted, or inferred new multiplication instruction",
+    "Fresh independently implemented host replay is authored by current task owner; separate real agent must verify."
+  ],
+  "not_independent_agent_verification": true,
+  "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "role": "IMPLEMENTER_FROZEN_REPLAY",
+  "runtime": {
+    "cuda": false,
+    "device": "CPU",
+    "python": "3.14.6",
+    "threads": 1,
+    "torch": "2.12.1"
+  },
+  "selected_arm": "jointly_tuned",
+  "source_checkpoint_pretrain_sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884",
+  "source_repos": {
+    "rlt": "/workspace/experiments/rlt_split_algorithms_ablation_v1"
+  },
+  "status": "IMPLEMENTER_PASS_QUALIFIED_ARM",
+  "task": "NC-003"
+}
