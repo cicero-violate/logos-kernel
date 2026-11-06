@@ -17,54 +17,54 @@
       "stage": "BOOLEAN"
     },
     {
-      "new_only_prior_correct": 281,
+      "new_only_prior_correct": 288,
       "prior_examples": 448,
-      "rehearsal_advantage": 167,
+      "rehearsal_advantage": 160,
       "rehearsal_prior_correct": 448,
       "same_denominator": true,
       "seed": 11,
       "stage": "CARRY_ADD"
     },
     {
-      "new_only_prior_correct": 393,
+      "new_only_prior_correct": 390,
       "prior_examples": 512,
-      "rehearsal_advantage": 119,
+      "rehearsal_advantage": 122,
       "rehearsal_prior_correct": 512,
       "same_denominator": true,
       "seed": 11,
       "stage": "SHIFTS"
     },
     {
-      "new_only_prior_correct": 240,
+      "new_only_prior_correct": 274,
       "prior_examples": 576,
-      "rehearsal_advantage": 336,
+      "rehearsal_advantage": 302,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 11,
       "stage": "COMPARE_SUB"
     },
     {
-      "new_only_prior_correct": 240,
+      "new_only_prior_correct": 274,
       "prior_examples": 576,
-      "rehearsal_advantage": 336,
+      "rehearsal_advantage": 302,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 11,
       "stage": "PC_BRANCH"
     },
     {
-      "new_only_prior_correct": 389,
+      "new_only_prior_correct": 418,
       "prior_examples": 576,
-      "rehearsal_advantage": 187,
+      "rehearsal_advantage": 158,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 11,
       "stage": "SEQUENCES"
     },
     {
-      "new_only_prior_correct": 422,
+      "new_only_prior_correct": 438,
       "prior_examples": 576,
-      "rehearsal_advantage": 154,
+      "rehearsal_advantage": 138,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 11,
@@ -80,117 +80,117 @@
       "stage": "BOOLEAN"
     },
     {
-      "new_only_prior_correct": 305,
+      "new_only_prior_correct": 293,
       "prior_examples": 448,
-      "rehearsal_advantage": 143,
+      "rehearsal_advantage": 155,
       "rehearsal_prior_correct": 448,
       "same_denominator": true,
       "seed": 19,
       "stage": "CARRY_ADD"
     },
     {
-      "new_only_prior_correct": 411,
+      "new_only_prior_correct": 401,
       "prior_examples": 512,
-      "rehearsal_advantage": 101,
+      "rehearsal_advantage": 111,
       "rehearsal_prior_correct": 512,
       "same_denominator": true,
       "seed": 19,
       "stage": "SHIFTS"
     },
     {
-      "new_only_prior_correct": 213,
+      "new_only_prior_correct": 231,
       "prior_examples": 576,
-      "rehearsal_advantage": 363,
+      "rehearsal_advantage": 345,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 19,
       "stage": "COMPARE_SUB"
     },
     {
-      "new_only_prior_correct": 213,
+      "new_only_prior_correct": 231,
       "prior_examples": 576,
-      "rehearsal_advantage": 363,
+      "rehearsal_advantage": 345,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 19,
       "stage": "PC_BRANCH"
     },
     {
-      "new_only_prior_correct": 371,
+      "new_only_prior_correct": 420,
       "prior_examples": 576,
-      "rehearsal_advantage": 205,
+      "rehearsal_advantage": 156,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 19,
       "stage": "SEQUENCES"
     },
     {
-      "new_only_prior_correct": 361,
+      "new_only_prior_correct": 428,
       "prior_examples": 576,
-      "rehearsal_advantage": 215,
+      "rehearsal_advantage": 148,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 19,
       "stage": "LOOPS"
     },
     {
-      "new_only_prior_correct": 367,
+      "new_only_prior_correct": 379,
       "prior_examples": 448,
-      "rehearsal_advantage": 81,
+      "rehearsal_advantage": 69,
       "rehearsal_prior_correct": 448,
       "same_denominator": true,
       "seed": 29,
       "stage": "BOOLEAN"
     },
     {
-      "new_only_prior_correct": 278,
+      "new_only_prior_correct": 323,
       "prior_examples": 448,
-      "rehearsal_advantage": 170,
+      "rehearsal_advantage": 125,
       "rehearsal_prior_correct": 448,
       "same_denominator": true,
       "seed": 29,
       "stage": "CARRY_ADD"
     },
     {
-      "new_only_prior_correct": 393,
+      "new_only_prior_correct": 392,
       "prior_examples": 512,
-      "rehearsal_advantage": 119,
+      "rehearsal_advantage": 120,
       "rehearsal_prior_correct": 512,
       "same_denominator": true,
       "seed": 29,
       "stage": "SHIFTS"
     },
     {
-      "new_only_prior_correct": 210,
+      "new_only_prior_correct": 226,
       "prior_examples": 576,
-      "rehearsal_advantage": 366,
+      "rehearsal_advantage": 350,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 29,
       "stage": "COMPARE_SUB"
     },
     {
-      "new_only_prior_correct": 210,
+      "new_only_prior_correct": 226,
       "prior_examples": 576,
-      "rehearsal_advantage": 366,
+      "rehearsal_advantage": 350,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 29,
       "stage": "PC_BRANCH"
     },
     {
-      "new_only_prior_correct": 354,
+      "new_only_prior_correct": 383,
       "prior_examples": 576,
-      "rehearsal_advantage": 222,
+      "rehearsal_advantage": 193,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 29,
       "stage": "SEQUENCES"
     },
     {
-      "new_only_prior_correct": 337,
+      "new_only_prior_correct": 375,
       "prior_examples": 576,
-      "rehearsal_advantage": 239,
+      "rehearsal_advantage": 201,
       "rehearsal_prior_correct": 576,
       "same_denominator": true,
       "seed": 29,
@@ -237,7 +237,7 @@
           "source_checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage00.pt",
-            "sha256": "bff6d890bd83899b6828272cdcd9df12a19ecd0c91e94700b85c8f03a32c9fac",
+            "sha256": "f8a0b05afc5cd2153e695e4232fa58611fdf070fa0bf1da28876b0fac9ffb0b7",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -246,7 +246,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 249,
+            "correct": 256,
             "tested": 320
           },
           "branch_zero_test": {
@@ -267,14 +267,14 @@
           "loop_test": null,
           "new_8bit_test": null,
           "qualified_prior_truth": {
-            "correct": 281,
+            "correct": 288,
             "tested": 448
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage01.pt",
-            "sha256": "2eab0a01cb072d9a9df3f22387d352e3d895f900d62d9d78383cbfa8e0e111b0",
+            "sha256": "705280a0897f2cf6668458263b3a32c29930afadab4047757ad3e490fbed486c",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -283,7 +283,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 256,
+            "correct": 250,
             "tested": 320
           },
           "branch_zero_test": {
@@ -303,14 +303,14 @@
           "loop_test": null,
           "new_8bit_test": null,
           "qualified_prior_truth": {
-            "correct": 393,
+            "correct": 390,
             "tested": 512
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage02.pt",
-            "sha256": "66f309352d1767ea940a53079afecf256064f55e3164dd4f417916e2b38202f8",
+            "sha256": "c5102bb5e22dccff3d2d2f0a6a5f4ec683142ff4d203955488842e7db32bc08b",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -319,7 +319,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 134,
+            "correct": 160,
             "tested": 320
           },
           "branch_zero_test": {
@@ -355,14 +355,14 @@
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 240,
+            "correct": 274,
             "tested": 576
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage03.pt",
-            "sha256": "15840d31a4120e1c87911349afb340d57e49ceab7e1c8fba1769c6eb1ae88c67",
+            "sha256": "8096bba3dbda1268d4ce96ffeeed8440f4de44e5a049c9bfe29844967b6384b7",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -371,7 +371,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 134,
+            "correct": 160,
             "tested": 320
           },
           "branch_zero_test": {
@@ -407,14 +407,14 @@
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 240,
+            "correct": 274,
             "tested": 576
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage04.pt",
-            "sha256": "542d173254a5f8e769166a8ada9813f06d2d77eb7bce809a1ada4aa7e4fc27ce",
+            "sha256": "81c2aca8547489620d232d65e2112d5cc339c282619161c54bbcc8447a089ee2",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -423,7 +423,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 272,
+            "correct": 277,
             "tested": 320
           },
           "branch_zero_test": {
@@ -437,6 +437,7 @@
             "AND1",
             "OR",
             "SAR",
+            "SHL",
             "SHR",
             "SUB",
             "XOR"
@@ -444,22 +445,22 @@
           "index": 5,
           "loop_test": null,
           "new_8bit_test": {
-            "correct": 480,
+            "correct": 483,
             "failed_ops": [
               "AND1",
               "SAR",
-              "SHR",
+              "SHL",
               "SUB",
               "XOR"
             ],
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 389,
+            "correct": 418,
             "tested": 576
           },
           "sequence_test": {
-            "correct": 198,
+            "correct": 203,
             "failed_programs": [
               "subtract_then_xor",
               "xor_then_double"
@@ -473,7 +474,7 @@
           "source_checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage05.pt",
-            "sha256": "8e15fa23a507181959aef31dbefb79e261a8323b49641f9c872d14cce752dbb2",
+            "sha256": "17952f2a32f81d05de12378a3597bdaee819fc029482144535276aa56ec64b79",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -482,7 +483,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 302,
+            "correct": 294,
             "tested": 320
           },
           "branch_zero_test": {
@@ -514,8 +515,9 @@
             }
           },
           "new_8bit_test": {
-            "correct": 593,
+            "correct": 524,
             "failed_ops": [
+              "AND1",
               "SAR",
               "SHR",
               "SUB",
@@ -524,11 +526,11 @@
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 422,
+            "correct": 438,
             "tested": 576
           },
           "sequence_test": {
-            "correct": 209,
+            "correct": 203,
             "failed_programs": [
               "subtract_then_xor",
               "xor_then_double"
@@ -542,7 +544,7 @@
           "source_checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage06.pt",
-            "sha256": "b759545ea11c0e7d015cac5f59a22826d46a2d2b218e5ebba8f6b9ebc7206c87",
+            "sha256": "6675f6a040132e6cbf7a601334685a8eb7691f991abf19ee9034140328911e4a",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -578,7 +580,7 @@
           "source_checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage00.pt",
-            "sha256": "f7ad0765bf14bef6f78833945683207c7b19ffe06a09403f4b097e21b5b8f717",
+            "sha256": "5c255751e8d0dec36b337a3fcdeabf90ef8f1f8b786043eb31bf46d02cbdb531",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -587,7 +589,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 272,
+            "correct": 260,
             "tested": 320
           },
           "branch_zero_test": {
@@ -608,14 +610,14 @@
           "loop_test": null,
           "new_8bit_test": null,
           "qualified_prior_truth": {
-            "correct": 305,
+            "correct": 293,
             "tested": 448
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage01.pt",
-            "sha256": "cde0ead7cce4248e0bd765e9f14c54af244b0bbb9dbd87961d26334946bad59a",
+            "sha256": "cd128dceecdd8476cbd15e962fe24987bb171be4ce7130c63ba648878577fa84",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -624,7 +626,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 268,
+            "correct": 255,
             "tested": 320
           },
           "branch_zero_test": {
@@ -644,14 +646,14 @@
           "loop_test": null,
           "new_8bit_test": null,
           "qualified_prior_truth": {
-            "correct": 411,
+            "correct": 401,
             "tested": 512
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage02.pt",
-            "sha256": "1e482d06de360623dbaa1c5029f0f427689ba3bbea8948e5ebbd4fb6959a4daa",
+            "sha256": "5bdfac925adb2ceae600fa7e7d54a570fc640e52a2696fdc9dce25f7603afeb9",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -660,7 +662,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 112,
+            "correct": 128,
             "tested": 320
           },
           "branch_zero_test": {
@@ -682,7 +684,7 @@
           "index": 3,
           "loop_test": null,
           "new_8bit_test": {
-            "correct": 121,
+            "correct": 96,
             "failed_ops": [
               "ADD",
               "AND",
@@ -696,14 +698,14 @@
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 213,
+            "correct": 231,
             "tested": 576
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage03.pt",
-            "sha256": "34881f691cc32db6a3b1045ac035ee62f81c2ebfecaf00e7c7ef16315f1e7ff5",
+            "sha256": "c0dffd8cb6add9f979a351dd922ebb95e98ba101012d2ed5243aaa320dcd0a04",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -712,7 +714,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 112,
+            "correct": 128,
             "tested": 320
           },
           "branch_zero_test": {
@@ -734,7 +736,7 @@
           "index": 4,
           "loop_test": null,
           "new_8bit_test": {
-            "correct": 121,
+            "correct": 96,
             "failed_ops": [
               "ADD",
               "AND",
@@ -748,14 +750,14 @@
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 213,
+            "correct": 231,
             "tested": 576
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 100800,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage04.pt",
-            "sha256": "f684b41512ad927192280067382a471f6fe2e4475163c0c0e70f81ccb11f6520",
+            "sha256": "c7c284530c1a6ca88b5ccfe6b1a9a385faacb0870f2037030e164b026e244880",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -764,7 +766,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 240,
+            "correct": 278,
             "tested": 320
           },
           "branch_zero_test": {
@@ -786,23 +788,21 @@
           "index": 5,
           "loop_test": null,
           "new_8bit_test": {
-            "correct": 407,
+            "correct": 555,
             "failed_ops": [
               "AND1",
               "SAR",
-              "SHL",
-              "SHR",
               "SUB",
               "XOR"
             ],
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 371,
+            "correct": 420,
             "tested": 576
           },
           "sequence_test": {
-            "correct": 192,
+            "correct": 228,
             "failed_programs": [
               "subtract_then_xor",
               "xor_then_double"
@@ -816,7 +816,7 @@
           "source_checkpoint": {
             "bytes": 100800,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage05.pt",
-            "sha256": "703101e1c394a44d15bceeed860baf3672390d90e81967e36e5783be8eaf831d",
+            "sha256": "33417a6efd3d6bf37f53b39f60d9d5d8ab81087952ed6c530d91987a1e816bfd",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -825,7 +825,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 235,
+            "correct": 285,
             "tested": 320
           },
           "branch_zero_test": {
@@ -858,24 +858,24 @@
             }
           },
           "new_8bit_test": {
-            "correct": 426,
+            "correct": 556,
             "failed_ops": [
+              "AND",
               "AND1",
               "SAR",
-              "SHL",
-              "SHR",
               "SUB",
               "XOR"
             ],
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 361,
+            "correct": 428,
             "tested": 576
           },
           "sequence_test": {
-            "correct": 192,
+            "correct": 195,
             "failed_programs": [
+              "and_then_add",
               "subtract_then_xor",
               "xor_then_double"
             ],
@@ -888,7 +888,7 @@
           "source_checkpoint": {
             "bytes": 100800,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage06.pt",
-            "sha256": "e2fc31786fa6179db1e2fd88db5b023c8fdd1f4beb518a83584df82f8738a921",
+            "sha256": "b93aed6b333d5d88d175539e36e76e71b9bba3b3a6bb1c1e64e78ad05bad41bf",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -899,7 +899,7 @@
       "29": [
         {
           "NC004_old_five": {
-            "correct": 239,
+            "correct": 251,
             "tested": 320
           },
           "branch_zero_test": {
@@ -917,14 +917,14 @@
           "loop_test": null,
           "new_8bit_test": null,
           "qualified_prior_truth": {
-            "correct": 367,
+            "correct": 379,
             "tested": 448
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 92772,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage00.pt",
-            "sha256": "b4a5ecfef4657792b11dc3d1d2d4464f19a25dee42fe9a30bacd54dbafb02f57",
+            "sha256": "5917a970a5ebfaa6aa478b888d18568fa4e5d4b50518fc5a5b29a1c506bfbc9f",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -933,7 +933,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 235,
+            "correct": 289,
             "tested": 320
           },
           "branch_zero_test": {
@@ -954,14 +954,14 @@
           "loop_test": null,
           "new_8bit_test": null,
           "qualified_prior_truth": {
-            "correct": 278,
+            "correct": 323,
             "tested": 448
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 92772,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage01.pt",
-            "sha256": "59dd3d1459ca5f64635a679327fdc344d0615d003622691349eb904636d0fedc",
+            "sha256": "77dba7e0bdc6a6ccc85de339696cc4766f1287a7dbe1c2356e523cb9c988048c",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -970,7 +970,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 251,
+            "correct": 252,
             "tested": 320
           },
           "branch_zero_test": {
@@ -990,14 +990,14 @@
           "loop_test": null,
           "new_8bit_test": null,
           "qualified_prior_truth": {
-            "correct": 393,
+            "correct": 392,
             "tested": 512
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 92772,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage02.pt",
-            "sha256": "310e60209958624e24ed5ea84e2d1d22e410bac9a5da27feb7b309b1a92d31e2",
+            "sha256": "99d5bfee2c91241a4b15ca36e246358fdb9b2825d67d991f4232f9de33dc3413",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -1006,7 +1006,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 114,
+            "correct": 120,
             "tested": 320
           },
           "branch_zero_test": {
@@ -1028,7 +1028,7 @@
           "index": 3,
           "loop_test": null,
           "new_8bit_test": {
-            "correct": 100,
+            "correct": 96,
             "failed_ops": [
               "ADD",
               "AND",
@@ -1042,14 +1042,14 @@
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 210,
+            "correct": 226,
             "tested": 576
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 92772,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage03.pt",
-            "sha256": "e4efaddd8645dea40feba392c62cdd6b1deeb743c4131973f8dddd35508eb5ee",
+            "sha256": "58332e9b5949ccf20ca69d21e8e71b6444d1ba6f2a3851518e5d5036f0c064d0",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -1058,7 +1058,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 114,
+            "correct": 120,
             "tested": 320
           },
           "branch_zero_test": {
@@ -1080,7 +1080,7 @@
           "index": 4,
           "loop_test": null,
           "new_8bit_test": {
-            "correct": 100,
+            "correct": 96,
             "failed_ops": [
               "ADD",
               "AND",
@@ -1094,14 +1094,14 @@
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 210,
+            "correct": 226,
             "tested": 576
           },
           "sequence_test": null,
           "source_checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage04.pt",
-            "sha256": "8be671eb01084d4109e3f661fe89707f3192204b17d5cbe5ba700b9251f82c41",
+            "sha256": "ca71f001fcba359fd0734e3196f33960b5f5aea2d1fc738b1b0decd984d6f78a",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -1110,7 +1110,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 263,
+            "correct": 256,
             "tested": 320
           },
           "branch_zero_test": {
@@ -1132,22 +1132,23 @@
           "index": 5,
           "loop_test": null,
           "new_8bit_test": {
-            "correct": 513,
+            "correct": 343,
             "failed_ops": [
               "AND1",
               "SAR",
               "SHL",
+              "SHR",
               "SUB",
               "XOR"
             ],
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 354,
+            "correct": 383,
             "tested": 576
           },
           "sequence_test": {
-            "correct": 194,
+            "correct": 192,
             "failed_programs": [
               "subtract_then_xor",
               "xor_then_double"
@@ -1161,7 +1162,7 @@
           "source_checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage05.pt",
-            "sha256": "bdb3a807b1321948c6ac9eb098d411d3946b1c8e0778a727d5b4d1597caeef9d",
+            "sha256": "5de5b4294492ae5f78fea3f5f050ce7bd922ea13099c536f80de2f2bd698ea55",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -1170,7 +1171,7 @@
         },
         {
           "NC004_old_five": {
-            "correct": 246,
+            "correct": 251,
             "tested": 320
           },
           "branch_zero_test": {
@@ -1203,22 +1204,23 @@
             }
           },
           "new_8bit_test": {
-            "correct": 463,
+            "correct": 346,
             "failed_ops": [
               "AND1",
               "SAR",
               "SHL",
+              "SHR",
               "SUB",
               "XOR"
             ],
             "tested": 864
           },
           "qualified_prior_truth": {
-            "correct": 337,
+            "correct": 375,
             "tested": 576
           },
           "sequence_test": {
-            "correct": 194,
+            "correct": 192,
             "failed_programs": [
               "subtract_then_xor",
               "xor_then_double"
@@ -1232,7 +1234,7 @@
           "source_checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage06.pt",
-            "sha256": "17eb242ff784517c8b1206ddd665563ffa61a19719da0a50362d8f2df2453ef3",
+            "sha256": "ecedf4f9ad4ced022a8f77dce5e9097523e4a7273a428df0ff8d6679a4e4b9c7",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -1266,7 +1268,7 @@
           "source_checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage00.pt",
-            "sha256": "c1f2d54e46cc74111e362d671e5c0863a8e420e1a42ad1e3f45ec27841039a5c",
+            "sha256": "7c287ed8f98c41ddff536ac70a428cc0960903afb43b9a4b286276ef95052651",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -1296,7 +1298,7 @@
           "source_checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage01.pt",
-            "sha256": "816cc65dfea9eb08520df6ea677fe87e51405f88c592ca6240578757fa4aeef0",
+            "sha256": "cbed29732eed5cd097a47dd4f3a905b709411423ed3b129127e80b57ea2e599e",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -1326,7 +1328,7 @@
           "source_checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage02.pt",
-            "sha256": "73785f175826586797260f59bc84e58e54d818be51f641615453c43c58c5791d",
+            "sha256": "ef85de6a6a2ce4add110240772468b70100caacd7d8ae4d38cd02f401a3d14e3",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -1360,7 +1362,7 @@
           "source_checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage03.pt",
-            "sha256": "0df1e780b2e6cd1e5b273b405e1539fc3e083922398e45024cd60fc701063af8",
+            "sha256": "fd5b5efb2944a175213681c5f7f98d1aae6c923446f945348464175c66cf6712",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -1394,7 +1396,7 @@
           "source_checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage04.pt",
-            "sha256": "c58e895a313a5310285de84f292a86a649fb0cb28bca40e959ddb10ff03f6030",
+            "sha256": "e841906a10ea83fa80c890ccd456e440dfc4cd6280eaa220cf9a75ad2583c9ff",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -1436,7 +1438,7 @@
           "source_checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage05.pt",
-            "sha256": "b594e7aed357ed98da09113c29b0fdd4ef81db1cf4dc91ecaa5c83c79152027e",
+            "sha256": "e6452726d88d414f2582a88f1fe9124572522efc66f693adfb742c86ddc2ac5e",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -1489,7 +1491,7 @@
           "source_checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage06.pt",
-            "sha256": "8db88c54e0a9a209e335564b8ed76e5c9f8e9702a6c497b42f59940c0224f95b",
+            "sha256": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -1521,7 +1523,7 @@
           "source_checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage00.pt",
-            "sha256": "f0b2b6cd3ba3afe78e4af73d73ba6c97c99d749bc59aae277a919c6747fd01c2",
+            "sha256": "7ba906e1e49d809c94d26c0762ac69712567c73cb85aa679ee09923706925a8f",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -1551,7 +1553,7 @@
           "source_checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage01.pt",
-            "sha256": "9d393dac2f042dc52e6d84de782a1b0e7b8dd155bde45a2cc365d2b9f9c73d6e",
+            "sha256": "3d2e792efdfa2c3ebffb99f1da777ae1f7efabfa3624c36096ba11b244eb83b9",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -1581,7 +1583,7 @@
           "source_checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage02.pt",
-            "sha256": "5a93623c5c0c66ca78dea0de61fe3a4d3483a6d0422b22fce1bc86b5148c8172",
+            "sha256": "a4559160698e4b50c40ca86b4c4891c35e751933e976673d1f96edeb669e7d64",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -1615,7 +1617,7 @@
           "source_checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage03.pt",
-            "sha256": "9f5ade53343834ba818f7c4bd99d83e53491377a6eb3094c523f8daac756df58",
+            "sha256": "fca1e36c91b3371f5a727f78a782dcee0a22899506731d07d716d7de8dd67e1c",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -1649,7 +1651,7 @@
           "source_checkpoint": {
             "bytes": 100855,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage04.pt",
-            "sha256": "708d68e36a94bc54dec02938c5976382f6a84821ccc08ac8a8bd393f42c32589",
+            "sha256": "45133b40bee5ded7426dbbdb249a472108cb3686a03bc3124f7995941cf64734",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -1691,7 +1693,7 @@
           "source_checkpoint": {
             "bytes": 100855,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage05.pt",
-            "sha256": "6c37396202082803136772df0225018e3bafec74eae6b9e70e9e420ac1b0d99a",
+            "sha256": "a079687c03288794db7078d70041cfd81bb8f08e92bfd16916e20cd3d056f0e2",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -1744,7 +1746,7 @@
           "source_checkpoint": {
             "bytes": 100855,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage06.pt",
-            "sha256": "f07e0db27c04b07ffc82bc2cd38dcf7f1437562b463cc21e01c97ec8cc779dd0",
+            "sha256": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -1776,7 +1778,7 @@
           "source_checkpoint": {
             "bytes": 92815,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage00.pt",
-            "sha256": "bad02ad55491ae66a92300db531370c66db8285cf3859bcfc24456173ba866f2",
+            "sha256": "29b0be429290e5ec51f2d180fe36f609e417d634e8c246e0877321639c8692a3",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -1806,7 +1808,7 @@
           "source_checkpoint": {
             "bytes": 92815,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage01.pt",
-            "sha256": "148003c82eaee299cfad94b7cac9454df48ced93aac5f9e4ca8db826b8251cc3",
+            "sha256": "0c5a74b0ee53dc7b340161672ddcd513042ffc6f0d969b618385577fd1cf6550",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -1836,7 +1838,7 @@
           "source_checkpoint": {
             "bytes": 92815,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage02.pt",
-            "sha256": "a34b38ee04afac38f7e5f831f8bdac67852308d38f5592ca46e7a7e8058d02eb",
+            "sha256": "bf88bad62c6159fe2e00e89dd4b065e2dc8dee834b4c067304734610799a0ff0",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -1870,7 +1872,7 @@
           "source_checkpoint": {
             "bytes": 92815,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage03.pt",
-            "sha256": "854d2036b31606accb5ac9d1d87ee708cc940cfe6849948f8292aa82a691cb60",
+            "sha256": "e28f7dff58b61c352fb3be0026d0f711487685ef8f4711a6b54c38a9bb412dcf",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -1904,7 +1906,7 @@
           "source_checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage04.pt",
-            "sha256": "a1e408da33d09f6031ff9fcac366e94982f41150bcc49ee7005a6df21d67956f",
+            "sha256": "92a5d8afe2ad5fde2ea99d49848393f088b91f4f893ce690da3591de922cd086",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -1946,7 +1948,7 @@
           "source_checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage05.pt",
-            "sha256": "9c8a7ef7f916b1a929686ecc514d1653ab867d0b412ed2515f4008c54313c0ac",
+            "sha256": "c0f97e67573dcbb4716c738e5279edc1f37a33a1b62c6c7cf3cb8c9933c3071e",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -1999,7 +2001,7 @@
           "source_checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage06.pt",
-            "sha256": "790aef99bf1cf4bd281b79aa5aa3bcabf24a27dd42cca5321154685fe6a5a613",
+            "sha256": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -2032,7 +2034,7 @@
         }
       },
       "last_qualified_prior_truth": {
-        "correct": 422,
+        "correct": 438,
         "tested": 576
       },
       "program_trace_sources": {
@@ -2084,7 +2086,7 @@
         }
       },
       "last_qualified_prior_truth": {
-        "correct": 361,
+        "correct": 428,
         "tested": 576
       },
       "program_trace_sources": {
@@ -2136,7 +2138,7 @@
         }
       },
       "last_qualified_prior_truth": {
-        "correct": 337,
+        "correct": 375,
         "tested": 576
       },
       "program_trace_sources": {

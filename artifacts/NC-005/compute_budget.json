@@ -1,0 +1,256 @@
+{
+  "arms": [
+    "rehearsal",
+    "new_only"
+  ],
+  "checkpoint_provenance": {
+    "new_only_seed11": "50dbad914ae2ca5d11259885c64f65fa8f3ad6f2bf4ed7bd15acf067287e2b65",
+    "new_only_seed19": "3c0c3f95501660a7952affcd5254f9bd39de79d2ba04b6f685d66fff4663fb9d",
+    "new_only_seed29": "b6f561a6cda9679f17e32a4947f3fbff69b9ca2b2f32df0b44c5b789d8ae4d15",
+    "rehearsal_seed11": "50dbad914ae2ca5d11259885c64f65fa8f3ad6f2bf4ed7bd15acf067287e2b65",
+    "rehearsal_seed19": "3c0c3f95501660a7952affcd5254f9bd39de79d2ba04b6f685d66fff4663fb9d",
+    "rehearsal_seed29": "b6f561a6cda9679f17e32a4947f3fbff69b9ca2b2f32df0b44c5b789d8ae4d15"
+  },
+  "limitations": [
+    "Graph/sample counts are not measured FLOPs, wall-time, latency or energy.",
+    "Arms are not identically sample-matched: old-task rehearsal is the independent variable.",
+    "Only local truth-table and supplied program-trace training; not arbitrary neural program invention.",
+    "The earlier f7f544d revision had asymmetric branch-stage compute and is superseded by this corrected run.",
+    "No independent agent certification here."
+  ],
+  "models": {
+    "11": {
+      "new_only": {
+        "PC_BRANCH_end_stage": {
+          "bytes": 100736,
+          "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage04.pt",
+          "sha256": "81c2aca8547489620d232d65e2112d5cc339c282619161c54bbcc8447a089ee2",
+          "stage": "PC_BRANCH",
+          "total_updates": 1650
+        },
+        "PC_BRANCH_previous_stage": {
+          "bytes": 92836,
+          "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage03.pt",
+          "sha256": "8096bba3dbda1268d4ce96ffeeed8440f4de44e5a049c9bfe29844967b6384b7",
+          "stage": "COMPARE_SUB",
+          "total_updates": 1250
+        },
+        "bit_meaning_tensors_unchanged": 8,
+        "only_zero_predicate_tensors_updated": true,
+        "stage_updates": 400,
+        "zero_tensors_changed": [
+          "is_zero.0.weight",
+          "is_zero.0.bias",
+          "is_zero.2.weight",
+          "is_zero.2.bias"
+        ]
+      },
+      "rehearsal": {
+        "PC_BRANCH_end_stage": {
+          "bytes": 100791,
+          "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage04.pt",
+          "sha256": "e841906a10ea83fa80c890ccd456e440dfc4cd6280eaa220cf9a75ad2583c9ff",
+          "stage": "PC_BRANCH",
+          "total_updates": 1650
+        },
+        "PC_BRANCH_previous_stage": {
+          "bytes": 92879,
+          "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage03.pt",
+          "sha256": "fd5b5efb2944a175213681c5f7f98d1aae6c923446f945348464175c66cf6712",
+          "stage": "COMPARE_SUB",
+          "total_updates": 1250
+        },
+        "bit_meaning_tensors_unchanged": 8,
+        "only_zero_predicate_tensors_updated": true,
+        "stage_updates": 400,
+        "zero_tensors_changed": [
+          "is_zero.0.weight",
+          "is_zero.0.bias",
+          "is_zero.2.weight",
+          "is_zero.2.bias"
+        ]
+      }
+    },
+    "19": {
+      "new_only": {
+        "PC_BRANCH_end_stage": {
+          "bytes": 100800,
+          "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage04.pt",
+          "sha256": "c7c284530c1a6ca88b5ccfe6b1a9a385faacb0870f2037030e164b026e244880",
+          "stage": "PC_BRANCH",
+          "total_updates": 1650
+        },
+        "PC_BRANCH_previous_stage": {
+          "bytes": 92836,
+          "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage03.pt",
+          "sha256": "c0dffd8cb6add9f979a351dd922ebb95e98ba101012d2ed5243aaa320dcd0a04",
+          "stage": "COMPARE_SUB",
+          "total_updates": 1250
+        },
+        "bit_meaning_tensors_unchanged": 8,
+        "only_zero_predicate_tensors_updated": true,
+        "stage_updates": 400,
+        "zero_tensors_changed": [
+          "is_zero.0.weight",
+          "is_zero.0.bias",
+          "is_zero.2.weight",
+          "is_zero.2.bias"
+        ]
+      },
+      "rehearsal": {
+        "PC_BRANCH_end_stage": {
+          "bytes": 100855,
+          "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage04.pt",
+          "sha256": "45133b40bee5ded7426dbbdb249a472108cb3686a03bc3124f7995941cf64734",
+          "stage": "PC_BRANCH",
+          "total_updates": 1650
+        },
+        "PC_BRANCH_previous_stage": {
+          "bytes": 92879,
+          "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage03.pt",
+          "sha256": "fca1e36c91b3371f5a727f78a782dcee0a22899506731d07d716d7de8dd67e1c",
+          "stage": "COMPARE_SUB",
+          "total_updates": 1250
+        },
+        "bit_meaning_tensors_unchanged": 8,
+        "only_zero_predicate_tensors_updated": true,
+        "stage_updates": 400,
+        "zero_tensors_changed": [
+          "is_zero.0.weight",
+          "is_zero.0.bias",
+          "is_zero.2.weight",
+          "is_zero.2.bias"
+        ]
+      }
+    },
+    "29": {
+      "new_only": {
+        "PC_BRANCH_end_stage": {
+          "bytes": 100736,
+          "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage04.pt",
+          "sha256": "ca71f001fcba359fd0734e3196f33960b5f5aea2d1fc738b1b0decd984d6f78a",
+          "stage": "PC_BRANCH",
+          "total_updates": 1650
+        },
+        "PC_BRANCH_previous_stage": {
+          "bytes": 92772,
+          "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage03.pt",
+          "sha256": "58332e9b5949ccf20ca69d21e8e71b6444d1ba6f2a3851518e5d5036f0c064d0",
+          "stage": "COMPARE_SUB",
+          "total_updates": 1250
+        },
+        "bit_meaning_tensors_unchanged": 8,
+        "only_zero_predicate_tensors_updated": true,
+        "stage_updates": 400,
+        "zero_tensors_changed": [
+          "is_zero.0.weight",
+          "is_zero.0.bias",
+          "is_zero.2.weight",
+          "is_zero.2.bias"
+        ]
+      },
+      "rehearsal": {
+        "PC_BRANCH_end_stage": {
+          "bytes": 100791,
+          "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage04.pt",
+          "sha256": "92a5d8afe2ad5fde2ea99d49848393f088b91f4f893ce690da3591de922cd086",
+          "stage": "PC_BRANCH",
+          "total_updates": 1650
+        },
+        "PC_BRANCH_previous_stage": {
+          "bytes": 92815,
+          "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage03.pt",
+          "sha256": "e28f7dff58b61c352fb3be0026d0f711487685ef8f4711a6b54c38a9bb412dcf",
+          "stage": "COMPARE_SUB",
+          "total_updates": 1250
+        },
+        "bit_meaning_tensors_unchanged": 8,
+        "only_zero_predicate_tensors_updated": true,
+        "stage_updates": 400,
+        "zero_tensors_changed": [
+          "is_zero.0.weight",
+          "is_zero.0.bias",
+          "is_zero.2.weight",
+          "is_zero.2.bias"
+        ]
+      }
+    }
+  },
+  "result": "IMPLEMENTER_MATCHED_COMPUTE_SCHEDULE_VERIFIED",
+  "samples_per_model": {
+    "bit_and_meaning": 473600,
+    "zero": 192000
+  },
+  "scope": "Matched per-stage graph types, batch sizes, update counts, optimizer and source data pools; different example distributions by intended replay intervention.",
+  "seeds": [
+    11,
+    19,
+    29
+  ],
+  "stages": [
+    {
+      "batch": 256,
+      "bit_and_meaning_samples": 76800,
+      "graph_type": "bit_and_meaning",
+      "same_for_both_arms": true,
+      "stage": "BOOLEAN",
+      "updates": 300,
+      "zero_samples": 0
+    },
+    {
+      "batch": 256,
+      "bit_and_meaning_samples": 76800,
+      "graph_type": "bit_and_meaning",
+      "same_for_both_arms": true,
+      "stage": "CARRY_ADD",
+      "updates": 300,
+      "zero_samples": 0
+    },
+    {
+      "batch": 256,
+      "bit_and_meaning_samples": 76800,
+      "graph_type": "bit_and_meaning",
+      "same_for_both_arms": true,
+      "stage": "SHIFTS",
+      "updates": 300,
+      "zero_samples": 0
+    },
+    {
+      "batch": 256,
+      "bit_and_meaning_samples": 89600,
+      "graph_type": "bit_and_meaning",
+      "same_for_both_arms": true,
+      "stage": "COMPARE_SUB",
+      "updates": 350,
+      "zero_samples": 0
+    },
+    {
+      "batch": 256,
+      "bit_and_meaning_samples": 0,
+      "graph_type": "zero_only",
+      "same_for_both_arms": true,
+      "stage": "PC_BRANCH",
+      "updates": 400,
+      "zero_samples": 102400
+    },
+    {
+      "batch": 256,
+      "bit_and_meaning_samples": 64000,
+      "graph_type": "bit_and_meaning",
+      "same_for_both_arms": true,
+      "stage": "SEQUENCES",
+      "updates": 250,
+      "zero_samples": 0
+    },
+    {
+      "batch": 256,
+      "bit_and_meaning_samples": 89600,
+      "graph_type": "both",
+      "same_for_both_arms": true,
+      "stage": "LOOPS",
+      "updates": 350,
+      "zero_samples": 89600
+    }
+  ],
+  "task": "NC-005"
+}

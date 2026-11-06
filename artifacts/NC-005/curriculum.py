@@ -398,7 +398,9 @@ def curriculum_step(model,opt,arm,stage_no,tx,ty,tids,zx,zy,step,trace_sets):
  use_zero=(name in ("PC_BRANCH","LOOPS"))
  a,b,ix=stage_input(stage_no,arm,tx,ty,tids,trace_sets)
  if name=="PC_BRANCH":
-  a,b,ix=(tx[:0],ty[:0],tids[:0]) if arm=="new_only" else (tx,ty,tids)
+  # SAME COMPUTE FOR BOTH ARMS: branch-only optimizer work.
+  # Bit network parameters receive no gradients in this stage for either arm.
+  a,b,ix=tx[:0],ty[:0],tids[:0]
  opt.zero_grad(set_to_none=True)
  loss=None
  if len(a):
@@ -432,6 +434,8 @@ def train_seed(seed,arm,updates_scale=1):
   "stages":[]}
  updates=0
  for stage_no,(name,current,count) in enumerate(STAGES):
+  # Match the stage-local sampling RNG between arms (pool composition varies).
+  torch.manual_seed(100000+seed*100+stage_no)
   loss=0.
   for step in range(count*updates_scale):
    loss=curriculum_step(m,opt,arm,stage_no,tx,ty,tids,zx,zy,step,trace_sets)
@@ -477,6 +481,8 @@ def run_training():
   "stage_updates":STAGE_UPDATES,"batch":BATCH,
   "matched_controls":"same seed, NC004 warm-start weights, stage count, optimizer type/lr, batch, step budget, shared stage datasets; rehearsal changes exposure to prior stages deliberately",
   "not_data_matched":"The two arms necessarily see different training-example frequencies due to rehearsal; report exposure as intervention, do not claim identical example streams",
+  "matched_compute_schedule":"same architecture, forward/backward paths, optimizer type, batch, updates and stage-local RNG. PC_BRANCH does zero-predicate training ONLY for both arms; previous branch revision with arithmetic rehearsal is superseded.",
+  "corrective_revision":"Supersedes Git implementation f7f544d because PC_BRANCH previously had unequal forward/backward paths; historical commit retained in Git.",
   "training_data":"all 64 bit patterns per trained primitive in source pool; Boolean local generalization NOT evaluated",
    "prior_model":"NC004 coupled semantic MLP; expanded opcode vocabulary and newly initialized optimizer branch",
   "trace_curriculum":"Sequence and loop stages train on observed per-step bit transitions extracted from host-provided program traces; not program generation.",

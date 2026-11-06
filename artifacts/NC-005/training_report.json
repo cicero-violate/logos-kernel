@@ -4,6 +4,7 @@
     "new_only"
   ],
   "batch": 256,
+  "corrective_revision": "Supersedes Git implementation f7f544d because PC_BRANCH previously had unequal forward/backward paths; historical commit retained in Git.",
   "limitations": [
     "Existing five primitive skills pre-trained on full local truth tables; transfer is not learning from zero",
     "No neural source general RLT champion training or promotion",
@@ -13,6 +14,7 @@
     "Matched update budget not identical training samples after rehearsal alters sampling",
     "Some stages may exhibit forgetting; any regression must be recorded and cannot be silently passed"
   ],
+  "matched_compute_schedule": "same architecture, forward/backward paths, optimizer type, batch, updates and stage-local RNG. PC_BRANCH does zero-predicate training ONLY for both arms; previous branch revision with arithmetic rehearsal is superseded.",
   "matched_controls": "same seed, NC004 warm-start weights, stage count, optimizer type/lr, batch, step budget, shared stage datasets; rehearsal changes exposure to prior stages deliberately",
   "model_semantics": "predicted meaning softmax enters neural arithmetic; zero predicate is learned, all program choice/register routing/PC/HALT host",
   "not_data_matched": "The two arms necessarily see different training-example frequencies due to rehearsal; report exposure as intervention, do not claim identical example streams",
@@ -31,7 +33,7 @@
       "last_checkpoint": {
         "bytes": 100736,
         "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage06.pt",
-        "sha256": "b759545ea11c0e7d015cac5f59a22826d46a2d2b218e5ebba8f6b9ebc7206c87",
+        "sha256": "6675f6a040132e6cbf7a601334685a8eb7691f991abf19ee9034140328911e4a",
         "stage": "LOOPS",
         "total_updates": 2250
       },
@@ -70,7 +72,7 @@
           "checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage00.pt",
-            "sha256": "bff6d890bd83899b6828272cdcd9df12a19ecd0c91e94700b85c8f03a32c9fac",
+            "sha256": "f8a0b05afc5cd2153e695e4232fa58611fdf070fa0bf1da28876b0fac9ffb0b7",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -101,7 +103,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.000745304161682725,
+          "last_loss": 0.0007499977364204824,
           "local_by_op": {
             "ADD": {
               "correct": 24,
@@ -226,7 +228,7 @@
           "checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage01.pt",
-            "sha256": "2eab0a01cb072d9a9df3f22387d352e3d895f900d62d9d78383cbfa8e0e111b0",
+            "sha256": "705280a0897f2cf6668458263b3a32c29930afadab4047757ad3e490fbed486c",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -254,7 +256,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0016749061178416014,
+          "last_loss": 0.0016667286399751902,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -269,7 +271,7 @@
               "tested": 64
             },
             "AND1": {
-              "correct": 46,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -281,25 +283,25 @@
               "tested": 64
             },
             "SAR": {
-              "correct": 11,
+              "correct": 10,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 43,
+              "correct": 45,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 40,
+              "correct": 43,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 10,
+              "correct": 8,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -312,7 +314,7 @@
             }
           },
           "old_five_retention": {
-            "correct": 249,
+            "correct": 256,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
@@ -331,7 +333,7 @@
               "tested": 64
             },
             "AND1": {
-              "correct": 46,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -343,13 +345,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 43,
+              "correct": 45,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 40,
+              "correct": 43,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -379,7 +381,7 @@
           "checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage02.pt",
-            "sha256": "66f309352d1767ea940a53079afecf256064f55e3164dd4f417916e2b38202f8",
+            "sha256": "c5102bb5e22dccff3d2d2f0a6a5f4ec683142ff4d203955488842e7db32bc08b",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -409,22 +411,22 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.001620674505829811,
+          "last_loss": 0.0009595886222086847,
           "local_by_op": {
             "ADD": {
-              "correct": 21,
+              "correct": 18,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 46,
+              "correct": 43,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 49,
+              "correct": 46,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -454,39 +456,39 @@
               "tested": 64
             },
             "SUB": {
-              "correct": 17,
+              "correct": 18,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 27,
+              "correct": 33,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 256,
+            "correct": 250,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
           },
           "prior_retention": {
             "ADD": {
-              "correct": 21,
+              "correct": 18,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 46,
+              "correct": 43,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 49,
+              "correct": 46,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -516,7 +518,7 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 27,
+              "correct": 33,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -541,7 +543,7 @@
           "checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage03.pt",
-            "sha256": "15840d31a4120e1c87911349afb340d57e49ceab7e1c8fba1769c6eb1ae88c67",
+            "sha256": "8096bba3dbda1268d4ce96ffeeed8440f4de44e5a049c9bfe29844967b6384b7",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -568,13 +570,13 @@
                   "a": 198,
                   "b": 226,
                   "expected": 424,
-                  "pred": 65341
+                  "pred": 65535
                 },
                 {
                   "a": 167,
                   "b": 129,
                   "expected": 296,
-                  "pred": 65406
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -658,13 +660,13 @@
                   "a": 198,
                   "b": 226,
                   "expected": 230,
-                  "pred": 65341
+                  "pred": 65535
                 },
                 {
                   "a": 167,
                   "b": 129,
                   "expected": 167,
-                  "pred": 65406
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -694,7 +696,7 @@
                   "a": 167,
                   "b": 129,
                   "expected": 83,
-                  "pred": 65497
+                  "pred": 65499
                 }
               ],
               "tested": 96
@@ -706,25 +708,25 @@
                   "a": 152,
                   "b": 65,
                   "expected": 304,
-                  "pred": 509
+                  "pred": 65535
                 },
                 {
                   "a": 129,
                   "b": 44,
                   "expected": 258,
-                  "pred": 495
+                  "pred": 65535
                 },
                 {
                   "a": 198,
                   "b": 226,
                   "expected": 396,
-                  "pred": 495
+                  "pred": 65535
                 },
                 {
                   "a": 167,
                   "b": 129,
                   "expected": 334,
-                  "pred": 383
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -748,13 +750,13 @@
                   "a": 198,
                   "b": 226,
                   "expected": 99,
-                  "pred": 65407
+                  "pred": 65535
                 },
                 {
                   "a": 167,
                   "b": 129,
                   "expected": 83,
-                  "pred": 65407
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -777,7 +779,7 @@
                   "a": 129,
                   "b": 44,
                   "expected": 173,
-                  "pred": 65534
+                  "pred": 65535
                 },
                 {
                   "a": 198,
@@ -789,7 +791,7 @@
                   "a": 167,
                   "b": 129,
                   "expected": 38,
-                  "pred": 65533
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -815,10 +817,10 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.005236431956291199,
+          "last_loss": 0.0026518278755247593,
           "local_by_op": {
             "ADD": {
-              "correct": 12,
+              "correct": 29,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -830,13 +832,13 @@
               "tested": 64
             },
             "AND1": {
-              "correct": 12,
+              "correct": 16,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 27,
+              "correct": 47,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -848,13 +850,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 43,
+              "correct": 32,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 40,
+              "correct": 36,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -866,21 +868,21 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 10,
+              "correct": 18,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 134,
+            "correct": 160,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
           },
           "prior_retention": {
             "ADD": {
-              "correct": 12,
+              "correct": 29,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -892,13 +894,13 @@
               "tested": 64
             },
             "AND1": {
-              "correct": 12,
+              "correct": 16,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 27,
+              "correct": 47,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -910,13 +912,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 43,
+              "correct": 32,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 40,
+              "correct": 36,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -928,7 +930,7 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 10,
+              "correct": 18,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -954,7 +956,7 @@
           "checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage04.pt",
-            "sha256": "542d173254a5f8e769166a8ada9813f06d2d77eb7bce809a1ada4aa7e4fc27ce",
+            "sha256": "81c2aca8547489620d232d65e2112d5cc339c282619161c54bbcc8447a089ee2",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -979,13 +981,13 @@
                   "a": 198,
                   "b": 226,
                   "expected": 424,
-                  "pred": 65341
+                  "pred": 65535
                 },
                 {
                   "a": 167,
                   "b": 129,
                   "expected": 296,
-                  "pred": 65406
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -1069,13 +1071,13 @@
                   "a": 198,
                   "b": 226,
                   "expected": 230,
-                  "pred": 65341
+                  "pred": 65535
                 },
                 {
                   "a": 167,
                   "b": 129,
                   "expected": 167,
-                  "pred": 65406
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -1105,7 +1107,7 @@
                   "a": 167,
                   "b": 129,
                   "expected": 83,
-                  "pred": 65497
+                  "pred": 65499
                 }
               ],
               "tested": 96
@@ -1117,25 +1119,25 @@
                   "a": 152,
                   "b": 65,
                   "expected": 304,
-                  "pred": 509
+                  "pred": 65535
                 },
                 {
                   "a": 129,
                   "b": 44,
                   "expected": 258,
-                  "pred": 495
+                  "pred": 65535
                 },
                 {
                   "a": 198,
                   "b": 226,
                   "expected": 396,
-                  "pred": 495
+                  "pred": 65535
                 },
                 {
                   "a": 167,
                   "b": 129,
                   "expected": 334,
-                  "pred": 383
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -1159,13 +1161,13 @@
                   "a": 198,
                   "b": 226,
                   "expected": 99,
-                  "pred": 65407
+                  "pred": 65535
                 },
                 {
                   "a": 167,
                   "b": 129,
                   "expected": 83,
-                  "pred": 65407
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -1188,7 +1190,7 @@
                   "a": 129,
                   "b": 44,
                   "expected": 173,
-                  "pred": 65534
+                  "pred": 65535
                 },
                 {
                   "a": 198,
@@ -1200,7 +1202,7 @@
                   "a": 167,
                   "b": 129,
                   "expected": 38,
-                  "pred": 65533
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -1217,10 +1219,10 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.002715366892516613,
+          "last_loss": 0.0023107295855879784,
           "local_by_op": {
             "ADD": {
-              "correct": 12,
+              "correct": 29,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -1232,13 +1234,13 @@
               "tested": 64
             },
             "AND1": {
-              "correct": 12,
+              "correct": 16,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 27,
+              "correct": 47,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -1250,13 +1252,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 43,
+              "correct": 32,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 40,
+              "correct": 36,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -1268,21 +1270,21 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 10,
+              "correct": 18,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 134,
+            "correct": 160,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
           },
           "prior_retention": {
             "ADD": {
-              "correct": 12,
+              "correct": 29,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -1294,13 +1296,13 @@
               "tested": 64
             },
             "AND1": {
-              "correct": 12,
+              "correct": 16,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 27,
+              "correct": 47,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -1312,13 +1314,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 43,
+              "correct": 32,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 40,
+              "correct": 36,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -1330,7 +1332,7 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 10,
+              "correct": 18,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -1356,7 +1358,7 @@
           "checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage05.pt",
-            "sha256": "8e15fa23a507181959aef31dbefb79e261a8323b49641f9c872d14cce752dbb2",
+            "sha256": "17952f2a32f81d05de12378a3597bdaee819fc029482144535276aa56ec64b79",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -1418,13 +1420,13 @@
               "tested": 96
             },
             "SAR": {
-              "correct": 2,
+              "correct": 1,
               "failures": [
                 {
                   "a": 152,
                   "b": 65,
                   "expected": 76,
-                  "pred": 0
+                  "pred": 24
                 },
                 {
                   "a": 129,
@@ -1436,50 +1438,50 @@
                   "a": 198,
                   "b": 226,
                   "expected": 99,
-                  "pred": 194
+                  "pred": 198
                 },
                 {
                   "a": 167,
                   "b": 129,
                   "expected": 83,
-                  "pred": 193
+                  "pred": 199
                 }
               ],
               "tested": 96
             },
             "SHL": {
-              "correct": 96,
-              "failures": [],
-              "tested": 96
-            },
-            "SHR": {
               "correct": 84,
               "failures": [
                 {
-                  "a": 105,
-                  "b": 97,
-                  "expected": 52,
-                  "pred": 53
+                  "a": 167,
+                  "b": 129,
+                  "expected": 334,
+                  "pred": 335
                 },
                 {
-                  "a": 33,
-                  "b": 23,
-                  "expected": 16,
-                  "pred": 17
+                  "a": 107,
+                  "b": 75,
+                  "expected": 214,
+                  "pred": 215
                 },
                 {
-                  "a": 233,
-                  "b": 99,
-                  "expected": 116,
-                  "pred": 117
+                  "a": 103,
+                  "b": 169,
+                  "expected": 206,
+                  "pred": 207
                 },
                 {
-                  "a": 217,
-                  "b": 79,
-                  "expected": 108,
-                  "pred": 109
+                  "a": 23,
+                  "b": 85,
+                  "expected": 46,
+                  "pred": 47
                 }
               ],
+              "tested": 96
+            },
+            "SHR": {
+              "correct": 96,
+              "failures": [],
               "tested": 96
             },
             "SUB": {
@@ -1513,31 +1515,31 @@
               "tested": 96
             },
             "XOR": {
-              "correct": 9,
+              "correct": 13,
               "failures": [
-                {
-                  "a": 129,
-                  "b": 44,
-                  "expected": 173,
-                  "pred": 172
-                },
                 {
                   "a": 198,
                   "b": 226,
                   "expected": 36,
-                  "pred": 231
+                  "pred": 230
                 },
                 {
                   "a": 167,
                   "b": 129,
                   "expected": 38,
-                  "pred": 230
+                  "pred": 166
                 },
                 {
                   "a": 135,
                   "b": 168,
                   "expected": 47,
-                  "pred": 174
+                  "pred": 175
+                },
+                {
+                  "a": 230,
+                  "b": 214,
+                  "expected": 48,
+                  "pred": 182
                 }
               ],
               "tested": 96
@@ -1570,7 +1572,7 @@
               "tested": 64
             },
             "subtract_then_xor": {
-              "correct": 0,
+              "correct": 1,
               "failures": [
                 {
                   "a": 237,
@@ -1581,31 +1583,37 @@
                 {
                   "a": 135,
                   "b": 162,
-                  "pred": 228,
+                  "pred": 164,
                   "reference": 65378
                 },
                 {
                   "a": 72,
                   "b": 106,
-                  "pred": 127,
+                  "pred": 106,
                   "reference": 65430
                 },
                 {
                   "a": 214,
                   "b": 94,
-                  "pred": 251,
+                  "pred": 218,
                   "reference": 174
                 }
               ],
               "tested": 64
             },
             "xor_then_double": {
-              "correct": 6,
+              "correct": 10,
               "failures": [
+                {
+                  "a": 237,
+                  "b": 19,
+                  "pred": 510,
+                  "reference": 508
+                },
                 {
                   "a": 135,
                   "b": 162,
-                  "pred": 328,
+                  "pred": 330,
                   "reference": 74
                 },
                 {
@@ -1617,20 +1625,14 @@
                 {
                   "a": 214,
                   "b": 94,
-                  "pred": 510,
+                  "pred": 444,
                   "reference": 272
-                },
-                {
-                  "a": 33,
-                  "b": 51,
-                  "pred": 100,
-                  "reference": 36
                 }
               ],
               "tested": 64
             }
           },
-          "last_loss": 0.0013830630341544747,
+          "last_loss": 0.0018368589226156473,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -1639,56 +1641,56 @@
               "tested": 64
             },
             "AND": {
-              "correct": 33,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 35,
+              "correct": 36,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 49,
+              "correct": 56,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SAR": {
-              "correct": 20,
+              "correct": 29,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 64,
+              "correct": 62,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 60,
+              "correct": 59,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 42,
+              "correct": 38,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 22,
+              "correct": 26,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 272,
+            "correct": 277,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
@@ -1701,49 +1703,49 @@
               "tested": 64
             },
             "AND": {
-              "correct": 33,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 35,
+              "correct": 36,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 49,
+              "correct": 56,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SAR": {
-              "correct": 20,
+              "correct": 29,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 64,
+              "correct": 62,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 60,
+              "correct": 59,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 42,
+              "correct": 38,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 22,
+              "correct": 26,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -1769,7 +1771,7 @@
           "checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed11_stage06.pt",
-            "sha256": "b759545ea11c0e7d015cac5f59a22826d46a2d2b218e5ebba8f6b9ebc7206c87",
+            "sha256": "6675f6a040132e6cbf7a601334685a8eb7691f991abf19ee9034140328911e4a",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -1791,8 +1793,33 @@
               "tested": 96
             },
             "AND1": {
-              "correct": 96,
-              "failures": [],
+              "correct": 54,
+              "failures": [
+                {
+                  "a": 152,
+                  "b": 65,
+                  "expected": 0,
+                  "pred": 1
+                },
+                {
+                  "a": 230,
+                  "b": 214,
+                  "expected": 0,
+                  "pred": 64
+                },
+                {
+                  "a": 182,
+                  "b": 243,
+                  "expected": 0,
+                  "pred": 1
+                },
+                {
+                  "a": 241,
+                  "b": 80,
+                  "expected": 1,
+                  "pred": 65
+                }
+              ],
               "tested": 96
             },
             "OR": {
@@ -1801,7 +1828,7 @@
               "tested": 96
             },
             "SAR": {
-              "correct": 1,
+              "correct": 2,
               "failures": [
                 {
                   "a": 152,
@@ -1825,7 +1852,7 @@
                   "a": 167,
                   "b": 129,
                   "expected": 83,
-                  "pred": 129
+                  "pred": 195
                 }
               ],
               "tested": 96
@@ -1836,8 +1863,14 @@
               "tested": 96
             },
             "SHR": {
-              "correct": 84,
+              "correct": 71,
               "failures": [
+                {
+                  "a": 152,
+                  "b": 65,
+                  "expected": 76,
+                  "pred": 77
+                },
                 {
                   "a": 105,
                   "b": 97,
@@ -1855,12 +1888,6 @@
                   "b": 99,
                   "expected": 116,
                   "pred": 117
-                },
-                {
-                  "a": 217,
-                  "b": 79,
-                  "expected": 108,
-                  "pred": 109
                 }
               ],
               "tested": 96
@@ -1896,13 +1923,13 @@
               "tested": 96
             },
             "XOR": {
-              "correct": 28,
+              "correct": 13,
               "failures": [
                 {
                   "a": 198,
                   "b": 226,
                   "expected": 36,
-                  "pred": 165
+                  "pred": 230
                 },
                 {
                   "a": 167,
@@ -1920,7 +1947,7 @@
                   "a": 230,
                   "b": 214,
                   "expected": 48,
-                  "pred": 181
+                  "pred": 182
                 }
               ],
               "tested": 96
@@ -1993,21 +2020,27 @@
                 {
                   "a": 72,
                   "b": 106,
-                  "pred": 107,
+                  "pred": 106,
                   "reference": 65430
                 },
                 {
                   "a": 214,
                   "b": 94,
-                  "pred": 153,
+                  "pred": 218,
                   "reference": 174
                 }
               ],
               "tested": 64
             },
             "xor_then_double": {
-              "correct": 16,
+              "correct": 10,
               "failures": [
+                {
+                  "a": 237,
+                  "b": 19,
+                  "pred": 510,
+                  "reference": 508
+                },
                 {
                   "a": 135,
                   "b": 162,
@@ -2023,20 +2056,14 @@
                 {
                   "a": 214,
                   "b": 94,
-                  "pred": 314,
+                  "pred": 444,
                   "reference": 272
-                },
-                {
-                  "a": 33,
-                  "b": 51,
-                  "pred": 100,
-                  "reference": 36
                 }
               ],
               "tested": 64
             }
           },
-          "last_loss": 0.000858696352224797,
+          "last_loss": 0.0019562195520848036,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -2045,25 +2072,25 @@
               "tested": 64
             },
             "AND": {
-              "correct": 33,
+              "correct": 46,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 62,
+              "correct": 52,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 53,
+              "correct": 56,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SAR": {
-              "correct": 18,
+              "correct": 32,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -2075,26 +2102,26 @@
               "tested": 64
             },
             "SHR": {
-              "correct": 59,
+              "correct": 58,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 42,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 27,
+              "correct": 26,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 302,
+            "correct": 294,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
@@ -2107,25 +2134,25 @@
               "tested": 64
             },
             "AND": {
-              "correct": 33,
+              "correct": 46,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 62,
+              "correct": 52,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 53,
+              "correct": 56,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SAR": {
-              "correct": 18,
+              "correct": 32,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -2137,19 +2164,19 @@
               "tested": 64
             },
             "SHR": {
-              "correct": 59,
+              "correct": 58,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 42,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 27,
+              "correct": 26,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -2185,7 +2212,7 @@
       "last_checkpoint": {
         "bytes": 100800,
         "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage06.pt",
-        "sha256": "e2fc31786fa6179db1e2fd88db5b023c8fdd1f4beb518a83584df82f8738a921",
+        "sha256": "b93aed6b333d5d88d175539e36e76e71b9bba3b3a6bb1c1e64e78ad05bad41bf",
         "stage": "LOOPS",
         "total_updates": 2250
       },
@@ -2224,7 +2251,7 @@
           "checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage00.pt",
-            "sha256": "f7ad0765bf14bef6f78833945683207c7b19ffe06a09403f4b097e21b5b8f717",
+            "sha256": "5c255751e8d0dec36b337a3fcdeabf90ef8f1f8b786043eb31bf46d02cbdb531",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -2255,7 +2282,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.004418749362230301,
+          "last_loss": 0.0028389019425958395,
           "local_by_op": {
             "ADD": {
               "correct": 24,
@@ -2288,13 +2315,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 58,
+              "correct": 57,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 62,
+              "correct": 63,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -2344,13 +2371,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 58,
+              "correct": 57,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 62,
+              "correct": 63,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -2380,7 +2407,7 @@
           "checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage01.pt",
-            "sha256": "cde0ead7cce4248e0bd765e9f14c54af244b0bbb9dbd87961d26334946bad59a",
+            "sha256": "cd128dceecdd8476cbd15e962fe24987bb171be4ce7130c63ba648878577fa84",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -2408,7 +2435,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0012298612855374813,
+          "last_loss": 0.0010052000870928168,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -2423,37 +2450,37 @@
               "tested": 64
             },
             "AND1": {
-              "correct": 47,
+              "correct": 41,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 56,
+              "correct": 52,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SAR": {
-              "correct": 10,
+              "correct": 7,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 49,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 56,
+              "correct": 55,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 14,
+              "correct": 18,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -2466,7 +2493,7 @@
             }
           },
           "old_five_retention": {
-            "correct": 272,
+            "correct": 260,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
@@ -2485,25 +2512,25 @@
               "tested": 64
             },
             "AND1": {
-              "correct": 47,
+              "correct": 41,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 56,
+              "correct": 52,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 49,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 56,
+              "correct": 55,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -2533,7 +2560,7 @@
           "checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage02.pt",
-            "sha256": "1e482d06de360623dbaa1c5029f0f427689ba3bbea8948e5ebbd4fb6959a4daa",
+            "sha256": "5bdfac925adb2ceae600fa7e7d54a570fc640e52a2696fdc9dce25f7603afeb9",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -2563,28 +2590,28 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0010148822329938412,
+          "last_loss": 0.0016373558901250362,
           "local_by_op": {
             "ADD": {
-              "correct": 23,
+              "correct": 17,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 46,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 57,
+              "correct": 52,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 60,
+              "correct": 58,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -2608,45 +2635,45 @@
               "tested": 64
             },
             "SUB": {
-              "correct": 20,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 33,
+              "correct": 34,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 268,
+            "correct": 255,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
           },
           "prior_retention": {
             "ADD": {
-              "correct": 23,
+              "correct": 17,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 46,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 57,
+              "correct": 52,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 60,
+              "correct": 58,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -2670,7 +2697,7 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 33,
+              "correct": 34,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -2695,7 +2722,7 @@
           "checkpoint": {
             "bytes": 92836,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage03.pt",
-            "sha256": "34881f691cc32db6a3b1045ac035ee62f81c2ebfecaf00e7c7ef16315f1e7ff5",
+            "sha256": "c0dffd8cb6add9f979a351dd922ebb95e98ba101012d2ed5243aaa320dcd0a04",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -2728,7 +2755,7 @@
                   "a": 64,
                   "b": 27,
                   "expected": 91,
-                  "pred": 65471
+                  "pred": 63
                 }
               ],
               "tested": 96
@@ -2770,13 +2797,13 @@
                   "a": 83,
                   "b": 117,
                   "expected": 1,
-                  "pred": 65454
+                  "pred": 65452
                 },
                 {
                   "a": 124,
                   "b": 204,
                   "expected": 0,
-                  "pred": 65459
+                  "pred": 65411
                 },
                 {
                   "a": 34,
@@ -2788,7 +2815,7 @@
                   "a": 64,
                   "b": 27,
                   "expected": 0,
-                  "pred": 65535
+                  "pred": 65471
                 }
               ],
               "tested": 96
@@ -2806,7 +2833,7 @@
                   "a": 124,
                   "b": 204,
                   "expected": 252,
-                  "pred": 65459
+                  "pred": 65411
                 },
                 {
                   "a": 34,
@@ -2854,61 +2881,61 @@
               "tested": 96
             },
             "SHL": {
-              "correct": 12,
+              "correct": 0,
               "failures": [
+                {
+                  "a": 83,
+                  "b": 117,
+                  "expected": 166,
+                  "pred": 65452
+                },
                 {
                   "a": 124,
                   "b": 204,
                   "expected": 248,
-                  "pred": 177
+                  "pred": 65411
                 },
                 {
                   "a": 34,
                   "b": 35,
                   "expected": 68,
-                  "pred": 69
+                  "pred": 65500
                 },
                 {
                   "a": 64,
                   "b": 27,
                   "expected": 128,
-                  "pred": 155
-                },
-                {
-                  "a": 244,
-                  "b": 157,
-                  "expected": 488,
-                  "pred": 361
+                  "pred": 65471
                 }
               ],
               "tested": 96
             },
             "SHR": {
-              "correct": 13,
+              "correct": 0,
               "failures": [
                 {
                   "a": 83,
                   "b": 117,
                   "expected": 41,
-                  "pred": 44
+                  "pred": 65452
                 },
                 {
                   "a": 124,
                   "b": 204,
                   "expected": 62,
-                  "pred": 191
+                  "pred": 65459
+                },
+                {
+                  "a": 34,
+                  "b": 35,
+                  "expected": 17,
+                  "pred": 65501
                 },
                 {
                   "a": 64,
                   "b": 27,
                   "expected": 32,
-                  "pred": 123
-                },
-                {
-                  "a": 244,
-                  "b": 157,
-                  "expected": 122,
-                  "pred": 123
+                  "pred": 65471
                 }
               ],
               "tested": 96
@@ -2925,13 +2952,13 @@
                   "a": 83,
                   "b": 117,
                   "expected": 38,
-                  "pred": 65533
+                  "pred": 65497
                 },
                 {
                   "a": 124,
                   "b": 204,
                   "expected": 176,
-                  "pred": 65487
+                  "pred": 65359
                 },
                 {
                   "a": 34,
@@ -2943,7 +2970,7 @@
                   "a": 64,
                   "b": 27,
                   "expected": 91,
-                  "pred": 65470
+                  "pred": 65444
                 }
               ],
               "tested": 96
@@ -2969,28 +2996,28 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.008523022755980492,
+          "last_loss": 0.005149333272129297,
           "local_by_op": {
             "ADD": {
-              "correct": 18,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 9,
+              "correct": 15,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 9,
+              "correct": 26,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 24,
+              "correct": 20,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -3002,13 +3029,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 26,
+              "correct": 35,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 35,
+              "correct": 34,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -3020,39 +3047,39 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 12,
+              "correct": 8,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 112,
+            "correct": 128,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
           },
           "prior_retention": {
             "ADD": {
-              "correct": 18,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 9,
+              "correct": 15,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 9,
+              "correct": 26,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 24,
+              "correct": 20,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -3064,13 +3091,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 26,
+              "correct": 35,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 35,
+              "correct": 34,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -3082,7 +3109,7 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 12,
+              "correct": 8,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -3108,7 +3135,7 @@
           "checkpoint": {
             "bytes": 100800,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage04.pt",
-            "sha256": "f684b41512ad927192280067382a471f6fe2e4475163c0c0e70f81ccb11f6520",
+            "sha256": "c7c284530c1a6ca88b5ccfe6b1a9a385faacb0870f2037030e164b026e244880",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -3139,7 +3166,7 @@
                   "a": 64,
                   "b": 27,
                   "expected": 91,
-                  "pred": 65471
+                  "pred": 63
                 }
               ],
               "tested": 96
@@ -3181,13 +3208,13 @@
                   "a": 83,
                   "b": 117,
                   "expected": 1,
-                  "pred": 65454
+                  "pred": 65452
                 },
                 {
                   "a": 124,
                   "b": 204,
                   "expected": 0,
-                  "pred": 65459
+                  "pred": 65411
                 },
                 {
                   "a": 34,
@@ -3199,7 +3226,7 @@
                   "a": 64,
                   "b": 27,
                   "expected": 0,
-                  "pred": 65535
+                  "pred": 65471
                 }
               ],
               "tested": 96
@@ -3217,7 +3244,7 @@
                   "a": 124,
                   "b": 204,
                   "expected": 252,
-                  "pred": 65459
+                  "pred": 65411
                 },
                 {
                   "a": 34,
@@ -3265,61 +3292,61 @@
               "tested": 96
             },
             "SHL": {
-              "correct": 12,
+              "correct": 0,
               "failures": [
+                {
+                  "a": 83,
+                  "b": 117,
+                  "expected": 166,
+                  "pred": 65452
+                },
                 {
                   "a": 124,
                   "b": 204,
                   "expected": 248,
-                  "pred": 177
+                  "pred": 65411
                 },
                 {
                   "a": 34,
                   "b": 35,
                   "expected": 68,
-                  "pred": 69
+                  "pred": 65500
                 },
                 {
                   "a": 64,
                   "b": 27,
                   "expected": 128,
-                  "pred": 155
-                },
-                {
-                  "a": 244,
-                  "b": 157,
-                  "expected": 488,
-                  "pred": 361
+                  "pred": 65471
                 }
               ],
               "tested": 96
             },
             "SHR": {
-              "correct": 13,
+              "correct": 0,
               "failures": [
                 {
                   "a": 83,
                   "b": 117,
                   "expected": 41,
-                  "pred": 44
+                  "pred": 65452
                 },
                 {
                   "a": 124,
                   "b": 204,
                   "expected": 62,
-                  "pred": 191
+                  "pred": 65459
+                },
+                {
+                  "a": 34,
+                  "b": 35,
+                  "expected": 17,
+                  "pred": 65501
                 },
                 {
                   "a": 64,
                   "b": 27,
                   "expected": 32,
-                  "pred": 123
-                },
-                {
-                  "a": 244,
-                  "b": 157,
-                  "expected": 122,
-                  "pred": 123
+                  "pred": 65471
                 }
               ],
               "tested": 96
@@ -3336,13 +3363,13 @@
                   "a": 83,
                   "b": 117,
                   "expected": 38,
-                  "pred": 65533
+                  "pred": 65497
                 },
                 {
                   "a": 124,
                   "b": 204,
                   "expected": 176,
-                  "pred": 65487
+                  "pred": 65359
                 },
                 {
                   "a": 34,
@@ -3354,7 +3381,7 @@
                   "a": 64,
                   "b": 27,
                   "expected": 91,
-                  "pred": 65470
+                  "pred": 65444
                 }
               ],
               "tested": 96
@@ -3371,28 +3398,28 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0022557538468390703,
+          "last_loss": 0.0030552756506949663,
           "local_by_op": {
             "ADD": {
-              "correct": 18,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 9,
+              "correct": 15,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 9,
+              "correct": 26,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 24,
+              "correct": 20,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -3404,13 +3431,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 26,
+              "correct": 35,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 35,
+              "correct": 34,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -3422,39 +3449,39 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 12,
+              "correct": 8,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 112,
+            "correct": 128,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
           },
           "prior_retention": {
             "ADD": {
-              "correct": 18,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 9,
+              "correct": 15,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 9,
+              "correct": 26,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 24,
+              "correct": 20,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -3466,13 +3493,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 26,
+              "correct": 35,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 35,
+              "correct": 34,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -3484,7 +3511,7 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 12,
+              "correct": 8,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -3510,7 +3537,7 @@
           "checkpoint": {
             "bytes": 100800,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage05.pt",
-            "sha256": "703101e1c394a44d15bceeed860baf3672390d90e81967e36e5783be8eaf831d",
+            "sha256": "33417a6efd3d6bf37f53b39f60d9d5d8ab81087952ed6c530d91987a1e816bfd",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -3537,13 +3564,19 @@
               "tested": 96
             },
             "AND1": {
-              "correct": 26,
+              "correct": 3,
               "failures": [
                 {
                   "a": 83,
                   "b": 117,
                   "expected": 1,
-                  "pred": 32
+                  "pred": 34
+                },
+                {
+                  "a": 124,
+                  "b": 204,
+                  "expected": 0,
+                  "pred": 48
                 },
                 {
                   "a": 34,
@@ -3555,13 +3588,7 @@
                   "a": 64,
                   "b": 27,
                   "expected": 0,
-                  "pred": 1
-                },
-                {
-                  "a": 244,
-                  "b": 157,
-                  "expected": 0,
-                  "pred": 9
+                  "pred": 64
                 }
               ],
               "tested": 96
@@ -3572,25 +3599,25 @@
               "tested": 96
             },
             "SAR": {
-              "correct": 2,
+              "correct": 4,
               "failures": [
                 {
                   "a": 83,
                   "b": 117,
                   "expected": 41,
-                  "pred": 81
+                  "pred": 117
                 },
                 {
                   "a": 124,
                   "b": 204,
                   "expected": 62,
-                  "pred": 76
+                  "pred": 252
                 },
                 {
                   "a": 34,
                   "b": 35,
                   "expected": 17,
-                  "pred": 34
+                  "pred": 35
                 },
                 {
                   "a": 64,
@@ -3602,121 +3629,71 @@
               "tested": 96
             },
             "SHL": {
-              "correct": 50,
-              "failures": [
-                {
-                  "a": 124,
-                  "b": 204,
-                  "expected": 248,
-                  "pred": 176
-                },
-                {
-                  "a": 244,
-                  "b": 157,
-                  "expected": 488,
-                  "pred": 360
-                },
-                {
-                  "a": 127,
-                  "b": 226,
-                  "expected": 254,
-                  "pred": 156
-                },
-                {
-                  "a": 103,
-                  "b": 225,
-                  "expected": 206,
-                  "pred": 142
-                }
-              ],
+              "correct": 96,
+              "failures": [],
               "tested": 96
             },
             "SHR": {
-              "correct": 39,
-              "failures": [
-                {
-                  "a": 83,
-                  "b": 117,
-                  "expected": 41,
-                  "pred": 40
-                },
-                {
-                  "a": 124,
-                  "b": 204,
-                  "expected": 62,
-                  "pred": 50
-                },
-                {
-                  "a": 244,
-                  "b": 157,
-                  "expected": 122,
-                  "pred": 106
-                },
-                {
-                  "a": 127,
-                  "b": 226,
-                  "expected": 63,
-                  "pred": 29
-                }
-              ],
+              "correct": 96,
+              "failures": [],
               "tested": 96
             },
             "SUB": {
-              "correct": 1,
+              "correct": 29,
               "failures": [
                 {
                   "a": 83,
                   "b": 117,
                   "expected": 65502,
-                  "pred": 87
+                  "pred": 65503
                 },
                 {
                   "a": 124,
                   "b": 204,
                   "expected": 65456,
-                  "pred": 252
+                  "pred": 65532
                 },
                 {
-                  "a": 34,
-                  "b": 35,
-                  "expected": 65535,
-                  "pred": 35
+                  "a": 244,
+                  "b": 157,
+                  "expected": 87,
+                  "pred": 215
                 },
                 {
-                  "a": 64,
-                  "b": 27,
-                  "expected": 37,
-                  "pred": 1
+                  "a": 127,
+                  "b": 226,
+                  "expected": 65437,
+                  "pred": 65535
                 }
               ],
               "tested": 96
             },
             "XOR": {
-              "correct": 1,
+              "correct": 39,
               "failures": [
-                {
-                  "a": 83,
-                  "b": 117,
-                  "expected": 38,
-                  "pred": 112
-                },
-                {
-                  "a": 124,
-                  "b": 204,
-                  "expected": 176,
-                  "pred": 64
-                },
-                {
-                  "a": 34,
-                  "b": 35,
-                  "expected": 1,
-                  "pred": 35
-                },
                 {
                   "a": 64,
                   "b": 27,
                   "expected": 91,
                   "pred": 27
+                },
+                {
+                  "a": 65,
+                  "b": 14,
+                  "expected": 79,
+                  "pred": 15
+                },
+                {
+                  "a": 164,
+                  "b": 31,
+                  "expected": 187,
+                  "pred": 91
+                },
+                {
+                  "a": 171,
+                  "b": 103,
+                  "expected": 204,
+                  "pred": 84
                 }
               ],
               "tested": 96
@@ -3749,67 +3726,67 @@
               "tested": 64
             },
             "subtract_then_xor": {
-              "correct": 0,
+              "correct": 5,
               "failures": [
                 {
                   "a": 188,
                   "b": 245,
-                  "pred": 238,
+                  "pred": 65355,
                   "reference": 65403
                 },
                 {
                   "a": 153,
                   "b": 158,
-                  "pred": 148,
+                  "pred": 65382,
                   "reference": 65378
                 },
                 {
                   "a": 203,
                   "b": 221,
-                  "pred": 136,
+                  "pred": 65332,
                   "reference": 65317
                 },
                 {
                   "a": 183,
                   "b": 8,
-                  "pred": 160,
+                  "pred": 88,
                   "reference": 24
                 }
               ],
               "tested": 64
             },
             "xor_then_double": {
-              "correct": 0,
+              "correct": 31,
               "failures": [
-                {
-                  "a": 188,
-                  "b": 245,
-                  "pred": 450,
-                  "reference": 146
-                },
-                {
-                  "a": 153,
-                  "b": 158,
-                  "pred": 296,
-                  "reference": 14
-                },
-                {
-                  "a": 203,
-                  "b": 221,
-                  "pred": 280,
-                  "reference": 44
-                },
                 {
                   "a": 183,
                   "b": 8,
-                  "pred": 144,
+                  "pred": 254,
                   "reference": 382
+                },
+                {
+                  "a": 163,
+                  "b": 200,
+                  "pred": 150,
+                  "reference": 214
+                },
+                {
+                  "a": 82,
+                  "b": 96,
+                  "pred": 64,
+                  "reference": 100
+                },
+                {
+                  "a": 71,
+                  "b": 33,
+                  "pred": 76,
+                  "reference": 204
                 }
               ],
               "tested": 64
             }
           },
-          "last_loss": 0.0011910258326679468,
+          "last_loss": 0.0013260988052934408,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -3818,56 +3795,56 @@
               "tested": 64
             },
             "AND": {
-              "correct": 35,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 38,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 51,
+              "correct": 54,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SAR": {
-              "correct": 21,
+              "correct": 28,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 39,
+              "correct": 60,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 48,
+              "correct": 60,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 53,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 22,
+              "correct": 26,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 240,
+            "correct": 278,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
@@ -3880,49 +3857,49 @@
               "tested": 64
             },
             "AND": {
-              "correct": 35,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 38,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 51,
+              "correct": 54,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SAR": {
-              "correct": 21,
+              "correct": 28,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 39,
+              "correct": 60,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 48,
+              "correct": 60,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 53,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 22,
+              "correct": 26,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -3948,7 +3925,7 @@
           "checkpoint": {
             "bytes": 100800,
             "path": "artifacts/NC-005/checkpoints/new_only_seed19_stage06.pt",
-            "sha256": "e2fc31786fa6179db1e2fd88db5b023c8fdd1f4beb518a83584df82f8738a921",
+            "sha256": "b93aed6b333d5d88d175539e36e76e71b9bba3b3a6bb1c1e64e78ad05bad41bf",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -3965,12 +3942,37 @@
               "tested": 96
             },
             "AND": {
-              "correct": 96,
-              "failures": [],
+              "correct": 56,
+              "failures": [
+                {
+                  "a": 83,
+                  "b": 117,
+                  "expected": 81,
+                  "pred": 1
+                },
+                {
+                  "a": 34,
+                  "b": 35,
+                  "expected": 34,
+                  "pred": 0
+                },
+                {
+                  "a": 244,
+                  "b": 157,
+                  "expected": 148,
+                  "pred": 144
+                },
+                {
+                  "a": 164,
+                  "b": 31,
+                  "expected": 4,
+                  "pred": 0
+                }
+              ],
               "tested": 96
             },
             "AND1": {
-              "correct": 51,
+              "correct": 70,
               "failures": [
                 {
                   "a": 83,
@@ -3979,22 +3981,22 @@
                   "pred": 0
                 },
                 {
-                  "a": 34,
-                  "b": 35,
-                  "expected": 0,
-                  "pred": 1
+                  "a": 103,
+                  "b": 225,
+                  "expected": 1,
+                  "pred": 0
                 },
                 {
-                  "a": 64,
-                  "b": 27,
-                  "expected": 0,
-                  "pred": 1
+                  "a": 171,
+                  "b": 103,
+                  "expected": 1,
+                  "pred": 0
                 },
                 {
-                  "a": 244,
-                  "b": 157,
-                  "expected": 0,
-                  "pred": 1
+                  "a": 231,
+                  "b": 55,
+                  "expected": 1,
+                  "pred": 0
                 }
               ],
               "tested": 96
@@ -4011,19 +4013,19 @@
                   "a": 83,
                   "b": 117,
                   "expected": 41,
-                  "pred": 81
+                  "pred": 117
                 },
                 {
                   "a": 124,
                   "b": 204,
                   "expected": 62,
-                  "pred": 76
+                  "pred": 244
                 },
                 {
                   "a": 34,
                   "b": 35,
                   "expected": 17,
-                  "pred": 34
+                  "pred": 35
                 },
                 {
                   "a": 64,
@@ -4035,73 +4037,23 @@
               "tested": 96
             },
             "SHL": {
-              "correct": 50,
-              "failures": [
-                {
-                  "a": 124,
-                  "b": 204,
-                  "expected": 248,
-                  "pred": 176
-                },
-                {
-                  "a": 244,
-                  "b": 157,
-                  "expected": 488,
-                  "pred": 360
-                },
-                {
-                  "a": 127,
-                  "b": 226,
-                  "expected": 254,
-                  "pred": 156
-                },
-                {
-                  "a": 103,
-                  "b": 225,
-                  "expected": 206,
-                  "pred": 142
-                }
-              ],
+              "correct": 96,
+              "failures": [],
               "tested": 96
             },
             "SHR": {
-              "correct": 34,
-              "failures": [
-                {
-                  "a": 83,
-                  "b": 117,
-                  "expected": 41,
-                  "pred": 40
-                },
-                {
-                  "a": 124,
-                  "b": 204,
-                  "expected": 62,
-                  "pred": 50
-                },
-                {
-                  "a": 64,
-                  "b": 27,
-                  "expected": 32,
-                  "pred": 33
-                },
-                {
-                  "a": 244,
-                  "b": 157,
-                  "expected": 122,
-                  "pred": 107
-                }
-              ],
+              "correct": 96,
+              "failures": [],
               "tested": 96
             },
             "SUB": {
-              "correct": 0,
+              "correct": 5,
               "failures": [
                 {
                   "a": 83,
                   "b": 117,
                   "expected": 65502,
-                  "pred": 119
+                  "pred": 87
                 },
                 {
                   "a": 124,
@@ -4119,37 +4071,37 @@
                   "a": 64,
                   "b": 27,
                   "expected": 37,
-                  "pred": 91
+                  "pred": 1
                 }
               ],
               "tested": 96
             },
             "XOR": {
-              "correct": 1,
+              "correct": 39,
               "failures": [
-                {
-                  "a": 83,
-                  "b": 117,
-                  "expected": 38,
-                  "pred": 112
-                },
-                {
-                  "a": 124,
-                  "b": 204,
-                  "expected": 176,
-                  "pred": 64
-                },
-                {
-                  "a": 34,
-                  "b": 35,
-                  "expected": 1,
-                  "pred": 35
-                },
                 {
                   "a": 64,
                   "b": 27,
                   "expected": 91,
                   "pred": 27
+                },
+                {
+                  "a": 65,
+                  "b": 14,
+                  "expected": 79,
+                  "pred": 15
+                },
+                {
+                  "a": 164,
+                  "b": 31,
+                  "expected": 187,
+                  "pred": 91
+                },
+                {
+                  "a": 171,
+                  "b": 103,
+                  "expected": 204,
+                  "pred": 84
                 }
               ],
               "tested": 96
@@ -4190,8 +4142,33 @@
           },
           "heldout_sequences": {
             "and_then_add": {
-              "correct": 64,
-              "failures": [],
+              "correct": 36,
+              "failures": [
+                {
+                  "a": 188,
+                  "b": 245,
+                  "pred": 240,
+                  "reference": 368
+                },
+                {
+                  "a": 153,
+                  "b": 158,
+                  "pred": 177,
+                  "reference": 305
+                },
+                {
+                  "a": 203,
+                  "b": 221,
+                  "pred": 396,
+                  "reference": 404
+                },
+                {
+                  "a": 163,
+                  "b": 200,
+                  "pred": 163,
+                  "reference": 291
+                }
+              ],
               "tested": 64
             },
             "double_plus": {
@@ -4210,62 +4187,62 @@
                 {
                   "a": 188,
                   "b": 245,
-                  "pred": 128,
+                  "pred": 75,
                   "reference": 65403
                 },
                 {
                   "a": 153,
                   "b": 158,
-                  "pred": 144,
+                  "pred": 6,
                   "reference": 65378
                 },
                 {
                   "a": 203,
                   "b": 221,
-                  "pred": 128,
+                  "pred": 4,
                   "reference": 65317
                 },
                 {
                   "a": 183,
                   "b": 8,
-                  "pred": 160,
+                  "pred": 88,
                   "reference": 24
                 }
               ],
               "tested": 64
             },
             "xor_then_double": {
-              "correct": 0,
+              "correct": 31,
               "failures": [
-                {
-                  "a": 188,
-                  "b": 245,
-                  "pred": 450,
-                  "reference": 146
-                },
-                {
-                  "a": 153,
-                  "b": 158,
-                  "pred": 296,
-                  "reference": 14
-                },
-                {
-                  "a": 203,
-                  "b": 221,
-                  "pred": 280,
-                  "reference": 44
-                },
                 {
                   "a": 183,
                   "b": 8,
-                  "pred": 16,
+                  "pred": 254,
                   "reference": 382
+                },
+                {
+                  "a": 163,
+                  "b": 200,
+                  "pred": 150,
+                  "reference": 214
+                },
+                {
+                  "a": 82,
+                  "b": 96,
+                  "pred": 64,
+                  "reference": 100
+                },
+                {
+                  "a": 71,
+                  "b": 33,
+                  "pred": 76,
+                  "reference": 204
                 }
               ],
               "tested": 64
             }
           },
-          "last_loss": 0.0009188184048980474,
+          "last_loss": 0.001115389633923769,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -4274,13 +4251,13 @@
               "tested": 64
             },
             "AND": {
-              "correct": 35,
+              "correct": 41,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 40,
+              "correct": 52,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -4292,38 +4269,38 @@
               "tested": 64
             },
             "SAR": {
-              "correct": 20,
+              "correct": 30,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 35,
+              "correct": 60,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 47,
+              "correct": 60,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 49,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 22,
+              "correct": 24,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 235,
+            "correct": 285,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
@@ -4336,13 +4313,13 @@
               "tested": 64
             },
             "AND": {
-              "correct": 35,
+              "correct": 41,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 40,
+              "correct": 52,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -4354,31 +4331,31 @@
               "tested": 64
             },
             "SAR": {
-              "correct": 20,
+              "correct": 30,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 35,
+              "correct": 60,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 47,
+              "correct": 60,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 49,
+              "correct": 48,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 22,
+              "correct": 24,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -4414,7 +4391,7 @@
       "last_checkpoint": {
         "bytes": 100736,
         "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage06.pt",
-        "sha256": "17eb242ff784517c8b1206ddd665563ffa61a19719da0a50362d8f2df2453ef3",
+        "sha256": "ecedf4f9ad4ced022a8f77dce5e9097523e4a7273a428df0ff8d6679a4e4b9c7",
         "stage": "LOOPS",
         "total_updates": 2250
       },
@@ -4453,7 +4430,7 @@
           "checkpoint": {
             "bytes": 92772,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage00.pt",
-            "sha256": "b4a5ecfef4657792b11dc3d1d2d4464f19a25dee42fe9a30bacd54dbafb02f57",
+            "sha256": "5917a970a5ebfaa6aa478b888d18568fa4e5d4b50518fc5a5b29a1c506bfbc9f",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -4484,7 +4461,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0006522884359583259,
+          "last_loss": 0.0013073395239189267,
           "local_by_op": {
             "ADD": {
               "correct": 31,
@@ -4511,25 +4488,25 @@
               "tested": 64
             },
             "SAR": {
-              "correct": 30,
+              "correct": 42,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 45,
+              "correct": 49,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 35,
+              "correct": 43,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 6,
+              "correct": 2,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -4542,7 +4519,7 @@
             }
           },
           "old_five_retention": {
-            "correct": 239,
+            "correct": 251,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
@@ -4573,13 +4550,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 45,
+              "correct": 49,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 35,
+              "correct": 43,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -4609,7 +4586,7 @@
           "checkpoint": {
             "bytes": 92772,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage01.pt",
-            "sha256": "59dd3d1459ca5f64635a679327fdc344d0615d003622691349eb904636d0fedc",
+            "sha256": "77dba7e0bdc6a6ccc85de339696cc4766f1287a7dbe1c2356e523cb9c988048c",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -4637,7 +4614,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0009911563247442245,
+          "last_loss": 0.000890052760951221,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -4646,13 +4623,13 @@
               "tested": 64
             },
             "AND": {
-              "correct": 21,
+              "correct": 10,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 46,
+              "correct": 51,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -4664,38 +4641,38 @@
               "tested": 64
             },
             "SAR": {
-              "correct": 7,
+              "correct": 10,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 35,
+              "correct": 57,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 34,
+              "correct": 61,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 6,
+              "correct": 7,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 22,
+              "correct": 24,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 235,
+            "correct": 289,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
@@ -4708,13 +4685,13 @@
               "tested": 64
             },
             "AND": {
-              "correct": 21,
+              "correct": 10,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 46,
+              "correct": 51,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -4726,19 +4703,19 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 35,
+              "correct": 57,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 34,
+              "correct": 61,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 22,
+              "correct": 24,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -4762,7 +4739,7 @@
           "checkpoint": {
             "bytes": 92772,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage02.pt",
-            "sha256": "310e60209958624e24ed5ea84e2d1d22e410bac9a5da27feb7b309b1a92d31e2",
+            "sha256": "99d5bfee2c91241a4b15ca36e246358fdb9b2825d67d991f4232f9de33dc3413",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -4792,28 +4769,28 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0010424313368275762,
+          "last_loss": 0.000773915380705148,
           "local_by_op": {
             "ADD": {
-              "correct": 22,
+              "correct": 19,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 40,
+              "correct": 41,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 50,
+              "correct": 55,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 51,
+              "correct": 50,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -4843,39 +4820,39 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 38,
+              "correct": 35,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 251,
+            "correct": 252,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
           },
           "prior_retention": {
             "ADD": {
-              "correct": 22,
+              "correct": 19,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 40,
+              "correct": 41,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 50,
+              "correct": 55,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 51,
+              "correct": 50,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -4899,7 +4876,7 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 38,
+              "correct": 35,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -4924,7 +4901,7 @@
           "checkpoint": {
             "bytes": 92772,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage03.pt",
-            "sha256": "e4efaddd8645dea40feba392c62cdd6b1deeb743c4131973f8dddd35508eb5ee",
+            "sha256": "58332e9b5949ccf20ca69d21e8e71b6444d1ba6f2a3851518e5d5036f0c064d0",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -4939,13 +4916,13 @@
                   "a": 212,
                   "b": 223,
                   "expected": 435,
-                  "pred": 65535
+                  "pred": 65323
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 216,
-                  "pred": 65535
+                  "pred": 65435
                 },
                 {
                   "a": 128,
@@ -4957,7 +4934,7 @@
                   "a": 19,
                   "b": 17,
                   "expected": 36,
-                  "pred": 1
+                  "pred": 0
                 }
               ],
               "tested": 96
@@ -4969,13 +4946,13 @@
                   "a": 212,
                   "b": 223,
                   "expected": 212,
-                  "pred": 65312
+                  "pred": 65524
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 100,
-                  "pred": 65419
+                  "pred": 65519
                 },
                 {
                   "a": 128,
@@ -4987,7 +4964,7 @@
                   "a": 19,
                   "b": 17,
                   "expected": 17,
-                  "pred": 65516
+                  "pred": 65533
                 }
               ],
               "tested": 96
@@ -4999,25 +4976,25 @@
                   "a": 212,
                   "b": 223,
                   "expected": 0,
-                  "pred": 223
+                  "pred": 65535
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 0,
-                  "pred": 117
+                  "pred": 65535
                 },
                 {
                   "a": 128,
                   "b": 77,
                   "expected": 0,
-                  "pred": 205
+                  "pred": 65535
                 },
                 {
                   "a": 19,
                   "b": 17,
                   "expected": 1,
-                  "pred": 19
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -5047,7 +5024,7 @@
                   "a": 19,
                   "b": 17,
                   "expected": 19,
-                  "pred": 65534
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -5083,31 +5060,31 @@
               "tested": 96
             },
             "SHL": {
-              "correct": 4,
+              "correct": 0,
               "failures": [
                 {
                   "a": 212,
                   "b": 223,
                   "expected": 424,
-                  "pred": 509
+                  "pred": 65535
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 200,
-                  "pred": 236
+                  "pred": 65535
                 },
                 {
                   "a": 128,
                   "b": 77,
                   "expected": 256,
-                  "pred": 257
+                  "pred": 65535
                 },
                 {
                   "a": 19,
                   "b": 17,
                   "expected": 38,
-                  "pred": 55
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -5119,25 +5096,25 @@
                   "a": 212,
                   "b": 223,
                   "expected": 106,
-                  "pred": 255
+                  "pred": 65535
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 50,
-                  "pred": 118
+                  "pred": 65535
                 },
                 {
                   "a": 128,
                   "b": 77,
                   "expected": 64,
-                  "pred": 77
+                  "pred": 65535
                 },
                 {
                   "a": 19,
                   "b": 17,
                   "expected": 9,
-                  "pred": 27
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -5154,25 +5131,25 @@
                   "a": 212,
                   "b": 223,
                   "expected": 11,
-                  "pred": 65524
+                  "pred": 65507
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 16,
-                  "pred": 65519
+                  "pred": 65531
                 },
                 {
                   "a": 128,
                   "b": 77,
                   "expected": 205,
-                  "pred": 65330
+                  "pred": 65407
                 },
                 {
                   "a": 19,
                   "b": 17,
                   "expected": 2,
-                  "pred": 65533
+                  "pred": 65517
                 }
               ],
               "tested": 96
@@ -5198,28 +5175,28 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.002601064508780837,
+          "last_loss": 0.0008992802468128502,
           "local_by_op": {
             "ADD": {
-              "correct": 4,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 8,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 16,
+              "correct": 8,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 27,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -5231,13 +5208,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 36,
+              "correct": 27,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 31,
+              "correct": 32,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -5249,39 +5226,39 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 8,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 114,
+            "correct": 120,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
           },
           "prior_retention": {
             "ADD": {
-              "correct": 4,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 8,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 16,
+              "correct": 8,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 27,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -5293,13 +5270,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 36,
+              "correct": 27,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 31,
+              "correct": 32,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -5311,7 +5288,7 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 8,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -5337,7 +5314,7 @@
           "checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage04.pt",
-            "sha256": "8be671eb01084d4109e3f661fe89707f3192204b17d5cbe5ba700b9251f82c41",
+            "sha256": "ca71f001fcba359fd0734e3196f33960b5f5aea2d1fc738b1b0decd984d6f78a",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -5350,13 +5327,13 @@
                   "a": 212,
                   "b": 223,
                   "expected": 435,
-                  "pred": 65535
+                  "pred": 65323
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 216,
-                  "pred": 65535
+                  "pred": 65435
                 },
                 {
                   "a": 128,
@@ -5368,7 +5345,7 @@
                   "a": 19,
                   "b": 17,
                   "expected": 36,
-                  "pred": 1
+                  "pred": 0
                 }
               ],
               "tested": 96
@@ -5380,13 +5357,13 @@
                   "a": 212,
                   "b": 223,
                   "expected": 212,
-                  "pred": 65312
+                  "pred": 65524
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 100,
-                  "pred": 65419
+                  "pred": 65519
                 },
                 {
                   "a": 128,
@@ -5398,7 +5375,7 @@
                   "a": 19,
                   "b": 17,
                   "expected": 17,
-                  "pred": 65516
+                  "pred": 65533
                 }
               ],
               "tested": 96
@@ -5410,25 +5387,25 @@
                   "a": 212,
                   "b": 223,
                   "expected": 0,
-                  "pred": 223
+                  "pred": 65535
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 0,
-                  "pred": 117
+                  "pred": 65535
                 },
                 {
                   "a": 128,
                   "b": 77,
                   "expected": 0,
-                  "pred": 205
+                  "pred": 65535
                 },
                 {
                   "a": 19,
                   "b": 17,
                   "expected": 1,
-                  "pred": 19
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -5458,7 +5435,7 @@
                   "a": 19,
                   "b": 17,
                   "expected": 19,
-                  "pred": 65534
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -5494,31 +5471,31 @@
               "tested": 96
             },
             "SHL": {
-              "correct": 4,
+              "correct": 0,
               "failures": [
                 {
                   "a": 212,
                   "b": 223,
                   "expected": 424,
-                  "pred": 509
+                  "pred": 65535
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 200,
-                  "pred": 236
+                  "pred": 65535
                 },
                 {
                   "a": 128,
                   "b": 77,
                   "expected": 256,
-                  "pred": 257
+                  "pred": 65535
                 },
                 {
                   "a": 19,
                   "b": 17,
                   "expected": 38,
-                  "pred": 55
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -5530,25 +5507,25 @@
                   "a": 212,
                   "b": 223,
                   "expected": 106,
-                  "pred": 255
+                  "pred": 65535
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 50,
-                  "pred": 118
+                  "pred": 65535
                 },
                 {
                   "a": 128,
                   "b": 77,
                   "expected": 64,
-                  "pred": 77
+                  "pred": 65535
                 },
                 {
                   "a": 19,
                   "b": 17,
                   "expected": 9,
-                  "pred": 27
+                  "pred": 65535
                 }
               ],
               "tested": 96
@@ -5565,25 +5542,25 @@
                   "a": 212,
                   "b": 223,
                   "expected": 11,
-                  "pred": 65524
+                  "pred": 65507
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 16,
-                  "pred": 65519
+                  "pred": 65531
                 },
                 {
                   "a": 128,
                   "b": 77,
                   "expected": 205,
-                  "pred": 65330
+                  "pred": 65407
                 },
                 {
                   "a": 19,
                   "b": 17,
                   "expected": 2,
-                  "pred": 65533
+                  "pred": 65517
                 }
               ],
               "tested": 96
@@ -5600,28 +5577,28 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0014876037603244185,
+          "last_loss": 0.0014535379596054554,
           "local_by_op": {
             "ADD": {
-              "correct": 4,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 8,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 16,
+              "correct": 8,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 27,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -5633,13 +5610,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 36,
+              "correct": 27,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 31,
+              "correct": 32,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -5651,39 +5628,39 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 8,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 114,
+            "correct": 120,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
           },
           "prior_retention": {
             "ADD": {
-              "correct": 4,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND": {
-              "correct": 8,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 16,
+              "correct": 8,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 27,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -5695,13 +5672,13 @@
               "tested": 64
             },
             "SHL": {
-              "correct": 36,
+              "correct": 27,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 31,
+              "correct": 32,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -5713,7 +5690,7 @@
               "tested": 64
             },
             "XOR": {
-              "correct": 8,
+              "correct": 13,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -5739,7 +5716,7 @@
           "checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage05.pt",
-            "sha256": "bdb3a807b1321948c6ac9eb098d411d3946b1c8e0778a727d5b4d1597caeef9d",
+            "sha256": "5de5b4294492ae5f78fea3f5f050ce7bd922ea13099c536f80de2f2bd698ea55",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -5766,31 +5743,31 @@
               "tested": 96
             },
             "AND1": {
-              "correct": 53,
+              "correct": 6,
               "failures": [
+                {
+                  "a": 212,
+                  "b": 223,
+                  "expected": 0,
+                  "pred": 212
+                },
+                {
+                  "a": 100,
+                  "b": 116,
+                  "expected": 0,
+                  "pred": 100
+                },
+                {
+                  "a": 19,
+                  "b": 17,
+                  "expected": 1,
+                  "pred": 17
+                },
                 {
                   "a": 191,
                   "b": 73,
                   "expected": 1,
-                  "pred": 9
-                },
-                {
-                  "a": 161,
-                  "b": 82,
-                  "expected": 1,
-                  "pred": 0
-                },
-                {
-                  "a": 129,
-                  "b": 46,
-                  "expected": 1,
-                  "pred": 0
-                },
-                {
-                  "a": 187,
-                  "b": 16,
-                  "expected": 1,
-                  "pred": 16
+                  "pred": 31
                 }
               ],
               "tested": 96
@@ -5801,13 +5778,13 @@
               "tested": 96
             },
             "SAR": {
-              "correct": 2,
+              "correct": 1,
               "failures": [
                 {
                   "a": 212,
                   "b": 223,
                   "expected": 106,
-                  "pred": 220
+                  "pred": 212
                 },
                 {
                   "a": 100,
@@ -5831,38 +5808,63 @@
               "tested": 96
             },
             "SHL": {
-              "correct": 68,
+              "correct": 35,
               "failures": [
+                {
+                  "a": 212,
+                  "b": 223,
+                  "expected": 424,
+                  "pred": 416
+                },
                 {
                   "a": 191,
                   "b": 73,
                   "expected": 382,
-                  "pred": 374
+                  "pred": 318
                 },
                 {
-                  "a": 187,
-                  "b": 16,
-                  "expected": 374,
-                  "pred": 358
+                  "a": 161,
+                  "b": 82,
+                  "expected": 322,
+                  "pred": 256
                 },
                 {
-                  "a": 242,
-                  "b": 117,
-                  "expected": 484,
-                  "pred": 388
-                },
-                {
-                  "a": 252,
-                  "b": 46,
-                  "expected": 504,
-                  "pred": 464
+                  "a": 88,
+                  "b": 224,
+                  "expected": 176,
+                  "pred": 16
                 }
               ],
               "tested": 96
             },
             "SHR": {
-              "correct": 96,
-              "failures": [],
+              "correct": 12,
+              "failures": [
+                {
+                  "a": 212,
+                  "b": 223,
+                  "expected": 106,
+                  "pred": 32
+                },
+                {
+                  "a": 100,
+                  "b": 116,
+                  "expected": 50,
+                  "pred": 2
+                },
+                {
+                  "a": 128,
+                  "b": 77,
+                  "expected": 64,
+                  "pred": 0
+                },
+                {
+                  "a": 19,
+                  "b": 17,
+                  "expected": 9,
+                  "pred": 8
+                }
+              ],
               "tested": 96
             },
             "SUB": {
@@ -5896,25 +5898,25 @@
               "tested": 96
             },
             "XOR": {
-              "correct": 5,
+              "correct": 0,
               "failures": [
                 {
                   "a": 212,
                   "b": 223,
                   "expected": 11,
-                  "pred": 222
+                  "pred": 212
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 16,
-                  "pred": 116
+                  "pred": 100
                 },
                 {
                   "a": 128,
                   "b": 77,
                   "expected": 205,
-                  "pred": 204
+                  "pred": 128
                 },
                 {
                   "a": 19,
@@ -5976,44 +5978,44 @@
                 {
                   "a": 151,
                   "b": 85,
-                  "pred": 215,
+                  "pred": 151,
                   "reference": 213
                 }
               ],
               "tested": 64
             },
             "xor_then_double": {
-              "correct": 2,
+              "correct": 0,
               "failures": [
                 {
                   "a": 185,
                   "b": 78,
-                  "pred": 510,
+                  "pred": 370,
                   "reference": 494
                 },
                 {
                   "a": 151,
                   "b": 159,
-                  "pred": 318,
+                  "pred": 302,
                   "reference": 16
                 },
                 {
                   "a": 213,
                   "b": 56,
-                  "pred": 506,
+                  "pred": 298,
                   "reference": 474
                 },
                 {
                   "a": 151,
                   "b": 85,
-                  "pred": 430,
+                  "pred": 302,
                   "reference": 388
                 }
               ],
               "tested": 64
             }
           },
-          "last_loss": 0.0011564419837668538,
+          "last_loss": 0.002323303371667862,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -6022,56 +6024,56 @@
               "tested": 64
             },
             "AND": {
-              "correct": 41,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 43,
+              "correct": 38,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 52,
+              "correct": 59,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SAR": {
-              "correct": 14,
+              "correct": 27,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 49,
+              "correct": 52,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 55,
+              "correct": 43,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 20,
+              "correct": 37,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 16,
+              "correct": 23,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 263,
+            "correct": 256,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
@@ -6084,49 +6086,49 @@
               "tested": 64
             },
             "AND": {
-              "correct": 41,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 43,
+              "correct": 38,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 52,
+              "correct": 59,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SAR": {
-              "correct": 14,
+              "correct": 27,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 49,
+              "correct": 52,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 55,
+              "correct": 43,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 20,
+              "correct": 37,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 16,
+              "correct": 23,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -6152,7 +6154,7 @@
           "checkpoint": {
             "bytes": 100736,
             "path": "artifacts/NC-005/checkpoints/new_only_seed29_stage06.pt",
-            "sha256": "17eb242ff784517c8b1206ddd665563ffa61a19719da0a50362d8f2df2453ef3",
+            "sha256": "ecedf4f9ad4ced022a8f77dce5e9097523e4a7273a428df0ff8d6679a4e4b9c7",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -6209,13 +6211,13 @@
               "tested": 96
             },
             "SAR": {
-              "correct": 2,
+              "correct": 1,
               "failures": [
                 {
                   "a": 212,
                   "b": 223,
                   "expected": 106,
-                  "pred": 220
+                  "pred": 212
                 },
                 {
                   "a": 100,
@@ -6239,38 +6241,63 @@
               "tested": 96
             },
             "SHL": {
-              "correct": 62,
+              "correct": 35,
               "failures": [
                 {
-                  "a": 19,
-                  "b": 17,
-                  "expected": 38,
-                  "pred": 39
+                  "a": 212,
+                  "b": 223,
+                  "expected": 424,
+                  "pred": 416
                 },
                 {
                   "a": 191,
                   "b": 73,
                   "expected": 382,
-                  "pred": 375
+                  "pred": 318
                 },
                 {
-                  "a": 187,
-                  "b": 16,
-                  "expected": 374,
-                  "pred": 358
+                  "a": 161,
+                  "b": 82,
+                  "expected": 322,
+                  "pred": 256
                 },
                 {
-                  "a": 242,
-                  "b": 117,
-                  "expected": 484,
-                  "pred": 388
+                  "a": 88,
+                  "b": 224,
+                  "expected": 176,
+                  "pred": 16
                 }
               ],
               "tested": 96
             },
             "SHR": {
-              "correct": 96,
-              "failures": [],
+              "correct": 12,
+              "failures": [
+                {
+                  "a": 212,
+                  "b": 223,
+                  "expected": 106,
+                  "pred": 32
+                },
+                {
+                  "a": 100,
+                  "b": 116,
+                  "expected": 50,
+                  "pred": 2
+                },
+                {
+                  "a": 128,
+                  "b": 77,
+                  "expected": 64,
+                  "pred": 0
+                },
+                {
+                  "a": 19,
+                  "b": 17,
+                  "expected": 9,
+                  "pred": 8
+                }
+              ],
               "tested": 96
             },
             "SUB": {
@@ -6304,31 +6331,31 @@
               "tested": 96
             },
             "XOR": {
-              "correct": 5,
+              "correct": 0,
               "failures": [
                 {
                   "a": 212,
                   "b": 223,
                   "expected": 11,
-                  "pred": 222
+                  "pred": 213
                 },
                 {
                   "a": 100,
                   "b": 116,
                   "expected": 16,
-                  "pred": 116
+                  "pred": 100
                 },
                 {
                   "a": 128,
                   "b": 77,
                   "expected": 205,
-                  "pred": 204
+                  "pred": 129
                 },
                 {
                   "a": 19,
                   "b": 17,
                   "expected": 2,
-                  "pred": 19
+                  "pred": 17
                 }
               ],
               "tested": 96
@@ -6407,44 +6434,44 @@
                 {
                   "a": 151,
                   "b": 85,
-                  "pred": 215,
+                  "pred": 151,
                   "reference": 213
                 }
               ],
               "tested": 64
             },
             "xor_then_double": {
-              "correct": 2,
+              "correct": 0,
               "failures": [
                 {
                   "a": 185,
                   "b": 78,
-                  "pred": 510,
+                  "pred": 306,
                   "reference": 494
                 },
                 {
                   "a": 151,
                   "b": 159,
-                  "pred": 318,
+                  "pred": 302,
                   "reference": 16
                 },
                 {
                   "a": 213,
                   "b": 56,
-                  "pred": 506,
+                  "pred": 42,
                   "reference": 474
                 },
                 {
                   "a": 151,
                   "b": 85,
-                  "pred": 430,
+                  "pred": 302,
                   "reference": 388
                 }
               ],
               "tested": 64
             }
           },
-          "last_loss": 0.0008178760763257742,
+          "last_loss": 0.0012087046634405851,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -6453,56 +6480,56 @@
               "tested": 64
             },
             "AND": {
-              "correct": 41,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 28,
+              "correct": 37,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 51,
+              "correct": 60,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SAR": {
-              "correct": 13,
+              "correct": 27,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 49,
+              "correct": 51,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 54,
+              "correct": 39,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 22,
+              "correct": 35,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 15,
+              "correct": 22,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             }
           },
           "old_five_retention": {
-            "correct": 246,
+            "correct": 251,
             "meaning_correct": 320,
             "meaning_tested": 320,
             "tested": 320
@@ -6515,49 +6542,49 @@
               "tested": 64
             },
             "AND": {
-              "correct": 41,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "AND1": {
-              "correct": 28,
+              "correct": 37,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "OR": {
-              "correct": 51,
+              "correct": 60,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SAR": {
-              "correct": 13,
+              "correct": 27,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHL": {
-              "correct": 49,
+              "correct": 51,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SHR": {
-              "correct": 54,
+              "correct": 39,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "SUB": {
-              "correct": 22,
+              "correct": 35,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
             },
             "XOR": {
-              "correct": 15,
+              "correct": 22,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -6593,7 +6620,7 @@
       "last_checkpoint": {
         "bytes": 100791,
         "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage06.pt",
-        "sha256": "8db88c54e0a9a209e335564b8ed76e5c9f8e9702a6c497b42f59940c0224f95b",
+        "sha256": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
         "stage": "LOOPS",
         "total_updates": 2250
       },
@@ -6632,7 +6659,7 @@
           "checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage00.pt",
-            "sha256": "c1f2d54e46cc74111e362d671e5c0863a8e420e1a42ad1e3f45ec27841039a5c",
+            "sha256": "7c287ed8f98c41ddff536ac70a428cc0960903afb43b9a4b286276ef95052651",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -6663,7 +6690,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0019934861920773983,
+          "last_loss": 0.002270646160468459,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -6690,7 +6717,7 @@
               "tested": 64
             },
             "SAR": {
-              "correct": 40,
+              "correct": 39,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -6788,7 +6815,7 @@
           "checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage01.pt",
-            "sha256": "816cc65dfea9eb08520df6ea677fe87e51405f88c592ca6240578757fa4aeef0",
+            "sha256": "cbed29732eed5cd097a47dd4f3a905b709411423ed3b129127e80b57ea2e599e",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -6816,7 +6843,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0006358717801049352,
+          "last_loss": 0.0008491086773574352,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -6843,7 +6870,7 @@
               "tested": 64
             },
             "SAR": {
-              "correct": 40,
+              "correct": 41,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -6941,7 +6968,7 @@
           "checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage02.pt",
-            "sha256": "73785f175826586797260f59bc84e58e54d818be51f641615453c43c58c5791d",
+            "sha256": "ef85de6a6a2ce4add110240772468b70100caacd7d8ae4d38cd02f401a3d14e3",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -6971,7 +6998,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0008552627405151725,
+          "last_loss": 0.0008443667320534587,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -7016,7 +7043,7 @@
               "tested": 64
             },
             "SUB": {
-              "correct": 16,
+              "correct": 15,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -7103,7 +7130,7 @@
           "checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage03.pt",
-            "sha256": "0df1e780b2e6cd1e5b273b405e1539fc3e083922398e45024cd60fc701063af8",
+            "sha256": "fd5b5efb2944a175213681c5f7f98d1aae6c923446f945348464175c66cf6712",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -7177,7 +7204,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.001337509835138917,
+          "last_loss": 0.0012655484024435282,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -7316,7 +7343,7 @@
           "checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage04.pt",
-            "sha256": "c58e895a313a5310285de84f292a86a649fb0cb28bca40e959ddb10ff03f6030",
+            "sha256": "e841906a10ea83fa80c890ccd456e440dfc4cd6280eaa220cf9a75ad2583c9ff",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -7379,7 +7406,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0031334683299064636,
+          "last_loss": 0.0023107295855879784,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -7518,7 +7545,7 @@
           "checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage05.pt",
-            "sha256": "b594e7aed357ed98da09113c29b0fdd4ef81db1cf4dc91ecaa5c83c79152027e",
+            "sha256": "e6452726d88d414f2582a88f1fe9124572522efc66f693adfb742c86ddc2ac5e",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -7617,7 +7644,7 @@
               "tested": 64
             }
           },
-          "last_loss": 0.00015550987154711038,
+          "last_loss": 0.00018413095676805824,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -7756,7 +7783,7 @@
           "checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage06.pt",
-            "sha256": "8db88c54e0a9a209e335564b8ed76e5c9f8e9702a6c497b42f59940c0224f95b",
+            "sha256": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -7873,7 +7900,7 @@
               "tested": 64
             }
           },
-          "last_loss": 0.0006297932122834027,
+          "last_loss": 0.0008858604705892503,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -8022,7 +8049,7 @@
       "last_checkpoint": {
         "bytes": 100855,
         "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage06.pt",
-        "sha256": "f07e0db27c04b07ffc82bc2cd38dcf7f1437562b463cc21e01c97ec8cc779dd0",
+        "sha256": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
         "stage": "LOOPS",
         "total_updates": 2250
       },
@@ -8061,7 +8088,7 @@
           "checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage00.pt",
-            "sha256": "f0b2b6cd3ba3afe78e4af73d73ba6c97c99d749bc59aae277a919c6747fd01c2",
+            "sha256": "7ba906e1e49d809c94d26c0762ac69712567c73cb85aa679ee09923706925a8f",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -8092,7 +8119,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.004890882410109043,
+          "last_loss": 0.008257531560957432,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -8119,7 +8146,7 @@
               "tested": 64
             },
             "SAR": {
-              "correct": 37,
+              "correct": 36,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -8137,7 +8164,7 @@
               "tested": 64
             },
             "SUB": {
-              "correct": 22,
+              "correct": 24,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -8217,7 +8244,7 @@
           "checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage01.pt",
-            "sha256": "9d393dac2f042dc52e6d84de782a1b0e7b8dd155bde45a2cc365d2b9f9c73d6e",
+            "sha256": "3d2e792efdfa2c3ebffb99f1da777ae1f7efabfa3624c36096ba11b244eb83b9",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -8245,7 +8272,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0023243927862495184,
+          "last_loss": 0.0021854587830603123,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -8290,7 +8317,7 @@
               "tested": 64
             },
             "SUB": {
-              "correct": 21,
+              "correct": 24,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -8370,7 +8397,7 @@
           "checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage02.pt",
-            "sha256": "5a93623c5c0c66ca78dea0de61fe3a4d3483a6d0422b22fce1bc86b5148c8172",
+            "sha256": "a4559160698e4b50c40ca86b4c4891c35e751933e976673d1f96edeb669e7d64",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -8400,7 +8427,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0019367450149729848,
+          "last_loss": 0.001580958254635334,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -8445,7 +8472,7 @@
               "tested": 64
             },
             "SUB": {
-              "correct": 16,
+              "correct": 18,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -8532,7 +8559,7 @@
           "checkpoint": {
             "bytes": 92879,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage03.pt",
-            "sha256": "9f5ade53343834ba818f7c4bd99d83e53491377a6eb3094c523f8daac756df58",
+            "sha256": "fca1e36c91b3371f5a727f78a782dcee0a22899506731d07d716d7de8dd67e1c",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -8606,7 +8633,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.001291552558541298,
+          "last_loss": 0.001134120742790401,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -8745,7 +8772,7 @@
           "checkpoint": {
             "bytes": 100855,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage04.pt",
-            "sha256": "708d68e36a94bc54dec02938c5976382f6a84821ccc08ac8a8bd393f42c32589",
+            "sha256": "45133b40bee5ded7426dbbdb249a472108cb3686a03bc3124f7995941cf64734",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -8808,7 +8835,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0023899830412119627,
+          "last_loss": 0.0030552756506949663,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -8947,7 +8974,7 @@
           "checkpoint": {
             "bytes": 100855,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage05.pt",
-            "sha256": "6c37396202082803136772df0225018e3bafec74eae6b9e70e9e420ac1b0d99a",
+            "sha256": "a079687c03288794db7078d70041cfd81bb8f08e92bfd16916e20cd3d056f0e2",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -9046,7 +9073,7 @@
               "tested": 64
             }
           },
-          "last_loss": 0.00011266882211202756,
+          "last_loss": 0.00026861866354011,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -9185,7 +9212,7 @@
           "checkpoint": {
             "bytes": 100855,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage06.pt",
-            "sha256": "f07e0db27c04b07ffc82bc2cd38dcf7f1437562b463cc21e01c97ec8cc779dd0",
+            "sha256": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -9302,7 +9329,7 @@
               "tested": 64
             }
           },
-          "last_loss": 0.000519178225658834,
+          "last_loss": 0.0007128576398827136,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -9451,7 +9478,7 @@
       "last_checkpoint": {
         "bytes": 100791,
         "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage06.pt",
-        "sha256": "790aef99bf1cf4bd281b79aa5aa3bcabf24a27dd42cca5321154685fe6a5a613",
+        "sha256": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
         "stage": "LOOPS",
         "total_updates": 2250
       },
@@ -9490,7 +9517,7 @@
           "checkpoint": {
             "bytes": 92815,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage00.pt",
-            "sha256": "bad02ad55491ae66a92300db531370c66db8285cf3859bcfc24456173ba866f2",
+            "sha256": "29b0be429290e5ec51f2d180fe36f609e417d634e8c246e0877321639c8692a3",
             "stage": "BOOLEAN",
             "total_updates": 300
           },
@@ -9521,7 +9548,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0011751209385693073,
+          "last_loss": 0.0015944227343425155,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -9548,7 +9575,7 @@
               "tested": 64
             },
             "SAR": {
-              "correct": 36,
+              "correct": 40,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -9566,7 +9593,7 @@
               "tested": 64
             },
             "SUB": {
-              "correct": 0,
+              "correct": 1,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -9646,7 +9673,7 @@
           "checkpoint": {
             "bytes": 92815,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage01.pt",
-            "sha256": "148003c82eaee299cfad94b7cac9454df48ced93aac5f9e4ca8db826b8251cc3",
+            "sha256": "0c5a74b0ee53dc7b340161672ddcd513042ffc6f0d969b618385577fd1cf6550",
             "stage": "CARRY_ADD",
             "total_updates": 600
           },
@@ -9674,7 +9701,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0005442228866741061,
+          "last_loss": 0.0005961866118013859,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -9701,7 +9728,7 @@
               "tested": 64
             },
             "SAR": {
-              "correct": 36,
+              "correct": 38,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -9719,7 +9746,7 @@
               "tested": 64
             },
             "SUB": {
-              "correct": 0,
+              "correct": 1,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -9799,7 +9826,7 @@
           "checkpoint": {
             "bytes": 92815,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage02.pt",
-            "sha256": "a34b38ee04afac38f7e5f831f8bdac67852308d38f5592ca46e7a7e8058d02eb",
+            "sha256": "bf88bad62c6159fe2e00e89dd4b065e2dc8dee834b4c067304734610799a0ff0",
             "stage": "SHIFTS",
             "total_updates": 900
           },
@@ -9829,7 +9856,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0004346152418293059,
+          "last_loss": 0.000679645745549351,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -9874,7 +9901,7 @@
               "tested": 64
             },
             "SUB": {
-              "correct": 10,
+              "correct": 9,
               "meaning_correct": 64,
               "meaning_tested": 64,
               "tested": 64
@@ -9961,7 +9988,7 @@
           "checkpoint": {
             "bytes": 92815,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage03.pt",
-            "sha256": "854d2036b31606accb5ac9d1d87ee708cc940cfe6849948f8292aa82a691cb60",
+            "sha256": "e28f7dff58b61c352fb3be0026d0f711487685ef8f4711a6b54c38a9bb412dcf",
             "stage": "COMPARE_SUB",
             "total_updates": 1250
           },
@@ -10035,7 +10062,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.000675909745041281,
+          "last_loss": 0.0011205361224710941,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -10174,7 +10201,7 @@
           "checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage04.pt",
-            "sha256": "a1e408da33d09f6031ff9fcac366e94982f41150bcc49ee7005a6df21d67956f",
+            "sha256": "92a5d8afe2ad5fde2ea99d49848393f088b91f4f893ce690da3591de922cd086",
             "stage": "PC_BRANCH",
             "total_updates": 1650
           },
@@ -10237,7 +10264,7 @@
           },
           "heldout_loops": null,
           "heldout_sequences": null,
-          "last_loss": 0.0018445216119289398,
+          "last_loss": 0.0014535379596054554,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -10376,7 +10403,7 @@
           "checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage05.pt",
-            "sha256": "9c8a7ef7f916b1a929686ecc514d1653ab867d0b412ed2515f4008c54313c0ac",
+            "sha256": "c0f97e67573dcbb4716c738e5279edc1f37a33a1b62c6c7cf3cb8c9933c3071e",
             "stage": "SEQUENCES",
             "total_updates": 1900
           },
@@ -10475,7 +10502,7 @@
               "tested": 64
             }
           },
-          "last_loss": 8.507795428158715e-05,
+          "last_loss": 0.00016418920131400228,
           "local_by_op": {
             "ADD": {
               "correct": 64,
@@ -10614,7 +10641,7 @@
           "checkpoint": {
             "bytes": 100791,
             "path": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage06.pt",
-            "sha256": "790aef99bf1cf4bd281b79aa5aa3bcabf24a27dd42cca5321154685fe6a5a613",
+            "sha256": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
             "stage": "LOOPS",
             "total_updates": 2250
           },
@@ -10731,7 +10758,7 @@
               "tested": 64
             }
           },
-          "last_loss": 0.0007197739323601127,
+          "last_loss": 0.0004394360294099897,
           "local_by_op": {
             "ADD": {
               "correct": 64,

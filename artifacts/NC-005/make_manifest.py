@@ -67,7 +67,7 @@ def run():
  pilots=[file_record(p) for p in sorted((HERE/"pilot/checkpoints").glob("*.pt"))]
  assert len(pilots)==42
  source_files=[HERE/name for name in ("curriculum.py","trace_training.py","analyze_retention.py",
- "verify_fresh.py","test_curriculum.py","README.md")]
+ "verify_fresh.py","test_curriculum.py","audit_budget.py","README.md")]
  for p in source_files:assert p.is_file()
  original_hashes=[]
  for record in inv["files"]:
@@ -97,7 +97,7 @@ def run():
  "saved_optimizer_and_rng_checked":optimizer_verified,
  "code_files":[file_record(p) for p in source_files],
  "receipts":[file_record(HERE/name) for name in ("training_report.json",
-   "curriculum_receipts.jsonl","retention_matrix.json","fresh_reload.json")],
+   "curriculum_receipts.jsonl","retention_matrix.json","fresh_reload.json","compute_budget.json")],
  "checkpoints":files,"pilot_checkpoints_excluded_from_scientific_claim":pilots,
  "explanation":"Each saved stage contains model weights, original source SHA, newly initialized Adam state, torch/python/numpy RNG, stage/seed/updatestep and all topology from pinned Python module; does not reconstruct NC004 historical optimizer.",
  "scientific_boundaries":["The source NC004 5-op MLP was already trained on all five local binary truth tables",

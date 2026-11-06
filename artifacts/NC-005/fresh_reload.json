@@ -10,9 +10,9 @@
     "new_only_seed11": {
       "arm": "new_only",
       "checkpoint": "artifacts/NC-005/checkpoints/new_only_seed11_stage06.pt",
-      "checkpoint_sha256": "b759545ea11c0e7d015cac5f59a22826d46a2d2b218e5ebba8f6b9ebc7206c87",
+      "checkpoint_sha256": "6675f6a040132e6cbf7a601334685a8eb7691f991abf19ee9034140328911e4a",
       "exact_local": {
-        "correct": 422,
+        "correct": 438,
         "meaning_correct": 576,
         "meaning_tested": 576,
         "tested": 576
@@ -38,551 +38,7 @@
         },
         "AND1": {
           "carry": null,
-          "correct": 377,
-          "failures": [],
-          "tested": 377
-        },
-        "OR": {
-          "carry": null,
-          "correct": 377,
-          "failures": [],
-          "tested": 377
-        },
-        "SAR": {
-          "carry": null,
-          "correct": 19,
-          "failures": [
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 1,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 3,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 255,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 32767,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 32769,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 65535,
-              "reference": 0
-            }
-          ],
-          "tested": 377
-        },
-        "SHL": {
-          "carry": null,
-          "correct": 377,
-          "failures": [],
-          "tested": 377
-        },
-        "SHR": {
-          "carry": null,
-          "correct": 339,
-          "failures": [
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 1,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 3,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 255,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 32767,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 32769,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 65535,
-              "reference": 0
-            }
-          ],
-          "tested": 377
-        },
-        "SUB": {
-          "carry": {
-            "correct": 200,
-            "mode": "SUB final no-borrow bit; host collects carry",
-            "tested": 377
-          },
-          "correct": 19,
-          "failures": [
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 1,
-              "reference": 65535
-            },
-            {
-              "a": 0,
-              "actual": 2,
-              "b": 2,
-              "reference": 65534
-            },
-            {
-              "a": 0,
-              "actual": 3,
-              "b": 3,
-              "reference": 65533
-            },
-            {
-              "a": 0,
-              "actual": 255,
-              "b": 255,
-              "reference": 65281
-            },
-            {
-              "a": 0,
-              "actual": 256,
-              "b": 256,
-              "reference": 65280
-            },
-            {
-              "a": 0,
-              "actual": 32767,
-              "b": 32767,
-              "reference": 32769
-            }
-          ],
-          "tested": 377
-        },
-        "XOR": {
-          "carry": null,
-          "correct": 96,
-          "failures": [
-            {
-              "a": 2,
-              "actual": 3,
-              "b": 0,
-              "reference": 2
-            },
-            {
-              "a": 2,
-              "actual": 3,
-              "b": 2,
-              "reference": 0
-            },
-            {
-              "a": 2,
-              "actual": 3,
-              "b": 3,
-              "reference": 1
-            },
-            {
-              "a": 2,
-              "actual": 255,
-              "b": 255,
-              "reference": 253
-            },
-            {
-              "a": 2,
-              "actual": 259,
-              "b": 256,
-              "reference": 258
-            },
-            {
-              "a": 2,
-              "actual": 32767,
-              "b": 32767,
-              "reference": 32765
-            }
-          ],
-          "tested": 377
-        }
-      },
-      "meaning_intervention": {
-        "bits_changed": 325,
-        "intervened_correct": 195,
-        "mechanism": "rotation of ONLY predicted semantic distribution into numeric MLP",
-        "normal_correct": 422,
-        "tested": 576
-      },
-      "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
-      "same_training_budget": 2250,
-      "seed": 11
-    },
-    "new_only_seed19": {
-      "arm": "new_only",
-      "checkpoint": "artifacts/NC-005/checkpoints/new_only_seed19_stage06.pt",
-      "checkpoint_sha256": "e2fc31786fa6179db1e2fd88db5b023c8fdd1f4beb518a83584df82f8738a921",
-      "exact_local": {
-        "correct": 361,
-        "meaning_correct": 576,
-        "meaning_tested": 576,
-        "tested": 576
-      },
-      "exhaustive_zero_16bit": {
-        "correct": 65536,
-        "failures": [],
-        "scope": "complete 16bit register-zero predicate, not all ISA machine states",
-        "tested": 65536
-      },
-      "fresh_16bit_arithmetic": {
-        "ADD": {
-          "carry": null,
-          "correct": 377,
-          "failures": [],
-          "tested": 377
-        },
-        "AND": {
-          "carry": null,
-          "correct": 377,
-          "failures": [],
-          "tested": 377
-        },
-        "AND1": {
-          "carry": null,
-          "correct": 190,
-          "failures": [
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 1,
-              "reference": 0
-            },
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 3,
-              "reference": 0
-            },
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 255,
-              "reference": 0
-            },
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 32767,
-              "reference": 0
-            },
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 32769,
-              "reference": 0
-            },
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 65535,
-              "reference": 0
-            }
-          ],
-          "tested": 377
-        },
-        "OR": {
-          "carry": null,
-          "correct": 377,
-          "failures": [],
-          "tested": 377
-        },
-        "SAR": {
-          "carry": null,
-          "correct": 19,
-          "failures": [
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 1,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 3,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 255,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 32767,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 32769,
-              "reference": 0
-            },
-            {
-              "a": 1,
-              "actual": 1,
-              "b": 65535,
-              "reference": 0
-            }
-          ],
-          "tested": 377
-        },
-        "SHL": {
-          "carry": null,
-          "correct": 120,
-          "failures": [
-            {
-              "a": 3,
-              "actual": 4,
-              "b": 2,
-              "reference": 6
-            },
-            {
-              "a": 3,
-              "actual": 4,
-              "b": 3,
-              "reference": 6
-            },
-            {
-              "a": 3,
-              "actual": 4,
-              "b": 255,
-              "reference": 6
-            },
-            {
-              "a": 3,
-              "actual": 4,
-              "b": 32767,
-              "reference": 6
-            },
-            {
-              "a": 3,
-              "actual": 4,
-              "b": 65534,
-              "reference": 6
-            },
-            {
-              "a": 3,
-              "actual": 4,
-              "b": 65535,
-              "reference": 6
-            }
-          ],
-          "tested": 377
-        },
-        "SHR": {
-          "carry": null,
-          "correct": 103,
-          "failures": [
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 1,
-              "reference": 0
-            },
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 3,
-              "reference": 0
-            },
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 255,
-              "reference": 0
-            },
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 32767,
-              "reference": 0
-            },
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 32769,
-              "reference": 0
-            },
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 65535,
-              "reference": 0
-            }
-          ],
-          "tested": 377
-        },
-        "SUB": {
-          "carry": {
-            "correct": 200,
-            "mode": "SUB final no-borrow bit; host collects carry",
-            "tested": 377
-          },
-          "correct": 19,
-          "failures": [
-            {
-              "a": 0,
-              "actual": 1,
-              "b": 1,
-              "reference": 65535
-            },
-            {
-              "a": 0,
-              "actual": 2,
-              "b": 2,
-              "reference": 65534
-            },
-            {
-              "a": 0,
-              "actual": 3,
-              "b": 3,
-              "reference": 65533
-            },
-            {
-              "a": 0,
-              "actual": 255,
-              "b": 255,
-              "reference": 65281
-            },
-            {
-              "a": 0,
-              "actual": 256,
-              "b": 256,
-              "reference": 65280
-            },
-            {
-              "a": 0,
-              "actual": 32767,
-              "b": 32767,
-              "reference": 32769
-            }
-          ],
-          "tested": 377
-        },
-        "XOR": {
-          "carry": null,
-          "correct": 13,
-          "failures": [
-            {
-              "a": 1,
-              "actual": 0,
-              "b": 0,
-              "reference": 1
-            },
-            {
-              "a": 1,
-              "actual": 0,
-              "b": 2,
-              "reference": 3
-            },
-            {
-              "a": 1,
-              "actual": 0,
-              "b": 3,
-              "reference": 2
-            },
-            {
-              "a": 1,
-              "actual": 252,
-              "b": 255,
-              "reference": 254
-            },
-            {
-              "a": 1,
-              "actual": 256,
-              "b": 256,
-              "reference": 257
-            },
-            {
-              "a": 1,
-              "actual": 32764,
-              "b": 32767,
-              "reference": 32766
-            }
-          ],
-          "tested": 377
-        }
-      },
-      "meaning_intervention": {
-        "bits_changed": 313,
-        "intervened_correct": 225,
-        "mechanism": "rotation of ONLY predicted semantic distribution into numeric MLP",
-        "normal_correct": 361,
-        "tested": 576
-      },
-      "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
-      "same_training_budget": 2250,
-      "seed": 19
-    },
-    "new_only_seed29": {
-      "arm": "new_only",
-      "checkpoint": "artifacts/NC-005/checkpoints/new_only_seed29_stage06.pt",
-      "checkpoint_sha256": "17eb242ff784517c8b1206ddd665563ffa61a19719da0a50362d8f2df2453ef3",
-      "exact_local": {
-        "correct": 337,
-        "meaning_correct": 576,
-        "meaning_tested": 576,
-        "tested": 576
-      },
-      "exhaustive_zero_16bit": {
-        "correct": 65536,
-        "failures": [],
-        "scope": "complete 16bit register-zero predicate, not all ISA machine states",
-        "tested": 65536
-      },
-      "fresh_16bit_arithmetic": {
-        "ADD": {
-          "carry": null,
-          "correct": 377,
-          "failures": [],
-          "tested": 377
-        },
-        "AND": {
-          "carry": null,
-          "correct": 377,
-          "failures": [],
-          "tested": 377
-        },
-        "AND1": {
-          "carry": null,
-          "correct": 52,
+          "correct": 158,
           "failures": [
             {
               "a": 0,
@@ -674,51 +130,632 @@
         },
         "SHL": {
           "carry": null,
-          "correct": 212,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SHR": {
+          "carry": null,
+          "correct": 290,
           "failures": [
             {
-              "a": 3,
-              "actual": 7,
+              "a": 0,
+              "actual": 1,
               "b": 1,
-              "reference": 6
+              "reference": 0
             },
             {
-              "a": 3,
-              "actual": 7,
+              "a": 0,
+              "actual": 1,
               "b": 3,
-              "reference": 6
+              "reference": 0
             },
             {
-              "a": 3,
-              "actual": 7,
+              "a": 0,
+              "actual": 1,
               "b": 255,
-              "reference": 6
+              "reference": 0
             },
             {
-              "a": 3,
-              "actual": 7,
+              "a": 0,
+              "actual": 1,
               "b": 32767,
-              "reference": 6
+              "reference": 0
             },
             {
-              "a": 3,
-              "actual": 7,
+              "a": 0,
+              "actual": 1,
               "b": 32769,
-              "reference": 6
+              "reference": 0
             },
             {
-              "a": 3,
-              "actual": 7,
+              "a": 0,
+              "actual": 1,
               "b": 65535,
-              "reference": 6
+              "reference": 0
             }
           ],
+          "tested": 377
+        },
+        "SUB": {
+          "carry": {
+            "correct": 200,
+            "mode": "SUB final no-borrow bit; host collects carry",
+            "tested": 377
+          },
+          "correct": 19,
+          "failures": [
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 1,
+              "reference": 65535
+            },
+            {
+              "a": 0,
+              "actual": 2,
+              "b": 2,
+              "reference": 65534
+            },
+            {
+              "a": 0,
+              "actual": 3,
+              "b": 3,
+              "reference": 65533
+            },
+            {
+              "a": 0,
+              "actual": 255,
+              "b": 255,
+              "reference": 65281
+            },
+            {
+              "a": 0,
+              "actual": 256,
+              "b": 256,
+              "reference": 65280
+            },
+            {
+              "a": 0,
+              "actual": 32767,
+              "b": 32767,
+              "reference": 32769
+            }
+          ],
+          "tested": 377
+        },
+        "XOR": {
+          "carry": null,
+          "correct": 74,
+          "failures": [
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 1,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 3,
+              "b": 3,
+              "reference": 2
+            },
+            {
+              "a": 1,
+              "actual": 255,
+              "b": 255,
+              "reference": 254
+            },
+            {
+              "a": 1,
+              "actual": 32767,
+              "b": 32767,
+              "reference": 32766
+            },
+            {
+              "a": 1,
+              "actual": 32769,
+              "b": 32769,
+              "reference": 32768
+            },
+            {
+              "a": 1,
+              "actual": 65535,
+              "b": 65535,
+              "reference": 65534
+            }
+          ],
+          "tested": 377
+        }
+      },
+      "meaning_intervention": {
+        "bits_changed": 320,
+        "intervened_correct": 204,
+        "mechanism": "rotation of ONLY predicted semantic distribution into numeric MLP",
+        "normal_correct": 438,
+        "tested": 576
+      },
+      "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "same_training_budget": 2250,
+      "seed": 11
+    },
+    "new_only_seed19": {
+      "arm": "new_only",
+      "checkpoint": "artifacts/NC-005/checkpoints/new_only_seed19_stage06.pt",
+      "checkpoint_sha256": "b93aed6b333d5d88d175539e36e76e71b9bba3b3a6bb1c1e64e78ad05bad41bf",
+      "exact_local": {
+        "correct": 428,
+        "meaning_correct": 576,
+        "meaning_tested": 576,
+        "tested": 576
+      },
+      "exhaustive_zero_16bit": {
+        "correct": 65536,
+        "failures": [],
+        "scope": "complete 16bit register-zero predicate, not all ISA machine states",
+        "tested": 65536
+      },
+      "fresh_16bit_arithmetic": {
+        "ADD": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND": {
+          "carry": null,
+          "correct": 196,
+          "failures": [
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 2,
+              "reference": 2
+            },
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 3,
+              "reference": 2
+            },
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 255,
+              "reference": 2
+            },
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 32767,
+              "reference": 2
+            },
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 65534,
+              "reference": 2
+            },
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 65535,
+              "reference": 2
+            }
+          ],
+          "tested": 377
+        },
+        "AND1": {
+          "carry": null,
+          "correct": 273,
+          "failures": [
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 1,
+              "reference": 1
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 3,
+              "reference": 1
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 255,
+              "reference": 1
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 32767,
+              "reference": 1
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 32769,
+              "reference": 1
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 65535,
+              "reference": 1
+            }
+          ],
+          "tested": 377
+        },
+        "OR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SAR": {
+          "carry": null,
+          "correct": 27,
+          "failures": [
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 1,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 2,
+              "b": 2,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 3,
+              "b": 3,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 3,
+              "b": 255,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 3,
+              "b": 32767,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 32769,
+              "reference": 0
+            }
+          ],
+          "tested": 377
+        },
+        "SHL": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
           "tested": 377
         },
         "SHR": {
           "carry": null,
           "correct": 377,
           "failures": [],
+          "tested": 377
+        },
+        "SUB": {
+          "carry": {
+            "correct": 377,
+            "mode": "SUB final no-borrow bit; host collects carry",
+            "tested": 377
+          },
+          "correct": 37,
+          "failures": [
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 1,
+              "reference": 65535
+            },
+            {
+              "a": 0,
+              "actual": 2,
+              "b": 2,
+              "reference": 65534
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 3,
+              "reference": 65533
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 255,
+              "reference": 65281
+            },
+            {
+              "a": 0,
+              "actual": 256,
+              "b": 256,
+              "reference": 65280
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 32767,
+              "reference": 32769
+            }
+          ],
+          "tested": 377
+        },
+        "XOR": {
+          "carry": null,
+          "correct": 133,
+          "failures": [
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 0,
+              "reference": 2
+            },
+            {
+              "a": 2,
+              "actual": 1,
+              "b": 1,
+              "reference": 3
+            },
+            {
+              "a": 2,
+              "actual": 256,
+              "b": 256,
+              "reference": 258
+            },
+            {
+              "a": 2,
+              "actual": 32768,
+              "b": 32768,
+              "reference": 32770
+            },
+            {
+              "a": 2,
+              "actual": 32769,
+              "b": 32769,
+              "reference": 32771
+            },
+            {
+              "a": 256,
+              "actual": 0,
+              "b": 0,
+              "reference": 256
+            }
+          ],
+          "tested": 377
+        }
+      },
+      "meaning_intervention": {
+        "bits_changed": 356,
+        "intervened_correct": 194,
+        "mechanism": "rotation of ONLY predicted semantic distribution into numeric MLP",
+        "normal_correct": 428,
+        "tested": 576
+      },
+      "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "same_training_budget": 2250,
+      "seed": 19
+    },
+    "new_only_seed29": {
+      "arm": "new_only",
+      "checkpoint": "artifacts/NC-005/checkpoints/new_only_seed29_stage06.pt",
+      "checkpoint_sha256": "ecedf4f9ad4ced022a8f77dce5e9097523e4a7273a428df0ff8d6679a4e4b9c7",
+      "exact_local": {
+        "correct": 375,
+        "meaning_correct": 576,
+        "meaning_tested": 576,
+        "tested": 576
+      },
+      "exhaustive_zero_16bit": {
+        "correct": 65536,
+        "failures": [],
+        "scope": "complete 16bit register-zero predicate, not all ISA machine states",
+        "tested": 65536
+      },
+      "fresh_16bit_arithmetic": {
+        "ADD": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "AND1": {
+          "carry": null,
+          "correct": 52,
+          "failures": [
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 1,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 3,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 255,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 32767,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 32769,
+              "reference": 0
+            },
+            {
+              "a": 0,
+              "actual": 1,
+              "b": 65535,
+              "reference": 0
+            }
+          ],
+          "tested": 377
+        },
+        "OR": {
+          "carry": null,
+          "correct": 377,
+          "failures": [],
+          "tested": 377
+        },
+        "SAR": {
+          "carry": null,
+          "correct": 19,
+          "failures": [
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 1,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 3,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 255,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 32767,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 32769,
+              "reference": 0
+            },
+            {
+              "a": 1,
+              "actual": 1,
+              "b": 65535,
+              "reference": 0
+            }
+          ],
+          "tested": 377
+        },
+        "SHL": {
+          "carry": null,
+          "correct": 107,
+          "failures": [
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 2,
+              "reference": 2
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 3,
+              "reference": 2
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 255,
+              "reference": 2
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 32767,
+              "reference": 2
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 65534,
+              "reference": 2
+            },
+            {
+              "a": 1,
+              "actual": 0,
+              "b": 65535,
+              "reference": 2
+            }
+          ],
+          "tested": 377
+        },
+        "SHR": {
+          "carry": null,
+          "correct": 67,
+          "failures": [
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 1,
+              "reference": 1
+            },
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 3,
+              "reference": 1
+            },
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 255,
+              "reference": 1
+            },
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 32767,
+              "reference": 1
+            },
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 32769,
+              "reference": 1
+            },
+            {
+              "a": 2,
+              "actual": 0,
+              "b": 65535,
+              "reference": 1
+            }
+          ],
           "tested": 377
         },
         "SUB": {
@@ -770,53 +807,53 @@
         },
         "XOR": {
           "carry": null,
-          "correct": 29,
+          "correct": 10,
           "failures": [
             {
               "a": 0,
               "actual": 0,
-              "b": 1,
-              "reference": 1
+              "b": 2,
+              "reference": 2
             },
             {
               "a": 0,
-              "actual": 2,
+              "actual": 1,
               "b": 3,
               "reference": 3
             },
             {
               "a": 0,
-              "actual": 254,
+              "actual": 1,
               "b": 255,
               "reference": 255
             },
             {
               "a": 0,
-              "actual": 32766,
+              "actual": 0,
+              "b": 256,
+              "reference": 256
+            },
+            {
+              "a": 0,
+              "actual": 1,
               "b": 32767,
               "reference": 32767
             },
             {
               "a": 0,
-              "actual": 32768,
-              "b": 32769,
-              "reference": 32769
-            },
-            {
-              "a": 0,
-              "actual": 65534,
-              "b": 65535,
-              "reference": 65535
+              "actual": 0,
+              "b": 32768,
+              "reference": 32768
             }
           ],
           "tested": 377
         }
       },
       "meaning_intervention": {
-        "bits_changed": 314,
-        "intervened_correct": 159,
+        "bits_changed": 316,
+        "intervened_correct": 193,
         "mechanism": "rotation of ONLY predicted semantic distribution into numeric MLP",
-        "normal_correct": 337,
+        "normal_correct": 375,
         "tested": 576
       },
       "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
@@ -826,7 +863,7 @@
     "rehearsal_seed11": {
       "arm": "rehearsal",
       "checkpoint": "artifacts/NC-005/checkpoints/rehearsal_seed11_stage06.pt",
-      "checkpoint_sha256": "8db88c54e0a9a209e335564b8ed76e5c9f8e9702a6c497b42f59940c0224f95b",
+      "checkpoint_sha256": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
       "exact_local": {
         "correct": 576,
         "meaning_correct": 576,
@@ -913,7 +950,7 @@
     "rehearsal_seed19": {
       "arm": "rehearsal",
       "checkpoint": "artifacts/NC-005/checkpoints/rehearsal_seed19_stage06.pt",
-      "checkpoint_sha256": "f07e0db27c04b07ffc82bc2cd38dcf7f1437562b463cc21e01c97ec8cc779dd0",
+      "checkpoint_sha256": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
       "exact_local": {
         "correct": 576,
         "meaning_correct": 576,
@@ -1000,7 +1037,7 @@
     "rehearsal_seed29": {
       "arm": "rehearsal",
       "checkpoint": "artifacts/NC-005/checkpoints/rehearsal_seed29_stage06.pt",
-      "checkpoint_sha256": "790aef99bf1cf4bd281b79aa5aa3bcabf24a27dd42cca5321154685fe6a5a613",
+      "checkpoint_sha256": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
       "exact_local": {
         "correct": 576,
         "meaning_correct": 576,
