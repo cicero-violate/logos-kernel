@@ -1,0 +1,129 @@
+{
+ "retrieved_utc": "2026-11-06T11:46:09Z",
+ "references": [
+  {
+   "repository_url": "https://github.com/google-deepmind/alphageometry",
+   "head_commit": "6777cb586cbb46beed28db12dc72c69770b68337",
+   "ls_remote_error": null,
+   "default_branch": "main",
+   "archived": false,
+   "pushed_at": "2026-01-13T19:18:14Z",
+   "github_license_detected": "Apache-2.0",
+   "api_error": null,
+   "license_file": {
+    "path": "alphageometry-6777cb586cbb-LICENSE",
+    "url": "https://raw.githubusercontent.com/google-deepmind/alphageometry/6777cb586cbb46beed28db12dc72c69770b68337/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "first_line": "Apache License"
+   },
+   "submodules": []
+  },
+  {
+   "repository_url": "https://github.com/tambetm/TSCL",
+   "head_commit": "ec41eea6aa45f68c183b839a3279db4c66857705",
+   "ls_remote_error": null,
+   "default_branch": "master",
+   "archived": false,
+   "pushed_at": "2017-11-24T10:23:34Z",
+   "github_license_detected": null,
+   "api_error": null,
+   "license_file": null,
+   "submodules": []
+  },
+  {
+   "repository_url": "https://github.com/flowersteam/teachDeepRL",
+   "head_commit": "747cda2b903f57859e64e1c9225afcfa1bf07bbd",
+   "ls_remote_error": null,
+   "default_branch": "master",
+   "archived": false,
+   "pushed_at": "2021-06-08T14:57:20Z",
+   "github_license_detected": "MIT",
+   "api_error": null,
+   "license_file": {
+    "path": "teachDeepRL-747cda2b903f-LICENSE",
+    "url": "https://raw.githubusercontent.com/flowersteam/teachDeepRL/747cda2b903f57859e64e1c9225afcfa1bf07bbd/LICENSE",
+    "sha256": "428a19cd84d35e885776445a895c895b20b81ecb0c125b1224f34bc6218e4ced",
+    "bytes": 1069,
+    "first_line": "MIT License"
+   },
+   "submodules": []
+  },
+  {
+   "repository_url": "https://github.com/ellisk42/ec",
+   "head_commit": "cb0e63f5c33cd2de360b791038b0f5272750270e",
+   "ls_remote_error": null,
+   "default_branch": "master",
+   "archived": false,
+   "pushed_at": "2023-07-01T20:49:07Z",
+   "github_license_detected": "MIT",
+   "api_error": null,
+   "license_file": {
+    "path": "ec-cb0e63f5c33c-LICENSE",
+    "url": "https://raw.githubusercontent.com/ellisk42/ec/cb0e63f5c33cd2de360b791038b0f5272750270e/LICENSE",
+    "sha256": "e9135ea67532e2d775873a2add0467da6d063db9a60b5930081ad49d25eb23c9",
+    "bytes": 1099,
+    "first_line": "The MIT License"
+   },
+   "submodules": [
+    {
+     "path": "pregex",
+     "url": "git@github.com:insperatum/pregex.git",
+     "pinned_commit": "b5eab11e4b1176cd0df5adbc10a94f902294ed6b",
+     "license_file": null,
+     "last_http": 404
+    },
+    {
+     "path": "pinn",
+     "url": "git@github.com:insperatum/pinn.git",
+     "pinned_commit": "1878ef539a95a22d6a5629177b0063e978afa205",
+     "license_file": null,
+     "last_http": 404
+    },
+    {
+     "path": "pyccg",
+     "url": "https://github.com/hans/pyccg",
+     "pinned_commit": "c465a23d208bb829c93f508ffd152bcdf82d367a",
+     "license_file": null,
+     "last_http": 404
+    }
+   ]
+  },
+  {
+   "repository_url": "https://github.com/mlb2251/stitch",
+   "head_commit": "350804b7b35807c78bd21c313785ae5152ae2985",
+   "ls_remote_error": null,
+   "default_branch": "main",
+   "archived": false,
+   "pushed_at": "2026-09-08T21:17:37Z",
+   "github_license_detected": "MIT",
+   "api_error": null,
+   "license_file": {
+    "path": "stitch-350804b7b358-LICENSE",
+    "url": "https://raw.githubusercontent.com/mlb2251/stitch/350804b7b35807c78bd21c313785ae5152ae2985/LICENSE",
+    "sha256": "3ee7701f5298b6899158e984e695829504023242a6f9d3ad8a93413480aa34b7",
+    "bytes": 1070,
+    "first_line": "MIT License"
+   },
+   "submodules": []
+  },
+  {
+   "repository_url": "https://github.com/Z3Prover/z3",
+   "head_commit": "4ef6ad78b653c1b318a40a1c364abec01cf9f726",
+   "ls_remote_error": null,
+   "default_branch": "master",
+   "archived": false,
+   "pushed_at": "2026-11-06T10:18:24Z",
+   "github_license_detected": "NOASSERTION",
+   "api_error": null,
+   "license_file": {
+    "path": "z3-4ef6ad78b653-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/Z3Prover/z3/4ef6ad78b653c1b318a40a1c364abec01cf9f726/LICENSE.txt",
+    "sha256": "e617cad2ab9347e3129c2b171e87909332174e17961c5c3412d0799469111337",
+    "bytes": 1096,
+    "first_line": "Z3"
+   },
+   "submodules": []
+  }
+ ]
+}
