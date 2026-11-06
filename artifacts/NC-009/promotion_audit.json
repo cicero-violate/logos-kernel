@@ -1,0 +1,143 @@
+{
+ "schema": "logos.nc009.audit/1",
+ "proof_scope": "All 65,536 pairs of 8-bit operands, 10 corner cases and 65,536 seeded 16-bit pairs, evaluated symbolically. This is finite testing, not a symbolic equivalence proof over all 2^32 pairs, and not a test of neural execution.",
+ "pairs_tested": 131082,
+ "promoted_now": [
+  "INC:v1",
+  "DOUBLE:v1",
+  "BOOLEAN_COMPOSITE:v1",
+  "SHIFT_COMPOSITE:v1"
+ ],
+ "registry_size": 4,
+ "decisions": [
+  {
+   "task": "INC",
+   "source": "NC-008/greedy_program",
+   "program": [
+    "ADD_X1",
+    "ADD_X1",
+    "HALT"
+   ],
+   "canonical_program": [
+    "ADD_X1"
+   ],
+   "canonical_key": "93875286ae4553f3f3eebec56df3e73228d5fb4d8687e300cfb34cd5fd158b14",
+   "decision": "PROMOTED",
+   "operator_id": "INC:v1"
+  },
+  {
+   "task": "INC",
+   "source": "NC-008/best_sampled_program",
+   "program": [
+    "XOR_XY",
+    "ADD_X1",
+    "HALT"
+   ],
+   "canonical_program": [
+    "ADD_X1"
+   ],
+   "canonical_key": "93875286ae4553f3f3eebec56df3e73228d5fb4d8687e300cfb34cd5fd158b14",
+   "decision": "DUPLICATE",
+   "duplicate_of": "INC:v1"
+  },
+  {
+   "task": "DOUBLE",
+   "source": "NC-008/greedy_program",
+   "program": [
+    "AND1_X",
+    "ADD_XX",
+    "HALT"
+   ],
+   "canonical_program": [
+    "ADD_XX"
+   ],
+   "canonical_key": "6a33b1d8051971326f5b1ab34beb7334fe899a034d0ab2babafbd6ed9f59c022",
+   "decision": "PROMOTED",
+   "operator_id": "DOUBLE:v1"
+  },
+  {
+   "task": "DOUBLE",
+   "source": "NC-008/best_sampled_program",
+   "program": [
+    "XOR_RX",
+    "ADD_XX",
+    "HALT"
+   ],
+   "canonical_program": [
+    "ADD_XX"
+   ],
+   "canonical_key": "6a33b1d8051971326f5b1ab34beb7334fe899a034d0ab2babafbd6ed9f59c022",
+   "decision": "DUPLICATE",
+   "duplicate_of": "DOUBLE:v1"
+  },
+  {
+   "task": "BOOLEAN_COMPOSITE",
+   "source": "NC-008/greedy_program",
+   "program": [
+    "AND_XY",
+    "XOR_RX",
+    "HALT"
+   ],
+   "canonical_program": [
+    "AND_XY",
+    "XOR_RX"
+   ],
+   "canonical_key": "7c4edfb426a6a8f8fa20b2a45072f4e22ad64654fc60e2ff683cd75b25f3394b",
+   "decision": "PROMOTED",
+   "operator_id": "BOOLEAN_COMPOSITE:v1"
+  },
+  {
+   "task": "BOOLEAN_COMPOSITE",
+   "source": "NC-008/best_sampled_program",
+   "program": [
+    "AND_XY",
+    "XOR_RX",
+    "HALT"
+   ],
+   "canonical_program": [
+    "AND_XY",
+    "XOR_RX"
+   ],
+   "canonical_key": "7c4edfb426a6a8f8fa20b2a45072f4e22ad64654fc60e2ff683cd75b25f3394b",
+   "decision": "DUPLICATE",
+   "duplicate_of": "BOOLEAN_COMPOSITE:v1"
+  },
+  {
+   "task": "SHIFT_COMPOSITE",
+   "source": "NC-008/greedy_program",
+   "program": [
+    "XOR_XY",
+    "SHL_R",
+    "HALT"
+   ],
+   "canonical_program": [
+    "XOR_XY",
+    "SHL_R"
+   ],
+   "canonical_key": "2de01ff10dfedf7a25e2d39060879ce456d4d9714d84496748db46911c080547",
+   "decision": "PROMOTED",
+   "operator_id": "SHIFT_COMPOSITE:v1"
+  },
+  {
+   "task": "SHIFT_COMPOSITE",
+   "source": "NC-008/best_sampled_program",
+   "program": [
+    "XOR_XY",
+    "SHL_R",
+    "HALT"
+   ],
+   "canonical_program": [
+    "XOR_XY",
+    "SHL_R"
+   ],
+   "canonical_key": "2de01ff10dfedf7a25e2d39060879ce456d4d9714d84496748db46911c080547",
+   "decision": "DUPLICATE",
+   "duplicate_of": "SHIFT_COMPOSITE:v1"
+  }
+ ],
+ "nonclaims": [
+  "Promotion is not invention of a new primitive.",
+  "NC-008's random baseline also found these tasks.",
+  "Neural execution of these programs is NC-008 evidence, not rechecked here."
+ ]
+}

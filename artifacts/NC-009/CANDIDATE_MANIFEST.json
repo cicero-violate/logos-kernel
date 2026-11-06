@@ -1,0 +1,42 @@
+{
+ "schema_version": 1,
+ "task": "NC-009",
+ "owner": "claude-code-turn-6fab0d6a43294c558ed9b1c62f2f0d92",
+ "source_sha256": {
+  "promote.py": "10336a2df019df4fc526965ab407674158c61bce6c0c753c7f842252525b29e3",
+  "test_promote.py": "2a526b37ecdfaaf49320fff3792fb504ff54113373b1a3946045aff2474d1538",
+  "README.md": "ae747dab3427aa5cfb0a19744b74626531a4ac625455c1f3cec944f6bc91de45"
+ },
+ "evidence_sha256": {
+  "operator_promotions.jsonl": "64644db1894cf369c7769d1076ffb177dba6b8aada7e20cb153d98d906c52db9",
+  "promotion_audit.json": "1c505d8520c7d29eb00e7c127d5c090ad3c1e0ca12c3ac0235d3776f2b8a6f7b"
+ },
+ "nc008_proposals_sha256": "4f12d3b4c90a7753e8ca0f984f4958e42c1c6b6926ea988989c247815965c4a4",
+ "promoted": [
+  "INC:v1",
+  "DOUBLE:v1",
+  "BOOLEAN_COMPOSITE:v1",
+  "SHIFT_COMPOSITE:v1"
+ ],
+ "review_output_path": "artifacts/NC-009/independent_verification.json",
+ "proof_scope": "All 65,536 pairs of 8-bit operands, 10 corner cases and 65,536 seeded 16-bit pairs, evaluated symbolically. This is finite testing, not a symbolic equivalence proof over all 2^32 pairs, and not a test of neural execution.",
+ "reproduction": [
+  "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-009/test_promote.py",
+  "Delete a copy of the registry and run promote.py to regenerate it, then rerun to confirm nothing is appended"
+ ],
+ "negative_controls": [
+  "wrong operator rejected with a counterexample",
+  "right on 8-bit inputs but wrong on 16-bit inputs rejected",
+  "duplicate after canonicalizing",
+  "longer program with identical behaviour subsumed",
+  "malformed and unknown inputs rejected",
+  "rerun appends nothing"
+ ],
+ "limitations": [
+  "Promotion is not invention of a new primitive.",
+  "NC-008's random baseline also found these tasks.",
+  "Neural execution of these programs is NC-008 evidence, not rechecked here.",
+  "Testing is finite, not a symbolic proof.",
+  "All candidates here came from NC-008, so the registry holds only 4 small operators."
+ ]
+}
