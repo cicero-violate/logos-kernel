@@ -23,6 +23,8 @@ python dag.py validate
 python -m unittest -q test_dag
 python dag.py ready
 python dag.py list
+# Commit a complete append-only rank/priority snapshot:
+python dag.py priority-plan --file /path/to/plan.json
 # Commit preexisting valid uncommitted ledger append(s) after an interrupted Git operation:
 python dag.py sync
 
@@ -50,7 +52,7 @@ These are **command examples for alternative outcomes**, not one sequence to exe
 
 ## Git commit rules and failure modes
 
-- All ledger mutations (claim, release, pass, fail, block, reopen, add-task) automatically create a local Git commit for `instructions.jsonl` only. `python dag.py validate`, `ready`, and `list` are read-only and create no commits.
+- All ledger mutations (claim, release, pass, fail, block, reopen, add-task, priority-plan) automatically create a local Git commit for `instructions.jsonl` only. `python dag.py validate`, `ready`, and `list` are read-only and create no commits.
 - Git user identity must be configured and `git` available. The command uses `git commit --only -- instructions.jsonl`, not `git add .` or an all-files commit.
 - File locks serialize **DAG writers on this local filesystem**, including the commit. They do not serialize unrelated `git` processes or independent working copies. If Git fails, use `python dag.py sync` after resolving the cause.
 - This mechanism commits the ledger only; implementation artifacts and receipts should be committed separately by their owners. There is no automatic push.

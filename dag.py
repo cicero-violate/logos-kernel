@@ -62,7 +62,32 @@ def validate_event(ev, tasks):
                 raise ValueError(f"{task_id}: missing {field}")
         if ev.get("status") != "planned":
             raise ValueError("new task must be planned")
-        tasks[task_id] = {"record": ev, "status": "planned", "owner": None}
+        if ev.get("priority") not in {"P0", "P1", "P2", "P3", "P4", "P5"}:
+            raise ValueError("invalid task priority")
+        tasks[task_id] = {"record": ev, "status": "planned", "owner": None,
+                          "priority": ev["priority"], "rank": None}
+        return
+
+    if kind == "priorities":
+        entries = ev.get("assignments")
+        if not ev.get("reason") or not isinstance(entries, list) or not entries:
+            raise ValueError("priority plan requires reason and assignments")
+        open_ids = {key for key, item in tasks.items()
+                    if item["status"] in {"planned", "working"}}
+        ids = [a.get("id") for a in entries if isinstance(a, dict)]
+        ranks = [a.get("rank") for a in entries if isinstance(a, dict)]
+        if len(ids) != len(entries) or len(ids) != len(set(ids)) or set(ids) != open_ids:
+            raise ValueError("priority plan must cover every open task exactly once")
+        if any(a.get("priority") not in {"P0", "P1", "P2", "P3", "P4", "P5"}
+               or type(a.get("rank")) is not int or a["rank"] < 1 for a in entries):
+            raise ValueError("invalid priority or rank")
+        if len(ranks) != len(set(ranks)):
+            raise ValueError("priority ranks must be unique")
+        if sorted(ranks) != list(range(1, len(entries) + 1)):
+            raise ValueError("priority ranks must be contiguous starting at 1")
+        for a in entries:
+            tasks[a["id"]]["priority"] = a["priority"]
+            tasks[a["id"]]["rank"] = a["rank"]
         return
 
     task_id = ev.get("id")
@@ -263,6 +288,9 @@ def main():
         sub.add_parser(cmd)
     add = sub.add_parser("add-task")
     add.add_argument("--file", required=True, type=Path)
+    priority_plan = sub.add_parser("priority-plan",
+                                   help="append full ranked priority snapshot without rewriting tasks")
+    priority_plan.add_argument("--file", required=True, type=Path)
 
     claim = sub.add_parser("claim", help="exclusively claim a ready task")
     claim.add_argument("id")
@@ -292,7 +320,15 @@ def main():
         print(json.dumps(sync(), indent=2))
         return
     if args.cmd == "add-task":
-        row = append(json.loads(args.file.read_text()))
+        event = json.loads(args.file.read_text())
+        if event.get("kind") != "task":
+            raise ValueError("add-task expects kind=task")
+        row = append(event)
+    elif args.cmd == "priority-plan":
+        event = json.loads(args.file.read_text())
+        if event.get("kind") != "priorities":
+            raise ValueError("priority-plan expects kind=priorities")
+        row = append(event)
     elif args.cmd == "claim":
         row = append({"kind": "claim", "id": args.id, "owner": args.owner})
     elif args.cmd == "release":
@@ -320,12 +356,15 @@ def main():
             print(json.dumps({"status": "PASS", "nodes": len(tasks), "events": n, "head_sha256": head}, indent=2))
             return
         result = []
-        for task_id, item in tasks.items():
+        for task_id, item in sorted(tasks.items(),
+                                    key=lambda pair: (pair[1]["rank"] is None,
+                                                      pair[1]["rank"] or 999999,
+                                                      pair[0])):
             ready = item["status"] == "planned" and item["owner"] is None and dependencies_passed(item, tasks)
             if args.cmd == "ready" and not ready:
                 continue
-            result.append({"id": task_id, "priority": item["record"]["priority"],
-                           "title": item["record"]["title"], "status": item["status"],
+            result.append({"id": task_id, "priority": item["priority"],
+                           "rank": item["rank"], "title": item["record"]["title"], "status": item["status"],
                            "owner": item["owner"], "ready": ready,
                            "depends_on": item["record"]["depends_on"]})
         print(json.dumps(result, indent=2))

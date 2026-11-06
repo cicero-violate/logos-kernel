@@ -40,6 +40,38 @@ class DagTests(unittest.TestCase):
         self.assertEqual(n, 2)
         self.assertEqual(tasks["b"]["record"]["depends_on"], ["a"])
 
+    def test_priorities_append_only_ranked_snapshot(self):
+        events = [
+            node("a"), node("b", ["a"]), node("c", ["b"]),
+            {"kind": "priorities", "reason": "release critical path",
+             "assignments": [{"id": "b", "priority": "P0", "rank": 1},
+                             {"id": "a", "priority": "P0", "rank": 2},
+                             {"id": "c", "priority": "P1", "rank": 3}]}
+        ]
+        raw = log(events)
+        tasks, n, _ = audit(raw)
+        self.assertEqual(n, 4)
+        self.assertEqual(tasks["b"]["rank"], 1)
+        self.assertEqual(tasks["c"]["priority"], "P1")
+        self.assertEqual(tasks["a"]["record"]["priority"], "P0")
+        self.assertEqual(tasks["b"]["record"]["depends_on"], ["a"])
+        original = log(events[:3])
+        self.assertTrue(raw.startswith(original))
+
+    def test_priorities_reject_incomplete_and_duplicate_ranks(self):
+        base = [node("a"), node("b")]
+        with self.assertRaisesRegex(ValueError, "every open task"):
+            audit(log(base + [{"kind": "priorities", "reason": "x",
+                 "assignments": [{"id": "a", "priority": "P0", "rank": 1}]}]))
+        with self.assertRaisesRegex(ValueError, "unique"):
+            audit(log(base + [{"kind": "priorities", "reason": "x",
+                 "assignments": [{"id": "a", "priority": "P0", "rank": 1},
+                                 {"id": "b", "priority": "P0", "rank": 1}]}]))
+        with self.assertRaisesRegex(ValueError, "invalid priority"):
+            audit(log(base + [{"kind": "priorities", "reason": "x",
+                 "assignments": [{"id": "a", "priority": "P7", "rank": 1},
+                                 {"id": "b", "priority": "P0", "rank": 2}]}]))
+
     def test_tampering_detected(self):
         data = json.loads(log([node("a")]))
         data["event"]["title"] = "tampered"

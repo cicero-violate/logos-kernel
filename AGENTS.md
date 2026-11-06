@@ -92,6 +92,8 @@ python dag.py add-task --file /path/to/new_task_event.json
 python dag.py validate
 ```
 
+To reprioritize, prepare one full priority snapshot: kind=priorities, a reason, and assignments covering every open task exactly once. Each assignment has id, priority (P0 through P5), and a unique contiguous rank (1 is first). Append with: python dag.py priority-plan --file /path/to/plan.json. The original task event and dependencies stay immutable. The ready/list output is sorted by rank; dependency gates still control readiness. New tasks receive effective rank only after the next priority snapshot.
+
 Never edit earlier JSONL, even to correct mistakes; use a new task and clearly document supersession. The task DAG is acyclic; **the programs being learned may contain loops in their runtime CFG**.
 
 - The JSONL writer locks the local file and fsyncs each append; this does not serialize Git operations or coordinate across incompatible filesystems.
