@@ -1,0 +1,340 @@
+{
+  "ast_schema": {
+    "bool.not": [
+      "kind",
+      "value:boolean"
+    ],
+    "bool.zero": [
+      "kind",
+      "value:bitvector"
+    ],
+    "bv.binary": [
+      "kind",
+      "width",
+      "signedness",
+      "args[2]"
+    ],
+    "bv.const": [
+      "kind",
+      "value",
+      "width",
+      "signedness"
+    ],
+    "bv.read": [
+      "kind",
+      "name",
+      "width",
+      "signedness"
+    ],
+    "bv.unary": [
+      "kind",
+      "width",
+      "signedness",
+      "args[1]"
+    ],
+    "max_depth": 64,
+    "type_rule": "no mixed widths, no implicit casts, boolean and bitvector disjoint",
+    "unknown_fields": "reject"
+  },
+  "encoding": {
+    "booleans_as_ints": "reject",
+    "duplicate_keys": "reject",
+    "format": "UTF-8 JSON, sorted keys, separators comma/colon",
+    "max_bytes": 2000000,
+    "nonfinite": "reject",
+    "unknown_fields": "reject"
+  },
+  "flags": {
+    "C": "ADD carry out; SUB no-borrow; SHL old top bit; SHR/SAR old bit0; otherwise false",
+    "N": "ALU result top bit",
+    "V": "twos-complement signed overflow for ADD/SUB; otherwise false",
+    "Z": "ALU result equals zero",
+    "preserved": [
+      "LOADI",
+      "MOV",
+      "JZ",
+      "JNZ",
+      "JMP",
+      "HALT"
+    ],
+    "update_ops": [
+      "ADD",
+      "SUB",
+      "AND",
+      "OR",
+      "XOR",
+      "AND1",
+      "SHL",
+      "SHR",
+      "SAR"
+    ]
+  },
+  "legacy_mapping": {
+    "JZ_B": "JZ src=Y with explicit target",
+    "JZ_T": "JZ src=T with explicit target",
+    "ROM": [
+      "JZ_B",
+      "AND1",
+      "JZ_T",
+      "ADD",
+      "SHL",
+      "SHR",
+      "JMP",
+      "HALT"
+    ],
+    "limitation": "mapping is documentation, not a claim of equivalence to a learned controller",
+    "registers": {
+      "A": "X",
+      "ACCUM": "R",
+      "B": "Y",
+      "TEST": "T"
+    }
+  },
+  "math": {
+    "ADD": "(a+b) modulo 2^width",
+    "AND": "a bitwise-AND b",
+    "AND1": "src bitwise-AND 1",
+    "LOADI": "exact unsigned immediate within width",
+    "MOV": "raw src bits",
+    "OR": "a bitwise-OR b",
+    "SAR": "one-bit arithmetic right shift; signed mode only",
+    "SHL": "one-bit logical shift left",
+    "SHR": "one-bit logical shift right even in signed mode",
+    "SUB": "(a-b) modulo 2^width",
+    "XOR": "a bitwise-XOR b",
+    "bitvector_modulus": "2^width",
+    "twos_complement_output": "raw bitvector, optional signed interpretation",
+    "unsigned_output": "stored raw bits"
+  },
+  "model_dependencies": [
+    "Python standard library only; no RLT weights"
+  ],
+  "neural_contract": {
+    "evaluation": "exact AST, state, PC, flag and HALT comparison",
+    "inputs": [
+      "version",
+      "width",
+      "signedness",
+      "instruction",
+      "PC",
+      "registers X,Y,R,T",
+      "flags C,V,Z,N"
+    ],
+    "not_proven": [
+      "neural semantics",
+      "program invention",
+      "English fluency",
+      "AGI"
+    ],
+    "predicted_outputs": [
+      "typed math AST",
+      "state delta",
+      "PC transition or HALT"
+    ],
+    "reference_boundary": "oracle runs independently after prediction; never replaces it"
+  },
+  "opcodes": {
+    "ADD": {
+      "fields": [
+        "op",
+        "dst",
+        "a",
+        "b"
+      ],
+      "pc_effect": "next",
+      "typed_ast": "bv.add",
+      "writes_flags": true
+    },
+    "AND": {
+      "fields": [
+        "op",
+        "dst",
+        "a",
+        "b"
+      ],
+      "pc_effect": "next",
+      "typed_ast": "bv.and",
+      "writes_flags": true
+    },
+    "AND1": {
+      "fields": [
+        "op",
+        "dst",
+        "src"
+      ],
+      "pc_effect": "next",
+      "typed_ast": "bv.and1",
+      "writes_flags": true
+    },
+    "HALT": {
+      "fields": [
+        "op"
+      ],
+      "pc_effect": "halt",
+      "typed_ast": "pc.halt",
+      "writes_flags": false
+    },
+    "JMP": {
+      "fields": [
+        "op",
+        "target"
+      ],
+      "pc_effect": "jump",
+      "typed_ast": "pc.literal",
+      "writes_flags": false
+    },
+    "JNZ": {
+      "fields": [
+        "op",
+        "src",
+        "target"
+      ],
+      "pc_effect": "branch",
+      "typed_ast": "bool.not(bool.zero)",
+      "writes_flags": false
+    },
+    "JZ": {
+      "fields": [
+        "op",
+        "src",
+        "target"
+      ],
+      "pc_effect": "branch",
+      "typed_ast": "bool.zero",
+      "writes_flags": false
+    },
+    "LOADI": {
+      "fields": [
+        "op",
+        "dst",
+        "imm"
+      ],
+      "pc_effect": "next",
+      "typed_ast": "bv.const",
+      "writes_flags": false
+    },
+    "MOV": {
+      "fields": [
+        "op",
+        "dst",
+        "src"
+      ],
+      "pc_effect": "next",
+      "typed_ast": "bv.read",
+      "writes_flags": false
+    },
+    "OR": {
+      "fields": [
+        "op",
+        "dst",
+        "a",
+        "b"
+      ],
+      "pc_effect": "next",
+      "typed_ast": "bv.or",
+      "writes_flags": true
+    },
+    "SAR": {
+      "fields": [
+        "op",
+        "dst",
+        "src"
+      ],
+      "pc_effect": "next",
+      "typed_ast": "bv.sar",
+      "writes_flags": true
+    },
+    "SHL": {
+      "fields": [
+        "op",
+        "dst",
+        "src"
+      ],
+      "pc_effect": "next",
+      "typed_ast": "bv.shl",
+      "writes_flags": true
+    },
+    "SHR": {
+      "fields": [
+        "op",
+        "dst",
+        "src"
+      ],
+      "pc_effect": "next",
+      "typed_ast": "bv.shr",
+      "writes_flags": true
+    },
+    "SUB": {
+      "fields": [
+        "op",
+        "dst",
+        "a",
+        "b"
+      ],
+      "pc_effect": "next",
+      "typed_ast": "bv.sub",
+      "writes_flags": true
+    },
+    "XOR": {
+      "fields": [
+        "op",
+        "dst",
+        "a",
+        "b"
+      ],
+      "pc_effect": "next",
+      "typed_ast": "bv.xor",
+      "writes_flags": true
+    }
+  },
+  "pc": {
+    "HALT": "stop with PC unchanged",
+    "JMP": "always target",
+    "JNZ": "if explicit source != 0 jump to target else PC+1",
+    "JZ": "if explicit source == 0 jump to target else PC+1",
+    "invalid_pc": "failure, never implied halt",
+    "loops": "backward jumps allowed",
+    "max_steps": "required positive budget; nonhalt status is step_limit",
+    "normal": "PC+1"
+  },
+  "program": {
+    "branch_target": "absolute zero-indexed instruction index",
+    "last_instruction": "explicit HALT",
+    "max_instructions": 4096,
+    "required_fields": [
+      "version",
+      "width",
+      "signedness",
+      "program"
+    ],
+    "signedness_modes": [
+      "unsigned",
+      "twos_complement"
+    ],
+    "width_range_bits": [
+      1,
+      64
+    ]
+  },
+  "registers": {
+    "initial_flags": {
+      "C": false,
+      "N": false,
+      "V": false,
+      "Z": false
+    },
+    "initial_pc": 0,
+    "names": [
+      "X",
+      "Y",
+      "R",
+      "T"
+    ],
+    "source_wiring": "all operands explicit, simultaneous pre-step reads",
+    "values": "explicit initial unsigned bitpattern 0..2^W-1",
+    "write": "one destination per ALU/MOV/LOADI instruction"
+  },
+  "scope": "engineered ISA + symbolic oracle; no model training",
+  "task_dag_vs_runtime": "instruction CFG may loop; task DAG remains acyclic",
+  "version": "logos.isa/1"
+}

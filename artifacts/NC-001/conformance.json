@@ -1,0 +1,116 @@
+{
+  "champion": {
+    "checkpoint": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+    "expected_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "unchanged": true
+  },
+  "fixed_rom_reference_benchmarks": {
+    "eightbit_sampled": {
+      "correct": 256,
+      "failed_cases": [],
+      "result": "PASS",
+      "tested": 256
+    },
+    "fourbit_exhaustive": {
+      "correct": 256,
+      "failed_cases": [],
+      "result": "PASS",
+      "tested": 256
+    }
+  },
+  "independent_verification": "PENDING_DISTINCT_REAL_AGENT",
+  "interpretation": "symbolic reference only; zero neural training or model prediction",
+  "limits": [
+    "ISA contract is engineered, not learned from data.",
+    "ROM-based multiplication does not establish neural program generation.",
+    "4-bit evaluation is exhaustive only for 16x16 operands; 8-bit is sampled.",
+    "AST perturbation test is symbolic wiring, not a neural causality ablation.",
+    "Separate real agent must independently audit before NC-001 PASS.",
+    "No model weights were trained, saved, altered, or promoted."
+  ],
+  "result": "IMPLEMENTER_PASS",
+  "run_command": "cd /workspace/experiments/logos-kernel && PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-001/make_conformance.py",
+  "runtime": {
+    "python": "3.14.6",
+    "requires": [
+      "Python 3 standard library"
+    ]
+  },
+  "schema": 1,
+  "source_dependencies": {
+    "baseline_inventory.json": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+    "canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "isa_spec.json": "11dce286b173b67fe75224378da3e22c3072c0353c0f10071d317be4df0c7710",
+    "test_isa.py": "ee8ae1dd873f7eee899e07476cd656545018d9eba08a912e8c307d29ba8187c8"
+  },
+  "task": "NC-001",
+  "tests": {
+    "details": [
+      "test_alu_property_vectors (test_isa.Contracts.test_alu_property_vectors) ... ok",
+      "test_backward_loop_and_step_limit (test_isa.Contracts.test_backward_loop_and_step_limit) ... ok",
+      "test_branch_taken_and_not_taken (test_isa.Contracts.test_branch_taken_and_not_taken) ... ok",
+      "test_carry_borrow_overflow (test_isa.Contracts.test_carry_borrow_overflow) ... ok",
+      "test_every_opcode_has_defined_lowering_and_execution (test_isa.Contracts.test_every_opcode_has_defined_lowering_and_execution) ... ok",
+      "test_explicit_halt_at_pc (test_isa.Contracts.test_explicit_halt_at_pc) ... ok",
+      "test_malformed_every_opcode_contract (test_isa.Contracts.test_malformed_every_opcode_contract) ... ok",
+      "test_malformed_inputs_rejected (test_isa.Contracts.test_malformed_inputs_rejected) ... ok",
+      "test_math_ast_is_causally_used (test_isa.Contracts.test_math_ast_is_causally_used) ... ok",
+      "test_preserve_flags_for_nonalu (test_isa.Contracts.test_preserve_flags_for_nonalu) ... ok",
+      "test_reference_fixed_rom_exhaustive_4bit (test_isa.Contracts.test_reference_fixed_rom_exhaustive_4bit) ... ok",
+      "test_reject_untyped_or_malformed_neural_ast (test_isa.Contracts.test_reject_untyped_or_malformed_neural_ast) ... ok",
+      "test_roundtrip_canonical_json_all_opcodes (test_isa.Contracts.test_roundtrip_canonical_json_all_opcodes) ... ok",
+      "test_signed_interpretation (test_isa.Contracts.test_signed_interpretation) ... ok",
+      "test_static_specs_complete (test_isa.Contracts.test_static_specs_complete) ... ok",
+      "test_unary_bitvectors (test_isa.Contracts.test_unary_bitvectors) ... ok",
+      "",
+      "----------------------------------------------------------------------",
+      "Ran 16 tests in 0.179s",
+      "",
+      "OK"
+    ],
+    "errors": 0,
+    "failures": 0,
+    "skips": 0,
+    "status": "PASS",
+    "tests": 16
+  },
+  "utc": "2026-11-06T01:42:30.836171+00:00",
+  "validation": {
+    "branch_target_checks": true,
+    "explicit_halt_required": true,
+    "opcode_count": 15,
+    "opcodes": [
+      "ADD",
+      "AND",
+      "AND1",
+      "HALT",
+      "JMP",
+      "JNZ",
+      "JZ",
+      "LOADI",
+      "MOV",
+      "OR",
+      "SAR",
+      "SHL",
+      "SHR",
+      "SUB",
+      "XOR"
+    ],
+    "registers": [
+      "X",
+      "Y",
+      "R",
+      "T"
+    ],
+    "signedness": [
+      "unsigned",
+      "twos_complement"
+    ],
+    "version": "logos.isa/1",
+    "width_range": [
+      1,
+      64
+    ]
+  }
+}
