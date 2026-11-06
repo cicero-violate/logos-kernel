@@ -1,0 +1,86 @@
+{
+  "candidate_revision": "0ac9d869cfe112865e3fdff3a52df81bb79a462f",
+  "candidate_sha256": "3b5ac010a19a2144f1677566e785c385ec1abfdadd0f93dd6d16aac3f125c186",
+  "cases": {
+    "equivalent": 135,
+    "rejected": 139
+  },
+  "data_sha256": "8a944ada4b2ab323433f1a7f10e63fb2244822d318cda89966ab164eed0328bd",
+  "fresh_receipts_sha256": "25f42c27f716c810a75821a593f08dd201146a88606cb6fff7126422a020f252",
+  "fresh_results_sha256": "1b2e11951e5d07c864f1848f6ef27f768b5fa10a13aebb52bf2d5d1fcc70c982",
+  "independently_verified_rewrite_steps": 124,
+  "limitations": [
+    "Exact polynomial proof restricted to Z[x,y,z] with +,-,*.",
+    "Finite bitvector proof exhausts X,Y only for 3/4/5 bits and outputs only, not flags/state.",
+    "No floating-point rewrites certified and no neural training performed.",
+    "Static DAG operation counts are not hardware runtime or global optimality.",
+    "Bounded equivalence class search, not a full e-graph or machine intelligence.",
+    "Timing is environment-sensitive and the dataset families are authored, not proven historically unseen."
+  ],
+  "negative_controls": {
+    "fp64_nonassociativity_and_rounding": "PASS",
+    "mixed_width_ast": "PASS",
+    "non_equivalent_or_invalid_rejected": 139,
+    "wrong_polynomial_identity": "PASS"
+  },
+  "original_receipts_sha256": "dc30ff854065c4c56689861ba592543e67a9d01e47978d1f3c2b283215397cbb",
+  "original_results_sha256": "4d5de992b6473e90b5d086f307964c911d5699db3dd3c80fd1b90a7a56b50d19",
+  "proof_scopes": {
+    "finite exhaustive 1024": 21,
+    "finite exhaustive 256": 21,
+    "finite exhaustive 64": 21,
+    "polynomial over all Z[x,y,z]": 72
+  },
+  "replay_command": "python -c 'import run_baseline; run_baseline.HERE=isolated_replay_dir; run_baseline.run()'",
+  "source_hashes": {
+    "artifacts/NC-023/README.md": "7abe03a1a623cab791489467d84d1a17e72a167fa83aff4c853443e70a3c2552",
+    "artifacts/NC-023/equality_saturation_baseline.json": "4d5de992b6473e90b5d086f307964c911d5699db3dd3c80fd1b90a7a56b50d19",
+    "artifacts/NC-023/equivalence_receipts.jsonl": "dc30ff854065c4c56689861ba592543e67a9d01e47978d1f3c2b283215397cbb",
+    "artifacts/NC-023/rewrite_rules.json": "76c16c4851e57d4f48b6297533d671a90835381b9332a7d0e106890225420b3e",
+    "artifacts/NC-023/run_baseline.py": "13bc7a35463b8a60cd71c6164c1fb402eaebeb118b730530d7d54e36f62add57",
+    "artifacts/NC-023/symbolic_search.py": "078cf38ceea8306e2e238b5149d0e48a73f55e2d5f7cba1ee0ac3eeef2095011",
+    "artifacts/NC-023/test_symbolic_search.py": "373c6f708a28beb743373600966eddf1d6a99f33988247231c42a4fc2e26b57d"
+  },
+  "split": {
+    "test": {
+      "equivalent": 45,
+      "greedy_improved": 25,
+      "greedy_total_dag_ops": 158,
+      "rejected_non_equivalent": 49,
+      "saturation_improved": 25,
+      "saturation_total_dag_ops": 158,
+      "source_total_dag_ops": 198,
+      "total": 94
+    },
+    "train": {
+      "equivalent": 54,
+      "greedy_improved": 42,
+      "greedy_total_dag_ops": 133,
+      "rejected_non_equivalent": 54,
+      "saturation_improved": 42,
+      "saturation_total_dag_ops": 134,
+      "source_total_dag_ops": 198,
+      "total": 108
+    },
+    "validation": {
+      "equivalent": 36,
+      "greedy_improved": 24,
+      "greedy_total_dag_ops": 78,
+      "rejected_non_equivalent": 36,
+      "saturation_improved": 24,
+      "saturation_total_dag_ops": 78,
+      "source_total_dag_ops": 126,
+      "total": 72
+    }
+  },
+  "task": "NC-023",
+  "test_command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s artifacts/NC-023 -p test_symbolic_search.py -q",
+  "upstream_hashes": {
+    "benchmark": "0c254d70d1319a0f9406fa900b9879289222ed65a77083cfedaff5e5f6802485",
+    "dataset": "d101fc2e9aaf36a698474fed8aa80696a0b869a2686eebe0e405c2e498490c3c",
+    "isa": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "optimizer": "078cf38ceea8306e2e238b5149d0e48a73f55e2d5f7cba1ee0ac3eeef2095011",
+    "runner": "13bc7a35463b8a60cd71c6164c1fb402eaebeb118b730530d7d54e36f62add57"
+  },
+  "verifier": "turn-be2095c4c8154d17a0350a51452d4379"
+}

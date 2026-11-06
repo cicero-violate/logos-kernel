@@ -1,0 +1,105 @@
+{
+  "claim": "handwritten deterministic identities, not learned algorithms",
+  "identities": [
+    {
+      "domain": "Z[x,y,z]",
+      "id": "int_add_zero",
+      "law": "a+0=a",
+      "precondition": "exact integer"
+    },
+    {
+      "domain": "Z[x,y,z]",
+      "id": "int_sub_zero",
+      "law": "a-0=a",
+      "precondition": "exact integer"
+    },
+    {
+      "domain": "Z[x,y,z]",
+      "id": "int_mul_zero_one",
+      "law": "a*0=0, a*1=a",
+      "precondition": "exact integer"
+    },
+    {
+      "domain": "Z[x,y,z]",
+      "id": "int_const_fold",
+      "law": "constant +,-,*",
+      "precondition": "exact integer"
+    },
+    {
+      "domain": "Z[x,y,z]",
+      "id": "int_add_sub_cancel",
+      "law": "(a+b)-b=a; (a-b)+b=a",
+      "precondition": "exact integer"
+    },
+    {
+      "domain": "Z[x,y,z]",
+      "id": "int_factor",
+      "law": "(a*b)+(a*c)=a*(b+c)",
+      "precondition": "exact integer"
+    },
+    {
+      "domain": "Z[x,y,z]",
+      "id": "int_distribute",
+      "law": "a*(b+c)=a*b+a*c",
+      "precondition": "exact integer"
+    },
+    {
+      "domain": "Z[x,y,z]",
+      "id": "int_associate",
+      "law": "a+(b+c)=(a+b)+c",
+      "precondition": "exact integer"
+    },
+    {
+      "domain": "Z[x,y,z]",
+      "id": "int_commute",
+      "law": "a+b=b+a, a*b=b*a",
+      "precondition": "exact integer"
+    },
+    {
+      "domain": "fixed width output bits",
+      "id": "bv_absorb",
+      "law": "a|(a&b)=a",
+      "precondition": "all X,Y bitpatterns"
+    },
+    {
+      "domain": "fixed width output bits",
+      "id": "bv_xor_cancel",
+      "law": "(a xor b) xor b=a",
+      "precondition": "all X,Y bitpatterns"
+    },
+    {
+      "domain": "fixed width output bits",
+      "id": "bv_add_sub_cancel",
+      "law": "(a+b)-b=a",
+      "precondition": "all X,Y bitpatterns"
+    },
+    {
+      "domain": "fixed width output bits",
+      "id": "bv_double_shift",
+      "law": "a+a=a<<1",
+      "precondition": "all X,Y bitpatterns"
+    },
+    {
+      "domain": "fixed width output bits",
+      "id": "bv_idempotence",
+      "law": "a&a=a, a|a=a, a xor a=0",
+      "precondition": "all X,Y bitpatterns"
+    }
+  ],
+  "proof_admission": "Every candidate independently checked by exact polynomial canonical form or complete finite bitvector enumeration BEFORE entry; no probabilistic test substituted for proof.",
+  "semantics": {
+    "bitvector": "NC-001 strict fixed width; output bits; all X,Y assignments",
+    "floating": "not optimized; supplied counterexamples rejected",
+    "integer": "exact unbounded Z[x,y,z]; +,-,* only",
+    "integer_overflow": "not applicable; not floating",
+    "state": "no side effects, PC, flags, full program, R/T"
+  },
+  "source_sha256": {
+    "benchmark": "0c254d70d1319a0f9406fa900b9879289222ed65a77083cfedaff5e5f6802485",
+    "dataset": "d101fc2e9aaf36a698474fed8aa80696a0b869a2686eebe0e405c2e498490c3c",
+    "isa": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "optimizer": "078cf38ceea8306e2e238b5149d0e48a73f55e2d5f7cba1ee0ac3eeef2095011",
+    "runner": "13bc7a35463b8a60cd71c6164c1fb402eaebeb118b730530d7d54e36f62add57"
+  },
+  "version": "logos.nc023.symbolic/1"
+}

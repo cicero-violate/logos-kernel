@@ -1,0 +1,61 @@
+{
+  "blocker": "No independent receipt path declared: all three declared task outputs are pinned candidate inputs. Replacing them invalidates the frozen candidate; dag.py rejects a PASS receipt at any separate path.",
+  "candidate_pins_checked": {
+    "artifacts/NC-001/canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "artifacts/NC-020/benchmark.py": "0c254d70d1319a0f9406fa900b9879289222ed65a77083cfedaff5e5f6802485",
+    "artifacts/NC-020/equivalence_benchmark.jsonl": "d101fc2e9aaf36a698474fed8aa80696a0b869a2686eebe0e405c2e498490c3c",
+    "artifacts/NC-023/MANIFEST.json": "eb0143e2a232ac1ba52518423d1dc3f5ba3a16fae24e219aa857ef2ab3ca1169",
+    "artifacts/NC-023/README.md": "7abe03a1a623cab791489467d84d1a17e72a167fa83aff4c853443e70a3c2552",
+    "artifacts/NC-023/equality_saturation_baseline.json": "4d5de992b6473e90b5d086f307964c911d5699db3dd3c80fd1b90a7a56b50d19",
+    "artifacts/NC-023/equivalence_receipts.jsonl": "dc30ff854065c4c56689861ba592543e67a9d01e47978d1f3c2b283215397cbb",
+    "artifacts/NC-023/rewrite_rules.json": "76c16c4851e57d4f48b6297533d671a90835381b9332a7d0e106890225420b3e",
+    "artifacts/NC-023/run_baseline.py": "13bc7a35463b8a60cd71c6164c1fb402eaebeb118b730530d7d54e36f62add57",
+    "artifacts/NC-023/symbolic_search.py": "078cf38ceea8306e2e238b5149d0e48a73f55e2d5f7cba1ee0ac3eeef2095011",
+    "artifacts/NC-023/test_symbolic_search.py": "373c6f708a28beb743373600966eddf1d6a99f33988247231c42a4fc2e26b57d"
+  },
+  "candidate_revision": "383bfc6758f8f71eb040edbaf9861b24d273e875",
+  "candidate_sha256": "eb0143e2a232ac1ba52518423d1dc3f5ba3a16fae24e219aa857ef2ab3ca1169",
+  "candidate_unit_tests_passed": 10,
+  "independently_verified_rewrite_steps": 245,
+  "next_action": "Reserve a declared output for independent review by moving raw candidate results to separately pinned input paths and adjusting runner references; publish a new candidate. Alternatively, use an authorized append-only protocol amendment. Never rewrite ledger history or weaken evidence binding.",
+  "owner": "turn-e8a8e4289e7d4647bb84d3a60e9f083f",
+  "proof_scope": "Independent exact integer polynomial expansion and exhaustive 3/4/5-bit output equivalence, all 274 benchmark cases, both search modes and each selected rewrite step. All 135 equivalent cases reproduced; all 139 negative/invalid/float cases rejected. Held-out static DAG operations 198 to 158, with 25/45 formulas improved, identical to greedy. No neural learning, stateful ISA equivalence, hardware speedup or globally optimal search proved. Candidate and upstream hashes checked against the bound Git revision before and after replay. Reviewer identity is a turn label, not authenticated identity.",
+  "replay_wall_seconds": 9.308230347931385,
+  "replayed_cases": 274,
+  "scientific_reproduction": "PASS_WITH_SCOPED_LIMITS",
+  "split_results": {
+    "test": {
+      "equivalent": 45,
+      "greedy_improved": 25,
+      "greedy_total_dag_ops": 158,
+      "rejected_non_equivalent": 49,
+      "saturation_improved": 25,
+      "saturation_total_dag_ops": 158,
+      "source_total_dag_ops": 198,
+      "total": 94
+    },
+    "train": {
+      "equivalent": 54,
+      "greedy_improved": 42,
+      "greedy_total_dag_ops": 133,
+      "rejected_non_equivalent": 54,
+      "saturation_improved": 42,
+      "saturation_total_dag_ops": 134,
+      "source_total_dag_ops": 198,
+      "total": 108
+    },
+    "validation": {
+      "equivalent": 36,
+      "greedy_improved": 24,
+      "greedy_total_dag_ops": 78,
+      "rejected_non_equivalent": 36,
+      "saturation_improved": 24,
+      "saturation_total_dag_ops": 78,
+      "source_total_dag_ops": 126,
+      "total": 72
+    }
+  },
+  "task": "NC-023",
+  "verdict": "HOLD",
+  "verifier": "turn-09e1ca315e6c47aa985ce71dcba8c97e"
+}
