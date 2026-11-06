@@ -1,0 +1,148 @@
+{
+  "all_487_observed_failures_preserved": true,
+  "audited_commit": "95aa2e6e3804fab9527de3773d4d15686b51872e",
+  "champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "closure_checks": {
+    "champion_preservation": {
+      "champion_promoted": false,
+      "default_changed": false,
+      "matches_nc000_inventory": true,
+      "matches_nc005_and_nc006_bindings": true,
+      "original_rlt_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    "commit_tree": {
+      "audited_paths_match_commit": true,
+      "audited_tree": "dd7f6d8571aa08d75a7caa7515fd205aef1267bb",
+      "commit_object_type": "commit",
+      "head_matches_audited_commit": true,
+      "head_tree": "dd7f6d8571aa08d75a7caa7515fd205aef1267bb"
+    },
+    "dag_pass_recorded_by_closure_verifier": false,
+    "dag_tests": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 19
+    },
+    "hash_integrity": {
+      "accepted_library_digest_verified": true,
+      "all_42_checkpoint_manifest_entries_present": true,
+      "checkpoint_manifest_digest_verified": true,
+      "independent_receipt_evidence_files_verified": 9,
+      "manifest_source_files_verified": 6,
+      "proof_receipts_digest_verified": true,
+      "raw_verifier_finals_and_traces_verified": true,
+      "source_registry_digest_verified": true
+    },
+    "identity": {
+      "all_distinct": true,
+      "closure_verifier": "01a1af1c-c4d2-70e2-af93-becdb8bc9a8a",
+      "event_lab_owner": "1db9edb983ff4df9933612e7c826e55f",
+      "first_codex_verifier": "01a1af0d-e74c-75a3-a746-ad494a358571",
+      "second_codex_verifier": "01a1af12-4331-7a43-9fc9-a61b050697dc"
+    },
+    "ledger_validation": {
+      "events": 53,
+      "head_sha256": "d95d814266b0ce9f9cf723b4ac82fbd6b97c1ed8a3701574385f4d815de30c63",
+      "nodes": 29,
+      "result": "PASS"
+    },
+    "measurements": {
+      "all_60_receipts_iterated": true,
+      "counterexample_inputs_unique_within_receipt": true,
+      "failing_new_only_receipts": 23,
+      "missing_counterexamples": 0,
+      "new_only_failed_local_cases": 487,
+      "rehearsal_local_denominators": "27 x 64/64",
+      "rehearsal_zero16_denominators": "3 x 65536/65536",
+      "stored_complete_counterexamples": 487,
+      "stored_expected_outputs_recomputed_independently": true,
+      "stored_observed_outputs_are_two_bit_threshold_results": true
+    },
+    "project_files_modified_by_closure_verifier": false,
+    "registry": {
+      "accepted_ids_exact": true,
+      "accepted_local_entries": 27,
+      "accepted_neural_ids": 30,
+      "accepted_zero16_entries": 3,
+      "checkpoint_sha256_bindings_match": true,
+      "excluded_controls": 30,
+      "neural_circuits": 60,
+      "proof_receipts": 60,
+      "proof_source_ids_match": true,
+      "symbolic_references": 1
+    },
+    "release_immutability": {
+      "destructive_regenerator_executed": false,
+      "guard_condition": "independent_verifier_status == PASS",
+      "guard_error": "NC006_VERIFIED_RELEASE_IMMUTABLE",
+      "guard_present": true,
+      "silently_resetting_verified_manifest_prevented": true
+    },
+    "release_tests": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 13
+    },
+    "source_repositories": {
+      "rlt_tracked_differences": 0,
+      "standalone_isa_tracked_differences": 0
+    },
+    "verifier_history": {
+      "corrected_total_preserved_failures": 487,
+      "first_fail_converted_to_pass": false,
+      "first_fail_preserved": true,
+      "first_verdict": "FAIL",
+      "previously_omitted_inputs": 185,
+      "second_audited_commit": "611a18f081375fe3aae5040ad499dc4b126d6ec0",
+      "second_verdict": "PASS",
+      "second_verifier_runtime_identity_verified": true
+    }
+  },
+  "closure_third_verdict": "PASS",
+  "closure_verifier": "codex-cli:01a1af1c-c4d2-70e2-af93-becdb8bc9a8a",
+  "closure_verifier_did_not_mutate_implementation": true,
+  "closure_verifier_runtime_source": "artifacts/NC-006/codex_closure_trace.jsonl thread.started",
+  "errors": [],
+  "evidence_sha256": {
+    "accepted_library": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+    "closure_final": "96a4cf0a6a295c52b16aa6684482c0d3bd107877fd83902514f99b6322319aa9",
+    "closure_prompt": "b88a3575138842bc5ce31ff3b9094420053a5199e439b3ab464af45fa03eec24",
+    "closure_trace": "f1f5f1102c70df33b80f7da3249c49ac453cd6967a8d211384dd6afea076ecd5",
+    "first_fail_raw": "3c9d2442adba7b6cc829acc9d5d91bf3e0efc56b6127c4e294b009d6f0173515",
+    "independent_receipt": "cc6a3135196b4a2891dc321c2640550d6f065d473c61791412b5e3ab08d0dde2",
+    "release_manifest": "3de331da820d66f7c7e8e80adcf3badd2dae9de342ba7760d9ec2263d1d178d7",
+    "scientific_verifier_v2_final": "feeb4c082a09b6cae231e5d9fb38e57fee80aa16ab6610a5ea4c096b8b851070"
+  },
+  "excluded_controls": 30,
+  "final_omitted_counterexamples": 0,
+  "first_omitted_counterexamples": 185,
+  "first_verdict": "FAIL",
+  "historical_failed_verifier": "codex-cli:01a1af0d-e74c-75a3-a746-ad494a358571",
+  "limits": [
+    "This is not a formal proof of neural weights.",
+    "The 64 local tuples were training-seen and do not establish unseen-feature generalization.",
+    "This does not prove exhaustive 8-bit arithmetic or all reachable machine states.",
+    "JZ/JNZ target selection, PC updates and HALT are host-provided, not learned.",
+    "No invented program or learned multiplication program is established.",
+    "The verified MLP is not the RLT Transformer.",
+    "No RLT Transformer promotion, operation invention, general intelligence or AGI claim is supported.",
+    "The closure audit validates the committed independent scientific receipt and release consistency; it does not replace the earlier scientific inference audit."
+  ],
+  "owner": "1db9edb983ff4df9933612e7c826e55f",
+  "promotion_authorized": false,
+  "release_neural_bounded_count": 30,
+  "role": "IMPLEMENTER_BOUND_PROVENANCE_OF_DISTINCT_CODEX_CLOSURE",
+  "schema": 1,
+  "scientific_independent_verifier": "codex-cli:01a1af12-4331-7a43-9fc9-a61b050697dc",
+  "scientific_second_verdict": "PASS",
+  "scope": {
+    "architecture": "Frozen 5,981-parameter ExpandedISA MLP",
+    "execution_boundary": "Neural local logits and ZERO predicate only; bit sequencing, carry propagation, register routing, opcode application, JZ/JNZ inversion, target selection, PC update and HALT remain host mechanisms",
+    "local_operations": "Finite enumeration of all 64 locally training-seen six-bit feature tuples for each accepted local circuit",
+    "release_status": "Bounded independently verified library without champion or default promotion",
+    "zero16": "Finite enumeration of all 65,536 unsigned 16-bit inputs for each of three accepted learned ZERO predicates"
+  },
+  "symbolic_reference_not_neural": true,
+  "task": "NC-006",
+  "verdict": "PASS"
+}

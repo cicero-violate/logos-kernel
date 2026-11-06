@@ -1,0 +1,58 @@
+ROLE: You are a THIRD, distinct REAL Codex CLI closure verifier for NC-006.
+You are NOT the Event Lab implementer and NOT either earlier Codex scientific verifier.
+You must NOT edit, patch, stage, commit, push, train, regenerate measured artifacts,
+or mark the task passed. The harness stores your final response; use temp files
+outside audited project files only if strictly needed for independent test execution.
+
+AUDIT THE COMMITTED closure revision:
+95aa2e6e3804fab9527de3773d4d15686b51872e
+under /workspace/experiments/logos-kernel.
+
+Read AGENTS.md, NC-006 original DAG instruction and acceptance requirements,
+artifacts/NC-006/README.md, library_manifest.json, independent_receipt.json,
+accepted_library.json, circuits.jsonl, proof_receipts.jsonl,
+codex_verifier_final.json, codex_verifier_trace.jsonl,
+codex_verifier_v2_final.json, codex_verifier_v2_trace.jsonl,
+verify_circuits.py, test_circuits.py, NC-005/checkpoint_manifest.json,
+and original NC-000 inventory.json.
+
+MANDATORY CHECKS (fresh read-only commands; don't run verify_circuits.py
+because it deliberately REFUSES to overwrite an independently verified release):
+1. Capture YOUR REAL Codex thread.started identifier and verify it differs from
+ Event Lab owner 1db9edb983ff4df9933612e7c826e55f and prior two Codex IDs:
+ 01a1af0d-e74c-75a3-a746-ad494a358571,
+ 01a1af12-4331-7a43-9fc9-a61b050697dc.
+2. Run python dag.py validate; PYTHONDONTWRITEBYTECODE=1 python -m unittest -q test_dag;
+ PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-006 -p test_circuits.py.
+ Expect 19 DAG tests and 13 release tests, 0 failures/errors.
+3. Independently SHA256 verify every independent_receipt.json evidence file,
+ every raw verifier trace/final file, source registry and proof receipt references,
+ accepted library digest, manifest digest fields, exact 30 accepted IDs,
+ proof source IDs and checkpoint SHA for every accepted entry.
+4. Independently iterate all 60 saved proof receipts, including ZERO16. Verify
+ exactly 487 new_only failed local cases and exactly 487 complete stored
+ counterexamples (input, observed 2-bit logits-threshold result, correct 2-bit
+ reference), no missing data. Verify all 30 accepted rehearsal neural circuits
+ have full scoped correct denominators and all excluded controls remain excluded.
+ 27 local entries (9 operations x 3 seeds) and 3 neural ZERO16 predicates.
+5. DO NOT claim formal proof of weights, 8-bit full arithmetic coverage,
+ learned branch target, PC/HALT, invented program, RLT Transformer or AGI.
+ This is a 5,981-parameter MLP, trained-seen local 64/64 feature tuples,
+ and frozen 16-bit ZERO finite enumeration; JZ/JNZ target/PC/HALT are HOST.
+6. Check first Codex FAIL preserved, not rewritten as PASS; second Codex PASS
+ from real DIFFERENT thread and correction restored 185 previously omitted
+ inputs. Confirm closure commit matches actual Git tree and original frozen
+ RLT champion SHA 4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a4faf146645e8f683.
+ Verify old RLT and standalone ISA repositories have zero tracked differences.
+7. Verify release immutability guard exists and prevents silently resetting
+ independently approved manifest, WITHOUT executing a destructive regenerator.
+ No change to champion/default.
+8. Final verdict PASS only if all above pass. Otherwise HOLD or FAIL with exact
+ limitations/evidence. You are the CLOSURE verifier, not the original experiment
+ scientific verifier: verify the committed independent scientific receipt and
+ release consistency. The owner must append NC-006 PASS only AFTER your verdict.
+
+Return ONE JSON OBJECT ONLY (no Markdown) with:
+task, verdict ("PASS"|"FAIL"|"HOLD"), verifier_type (runtime identity), audited_commit,
+commands, closure_checks, proof_scope, limitations, failures.
+Harness will write your final answer to codex_closure_final.json.

@@ -1,0 +1,138 @@
+{
+  "task": "NC-006",
+  "verdict": "PASS",
+  "verifier_type": {
+    "type": "third_distinct_real_codex_cli_closure_verifier",
+    "codex_thread_started_id": "01a1af1c-c4d2-70e2-af93-becdb8bc9a8a",
+    "identity_distinct_from_event_lab_owner": true,
+    "identity_distinct_from_prior_codex_verifiers": true,
+    "read_only": true
+  },
+  "audited_commit": "95aa2e6e3804fab9527de3773d4d15686b51872e",
+  "commands": [
+    "python dag.py validate",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q test_dag",
+    "python dag.py ready",
+    "python dag.py list",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-006 -p test_circuits.py",
+    "git diff --exit-code 95aa2e6e3804fab9527de3773d4d15686b51872e -- artifacts/NC-006 artifacts/NC-005/checkpoint_manifest.json artifacts/NC-000/inventory.json",
+    "git rev-parse 95aa2e6e3804fab9527de3773d4d15686b51872e^{tree} HEAD^{tree}",
+    "git -C /workspace/experiments/rlt_split_algorithms_ablation_v1 status --porcelain --untracked-files=no",
+    "git -C /workspace/experiments/latticeforge_neural_isa_test status --porcelain --untracked-files=no",
+    "Independent Python closure-consistency audit over all registries, receipts, hashes, IDs, checkpoint bindings and counterexamples"
+  ],
+  "closure_checks": {
+    "ledger_validation": {
+      "result": "PASS",
+      "nodes": 29,
+      "events": 53,
+      "head_sha256": "d95d814266b0ce9f9cf723b4ac82fbd6b97c1ed8a3701574385f4d815de30c63"
+    },
+    "dag_tests": {
+      "passed": 19,
+      "failed": 0,
+      "errors": 0
+    },
+    "release_tests": {
+      "passed": 13,
+      "failed": 0,
+      "errors": 0
+    },
+    "identity": {
+      "closure_verifier": "01a1af1c-c4d2-70e2-af93-becdb8bc9a8a",
+      "event_lab_owner": "1db9edb983ff4df9933612e7c826e55f",
+      "first_codex_verifier": "01a1af0d-e74c-75a3-a746-ad494a358571",
+      "second_codex_verifier": "01a1af12-4331-7a43-9fc9-a61b050697dc",
+      "all_distinct": true
+    },
+    "commit_tree": {
+      "head_matches_audited_commit": true,
+      "commit_object_type": "commit",
+      "audited_tree": "dd7f6d8571aa08d75a7caa7515fd205aef1267bb",
+      "head_tree": "dd7f6d8571aa08d75a7caa7515fd205aef1267bb",
+      "audited_paths_match_commit": true
+    },
+    "hash_integrity": {
+      "independent_receipt_evidence_files_verified": 9,
+      "manifest_source_files_verified": 6,
+      "raw_verifier_finals_and_traces_verified": true,
+      "accepted_library_digest_verified": true,
+      "source_registry_digest_verified": true,
+      "proof_receipts_digest_verified": true,
+      "checkpoint_manifest_digest_verified": true,
+      "all_42_checkpoint_manifest_entries_present": true
+    },
+    "registry": {
+      "neural_circuits": 60,
+      "symbolic_references": 1,
+      "proof_receipts": 60,
+      "accepted_neural_ids": 30,
+      "accepted_local_entries": 27,
+      "accepted_zero16_entries": 3,
+      "excluded_controls": 30,
+      "accepted_ids_exact": true,
+      "proof_source_ids_match": true,
+      "checkpoint_sha256_bindings_match": true
+    },
+    "measurements": {
+      "all_60_receipts_iterated": true,
+      "rehearsal_local_denominators": "27 x 64/64",
+      "rehearsal_zero16_denominators": "3 x 65536/65536",
+      "new_only_failed_local_cases": 487,
+      "stored_complete_counterexamples": 487,
+      "failing_new_only_receipts": 23,
+      "counterexample_inputs_unique_within_receipt": true,
+      "stored_expected_outputs_recomputed_independently": true,
+      "stored_observed_outputs_are_two_bit_threshold_results": true,
+      "missing_counterexamples": 0
+    },
+    "verifier_history": {
+      "first_verdict": "FAIL",
+      "first_fail_preserved": true,
+      "first_fail_converted_to_pass": false,
+      "previously_omitted_inputs": 185,
+      "second_verdict": "PASS",
+      "second_verifier_runtime_identity_verified": true,
+      "corrected_total_preserved_failures": 487,
+      "second_audited_commit": "611a18f081375fe3aae5040ad499dc4b126d6ec0"
+    },
+    "champion_preservation": {
+      "original_rlt_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "matches_nc000_inventory": true,
+      "matches_nc005_and_nc006_bindings": true,
+      "champion_promoted": false,
+      "default_changed": false
+    },
+    "source_repositories": {
+      "rlt_tracked_differences": 0,
+      "standalone_isa_tracked_differences": 0
+    },
+    "release_immutability": {
+      "guard_present": true,
+      "guard_condition": "independent_verifier_status == PASS",
+      "guard_error": "NC006_VERIFIED_RELEASE_IMMUTABLE",
+      "silently_resetting_verified_manifest_prevented": true,
+      "destructive_regenerator_executed": false
+    },
+    "project_files_modified_by_closure_verifier": false,
+    "dag_pass_recorded_by_closure_verifier": false
+  },
+  "proof_scope": {
+    "architecture": "Frozen 5,981-parameter ExpandedISA MLP",
+    "local_operations": "Finite enumeration of all 64 locally training-seen six-bit feature tuples for each accepted local circuit",
+    "zero16": "Finite enumeration of all 65,536 unsigned 16-bit inputs for each of three accepted learned ZERO predicates",
+    "execution_boundary": "Neural local logits and ZERO predicate only; bit sequencing, carry propagation, register routing, opcode application, JZ/JNZ inversion, target selection, PC update and HALT remain host mechanisms",
+    "release_status": "Bounded independently verified library without champion or default promotion"
+  },
+  "limitations": [
+    "This is not a formal proof of neural weights.",
+    "The 64 local tuples were training-seen and do not establish unseen-feature generalization.",
+    "This does not prove exhaustive 8-bit arithmetic or all reachable machine states.",
+    "JZ/JNZ target selection, PC updates and HALT are host-provided, not learned.",
+    "No invented program or learned multiplication program is established.",
+    "The verified MLP is not the RLT Transformer.",
+    "No RLT Transformer promotion, operation invention, general intelligence or AGI claim is supported.",
+    "The closure audit validates the committed independent scientific receipt and release consistency; it does not replace the earlier scientific inference audit."
+  ],
+  "failures": []
+}
