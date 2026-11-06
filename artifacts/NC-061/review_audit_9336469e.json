@@ -1,0 +1,35 @@
+{
+  "candidate_revision": "980ef36d337370d8212c7ff28669019b8a258610",
+  "candidate_sha256": "126c0ef09aa72d3209eae8656818d9597f2fc465b51d334e3d3975b9217609b8",
+  "canonical_isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+  "compounding_controls": "PASS",
+  "control_verdicts": {
+    "budget_cheat": "INVALID",
+    "constant": "NO_IMPROVEMENT",
+    "known_good": "IMPROVEMENT",
+    "leaked_answer": "CONTAMINATED",
+    "memorizer": "NO_IMPROVEMENT",
+    "random_search": "NO_IMPROVEMENT",
+    "regressed": "NO_IMPROVEMENT"
+  },
+  "cpu_small_budget_negative_controls": "PASS",
+  "evidence_sha256": {
+    "control_results.json": "7f54782eed1e14801909856a6eea94d874ba4bca506a0d6f26cab56f7fc81739",
+    "scoreboard_spec.json": "26138a5dcb4e5383575f8957203969d63c4839ae62e7a6deded2a695e85f0ee1"
+  },
+  "finite_truth_table": "PASS",
+  "goal_replay": "PASS",
+  "invalid_usage": "PASS",
+  "retention_contamination_budget_controls": "PASS",
+  "reviewer": "turn-9336469eed684665af2d437f4ea081ff",
+  "scope": "finite four-bit X/Y domain; three public control seeds; in-process CPU only",
+  "sealed_reveal_tampering": "PASS",
+  "source_sha256": {
+    "README.md": "d41572febbc9daf5ac79a03c0778bf52bece85f482a49cf07275b14d96b0ec84",
+    "controls.py": "482c5b258cd8511a88d5a3189cfb2bae808de93d397f8a885e7b95047ae436c9",
+    "scoreboard.py": "34fcdecd35e05547e7ea562882426bd54a5f39c828cbb8f3a32275e3511412fe",
+    "test_scoreboard.py": "f76e101abeb28bda800936a086797f99618da13ac355f1eee9d0ba4a3a9dec53"
+  },
+  "task": "NC-061",
+  "train_example_memorizer_counterexample": "PASS"
+}

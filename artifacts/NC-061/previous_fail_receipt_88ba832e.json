@@ -1,0 +1,105 @@
+{
+  "acceptance_assessment": {
+    "flat_compounding": "PASS corrected",
+    "known_good_constant_random_leaked_and_regressed": "PASS",
+    "large_unmatched_cpu": "PASS corrected for 360000x case",
+    "memorization_training_only": "PASS control NO_IMPROVEMENT",
+    "negative_candidate_count": "PASS corrected",
+    "strict_matched_cpu_budget": "FAIL, 900x CPU increase accepted for cheap baselines",
+    "threshold_seed_nonce_generator_integrity": "PASS in candidate 18 tests; previous independent probe also confirmed"
+  },
+  "candidate_path": "artifacts/NC-061/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "a5dadfb7dd5a0f00447e1e511d351856531d4160",
+  "candidate_sha256": "7c51ddbde89e0c63b258af8538d8aa759dd90a68bf8b0170290c868a56373882",
+  "canonical_isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+  "counterexample": {
+    "cpu_ratio": 900,
+    "current_three_seed_rows": {
+      "candidates_used": 3,
+      "cpu_seconds": 0.9,
+      "over_budget_goals": 0,
+      "retention": 1.0,
+      "solve_rate": 1.0,
+      "training_overlap": 0.0
+    },
+    "expected": "NO_IMPROVEMENT due to unmatched CPU",
+    "observed": "IMPROVEMENT",
+    "previous_three_seed_rows": {
+      "candidates_used": 3,
+      "cpu_seconds": 0.001,
+      "over_budget_goals": 0,
+      "retention": 1.0,
+      "solve_rate": 0.0,
+      "training_overlap": 0.0
+    },
+    "reproduction": "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-061/reviewer_cpu_floor_negative.py",
+    "reviewer_probe_sha256": "ac8ee5d2c9cd1a2e1546a95e872cf177f337bfc0a70ba2a0ea6b31bc8c5649c3",
+    "root_cause": "limit = previous_cpu*(1+0.25)+1.0; additive 1s floor overwhelms relative compute budget on short runs",
+    "target": "scoreboard.compare",
+    "thresholds": {
+      "cpu_floor_seconds": 1.0,
+      "cpu_tolerance": 0.25
+    }
+  },
+  "evidence_sha256": {
+    "control_results.json": "58bf91c69fb0d2885b51bbf02caebf367b94f9dd2b1132c27b33b60890cdbe1b",
+    "scoreboard_spec.json": "1f0fd64a8bd7d6a71bd6be017bf6cac2cb17b1142c180fe17f3804257df7bc14"
+  },
+  "independent_tests": [
+    {
+      "command": "python dag.py validate",
+      "result": "PASS: 886 nodes and 1030 events prior to pull"
+    },
+    {
+      "command": "python -m unittest -q test_dag",
+      "result": "PASS: 19/19"
+    },
+    {
+      "command": "python -m unittest -q test_pull",
+      "result": "PASS: 20/20"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-061/test_scoreboard.py",
+      "result": "PASS: 18/18; broker job eb171f5ebe87c3dc"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -c \"import controls; controls.run()\"",
+      "result": "PASS: 7 control categories correct; broker job eb171f5ebe87c3dc"
+    },
+    {
+      "command": "independent direct functions on frozen rework; broker job a16f67ccf6f552a5",
+      "result": "Old three counterexamples corrected; new CPU floor evasion reproduced"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-061/reviewer_cpu_floor_negative.py",
+      "result": "REPRODUCED FAIL: 900x CPU use labeled IMPROVEMENT; broker job 2426ec0d5454e12c"
+    }
+  ],
+  "limitations": [
+    "Counterexample invokes compare with deliberately constructed per-seed score rows; it demonstrates a policy false positive, not actual uncontrolled model training.",
+    "In-process process_time excludes child processes; candidate admits this limitation and real evaluations need independent CPU metering.",
+    "Candidate count is caller-reported, range checked but not independently authenticated.",
+    "Training overlap keys and retention are supplied by the caller, not independently verified.",
+    "Only bounded 4-bit goal domain was tested, not AGI, global self-improvement or champion promotion.",
+    "Earlier negative-control receipt artifacts remain unchanged; reviewer only writes an additional script and revised receipt."
+  ],
+  "owner": "claude-code-turn-0f97bfac6651402eba375336293883b0",
+  "pinned_candidate_integrity": "PASS: each source/evidence file matches worktree and candidate Git commit, canonical ISA matches, candidate manifest matches pull",
+  "proof_scope": "Independent replay of NC-061 pinned rework test and seven controls plus finite constructed policy inputs. PASS for corrected earlier defects but FAIL for CPU-equivalence acceptance: current policy allows 900x CPU spending for tiny baselines and therefore cannot support matched-budget improvement labels.",
+  "recommended_fix": "Replace an unconditional additive 1s CPU allowance with a preregistered metered CPU allowance that respects a meaningful relative matched-budget condition for small runs; alternatively aggregate repeated trials until measurement noise is negligible. Test 900x and near-tolerance cases, republish frozen manifest.",
+  "reviewed_at_utc": "2026-11-06T14:34:21.189328+00:00",
+  "reviewer_owned_files": [
+    "artifacts/NC-061/reviewer_cpu_floor_negative.py",
+    "artifacts/NC-061/independent_verification.json"
+  ],
+  "schema": "logos-kernel-nc061-independent-rework-review-v2",
+  "source_sha256": {
+    "README.md": "d41572febbc9daf5ac79a03c0778bf52bece85f482a49cf07275b14d96b0ec84",
+    "controls.py": "68d5d041fe6e412906f185ec83ef69952d5480b5df564d08ef8f78ab635b7bcd",
+    "scoreboard.py": "3f5c307fc190f0475c48995724c58c34d71f80c23d1676415664ea641d652ea9",
+    "test_scoreboard.py": "ce1a08e74432b899219a725c1d8c27b93d53163c448316e5c7ddb101b7d7812a"
+  },
+  "task": "NC-061",
+  "verdict": "FAIL",
+  "verifier": "turn-88ba832e796248fa97ca5d2aabc3b266"
+}

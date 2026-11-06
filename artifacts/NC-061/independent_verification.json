@@ -1,105 +1,74 @@
 {
-  "acceptance_assessment": {
-    "flat_compounding": "PASS corrected",
-    "known_good_constant_random_leaked_and_regressed": "PASS",
-    "large_unmatched_cpu": "PASS corrected for 360000x case",
-    "memorization_training_only": "PASS control NO_IMPROVEMENT",
-    "negative_candidate_count": "PASS corrected",
-    "strict_matched_cpu_budget": "FAIL, 900x CPU increase accepted for cheap baselines",
-    "threshold_seed_nonce_generator_integrity": "PASS in candidate 18 tests; previous independent probe also confirmed"
-  },
   "candidate_path": "artifacts/NC-061/CANDIDATE_MANIFEST.json",
-  "candidate_revision": "a5dadfb7dd5a0f00447e1e511d351856531d4160",
-  "candidate_sha256": "7c51ddbde89e0c63b258af8538d8aa759dd90a68bf8b0170290c868a56373882",
+  "candidate_revision": "980ef36d337370d8212c7ff28669019b8a258610",
+  "candidate_sha256": "126c0ef09aa72d3209eae8656818d9597f2fc465b51d334e3d3975b9217609b8",
   "canonical_isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
-  "counterexample": {
-    "cpu_ratio": 900,
-    "current_three_seed_rows": {
-      "candidates_used": 3,
-      "cpu_seconds": 0.9,
-      "over_budget_goals": 0,
-      "retention": 1.0,
-      "solve_rate": 1.0,
-      "training_overlap": 0.0
-    },
-    "expected": "NO_IMPROVEMENT due to unmatched CPU",
-    "observed": "IMPROVEMENT",
-    "previous_three_seed_rows": {
-      "candidates_used": 3,
-      "cpu_seconds": 0.001,
-      "over_budget_goals": 0,
-      "retention": 1.0,
-      "solve_rate": 0.0,
-      "training_overlap": 0.0
-    },
-    "reproduction": "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-061/reviewer_cpu_floor_negative.py",
-    "reviewer_probe_sha256": "ac8ee5d2c9cd1a2e1546a95e872cf177f337bfc0a70ba2a0ea6b31bc8c5649c3",
-    "root_cause": "limit = previous_cpu*(1+0.25)+1.0; additive 1s floor overwhelms relative compute budget on short runs",
-    "target": "scoreboard.compare",
-    "thresholds": {
-      "cpu_floor_seconds": 1.0,
-      "cpu_tolerance": 0.25
-    }
-  },
   "evidence_sha256": {
-    "control_results.json": "58bf91c69fb0d2885b51bbf02caebf367b94f9dd2b1132c27b33b60890cdbe1b",
-    "scoreboard_spec.json": "1f0fd64a8bd7d6a71bd6be017bf6cac2cb17b1142c180fe17f3804257df7bc14"
+    "control_results.json": "7f54782eed1e14801909856a6eea94d874ba4bca506a0d6f26cab56f7fc81739",
+    "scoreboard_spec.json": "26138a5dcb4e5383575f8957203969d63c4839ae62e7a6deded2a695e85f0ee1"
   },
-  "independent_tests": [
-    {
-      "command": "python dag.py validate",
-      "result": "PASS: 886 nodes and 1030 events prior to pull"
+  "independent_checks": {
+    "candidate_revision_and_manifest_sha256": "PASS",
+    "candidate_sources_not_modified": true,
+    "candidate_tests": "19/19 PASS",
+    "canonical_isa_sha256": "PASS",
+    "champion_not_modified": true,
+    "compounding": "PASS: flat, rising, insufficient and interrupted sequence controls",
+    "near_125pct_CPU_threshold": "PASS: 12.5 / 10 accepted, 12.501 / 10 rejected",
+    "no_actual_compounding_measurement": true,
+    "previous_CPU_failure_49x": "REJECTED: NO_IMPROVEMENT",
+    "previous_CPU_failure_900x": "REJECTED: NO_IMPROVEMENT",
+    "sealed_reveal_change": "REJECTED: seed, nonce, generator, thresholds",
+    "seven_controls": {
+      "budget_cheat": "INVALID",
+      "constant": "NO_IMPROVEMENT",
+      "known_good": "IMPROVEMENT",
+      "leaked_answer": "CONTAMINATED",
+      "memorizer": "NO_IMPROVEMENT",
+      "random_search": "NO_IMPROVEMENT",
+      "regressed": "NO_IMPROVEMENT"
     },
-    {
-      "command": "python -m unittest -q test_dag",
-      "result": "PASS: 19/19"
-    },
-    {
-      "command": "python -m unittest -q test_pull",
-      "result": "PASS: 20/20"
-    },
-    {
-      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-061/test_scoreboard.py",
-      "result": "PASS: 18/18; broker job eb171f5ebe87c3dc"
-    },
-    {
-      "command": "PYTHONDONTWRITEBYTECODE=1 python -c \"import controls; controls.run()\"",
-      "result": "PASS: 7 control categories correct; broker job eb171f5ebe87c3dc"
-    },
-    {
-      "command": "independent direct functions on frozen rework; broker job a16f67ccf6f552a5",
-      "result": "Old three counterexamples corrected; new CPU floor evasion reproduced"
-    },
-    {
-      "command": "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-061/reviewer_cpu_floor_negative.py",
-      "result": "REPRODUCED FAIL: 900x CPU use labeled IMPROVEMENT; broker job 2426ec0d5454e12c"
-    }
-  ],
+    "source_and_evidence_sha256": "PASS",
+    "synthetic_training_only_fit": "REJECTED: fits disclosed examples, fails full 256-pair table",
+    "three_seeds_per_control": 3,
+    "training_memorization": "FAILS_TO_SCORE_ON_SEALED_GOALS"
+  },
   "limitations": [
-    "Counterexample invokes compare with deliberately constructed per-seed score rows; it demonstrates a policy false positive, not actual uncontrolled model training.",
-    "In-process process_time excludes child processes; candidate admits this limitation and real evaluations need independent CPU metering.",
-    "Candidate count is caller-reported, range checked but not independently authenticated.",
-    "Training overlap keys and retention are supplied by the caller, not independently verified.",
-    "Only bounded 4-bit goal domain was tested, not AGI, global self-improvement or champion promotion.",
-    "Earlier negative-control receipt artifacts remain unchanged; reviewer only writes an additional script and revised receipt."
+    "All independent tests measure a 4-bit two-input program family and finite per-goal truth tables; no neural self-improvement is demonstrated.",
+    "Control known_good has preloaded answer mappings and is a positive test fixture, not a valid sealed candidate.",
+    "Three public control seeds test implementation behavior, not secrecy; real evaluation requires fresh private commitments and independent candidate freeze.",
+    "Commitment checks integrity after reveal; same-user/local-worker access to hidden goals is not excluded without external separation.",
+    "Training overlap is checked against caller-declared keys; undeclared exposure and copied answers are not ruled out.",
+    "Retention is supplied by caller; independent old-skill retention assessment is required in any actual learning experiment.",
+    "In-process CPU time does not meter child processes or total host contention; candidate count is supplied by candidate and only range-checked.",
+    "Submillisecond measured CPU can be rounded to zero; the strict relative rule alone is insufficient metering for real low-cost candidates.",
+    "Pre-registered thresholds are an engineering choice rather than a statistically powered scientific acceptance criterion.",
+    "This independent reviewer is a distinct stateless ledger identity, not an authenticated human or externally signed attestation."
   ],
+  "next_action": "Different future turn assigned FINALIZER must confirm this exact receipt and candidate hash and close NC-061; no reviewer self-finalization.",
   "owner": "claude-code-turn-0f97bfac6651402eba375336293883b0",
-  "pinned_candidate_integrity": "PASS: each source/evidence file matches worktree and candidate Git commit, canonical ISA matches, candidate manifest matches pull",
-  "proof_scope": "Independent replay of NC-061 pinned rework test and seven controls plus finite constructed policy inputs. PASS for corrected earlier defects but FAIL for CPU-equivalence acceptance: current policy allows 900x CPU spending for tiny baselines and therefore cannot support matched-budget improvement labels.",
-  "recommended_fix": "Replace an unconditional additive 1s CPU allowance with a preregistered metered CPU allowance that respects a meaningful relative matched-budget condition for small runs; alternatively aggregate repeated trials until measurement noise is negligible. Test 900x and near-tolerance cases, republish frozen manifest.",
-  "reviewed_at_utc": "2026-11-06T14:34:21.189328+00:00",
-  "reviewer_owned_files": [
-    "artifacts/NC-061/reviewer_cpu_floor_negative.py",
-    "artifacts/NC-061/independent_verification.json"
-  ],
-  "schema": "logos-kernel-nc061-independent-rework-review-v2",
+  "previous_verdict_archive": "previous_fail_receipt_88ba832e.json",
+  "proof_scope": "Independently verified the frozen Python scoreboard and 4-bit X/Y program-truth domain; checked exact SHA-256 pins for manifest, code, spec, fixed control outputs, and canonical ISA. Reproduced all 19 candidate tests and separately regenerated seven control verdict categories over three seeds each without altering frozen outputs; tested tamper-sensitive reveal, 0.001-to-0.9 and 0.001-to-0.049 cheap-baseline CPU failures, 1.25x budget boundary, retention, contamination, budget forgery, insufficient/generalization claims and three-generation compounding. This is a bounded pre-run scoring protocol, not independent process confinement, full secrecy, proof of novel discovery, a trained improvement loop, or an observed compounding result.",
+  "reviewer_artifacts": {
+    "artifacts/NC-061/previous_fail_receipt_88ba832e.json": "d47bd7f46df2c7bc4630aa7d142aa438c849e3845d14f86d0f64bc28718ad90b",
+    "artifacts/NC-061/review_audit_9336469e.json": "1d6acf8a990b57019274e39c9f295e9d8c3f5e4ce24a4c2c5267f4a6988f4727"
+  },
+  "schema": "logos-kernel-nc061-independent-review-v3",
   "source_sha256": {
     "README.md": "d41572febbc9daf5ac79a03c0778bf52bece85f482a49cf07275b14d96b0ec84",
-    "controls.py": "68d5d041fe6e412906f185ec83ef69952d5480b5df564d08ef8f78ab635b7bcd",
-    "scoreboard.py": "3f5c307fc190f0475c48995724c58c34d71f80c23d1676415664ea641d652ea9",
-    "test_scoreboard.py": "ce1a08e74432b899219a725c1d8c27b93d53163c448316e5c7ddb101b7d7812a"
+    "controls.py": "482c5b258cd8511a88d5a3189cfb2bae808de93d397f8a885e7b95047ae436c9",
+    "scoreboard.py": "34fcdecd35e05547e7ea562882426bd54a5f39c828cbb8f3a32275e3511412fe",
+    "test_scoreboard.py": "f76e101abeb28bda800936a086797f99618da13ac355f1eee9d0ba4a3a9dec53"
   },
   "task": "NC-061",
-  "verdict": "FAIL",
-  "verifier": "turn-88ba832e796248fa97ca5d2aabc3b266"
+  "tests": [
+    "python dag.py validate \u2014 PASS; 887 nodes, 1046 events at initial check",
+    "python -m unittest -q test_dag \u2014 19/19 PASS",
+    "python -m unittest -q test_pull \u2014 20/20 PASS",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-061/test_scoreboard.py \u2014 19/19 PASS",
+    "Fresh read-only controls.run() \u2014 all seven expected verdict categories reproduced",
+    "Independent synthetic policy/tamper counterexamples \u2014 PASS"
+  ],
+  "verdict": "PASS",
+  "verifier": "turn-9336469eed684665af2d437f4ea081ff"
 }
