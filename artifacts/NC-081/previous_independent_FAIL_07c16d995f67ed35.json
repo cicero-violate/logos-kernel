@@ -1,0 +1,235 @@
+{
+  "candidate_path": "artifacts/NC-081/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "390d354689fc0d79b383290ec308e1ba58679797",
+  "candidate_sha256": "2dcf505c320d76360fb1677b0baf9c2dd09b373dcdf08e7fc7d281f5159710ae",
+  "component_label_scope_note": {
+    "exact_exam_function_present_among_64_library_concepts_per_seed": 0,
+    "interpretation": "The function of each accepted dream is on the training side, but some labeled component functions are sealed-side. This is not direct leakage of the 300 exam functions; it limits any broader claim that all training components are nonsealed.",
+    "sealed_side_concept_functions_present_in_training_labels": {
+      "11": {
+        "labels_in_first_1000_accepted_targets": 155,
+        "sealed_concepts": 6
+      },
+      "19": {
+        "labels_in_first_1000_accepted_targets": 89,
+        "sealed_concepts": 3
+      },
+      "29": {
+        "labels_in_first_1000_accepted_targets": 152,
+        "sealed_concepts": 5
+      }
+    },
+    "tested_accepted_training_targets_per_seed": 1000
+  },
+  "date_utc": "2026-11-06T17:47:08.844828+00:00",
+  "exam_audit": {
+    "distinct_truth_tables_per_seed": 300,
+    "every_exam_target_on_sealed_side": true,
+    "exam_sha256_match": true,
+    "sealed_goals_per_seed": 300,
+    "three_seeds": [
+      11,
+      19,
+      29
+    ]
+  },
+  "findings": [
+    {
+      "criterion": "Verify every accepted solution exhaustively with a separately implemented evaluator",
+      "id": "F1",
+      "observed": "Candidate pinned logos-autonomy/discovery/library.py verify() uses exhaustive vector evaluator for 65536 pairs but independent stack evaluator checks 64 random pairs only. The later live library fix cannot retroactively alter the candidate pinned hash.",
+      "reproduction": "Source at pinned Git revision 66114633, function verify: all(run_stack(...) for _ in range(64)). Five independently rechecked archive positives passed 65536/65536 each; remaining accepted results are not covered by the candidate independent gate.",
+      "required_fix": "Pin updated exhaustive stack verification and rerun all accepted solutions, with regression failing if stack domain drops below 65536.",
+      "severity": "acceptance_failure"
+    },
+    {
+      "criterion": "All-concepts extra-budget baseline compared to neural model at equal total CPU including model training",
+      "id": "F2",
+      "observed": "Extrapolation uses per-candidate rate measured at 8000 candidates; actual extended-budget CPU differs materially from training+inference+neural search. Archived per-seed baseline difference is -21.0%, -8.3%, and +18.4% versus model CPU.",
+      "reproduction": "In selector.py run_seed, extra=int(rate*(train_cpu_seconds+inference)/len(goals)); compare out[all_concepts_equal_total_cpu].cpu_seconds alone, NOT add the separate standard all_concepts run, to training+inference+out[model].cpu_seconds. See three_seed_audit.",
+      "required_fix": "Use measured per-arm CPU matching or calibrated budgets with a prespecified tolerance; rerun the 3 seeds on identical goals; do not infer equality from candidate-rate extrapolation alone.",
+      "severity": "acceptance_failure"
+    },
+    {
+      "criterion": "Pinned source dependency underwrites candidate replay",
+      "id": "F3",
+      "observed": "selector.py dynamically imports live external library without rejecting a SHA-256 mismatch; live 0c876a... differed from pinned 96b791... and a fresh reduced-cost CLI probe ran successfully with mismatched dependency.",
+      "reproduction": "CLI --dreams 10 --steps 1 --exam-goals 1 --budget 100 --libraries 11=... --out /tmp/nc081-live-source-probe-da435b; exit 0 with report.la015_library_py_sha256 matching live mismatch, not pinned.",
+      "required_fix": "Fail closed before training unless the exact pinned historical library hash is available, and preserve a reproducible read-only dependency reference.",
+      "severity": "reproducibility_failure"
+    }
+  ],
+  "hash_audit": {
+    "all_matches": true,
+    "checkpoint_files": 3,
+    "evidence_files": 4,
+    "source_files": 3
+  },
+  "independent_exhaustive_stack_spotcheck": {
+    "accepted_programs": 5,
+    "input_pairs_per_program": 65536,
+    "mismatches": 0,
+    "source": "archived all-concepts positive goals; exact result file recorded",
+    "total_pairs": 327680
+  },
+  "limitations": [
+    "All three 30,000-dream training phases reran from pinned code; six of seven comparison arms per seed reran and exactly matched archive. Extended-budget baseline reruns were canceled once independent acceptance failures were established; no new full-budget baseline CPU comparison is claimed.",
+    "Five archived positive all-concepts expressions were separately checked exhaustively, not all accepted expressions in every comparison arm.",
+    "Held-out split hashes are computed over the fixed sparse 86-by-52 input grid, not all 65536 input pairs.",
+    "Only 0-5 of 300 exam functions were solved per arm. NO_GAIN cannot rule out small effects on other exam distributions.",
+    "No claim of generally optimal compute path, independent model discovery, or AGI; no champion change."
+  ],
+  "next_action": "Implementer: update pinned dependency and enforce its digest; require second evaluator to check all 65536 pairs for every accepted solution; build a genuinely matched measured-total-CPU baseline; state sealed component-label exposure; republish new manifest with three-seed independent rerun evidence. No champion promotion.",
+  "observed_result": "NO_GAIN for matched candidate budgets: neural selector [2,1,0] vs all-concepts [4,1,0] and other-goal-example model [2,1,0]. Extended equal-CPU claim is unverified due unequal measured CPU.",
+  "owner": "claude-code-turn-fd62f7c9e6944473b8301203cfa21174",
+  "pinned_external_dependency": {
+    "historical_git_revision": "66114633f55675c17322289ac54f0ae15e4b69b7",
+    "live_sha256_at_review": "0c876a9e8d90e9401323b0068a66acc9b6d1e9f3051f22a771fe9d2a2d098b8a",
+    "matched_by_isolated_recovery": true,
+    "sha256": "96b791cd1e6c28eb97508b4bcd463560641901e6228755f7943a5105b075b36c"
+  },
+  "proof_scope": "Independent source/manifest/checkpoint hash audit, pinned isolated historical dependency, 6 local selector tests, 3x300 identical sealed exams regenerated, complete 3x30000 training split audit, six arms per seed with matching solved counts, a five-program exhaustive independent 8-bit stack spot-check, and live dependency mismatch negative control. FAIL on exact acceptance requirements for second-evaluator exhaustiveness and measured total-CPU matching. High-cost seventh-arm reruns intentionally canceled.",
+  "reviewer_independent_evidence_sha256": {
+    "artifacts/NC-081/independent_review_da435b/exhaustive_positive_spotcheck.json": "42475f38d778513042611a2c1bd1c630fb3e00149785c6465d4c093dc1390638",
+    "artifacts/NC-081/independent_review_da435b/training_split_receipt.json": "e2184310e39b07051b97900c01963224a76805129dce909ef0135379bb12b028"
+  },
+  "schema_version": 1,
+  "task": "NC-081",
+  "tests": {
+    "dag_validate": "PASS, 890 nodes and 1091 events before review claim",
+    "isolated_pinned_test_selector": "6/6 PASS",
+    "test_dag": "19/19 PASS",
+    "test_pull": "20/20 PASS"
+  },
+  "three_seed_audit": {
+    "11": {
+      "all_six_arms_match_archive": true,
+      "archived_CPU_comparison": {
+        "baseline_relative_difference_pct": -20.99,
+        "extended_baseline_search_cpu_seconds": 79.62,
+        "model_training_inference_search_cpu_seconds": 100.7708
+      },
+      "eventlab_job_id": "6eca51b0ae702855",
+      "fresh_replay_status": "CANCELLED after six arms, before extended CPU baseline; -15 SIGTERM",
+      "fresh_solve_counts": {
+        "all_concepts": 4,
+        "frequent": 1,
+        "model": 2,
+        "no_library": 0,
+        "other_goal_examples": 2,
+        "random_pick": 1
+      },
+      "reference_all_seven_arm_counts": {
+        "all_concepts": 4,
+        "all_concepts_equal_total_cpu": 5,
+        "frequent": 1,
+        "model": 2,
+        "no_library": 0,
+        "other_goal_examples": 2,
+        "random_pick": 1
+      },
+      "sealed_goal_digest": "29f81099b272afda57d84592877bfbba9f028097201d5a5da9feb6d2662fe8d3",
+      "shared_exam_truth_tables": 300,
+      "training_reexecuted": true,
+      "training_split": {
+        "accepted": 30000,
+        "cpu_seconds": 35.9,
+        "exam_training_intersection": 0,
+        "exam_unique_keys": 300,
+        "sealed_training_keys": 0,
+        "skipped": 26288,
+        "unique_training_keys": 16959
+      }
+    },
+    "19": {
+      "all_six_arms_match_archive": true,
+      "archived_CPU_comparison": {
+        "baseline_relative_difference_pct": -8.32,
+        "extended_baseline_search_cpu_seconds": 84.46,
+        "model_training_inference_search_cpu_seconds": 92.1232
+      },
+      "eventlab_job_id": "a8910d7e0c507250",
+      "fresh_replay_status": "CANCELLED after six arms, before extended CPU baseline; -15 SIGTERM",
+      "fresh_solve_counts": {
+        "all_concepts": 1,
+        "frequent": 1,
+        "model": 1,
+        "no_library": 0,
+        "other_goal_examples": 1,
+        "random_pick": 0
+      },
+      "reference_all_seven_arm_counts": {
+        "all_concepts": 1,
+        "all_concepts_equal_total_cpu": 1,
+        "frequent": 1,
+        "model": 1,
+        "no_library": 0,
+        "other_goal_examples": 1,
+        "random_pick": 0
+      },
+      "sealed_goal_digest": "2bc1b9bbe88d12ec6aec2fe8440f2f6c0d72459a5ba9390b1c858f5465d2c577",
+      "shared_exam_truth_tables": 300,
+      "training_reexecuted": true,
+      "training_split": {
+        "accepted": 30000,
+        "cpu_seconds": 29.5,
+        "exam_training_intersection": 0,
+        "exam_unique_keys": 300,
+        "sealed_training_keys": 0,
+        "skipped": 25278,
+        "unique_training_keys": 16853
+      }
+    },
+    "29": {
+      "all_six_arms_match_archive": true,
+      "archived_CPU_comparison": {
+        "baseline_relative_difference_pct": 18.45,
+        "extended_baseline_search_cpu_seconds": 99.4,
+        "model_training_inference_search_cpu_seconds": 83.9203
+      },
+      "eventlab_job_id": "93a3dedb6b9f70af",
+      "fresh_replay_status": "CANCELLED after six arms, before extended CPU baseline; -15 SIGTERM",
+      "fresh_solve_counts": {
+        "all_concepts": 0,
+        "frequent": 0,
+        "model": 0,
+        "no_library": 0,
+        "other_goal_examples": 0,
+        "random_pick": 1
+      },
+      "reference_all_seven_arm_counts": {
+        "all_concepts": 0,
+        "all_concepts_equal_total_cpu": 1,
+        "frequent": 0,
+        "model": 0,
+        "no_library": 0,
+        "other_goal_examples": 0,
+        "random_pick": 1
+      },
+      "sealed_goal_digest": "5c630287111a72fa6955fa32aeca5ef5e65427a44a960bd96475e060742ab98f",
+      "shared_exam_truth_tables": 300,
+      "training_reexecuted": true,
+      "training_split": {
+        "accepted": 30000,
+        "cpu_seconds": 31.6,
+        "exam_training_intersection": 0,
+        "exam_unique_keys": 300,
+        "sealed_training_keys": 0,
+        "skipped": 24767,
+        "unique_training_keys": 16888
+      }
+    }
+  },
+  "training_heldout": {
+    "accepted_training_goals_total": 90000,
+    "exam_training_function_overlap": 0,
+    "sealed_side_accepted_training_goals": 0,
+    "skipped_sealed_dreams_per_seed": {
+      "11": 26288,
+      "19": 25278,
+      "29": 24767
+    }
+  },
+  "verdict": "FAIL",
+  "verifier": "turn-da435bb2c6a3478b83fab04ca3cfeaf3"
+}
