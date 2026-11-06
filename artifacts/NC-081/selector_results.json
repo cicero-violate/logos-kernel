@@ -19,12 +19,12 @@
    "exam_sha256": "29f81099b272afda57d84592877bfbba9f028097201d5a5da9feb6d2662fe8d3",
    "training": {
     "dreams": 30000,
-    "sealed_side_skipped": 26288,
-    "final_loss": 0.1012,
-    "train_cpu_seconds": 105.9
+    "sealed_side_skipped": 24950,
+    "final_loss": 0.106,
+    "train_cpu_seconds": 93.2
    },
-   "inference_cpu_seconds": 0.0293,
-   "checkpoint_sha256": "eccb60f251615fc4ad88827b3189bfed2d67dd956e8aaa83833d41485b3a51da",
+   "inference_cpu_seconds": 0.0214,
+   "checkpoint_sha256": "43cd6dc00a6c2537f2d5557a63c4cc341ea59ba1578b7de701ffd5735207218e",
    "arms": {
     "all_concepts": {
      "solved": 4,
@@ -35,16 +35,15 @@
       256
      ],
      "candidates": 2379062,
-     "cpu_seconds": 31.57
+     "cpu_seconds": 25.68
     },
     "model": {
-     "solved": 2,
+     "solved": 1,
      "solved_goals": [
-      56,
       256
      ],
-     "candidates": 2390626,
-     "cpu_seconds": 32.75
+     "candidates": 2392394,
+     "cpu_seconds": 21.99
     },
     "random_pick": {
      "solved": 1,
@@ -52,7 +51,7 @@
       148
      ],
      "candidates": 2393481,
-     "cpu_seconds": 24.72
+     "cpu_seconds": 16.72
     },
     "frequent": {
      "solved": 1,
@@ -60,22 +59,21 @@
       256
      ],
      "candidates": 2393074,
-     "cpu_seconds": 24.19
+     "cpu_seconds": 17.25
     },
     "other_goal_examples": {
-     "solved": 2,
+     "solved": 1,
      "solved_goals": [
-      26,
-      56
+      256
      ],
-     "candidates": 2396403,
-     "cpu_seconds": 34.43
+     "candidates": 2392240,
+     "cpu_seconds": 15.25
     },
     "no_library": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 21.7
+     "cpu_seconds": 13.23
     },
     "all_concepts_equal_total_cpu": {
      "solved": 5,
@@ -86,22 +84,22 @@
       240,
       256
      ],
-     "candidates": 13240195,
-     "cpu_seconds": 135.53,
-     "budget_per_goal": 44792,
-     "target_cpu_seconds": 138.68,
+     "candidates": 18257555,
+     "cpu_seconds": 107.87,
+     "budget_per_goal": 61800,
+     "target_cpu_seconds": 115.21,
      "tolerance": 0.1,
      "matched": true,
      "attempts": [
       {
-       "budget_per_goal": 35142,
+       "budget_per_goal": 35891,
        "solved": 5,
-       "cpu_seconds": 108.8
+       "cpu_seconds": 66.91
       },
       {
-       "budget_per_goal": 44792,
+       "budget_per_goal": 61800,
        "solved": 5,
-       "cpu_seconds": 135.53
+       "cpu_seconds": 107.87
       }
      ]
     }
@@ -115,12 +113,12 @@
    "exam_sha256": "2bc1b9bbe88d12ec6aec2fe8440f2f6c0d72459a5ba9390b1c858f5465d2c577",
    "training": {
     "dreams": 30000,
-    "sealed_side_skipped": 25278,
-    "final_loss": 0.1069,
-    "train_cpu_seconds": 92.8
+    "sealed_side_skipped": 24979,
+    "final_loss": 0.1006,
+    "train_cpu_seconds": 60.2
    },
-   "inference_cpu_seconds": 0.028,
-   "checkpoint_sha256": "91a6c0a9a6892bf6de122a3282225164c910bcb759d75e3e70bbb5fca1f09a97",
+   "inference_cpu_seconds": 0.0166,
+   "checkpoint_sha256": "f88664166ae371c312ab14820907e72d51d86dcead30b4824c14458b3af87a9f",
    "arms": {
     "all_concepts": {
      "solved": 1,
@@ -128,21 +126,22 @@
       291
      ],
      "candidates": 2392445,
-     "cpu_seconds": 24.27
+     "cpu_seconds": 13.81
     },
     "model": {
-     "solved": 1,
+     "solved": 2,
      "solved_goals": [
+      263,
       291
      ],
-     "candidates": 2392135,
-     "cpu_seconds": 22.42
+     "candidates": 2389968,
+     "cpu_seconds": 15.82
     },
     "random_pick": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 24.09
+     "cpu_seconds": 12.05
     },
     "frequent": {
      "solved": 1,
@@ -150,38 +149,38 @@
       291
      ],
      "candidates": 2392664,
-     "cpu_seconds": 22.21
+     "cpu_seconds": 13.01
     },
     "other_goal_examples": {
      "solved": 1,
      "solved_goals": [
       291
      ],
-     "candidates": 2392774,
-     "cpu_seconds": 22.6
+     "candidates": 2392389,
+     "cpu_seconds": 13.57
     },
     "no_library": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 20.34
+     "cpu_seconds": 12.23
     },
     "all_concepts_equal_total_cpu": {
      "solved": 1,
      "solved_goals": [
       291
      ],
-     "candidates": 11358857,
-     "cpu_seconds": 120.07,
-     "budget_per_goal": 37988,
-     "target_cpu_seconds": 115.25,
+     "candidates": 13170498,
+     "cpu_seconds": 74.73,
+     "budget_per_goal": 44047,
+     "target_cpu_seconds": 76.04,
      "tolerance": 0.1,
      "matched": true,
      "attempts": [
       {
-       "budget_per_goal": 37988,
+       "budget_per_goal": 44047,
        "solved": 1,
-       "cpu_seconds": 120.07
+       "cpu_seconds": 74.73
       }
      ]
     }
@@ -195,24 +194,24 @@
    "exam_sha256": "5c630287111a72fa6955fa32aeca5ef5e65427a44a960bd96475e060742ab98f",
    "training": {
     "dreams": 30000,
-    "sealed_side_skipped": 24767,
-    "final_loss": 0.1037,
-    "train_cpu_seconds": 102.8
+    "sealed_side_skipped": 24512,
+    "final_loss": 0.0983,
+    "train_cpu_seconds": 71.8
    },
-   "inference_cpu_seconds": 0.0352,
-   "checkpoint_sha256": "c2354af20ae156db44be9547535fe4befe2c23590f442d7b0bf8be19f107969b",
+   "inference_cpu_seconds": 0.0207,
+   "checkpoint_sha256": "53697f27f7b6b800ddc6b8285c7707fea7e3f1c14ba5f610a48638eb33c4eb12",
    "arms": {
     "all_concepts": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 29.78
+     "cpu_seconds": 16.16
     },
     "model": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 27.16
+     "cpu_seconds": 15.32
     },
     "random_pick": {
      "solved": 1,
@@ -220,40 +219,45 @@
       198
      ],
      "candidates": 2397786,
-     "cpu_seconds": 30.41
+     "cpu_seconds": 17.54
     },
     "frequent": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 26.6
+     "cpu_seconds": 14.52
     },
     "other_goal_examples": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 27.12
+     "cpu_seconds": 16.81
     },
     "no_library": {
      "solved": 0,
      "solved_goals": [],
      "candidates": 2400000,
-     "cpu_seconds": 25.98
+     "cpu_seconds": 14.72
     },
     "all_concepts_equal_total_cpu": {
      "solved": 0,
      "solved_goals": [],
-     "candidates": 10476300,
-     "cpu_seconds": 117.38,
-     "budget_per_goal": 34921,
-     "target_cpu_seconds": 130.0,
+     "candidates": 9979800,
+     "cpu_seconds": 84.86,
+     "budget_per_goal": 33266,
+     "target_cpu_seconds": 87.14,
      "tolerance": 0.1,
      "matched": true,
      "attempts": [
       {
-       "budget_per_goal": 34921,
+       "budget_per_goal": 43138,
        "solved": 0,
-       "cpu_seconds": 117.38
+       "cpu_seconds": 113.0
+      },
+      {
+       "budget_per_goal": 33266,
+       "solved": 0,
+       "cpu_seconds": 84.86
       }
      ]
     }

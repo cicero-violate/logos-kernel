@@ -3,13 +3,13 @@
  "task": "NC-081",
  "owner": "claude-code-turn-4a6e5254936542a3a143e56d67ffb6c0",
  "source_sha256": {
-  "selector.py": "7bee56bb5770deb62195e264df3f856cff66b3108fa1a29150b5686d61940da4",
-  "test_selector.py": "f17d7add589fdc58047f5d17e3253b67438e72e6bdad32d100badb1b14a0b8ef",
+  "selector.py": "097ef7ec5c91e5cdf5ad83566763f25ae495943c440fb42aa51f7aa0068e5023",
+  "test_selector.py": "6ae338c39c83e91de353a9c0d23580f8e738738669db7be033f1d177b860ddf4",
   "README.md": "692785857a98a290d3373c9f81832927fb928a70cec0475b119877387fe68b70",
   "la015_library_pinned.py": "0c876a9e8d90e9401323b0068a66acc9b6d1e9f3051f22a771fe9d2a2d098b8a"
  },
  "evidence_sha256": {
-  "selector_results.json": "658d8a325e30e5c0da7b318c8d6ce7b3c5642eeb3ef76fc41ca400b5b7a9bf98",
+  "selector_results.json": "c02aa2e5bb44a4a7fa0871197e5eede2ed47af7903a6bd5241edb8c2fe99361e",
   "library_seed11.jsonl": "8c0957ed9064376bf7c4b252b084ea4368fc8e7ce23d41d10d20310858e40d77",
   "library_seed19.jsonl": "ba3af714e08f4bab437577731a975ebb0bdce2743d90933ada2773161f545733",
   "library_seed29.jsonl": "a614d90f7e72431ee569f5c4dfe959d9c1f8cf63d20ecb0f32ad96865dfe5a60"
@@ -17,9 +17,9 @@
  "la015_library_py_sha256": "0c876a9e8d90e9401323b0068a66acc9b6d1e9f3051f22a771fe9d2a2d098b8a",
  "la015_library_source": "logos-autonomy@b4a8d1b21e034f05372e73e28cfa34ea4ca380f6:discovery/library.py",
  "checkpoint_sha256": {
-  "11": "eccb60f251615fc4ad88827b3189bfed2d67dd956e8aaa83833d41485b3a51da",
-  "19": "91a6c0a9a6892bf6de122a3282225164c910bcb759d75e3e70bbb5fca1f09a97",
-  "29": "c2354af20ae156db44be9547535fe4befe2c23590f442d7b0bf8be19f107969b"
+  "11": "43cd6dc00a6c2537f2d5557a63c4cc341ea59ba1578b7de701ffd5735207218e",
+  "19": "f88664166ae371c312ab14820907e72d51d86dcead30b4824c14458b3af87a9f",
+  "29": "53697f27f7b6b800ddc6b8285c7707fea7e3f1c14ba5f610a48638eb33c4eb12"
  },
  "solved_per_seed": {
   "all_concepts": [
@@ -28,8 +28,8 @@
    0
   ],
   "model": [
-   2,
    1,
+   2,
    0
   ],
   "random_pick": [
@@ -43,7 +43,7 @@
    0
   ],
   "other_goal_examples": [
-   2,
+   1,
    1,
    0
   ],
@@ -60,61 +60,67 @@
  },
  "equal_cpu_measurement": {
   "11": {
-   "model_total": 138.68,
-   "baseline": 135.53,
+   "model_total": 115.21,
+   "baseline": 107.87,
    "matched": true,
    "attempts": [
     {
-     "budget_per_goal": 35142,
+     "budget_per_goal": 35891,
      "solved": 5,
-     "cpu_seconds": 108.8
+     "cpu_seconds": 66.91
     },
     {
-     "budget_per_goal": 44792,
+     "budget_per_goal": 61800,
      "solved": 5,
-     "cpu_seconds": 135.53
+     "cpu_seconds": 107.87
     }
    ]
   },
   "19": {
-   "model_total": 115.25,
-   "baseline": 120.07,
+   "model_total": 76.04,
+   "baseline": 74.73,
    "matched": true,
    "attempts": [
     {
-     "budget_per_goal": 37988,
+     "budget_per_goal": 44047,
      "solved": 1,
-     "cpu_seconds": 120.07
+     "cpu_seconds": 74.73
     }
    ]
   },
   "29": {
-   "model_total": 130.0,
-   "baseline": 117.38,
+   "model_total": 87.14,
+   "baseline": 84.86,
    "matched": true,
    "attempts": [
     {
-     "budget_per_goal": 34921,
+     "budget_per_goal": 43138,
      "solved": 0,
-     "cpu_seconds": 117.38
+     "cpu_seconds": 113.0
+    },
+    {
+     "budget_per_goal": 33266,
+     "solved": 0,
+     "cpu_seconds": 84.86
     }
    ]
   }
  },
  "equal_cpu_tolerance": "Fixed before the run: measured baseline CPU within 10% of the model's training, inference and search CPU.",
- "outcome": "NO_GAIN: over 900 goals the model solved 3, all concepts at equal total CPU 6, all concepts on equal budgets 5, and the model on another goal's examples 3. It did not beat all concepts, and did not beat another goal's examples, so this gives no evidence that it reads the specification.",
+ "outcome": "NO_GAIN: over 900 goals the model solved 3, all concepts at equal total CPU 6, all concepts on equal budgets 5, and the model on another goal's examples 2. It did not beat all concepts.",
  "review_output_path": "artifacts/NC-081/independent_verification.json",
  "reproduction": [
   "OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-081/test_selector.py",
   "See README.md for the full run."
  ],
  "negative_controls": [
+  "a changed library refused before training",
   "another goal's examples",
-  "random selection",
   "most-frequent selection",
   "no library",
+  "no sealed-side concept can be a label, checked by a regression test and the audit in this manifest",
+  "random selection",
   "sealed-side functions excluded from training",
-  "a changed library refused before training",
   "second evaluator wrong coverage caught by a call count of 65,536"
  ],
  "dependencies": [
@@ -124,11 +130,28 @@
  ],
  "limitations": [
   "Solve counts are very small, 0 to 5 of 300, so this cannot rule out a modest effect; an easier exam might measure one.",
-  "Each accepted dream's function is on the training side, but some labelled component concepts are sealed-side functions: 6 or so per seed, per the previous review's audit. None is an exact exam function. This is not exam leakage, but training is not free of sealed-side components.",
   "Dreams are combinations of concepts and may not resemble the sealed family, so this tests one training design, not neural guidance in general.",
   "Top-12 and the dream design were not tuned.",
   "Library snapshots were taken during an earlier LA-015 run, and LA-015 has not passed review.",
   "CPU was measured under heavy shared load, about 2x core count, and differs between attempts; seed 29's baseline sits 9.7% under its target, near the tolerance.",
-  "The earlier equal-CPU total of 7 used an unmeasured rate estimate and is superseded by the measured 6."
- ]
+  "Sealed-side concepts stay available to search and in the model's output, but never appear in training, so the model has no learned reason to pick them. That may lower its score against the all-concepts arm, which can use them.",
+  "Earlier equal-CPU totals and the prior model scores used a version that trained on sealed-side component labels, and are superseded."
+ ],
+ "sealed_side_label_audit": {
+  "11": {
+   "concepts": 64,
+   "sealed_side_concepts_excluded_from_training": 6,
+   "sealed_side_label_occurrences_in_first_1000_dreams": 0
+  },
+  "19": {
+   "concepts": 64,
+   "sealed_side_concepts_excluded_from_training": 3,
+   "sealed_side_label_occurrences_in_first_1000_dreams": 0
+  },
+  "29": {
+   "concepts": 64,
+   "sealed_side_concepts_excluded_from_training": 5,
+   "sealed_side_label_occurrences_in_first_1000_dreams": 0
+  }
+ }
 }
