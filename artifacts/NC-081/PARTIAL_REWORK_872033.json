@@ -1,0 +1,68 @@
+{
+  "agent": "turn-872033385fcc4f83940d6b67064ab421",
+  "cancelled_isolated_replays": [
+    {
+      "eventlab_job_id": "4d362da31369082f",
+      "exit_code": -15,
+      "seed": 11
+    },
+    {
+      "eventlab_job_id": "3257b5138c1a5f2e",
+      "exit_code": -15,
+      "seed": 19
+    },
+    {
+      "eventlab_job_id": "81355f9b6df06a2c",
+      "exit_code": -15,
+      "seed": 29
+    }
+  ],
+  "completed_checks": [
+    "9/9 current selector unit tests PASS, including 65536-call independently written verifier gate and SHA256 mismatch refusal",
+    "2/2 new auditor fail-closed tests PASS",
+    "3/3 original source-library snapshot SHA256 values match the frozen candidate",
+    "corrected pinned dependency matches 0c876a9e8d90e9401323b0068a66acc9b6d1e9f3051f22a771fe9d2a2d098b8a"
+  ],
+  "dependencies": [
+    "Python 3",
+    "Git",
+    "NumPy",
+    "PyTorch CPU",
+    "artifacts/NC-081/selector.py",
+    "artifacts/NC-081/test_selector.py",
+    "artifacts/NC-081/la015_library_pinned.py",
+    "artifacts/NC-081/CANDIDATE_MANIFEST.json",
+    "artifacts/NC-081/independent_verification.json",
+    "library_seed{11,19,29}.jsonl and eventual new seed-specific checkpoints"
+  ],
+  "fixed_source": {
+    "la015_library_pinned.py": "0c876a9e8d90e9401323b0068a66acc9b6d1e9f3051f22a771fe9d2a2d098b8a",
+    "selector.py": "7bee56bb5770deb62195e264df3f856cff66b3108fa1a29150b5686d61940da4",
+    "test_selector.py": "f17d7add589fdc58047f5d17e3253b67438e72e6bdad32d100badb1b14a0b8ef"
+  },
+  "limitations": [
+    "The prior candidate has not been republished and remains under its FAIL review.",
+    "All three independent full replays from this turn were cancelled before recording any seed result.",
+    "A pre-existing modified selector_results.json belongs to another worker and is not staged or overwritten.",
+    "New auditor checks eventual results for exact seed exams, six-arm counts, checkpoints, source hash, and measured baseline CPU tolerance. It is not an independent verifier.",
+    "No champion change, no AGI or algorithm-invention claim."
+  ],
+  "next_action": "Wait for the independently running full three-seed NC-081 process to finish; independently inspect its results. Only publish an updated owned candidate if all three measured CPU controls match within 10% and every input/evidence digest is pinned. A different reviewer must then verify.",
+  "owned_files_sha256": {
+    "audit_rework_872033.py": "a55125a29bf8c339bb6ad0f8e147fb0f450510af4503b116eee5ea167c32ce52",
+    "test_audit_rework_872033.py": "e5932870d141c82329a85d366c87495676fd7f165abdca9c4e147566a2d7e0cf"
+  },
+  "previous_independent_verdict": "FAIL",
+  "reproduction": [
+    "OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-081/test_selector.py",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q artifacts/NC-081/test_audit_rework_872033.py",
+    "python artifacts/NC-081/audit_rework_872033.py --root /path/to/three/seed/directories --out /tmp/nc081-audit.json"
+  ],
+  "role": "IMPLEMENTER",
+  "schema": "logos.nc081.partial-rework/1",
+  "source_candidate_sha256": "2dcf505c320d76360fb1677b0baf9c2dd09b373dcdf08e7fc7d281f5159710ae",
+  "source_fix_commit": "d3016d9",
+  "ticket": "NC-081",
+  "verdict": "INCOMPLETE",
+  "why_cancelled": "Another full three-seed NC-081 selector.py process was already running in the shared workspace. Avoid wasting CPU and interfering with that worker's results. No own replay solved counts or CPU parity are claimed."
+}
