@@ -1,0 +1,109 @@
+{
+  "HALT": "HOST not learned",
+  "PC_target_selection": "HOST fixed target, not neural",
+  "arms": [
+    "rehearsal"
+  ],
+  "branch_type": "JZ zero -> target, JNZ nonzero -> target; else PC+1",
+  "champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "execution_mode": "neural_is_zero_predicate_plus_host_predicate_to_PC_update",
+  "learned_PC": false,
+  "limitations": [
+    "Register zero predicate is trained neural inference, target/PC/HALT host logic",
+    "All 65536 register values enumerated, but arbitrary program state/branch instruction choice not learned or tested",
+    "This check is correlated with ZERO16 and must not be counted as separate learned capability",
+    "Independent verifier must rerun before bounded library status is promoted"
+  ],
+  "model_invention": false,
+  "models": {
+    "seed11": {
+      "JNZ": {
+        "branch_target": "host",
+        "correct": 65536,
+        "failures": [],
+        "head": "neural_is_zero_plus_host_inversion",
+        "tested": 65536
+      },
+      "JZ": {
+        "branch_target": "host",
+        "correct": 65536,
+        "failures": [],
+        "head": "neural_is_zero",
+        "tested": 65536
+      },
+      "checkpoint_sha256": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
+      "frozen_source": true,
+      "inverted_neural_zero_control": {
+        "JNZ_correct": 0,
+        "JZ_correct": 0,
+        "scope": "direct perturbation to neural ZERO decision, not a trained ablation",
+        "tested_each": 65536
+      }
+    },
+    "seed19": {
+      "JNZ": {
+        "branch_target": "host",
+        "correct": 65536,
+        "failures": [],
+        "head": "neural_is_zero_plus_host_inversion",
+        "tested": 65536
+      },
+      "JZ": {
+        "branch_target": "host",
+        "correct": 65536,
+        "failures": [],
+        "head": "neural_is_zero",
+        "tested": 65536
+      },
+      "checkpoint_sha256": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
+      "frozen_source": true,
+      "inverted_neural_zero_control": {
+        "JNZ_correct": 0,
+        "JZ_correct": 0,
+        "scope": "direct perturbation to neural ZERO decision, not a trained ablation",
+        "tested_each": 65536
+      }
+    },
+    "seed29": {
+      "JNZ": {
+        "branch_target": "host",
+        "correct": 65536,
+        "failures": [],
+        "head": "neural_is_zero_plus_host_inversion",
+        "tested": 65536
+      },
+      "JZ": {
+        "branch_target": "host",
+        "correct": 65536,
+        "failures": [],
+        "head": "neural_is_zero",
+        "tested": 65536
+      },
+      "checkpoint_sha256": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
+      "frozen_source": true,
+      "inverted_neural_zero_control": {
+        "JNZ_correct": 0,
+        "JZ_correct": 0,
+        "scope": "direct perturbation to neural ZERO decision, not a trained ablation",
+        "tested_each": 65536
+      }
+    }
+  },
+  "result": "IMPLEMENTER_BOUNDARY_VERIFIED_NOT_INDEPENDENT",
+  "scope": "exhaustive JZ and JNZ decisions for EVERY raw 16bit register input",
+  "seeds": [
+    11,
+    19,
+    29
+  ],
+  "source_paths": {
+    "NC005_architecture": "/workspace/experiments/logos-kernel/artifacts/NC-005/curriculum.py",
+    "NC006_verifier": "/workspace/experiments/logos-kernel/artifacts/NC-006/verify_circuits.py"
+  },
+  "source_sha256": {
+    "NC005_architecture": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d",
+    "NC006_verifier": "72c64a95246b33fd62160b0ab2308135f324eec33330ae526a422d564a83087c"
+  },
+  "task": "NC-006",
+  "width": 16
+}

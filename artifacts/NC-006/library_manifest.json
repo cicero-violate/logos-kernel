@@ -1,0 +1,184 @@
+{
+  "arms": [
+    "rehearsal",
+    "new_only"
+  ],
+  "checkpoint_manifest_sha256": "b721b1a6c3a7d39fc02d0b3c787c4f559a8ccb94d4af249df57c7a0f4afe4624",
+  "checkpoint_weights_modified": false,
+  "independent_verifier_status": "PENDING",
+  "neural_circuits_count": 60,
+  "neural_local_qualified_rehearsal": 27,
+  "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "rollback": "No weights written; original champion selection unchanged; registry remains unpromoted without distinct verifier",
+  "scope_boundaries": [
+    "64 feature configurations for each local neural primitive, all locally training-seen",
+    "16bit learned is_zero predicate over 65536 exact register inputs",
+    "JZ/JNZ target, PC changes, flags, HALT and register routing are host, NOT learned",
+    "full 16bit arithmetic, composite programs, different widths, model invention NOT proven by finite local exhaustive checks",
+    "sampled correctness after local coverage cannot establish all reachable program states",
+    "no silent symbolic fallback, no architecture promotion, no general intelligence claim"
+  ],
+  "seeds": [
+    11,
+    19,
+    29
+  ],
+  "source_files": {
+    "NC000_inventory": "/workspace/experiments/logos-kernel/artifacts/NC-000/inventory.json",
+    "NC001_canonical_isa": "/workspace/experiments/logos-kernel/artifacts/NC-001/canonical_isa.py",
+    "NC005_checkpoint_manifest": "/workspace/experiments/logos-kernel/artifacts/NC-005/checkpoint_manifest.json",
+    "NC005_curriculum": "/workspace/experiments/logos-kernel/artifacts/NC-005/curriculum.py",
+    "NC005_independent_receipt": "/workspace/experiments/logos-kernel/artifacts/NC-005/independent_receipt.json",
+    "original_RLT_champion": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt"
+  },
+  "source_sha256": {
+    "NC000_inventory": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+    "NC001_canonical_isa": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "NC005_checkpoint_manifest": "b721b1a6c3a7d39fc02d0b3c787c4f559a8ccb94d4af249df57c7a0f4afe4624",
+    "NC005_curriculum": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d",
+    "NC005_independent_receipt": "b9fc3107a1838b2ce0fbebc6325a3d03af05fd6c4cfb277b101a35add58535fe",
+    "original_RLT_champion": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+  },
+  "stats": {
+    "new_only_seed11": {
+      "all_model_parameters_frozen": true,
+      "checkpoint_sha256": "6675f6a040132e6cbf7a601334685a8eb7691f991abf19ee9034140328911e4a",
+      "failed_local_ops": [
+        "SHR",
+        "AND1",
+        "OR",
+        "AND",
+        "XOR",
+        "SUB",
+        "SAR"
+      ],
+      "local_correct": 438,
+      "local_meaning_correct": 9,
+      "local_meaning_tested": 9,
+      "local_tested": 576,
+      "qualified_local_ops": [
+        "ADD",
+        "SHL"
+      ],
+      "zero_correct": 65536,
+      "zero_tested": 65536
+    },
+    "new_only_seed19": {
+      "all_model_parameters_frozen": true,
+      "checkpoint_sha256": "b93aed6b333d5d88d175539e36e76e71b9bba3b3a6bb1c1e64e78ad05bad41bf",
+      "failed_local_ops": [
+        "SHL",
+        "SHR",
+        "AND1",
+        "OR",
+        "AND",
+        "XOR",
+        "SUB",
+        "SAR"
+      ],
+      "local_correct": 428,
+      "local_meaning_correct": 9,
+      "local_meaning_tested": 9,
+      "local_tested": 576,
+      "qualified_local_ops": [
+        "ADD"
+      ],
+      "zero_correct": 65536,
+      "zero_tested": 65536
+    },
+    "new_only_seed29": {
+      "all_model_parameters_frozen": true,
+      "checkpoint_sha256": "ecedf4f9ad4ced022a8f77dce5e9097523e4a7273a428df0ff8d6679a4e4b9c7",
+      "failed_local_ops": [
+        "SHL",
+        "SHR",
+        "AND1",
+        "OR",
+        "AND",
+        "XOR",
+        "SUB",
+        "SAR"
+      ],
+      "local_correct": 375,
+      "local_meaning_correct": 9,
+      "local_meaning_tested": 9,
+      "local_tested": 576,
+      "qualified_local_ops": [
+        "ADD"
+      ],
+      "zero_correct": 65536,
+      "zero_tested": 65536
+    },
+    "rehearsal_seed11": {
+      "all_model_parameters_frozen": true,
+      "checkpoint_sha256": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
+      "failed_local_ops": [],
+      "local_correct": 576,
+      "local_meaning_correct": 9,
+      "local_meaning_tested": 9,
+      "local_tested": 576,
+      "qualified_local_ops": [
+        "ADD",
+        "SHL",
+        "SHR",
+        "AND1",
+        "OR",
+        "AND",
+        "XOR",
+        "SUB",
+        "SAR"
+      ],
+      "zero_correct": 65536,
+      "zero_tested": 65536
+    },
+    "rehearsal_seed19": {
+      "all_model_parameters_frozen": true,
+      "checkpoint_sha256": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
+      "failed_local_ops": [],
+      "local_correct": 576,
+      "local_meaning_correct": 9,
+      "local_meaning_tested": 9,
+      "local_tested": 576,
+      "qualified_local_ops": [
+        "ADD",
+        "SHL",
+        "SHR",
+        "AND1",
+        "OR",
+        "AND",
+        "XOR",
+        "SUB",
+        "SAR"
+      ],
+      "zero_correct": 65536,
+      "zero_tested": 65536
+    },
+    "rehearsal_seed29": {
+      "all_model_parameters_frozen": true,
+      "checkpoint_sha256": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e",
+      "failed_local_ops": [],
+      "local_correct": 576,
+      "local_meaning_correct": 9,
+      "local_meaning_tested": 9,
+      "local_tested": 576,
+      "qualified_local_ops": [
+        "ADD",
+        "SHL",
+        "SHR",
+        "AND1",
+        "OR",
+        "AND",
+        "XOR",
+        "SUB",
+        "SAR"
+      ],
+      "zero_correct": 65536,
+      "zero_tested": 65536
+    }
+  },
+  "status": "IMPLEMENTER_PROPOSED_NOT_INDEPENDENTLY_VERIFIED",
+  "symbolic_references_count": 1,
+  "task": "NC-006",
+  "version": "logos.neural-circuit/1",
+  "zero_qualified_rehearsal": 3
+}
