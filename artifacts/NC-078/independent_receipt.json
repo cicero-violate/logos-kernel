@@ -1,0 +1,160 @@
+{
+  "candidate_path": "artifacts/NC-078/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "04dcda4992ce9c39ba1f54b47c3c427fd151073c",
+  "candidate_sha256": "59e695a4bf1215a3b2d4ba0b524469848f129a0fc8facc6f398b9b79fcae39e3",
+  "dependencies": [
+    "Python 3",
+    "NumPy",
+    "PyTorch CPU",
+    "Git",
+    "artifacts/NC-001/canonical_isa.py",
+    "artifacts/NC-078/synth.py",
+    "artifacts/NC-078/train_synth.py",
+    "artifacts/NC-078/test_synth.py",
+    "artifacts/NC-078/analyze.py",
+    "artifacts/NC-078/spec_sensitivity.py"
+  ],
+  "limitations": [
+    "The inference search requires many autoregressive CPU model calls; aggregate success from pinned logs was verified but misses were not exhaustively reproduced from checkpoints.",
+    "The shuffled-output control samples from full-goal output distribution rather than preserving exact 8-example output multiset; no stable paired-input advantage demonstrated.",
+    "Training used 10,745\u201310,813 admitted programs per seed, not the 40,000 requested maximum; actual counts are disclosed.",
+    "Neural beats random per candidate but not the noisy estimated equal-CPU enumeration baseline; training CPU is extra.",
+    "4-bit two-input bounded ISA, canonical interpreter over X/Y only; no general algorithm invention.",
+    "Local Git/turn IDs are not authenticated attestations; pretraining history outside this task is not proven absent."
+  ],
+  "negative_controls": [
+    "No named/heldout truth tables in any regenerated training set",
+    "Mutated goal truth-table is rejected by canonical reference test",
+    "All reconstructed enumeration goals pass independent canonical reference, not only array evaluator",
+    "Random sampling independently reproduces its success counts under exact seeds"
+  ],
+  "next_action": "Independent verifier requires completion of all frozen checkpoint neural/shuffled/untrained sample-count replays or an independently checkable equivalent, with bounded CPU provenance. No candidate rewrite or self-approval by this reviewer.",
+  "owner": "claude-code-turn-6f9b9559b2fe445e8fe0de17820f7900",
+  "proof_scope": "Independent frozen-artifact provenance, three full training-set regenerations, exhaustive canonical validation of 184 logged programs and 42 reconstructed shortest-first enumeration matches, full random-arm replay, six candidate unit tests, three loaded checkpoints and four exact model-resampled neural goals from seed 11. Does NOT reproduce every neural/shuffled/untrained sampling path from checkpoints; no review PASS, champion change, new mathematics or AGI.",
+  "review_reason": "Mandatory independent full checkpoint-to-solve-count resampling across all three seeds was not completed within bounded reviewer CPU budget under concurrently active campaign jobs. This is not a discovered failed implementation criterion. Withhold PASS, do not claim an unexecuted replay.",
+  "schema_version": 1,
+  "task": "NC-078",
+  "verdict": "HOLD",
+  "verified": {
+    "candidate_sha256": true,
+    "candidate_unit_tests": "6/6 PASS",
+    "checkpoint_load_architecture": {
+      "inference_finite": true,
+      "parameters_per_model": 235139,
+      "seeds": [
+        11,
+        19,
+        29
+      ]
+    },
+    "checkpoint_neural_resampling": {
+      "job_outcome": "Three reviewer-created jobs cancelled with SIGTERM after host contention; no checkpoint/artifact mutation",
+      "seed11_first_four_goals": "EXACT matching solved/unsolved, program, candidate count, revisions: INC, DEC, NEG, NOT",
+      "seed11_full_count": "NOT_REPRODUCED",
+      "seed11_partial_progress": "8 of 56 processed with no assertion failure before cancellation",
+      "seed19_full_count": "NOT_REPRODUCED",
+      "seed29_full_count": "NOT_REPRODUCED"
+    },
+    "dag_tests": "19/19 PASS",
+    "enumeration_reconstruction": {
+      "canonical_reference_verified": 42,
+      "equal_budget_summary_match": true,
+      "programs": 42,
+      "recorded_positions_match": true
+    },
+    "logged_solution_reference_replay": {
+      "aggregate_solve_counts_match": true,
+      "exhaustive_XY_assignments_per_program": 256,
+      "programs": 184,
+      "wrong_outputs": 0
+    },
+    "pull_tests": "20/20 PASS",
+    "random_arm_full_replay": {
+      "11": {
+        "named": 1,
+        "unseen": 2
+      },
+      "19": {
+        "named": 2,
+        "unseen": 2
+      },
+      "29": {
+        "named": 2,
+        "unseen": 3
+      }
+    },
+    "reported_equal_cpu": {
+      "caveats": [
+        "Training CPU is extra and is not counted for the neural arm.",
+        "Both arms ran under shared load, so CPU figures are approximate.",
+        "Enumeration capped at its control limit, so it may undercount."
+      ],
+      "enumeration_candidates_in_that_cpu": 249696,
+      "enumeration_candidates_per_cpu_second": 29430,
+      "enumeration_solved": {
+        "named": 10,
+        "unseen": 32
+      },
+      "goals": {
+        "named": 16,
+        "unseen": 40
+      },
+      "neural_mean_cpu_seconds_per_goal": 8.48,
+      "neural_mean_solved": {
+        "named": 7,
+        "unseen": 21.3
+      }
+    },
+    "reported_results_by_seed": {
+      "11": {
+        "neural_named": 9,
+        "neural_unseen": 25,
+        "random_named": 1,
+        "random_unseen": 2,
+        "shuffled_named": 6,
+        "shuffled_unseen": 27,
+        "train_functions": 2317,
+        "train_programs": 10795
+      },
+      "19": {
+        "neural_named": 5,
+        "neural_unseen": 19,
+        "random_named": 2,
+        "random_unseen": 2,
+        "shuffled_named": 5,
+        "shuffled_unseen": 23,
+        "train_functions": 2340,
+        "train_programs": 10813
+      },
+      "29": {
+        "neural_named": 7,
+        "neural_unseen": 20,
+        "random_named": 2,
+        "random_unseen": 3,
+        "shuffled_named": 7,
+        "shuffled_unseen": 19,
+        "train_functions": 2286,
+        "train_programs": 10745
+      }
+    },
+    "source_evidence_checkpoint_hashes": "5 source + 4 evidence + 3 checkpoints and canonical ISA match both frozen Git revision and current checkout",
+    "training_set_regeneration": {
+      "11": {
+        "functions": 2317,
+        "heldout_leakage": 0,
+        "programs": 10795
+      },
+      "19": {
+        "functions": 2340,
+        "heldout_leakage": 0,
+        "programs": 10813
+      },
+      "29": {
+        "functions": 2286,
+        "heldout_leakage": 0,
+        "programs": 10745
+      }
+    }
+  },
+  "verifier": "turn-496be35b00ef48e99d69f84b3fb300cc"
+}
