@@ -1,0 +1,78 @@
+{
+  "commitments": [
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "1a99a9df634980e4ae95e660a4768d3e8f86f0c6b7c4f2ff1ccedcfeb16d7234"
+      },
+      "generation": 1,
+      "seed": 11
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "0e99d262f10056529cf8bd4c28adb42c7499d8f58ecde642bcf11bc4a644ac2f"
+      },
+      "generation": 1,
+      "seed": 19
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "047ef51a7bf457532c974b0833d93679c510fab92d887d1270738695b9fab059"
+      },
+      "generation": 1,
+      "seed": 29
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "0472541c624cebba9589114029044fecd4083cf3bf2a1f7cffbfaae465533e3f"
+      },
+      "generation": 2,
+      "seed": 11
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "86b20ee502dae39229fe2558491fb68037648b60879fd668ed969d16bfd8a9b6"
+      },
+      "generation": 2,
+      "seed": 19
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "48a83f0a680b49aa81afc965a067fd0c94106aa045ac91f314a3c2f3ea49bcf1"
+      },
+      "generation": 2,
+      "seed": 29
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "d9d2db3dc6e81ed8f0a038a13c6ef1a148866a2a7693065ed132b83a1ddf9db3"
+      },
+      "generation": 3,
+      "seed": 11
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "36fc2c15daaea95d9d3a5ae19c4a2ed5455b94389e791564c0eb9ba0ad34b98b"
+      },
+      "generation": 3,
+      "seed": 19
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "999d19eed0b08b04cbfdd3c7e0924de06ff0268cb4eb913cbd219702261f0b2e"
+      },
+      "generation": 3,
+      "seed": 29
+    }
+  ],
+  "protocol_sha256": "a5943de94b9ace5453e6e5286ad43e1913bc7e94d29b7b9b036558c6d3e6c0b0",
+  "schema": "nc062-eval-v2-precommit/1"
+}

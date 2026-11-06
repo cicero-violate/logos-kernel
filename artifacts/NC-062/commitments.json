@@ -1,0 +1,77 @@
+{
+  "public": [
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "ada140c6ed458db5814dc981e1810cdaa9f005a4b4febe2ea9b958c120d66bfb"
+      },
+      "generation": 1,
+      "seed": 11
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "31dbe3c26ff102aaa1023cb705350c057674f1ae641d3a1c586a20abfdc1497d"
+      },
+      "generation": 1,
+      "seed": 19
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "a2499999d9c98784bf465c35cc4a6910dc038031424a7ef5a217b525776b61ac"
+      },
+      "generation": 1,
+      "seed": 29
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "6d653bc71bca6ca0d475e5f4c23d8722382cabbf845df29497648f7c7d95ce88"
+      },
+      "generation": 2,
+      "seed": 11
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "79623b32d57cafc2b27098455d68bdc74a662f215538868d44a2f119e6f5b9df"
+      },
+      "generation": 2,
+      "seed": 19
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "44bb1e1b7d04de5b5a2f9162c0eee07184537f54b74a131aac2e7450dc55f2ad"
+      },
+      "generation": 2,
+      "seed": 29
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "3b16a9b1e5879ac0dcffc6ab9064bbec470744fad32e74ea603a0049d23a841b"
+      },
+      "generation": 3,
+      "seed": 11
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "921aa8e0a9ca1f9749e1da22e858754db9505470c24f90695da4f0a771c6e808"
+      },
+      "generation": 3,
+      "seed": 19
+    },
+    {
+      "commitment": {
+        "schema": "logos.nc061.commitment/1",
+        "sha256": "24ce3d7df974c9425d07d89df51e70af6182f7525234646798a42dbfaa719c47"
+      },
+      "generation": 3,
+      "seed": 29
+    }
+  ],
+  "schema": "NC062/sealed-precommit/1"
+}

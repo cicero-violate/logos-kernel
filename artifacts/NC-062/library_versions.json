@@ -1,0 +1,964 @@
+{
+  "mutated_global_registry": false,
+  "schema": "NC062/local-verified-library/1",
+  "versions": [
+    {
+      "chain_sha256": "2a065862105eb51a62e1c32421fe2484988405913900378a50a94e0b880d0417",
+      "entries": [
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "e3b891518c73723da2d24011b3ec5edf666a13d5cde62575fb5b7a3f1de8aaa6",
+          "parent_operator_id": "INC:v1",
+          "program": [
+            {
+              "dst": "T",
+              "imm": 1,
+              "op": "LOADI"
+            },
+            {
+              "a": "X",
+              "b": "T",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "5850f869718b7efd523310c9f1f2e9d7081e44b852b77feed751d01b6cc7b48b",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 0,
+          "training_table_key": "e6e524e0e175a3397bfcb5a6166235ec5420069359b047c29f8294e35d9233b4",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "4b6d613e64a99146fcf12c139160debcf916861727d106a53ffbba2ab590d1f4",
+          "parent_operator_id": "DOUBLE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "X",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "007327dac9dfb1eb4ad1ddcf4d1c06d89452b02997295b48696cc0156bb94686",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 1,
+          "training_table_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "a6885cd74083f45f0ceb53c53922d2e641169f910d906458cf3b206cf9406779",
+          "parent_operator_id": "BOOLEAN_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "AND"
+            },
+            {
+              "a": "R",
+              "b": "X",
+              "dst": "R",
+              "op": "XOR"
+            }
+          ],
+          "program_sha256": "9befcde0334bacf2e68fef25463ef6b8529b5292067fa50b74d7f19b25d3811e",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 2,
+          "training_table_key": "c6a64bb6407be64988a18a43b5ba21cb3d6c480cb66a23e7663f23992951a771",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "7c332a9797e45bcfddd461a6437f76c25dcef44020fcd916c3b61474a49b97e5",
+          "parent_operator_id": "SHIFT_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "XOR"
+            },
+            {
+              "dst": "R",
+              "op": "SHL",
+              "src": "R"
+            }
+          ],
+          "program_sha256": "ad99e914e0786e43c66235253ffeebf354fef1f1ce538bc906f1c36a5cbb90dd",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 3,
+          "training_table_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "verified_cases": 256
+        }
+      ],
+      "version": 0
+    },
+    {
+      "added_verified_programs": 0,
+      "chain_sha256": "f0ed66e5420a3435b55f54a56bd15b4046f6e3cd5f436333cef91a88f9ca3465",
+      "entries": [
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "e3b891518c73723da2d24011b3ec5edf666a13d5cde62575fb5b7a3f1de8aaa6",
+          "parent_operator_id": "INC:v1",
+          "program": [
+            {
+              "dst": "T",
+              "imm": 1,
+              "op": "LOADI"
+            },
+            {
+              "a": "X",
+              "b": "T",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "5850f869718b7efd523310c9f1f2e9d7081e44b852b77feed751d01b6cc7b48b",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 0,
+          "training_table_key": "e6e524e0e175a3397bfcb5a6166235ec5420069359b047c29f8294e35d9233b4",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "4b6d613e64a99146fcf12c139160debcf916861727d106a53ffbba2ab590d1f4",
+          "parent_operator_id": "DOUBLE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "X",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "007327dac9dfb1eb4ad1ddcf4d1c06d89452b02997295b48696cc0156bb94686",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 1,
+          "training_table_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "a6885cd74083f45f0ceb53c53922d2e641169f910d906458cf3b206cf9406779",
+          "parent_operator_id": "BOOLEAN_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "AND"
+            },
+            {
+              "a": "R",
+              "b": "X",
+              "dst": "R",
+              "op": "XOR"
+            }
+          ],
+          "program_sha256": "9befcde0334bacf2e68fef25463ef6b8529b5292067fa50b74d7f19b25d3811e",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 2,
+          "training_table_key": "c6a64bb6407be64988a18a43b5ba21cb3d6c480cb66a23e7663f23992951a771",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "7c332a9797e45bcfddd461a6437f76c25dcef44020fcd916c3b61474a49b97e5",
+          "parent_operator_id": "SHIFT_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "XOR"
+            },
+            {
+              "dst": "R",
+              "op": "SHL",
+              "src": "R"
+            }
+          ],
+          "program_sha256": "ad99e914e0786e43c66235253ffeebf354fef1f1ce538bc906f1c36a5cbb90dd",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 3,
+          "training_table_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "verified_cases": 256
+        }
+      ],
+      "parent_chain_sha256": "2a065862105eb51a62e1c32421fe2484988405913900378a50a94e0b880d0417",
+      "version": 1
+    },
+    {
+      "added_verified_programs": 0,
+      "chain_sha256": "a43977c9f38460008d962ba7a5c092eea37da95a232688a95cc67de0f80a3895",
+      "entries": [
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "e3b891518c73723da2d24011b3ec5edf666a13d5cde62575fb5b7a3f1de8aaa6",
+          "parent_operator_id": "INC:v1",
+          "program": [
+            {
+              "dst": "T",
+              "imm": 1,
+              "op": "LOADI"
+            },
+            {
+              "a": "X",
+              "b": "T",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "5850f869718b7efd523310c9f1f2e9d7081e44b852b77feed751d01b6cc7b48b",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 0,
+          "training_table_key": "e6e524e0e175a3397bfcb5a6166235ec5420069359b047c29f8294e35d9233b4",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "4b6d613e64a99146fcf12c139160debcf916861727d106a53ffbba2ab590d1f4",
+          "parent_operator_id": "DOUBLE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "X",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "007327dac9dfb1eb4ad1ddcf4d1c06d89452b02997295b48696cc0156bb94686",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 1,
+          "training_table_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "a6885cd74083f45f0ceb53c53922d2e641169f910d906458cf3b206cf9406779",
+          "parent_operator_id": "BOOLEAN_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "AND"
+            },
+            {
+              "a": "R",
+              "b": "X",
+              "dst": "R",
+              "op": "XOR"
+            }
+          ],
+          "program_sha256": "9befcde0334bacf2e68fef25463ef6b8529b5292067fa50b74d7f19b25d3811e",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 2,
+          "training_table_key": "c6a64bb6407be64988a18a43b5ba21cb3d6c480cb66a23e7663f23992951a771",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "7c332a9797e45bcfddd461a6437f76c25dcef44020fcd916c3b61474a49b97e5",
+          "parent_operator_id": "SHIFT_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "XOR"
+            },
+            {
+              "dst": "R",
+              "op": "SHL",
+              "src": "R"
+            }
+          ],
+          "program_sha256": "ad99e914e0786e43c66235253ffeebf354fef1f1ce538bc906f1c36a5cbb90dd",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 3,
+          "training_table_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "verified_cases": 256
+        }
+      ],
+      "parent_chain_sha256": "f0ed66e5420a3435b55f54a56bd15b4046f6e3cd5f436333cef91a88f9ca3465",
+      "version": 2
+    },
+    {
+      "added_verified_programs": 0,
+      "chain_sha256": "db345d3fb0517068953f4c18ff337840ce09e4d9a2a36e44e8847c23a6b574bb",
+      "entries": [
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "e3b891518c73723da2d24011b3ec5edf666a13d5cde62575fb5b7a3f1de8aaa6",
+          "parent_operator_id": "INC:v1",
+          "program": [
+            {
+              "dst": "T",
+              "imm": 1,
+              "op": "LOADI"
+            },
+            {
+              "a": "X",
+              "b": "T",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "5850f869718b7efd523310c9f1f2e9d7081e44b852b77feed751d01b6cc7b48b",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 0,
+          "training_table_key": "e6e524e0e175a3397bfcb5a6166235ec5420069359b047c29f8294e35d9233b4",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "4b6d613e64a99146fcf12c139160debcf916861727d106a53ffbba2ab590d1f4",
+          "parent_operator_id": "DOUBLE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "X",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "007327dac9dfb1eb4ad1ddcf4d1c06d89452b02997295b48696cc0156bb94686",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 1,
+          "training_table_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "a6885cd74083f45f0ceb53c53922d2e641169f910d906458cf3b206cf9406779",
+          "parent_operator_id": "BOOLEAN_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "AND"
+            },
+            {
+              "a": "R",
+              "b": "X",
+              "dst": "R",
+              "op": "XOR"
+            }
+          ],
+          "program_sha256": "9befcde0334bacf2e68fef25463ef6b8529b5292067fa50b74d7f19b25d3811e",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 2,
+          "training_table_key": "c6a64bb6407be64988a18a43b5ba21cb3d6c480cb66a23e7663f23992951a771",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "7c332a9797e45bcfddd461a6437f76c25dcef44020fcd916c3b61474a49b97e5",
+          "parent_operator_id": "SHIFT_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "XOR"
+            },
+            {
+              "dst": "R",
+              "op": "SHL",
+              "src": "R"
+            }
+          ],
+          "program_sha256": "ad99e914e0786e43c66235253ffeebf354fef1f1ce538bc906f1c36a5cbb90dd",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 3,
+          "training_table_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "verified_cases": 256
+        }
+      ],
+      "parent_chain_sha256": "a43977c9f38460008d962ba7a5c092eea37da95a232688a95cc67de0f80a3895",
+      "version": 3
+    },
+    {
+      "added_verified_programs": 0,
+      "chain_sha256": "e51566da01b611d2ea85c3deeaebde86284e5562b5eec4698377819d1aaa0693",
+      "entries": [
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "e3b891518c73723da2d24011b3ec5edf666a13d5cde62575fb5b7a3f1de8aaa6",
+          "parent_operator_id": "INC:v1",
+          "program": [
+            {
+              "dst": "T",
+              "imm": 1,
+              "op": "LOADI"
+            },
+            {
+              "a": "X",
+              "b": "T",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "5850f869718b7efd523310c9f1f2e9d7081e44b852b77feed751d01b6cc7b48b",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 0,
+          "training_table_key": "e6e524e0e175a3397bfcb5a6166235ec5420069359b047c29f8294e35d9233b4",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "4b6d613e64a99146fcf12c139160debcf916861727d106a53ffbba2ab590d1f4",
+          "parent_operator_id": "DOUBLE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "X",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "007327dac9dfb1eb4ad1ddcf4d1c06d89452b02997295b48696cc0156bb94686",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 1,
+          "training_table_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "a6885cd74083f45f0ceb53c53922d2e641169f910d906458cf3b206cf9406779",
+          "parent_operator_id": "BOOLEAN_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "AND"
+            },
+            {
+              "a": "R",
+              "b": "X",
+              "dst": "R",
+              "op": "XOR"
+            }
+          ],
+          "program_sha256": "9befcde0334bacf2e68fef25463ef6b8529b5292067fa50b74d7f19b25d3811e",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 2,
+          "training_table_key": "c6a64bb6407be64988a18a43b5ba21cb3d6c480cb66a23e7663f23992951a771",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "7c332a9797e45bcfddd461a6437f76c25dcef44020fcd916c3b61474a49b97e5",
+          "parent_operator_id": "SHIFT_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "XOR"
+            },
+            {
+              "dst": "R",
+              "op": "SHL",
+              "src": "R"
+            }
+          ],
+          "program_sha256": "ad99e914e0786e43c66235253ffeebf354fef1f1ce538bc906f1c36a5cbb90dd",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 3,
+          "training_table_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "verified_cases": 256
+        }
+      ],
+      "parent_chain_sha256": "db345d3fb0517068953f4c18ff337840ce09e4d9a2a36e44e8847c23a6b574bb",
+      "version": 4
+    },
+    {
+      "added_verified_programs": 0,
+      "chain_sha256": "c8ddfed7db56fb170004d3834a33e1c45a6633271bdacbc12012f8f62770eeb4",
+      "entries": [
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "e3b891518c73723da2d24011b3ec5edf666a13d5cde62575fb5b7a3f1de8aaa6",
+          "parent_operator_id": "INC:v1",
+          "program": [
+            {
+              "dst": "T",
+              "imm": 1,
+              "op": "LOADI"
+            },
+            {
+              "a": "X",
+              "b": "T",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "5850f869718b7efd523310c9f1f2e9d7081e44b852b77feed751d01b6cc7b48b",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 0,
+          "training_table_key": "e6e524e0e175a3397bfcb5a6166235ec5420069359b047c29f8294e35d9233b4",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "4b6d613e64a99146fcf12c139160debcf916861727d106a53ffbba2ab590d1f4",
+          "parent_operator_id": "DOUBLE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "X",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "007327dac9dfb1eb4ad1ddcf4d1c06d89452b02997295b48696cc0156bb94686",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 1,
+          "training_table_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "a6885cd74083f45f0ceb53c53922d2e641169f910d906458cf3b206cf9406779",
+          "parent_operator_id": "BOOLEAN_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "AND"
+            },
+            {
+              "a": "R",
+              "b": "X",
+              "dst": "R",
+              "op": "XOR"
+            }
+          ],
+          "program_sha256": "9befcde0334bacf2e68fef25463ef6b8529b5292067fa50b74d7f19b25d3811e",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 2,
+          "training_table_key": "c6a64bb6407be64988a18a43b5ba21cb3d6c480cb66a23e7663f23992951a771",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "7c332a9797e45bcfddd461a6437f76c25dcef44020fcd916c3b61474a49b97e5",
+          "parent_operator_id": "SHIFT_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "XOR"
+            },
+            {
+              "dst": "R",
+              "op": "SHL",
+              "src": "R"
+            }
+          ],
+          "program_sha256": "ad99e914e0786e43c66235253ffeebf354fef1f1ce538bc906f1c36a5cbb90dd",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 3,
+          "training_table_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "verified_cases": 256
+        }
+      ],
+      "parent_chain_sha256": "e51566da01b611d2ea85c3deeaebde86284e5562b5eec4698377819d1aaa0693",
+      "version": 5
+    },
+    {
+      "added_verified_programs": 0,
+      "chain_sha256": "fb3ce65c8fe5b1b285796eca46b613fc06f1a04fabe4a52e1cbe7bdbfeec164c",
+      "entries": [
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "e3b891518c73723da2d24011b3ec5edf666a13d5cde62575fb5b7a3f1de8aaa6",
+          "parent_operator_id": "INC:v1",
+          "program": [
+            {
+              "dst": "T",
+              "imm": 1,
+              "op": "LOADI"
+            },
+            {
+              "a": "X",
+              "b": "T",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "5850f869718b7efd523310c9f1f2e9d7081e44b852b77feed751d01b6cc7b48b",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 0,
+          "training_table_key": "e6e524e0e175a3397bfcb5a6166235ec5420069359b047c29f8294e35d9233b4",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "4b6d613e64a99146fcf12c139160debcf916861727d106a53ffbba2ab590d1f4",
+          "parent_operator_id": "DOUBLE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "X",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "007327dac9dfb1eb4ad1ddcf4d1c06d89452b02997295b48696cc0156bb94686",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 1,
+          "training_table_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "a6885cd74083f45f0ceb53c53922d2e641169f910d906458cf3b206cf9406779",
+          "parent_operator_id": "BOOLEAN_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "AND"
+            },
+            {
+              "a": "R",
+              "b": "X",
+              "dst": "R",
+              "op": "XOR"
+            }
+          ],
+          "program_sha256": "9befcde0334bacf2e68fef25463ef6b8529b5292067fa50b74d7f19b25d3811e",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 2,
+          "training_table_key": "c6a64bb6407be64988a18a43b5ba21cb3d6c480cb66a23e7663f23992951a771",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "7c332a9797e45bcfddd461a6437f76c25dcef44020fcd916c3b61474a49b97e5",
+          "parent_operator_id": "SHIFT_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "XOR"
+            },
+            {
+              "dst": "R",
+              "op": "SHL",
+              "src": "R"
+            }
+          ],
+          "program_sha256": "ad99e914e0786e43c66235253ffeebf354fef1f1ce538bc906f1c36a5cbb90dd",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 3,
+          "training_table_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "verified_cases": 256
+        }
+      ],
+      "parent_chain_sha256": "c8ddfed7db56fb170004d3834a33e1c45a6633271bdacbc12012f8f62770eeb4",
+      "version": 6
+    },
+    {
+      "added_verified_programs": 0,
+      "chain_sha256": "0d9828fa7c1465b97eeb61fdf98fc6dcaf92cede04d324a72ba2c11ed66cffe7",
+      "entries": [
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "e3b891518c73723da2d24011b3ec5edf666a13d5cde62575fb5b7a3f1de8aaa6",
+          "parent_operator_id": "INC:v1",
+          "program": [
+            {
+              "dst": "T",
+              "imm": 1,
+              "op": "LOADI"
+            },
+            {
+              "a": "X",
+              "b": "T",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "5850f869718b7efd523310c9f1f2e9d7081e44b852b77feed751d01b6cc7b48b",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 0,
+          "training_table_key": "e6e524e0e175a3397bfcb5a6166235ec5420069359b047c29f8294e35d9233b4",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "4b6d613e64a99146fcf12c139160debcf916861727d106a53ffbba2ab590d1f4",
+          "parent_operator_id": "DOUBLE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "X",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "007327dac9dfb1eb4ad1ddcf4d1c06d89452b02997295b48696cc0156bb94686",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 1,
+          "training_table_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "a6885cd74083f45f0ceb53c53922d2e641169f910d906458cf3b206cf9406779",
+          "parent_operator_id": "BOOLEAN_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "AND"
+            },
+            {
+              "a": "R",
+              "b": "X",
+              "dst": "R",
+              "op": "XOR"
+            }
+          ],
+          "program_sha256": "9befcde0334bacf2e68fef25463ef6b8529b5292067fa50b74d7f19b25d3811e",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 2,
+          "training_table_key": "c6a64bb6407be64988a18a43b5ba21cb3d6c480cb66a23e7663f23992951a771",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "7c332a9797e45bcfddd461a6437f76c25dcef44020fcd916c3b61474a49b97e5",
+          "parent_operator_id": "SHIFT_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "XOR"
+            },
+            {
+              "dst": "R",
+              "op": "SHL",
+              "src": "R"
+            }
+          ],
+          "program_sha256": "ad99e914e0786e43c66235253ffeebf354fef1f1ce538bc906f1c36a5cbb90dd",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 3,
+          "training_table_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "verified_cases": 256
+        }
+      ],
+      "parent_chain_sha256": "fb3ce65c8fe5b1b285796eca46b613fc06f1a04fabe4a52e1cbe7bdbfeec164c",
+      "version": 7
+    },
+    {
+      "added_verified_programs": 0,
+      "chain_sha256": "23c6ada2ac05f3965415c1cdf60d8d3f4e6a875c8ea7480542e3e59f096ea0db",
+      "entries": [
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "e3b891518c73723da2d24011b3ec5edf666a13d5cde62575fb5b7a3f1de8aaa6",
+          "parent_operator_id": "INC:v1",
+          "program": [
+            {
+              "dst": "T",
+              "imm": 1,
+              "op": "LOADI"
+            },
+            {
+              "a": "X",
+              "b": "T",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "5850f869718b7efd523310c9f1f2e9d7081e44b852b77feed751d01b6cc7b48b",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 0,
+          "training_table_key": "e6e524e0e175a3397bfcb5a6166235ec5420069359b047c29f8294e35d9233b4",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "4b6d613e64a99146fcf12c139160debcf916861727d106a53ffbba2ab590d1f4",
+          "parent_operator_id": "DOUBLE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "X",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "007327dac9dfb1eb4ad1ddcf4d1c06d89452b02997295b48696cc0156bb94686",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 1,
+          "training_table_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "a6885cd74083f45f0ceb53c53922d2e641169f910d906458cf3b206cf9406779",
+          "parent_operator_id": "BOOLEAN_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "AND"
+            },
+            {
+              "a": "R",
+              "b": "X",
+              "dst": "R",
+              "op": "XOR"
+            }
+          ],
+          "program_sha256": "9befcde0334bacf2e68fef25463ef6b8529b5292067fa50b74d7f19b25d3811e",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 2,
+          "training_table_key": "c6a64bb6407be64988a18a43b5ba21cb3d6c480cb66a23e7663f23992951a771",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "7c332a9797e45bcfddd461a6437f76c25dcef44020fcd916c3b61474a49b97e5",
+          "parent_operator_id": "SHIFT_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "XOR"
+            },
+            {
+              "dst": "R",
+              "op": "SHL",
+              "src": "R"
+            }
+          ],
+          "program_sha256": "ad99e914e0786e43c66235253ffeebf354fef1f1ce538bc906f1c36a5cbb90dd",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 3,
+          "training_table_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "verified_cases": 256
+        }
+      ],
+      "parent_chain_sha256": "0d9828fa7c1465b97eeb61fdf98fc6dcaf92cede04d324a72ba2c11ed66cffe7",
+      "version": 8
+    },
+    {
+      "added_verified_programs": 0,
+      "chain_sha256": "1ff5fc33029bfcb9161ff78fa795dc61f21924622fd6c90b01dce4f3d462367b",
+      "entries": [
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "e3b891518c73723da2d24011b3ec5edf666a13d5cde62575fb5b7a3f1de8aaa6",
+          "parent_operator_id": "INC:v1",
+          "program": [
+            {
+              "dst": "T",
+              "imm": 1,
+              "op": "LOADI"
+            },
+            {
+              "a": "X",
+              "b": "T",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "5850f869718b7efd523310c9f1f2e9d7081e44b852b77feed751d01b6cc7b48b",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 0,
+          "training_table_key": "e6e524e0e175a3397bfcb5a6166235ec5420069359b047c29f8294e35d9233b4",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "4b6d613e64a99146fcf12c139160debcf916861727d106a53ffbba2ab590d1f4",
+          "parent_operator_id": "DOUBLE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "X",
+              "dst": "R",
+              "op": "ADD"
+            }
+          ],
+          "program_sha256": "007327dac9dfb1eb4ad1ddcf4d1c06d89452b02997295b48696cc0156bb94686",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 1,
+          "training_table_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "a6885cd74083f45f0ceb53c53922d2e641169f910d906458cf3b206cf9406779",
+          "parent_operator_id": "BOOLEAN_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "AND"
+            },
+            {
+              "a": "R",
+              "b": "X",
+              "dst": "R",
+              "op": "XOR"
+            }
+          ],
+          "program_sha256": "9befcde0334bacf2e68fef25463ef6b8529b5292067fa50b74d7f19b25d3811e",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 2,
+          "training_table_key": "c6a64bb6407be64988a18a43b5ba21cb3d6c480cb66a23e7663f23992951a771",
+          "verified_cases": 256
+        },
+        {
+          "library_version": "NC062/local/0",
+          "nc009_chain_sha256": "7c332a9797e45bcfddd461a6437f76c25dcef44020fcd916c3b61474a49b97e5",
+          "parent_operator_id": "SHIFT_COMPOSITE:v1",
+          "program": [
+            {
+              "a": "X",
+              "b": "Y",
+              "dst": "R",
+              "op": "XOR"
+            },
+            {
+              "dst": "R",
+              "op": "SHL",
+              "src": "R"
+            }
+          ],
+          "program_sha256": "ad99e914e0786e43c66235253ffeebf354fef1f1ce538bc906f1c36a5cbb90dd",
+          "source": "independently verified NC-009 operator, not NC-062 discovery",
+          "template_label": 3,
+          "training_table_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "verified_cases": 256
+        }
+      ],
+      "parent_chain_sha256": "23c6ada2ac05f3965415c1cdf60d8d3f4e6a875c8ea7480542e3e59f096ea0db",
+      "version": 9
+    }
+  ]
+}

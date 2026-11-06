@@ -1,0 +1,324 @@
+{
+  "candidate_checkpoint_count": 12,
+  "candidate_training_generations": 3,
+  "candidate_type": "bounded supervised four-class CPU neural discovery-loop canary",
+  "checkpoint_files": {
+    "checkpoint_g0_seed11.json": {
+      "bytes": 21544,
+      "generation": 0,
+      "model_state_sha256": "be5f2c462ac1379ab9c6715d31469da1390a3b420cdd60c8be1fa799e64e181a",
+      "seed": 11,
+      "sha256": "b8c84a46cc27f244547c46c09ab7fbca41c059bf7ed1b354ddc511234e5e7b05"
+    },
+    "checkpoint_g0_seed19.json": {
+      "bytes": 21502,
+      "generation": 0,
+      "model_state_sha256": "7a01a2493a5f1530a761cb7d91a8f3f3521f8025856df69038e67bb1a5360ee8",
+      "seed": 19,
+      "sha256": "97ba7abd2da11ad8cb5f9e6c80e2a213fa1d9c67d8e2104dc388716db3b15ecf"
+    },
+    "checkpoint_g0_seed29.json": {
+      "bytes": 21472,
+      "generation": 0,
+      "model_state_sha256": "d9d623b6bf44f37bbd55cc89144b9ca3314f7b43efdd9ba322ef2203a3059048",
+      "seed": 29,
+      "sha256": "ef3d4651bd95bed3c6746ce51a34b71cc1c345cc5447cf9687cec1a1bc9af6c4"
+    },
+    "checkpoint_g1_seed11.json": {
+      "bytes": 21736,
+      "generation": 1,
+      "model_state_sha256": "3f8271c9da68671780e333916ade50264e9d19da1154cb03e0c8265cf4c12953",
+      "seed": 11,
+      "sha256": "2f04912461ed6c0b4ba091a490c35a747ba14ef50646dbb013f6d51f6bc04f3c"
+    },
+    "checkpoint_g1_seed19.json": {
+      "bytes": 21709,
+      "generation": 1,
+      "model_state_sha256": "cf36fad5f7a12619cb4ab0815a55711147f3e9f1be25e9378ff4ba6c34d345c0",
+      "seed": 19,
+      "sha256": "60585a54688993be6f2c61cc8235783699d4ac323d1f4f9bb9d1ffd7a3cf610a"
+    },
+    "checkpoint_g1_seed29.json": {
+      "bytes": 21696,
+      "generation": 1,
+      "model_state_sha256": "2143e780f3f9b90aba895fb81024b3bd0fd9afabced57ff1666303294ea56539",
+      "seed": 29,
+      "sha256": "6d3bc21a4acce491500d343c79582d9bbbe32b72aa973d5a5532cb7885c248bf"
+    },
+    "checkpoint_g2_seed11.json": {
+      "bytes": 21759,
+      "generation": 2,
+      "model_state_sha256": "9ac6072fe430ee425dd8c736965169d80c8dd66c0717f09776bb2848b5046d6e",
+      "seed": 11,
+      "sha256": "3bf772dd7d09e1804e4311883d8bfc657877ebff52387eda5dd76d1adf0ffc27"
+    },
+    "checkpoint_g2_seed19.json": {
+      "bytes": 21710,
+      "generation": 2,
+      "model_state_sha256": "ca17d454f274dddf0eacf10da6c1f9d1fee8c784a69672244e42127c062b4716",
+      "seed": 19,
+      "sha256": "62b80171e0e0c9e9c2f949b1ae913399a8fc7f24e6afb84bc9c4d36a149620c8"
+    },
+    "checkpoint_g2_seed29.json": {
+      "bytes": 21722,
+      "generation": 2,
+      "model_state_sha256": "eedc305ddd4ca7d91ce0d2e30f5e0b86f699dd563a82766fe84aad7e87d14bfd",
+      "seed": 29,
+      "sha256": "4e0f8c9550849999ff9c2c654a046000755e97000dd8d2e8ae474f4947b739fe"
+    },
+    "checkpoint_g3_seed11.json": {
+      "bytes": 21740,
+      "generation": 3,
+      "model_state_sha256": "98b9fba06711dbf78b5b46ce5c5a36cb58104b3a961c986cf6931d35fd34c192",
+      "seed": 11,
+      "sha256": "a6de32a4f94e11f12a5d2da63ddab2b72a297bd2920a565f7d0073929773230e"
+    },
+    "checkpoint_g3_seed19.json": {
+      "bytes": 21686,
+      "generation": 3,
+      "model_state_sha256": "49248a34461fa6ffb8c2443bf6a54f5d67b674ab260b947f25db486ca57803e2",
+      "seed": 19,
+      "sha256": "fa843059d168a22be3db01beaa9bbbf7b8667b3db12567dc266ca62cb499a403"
+    },
+    "checkpoint_g3_seed29.json": {
+      "bytes": 21713,
+      "generation": 3,
+      "model_state_sha256": "00c61ec0b30d1ab6262b5312038004af3e2a18c7671ed577e31a97cfe2b41671",
+      "seed": 29,
+      "sha256": "52ddbf56d24835ce4b57b26d375983141aabd0589edb2b3c1b26f811aa8f344e"
+    }
+  },
+  "checkpoint_sha256": {
+    "checkpoint_g0_seed11.json": "b8c84a46cc27f244547c46c09ab7fbca41c059bf7ed1b354ddc511234e5e7b05",
+    "checkpoint_g0_seed19.json": "97ba7abd2da11ad8cb5f9e6c80e2a213fa1d9c67d8e2104dc388716db3b15ecf",
+    "checkpoint_g0_seed29.json": "ef3d4651bd95bed3c6746ce51a34b71cc1c345cc5447cf9687cec1a1bc9af6c4",
+    "checkpoint_g1_seed11.json": "2f04912461ed6c0b4ba091a490c35a747ba14ef50646dbb013f6d51f6bc04f3c",
+    "checkpoint_g1_seed19.json": "60585a54688993be6f2c61cc8235783699d4ac323d1f4f9bb9d1ffd7a3cf610a",
+    "checkpoint_g1_seed29.json": "6d3bc21a4acce491500d343c79582d9bbbe32b72aa973d5a5532cb7885c248bf",
+    "checkpoint_g2_seed11.json": "3bf772dd7d09e1804e4311883d8bfc657877ebff52387eda5dd76d1adf0ffc27",
+    "checkpoint_g2_seed19.json": "62b80171e0e0c9e9c2f949b1ae913399a8fc7f24e6afb84bc9c4d36a149620c8",
+    "checkpoint_g2_seed29.json": "4e0f8c9550849999ff9c2c654a046000755e97000dd8d2e8ae474f4947b739fe",
+    "checkpoint_g3_seed11.json": "a6de32a4f94e11f12a5d2da63ddab2b72a297bd2920a565f7d0073929773230e",
+    "checkpoint_g3_seed19.json": "fa843059d168a22be3db01beaa9bbbf7b8667b3db12567dc266ca62cb499a403",
+    "checkpoint_g3_seed29.json": "52ddbf56d24835ce4b57b26d375983141aabd0589edb2b3c1b26f811aa8f344e"
+  },
+  "clean_v2_sealed_goals": 90,
+  "clean_v2_solve_rate": {
+    "baseline": 0,
+    "candidate": 0,
+    "denominator": 90
+  },
+  "dependencies": [
+    "Python 3.10+ standard library, Git, Linux Landlock ABI>=5 and libseccomp.so.2",
+    "PyTorch CPU and NumPy in NC-028 sandbox; OMP/MKL/OPENBLAS threads fixed to one",
+    "artifacts/NC-028/isolation.py; artifacts/NC-062/{worker_source.py,run_loop.py,evaluate_uncontaminated.py}",
+    "artifacts/NC-001/canonical_isa.py, artifacts/NC-009/{promote.py,operator_promotions.jsonl}, artifacts/NC-061/scoreboard.py",
+    "Read-only RLT champion /workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt"
+  ],
+  "dependencies_sha256": {
+    "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "artifacts/NC-001/canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "artifacts/NC-009/operator_promotions.jsonl": "64644db1894cf369c7769d1076ffb177dba6b8aada7e20cb153d98d906c52db9",
+    "artifacts/NC-009/promote.py": "15d2f80c7ddac13dc0fa6fa6830827d7dec113754aa0e54b339a4a85d4036600",
+    "artifacts/NC-028/isolation.py": "cbdaa657434e6f190944d5694b40f0e21bb3954b81a311fd2c178d591b596fda",
+    "artifacts/NC-061/scoreboard.py": "34fcdecd35e05547e7ea562882426bd54a5f39c828cbb8f3a32275e3511412fe"
+  },
+  "evidence_files": {
+    "PROTOCOL.json": {
+      "bytes": 2338,
+      "sha256": "b8604e95f6210f8c209b4c56fde33076364f5f2d45f0bb91a74827a474f916bb"
+    },
+    "commitments.json": {
+      "bytes": 1996,
+      "sha256": "5ea3ad7f6462af8fd2347c42e604bdb6d22aa5d6a24a4c53e7913aed599d6803"
+    },
+    "eval_v2_audit.json": {
+      "bytes": 4654,
+      "sha256": "defea86d74d31c79e86708641beac1f0e53ceb554c4112d218ea82ca2f4d1486"
+    },
+    "eval_v2_candidate_freeze.json": {
+      "bytes": 2908,
+      "sha256": "a0f2f3c6088888890a2ac1c1c4b682d7d7cbe5192af4b12e871eaca674a17757"
+    },
+    "eval_v2_commitments.json": {
+      "bytes": 2091,
+      "sha256": "5537fe40d4a42b5c67168f918a214fb243cf7453cd7a3c671e759501156dbcc9"
+    },
+    "eval_v2_protocol.json": {
+      "bytes": 1691,
+      "sha256": "a5943de94b9ace5453e6e5286ad43e1913bc7e94d29b7b9b036558c6d3e6c0b0"
+    },
+    "eval_v2_results.json": {
+      "bytes": 55209,
+      "sha256": "03148fc3b3a267a1156580b61073f2a98312ed7a6f4f2c5cdde39915a96fd6a5"
+    },
+    "eval_v2_reveals.json": {
+      "bytes": 5699,
+      "sha256": "bf00e15320e1e9bcf1a9f6e488df449b283fc3459fcaa6f8d98e145db55e1972"
+    },
+    "generation_trace.jsonl": {
+      "bytes": 41647,
+      "sha256": "98ced90d3aa83cd53cd535b084e0028c0866616956595af81812f6360a2c73c8"
+    },
+    "library_versions.json": {
+      "bytes": 35152,
+      "sha256": "a8cf98afe40f282a41a07a4bfda439a90f7a3b4d3c15c9bf0f825a36ea0cc1c1"
+    },
+    "replay_audit.json": {
+      "bytes": 4022,
+      "sha256": "d3a1e50a43aa69f53aa2b6745979774d08069aeb6b73c465f792b631ee7d62ef"
+    },
+    "scoreboard_results.json": {
+      "bytes": 38195,
+      "sha256": "2f4efda78c2aa3a85ca6a25acd4b039a1c20a232876961a51b2d1242d4e88288"
+    },
+    "sealed_reveals.json": {
+      "bytes": 5702,
+      "sha256": "3efc13a010586e93c3333629c69e214061687a999996ffbf1d91527145ef2338"
+    },
+    "secondary_controls.json": {
+      "bytes": 24644,
+      "sha256": "50a4fdac8402961e30b86b138e2e13d4a0af2d282130eb0ff3a694835def571d"
+    },
+    "training_replay.json": {
+      "bytes": 3619,
+      "sha256": "0e51bd77d49b8f7ba1d4f45a6013030f64169e3ab0fc76a716414d948a93517f"
+    }
+  },
+  "evidence_sha256": {
+    "PROTOCOL.json": "b8604e95f6210f8c209b4c56fde33076364f5f2d45f0bb91a74827a474f916bb",
+    "commitments.json": "5ea3ad7f6462af8fd2347c42e604bdb6d22aa5d6a24a4c53e7913aed599d6803",
+    "eval_v2_audit.json": "defea86d74d31c79e86708641beac1f0e53ceb554c4112d218ea82ca2f4d1486",
+    "eval_v2_candidate_freeze.json": "a0f2f3c6088888890a2ac1c1c4b682d7d7cbe5192af4b12e871eaca674a17757",
+    "eval_v2_commitments.json": "5537fe40d4a42b5c67168f918a214fb243cf7453cd7a3c671e759501156dbcc9",
+    "eval_v2_protocol.json": "a5943de94b9ace5453e6e5286ad43e1913bc7e94d29b7b9b036558c6d3e6c0b0",
+    "eval_v2_results.json": "03148fc3b3a267a1156580b61073f2a98312ed7a6f4f2c5cdde39915a96fd6a5",
+    "eval_v2_reveals.json": "bf00e15320e1e9bcf1a9f6e488df449b283fc3459fcaa6f8d98e145db55e1972",
+    "generation_trace.jsonl": "98ced90d3aa83cd53cd535b084e0028c0866616956595af81812f6360a2c73c8",
+    "library_versions.json": "a8cf98afe40f282a41a07a4bfda439a90f7a3b4d3c15c9bf0f825a36ea0cc1c1",
+    "replay_audit.json": "d3a1e50a43aa69f53aa2b6745979774d08069aeb6b73c465f792b631ee7d62ef",
+    "scoreboard_results.json": "2f4efda78c2aa3a85ca6a25acd4b039a1c20a232876961a51b2d1242d4e88288",
+    "sealed_reveals.json": "3efc13a010586e93c3333629c69e214061687a999996ffbf1d91527145ef2338",
+    "secondary_controls.json": "50a4fdac8402961e30b86b138e2e13d4a0af2d282130eb0ff3a694835def571d",
+    "training_replay.json": "0e51bd77d49b8f7ba1d4f45a6013030f64169e3ab0fc76a716414d948a93517f"
+  },
+  "first_evaluation_sealed_goals": 90,
+  "first_evaluation_verdict": "CONTAMINATED in all three generations; preserved, excluded from positive inference",
+  "generation_verdicts": [
+    "NO_IMPROVEMENT",
+    "NO_IMPROVEMENT",
+    "NO_IMPROVEMENT"
+  ],
+  "independent_verdict": "NOT_YET_REVIEWED",
+  "initial_models": 3,
+  "limits": [
+    "The model can emit only four previously accepted NC-009 operator templates, so no unseen program invention is possible with this architecture.",
+    "There were zero newly discovered programs; all local library versions contain only four original entries.",
+    "The V1 experiment had a real train/evaluation function collision and is CONTAMINATED; V2 is a separate prospective re-evaluation on fresh committed seeds and a preregistered disjoint selection algorithm.",
+    "The clean V2 evaluation found 0/90 exact solves for trained and untrained candidate, not superiority or transfer.",
+    "No improved model was promoted; original champion and NC-009 global registry were never written.",
+    "NC-061 fixed catalog retention=1.0 is not independent measurement of neural old-skill retention.",
+    "NC-028 child sandbox seccomp/Landlock is OS isolation for this bounded subprocess, not a separate UID/VM, proof of all absence of leakage or full host confinement.",
+    "CPU process time is measured around sandboxed child; between-worker timing comparisons are subject to host load.",
+    "Fixed/random/symbolic baselines are diagnostic and NOT matched on consumed CPU. No claim of compute superiority is supported.",
+    "NC-028 sandbox worker class policy was supervised on known NC-009 programs, not program synthesis; counterexample filtering is not differentiable CEGIS.",
+    "No program, weight or verifier has been independently reviewed for this candidate yet; implementer self-audit is not independent approval.",
+    "No external network, ChatGPT API, autonomous service, champion promotion, AGI or unrestricted mathematical generalization occurred."
+  ],
+  "negative_controls": [
+    "Unknown ISA tokens and action lengths refused",
+    "Sample-fitting incorrect 4-bit program rejected by exhaustive 256-case verifier",
+    "Fake model ranking refused",
+    "Registry tampering and truncated chain rejected",
+    "Seed, nonce, threshold, generator sealed-reveal tampering rejected",
+    "All nine clean scoreboard evaluations exclude original-library and prior discovery-goal function hashes",
+    "Trained successors compared with the exact no-library-training initial model on same sealed goal sets",
+    "Secondary fixed/random/symbolic baselines included but labeled physically CPU UNMATCHED",
+    "Model checkpoint SHA/lineage and all gradient updates reproduced"
+  ],
+  "neural_training_gradient_updates": 72,
+  "owner": "turn-cb84af5cc3054e79af7776e1ac0af3c8",
+  "positive_claims": [
+    "NC-028 OS-contained Python neural inference and CPU SGD ran from frozen known-template starting state.",
+    "All 12 checkpoint model SHA/state transitions reproduced by implementer.",
+    "Exact finite 4-bit verification and counterexamples for 54 discovery goals.",
+    "NC-061 score arithmetic on 90 fresh uncontaminated finite goals independently recomputed in parent.",
+    "Candidate model always sees only public examples; all sealed private reveals stayed in trusted parent until after candidate scoring.",
+    "NC-009 initial four programs verified and bound to hash-linked local library with no new discoveries.",
+    "Original contaminated evaluation was preserved rather than silently excluded."
+  ],
+  "reproduction": [
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s artifacts/NC-062 -p test_loop.py -q",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-062/audit_results.py",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-062/audit_clean_eval.py",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-062/training_replay.py on clean duplicate checkout (creates new training_replay.json)",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-062/audit_clean_eval.py --full to reproduce all 18 sandboxed inference outputs",
+    "python dag.py validate; python -m unittest -q test_dag test_pull",
+    "In fresh checkout only: PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-062/run_loop.py (generates *new* secrets, not byte-identical evidence)"
+  ],
+  "review_output_path": "artifacts/NC-062/independent_receipt.json",
+  "sandbox_source_sha256": "cbdaa657434e6f190944d5694b40f0e21bb3954b81a311fd2c178d591b596fda",
+  "schema": "logos.nc062.candidate/1",
+  "science_result": "NO_DISCOVERY; NO_IMPROVEMENT x3; NO_COMPOUNDING",
+  "scoreboard_source_sha256": "34fcdecd35e05547e7ea562882426bd54a5f39c828cbb8f3a32275e3511412fe",
+  "seed_count": 3,
+  "source_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "source_files": {
+    "README.md": {
+      "bytes": 8206,
+      "sha256": "53df4d17f2d90249d61f79fa1993e91cd9e00201607d2cb723fa39d30c99f49f"
+    },
+    "audit_clean_eval.py": {
+      "bytes": 8265,
+      "sha256": "c5af2bd32c513646b934d5b081a4373bd9e65897aace31521406f43dd2fed3b4"
+    },
+    "audit_results.py": {
+      "bytes": 10147,
+      "sha256": "a3e9df826e06f719bd975954d4d03ad6fb5946d6becf268e57dd59680737b826"
+    },
+    "evaluate_uncontaminated.py": {
+      "bytes": 10543,
+      "sha256": "1186aa7eb31f7b722b31aeb76935f64b8e751a52594b537c5178658744f150b8"
+    },
+    "make_manifest.py": {
+      "bytes": 10759,
+      "sha256": "d684695041ceaf023498f3ae93ece768857b9ccef656a3e960de95d36b4d0982"
+    },
+    "run_loop.py": {
+      "bytes": 23357,
+      "sha256": "465c2b2f037300e3ca71207c28cc00a69c5b601db4a288771040a83962720359"
+    },
+    "secondary_controls.py": {
+      "bytes": 3933,
+      "sha256": "19891f9b7dba03145cfebc9422891689d0730d6f64f5125ecb9e988111dae392"
+    },
+    "test_loop.py": {
+      "bytes": 5221,
+      "sha256": "14d597bef35170787771a0545cf2e98d2868bdaa82642d2bdce90f1a5edea420"
+    },
+    "training_replay.py": {
+      "bytes": 2684,
+      "sha256": "72dbc01b89d7ac1db8cd704717d63cc3b0987c3972bf653816d2e68410cd190e"
+    },
+    "worker_source.py": {
+      "bytes": 4688,
+      "sha256": "1c5800abac434de36138762a545be28b2fcb333517bd65a543acc069fd75a353"
+    }
+  },
+  "source_sha256": {
+    "README.md": "53df4d17f2d90249d61f79fa1993e91cd9e00201607d2cb723fa39d30c99f49f",
+    "audit_clean_eval.py": "c5af2bd32c513646b934d5b081a4373bd9e65897aace31521406f43dd2fed3b4",
+    "audit_results.py": "a3e9df826e06f719bd975954d4d03ad6fb5946d6becf268e57dd59680737b826",
+    "evaluate_uncontaminated.py": "1186aa7eb31f7b722b31aeb76935f64b8e751a52594b537c5178658744f150b8",
+    "make_manifest.py": "d684695041ceaf023498f3ae93ece768857b9ccef656a3e960de95d36b4d0982",
+    "run_loop.py": "465c2b2f037300e3ca71207c28cc00a69c5b601db4a288771040a83962720359",
+    "secondary_controls.py": "19891f9b7dba03145cfebc9422891689d0730d6f64f5125ecb9e988111dae392",
+    "test_loop.py": "14d597bef35170787771a0545cf2e98d2868bdaa82642d2bdce90f1a5edea420",
+    "training_replay.py": "72dbc01b89d7ac1db8cd704717d63cc3b0987c3972bf653816d2e68410cd190e",
+    "worker_source.py": "1c5800abac434de36138762a545be28b2fcb333517bd65a543acc069fd75a353"
+  },
+  "status": "IMPLEMENTER_TESTED_AWAIT_INDEPENDENT_REVIEW",
+  "task": "NC-062",
+  "training_discovery_goals": 54,
+  "verified_initial_NC009_registry_sha256": "64644db1894cf369c7769d1076ffb177dba6b8aada7e20cb153d98d906c52db9"
+}

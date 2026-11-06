@@ -1,0 +1,115 @@
+{
+  "champion_unchanged": true,
+  "checkpoint_count": 12,
+  "compounding": {
+    "reason": "a generation in the window did not improve",
+    "verdict": "NO_COMPOUNDING"
+  },
+  "discovery_trace_rows": 54,
+  "finite_exhaustive_translation_cases": 1024,
+  "full_model_prediction_replay": false,
+  "generation_seed_score_rows": 9,
+  "global_registry_unchanged": true,
+  "independently_verified_by_distinct_agent": false,
+  "limitations": [
+    "Verifier and scoreboard are in the parent, model is in sandbox.",
+    "Training success is scoped to initial known templates.",
+    "No actual new program was registered; no hidden-goal feedback was used for training.",
+    "Process CPU varies between replays; don't assert bitwise CPU equivalence."
+  ],
+  "max_training_overlap_fraction": 0.1,
+  "model_state_and_lineage_sha256": {
+    "0:11": {
+      "file_sha256": "b8c84a46cc27f244547c46c09ab7fbca41c059bf7ed1b354ddc511234e5e7b05",
+      "sha256": "be5f2c462ac1379ab9c6715d31469da1390a3b420cdd60c8be1fa799e64e181a"
+    },
+    "0:19": {
+      "file_sha256": "97ba7abd2da11ad8cb5f9e6c80e2a213fa1d9c67d8e2104dc388716db3b15ecf",
+      "sha256": "7a01a2493a5f1530a761cb7d91a8f3f3521f8025856df69038e67bb1a5360ee8"
+    },
+    "0:29": {
+      "file_sha256": "ef3d4651bd95bed3c6746ce51a34b71cc1c345cc5447cf9687cec1a1bc9af6c4",
+      "sha256": "d9d623b6bf44f37bbd55cc89144b9ca3314f7b43efdd9ba322ef2203a3059048"
+    },
+    "1:11": {
+      "file_sha256": "2f04912461ed6c0b4ba091a490c35a747ba14ef50646dbb013f6d51f6bc04f3c",
+      "sha256": "3f8271c9da68671780e333916ade50264e9d19da1154cb03e0c8265cf4c12953"
+    },
+    "1:19": {
+      "file_sha256": "60585a54688993be6f2c61cc8235783699d4ac323d1f4f9bb9d1ffd7a3cf610a",
+      "sha256": "cf36fad5f7a12619cb4ab0815a55711147f3e9f1be25e9378ff4ba6c34d345c0"
+    },
+    "1:29": {
+      "file_sha256": "6d3bc21a4acce491500d343c79582d9bbbe32b72aa973d5a5532cb7885c248bf",
+      "sha256": "2143e780f3f9b90aba895fb81024b3bd0fd9afabced57ff1666303294ea56539"
+    },
+    "2:11": {
+      "file_sha256": "3bf772dd7d09e1804e4311883d8bfc657877ebff52387eda5dd76d1adf0ffc27",
+      "sha256": "9ac6072fe430ee425dd8c736965169d80c8dd66c0717f09776bb2848b5046d6e"
+    },
+    "2:19": {
+      "file_sha256": "62b80171e0e0c9e9c2f949b1ae913399a8fc7f24e6afb84bc9c4d36a149620c8",
+      "sha256": "ca17d454f274dddf0eacf10da6c1f9d1fee8c784a69672244e42127c062b4716"
+    },
+    "2:29": {
+      "file_sha256": "4e0f8c9550849999ff9c2c654a046000755e97000dd8d2e8ae474f4947b739fe",
+      "sha256": "eedc305ddd4ca7d91ce0d2e30f5e0b86f699dd563a82766fe84aad7e87d14bfd"
+    },
+    "3:11": {
+      "file_sha256": "a6de32a4f94e11f12a5d2da63ddab2b72a297bd2920a565f7d0073929773230e",
+      "sha256": "98b9fba06711dbf78b5b46ce5c5a36cb58104b3a961c986cf6931d35fd34c192"
+    },
+    "3:19": {
+      "file_sha256": "fa843059d168a22be3db01beaa9bbbf7b8667b3db12567dc266ca62cb499a403",
+      "sha256": "49248a34461fa6ffb8c2443bf6a54f5d67b674ab260b947f25db486ca57803e2"
+    },
+    "3:29": {
+      "file_sha256": "52ddbf56d24835ce4b57b26d375983141aabd0589edb2b3c1b26f811aa8f344e",
+      "sha256": "00c61ec0b30d1ab6262b5312038004af3e2a18c7671ed577e31a97cfe2b41671"
+    }
+  },
+  "no_discovery": true,
+  "original_v1_contamination_detected": true,
+  "scoreboard_comparisons": [
+    {
+      "generation": 1,
+      "scoreboard": {
+        "reasons": [
+          "sealed goals appear in declared training data"
+        ],
+        "verdict": "CONTAMINATED"
+      }
+    },
+    {
+      "generation": 2,
+      "scoreboard": {
+        "reasons": [
+          "sealed goals appear in declared training data"
+        ],
+        "verdict": "CONTAMINATED"
+      }
+    },
+    {
+      "generation": 3,
+      "scoreboard": {
+        "reasons": [
+          "sealed goals appear in declared training data"
+        ],
+        "verdict": "CONTAMINATED"
+      }
+    }
+  ],
+  "sealed_commitments_verified": 9,
+  "status": "IMPLEMENTER_AUDIT_PASS_NOT_INDEPENDENT",
+  "training_discovery_function_collisions": [
+    3,
+    1,
+    1,
+    2,
+    3,
+    2,
+    2,
+    2,
+    2
+  ]
+}

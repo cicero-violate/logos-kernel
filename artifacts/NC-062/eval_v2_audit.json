@@ -1,0 +1,143 @@
+{
+  "all_90_goals_functionally_disjoint_from_declared_training_and_discovery": true,
+  "checked_scores": [
+    {
+      "ablation_cpu_s": 5.017739,
+      "ablation_verified": 0,
+      "candidate_cpu_s": 5.029375,
+      "candidate_model_sha256": "3f8271c9da68671780e333916ade50264e9d19da1154cb03e0c8265cf4c12953",
+      "candidate_verified": 0,
+      "generation": 1,
+      "seed": 11,
+      "selected_goals": 10
+    },
+    {
+      "ablation_cpu_s": 4.613851,
+      "ablation_verified": 0,
+      "candidate_cpu_s": 5.024526,
+      "candidate_model_sha256": "cf36fad5f7a12619cb4ab0815a55711147f3e9f1be25e9378ff4ba6c34d345c0",
+      "candidate_verified": 0,
+      "generation": 1,
+      "seed": 19,
+      "selected_goals": 10
+    },
+    {
+      "ablation_cpu_s": 4.6791,
+      "ablation_verified": 0,
+      "candidate_cpu_s": 4.484142,
+      "candidate_model_sha256": "2143e780f3f9b90aba895fb81024b3bd0fd9afabced57ff1666303294ea56539",
+      "candidate_verified": 0,
+      "generation": 1,
+      "seed": 29,
+      "selected_goals": 10
+    },
+    {
+      "ablation_cpu_s": 3.871587,
+      "ablation_verified": 0,
+      "candidate_cpu_s": 3.748391,
+      "candidate_model_sha256": "9ac6072fe430ee425dd8c736965169d80c8dd66c0717f09776bb2848b5046d6e",
+      "candidate_verified": 0,
+      "generation": 2,
+      "seed": 11,
+      "selected_goals": 10
+    },
+    {
+      "ablation_cpu_s": 4.250092,
+      "ablation_verified": 0,
+      "candidate_cpu_s": 4.156444,
+      "candidate_model_sha256": "ca17d454f274dddf0eacf10da6c1f9d1fee8c784a69672244e42127c062b4716",
+      "candidate_verified": 0,
+      "generation": 2,
+      "seed": 19,
+      "selected_goals": 10
+    },
+    {
+      "ablation_cpu_s": 4.725614,
+      "ablation_verified": 0,
+      "candidate_cpu_s": 4.983,
+      "candidate_model_sha256": "eedc305ddd4ca7d91ce0d2e30f5e0b86f699dd563a82766fe84aad7e87d14bfd",
+      "candidate_verified": 0,
+      "generation": 2,
+      "seed": 29,
+      "selected_goals": 10
+    },
+    {
+      "ablation_cpu_s": 4.809574,
+      "ablation_verified": 0,
+      "candidate_cpu_s": 5.157806,
+      "candidate_model_sha256": "98b9fba06711dbf78b5b46ce5c5a36cb58104b3a961c986cf6931d35fd34c192",
+      "candidate_verified": 0,
+      "generation": 3,
+      "seed": 11,
+      "selected_goals": 10
+    },
+    {
+      "ablation_cpu_s": 4.109745,
+      "ablation_verified": 0,
+      "candidate_cpu_s": 4.863632,
+      "candidate_model_sha256": "49248a34461fa6ffb8c2443bf6a54f5d67b674ab260b947f25db486ca57803e2",
+      "candidate_verified": 0,
+      "generation": 3,
+      "seed": 19,
+      "selected_goals": 10
+    },
+    {
+      "ablation_cpu_s": 4.467808,
+      "ablation_verified": 0,
+      "candidate_cpu_s": 5.165568,
+      "candidate_model_sha256": "00c61ec0b30d1ab6262b5312038004af3e2a18c7671ed577e31a97cfe2b41671",
+      "candidate_verified": 0,
+      "generation": 3,
+      "seed": 29,
+      "selected_goals": 10
+    }
+  ],
+  "compounding": {
+    "reason": "a generation in the window did not improve",
+    "verdict": "NO_COMPOUNDING"
+  },
+  "global_champion_untouched": true,
+  "independent_model_inference_recomputed": true,
+  "independent_scientific_verdict": "PENDING_INDEPENDENT_REVIEW",
+  "limits": [
+    "Even uncontaminated heldout may be too small to establish a small gain.",
+    "CPU is measured by Linux child process accounting, not equality of wall clock or model complexity.",
+    "Scoring code is pinned but remains in same-user trusted parent; no third-party secret attestation.",
+    "The 4-class model is a classifier of known operators, not general program synthesis.",
+    "Functional truth-table disjointness does not establish unseen program structure or algorithmic novelty."
+  ],
+  "matched_candidate_checkpoint_hashes": 9,
+  "negative_controls": "PASS: seed/generator/nonce/threshold tamper",
+  "schema": "nc062-implementer-clean-score-audit/1",
+  "scoreboard_comparisons": [
+    {
+      "gain": 0.0,
+      "generation": 1,
+      "reasons": [
+        "gain 0.000 is below the margin 0.05",
+        "did not beat the previous generation on most seeds"
+      ],
+      "verdict": "NO_IMPROVEMENT"
+    },
+    {
+      "gain": 0.0,
+      "generation": 2,
+      "reasons": [
+        "gain 0.000 is below the margin 0.05",
+        "did not beat the previous generation on most seeds"
+      ],
+      "verdict": "NO_IMPROVEMENT"
+    },
+    {
+      "gain": 0.0,
+      "generation": 3,
+      "reasons": [
+        "gain 0.000 is below the margin 0.05",
+        "did not beat the previous generation on most seeds"
+      ],
+      "verdict": "NO_IMPROVEMENT"
+    }
+  ],
+  "sealed_reveal_and_commitment_match": 9,
+  "status": "PASS_IMPLEMENTER_NOT_INDEPENDENT"
+}

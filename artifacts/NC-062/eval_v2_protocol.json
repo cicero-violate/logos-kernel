@@ -1,0 +1,45 @@
+{
+  "budget_per_worker": {
+    "cpu_s": 24,
+    "wall_s": 35
+  },
+  "excluded_data": "frozen initial NC-009 library keys plus previously exposed six discovery-goal keys, not prior heldout results",
+  "generations": [
+    1,
+    2,
+    3
+  ],
+  "no_retraining": true,
+  "nonclaims": [
+    "Not external identity/secret attestation",
+    "Not globally hidden from parent/same UID",
+    "Not evidence of AGI/ASI or algorithm invention",
+    "Not a fully independent verifier",
+    "No physical equal-CPU guarantee; report actual measured process CPU."
+  ],
+  "pool_size": 40,
+  "reason": "First sealed eval was correctly CONTAMINATED due to direct training-library function overlaps; preserved, never used as improvement claim.",
+  "schema": "NC062/fresh-clean-evaluation-v2",
+  "scope": "Exact 4-bit symbolic program verification; 3 seeds, 3 candidate generations; no novel operator or fresh training from sealed goals",
+  "seeds": [
+    11,
+    19,
+    29
+  ],
+  "selected_goals": 10,
+  "selection": "Independent NC-061 sealed generator with committed generator/seed/nonce/thresholds, produce 40 distinct goals, filter by *function hash only* against fixed four training functions and six per-generation training-only discovery functions, select FIRST ten survivors before seeing candidate scores. Never filter by candidate success or policy output.",
+  "task": "NC-062",
+  "thresholds": {
+    "budget_tolerance": 0.1,
+    "compounding_generations": 3,
+    "compounding_min_growth": 0.01,
+    "contamination_limit": 0.0,
+    "cpu_tolerance": 0.25,
+    "examples": 8,
+    "goals": 40,
+    "improvement_margin": 0.05,
+    "max_program": 5,
+    "min_seeds": 3,
+    "retention_floor": 0.95
+  }
+}

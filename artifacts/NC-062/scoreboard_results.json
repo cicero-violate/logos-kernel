@@ -1,0 +1,891 @@
+{
+  "champion_sha256_unchanged": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "completed_generations": 3,
+  "discovery_goals_total": 54,
+  "evaluated_seeds": [
+    11,
+    19,
+    29
+  ],
+  "failures_or_nonclaims": [
+    "The model emits only four known NC-009 algorithms; no genuinely new operator learned.",
+    "NC-009 canonicalization/dedup carried into local 4-bit library; no writes to global NC-009.",
+    "Independent verifier must audit, not self-PASS.",
+    "Local input-output examples can collide with known functions; scoreboard reports contamination when declared.",
+    "Coded decoder/adapter is host infrastructure; proposals are model-selected existing-program classes.",
+    "The model never infers unseen general-purpose instructions, and this result is not AGI.",
+    "Retention is fixed library preservation, not independently tested neural old-skill retention.",
+    "NC-028 sandbox protects subprocess but parent/referee shares UID; no separate cryptographic secrecy.",
+    "Subprocess measured CPU, budget cap per worker, no aggregate budget equivalence guarantee.",
+    "Generation isolation is an honest bounded canary, not a production worker/service."
+  ],
+  "global_NC009_registry_unchanged": true,
+  "independent_discovery_count": 0,
+  "model_checkpoint_count": 12,
+  "model_subprocess_calls": 39,
+  "neural_model": "24-feature small CPU MLP 24->24->4, trained on four previously verified operators",
+  "one_frozen_start_per_seed": true,
+  "per_seed_generation_scores": [
+    {
+      "ablation_worker_cost": {
+        "cpu_seconds": 5.060788999999999,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.169996288022958
+      },
+      "candidate_model_sha256": "3f8271c9da68671780e333916ade50264e9d19da1154cb03e0c8265cf4c12953",
+      "discovery_accepted_duplicates": 1,
+      "discovery_worker_cost": {
+        "cpu_seconds": 4.698132999999999,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.894859269959852
+      },
+      "evaluation_goal_keys": [
+        "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+        "c9d93fb5f2b30a0977315593131fe2ab4d65de1b9e4647a02c8d207fc4ff8324",
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "9c725a43c033a2695b38d4dea958949eb9a6b879729aba3fe9c6446e4987c52c",
+        "0449405479238e76d46051fea5945d000f870c43a2911a1d7493d7d5570ba39d",
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "db30e6c28f4bffb499fd10bd228a4176d28a970bdf7937f452672aed837d7edd"
+      ],
+      "generation": 1,
+      "initial_model_sha256": "be5f2c462ac1379ab9c6715d31469da1390a3b420cdd60c8be1fa799e64e181a",
+      "new_discoveries": 0,
+      "no_library_training_ablation": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.060789,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "private_reveal_sha256": "ada140c6ed458db5814dc981e1810cdaa9f005a4b4febe2ea9b958c120d66bfb",
+      "score_worker_cost": {
+        "cpu_seconds": 4.427439,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.537910645012744
+      },
+      "sealed_commitment_sha256": "ada140c6ed458db5814dc981e1810cdaa9f005a4b4febe2ea9b958c120d66bfb",
+      "sealed_goal_count": 10,
+      "seed": 11,
+      "train_score": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.427439,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "train_worker_cost": {
+        "cpu_seconds": 4.686143000000001,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.752754534012638
+      },
+      "training_goal_keys": [
+        "e2d01fedd2fdb97062e45126977ba6d799bf0545439c515ed435bbdb5e7f424d",
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+        "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+        "d68de3fe66daa87a325d4ec935a738075473a7dc507a2d349e4d1de5e1e2982f",
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079"
+      ]
+    },
+    {
+      "ablation_worker_cost": {
+        "cpu_seconds": 4.470303000000005,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.542976859025657
+      },
+      "candidate_model_sha256": "cf36fad5f7a12619cb4ab0815a55711147f3e9f1be25e9378ff4ba6c34d345c0",
+      "discovery_accepted_duplicates": 1,
+      "discovery_worker_cost": {
+        "cpu_seconds": 5.101000999999998,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.188529276987538
+      },
+      "evaluation_goal_keys": [
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "49cf53344467193d7f75b969b280ed6dca27914818ed7b5d884c0dec43d2b705",
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "82486f1193e6fbb18b25296ea872957ebc6cc165da081cb43403141f70dc4527",
+        "48482a745cef6df8e57d114908d0bb53826527ec4fdd3d089d50c538838adb08",
+        "db30e6c28f4bffb499fd10bd228a4176d28a970bdf7937f452672aed837d7edd",
+        "103bf7ec1b82c94878c4fd30a1e1ee182ae213183fa36fb0570672b66d9c3380",
+        "bbfc95eb919daa4f987b4e62d2fc567013ef27af933b96005b7ada036878fdec"
+      ],
+      "generation": 1,
+      "initial_model_sha256": "7a01a2493a5f1530a761cb7d91a8f3f3521f8025856df69038e67bb1a5360ee8",
+      "new_discoveries": 0,
+      "no_library_training_ablation": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.470303,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "private_reveal_sha256": "31dbe3c26ff102aaa1023cb705350c057674f1ae641d3a1c586a20abfdc1497d",
+      "score_worker_cost": {
+        "cpu_seconds": 4.381268000000004,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.442535870010033
+      },
+      "sealed_commitment_sha256": "31dbe3c26ff102aaa1023cb705350c057674f1ae641d3a1c586a20abfdc1497d",
+      "sealed_goal_count": 10,
+      "seed": 19,
+      "train_score": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.381268,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "train_worker_cost": {
+        "cpu_seconds": 5.2087249999999985,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.306260528974235
+      },
+      "training_goal_keys": [
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "c64c6cd5750493429a8a7378e51e8a44b1d70c11d0564b411db0043923d6af20",
+        "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+        "f99150e6f8fdd99d42644abec656557bf323b1a4e23f234d1e0db009512ff18e",
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7"
+      ]
+    },
+    {
+      "ablation_worker_cost": {
+        "cpu_seconds": 4.863598000000002,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.168488036957569
+      },
+      "candidate_model_sha256": "2143e780f3f9b90aba895fb81024b3bd0fd9afabced57ff1666303294ea56539",
+      "discovery_accepted_duplicates": 1,
+      "discovery_worker_cost": {
+        "cpu_seconds": 5.095656,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.459767275955528
+      },
+      "evaluation_goal_keys": [
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "249e30ea3ecd7a52c0a76d29c70923dea290f5e4bec086bf185d0ac624f0549c",
+        "f99150e6f8fdd99d42644abec656557bf323b1a4e23f234d1e0db009512ff18e",
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "cfe021f0b7f33fb92c5dbc6eb0f02f1e18b163cf8b20cb7a86597a04acc33b69",
+        "db30e6c28f4bffb499fd10bd228a4176d28a970bdf7937f452672aed837d7edd",
+        "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+        "ffd2e199ec5180b6a7f6c3fa3776628d1f0da9248f7fbce18d06703239fe115c"
+      ],
+      "generation": 1,
+      "initial_model_sha256": "d9d623b6bf44f37bbd55cc89144b9ca3314f7b43efdd9ba322ef2203a3059048",
+      "new_discoveries": 0,
+      "no_library_training_ablation": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.863598,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.0,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "private_reveal_sha256": "a2499999d9c98784bf465c35cc4a6910dc038031424a7ef5a217b525776b61ac",
+      "score_worker_cost": {
+        "cpu_seconds": 4.079185000000007,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.1944368100957945
+      },
+      "sealed_commitment_sha256": "a2499999d9c98784bf465c35cc4a6910dc038031424a7ef5a217b525776b61ac",
+      "sealed_goal_count": 10,
+      "seed": 29,
+      "train_score": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.079185,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "train_worker_cost": {
+        "cpu_seconds": 4.411482999999999,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.566004778025672
+      },
+      "training_goal_keys": [
+        "49cf53344467193d7f75b969b280ed6dca27914818ed7b5d884c0dec43d2b705",
+        "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc",
+        "103bf7ec1b82c94878c4fd30a1e1ee182ae213183fa36fb0570672b66d9c3380",
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "9c725a43c033a2695b38d4dea958949eb9a6b879729aba3fe9c6446e4987c52c"
+      ]
+    },
+    {
+      "ablation_worker_cost": {
+        "cpu_seconds": 4.469059000000003,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.544784763944335
+      },
+      "candidate_model_sha256": "9ac6072fe430ee425dd8c736965169d80c8dd66c0717f09776bb2848b5046d6e",
+      "discovery_accepted_duplicates": 0,
+      "discovery_worker_cost": {
+        "cpu_seconds": 4.862025000000003,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.078733482048847
+      },
+      "evaluation_goal_keys": [
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "103bf7ec1b82c94878c4fd30a1e1ee182ae213183fa36fb0570672b66d9c3380",
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "60ab500937e9792ca4a5f470578e661e1a566cb09daaaf4c0f5f8578077b1a8d",
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "94cef42e83df6daa70f10bf14823da85feccd79de8286c79a4a123e0da9c0c08",
+        "c64c6cd5750493429a8a7378e51e8a44b1d70c11d0564b411db0043923d6af20"
+      ],
+      "generation": 2,
+      "initial_model_sha256": "be5f2c462ac1379ab9c6715d31469da1390a3b420cdd60c8be1fa799e64e181a",
+      "new_discoveries": 0,
+      "no_library_training_ablation": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.469059,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.0,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "private_reveal_sha256": "6d653bc71bca6ca0d475e5f4c23d8722382cabbf845df29497648f7c7d95ce88",
+      "score_worker_cost": {
+        "cpu_seconds": 4.454528,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.061894222977571
+      },
+      "sealed_commitment_sha256": "6d653bc71bca6ca0d475e5f4c23d8722382cabbf845df29497648f7c7d95ce88",
+      "sealed_goal_count": 10,
+      "seed": 11,
+      "train_score": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.454528,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.0,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "train_worker_cost": {
+        "cpu_seconds": 4.273499000000001,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.365937016904354
+      },
+      "training_goal_keys": [
+        "0449405479238e76d46051fea5945d000f870c43a2911a1d7493d7d5570ba39d",
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "9c725a43c033a2695b38d4dea958949eb9a6b879729aba3fe9c6446e4987c52c",
+        "d68de3fe66daa87a325d4ec935a738075473a7dc507a2d349e4d1de5e1e2982f",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "1be3da9155049bb576ae837a61199a0181cf52f408ae86f0f4fc7a8030dc2db6"
+      ]
+    },
+    {
+      "ablation_worker_cost": {
+        "cpu_seconds": 5.393860999999999,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.94338481395971
+      },
+      "candidate_model_sha256": "ca17d454f274dddf0eacf10da6c1f9d1fee8c784a69672244e42127c062b4716",
+      "discovery_accepted_duplicates": 1,
+      "discovery_worker_cost": {
+        "cpu_seconds": 5.2712760000000145,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.721588811953552
+      },
+      "evaluation_goal_keys": [
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "8ec7e4a34f8003c372e25f6124e3b0abea9237b788de0bb1b81b958a863afa0b",
+        "786cf3e737f309afe47f2ef64e25eecff836d2b52d09612ff8179078ef979374",
+        "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "9c725a43c033a2695b38d4dea958949eb9a6b879729aba3fe9c6446e4987c52c",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+        "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc"
+      ],
+      "generation": 2,
+      "initial_model_sha256": "7a01a2493a5f1530a761cb7d91a8f3f3521f8025856df69038e67bb1a5360ee8",
+      "new_discoveries": 0,
+      "no_library_training_ablation": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.393861,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "private_reveal_sha256": "79623b32d57cafc2b27098455d68bdc74a662f215538868d44a2f119e6f5b9df",
+      "score_worker_cost": {
+        "cpu_seconds": 5.2173899999999875,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.894286063034087
+      },
+      "sealed_commitment_sha256": "79623b32d57cafc2b27098455d68bdc74a662f215538868d44a2f119e6f5b9df",
+      "sealed_goal_count": 10,
+      "seed": 19,
+      "train_score": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.21739,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "train_worker_cost": {
+        "cpu_seconds": 4.854531999999998,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.046291742939502
+      },
+      "training_goal_keys": [
+        "d4e69619a6270ce6fa666ae024bbafd79b57decf300826f64079644c93d7fe22",
+        "e82f46e0f3988e0d9831b36e8e5ce544614ddab861749e4467f0a425bf2891ff",
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7"
+      ]
+    },
+    {
+      "ablation_worker_cost": {
+        "cpu_seconds": 5.195163999999997,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.8356005740351975
+      },
+      "candidate_model_sha256": "eedc305ddd4ca7d91ce0d2e30f5e0b86f699dd563a82766fe84aad7e87d14bfd",
+      "discovery_accepted_duplicates": 1,
+      "discovery_worker_cost": {
+        "cpu_seconds": 4.774950999999994,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.953078970895149
+      },
+      "evaluation_goal_keys": [
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+        "bd608b4dc5354f3b2ab76a053f7c387e7a8256fffcf2a1636cff266562be5691",
+        "51773b0684ab52e5f765745b8a372eed5872cddbef7b9adcb537e97852664337",
+        "098b660934687f7778936e6d5a53058bfa46ab9b3c322e937eb3d4ea17a8d131",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+        "c5b58f0487d2c12093cf8509005f117146869586befe1b40f88ae0dd384ee6c2",
+        "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc",
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935"
+      ],
+      "generation": 2,
+      "initial_model_sha256": "d9d623b6bf44f37bbd55cc89144b9ca3314f7b43efdd9ba322ef2203a3059048",
+      "new_discoveries": 0,
+      "no_library_training_ablation": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.195164,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "private_reveal_sha256": "44bb1e1b7d04de5b5a2f9162c0eee07184537f54b74a131aac2e7450dc55f2ad",
+      "score_worker_cost": {
+        "cpu_seconds": 5.392663000000017,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 6.183902650023811
+      },
+      "sealed_commitment_sha256": "44bb1e1b7d04de5b5a2f9162c0eee07184537f54b74a131aac2e7450dc55f2ad",
+      "sealed_goal_count": 10,
+      "seed": 29,
+      "train_score": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.392663,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "train_worker_cost": {
+        "cpu_seconds": 5.11673100000001,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.6294746230123565
+      },
+      "training_goal_keys": [
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+        "f2f00d77628646f9774bcbe03a5be457e8b2d9ee70f86578b8ac3c6baaa63f8e",
+        "e2839a6812278f85739263d7dac8f49407aa0e46dcf13a0bebd0345ae6e98a33"
+      ]
+    },
+    {
+      "ablation_worker_cost": {
+        "cpu_seconds": 3.457677999999989,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 3.5352366029983386
+      },
+      "candidate_model_sha256": "98b9fba06711dbf78b5b46ce5c5a36cb58104b3a961c986cf6931d35fd34c192",
+      "discovery_accepted_duplicates": 1,
+      "discovery_worker_cost": {
+        "cpu_seconds": 3.9554320000000214,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.042994366958737
+      },
+      "evaluation_goal_keys": [
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "75ebdfab32365f5b3622c2836967a14e3817c3e4f62a40c92d4e1df7a04c9de4",
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+        "390268f8668aac24c713481dd4fdc940aee72bcbef56e8b63e8f578c92345802",
+        "8d95e5c9f7385e4ca1c9f197f2c2286fd387e5eb2e6419d843dd6843342b63f8"
+      ],
+      "generation": 3,
+      "initial_model_sha256": "be5f2c462ac1379ab9c6715d31469da1390a3b420cdd60c8be1fa799e64e181a",
+      "new_discoveries": 0,
+      "no_library_training_ablation": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 3.457678,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.0,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "private_reveal_sha256": "3b16a9b1e5879ac0dcffc6ab9064bbec470744fad32e74ea603a0049d23a841b",
+      "score_worker_cost": {
+        "cpu_seconds": 3.6015890000000024,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 3.6931849389802665
+      },
+      "sealed_commitment_sha256": "3b16a9b1e5879ac0dcffc6ab9064bbec470744fad32e74ea603a0049d23a841b",
+      "sealed_goal_count": 10,
+      "seed": 11,
+      "train_score": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 3.601589,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.0,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "train_worker_cost": {
+        "cpu_seconds": 4.402652999999983,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.499993511941284
+      },
+      "training_goal_keys": [
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "2b2d3e7bf635f342a8c974c2ede03efe5d9071f9b3d28946aef63a7547eb4088",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc",
+        "7cd6c67192971341e65e9d20ef32dec6f3e0f5c73e328c48545ea9bc20f18cfb",
+        "e82f46e0f3988e0d9831b36e8e5ce544614ddab861749e4467f0a425bf2891ff"
+      ]
+    },
+    {
+      "ablation_worker_cost": {
+        "cpu_seconds": 4.853872999999998,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.27027586393524
+      },
+      "candidate_model_sha256": "49248a34461fa6ffb8c2443bf6a54f5d67b674ab260b947f25db486ca57803e2",
+      "discovery_accepted_duplicates": 0,
+      "discovery_worker_cost": {
+        "cpu_seconds": 4.095729000000013,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.189053994952701
+      },
+      "evaluation_goal_keys": [
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc",
+        "c64c6cd5750493429a8a7378e51e8a44b1d70c11d0564b411db0043923d6af20",
+        "ca63205e9583ccb085624b059e9207003916667688b97ef70b638334518527aa",
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+        "f99150e6f8fdd99d42644abec656557bf323b1a4e23f234d1e0db009512ff18e",
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "080cf56058983c56e50a61987425a669cf6fba7c6cdecbebc9f3b971e0434c03"
+      ],
+      "generation": 3,
+      "initial_model_sha256": "7a01a2493a5f1530a761cb7d91a8f3f3521f8025856df69038e67bb1a5360ee8",
+      "new_discoveries": 0,
+      "no_library_training_ablation": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.853873,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "private_reveal_sha256": "921aa8e0a9ca1f9749e1da22e858754db9505470c24f90695da4f0a771c6e808",
+      "score_worker_cost": {
+        "cpu_seconds": 4.2577750000000165,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.442643597954884
+      },
+      "sealed_commitment_sha256": "921aa8e0a9ca1f9749e1da22e858754db9505470c24f90695da4f0a771c6e808",
+      "sealed_goal_count": 10,
+      "seed": 19,
+      "train_score": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.257775,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "train_worker_cost": {
+        "cpu_seconds": 4.174754000000011,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.291959970025346
+      },
+      "training_goal_keys": [
+        "a0c7a7a489e35b09bf85ed06f046d394674e4dfcd3cecaf487c9e4a48f8ff0fd",
+        "db30e6c28f4bffb499fd10bd228a4176d28a970bdf7937f452672aed837d7edd",
+        "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+        "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079"
+      ]
+    },
+    {
+      "ablation_worker_cost": {
+        "cpu_seconds": 5.26161799999999,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 6.434006871073507
+      },
+      "candidate_model_sha256": "00c61ec0b30d1ab6262b5312038004af3e2a18c7671ed577e31a97cfe2b41671",
+      "discovery_accepted_duplicates": 0,
+      "discovery_worker_cost": {
+        "cpu_seconds": 4.932568999999992,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.257893770933151
+      },
+      "evaluation_goal_keys": [
+        "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+        "9c725a43c033a2695b38d4dea958949eb9a6b879729aba3fe9c6446e4987c52c",
+        "e82f46e0f3988e0d9831b36e8e5ce544614ddab861749e4467f0a425bf2891ff",
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "103bf7ec1b82c94878c4fd30a1e1ee182ae213183fa36fb0570672b66d9c3380",
+        "52f7dda0d288d2f6191b1bd102b88a00ea3382c3750f9fad94f83d554ab8fbd9",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+        "99439d88c520bc289ccb50d6c8ca247cc918270d9d6f1ba5bbb7d0dc16797dd4",
+        "db30e6c28f4bffb499fd10bd228a4176d28a970bdf7937f452672aed837d7edd"
+      ],
+      "generation": 3,
+      "initial_model_sha256": "d9d623b6bf44f37bbd55cc89144b9ca3314f7b43efdd9ba322ef2203a3059048",
+      "new_discoveries": 0,
+      "no_library_training_ablation": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.261618,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "private_reveal_sha256": "24ce3d7df974c9425d07d89df51e70af6182f7525234646798a42dbfaa719c47",
+      "score_worker_cost": {
+        "cpu_seconds": 5.109901000000015,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.999691917910241
+      },
+      "sealed_commitment_sha256": "24ce3d7df974c9425d07d89df51e70af6182f7525234646798a42dbfaa719c47",
+      "sealed_goal_count": 10,
+      "seed": 29,
+      "train_score": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.109901,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.1,
+        "unseen_solved": 0
+      },
+      "train_worker_cost": {
+        "cpu_seconds": 5.058081999999988,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.40830095205456
+      },
+      "training_goal_keys": [
+        "0673d4cd705ce1fd5348298eae0bfd2550b749d3a85d62bb67092216b28819f7",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "708e8804deab320e997fec3ca5808ea2dccbfe3e56c34f9529c970d754972571",
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "60ab500937e9792ca4a5f470578e661e1a566cb09daaaf4c0f5f8578077b1a8d",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125"
+      ]
+    }
+  ],
+  "reveal_release_sha256": "3efc13a010586e93c3333629c69e214061687a999996ffbf1d91527145ef2338",
+  "run_scientific_verdict": "NO_IMPROVEMENT",
+  "schema": "NC062/three-generation-evidence/1",
+  "scoreboard_comparisons": [
+    {
+      "generation": 1,
+      "scoreboard": {
+        "reasons": [
+          "sealed goals appear in declared training data"
+        ],
+        "verdict": "CONTAMINATED"
+      }
+    },
+    {
+      "generation": 2,
+      "scoreboard": {
+        "reasons": [
+          "sealed goals appear in declared training data"
+        ],
+        "verdict": "CONTAMINATED"
+      }
+    },
+    {
+      "generation": 3,
+      "scoreboard": {
+        "reasons": [
+          "sealed goals appear in declared training data"
+        ],
+        "verdict": "CONTAMINATED"
+      }
+    }
+  ],
+  "scoreboard_compounding": {
+    "reason": "a generation in the window did not improve",
+    "verdict": "NO_COMPOUNDING"
+  },
+  "sealed_eval_goals_total": 90,
+  "sealed_precommit_sha256": "5ea3ad7f6462af8fd2347c42e604bdb6d22aa5d6a24a4c53e7913aed599d6803",
+  "source_hashes_unchanged": true,
+  "status": "NO_DISCOVERY",
+  "task": "NC-062",
+  "wall_seconds": 245.28332387504634
+}

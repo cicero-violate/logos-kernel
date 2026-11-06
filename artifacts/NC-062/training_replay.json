@@ -1,0 +1,107 @@
+{
+  "all_train_updates": 72,
+  "all_training_state_sha_reproduced": true,
+  "checkpoint_count": 12,
+  "generation_count": 3,
+  "independent_reviewer": false,
+  "not_claimed": "neural program invention, generalization, independent retention or AGI",
+  "results": [
+    {
+      "cpu_s": 5.146658,
+      "generation": 0,
+      "model_sha256": "be5f2c462ac1379ab9c6715d31469da1390a3b420cdd60c8be1fa799e64e181a",
+      "seed": 11
+    },
+    {
+      "cpu_s": 5.101409999999999,
+      "generation": 0,
+      "model_sha256": "7a01a2493a5f1530a761cb7d91a8f3f3521f8025856df69038e67bb1a5360ee8",
+      "seed": 19
+    },
+    {
+      "cpu_s": 5.043921,
+      "generation": 0,
+      "model_sha256": "d9d623b6bf44f37bbd55cc89144b9ca3314f7b43efdd9ba322ef2203a3059048",
+      "seed": 29
+    },
+    {
+      "cpu_s": 5.355698999999998,
+      "generation": 1,
+      "gradient_updates": 8,
+      "model_sha256": "3f8271c9da68671780e333916ade50264e9d19da1154cb03e0c8265cf4c12953",
+      "parent_model_sha256": "be5f2c462ac1379ab9c6715d31469da1390a3b420cdd60c8be1fa799e64e181a",
+      "seed": 11
+    },
+    {
+      "cpu_s": 4.979869000000004,
+      "generation": 1,
+      "gradient_updates": 8,
+      "model_sha256": "cf36fad5f7a12619cb4ab0815a55711147f3e9f1be25e9378ff4ba6c34d345c0",
+      "parent_model_sha256": "7a01a2493a5f1530a761cb7d91a8f3f3521f8025856df69038e67bb1a5360ee8",
+      "seed": 19
+    },
+    {
+      "cpu_s": 5.320635999999998,
+      "generation": 1,
+      "gradient_updates": 8,
+      "model_sha256": "2143e780f3f9b90aba895fb81024b3bd0fd9afabced57ff1666303294ea56539",
+      "parent_model_sha256": "d9d623b6bf44f37bbd55cc89144b9ca3314f7b43efdd9ba322ef2203a3059048",
+      "seed": 29
+    },
+    {
+      "cpu_s": 4.877113000000003,
+      "generation": 2,
+      "gradient_updates": 8,
+      "model_sha256": "9ac6072fe430ee425dd8c736965169d80c8dd66c0717f09776bb2848b5046d6e",
+      "parent_model_sha256": "3f8271c9da68671780e333916ade50264e9d19da1154cb03e0c8265cf4c12953",
+      "seed": 11
+    },
+    {
+      "cpu_s": 5.059084999999997,
+      "generation": 2,
+      "gradient_updates": 8,
+      "model_sha256": "ca17d454f274dddf0eacf10da6c1f9d1fee8c784a69672244e42127c062b4716",
+      "parent_model_sha256": "cf36fad5f7a12619cb4ab0815a55711147f3e9f1be25e9378ff4ba6c34d345c0",
+      "seed": 19
+    },
+    {
+      "cpu_s": 5.040290000000006,
+      "generation": 2,
+      "gradient_updates": 8,
+      "model_sha256": "eedc305ddd4ca7d91ce0d2e30f5e0b86f699dd563a82766fe84aad7e87d14bfd",
+      "parent_model_sha256": "2143e780f3f9b90aba895fb81024b3bd0fd9afabced57ff1666303294ea56539",
+      "seed": 29
+    },
+    {
+      "cpu_s": 5.1131099999999945,
+      "generation": 3,
+      "gradient_updates": 8,
+      "model_sha256": "98b9fba06711dbf78b5b46ce5c5a36cb58104b3a961c986cf6931d35fd34c192",
+      "parent_model_sha256": "9ac6072fe430ee425dd8c736965169d80c8dd66c0717f09776bb2848b5046d6e",
+      "seed": 11
+    },
+    {
+      "cpu_s": 5.129310999999999,
+      "generation": 3,
+      "gradient_updates": 8,
+      "model_sha256": "49248a34461fa6ffb8c2443bf6a54f5d67b674ab260b947f25db486ca57803e2",
+      "parent_model_sha256": "ca17d454f274dddf0eacf10da6c1f9d1fee8c784a69672244e42127c062b4716",
+      "seed": 19
+    },
+    {
+      "cpu_s": 4.965364000000003,
+      "generation": 3,
+      "gradient_updates": 8,
+      "model_sha256": "00c61ec0b30d1ab6262b5312038004af3e2a18c7671ed577e31a97cfe2b41671",
+      "parent_model_sha256": "eedc305ddd4ca7d91ce0d2e30f5e0b86f699dd563a82766fe84aad7e87d14bfd",
+      "seed": 29
+    }
+  ],
+  "schema": "nc062-implementer-train-replay/1",
+  "seeds": [
+    11,
+    19,
+    29
+  ],
+  "task": "NC-062"
+}

@@ -1,0 +1,2179 @@
+{
+  "all_retention_values_are_caller_reported": true,
+  "all_training_overlap_zero": true,
+  "candidate_freeze_sha256": "a0f2f3c6088888890a2ac1c1c4b682d7d7cbe5192af4b12e871eaca674a17757",
+  "candidate_scored_without_retraining": true,
+  "comparisons": [
+    {
+      "gain": 0.0,
+      "generation": 1,
+      "reasons": [
+        "gain 0.000 is below the margin 0.05",
+        "did not beat the previous generation on most seeds"
+      ],
+      "verdict": "NO_IMPROVEMENT"
+    },
+    {
+      "gain": 0.0,
+      "generation": 2,
+      "reasons": [
+        "gain 0.000 is below the margin 0.05",
+        "did not beat the previous generation on most seeds"
+      ],
+      "verdict": "NO_IMPROVEMENT"
+    },
+    {
+      "gain": 0.0,
+      "generation": 3,
+      "reasons": [
+        "gain 0.000 is below the margin 0.05",
+        "did not beat the previous generation on most seeds"
+      ],
+      "verdict": "NO_IMPROVEMENT"
+    }
+  ],
+  "compounding": {
+    "reason": "a generation in the window did not improve",
+    "verdict": "NO_COMPOUNDING"
+  },
+  "fresh_run_wall_seconds": 290.4885631890502,
+  "full_reveals_published_after_scoring": true,
+  "heldout_goals_total": 90,
+  "limit": [
+    "Initial contaminated v1 remains in evidence; do not score it as gain.",
+    "CPU is RUSAGE_CHILDREN per process; host-load variation may cause unmatched cost.",
+    "No newly discovered operator; class choices are four known verified templates.",
+    "No independent reviewer audit or global champion promotion.",
+    "Commitments are local file integrity, not third-party timestamp or trusted secret storage."
+  ],
+  "new_discoveries": 0,
+  "original_contaminated_v1_preserved_sha256": "2f4efda78c2aa3a85ca6a25acd4b039a1c20a232876961a51b2d1242d4e88288",
+  "protocol_sha256": "a5943de94b9ace5453e6e5286ad43e1913bc7e94d29b7b9b036558c6d3e6c0b0",
+  "public_commitments_sha256": "5537fe40d4a42b5c67168f918a214fb243cf7453cd7a3c671e759501156dbcc9",
+  "schema": "nc062-fresh-clean-evaluation-v2",
+  "score_rows": [
+    {
+      "baseline": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.017739,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "baseline_cost": {
+        "cpu_seconds": 5.017739000000001,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.304011208936572
+      },
+      "baseline_model_sha256": "be5f2c462ac1379ab9c6715d31469da1390a3b420cdd60c8be1fa799e64e181a",
+      "baseline_ranked_model_choices": [
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          3,
+          0
+        ]
+      ],
+      "candidate": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.029375,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "candidate_checkpoint_sha256": "2f04912461ed6c0b4ba091a490c35a747ba14ef50646dbb013f6d51f6bc04f3c",
+      "candidate_cost": {
+        "cpu_seconds": 5.029375,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.701624284032732
+      },
+      "candidate_ranked_model_choices": [
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          3,
+          1
+        ],
+        [
+          1,
+          2,
+          3,
+          0
+        ],
+        [
+          3,
+          0,
+          2,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          0,
+          3,
+          2,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          3
+        ]
+      ],
+      "commitment_sha256": "1a99a9df634980e4ae95e660a4768d3e8f86f0c6b7c4f2ff1ccedcfeb16d7234",
+      "excluded_pool_items": [
+        {
+          "function_key": "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+          "pool_index": 2,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "d68de3fe66daa87a325d4ec935a738075473a7dc507a2d349e4d1de5e1e2982f",
+          "pool_index": 3,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+          "pool_index": 4,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "pool_index": 9,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+          "pool_index": 23,
+          "why": "already in training library or prior discovery query"
+        }
+      ],
+      "generation": 1,
+      "model_sha256": "3f8271c9da68671780e333916ade50264e9d19da1154cb03e0c8265cf4c12953",
+      "pool_size": 40,
+      "sealed_goal_count": 10,
+      "sealed_goal_function_keys": [
+        "db30e6c28f4bffb499fd10bd228a4176d28a970bdf7937f452672aed837d7edd",
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "90d9e921a0c9598966f4918ad0df75977412dd041b361f60528ced505ee9e9d6",
+        "dfa41edc62c9acd3bf97a499dbca58f6bf9069e290c359fcb796d3af57af7bb6",
+        "60ab500937e9792ca4a5f470578e661e1a566cb09daaaf4c0f5f8578077b1a8d",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "4701b1f0b6f3b2a3065df78677ce28830050f74239ceb83a53402947a8e34b59",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "ba334537c103c206c5774fcff0745c3bb130aac3da5b23adcf988ddaf4ecf80a",
+        "8d95e5c9f7385e4ca1c9f197f2c2286fd387e5eb2e6419d843dd6843342b63f8"
+      ],
+      "seed": 11,
+      "selected_pool_indices": [
+        0,
+        1,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13
+      ],
+      "training_overlap": 0.0
+    },
+    {
+      "baseline": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.613851,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "baseline_cost": {
+        "cpu_seconds": 4.613850999999999,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.765289627946913
+      },
+      "baseline_model_sha256": "7a01a2493a5f1530a761cb7d91a8f3f3521f8025856df69038e67bb1a5360ee8",
+      "baseline_ranked_model_choices": [
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          3,
+          2
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          3,
+          0,
+          2,
+          1
+        ],
+        [
+          3,
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          3,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          3,
+          2,
+          0,
+          1
+        ]
+      ],
+      "candidate": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.024526,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "candidate_checkpoint_sha256": "60585a54688993be6f2c61cc8235783699d4ac323d1f4f9bb9d1ffd7a3cf610a",
+      "candidate_cost": {
+        "cpu_seconds": 5.024526,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.205632898956537
+      },
+      "candidate_ranked_model_choices": [
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          3,
+          2
+        ],
+        [
+          0,
+          3,
+          2,
+          1
+        ],
+        [
+          3,
+          0,
+          2,
+          1
+        ],
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          3,
+          1
+        ],
+        [
+          0,
+          2,
+          3,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          3,
+          0,
+          2,
+          1
+        ]
+      ],
+      "commitment_sha256": "0e99d262f10056529cf8bd4c28adb42c7499d8f58ecde642bcf11bc4a644ac2f",
+      "excluded_pool_items": [
+        {
+          "function_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "pool_index": 0,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+          "pool_index": 7,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+          "pool_index": 8,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+          "pool_index": 9,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "c64c6cd5750493429a8a7378e51e8a44b1d70c11d0564b411db0043923d6af20",
+          "pool_index": 10,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "f99150e6f8fdd99d42644abec656557bf323b1a4e23f234d1e0db009512ff18e",
+          "pool_index": 15,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "pool_index": 21,
+          "why": "already in training library or prior discovery query"
+        }
+      ],
+      "generation": 1,
+      "model_sha256": "cf36fad5f7a12619cb4ab0815a55711147f3e9f1be25e9378ff4ba6c34d345c0",
+      "pool_size": 40,
+      "sealed_goal_count": 10,
+      "sealed_goal_function_keys": [
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+        "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+        "d68de3fe66daa87a325d4ec935a738075473a7dc507a2d349e4d1de5e1e2982f",
+        "ee1685a79cb6ee50b20eda8b75f32c7c49258398883bc9bf9dfd8201046042a1",
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "8dd58dfb13fd07fd9892afb1b85018218853faa88d10ec1dba30167d0ebf5232",
+        "77730f40476fe6141ad36aabf0b52b07b8c717a3d0d0b15f74ffbd476f1ec4a8",
+        "cc1a33539d400cc63f9bff93e2260d8f756e1ea3743e6ec283c44c48fe86ef14",
+        "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc"
+      ],
+      "seed": 19,
+      "selected_pool_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        11,
+        12,
+        13,
+        14
+      ],
+      "training_overlap": 0.0
+    },
+    {
+      "baseline": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.6791,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.0,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "baseline_cost": {
+        "cpu_seconds": 4.679100000000002,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.919482239056379
+      },
+      "baseline_model_sha256": "d9d623b6bf44f37bbd55cc89144b9ca3314f7b43efdd9ba322ef2203a3059048",
+      "baseline_ranked_model_choices": [
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          1,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          1,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ]
+      ],
+      "candidate": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.484142,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "candidate_checkpoint_sha256": "6d3bc21a4acce491500d343c79582d9bbbe32b72aa973d5a5532cb7885c248bf",
+      "candidate_cost": {
+        "cpu_seconds": 4.484142,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.660012034000829
+      },
+      "candidate_ranked_model_choices": [
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          3,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          3,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          3,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          3,
+          1,
+          2
+        ]
+      ],
+      "commitment_sha256": "047ef51a7bf457532c974b0833d93679c510fab92d887d1270738695b9fab059",
+      "excluded_pool_items": [
+        {
+          "function_key": "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc",
+          "pool_index": 3,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "pool_index": 4,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+          "pool_index": 16,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "9c725a43c033a2695b38d4dea958949eb9a6b879729aba3fe9c6446e4987c52c",
+          "pool_index": 22,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "103bf7ec1b82c94878c4fd30a1e1ee182ae213183fa36fb0570672b66d9c3380",
+          "pool_index": 30,
+          "why": "already in training library or prior discovery query"
+        }
+      ],
+      "generation": 1,
+      "model_sha256": "2143e780f3f9b90aba895fb81024b3bd0fd9afabced57ff1666303294ea56539",
+      "pool_size": 40,
+      "sealed_goal_count": 10,
+      "sealed_goal_function_keys": [
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "c64c6cd5750493429a8a7378e51e8a44b1d70c11d0564b411db0043923d6af20",
+        "9d68dc0564aa514d6b4eaa7dd1c91b7c853a59b3790a98d4e30d34992c37fc40",
+        "a2129142ec3774b7a24032389e60674c9c094f5dde02eeed0a16d5a36fddcd63",
+        "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+        "abd8f25103edd5866152345112ccc3f9bbc1d8ca9fb9a4dcda962769c4430817",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "ee6735b742e7606301741e0c13b86cc1483a4dc7f612dcd8cee11366ff8034ed",
+        "fa4a6775d6116e5806cf294e7b8b144e2b8d2c28a58057f3c9824fc08d6592a5",
+        "60ab500937e9792ca4a5f470578e661e1a566cb09daaaf4c0f5f8578077b1a8d"
+      ],
+      "seed": 29,
+      "selected_pool_indices": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "training_overlap": 0.0
+    },
+    {
+      "baseline": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 3.871587,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "baseline_cost": {
+        "cpu_seconds": 3.871586999999998,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.048540154006332
+      },
+      "baseline_model_sha256": "be5f2c462ac1379ab9c6715d31469da1390a3b420cdd60c8be1fa799e64e181a",
+      "baseline_ranked_model_choices": [
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          3,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ]
+      ],
+      "candidate": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 3.748391,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "candidate_checkpoint_sha256": "3bf772dd7d09e1804e4311883d8bfc657877ebff52387eda5dd76d1adf0ffc27",
+      "candidate_cost": {
+        "cpu_seconds": 3.748391,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 3.7905403359327465
+      },
+      "candidate_ranked_model_choices": [
+        [
+          2,
+          0,
+          3,
+          1
+        ],
+        [
+          2,
+          0,
+          3,
+          1
+        ],
+        [
+          2,
+          1,
+          3,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          1,
+          3
+        ],
+        [
+          1,
+          3,
+          2,
+          0
+        ],
+        [
+          3,
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          3,
+          1
+        ]
+      ],
+      "commitment_sha256": "0472541c624cebba9589114029044fecd4083cf3bf2a1f7cffbfaae465533e3f",
+      "excluded_pool_items": [
+        {
+          "function_key": "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+          "pool_index": 6,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+          "pool_index": 12,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "pool_index": 13,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "9c725a43c033a2695b38d4dea958949eb9a6b879729aba3fe9c6446e4987c52c",
+          "pool_index": 28,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "d68de3fe66daa87a325d4ec935a738075473a7dc507a2d349e4d1de5e1e2982f",
+          "pool_index": 38,
+          "why": "already in training library or prior discovery query"
+        }
+      ],
+      "generation": 2,
+      "model_sha256": "9ac6072fe430ee425dd8c736965169d80c8dd66c0717f09776bb2848b5046d6e",
+      "pool_size": 40,
+      "sealed_goal_count": 10,
+      "sealed_goal_function_keys": [
+        "e82f46e0f3988e0d9831b36e8e5ce544614ddab861749e4467f0a425bf2891ff",
+        "9d68dc0564aa514d6b4eaa7dd1c91b7c853a59b3790a98d4e30d34992c37fc40",
+        "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "d9dcbd39640ad161b73fc3e09ef81cac0fadef6ab18fd285087fec274151383e",
+        "98a03899e15d38eaedcd22dcb6cada8bca45ef1e2e61baf3bc621db6db1b25c0",
+        "103bf7ec1b82c94878c4fd30a1e1ee182ae213183fa36fb0570672b66d9c3380",
+        "8514740d4cc296cbbbe08d029da85b56668dc0d43b4ede8610eb568d138a0c73",
+        "f99150e6f8fdd99d42644abec656557bf323b1a4e23f234d1e0db009512ff18e"
+      ],
+      "seed": 11,
+      "selected_pool_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "training_overlap": 0.0
+    },
+    {
+      "baseline": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.250092,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "baseline_cost": {
+        "cpu_seconds": 4.250092000000002,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.291266546933912
+      },
+      "baseline_model_sha256": "7a01a2493a5f1530a761cb7d91a8f3f3521f8025856df69038e67bb1a5360ee8",
+      "baseline_ranked_model_choices": [
+        [
+          0,
+          3,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3,
+          0
+        ],
+        [
+          1,
+          3,
+          0,
+          2
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          3,
+          2,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          2,
+          1,
+          3,
+          0
+        ],
+        [
+          3,
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          3,
+          2,
+          1,
+          0
+        ]
+      ],
+      "candidate": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.156444,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "candidate_checkpoint_sha256": "62b80171e0e0c9e9c2f949b1ae913399a8fc7f24e6afb84bc9c4d36a149620c8",
+      "candidate_cost": {
+        "cpu_seconds": 4.156444000000002,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.252509079989977
+      },
+      "candidate_ranked_model_choices": [
+        [
+          0,
+          3,
+          1,
+          2
+        ],
+        [
+          1,
+          3,
+          0,
+          2
+        ],
+        [
+          1,
+          3,
+          0,
+          2
+        ],
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          3,
+          2,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          3,
+          1,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          1,
+          3,
+          2
+        ],
+        [
+          3,
+          2,
+          1,
+          0
+        ]
+      ],
+      "commitment_sha256": "86b20ee502dae39229fe2558491fb68037648b60879fd668ed969d16bfd8a9b6",
+      "excluded_pool_items": [
+        {
+          "function_key": "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+          "pool_index": 3,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "pool_index": 13,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+          "pool_index": 14,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+          "pool_index": 15,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "e82f46e0f3988e0d9831b36e8e5ce544614ddab861749e4467f0a425bf2891ff",
+          "pool_index": 17,
+          "why": "already in training library or prior discovery query"
+        }
+      ],
+      "generation": 2,
+      "model_sha256": "ca17d454f274dddf0eacf10da6c1f9d1fee8c784a69672244e42127c062b4716",
+      "pool_size": 40,
+      "sealed_goal_count": 10,
+      "sealed_goal_function_keys": [
+        "9a47c5ae3dcd82e73bd0ba9c569cf3f4cde89af3d204ca9d0643eceee42704c2",
+        "4f7b333a4eec5294df6a21678b65be5ce09286f6f748a34d8012bc13fec8cef5",
+        "9e2158a52087fe728861debc531488afb8d5b7cb8b5b410bfcde0e1ab44b4578",
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+        "3a131d9a3f627d0e1cbd8abcf88f9392fc3eb09a0fb5061f53dbbd22354e9059",
+        "ac1e55a28bb430e2956bef0bd75dbd525bf50e279e16dff09092a95a24b31396",
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+        "8dd58dfb13fd07fd9892afb1b85018218853faa88d10ec1dba30167d0ebf5232",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee"
+      ],
+      "seed": 19,
+      "selected_pool_indices": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "training_overlap": 0.0
+    },
+    {
+      "baseline": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.725614,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "baseline_cost": {
+        "cpu_seconds": 4.725614000000009,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.161481101997197
+      },
+      "baseline_model_sha256": "d9d623b6bf44f37bbd55cc89144b9ca3314f7b43efdd9ba322ef2203a3059048",
+      "baseline_ranked_model_choices": [
+        [
+          3,
+          1,
+          0,
+          2
+        ],
+        [
+          3,
+          1,
+          0,
+          2
+        ],
+        [
+          3,
+          1,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          3,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          1,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ]
+      ],
+      "candidate": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.983,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "candidate_checkpoint_sha256": "4e0f8c9550849999ff9c2c654a046000755e97000dd8d2e8ae474f4947b739fe",
+      "candidate_cost": {
+        "cpu_seconds": 4.982999999999999,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.169467902975157
+      },
+      "candidate_ranked_model_choices": [
+        [
+          1,
+          3,
+          0,
+          2
+        ],
+        [
+          3,
+          1,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          3,
+          2
+        ],
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          1,
+          3,
+          2
+        ],
+        [
+          0,
+          3,
+          1,
+          2
+        ],
+        [
+          1,
+          3,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          3,
+          2
+        ],
+        [
+          0,
+          3,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          3,
+          2
+        ]
+      ],
+      "commitment_sha256": "48a83f0a680b49aa81afc965a067fd0c94106aa045ac91f314a3c2f3ea49bcf1",
+      "excluded_pool_items": [
+        {
+          "function_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "pool_index": 2,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+          "pool_index": 10,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+          "pool_index": 17,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+          "pool_index": 22,
+          "why": "already in training library or prior discovery query"
+        }
+      ],
+      "generation": 2,
+      "model_sha256": "eedc305ddd4ca7d91ce0d2e30f5e0b86f699dd563a82766fe84aad7e87d14bfd",
+      "pool_size": 40,
+      "sealed_goal_count": 10,
+      "sealed_goal_function_keys": [
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "3d68396f40a99ff0bdbf60127c88550795e487f91c2e2c9e170c6e4005d09802",
+        "d68de3fe66daa87a325d4ec935a738075473a7dc507a2d349e4d1de5e1e2982f",
+        "c64c6cd5750493429a8a7378e51e8a44b1d70c11d0564b411db0043923d6af20",
+        "14ee1f26533cb11333887ddf7a7e7a82d606147594eb2d427fbc118e2c6eee07",
+        "0449405479238e76d46051fea5945d000f870c43a2911a1d7493d7d5570ba39d",
+        "5e5697e235ac3b04849bc02c0f9ba500ad6611f72a0ed6648014c8110094b0e1",
+        "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc",
+        "0eb8b8f3162125c8b9d334b052d28dec25863db6d10df9386c11eb35f9761b05",
+        "fce843d6c0a01030b905580ea62e3c8fd6fbc0b8b5f4777e6a0dd631421006d9"
+      ],
+      "seed": 29,
+      "selected_pool_indices": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "training_overlap": 0.0
+    },
+    {
+      "baseline": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.809574,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.0,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "baseline_cost": {
+        "cpu_seconds": 4.8095740000000005,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.957797792041674
+      },
+      "baseline_model_sha256": "be5f2c462ac1379ab9c6715d31469da1390a3b420cdd60c8be1fa799e64e181a",
+      "baseline_ranked_model_choices": [
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          3,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ]
+      ],
+      "candidate": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.157806,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.0,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "candidate_checkpoint_sha256": "a6de32a4f94e11f12a5d2da63ddab2b72a297bd2920a565f7d0073929773230e",
+      "candidate_cost": {
+        "cpu_seconds": 5.157805999999997,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.71870616695378
+      },
+      "candidate_ranked_model_choices": [
+        [
+          1,
+          0,
+          2,
+          3
+        ],
+        [
+          2,
+          0,
+          3,
+          1
+        ],
+        [
+          3,
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          2,
+          0,
+          3
+        ],
+        [
+          1,
+          2,
+          3,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          0,
+          3,
+          1
+        ],
+        [
+          1,
+          3,
+          0,
+          2
+        ],
+        [
+          1,
+          3,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          2,
+          1
+        ]
+      ],
+      "commitment_sha256": "d9d2db3dc6e81ed8f0a038a13c6ef1a148866a2a7693065ed132b83a1ddf9db3",
+      "excluded_pool_items": [
+        {
+          "function_key": "e82f46e0f3988e0d9831b36e8e5ce544614ddab861749e4467f0a425bf2891ff",
+          "pool_index": 1,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "pool_index": 4,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+          "pool_index": 10,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc",
+          "pool_index": 31,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "9b3220f8317d1bf7fddf169727fd05f3db05077b563e9c9b2fdcfd89fb7b458c",
+          "pool_index": 38,
+          "why": "already in training library or prior discovery query"
+        }
+      ],
+      "generation": 3,
+      "model_sha256": "98b9fba06711dbf78b5b46ce5c5a36cb58104b3a961c986cf6931d35fd34c192",
+      "pool_size": 40,
+      "sealed_goal_count": 10,
+      "sealed_goal_function_keys": [
+        "b5c42de11db9a9a1cef3585e801faa11df986022ec71eca73c2500b17c8351c3",
+        "d68de3fe66daa87a325d4ec935a738075473a7dc507a2d349e4d1de5e1e2982f",
+        "9c725a43c033a2695b38d4dea958949eb9a6b879729aba3fe9c6446e4987c52c",
+        "e83d10704fd892f6e465f54a50af88ab38e1c4d2a4c571d3ed02c53f37465dc6",
+        "18f190e0ceb85cbf490fd2a0d8bf7f9ad4e3d720f41f407cf1f749cdfbfee40a",
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "eb0e0b68b8bd2090ce623ba33e3dbf7f754d6cbf4b100afe2ff2e39b19427b99",
+        "e758953f8057328fac881dbb47a515f11c114a659c71ccba1e26ee20f6ae30ba",
+        "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+        "ebfc035f2452a6708db6937a2c4075c646662a0f9ba6112df9960b3460eda13d"
+      ],
+      "seed": 11,
+      "selected_pool_indices": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12
+      ],
+      "training_overlap": 0.0
+    },
+    {
+      "baseline": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.109745,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.0,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "baseline_cost": {
+        "cpu_seconds": 4.109745000000008,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.21047717705369
+      },
+      "baseline_model_sha256": "7a01a2493a5f1530a761cb7d91a8f3f3521f8025856df69038e67bb1a5360ee8",
+      "baseline_ranked_model_choices": [
+        [
+          2,
+          1,
+          3,
+          0
+        ],
+        [
+          2,
+          1,
+          3,
+          0
+        ],
+        [
+          1,
+          3,
+          2,
+          0
+        ],
+        [
+          2,
+          1,
+          0,
+          3
+        ],
+        [
+          2,
+          0,
+          1,
+          3
+        ],
+        [
+          3,
+          2,
+          0,
+          1
+        ],
+        [
+          3,
+          0,
+          2,
+          1
+        ],
+        [
+          3,
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ]
+      ],
+      "candidate": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.863632,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.0,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "candidate_checkpoint_sha256": "fa843059d168a22be3db01beaa9bbbf7b8667b3db12567dc266ca62cb499a403",
+      "candidate_cost": {
+        "cpu_seconds": 4.86363200000001,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.948689445038326
+      },
+      "candidate_ranked_model_choices": [
+        [
+          1,
+          2,
+          0,
+          3
+        ],
+        [
+          1,
+          2,
+          0,
+          3
+        ],
+        [
+          1,
+          3,
+          0,
+          2
+        ],
+        [
+          1,
+          0,
+          3,
+          2
+        ],
+        [
+          1,
+          0,
+          2,
+          3
+        ],
+        [
+          3,
+          2,
+          0,
+          1
+        ],
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          2,
+          0
+        ],
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          1,
+          0
+        ]
+      ],
+      "commitment_sha256": "36fc2c15daaea95d9d3a5ae19c4a2ed5455b94389e791564c0eb9ba0ad34b98b",
+      "excluded_pool_items": [
+        {
+          "function_key": "e3c9bea74cd43f71340f5a9a69666c3641b14557a8fd3802954d6d456cf39079",
+          "pool_index": 1,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "pool_index": 3,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+          "pool_index": 9,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "a1989d9842e177bbdf2243f513de448dc50f2b45ad3b611808d8707d14d51947",
+          "pool_index": 12,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "db30e6c28f4bffb499fd10bd228a4176d28a970bdf7937f452672aed837d7edd",
+          "pool_index": 21,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc",
+          "pool_index": 26,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "a0c7a7a489e35b09bf85ed06f046d394674e4dfcd3cecaf487c9e4a48f8ff0fd",
+          "pool_index": 31,
+          "why": "already in training library or prior discovery query"
+        }
+      ],
+      "generation": 3,
+      "model_sha256": "49248a34461fa6ffb8c2443bf6a54f5d67b674ab260b947f25db486ca57803e2",
+      "pool_size": 40,
+      "sealed_goal_count": 10,
+      "sealed_goal_function_keys": [
+        "db7aa3db6fe5adfd8cc39f349febf49089f3be46a9aaf2b8b590aec59460a06e",
+        "c64c6cd5750493429a8a7378e51e8a44b1d70c11d0564b411db0043923d6af20",
+        "103bf7ec1b82c94878c4fd30a1e1ee182ae213183fa36fb0570672b66d9c3380",
+        "60ab500937e9792ca4a5f470578e661e1a566cb09daaaf4c0f5f8578077b1a8d",
+        "b784bf22d8d5d580a2f76440a50f53da559ec79d6679ce8aa7e03087845ca6bf",
+        "9c725a43c033a2695b38d4dea958949eb9a6b879729aba3fe9c6446e4987c52c",
+        "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+        "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+        "40ebaf249b696e52fd02901c69385970d8e63f8a485b97226626500c068bf127",
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff"
+      ],
+      "seed": 19,
+      "selected_pool_indices": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        13
+      ],
+      "training_overlap": 0.0
+    },
+    {
+      "baseline": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 4.467808,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "baseline_cost": {
+        "cpu_seconds": 4.467807999999994,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 4.752024161047302
+      },
+      "baseline_model_sha256": "d9d623b6bf44f37bbd55cc89144b9ca3314f7b43efdd9ba322ef2203a3059048",
+      "baseline_ranked_model_choices": [
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          1,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          1,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          2,
+          1
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          1,
+          0,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ],
+        [
+          3,
+          0,
+          1,
+          2
+        ]
+      ],
+      "candidate": {
+        "actual_inference_worker_calls": 1,
+        "budget_per_goal": 1,
+        "candidates_used": 10,
+        "cpu_provenance": "RUSAGE_CHILDREN around NC-028 sandboxed inference worker",
+        "cpu_seconds": 5.165568,
+        "cpu_seconds_per_solve": null,
+        "invalid_programs": 0,
+        "over_budget_goals": 0,
+        "retention": 1.0,
+        "retention_provenance": "controlled fixed original library; not independent old-skill neural retention",
+        "score_candidate_cache_cpu_seconds": 0.001,
+        "solve_rate": 0.0,
+        "solved": 0,
+        "total": 10,
+        "training_overlap": 0.0,
+        "unseen_solved": 0
+      },
+      "candidate_checkpoint_sha256": "52ddbf56d24835ce4b57b26d375983141aabd0589edb2b3c1b26f811aa8f344e",
+      "candidate_cost": {
+        "cpu_seconds": 5.165568,
+        "returncode": 0,
+        "total_stdout_lines": 2,
+        "wall_seconds": 5.371418547001667
+      },
+      "candidate_ranked_model_choices": [
+        [
+          1,
+          0,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          3,
+          0
+        ],
+        [
+          0,
+          2,
+          3,
+          1
+        ],
+        [
+          3,
+          2,
+          0,
+          1
+        ],
+        [
+          1,
+          3,
+          2,
+          0
+        ],
+        [
+          3,
+          0,
+          2,
+          1
+        ],
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          3,
+          2
+        ],
+        [
+          0,
+          3,
+          1,
+          2
+        ]
+      ],
+      "commitment_sha256": "999d19eed0b08b04cbfdd3c7e0924de06ff0268cb4eb913cbd219702261f0b2e",
+      "excluded_pool_items": [
+        {
+          "function_key": "db05e55d6193247cd749ccc4bcecd7efa1aaeda3e11093a042c9f97957bc16d7",
+          "pool_index": 5,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "a6983b50ad6e15a942b2286972aecbee979d926997c3d818f6752f379bca7ab2",
+          "pool_index": 16,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "61e1774a845d10d69f8381618807a9d43efb09be6ff5847c31ed988e54a06125",
+          "pool_index": 18,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "7c7cc877d792e68dfda6b939160d4ed5fd82bc5d3e9ca5f785e912c87b443935",
+          "pool_index": 22,
+          "why": "already in training library or prior discovery query"
+        },
+        {
+          "function_key": "708e8804deab320e997fec3ca5808ea2dccbfe3e56c34f9529c970d754972571",
+          "pool_index": 39,
+          "why": "already in training library or prior discovery query"
+        }
+      ],
+      "generation": 3,
+      "model_sha256": "00c61ec0b30d1ab6262b5312038004af3e2a18c7671ed577e31a97cfe2b41671",
+      "pool_size": 40,
+      "sealed_goal_count": 10,
+      "sealed_goal_function_keys": [
+        "30c268a2e22e71da8ae320e0ba18d7833d7cd85c382c0247c0c980ef78bc20f1",
+        "014db61ba22eeeee9378094a94f9ff70be0ccec56bdd14447d214d5f74f218ff",
+        "610d3f15f5464cf8beda5d13705305158420dab36cf23a7428a21a6f8e6d28cc",
+        "e82f46e0f3988e0d9831b36e8e5ce544614ddab861749e4467f0a425bf2891ff",
+        "d9dcbd39640ad161b73fc3e09ef81cac0fadef6ab18fd285087fec274151383e",
+        "14ee1f26533cb11333887ddf7a7e7a82d606147594eb2d427fbc118e2c6eee07",
+        "397f5c195cb22a389f149b18b616feeb67e6e54784fc4ac08dd9c2391c8947ee",
+        "35e5e6bf13d5f2665def83ff3153f7f59abf903c3a28c2ea8d170914526dab89",
+        "d2061494235b891ed2473f9c2eea3b65bb23a19515ea2ef80f9a12747f66913c",
+        "86a82ed510bb4091a8f9b2cbadc0e1c0c8363a790cdf2d31a1a26aaaf04e16a0"
+      ],
+      "seed": 29,
+      "selected_pool_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "training_overlap": 0.0
+    }
+  ],
+  "status": "NO_DISCOVERY",
+  "total_worker_inferences": 18
+}

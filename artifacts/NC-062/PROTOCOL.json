@@ -1,0 +1,51 @@
+{
+  "agent": "turn-cb84af5cc3054e79af7776e1ac0af3c8",
+  "evaluation_thresholds": {
+    "budget_tolerance": 0.1,
+    "compounding_generations": 3,
+    "compounding_min_growth": 0.01,
+    "contamination_limit": 0.0,
+    "cpu_tolerance": 0.25,
+    "examples": 8,
+    "goals": 10,
+    "improvement_margin": 0.05,
+    "max_program": 5,
+    "min_seeds": 3,
+    "retention_floor": 0.95
+  },
+  "heldout_reveal_protocol": "public hashes written before candidate checkpoint freeze; secrets remain parent memory, never sent to model worker; revealed to evidence only after scoring",
+  "limits": {
+    "cpu_seconds_per_worker": 24,
+    "discovery_goals_per_seed_generation": 6,
+    "generations": [
+      1,
+      2,
+      3
+    ],
+    "max_proposals_per_goal": 4,
+    "max_train_rows_per_worker": 24,
+    "promotion": "LOCAL_VERSIONED_LIBRARY_ONLY; no NC-009 mutation",
+    "sealed_goals_per_seed_generation": 10,
+    "seeds": [
+      11,
+      19,
+      29
+    ],
+    "source_checkpoint": "NC-062 own frozen CPU MLP; not an NC-028 pretrained model",
+    "training_gradient_updates_per_seed_generation": 8,
+    "wall_seconds_per_worker": 35
+  },
+  "reference_dependencies": {
+    "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "artifacts/NC-001/canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "artifacts/NC-009/operator_promotions.jsonl": "64644db1894cf369c7769d1076ffb177dba6b8aada7e20cb153d98d906c52db9",
+    "artifacts/NC-009/promote.py": "15d2f80c7ddac13dc0fa6fa6830827d7dec113754aa0e54b339a4a85d4036600",
+    "artifacts/NC-028/isolation.py": "cbdaa657434e6f190944d5694b40f0e21bb3954b81a311fd2c178d591b596fda",
+    "artifacts/NC-061/scoreboard.py": "34fcdecd35e05547e7ea562882426bd54a5f39c828cbb8f3a32275e3511412fe"
+  },
+  "risk": "no separate uid; parent is trusted; no leakage if parent violates control; no internet/service",
+  "sandbox_worker_source_sha256": "1c5800abac434de36138762a545be28b2fcb333517bd65a543acc069fd75a353",
+  "schema": "nc062-experiment-preregister/1",
+  "scope": "4bit finite known-program library; model-generated class selection, not new algorithm invention",
+  "scoreboard_source_sha256": "34fcdecd35e05547e7ea562882426bd54a5f39c828cbb8f3a32275e3511412fe"
+}
