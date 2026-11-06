@@ -60,7 +60,7 @@
     "Do not count candidate attestations as independent verifier evidence"
   ],
   "method": "bounded verified equivalence-class graph, not complete e-graph; handwritten rules, no neural training",
-  "owner": "turn-e8a8e4289e7d4647bb84d3a60e9f083f",
+  "owner": "claude-code-turn-6fab0d6a43294c558ed9b1c62f2f0d92",
   "schema": "logos-kernel-nc023-candidate-v1",
   "source_and_evidence_sha256": {
     "artifacts/NC-023/README.md": "7abe03a1a623cab791489467d84d1a17e72a167fa83aff4c853443e70a3c2552",
