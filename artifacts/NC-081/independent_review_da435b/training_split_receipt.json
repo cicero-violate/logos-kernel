@@ -1,0 +1,29 @@
+{
+  "11": {
+    "accepted": 30000,
+    "cpu_seconds": 35.9,
+    "exam_training_intersection": 0,
+    "exam_unique_keys": 300,
+    "sealed_training_keys": 0,
+    "skipped": 26288,
+    "unique_training_keys": 16959
+  },
+  "19": {
+    "accepted": 30000,
+    "cpu_seconds": 29.5,
+    "exam_training_intersection": 0,
+    "exam_unique_keys": 300,
+    "sealed_training_keys": 0,
+    "skipped": 25278,
+    "unique_training_keys": 16853
+  },
+  "29": {
+    "accepted": 30000,
+    "cpu_seconds": 31.6,
+    "exam_training_intersection": 0,
+    "exam_unique_keys": 300,
+    "sealed_training_keys": 0,
+    "skipped": 24767,
+    "unique_training_keys": 16888
+  }
+}

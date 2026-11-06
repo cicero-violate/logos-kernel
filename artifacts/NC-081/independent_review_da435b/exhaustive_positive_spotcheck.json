@@ -1,0 +1,47 @@
+[
+  {
+    "seed": 11,
+    "goal_index": 26,
+    "budget": 8000,
+    "candidates": 1749,
+    "stack_pairs": 65536,
+    "stack_mismatches": 0,
+    "stack_instructions": 65
+  },
+  {
+    "seed": 11,
+    "goal_index": 148,
+    "budget": 8000,
+    "candidates": 1763,
+    "stack_pairs": 65536,
+    "stack_mismatches": 0,
+    "stack_instructions": 55
+  },
+  {
+    "seed": 11,
+    "goal_index": 177,
+    "budget": 8000,
+    "candidates": 4806,
+    "stack_pairs": 65536,
+    "stack_mismatches": 0,
+    "stack_instructions": 50
+  },
+  {
+    "seed": 11,
+    "goal_index": 256,
+    "budget": 8000,
+    "candidates": 2744,
+    "stack_pairs": 65536,
+    "stack_mismatches": 0,
+    "stack_instructions": 24
+  },
+  {
+    "seed": 19,
+    "goal_index": 291,
+    "budget": 8000,
+    "candidates": 445,
+    "stack_pairs": 65536,
+    "stack_mismatches": 0,
+    "stack_instructions": 20
+  }
+]
