@@ -9,6 +9,7 @@ import fcntl
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -48,6 +49,114 @@ def dependencies_passed(item, tasks):
     return all(tasks[dep]["status"] == "passed" for dep in item["record"]["depends_on"])
 
 
+
+def _review_id(value):
+    return real_id(value, "review identity")
+
+
+def _review_principal(value):
+    """Normalize known Event Lab aliases; not proof of identity authenticity."""
+    value = _review_id(value)
+    prefix = "chatgpt-session-"
+    if value.startswith(prefix) and re.fullmatch(r"[0-9a-f]{32}", value[len(prefix):]):
+        return value[len(prefix):]
+    return value
+
+
+def _review_sha(value):
+    if not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{64}", value) is None:
+        raise ValueError("review requires a 64-hex SHA-256 digest")
+    return value
+
+
+def _review_path(task_id, value):
+    if (not isinstance(value, str) or not value.startswith("artifacts/" + task_id + "/")
+            or "\\" in value or ".." in Path(value).parts or Path(value).is_absolute()):
+        raise ValueError("review evidence must be inside the task artifacts directory")
+    return value
+
+
+def review_candidate_bytes(relative):
+    """Read the content bound by a review request. Not reviewer authentication."""
+    if not isinstance(relative, str) or not relative.startswith("artifacts/"):
+        raise ValueError("candidate must be a task artifact")
+    path = Path(relative)
+    if path.is_absolute() or ".." in path.parts or "\\" in relative:
+        raise ValueError("unsafe candidate path")
+    safe_reader = globals().get("read_safe_regular_evidence")
+    if safe_reader is not None:
+        data = safe_reader(relative)
+        if data is None:
+            raise ValueError("candidate evidence must be a safe bounded regular file")
+        return data
+    import stat
+    import os
+    target = (ROOT / relative).resolve(strict=True)
+    try:
+        target.relative_to(ROOT.resolve())
+    except ValueError as exc:
+        raise ValueError("candidate outside repository") from exc
+    fd = os.open(target, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+    try:
+        info = os.fstat(fd)
+        if not stat.S_ISREG(info.st_mode) or info.st_nlink != 1 or info.st_size > 131072:
+            raise ValueError("candidate must be a bounded single-link regular file")
+        data = b""
+        while len(data) <= 131072:
+            piece = os.read(fd, min(65536, 131073 - len(data)))
+            if not piece:
+                break
+            data += piece
+        end = os.fstat(fd)
+        if len(data) != info.st_size or len(data) > 131072 or (info.st_size, info.st_mtime_ns, info.st_ctime_ns) != (end.st_size, end.st_mtime_ns, end.st_ctime_ns):
+            raise ValueError("candidate evidence changed during read")
+        return data
+    finally:
+        os.close(fd)
+
+
+def ticket_order(pair):
+    task_id, item = pair
+    return (item["rank"] is None, item["rank"] if item["rank"] is not None else 999999, task_id)
+
+
+def choose_pull_event(tasks, agent):
+    """Choose under the ledger append lock. Never equate a role string with independence."""
+    agent = _review_id(agent)
+    ordered = sorted(tasks.items(), key=ticket_order)
+    for task_id, item in ordered:
+        review = item["review"]
+        if review and review["state"] == "claimed" and review["reviewer"] == agent:
+            return {"role": "VERIFIER", "task": task_id, "reused": True, "candidate_sha256": review["candidate_sha256"]}
+    for task_id, item in ordered:
+        review = item["review"]
+        if review and review["state"] == "pending" and _review_principal(review["owner"]) != _review_principal(agent) and item["status"] != "passed":
+            return {"kind": "review_claim", "id": task_id, "reviewer": agent, "candidate_sha256": review["candidate_sha256"]}
+    for task_id, item in ordered:
+        if item["owner"] == agent and item["status"] in ("planned", "working"):
+            return {"role": "IMPLEMENTER", "task": task_id, "reused": True}
+    for task_id, item in ordered:
+        if item["status"] == "planned" and item["owner"] is None and dependencies_passed(item, tasks):
+            return {"kind": "claim", "id": task_id, "owner": agent}
+    return {"role": "HOLD", "task": None, "reason": "No independently eligible review or claimable implementation task"}
+
+
+def pull(agent):
+    result = append({"kind": "_pull", "agent": _review_id(agent)})
+    if "role" in result:
+        return result
+    event = result["event"]
+    outcome = {"role": "VERIFIER" if event["kind"] == "review_claim" else "IMPLEMENTER",
+               "task": event["id"], "reused": False, "git_commit": result["git_commit"]}
+    if outcome["role"] == "VERIFIER":
+        raw = read_ledger_bytes().decode("utf-8") if "read_ledger_bytes" in globals() else LOG.read_text()
+        review = audit(raw)[0][event["id"]]["review"]
+        outcome.update({"candidate_path": review["candidate_path"],
+                        "candidate_sha256": review["candidate_sha256"],
+                        "candidate_revision": review["revision"],
+                        "candidate_owner": review["owner"]})
+    return outcome
+
 def validate_event(ev, tasks):
     kind = ev.get("kind")
     if kind == "task":
@@ -64,7 +173,7 @@ def validate_event(ev, tasks):
             raise ValueError("new task must be planned")
         if ev.get("priority") not in {"P0", "P1", "P2", "P3", "P4", "P5"}:
             raise ValueError("invalid task priority")
-        tasks[task_id] = {"record": ev, "status": "planned", "owner": None,
+        tasks[task_id] = {"record": ev, "status": "planned", "owner": None, "last_owner": None, "review": None,
                           "priority": ev["priority"], "rank": None}
         return
 
@@ -95,6 +204,68 @@ def validate_event(ev, tasks):
         raise ValueError(f"unknown task: {task_id!r}")
     item = tasks[task_id]
 
+
+    if kind == "review_request":
+        author = _review_id(ev.get("owner"))
+        if item["status"] == "passed":
+            raise ValueError("passed task cannot request review")
+        expected = item["owner"] or item["last_owner"]
+        if expected is None or author != expected:
+            raise ValueError("only current or last task owner may request review")
+        if item["owner"] is None and item["status"] not in ("blocked", "failed"):
+            raise ValueError("unclaimed planned task cannot request review")
+        if item["review"] is not None and item["review"]["state"] in ("pending", "claimed"):
+            raise ValueError("review is already pending or claimed")
+        candidate = _review_sha(ev.get("candidate_sha256"))
+        path = _review_path(task_id, ev.get("candidate_path"))
+        revision = ev.get("revision")
+        if not isinstance(revision, str) or re.fullmatch(r"[0-9a-f]{40}", revision) is None:
+            raise ValueError("review revision must be a Git commit SHA")
+        item["review"] = {
+            "state": "pending", "owner": author,
+            "candidate_sha256": candidate, "candidate_path": path,
+            "revision": revision, "reviewer": None, "verdict": None
+        }
+        return
+
+    if kind == "review_claim":
+        reviewer = _review_id(ev.get("reviewer"))
+        candidate = _review_sha(ev.get("candidate_sha256"))
+        review = item["review"]
+        if (review is None or review["state"] != "pending" or
+                candidate != review["candidate_sha256"]):
+            raise ValueError("review claim requires matching pending request")
+        if _review_principal(reviewer) == _review_principal(review["owner"]):
+            raise ValueError("implementer cannot claim own verification")
+        review["reviewer"] = reviewer
+        review["state"] = "claimed"
+        return
+
+    if kind == "review_result":
+        reviewer = _review_id(ev.get("reviewer"))
+        candidate = _review_sha(ev.get("candidate_sha256"))
+        review = item["review"]
+        if (review is None or review["state"] != "claimed" or
+                review["reviewer"] != reviewer or
+                candidate != review["candidate_sha256"]):
+            raise ValueError("only assigned reviewer can complete matching review")
+        verdict = ev.get("verdict")
+        if verdict not in ("PASS", "FAIL", "HOLD"):
+            raise ValueError("review verdict must be PASS, FAIL or HOLD")
+        note = ev.get("note", "")
+        if not isinstance(note, str):
+            raise ValueError("review note must be text")
+        if verdict == "PASS":
+            evidence = _review_path(task_id, ev.get("evidence"))
+            if evidence not in item["record"]["outputs"]:
+                raise ValueError("PASS receipt must be a declared task output")
+            _review_sha(ev.get("evidence_sha256"))
+            review["evidence"] = evidence
+            review["evidence_sha256"] = ev["evidence_sha256"]
+        review["verdict"] = verdict
+        review["state"] = "closed"
+        return
+
     if kind == "claim":
         owner = real_id(ev.get("owner"), "owner")
         if item["status"] != "planned" or item["owner"] is not None:
@@ -102,6 +273,7 @@ def validate_event(ev, tasks):
         if not dependencies_passed(item, tasks):
             raise ValueError(f"{task_id}: dependencies not passed")
         item["owner"] = owner
+        item["last_owner"] = owner
         return
 
     if kind == "release":
@@ -141,9 +313,16 @@ def validate_event(ev, tasks):
             if not actor or item["owner"] is not None:
                 raise ValueError("legacy working requires unclaimed task and agent")
             item["owner"] = actor
+            item["last_owner"] = actor
         elif new in {"passed", "failed", "blocked"}:
             if item["owner"] is None or actor != item["owner"]:
                 raise ValueError("only current task owner may change its status")
+        if new == "passed" and item["review"] is not None:
+            review = item["review"]
+            if (review["state"] != "closed" or review["verdict"] != "PASS" or
+                    ev.get("verifier") != review["reviewer"] or
+                    ev.get("evidence") != review.get("evidence")):
+                raise ValueError("PASS requires completed matching pull-based review")
         if new == "passed":
             if item["owner"] is None or not actor or not ev.get("verifier") or not ev.get("evidence"):
                 raise ValueError("passing requires claim owner, verifier and evidence")
@@ -262,6 +441,21 @@ def append(ev):
         if raw.encode("utf-8") != committed:
             raise RuntimeError("uncommitted ledger events already exist; run 'python dag.py sync' first")
         tasks, n, prev = audit(raw)
+        if isinstance(ev, dict) and ev.get("kind") == "_pull":
+            choice = choose_pull_event(tasks, ev.get("agent"))
+            if choice.get("kind") is None:
+                return choice
+            ev = choice
+        if isinstance(ev, dict) and ev.get("kind") == "review_request":
+            source = review_candidate_bytes(ev["candidate_path"])
+            if hashlib.sha256(source).hexdigest() != ev.get("candidate_sha256"):
+                raise ValueError("candidate artifact changed before review request")
+        if isinstance(ev, dict) and ev.get("kind") == "review_result" and ev.get("verdict") == "PASS":
+            if not isinstance(ev.get("evidence"), str):
+                raise ValueError("PASS review requires declared receipt path")
+            raw_receipt = review_candidate_bytes(ev["evidence"])
+            if hashlib.sha256(raw_receipt).hexdigest() != ev.get("evidence_sha256"):
+                raise ValueError("verification receipt changed before closure")
         validate_event(ev, tasks)
         body = {"seq": n + 1, "event": ev}
         row = {**body, "prev_sha256": prev, "sha256": hash_event(prev, body)}
@@ -292,6 +486,22 @@ def main():
                                    help="append full ranked priority snapshot without rewriting tasks")
     priority_plan.add_argument("--file", required=True, type=Path)
 
+    pull_cmd = sub.add_parser("pull", help="atomically pull verifier-first or implementer ticket")
+    pull_cmd.add_argument("--agent", default=os.environ.get("AGENT_ID"), help="actual assigned runtime identity, or AGENT_ID env")
+
+    review_request_cmd = sub.add_parser("request-review", help="offer an implementation candidate to independent reviewers")
+    review_request_cmd.add_argument("id")
+    review_request_cmd.add_argument("--owner", required=True)
+    review_request_cmd.add_argument("--candidate-path", required=True)
+    review_request_cmd.add_argument("--revision")
+
+    review_result_cmd = sub.add_parser("review-result", help="finish an exclusively pulled review")
+    review_result_cmd.add_argument("id")
+    review_result_cmd.add_argument("--reviewer", required=True)
+    review_result_cmd.add_argument("--verdict", required=True, choices=("PASS", "FAIL", "HOLD"))
+    review_result_cmd.add_argument("--evidence")
+    review_result_cmd.add_argument("--note", default="")
+
     claim = sub.add_parser("claim", help="exclusively claim a ready task")
     claim.add_argument("id")
     claim.add_argument("--owner", required=True)
@@ -316,6 +526,35 @@ def main():
         op.add_argument("--note", default="")
 
     args = parser.parse_args()
+    if args.cmd == "pull":
+        print(json.dumps(pull(_review_id(args.agent)), indent=2))
+        return
+    if args.cmd == "request-review":
+        candidate = _review_path(args.id, args.candidate_path)
+        digest = hashlib.sha256(review_candidate_bytes(candidate)).hexdigest()
+        row = append({"kind": "review_request", "id": args.id, "owner": args.owner,
+                      "candidate_path": candidate, "candidate_sha256": digest,
+                      "revision": args.revision or _git("rev-parse", "HEAD")})
+        print(json.dumps({"role": "REVIEW_REQUESTED", "task": args.id,
+                          "candidate_sha256": digest, "git_commit": row["git_commit"]}, indent=2))
+        return
+    if args.cmd == "review-result":
+        tasks, _, _ = audit(read_ledger_bytes().decode("utf-8") if "read_ledger_bytes" in globals() else LOG.read_text())
+        review = tasks.get(args.id, {}).get("review")
+        if not review:
+            raise ValueError("no review request for task")
+        event = {"kind": "review_result", "id": args.id, "reviewer": args.reviewer,
+                 "candidate_sha256": review["candidate_sha256"],
+                 "verdict": args.verdict, "note": args.note}
+        if args.verdict == "PASS":
+            if not args.evidence:
+                raise ValueError("PASS requires declared receipt path")
+            event["evidence"] = args.evidence
+            event["evidence_sha256"] = hashlib.sha256(review_candidate_bytes(args.evidence)).hexdigest()
+        row = append(event)
+        print(json.dumps({"role": "VERIFIER", "task": args.id,
+                          "verdict": args.verdict, "git_commit": row["git_commit"]}, indent=2))
+        return
     if args.cmd == "sync":
         print(json.dumps(sync(), indent=2))
         return
@@ -366,7 +605,10 @@ def main():
             result.append({"id": task_id, "priority": item["priority"],
                            "rank": item["rank"], "title": item["record"]["title"], "status": item["status"],
                            "owner": item["owner"], "ready": ready,
-                           "depends_on": item["record"]["depends_on"]})
+                           "depends_on": item["record"]["depends_on"],
+                           "review_state": item["review"]["state"] if item["review"] else None,
+                           "reviewer": item["review"]["reviewer"] if item["review"] else None,
+                           "review_verdict": item["review"]["verdict"] if item["review"] else None})
         print(json.dumps(result, indent=2))
         return
     print(json.dumps({"appended_seq": row["seq"], "event": row["event"],  "head_sha256": row["sha256"], "git_commit": row["git_commit"]}, indent=2))

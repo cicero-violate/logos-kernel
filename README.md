@@ -15,6 +15,10 @@ Canonical path: `/workspace/experiments/logos-kernel/`
 - No scheduler, heartbeat, lease, auto-timeout, fake workers or automatic reassignment.
 - The task DAG is acyclic; generated runtime instruction programs may contain CFG cycles.
 
+## Pull-based ticket selection
+
+Use `python dag.py pull --agent "$AGENT_ID"` (actual Event Lab identity required). The command atomically selects VERIFIER first from explicit review-request events, else IMPLEMENTER, else HOLD; see AGENTS.md and TAB_PROMPT.md. Owners publish `request-review` and reviewers finish with `review-result`. A Git record is not verifier authentication.
+
 ## Agent commands
 
 ```bash

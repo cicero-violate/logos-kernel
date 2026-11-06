@@ -60,33 +60,9 @@ recurrence or invariant explains observations across unseen domains.
 - User's research goal is **mathematical understanding, abstraction, invariant discovery, creative conjecture**, not visual aesthetics or multimodal demos. Treat vision as optional evidence for learning stable laws, not as an objective by itself.
 - Immutable original RLT champion: `/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt`, SHA-256 `4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683`. Do not edit, retrain in place, or promote candidates without independent verifier and explicit approval.
 
-## New stateless tab: verifier-first instructions
+## New stateless tab: pull instead of manual role selection
 
-This is only a snapshot. The active ledger, candidate hashes and runtime identity must be rechecked every turn; earlier task rankings below may now be stale.
-
-1. Activate Event Lab. Read AGENTS.md, README.md, TAB_PROMPT.md, HANDOFF_NEXT_CHAT.md, instructions.jsonl, then the exact task's contract and artifacts.
-2. Run `python dag.py validate`; `python -m unittest -q test_dag`; `python dag.py list`; `python dag.py ready`; inspect Git, owner identities and unchanged champion.
-3. **Search for pending independent audits across all non-passed tasks first** (including claimed/blocked). A frozen candidate awaiting a truly separate verifier takes precedence over claiming a new task. `dag.py ready` is implementation-only.
-4. If reviewer is genuinely independent, act as VERIFIER without changing implementer ownership. Reproduce and attack the pinned revision; place the attributed receipt at the task's declared output path. Reviewer does not append PASS. If not independent, report HOLD and optionally implement a **different** eligible ready task.
-5. If no audit eligible for this real session, resume its legitimately owned task or claim the first ready unclaimed task. Never impersonate owners, release their claims, overwrite pre-existing artifacts or promote a champion.
-6. For invariant discovery, NC-055–NC-060 remain a dependency-ordered research track, not proof of completed discovery.
-
-## Copy/paste static prompt for a fresh ChatGPT tab
-
-See `TAB_PROMPT.md` for the maintained full prompt. Its role dispatch is **VERIFIER FIRST → IMPLEMENTER SECOND → HOLD**. Do not use an older prompt that starts by claiming the highest ready task.
-
-```text
-$agent-event-lab
-Project: /workspace/experiments/logos-kernel/
-Stateless: recover all context from disk/Git every turn.
-Read AGENTS.md, README.md, TAB_PROMPT.md, HANDOFF_NEXT_CHAT.md, instructions.jsonl.
-Validate DAG and tests; inspect Git, claims, results and actual runtime identity.
-FIRST find frozen candidates awaiting independent audit across CLAIMED/BLOCKED/PLANNED tasks; dag.py ready only shows implementation candidates.
-If truly independent, act as VERIFIER and reproduce the exact candidate; write an attributed receipt at the declared task path. Do not claim or approve your own code.
-Otherwise resume a legitimately owned task or claim the highest dependency-ready unclaimed task as IMPLEMENTER.
-If neither role legitimately possible, HOLD with exact blocker; never fabricate verifier identities or release other owners.
-Preserve RLT champion, existing artifacts and ledger; report exact changed files, commit, tests and proof scope.
-```
+Use TAB_PROMPT.md. Verify actual Event Lab session ID, run DAG validation and tests, then run `python dag.py pull --agent "$AGENT_ID"`. The writer atomically assigns a pending independent review first, otherwise a legitimately owned/ready implementation, else HOLD. Implementers use `request-review` to queue pinned manifests; reviewers use `review-result` to close their ticket. Do not infer role from `ready`, another tab, or an invented identity. Task rankings above are informational snapshots; preserve staged/untracked files and the original champion.
 
 ## File and tooling dependencies
 

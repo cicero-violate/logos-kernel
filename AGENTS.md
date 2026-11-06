@@ -14,59 +14,48 @@ This repository is a task DAG for progressive neural learning, operation composi
 - There is **no automatic worker**, implicit owner, heartbeat, lease, timer or abandoned-claim cleanup.
 - A task being *claimed* does **not** prove its agent is alive or working.
 
-## Stateless-chat dual-role dispatch — VERIFIER FIRST
+## Pull-based tickets: mandatory dispatch
 
-This rule is executed at the start of **every** stateless ChatGPT turn, before selecting or claiming any implementation task. The intended job is to DO eligible work, not merely generate a recovery report. Read TAB_PROMPT.md for the copy/paste entry prompt.
+**Never decide the role manually.** The single assignment entry point for both repositories is:
 
-### 1. Recover exact state
+```bash
+# AGENT_ID must come from the actual Event Lab runtime, never from a prompt.
+python dag.py validate
+python -m unittest -q test_dag
+python -m unittest -q test_pull
+python dag.py pull --agent "$AGENT_ID"
+```
 
-- Activate Event Lab; read AGENTS.md, README.md, HANDOFF_NEXT_CHAT.md, TAB_PROMPT.md, instructions.jsonl, relevant task records and artifacts. This conversation is not state.
-- Inspect Git HEAD, staged/unstaged files, existing task claims, outputs, reviewer receipts, and the actual runtime-assigned session identity. A claim records ownership, **not** liveness. Never assume a tab has a new agent ID.
-- Run: `python dag.py validate`; `python -m unittest -q test_dag`; `python dag.py list`; `python dag.py ready`. On failure, report the failing command and preserve the state; do not rewrite history. Some historical PASS evidence is uncommitted in this checkout; never overwrite/stage it to make validation green.
-- `dag.py ready` shows **unclaimed planned implementation tasks only**. It is NOT a verification queue. `dag.py list` does not show whether a candidate is frozen or whether independent auditing is pending.
+The JSONL writer selects inside one exclusive lock and commits the resulting event. Outcome is **VERIFIER** (pending independent audit first), **IMPLEMENTER** (genuinely owned or dependency-ready implementation), or **HOLD** (no eligible ticket). A repeat pull returns the existing assignment, without adding a duplicate event. It will never automatically pretend that a new browser tab is a new agent.
 
-### 2. Construct verification queue before implementation selection
+### IMPLEMENTER
 
-Inspect **all unpassed tasks**, including claimed, blocked and failed tasks, plus their task output paths and evidence. Derive the last actual implementer from claim/status events when current owner is null; unlike Logos Autonomy, this version's `dag.py list` has no `last_owner` field.
+Implement only the task returned by pull. Commit exact code, tests and a complete candidate manifest with source, config, checkpoint hashes, reproduction commands, negative controls, proof limitations and dependencies. Publish the review request through the same append-only JSONL writer:
 
-A task enters **PENDING AUDIT** only when a candidate is stable and inspectable: a pinned source commit/checkpoint or immutable content hashes; implemented task outputs and acceptance evidence; and no valid, attributable independent PASS receipt for that exact candidate. A claimed task is NOT automatically ready for audit. A blocked task is NOT automatically ineligible to be audited. An incomplete or changing candidate must be marked NOT READY, not silently approved.
+```bash
+python dag.py request-review TASK_ID --owner "$AGENT_ID" --candidate-path artifacts/TASK_ID/CANDIDATE_MANIFEST.json
+```
 
-Sort pending audits by latest priority/rank (unranked last), then task ID. Prefer the highest-ranked audit this runtime can independently perform. Do not spend cycles cycling through old passed tasks unless the user explicitly requests re-audit or there is concrete evidence of invalidity.
+The owner can request review of a claimed planned task, or of a blocked/failed task for which it was the last owner. An existing ad hoc file is NOT pulled until a review request event exists. The manifest's SHA-256 and current Git HEAD enter the ledger. The manifest alone does not freeze untracked or external dependencies. Do not mark your own task PASS.
 
-### 3. Pick one role deterministically
+### VERIFIER
 
-**VERIFIER:** If the highest-priority pending audit is independently eligible for your actual runtime and reviewer, become VERIFIER immediately; no claim of the implementer's task is required. Perform the audit below, even if the task is held by another valid owner.
+Read the pulled candidate path, bound manifest hash and Git revision. Independently inspect original implementation and all referenced inputs, rerun claims, test counterexamples and record precise proof limits. Do not change the implementation and then sign it. Use an actual reviewer identity distinct from the implementer's; the known `chatgpt-session-<id>` alias equals `<id>` and is NOT independent. Write the receipt at the verification output path declared in that task's JSONL record. Then record the result:
 
-**INDEPENDENCE GATE:** The reviewer must have a distinct real provenance from the implementer and must not have authored, modified, trained, selected, or generated the candidate or its acceptance evidence. Distinct browser tabs, a role label, two subprocesses or a forged actor string are insufficient. Different registered runtime identities plus actually separate work are evidence of operational separation, but the current DAG does **not** cryptographically authenticate them. If separation cannot be established, label any work SELF-CHECK ONLY, not independent PASS.
+```bash
+python dag.py review-result TASK_ID --reviewer "$AGENT_ID" --verdict HOLD --note "missing evidence"
+python dag.py review-result TASK_ID --reviewer "$AGENT_ID" --verdict FAIL --note "reproducible counterexample"
+# For real independently supported PASS with the completed declared receipt:
+python dag.py review-result TASK_ID --reviewer "$AGENT_ID" --verdict PASS --evidence artifacts/TASK_ID/DECLARED_RECEIPT.json
+```
 
-**IMPLEMENTER:** If no independently eligible audit exists, resume only a claim genuinely owned by your actual runtime identity, otherwise claim the highest-ranked dependency-ready unclaimed planned task. Never take over an existing valid claim. The candidate's own author must not disguise more implementation work as a verifier pass.
+A verifier does not claim/release/reopen the implementation or append its final PASS. The legitimate implementer can PASS only after matching completed review (and an authorized reopen/claim if blocked). Reviewer IDs remain unauthenticated strings at this software layer, not identity attestation. Incomplete provenance or a changed candidate requires HOLD.
 
-**HOLD:** If audit cannot proceed for lack of independence, frozen evidence, permissions or reproducibility, record the exact blocker. If authorized, pursue a **separate** ready task rather than reopening and endlessly self-testing the same candidate. If no safe task exists, stop; do not poll or manufacture a role.
+### HOLD and boundaries
 
-If the user explicitly requests independent verification, do NOT silently substitute implementation or self-checks: report HOLD when independence cannot be proven.
+If no pending review is independently eligible and no task is claimable, report HOLD with the exact blocker. Review tickets have exclusive claims; a second agent cannot pull the same review. This is a synchronous ticket queue, **not** an automatic scheduler or a running verifier. Preserve original RLT champion, task dependencies, bounded scientific proof scope and other agents' staged/untracked files. Never fabricate a reviewer, force-release another claim, rewrite instructions.jsonl, promote a champion without independent evidence or assume Git hash-chain integrity authenticates reviewers.
 
-### 4. Verifier actions and boundaries
-
-1. Pin the **exact revision** (commit plus relevant source/data/config/checkpoint SHA-256). Inspect the acceptance contract, original evidence, threat model and negative controls. Treat staged/untracked artifacts as other agents' work; never stage/reset/delete them.
-2. Independently reproduce the tests where execution is authorized. Use independent ground truth, falsifying counterexamples, held-out/retention controls, exact numerators/denominators, proof scope, resource costs and failure traces. Self-written implementer tests alone cannot establish an independent review.
-3. Do not quietly fix candidate source and then sign off the same revision. On errors, issue FAIL/HOLD with concrete reproduction and return to the owner for a new candidate.
-4. Record an attributable reviewer receipt at the **task's declared evidence path** from `instructions.jsonl` (e.g., `artifacts/NC-000/baseline_receipt.json`, not an invented fixed filename). Include task, candidate owner, distinct reviewer provenance, exact candidate hashes, commands/results, negative controls, proof scope, verdict and limitations. The reviewer may commit only their own receipt. Never claim/release/reopen the implementation task or append its PASS event.
-5. The legitimate owner validates the same candidate and receipt and alone records `python dag.py pass TASK_ID --owner REAL_OWNER --verifier REAL_VERIFIER --evidence ACTUAL_DECLARED_RECEIPT`. If blocked/failed, an authorized operator first reconciles and reopens before a legitimate claim. This kernel DAG currently checks only different identity **strings** plus relative evidence-file existence; it does **not** validate receipt contents, authenticate identities, or prove the review was independent. Never mistake parser acceptance for scientific verification.
-
-### 5. Implementer actions and scientific boundaries
-
-- Read complete contract, claim with the actual `AGENT_ID`, implement on a scoped branch/worktree if appropriate, record code and data dependencies, exact hashes, seeds and optimizer/RNG state, matched compute, negative controls, failures, retention, bounds and rollback.
-- Commit only owned implementation and reproducible evidence. Submit a pinned candidate as **READY FOR INDEPENDENT REVIEW**, not PASS from owner tests.
-- Keep the RLT champion unchanged. Preserve neural-vs-ROM-vs-Python-vs-symbolic distinctions; finite-case tests never prove unrestricted mathematical novelty. Research progress is measured by independent held-out correctness and retained capability, not number of tests or tickets.
-- Do not issue `--force` to free another agent's claim. Kernel `dag.py` accepts `--force` with a reason but does not authenticate operator authority; administrative release requires external operator authorization.
-
-### 6. Output contract
-
-Always finish with one compact record:
-
-`Role | Real runtime/session | Task | Candidate commit/checkpoint hashes | Changed files | Test denominators | Independent evidence | PASS/FAIL/HOLD/SELF-CHECK ONLY | Exact blocker | Next action`
-
-**Role selection cannot be guaranteed by a prompt alone.** If only the implementer's Event Lab identity is available, independent verification cannot be truthfully completed from another tab using the same identity.
+Output: `Assigned role | Actual session | Ticket | Candidate/hash | Changed files | Tests | Independent verdict | Blocker/next action`.
 
 ## At the beginning of each actual agent session
 
@@ -179,4 +168,4 @@ Never edit earlier JSONL, even to correct mistakes; use a new task and clearly d
 - Downstream neural projects depend on their own Python modules, model weights, datasets and PyTorch; there is no implied GPU.
 - Report exact task ID, claim owner, changed paths, hashes, acceptance receipts, quantitative results, independent verifier, limits and next ready task.
 
-**Start at `python dag.py validate`, construct the pending independent-audit queue, then choose VERIFIER → IMPLEMENTER → HOLD using actual runtime provenance.**
+**Start with `python dag.py validate` and `python dag.py pull --agent "$AGENT_ID"`; let the writer atomically assign VERIFIER, IMPLEMENTER or HOLD.**
