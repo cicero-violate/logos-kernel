@@ -1,0 +1,108 @@
+{
+  "actual_verifier": "codex-cli:01a1b03e-6af6-7d13-894a-9212991a2eb5",
+  "assembled_by": "Event Lab session 1db9edb983ff4df9933612e7c826e55f as mechanical capture of the distinct verifier's unedited JSON verdict; no self-issued PASS",
+  "candidate_modified": false,
+  "changes_authorized": false,
+  "fail_reasons": [
+    "Original acceptance requires a bounded process/resource budget, but contained code can fork and RLIMIT_NPROC remains effectively unrestricted.",
+    "Per-process limits do not establish an aggregate sandbox budget when process creation is allowed.",
+    "Mandatory task\u2192candidate\u2192counterexample\u2192revised-candidate loop is absent.",
+    "No structurally unseen candidate is emitted.",
+    "Baseline compute budgets are materially unmatched."
+  ],
+  "implementer": "agent-event-lab:1db9edb983ff4df9933612e7c826e55f",
+  "inspected_head": "9f51b13abb579fe2718dc29020d4e4ec905bbaad",
+  "ledger_status_modified": false,
+  "numeric_verification": {
+    "fresh_executable_outputs": "264/264 executed",
+    "fresh_outputs_matching_independent_arithmetic": "80/264",
+    "heldout_pair_hashes": "36/36",
+    "independently_recomputed_expected_values": "288/288",
+    "scores": {
+      "fixed_ADD_XY": "0/96",
+      "supervised_neural_controller": "72/96",
+      "uniform_random_one_step": "8/96"
+    },
+    "stored_failure_expectations": "208/208",
+    "trace_correct_counts_reproduced": "36/36",
+    "trace_rows": "36/36 structurally consistent",
+    "unexecuted_unsupported_goal_cases": "24/24"
+  },
+  "promotion_authorized": false,
+  "provenance_limit": "Local CLI thread log and captured output are attributable but not cryptographically signed remote attestation.",
+  "raw_stderr_file": "artifacts/NC-028/codex_verifier_20261106_stderr.txt",
+  "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "raw_verifier_trace_file": "artifacts/NC-028/codex_verifier_20261106_trace.jsonl",
+  "raw_verifier_trace_sha256": "1ff52613208169b270644482c42d2970456cd3ddf668b31f97bea050498a4c49",
+  "schema": "logos.nc028.independent-verification/1",
+  "scientific_observations": {
+    "baseline_fairness": {
+      "conclusion": "Proposal counts and numeric cases match, but full CPU/wall budgets do not.",
+      "fixed_cpu_seconds": 20.471055,
+      "fixed_wall_seconds": 20.808676,
+      "random_cpu_seconds": 20.132346,
+      "random_wall_seconds": 20.389148,
+      "supervised_cpu_seconds": 35.179248,
+      "supervised_wall_seconds": 35.690559
+    },
+    "feedback_loop": "Absent. Exactly one proposal is made per seed/goal/arm; there is no counterexample-conditioned revision.",
+    "novelty": "Known-goal results are supervised macro recall on new operands, not operation invention.",
+    "proof_scope": "Finite sampled unsigned 16-bit cases only; not all 2^32 operand pairs.",
+    "recipe_leakage": "The proposer source does not receive operand answers or import compose.GOALS, but its frozen checkpoints were supervised on all 11 recognized goal IDs and exact recipes.",
+    "structural_generalization": "Absent. UNSEEN_XOR_DOUBLE_PLUS_Y is outside proposer vocabulary and returns UNSUPPORTED_GOAL with no candidate."
+  },
+  "scientific_outcome": "NO_DISCOVERY",
+  "security_observations": {
+    "boundary": "Same UID, no PID/user/network namespace and no VM. Per-process CPU/address-space limits can be multiplied through allowed process creation; aggregate process/resource containment is not demonstrated.",
+    "chmod": "DENIED errno 1",
+    "critical_counterexample": "os.fork() succeeded inside the sandbox",
+    "malformed_and_HAL\uff34_controls": "4/4 rejected",
+    "manifest_mismatch": "Manifest states file_size_bytes=0, but runtime RLIMIT_FSIZE is 4194304 bytes.",
+    "outside_allowlist_read": "DENIED errno 13",
+    "outside_allowlist_write": "DENIED errno 13",
+    "process_limit": "RLIMIT_NPROC=126746, not sandbox-bounded",
+    "resource_limits": {
+      "RLIMIT_AS": [
+        8589934592,
+        8589934592
+      ],
+      "RLIMIT_CPU": [
+        24,
+        25
+      ],
+      "RLIMIT_FSIZE": [
+        4194304,
+        4194304
+      ],
+      "RLIMIT_NOFILE": [
+        64,
+        64
+      ]
+    },
+    "socket": "DENIED errno 1"
+  },
+  "source_and_champion_hashes": {
+    "arena.py": "743d6af5a64ca1eb06f8671a5de8b009fbeadf7c478cca1e534a3476b7a8cf58",
+    "controller_seed11": "6ec7dfdbb7fe47c05d1eb470d915d0e963de731009bc317ab87e0ffad27464d6",
+    "controller_seed19": "5bb0a9b523f618972153e83eea38221eaa745f233aa1c529c24d35653a6fb92f",
+    "controller_seed29": "92da66944c2353dae90e0381160e89646c9f0ad6052f4c66f8c3e8014feedc74",
+    "execute_worker.py": "54aaf3676719a18b12f01b491322c1325be493eb04c0dc846ceb0e4dcbe7a21d",
+    "isolation.py": "86341098718bd39e1ae03b2f23b5341f40ec9ddd012df07677a32f45f30713ab",
+    "pilot_results.json": "ae1b052a16a019188c649bc1812aeab85e680ce85e3434819deecd25b972dc06",
+    "proposal_trace.jsonl": "a0d4899fa2a0c12ba70642d3c945a6de3f5411187a4c58ef0483e442c18a8fe2",
+    "propose_worker.py": "cfccedf5ac091b915a75059a7f99d8598dba1b8574c280c3bd52f08b9b941940",
+    "rlt_champion": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+  },
+  "source_commit": "85df72d0802bfc2ee643ecf743529b793254e18c",
+  "task": "NC-028",
+  "tests": {
+    "dag_unit_suite": "14 completed without failure; 5 errors because the read-only runtime provides no writable temporary directory",
+    "dag_validate": "PASS: 61 nodes, 98 events",
+    "full_nc028_suite": "Not run because test_isolation writes and deletes a project scratch fixture, contrary to the requested read-only verification",
+    "nc028_read_only_safe_tests": "4/4 PASS"
+  },
+  "verdict": "FAIL",
+  "verification_output_file": "artifacts/NC-028/codex_verifier_20261106_final.json",
+  "verification_output_sha256": "5d4fc64a2f46469e58dd807ef5c9ab698cc82ac02eff07b6677964c0f4c20bcb",
+  "verifier_separation": "distinct independent Codex CLI runtime thread; repo read-only sandbox"
+}

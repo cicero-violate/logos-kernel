@@ -1,108 +1,116 @@
 {
-  "actual_verifier": "codex-cli:01a1b03e-6af6-7d13-894a-9212991a2eb5",
-  "assembled_by": "Event Lab session 1db9edb983ff4df9933612e7c826e55f as mechanical capture of the distinct verifier's unedited JSON verdict; no self-issued PASS",
-  "candidate_modified": false,
-  "changes_authorized": false,
-  "fail_reasons": [
-    "Original acceptance requires a bounded process/resource budget, but contained code can fork and RLIMIT_NPROC remains effectively unrestricted.",
-    "Per-process limits do not establish an aggregate sandbox budget when process creation is allowed.",
-    "Mandatory task\u2192candidate\u2192counterexample\u2192revised-candidate loop is absent.",
-    "No structurally unseen candidate is emitted.",
-    "Baseline compute budgets are materially unmatched."
+  "approval": {
+    "champion_promotion": false,
+    "network": false,
+    "system_service": false
+  },
+  "candidate_manifest_sha256": "c7fa379ad77c1ac6599017005eadceaa99d5ca012362cc2a75f084ba3586c0a0",
+  "candidate_revision": "88fd6cbcb3ba1f25575e6bfb643e8f0982d52f05",
+  "fresh_arm_totals": {
+    "fixed_host": {
+      "attempts": 4,
+      "cpu_seconds": 6.148921999999999,
+      "heldout_correct": 0,
+      "heldout_tested": 32,
+      "wall_seconds": 6.323775702039711
+    },
+    "lexical_frozen": {
+      "attempts": 2,
+      "cpu_seconds": 6.366643999999999,
+      "heldout_correct": 0,
+      "heldout_tested": 16,
+      "wall_seconds": 6.541204750887118
+    },
+    "lexical_neural": {
+      "attempts": 2,
+      "cpu_seconds": 6.20276,
+      "heldout_correct": 0,
+      "heldout_tested": 16,
+      "wall_seconds": 6.384272526833229
+    },
+    "random_host": {
+      "attempts": 4,
+      "cpu_seconds": 6.076457000000001,
+      "heldout_correct": 0,
+      "heldout_tested": 32,
+      "wall_seconds": 6.267009465955198
+    }
+  },
+  "fresh_comparability": {
+    "cpu_ratio_to_neural": {
+      "fixed_host": 0.991320315472467,
+      "lexical_frozen": 1.0264211415563393,
+      "lexical_neural": 1,
+      "random_host": 0.9796376129335975
+    },
+    "scope": "all arms within preregistered 15 percent consumed CPU/wall tolerance, unequal attempt opportunity counts",
+    "wall_ratio_to_neural": {
+      "fixed_host": 0.9905240848445538,
+      "lexical_frozen": 1.024581065954547,
+      "lexical_neural": 1,
+      "random_host": 0.9816325101434545
+    }
+  },
+  "historical_fail_receipt": {
+    "preserved_path": "artifacts/NC-028/independent_receipt_prior_FAIL_deea1bfbccc6ba8c.json",
+    "reason": "Retain previous immutable negative evidence as an additional file rather than destroy it when writing this task-declared verifier output.",
+    "sha256": "deea1bfbccc6ba8cb8b93feef8552045ff7a59ef4320fcfcc3f08367e9408028",
+    "verdict": "FAIL"
+  },
+  "independent_checks": {
+    "dag_validate": "PASS 64 nodes, 130 events immediately before review claim",
+    "fresh_read_only_trial": "12/12 TESTED, 0 discoveries; pinned output SHA-256 unchanged; 2 neural-feedback, 2 neural-frozen, 4 fixed-host, 4 random-host attempts",
+    "independent_numeric_oracle": "Recomputed (2*(x XOR y)+y) mod 65536, checked every stored feedback expected value, mismatches, running cost and denominators",
+    "nc028_unittest_discover": "17/17 PASS fresh 38.667s",
+    "runtime_limits": "RLIMIT_CPU fresh probe (4,5)s, FSIZE (4194304,4194304), NPROC (2048,2048) per real UID, AS (8589934592,8589934592); stdout/stderr scratch-backed",
+    "safety_controls": "fork and posix_spawn denied; pthread allowed; socket, disallowed filesystem read/write, chmod, malformed actions/feedback and output flooding denied; deliberate crash nonzero; clone3 errno ENOSYS; mismatched lexical checkpoint rejected",
+    "test_dag": "19/19 PASS",
+    "test_pull": "17/17 PASS"
+  },
+  "model_proposal": {
+    "correct_new_operator": false,
+    "feedback_first_real_mismatch": {
+      "expected": 45393,
+      "observed": 61067,
+      "x": 9844,
+      "y": 41379
+    },
+    "first_actions": [
+      "ADD_XX",
+      "ADD_RY",
+      "HALT"
+    ],
+    "neural_policy_scope": "supervised text-ngram transfer from 11 known recipes; negative rejection gradient is not learned correct repair",
+    "second_actions": [
+      "ADD_X1",
+      "HALT"
+    ],
+    "structurally_unseen_goal": "UNSEEN_XOR_DOUBLE_PLUS_Y",
+    "target_program_in_training": false,
+    "weights_updated": true
+  },
+  "owner": "turn-da6cbd934b984632bc9b5628d5b39489",
+  "pinned_hash_audit": {
+    "all_46_declared_file_references": "MATCH",
+    "champion_unchanged_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "frozen_checkpoint_references": "6/6 MATCH",
+    "upstream_independent_NC007": "PASS"
+  },
+  "proof_scope": "Independently reproduced one finite single-seed CPU-only 16-bit sampled NO_DISCOVERY benchmark, four-arm approximate matched-consumed-CPU/wall comparison, candidate source/checkpoint integrity, deterministic rejection/gradient change, and listed host Landlock/seccomp negative controls. PASS certifies these narrow acceptance checks only: not novel discovery, indefinite autonomous operation, fully isolated hostile program execution, general correctness, or release/deployment.",
+  "provenance_limits": [
+    "Turn identity is a local label, not cryptographic identity attestation.",
+    "Landlock/seccomp enforced on this Linux host; no VM, isolated UID or network namespace, no cgroup or certified hostile-code security.",
+    "RLIMIT_NPROC is a real-UID ceiling, not a standalone per-sandbox process budget; process-form fork/clone denied under current syscall/architecture tests.",
+    "Single seed, repeated eight heldout pairs per attempt and unequal attempts mean no statistically matched multiseed superiority or global correctness.",
+    "Original NC-007 controller cannot propose a goal outside its trained goal vocabulary; separate lexical controller gives incorrect unseen-goal proposals.",
+    "Only finite sampled 16-bit target cases measured; full 2^32 two-operand coverage, new algorithm invention, robust OOD generalization and autonomous runtime remain unproven.",
+    "External network, service enablement, automatic deployment, champion/default promotion and unrestricted execution remain NOT AUTHORIZED."
   ],
-  "implementer": "agent-event-lab:1db9edb983ff4df9933612e7c826e55f",
-  "inspected_head": "9f51b13abb579fe2718dc29020d4e4ec905bbaad",
-  "ledger_status_modified": false,
-  "numeric_verification": {
-    "fresh_executable_outputs": "264/264 executed",
-    "fresh_outputs_matching_independent_arithmetic": "80/264",
-    "heldout_pair_hashes": "36/36",
-    "independently_recomputed_expected_values": "288/288",
-    "scores": {
-      "fixed_ADD_XY": "0/96",
-      "supervised_neural_controller": "72/96",
-      "uniform_random_one_step": "8/96"
-    },
-    "stored_failure_expectations": "208/208",
-    "trace_correct_counts_reproduced": "36/36",
-    "trace_rows": "36/36 structurally consistent",
-    "unexecuted_unsupported_goal_cases": "24/24"
-  },
-  "promotion_authorized": false,
-  "provenance_limit": "Local CLI thread log and captured output are attributable but not cryptographically signed remote attestation.",
-  "raw_stderr_file": "artifacts/NC-028/codex_verifier_20261106_stderr.txt",
-  "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "raw_verifier_trace_file": "artifacts/NC-028/codex_verifier_20261106_trace.jsonl",
-  "raw_verifier_trace_sha256": "1ff52613208169b270644482c42d2970456cd3ddf668b31f97bea050498a4c49",
-  "schema": "logos.nc028.independent-verification/1",
-  "scientific_observations": {
-    "baseline_fairness": {
-      "conclusion": "Proposal counts and numeric cases match, but full CPU/wall budgets do not.",
-      "fixed_cpu_seconds": 20.471055,
-      "fixed_wall_seconds": 20.808676,
-      "random_cpu_seconds": 20.132346,
-      "random_wall_seconds": 20.389148,
-      "supervised_cpu_seconds": 35.179248,
-      "supervised_wall_seconds": 35.690559
-    },
-    "feedback_loop": "Absent. Exactly one proposal is made per seed/goal/arm; there is no counterexample-conditioned revision.",
-    "novelty": "Known-goal results are supervised macro recall on new operands, not operation invention.",
-    "proof_scope": "Finite sampled unsigned 16-bit cases only; not all 2^32 operand pairs.",
-    "recipe_leakage": "The proposer source does not receive operand answers or import compose.GOALS, but its frozen checkpoints were supervised on all 11 recognized goal IDs and exact recipes.",
-    "structural_generalization": "Absent. UNSEEN_XOR_DOUBLE_PLUS_Y is outside proposer vocabulary and returns UNSUPPORTED_GOAL with no candidate."
-  },
+  "review_scope": "PASS of bounded CPU-only sandbox/negative scientific pilot; not a discovery or autonomous production release",
+  "schema": "logos.nc028.independent-verification/2",
   "scientific_outcome": "NO_DISCOVERY",
-  "security_observations": {
-    "boundary": "Same UID, no PID/user/network namespace and no VM. Per-process CPU/address-space limits can be multiplied through allowed process creation; aggregate process/resource containment is not demonstrated.",
-    "chmod": "DENIED errno 1",
-    "critical_counterexample": "os.fork() succeeded inside the sandbox",
-    "malformed_and_HAL\uff34_controls": "4/4 rejected",
-    "manifest_mismatch": "Manifest states file_size_bytes=0, but runtime RLIMIT_FSIZE is 4194304 bytes.",
-    "outside_allowlist_read": "DENIED errno 13",
-    "outside_allowlist_write": "DENIED errno 13",
-    "process_limit": "RLIMIT_NPROC=126746, not sandbox-bounded",
-    "resource_limits": {
-      "RLIMIT_AS": [
-        8589934592,
-        8589934592
-      ],
-      "RLIMIT_CPU": [
-        24,
-        25
-      ],
-      "RLIMIT_FSIZE": [
-        4194304,
-        4194304
-      ],
-      "RLIMIT_NOFILE": [
-        64,
-        64
-      ]
-    },
-    "socket": "DENIED errno 1"
-  },
-  "source_and_champion_hashes": {
-    "arena.py": "743d6af5a64ca1eb06f8671a5de8b009fbeadf7c478cca1e534a3476b7a8cf58",
-    "controller_seed11": "6ec7dfdbb7fe47c05d1eb470d915d0e963de731009bc317ab87e0ffad27464d6",
-    "controller_seed19": "5bb0a9b523f618972153e83eea38221eaa745f233aa1c529c24d35653a6fb92f",
-    "controller_seed29": "92da66944c2353dae90e0381160e89646c9f0ad6052f4c66f8c3e8014feedc74",
-    "execute_worker.py": "54aaf3676719a18b12f01b491322c1325be493eb04c0dc846ceb0e4dcbe7a21d",
-    "isolation.py": "86341098718bd39e1ae03b2f23b5341f40ec9ddd012df07677a32f45f30713ab",
-    "pilot_results.json": "ae1b052a16a019188c649bc1812aeab85e680ce85e3434819deecd25b972dc06",
-    "proposal_trace.jsonl": "a0d4899fa2a0c12ba70642d3c945a6de3f5411187a4c58ef0483e442c18a8fe2",
-    "propose_worker.py": "cfccedf5ac091b915a75059a7f99d8598dba1b8574c280c3bd52f08b9b941940",
-    "rlt_champion": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
-  },
-  "source_commit": "85df72d0802bfc2ee643ecf743529b793254e18c",
   "task": "NC-028",
-  "tests": {
-    "dag_unit_suite": "14 completed without failure; 5 errors because the read-only runtime provides no writable temporary directory",
-    "dag_validate": "PASS: 61 nodes, 98 events",
-    "full_nc028_suite": "Not run because test_isolation writes and deletes a project scratch fixture, contrary to the requested read-only verification",
-    "nc028_read_only_safe_tests": "4/4 PASS"
-  },
-  "verdict": "FAIL",
-  "verification_output_file": "artifacts/NC-028/codex_verifier_20261106_final.json",
-  "verification_output_sha256": "5d4fc64a2f46469e58dd807ef5c9ab698cc82ac02eff07b6677964c0f4c20bcb",
-  "verifier_separation": "distinct independent Codex CLI runtime thread; repo read-only sandbox"
+  "verdict": "PASS",
+  "verifier": "turn-e2d447154ba84a4c93ed58cd5147c460",
+  "verifier_edit_scope": "Receipt output only; original code, frozen checkpoints, candidate manifest and original RLT champion unchanged."
 }
