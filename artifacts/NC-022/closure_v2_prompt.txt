@@ -1,0 +1,95 @@
+NC-022 INDEPENDENT COMMITTED CLOSURE RECHECK — NEW REAL CODEX CLI SESSION.
+READ-ONLY scientific closure, NO PROJECT WRITES, no Git mutation/commit,
+no training, no ledger PASS, no champion/default promotion.
+Use TMPDIR=/dev/shm where needed.
+
+Implementer Event Lab session: 1db9edb983ff4df9933612e7c826e55f.
+Scientific independent PASS actual Codex thread:
+  01a1af63-1343-7ed3-a7d4-2f15f714ee80
+Original closure HOLD actual Codex thread:
+  01a1af69-127d-7600-b080-9cf8ab6c6ecb
+YOU must identify yourself ONLY from the new trace thread.started runtime ID
+and be distinct from ALL above. Never fabricate verifier identity.
+
+Project /workspace/experiments/logos-kernel
+Target COMMITTED hold preservation revision:
+  0e40bbdb5e5f53c3b6262bfdc1253166f62dfbf6
+Scientific IMPLEMENTATION revision:
+  6d20b0183a8c081ad0ebb292fef08e6406786f3e
+Scientific PASS evidence revision:
+  45527cce0c611ae746ea0748e4bdf5e382289a51
+Honest receipt revision:
+  7bb57acbecc25a54a3d3c0b7782935a9c4cbd81a
+
+IMPORTANT CORRECTION TO FIRST CLOSURE HOLD:
+At original implementation/source commit, ledger had 29 tasks/59 events.
+An authorized concurrent operator APPENDED 11 task events NC-029..NC-039
+and one priorities event, producing a 40-task, 71-event valid DAG.
+Append-only source and Git histories were not rewritten. The prior
+closure prompt wrongly assumed the LIVE DAG must remain at 59 events.
+This is not an experiment defect. The entire earlier HOLD verdict, trace,
+raw failure reason and hold receipt remain committed and MUST NOT be
+rewritten or silently upgraded to PASS.
+
+DO NOT require current ledger count=59. Instead:
+  1. Confirm the ledger stored in source implementation commit
+     is an EXACT PREFIX of current committed ledger, with 59 events
+     through NC-022 claim event59.
+  2. Confirm appended events 60..71 are legitimate hash-chained
+     additions, NC-029..NC-039 and priorities, not a mutation of
+     old task or scientific state.
+  3. python dag.py validate MUST report PASS for CURRENT event count
+     (71 at creation, may legitimately increase); no uncommitted ledger
+     bytes or divergence from current Git HEAD.
+  4. NC-022 claimed by real implementer, not already failed/closed,
+     and original champion/checkpoints/NC022 scientific artifacts
+     remain byte-identical to their pinned SHA256/source commits.
+  5. If NEW valid append-only ledger events occur during review, do not
+     fail solely on event count; establish prefix relation and continuity
+     and audit a specific commit. Fail only on substantive inconsistency.
+  6. Distinguish unrelated staged/untracked NC-000 evidence and newly
+     generated closure harness trace files from audited NC-022 changes.
+
+Mandatory scientific/evidence closure gates:
+- Read AGENTS.md, original task NC-022, PROTOCOL.json,
+  independent_receipt.json, original Codex scientific PASS
+  codex_verifier_final.json and its FIRST raw codex_verifier_trace.jsonl
+  thread.started event, original closure HOLD final+raw trace and
+  closure_hold_receipt.json, verified source/code and checkpoint manifest.
+- Recompute SHA256 source/protocol/champion/inventory hashes, ALL 45 full
+  checkpoint packages, all 45 raw prediction files, report, ledger,
+  independent receipt and raw independent Codex finals/traces.
+- Confirm scientific verifier PASS about valid **EXPERIMENT CONTROLS**,
+  strict scientific outcome NO_GAIN (rehearsal not robustly better than
+  blocked equal-exposure replay); NO neural model promoted.
+- Confirm model mistakes are EXPLICIT: 79,200 predictions tested,
+  62,237 correct, 16,963 incorrect; multiplication and parity poor.
+  No false claim of 0 neural failures, AGI or arbitrary exact arithmetic.
+- Confirm 3 seeds x 3 arms x 5 stages, 45 checkpoint/RNG/optimizer
+  packages, 1,296 optimizer updates, 62,208 task-local samples,
+  exact task-operand-width rehearsal/block exposure equality,
+  host-wired composition and all task ID pretraining caveats.
+- Repeat actual tests, report exit codes:
+    python dag.py validate
+    TMPDIR=/dev/shm python -m unittest -q test_dag
+    PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-022 -p test_rlt_retention.py
+  Expected tests 19/19 and 11/11, with live DAG count whatever is valid.
+- Independent small fresh-process raw RLT checkpoint load/inference and
+  independent math counterexample recomputation. No answer substitution.
+- Check first HOLD remains HOLD in raw final; its only blocker was stale
+  live event-count assumption, now satisfied by prefix/versioned history.
+  Do not claim it was PASS or erase it.
+
+If mandatory evidence incomplete, verdict HOLD. If forged provenance,
+source alteration or ledger corruption, verdict FAIL. On clean
+independent closure, verdict PASS FOR COMMITTED CLOSURE CONSISTENCY
+ONLY. This does NOT record a DAG PASS on your behalf.
+
+FINAL RESPONSE exactly one JSON object with:
+task, verdict (PASS|HOLD|FAIL), real_closure_thread_id,
+implementer_identity, scientific_verifier_identity,
+original_hold_verifier_identity, audited_commit,
+current_ledger_integrity_and_prefix, independent_test_commands,
+source_and_model_integrity, independent_receipt_binding,
+model_error_reporting, research_outcome, scope_and_limitations,
+failures.

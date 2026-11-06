@@ -1,0 +1,141 @@
+{
+  "task": "NC-022",
+  "verdict": "PASS",
+  "real_closure_thread_id": "01a1af6e-f7b5-7fc2-94fb-b6564823cc22",
+  "implementer_identity": "1db9edb983ff4df9933612e7c826e55f",
+  "scientific_verifier_identity": "01a1af63-1343-7ed3-a7d4-2f15f714ee80",
+  "original_hold_verifier_identity": "01a1af69-127d-7600-b080-9cf8ab6c6ecb",
+  "audited_commit": "0e40bbdb5e5f53c3b6262bfdc1253166f62dfbf6",
+  "current_ledger_integrity_and_prefix": {
+    "validation": "PASS",
+    "nodes": 40,
+    "events": 71,
+    "head_sha256": "9d618a3d9fcf87fded6863a1ef7d014a2f2266756d2578c2ac5e32b4ce415d8e",
+    "ledger_sha256": "86244bfc03f8a76f9f93b9c94774ae0db36a5d3800fd028de674dfe55c5490f8",
+    "implementation_commit_ledger_events": 59,
+    "implementation_commit_ledger_sha256": "0c4d7219823d342dd1612d54a6f9aac60e894be3af05576b1e3625e1915614f1",
+    "implementation_ledger_is_exact_byte_prefix": true,
+    "event_59": "NC-022 claim by 1db9edb983ff4df9933612e7c826e55f",
+    "events_60_through_70": "Eleven hash-chained task additions NC-029 through NC-039",
+    "event_71": "Hash-chained priorities snapshot",
+    "full_hash_chain_continuity": true,
+    "historical_mutation_found": false,
+    "uncommitted_ledger_bytes": false,
+    "head_matches_target_commit": true,
+    "nc022_status": "planned",
+    "nc022_owner": "1db9edb983ff4df9933612e7c826e55f",
+    "nc022_failed_or_closed": false,
+    "excluded_unrelated_state": [
+      "Staged and untracked NC-000 evidence",
+      "Untracked NC-022 closure_v2 harness prompt, stderr, and runtime trace"
+    ]
+  },
+  "independent_test_commands": [
+    {
+      "command": "python dag.py validate",
+      "exit_code": 0,
+      "result": "PASS; 40 nodes, 71 events"
+    },
+    {
+      "command": "TMPDIR=/dev/shm python -m unittest -q test_dag",
+      "exit_code": 0,
+      "result": "19/19 passed"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-022 -p test_rlt_retention.py",
+      "exit_code": 0,
+      "result": "11/11 passed"
+    },
+    {
+      "command": "Fresh-process strict stage-4 checkpoint load and independent unsigned 8-bit multiplication recomputation",
+      "exit_code": 0,
+      "result": "TaskConditionedRLT loaded strictly; input 188,158 produced neural result 252 versus independently computed result 8"
+    }
+  ],
+  "source_and_model_integrity": {
+    "scientific_implementation_commit": "6d20b0183a8c081ad0ebb292fef08e6406786f3e",
+    "scientific_evidence_commit": "45527cce0c611ae746ea0748e4bdf5e382289a51",
+    "honest_receipt_commit": "7bb57acbecc25a54a3d3c0b7782935a9c4cbd81a",
+    "closure_hold_commit": "0e40bbdb5e5f53c3b6262bfdc1253166f62dfbf6",
+    "scientific_paths_unchanged_since_implementation": true,
+    "protocol_sha256": "152a2435601083c663c8c4ec3c25caf0d3bcb5f3a977cb19f9cf4dddaf690a9f",
+    "experiment_source_sha256": "2d07d82b1659320356addd8a0f54e130ad200891b6a1990fbed073ce79f96ded",
+    "architecture_sha256": "99f70b03e2e864d1635ffdbd3ce56598d915bcc1673e1492964d3322714335fb",
+    "backbone_sha256": "3c4abc18752236d3118487213fcfa1cf4a18e52e2ceb17ad52a0cdec141013c7",
+    "original_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "inventory_sha256": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+    "checkpoint_manifest_sha256": "e3096747853754d7609452b5b68ef2ee6dd3eb45f880c4c215a36e6bc9529a98",
+    "retention_matrix_sha256": "870f744cf2695025623c05b4d84287c86499e598a318744f4ba441d36169de55",
+    "exposure_ablation_sha256": "e18fa1d03ad336cc0f333c7c7d4cc7ac3af71c6fc6f233c744ee5edb7eb44cec",
+    "train_holdout_ledger_sha256": "1c60767d692e09587293cdb964e0b40919905ac78b1c47aaf7eafaa042da94a3",
+    "checkpoint_packages_verified": "45/45",
+    "raw_prediction_files_verified": "45/45",
+    "full_model_optimizer_rng_packages": 45,
+    "optimizer_updates": 1296,
+    "task_local_training_samples": 62208,
+    "seeds_arms_stages": "3 x 3 x 5",
+    "rehearsal_blocked_replay_exact_task_operand_width_exposure_equality": true,
+    "champion_modified": false,
+    "promotion_performed": false
+  },
+  "independent_receipt_binding": {
+    "independent_receipt_sha256": "79d2f8dbb60ac18b2df2c84f85104b1d25bd8c0d63c424f922f2a8360dca9825",
+    "scientific_final_sha256": "d5914f494a46dc60415291bbd2685c02cca4d9147078b0a46ecdff225da88716",
+    "scientific_trace_sha256": "75929316cf8a27fb14cd3db1a8378cc286e178745763f7c3f9cc212403e79781",
+    "scientific_trace_first_thread_id_matches": true,
+    "original_hold_final_sha256": "b4654fd04f1d1e28ced8b9c37aec0fe6f4ac97ffe86c9ae941ef8d7d61f0eb55",
+    "original_hold_trace_sha256": "cc664e7fae1127a77b3916b7f65cc4f5796fa752c4259bdb7ca30698deb685e7",
+    "closure_hold_receipt_sha256": "6283a940b98652082c8fd99c8b0f7ff5f13df4199fd60e00cbfc914214238cbf",
+    "original_hold_trace_first_thread_id_matches": true,
+    "original_hold_final_remains_hold": true,
+    "original_hold_only_blocker": "Stale requirement that the live ledger remain at exactly 59 events",
+    "original_hold_rewritten_or_upgraded": false,
+    "identities_are_distinct": true
+  },
+  "model_error_reporting": {
+    "predictions_tested": 79200,
+    "correct": 62237,
+    "incorrect": 16963,
+    "micro_accuracy": 0.7858207070707071,
+    "multiplication": {
+      "correct": 1428,
+      "tested": 10080,
+      "accuracy": 0.14166666666666666
+    },
+    "parity_and": {
+      "correct": 4753,
+      "tested": 10080,
+      "accuracy": 0.47152777777777777
+    },
+    "representative_fresh_counterexample": {
+      "operation": "mul",
+      "width": 8,
+      "a": 188,
+      "b": 158,
+      "expected": 8,
+      "observed": 252
+    },
+    "false_zero_failure_claim_found": false,
+    "agi_or_arbitrary_exact_arithmetic_claim_found": false
+  },
+  "research_outcome": {
+    "scientific_verifier_verdict": "PASS",
+    "experiment_controls": "PASS",
+    "strict_learning_outcome": "NO_GAIN",
+    "finding": "Rehearsal did not robustly outperform the exactly exposure-matched blocked replay control across seeds and stages.",
+    "new_only_control_included": true,
+    "host_wired_composition_disclosed": true,
+    "all_task_ids_preexisted_in_pretraining": true,
+    "neural_model_promoted": false
+  },
+  "scope_and_limitations": [
+    "PASS applies only to committed closure consistency and preservation of the independently verified scientific evidence.",
+    "This response does not append a DAG PASS or close NC-022.",
+    "All seven operation IDs existed during pretraining; this demonstrates curriculum re-exposure, not operation invention.",
+    "Disjointness from the original pretraining ledger was not established.",
+    "Composition uses genuine neural calls with fixed host wiring and does not establish learned program invention.",
+    "Results are bounded sampled measurements, not exhaustive arithmetic correctness or AGI.",
+    "Multiplication and parity performance remain poor."
+  ],
+  "failures": []
+}
