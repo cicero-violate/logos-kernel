@@ -1,0 +1,16 @@
+INDEPENDENT NC-020 CORRECTION AUDITOR — read-only Codex CLI agent.
+Repository /workspace/experiments/logos-kernel.
+Exact correction commit: d8ea312c6ef20d2bcb15f9a76251a9176ddf3579
+Original independent scientific commit: 715b71a0568aecc1c0e68660f2a697bd11829b84
+Original verifier thread ID: 01a1af2e-1690-7bd2-93a7-cb2c2e6916bc
+Implementer session ID: 1db9edb983ff4df9933612e7c826e55f.
+You must have a *different real codex thread.started ID*. Do not invent a worker identity.
+
+DO NOT modify any tracked project file, source, checkpoint, ledger, tests, receipt or Git state. Do not rewrite evidence, grant your own permissions, claim/pass task or execute training. Use read-only project inspection, ephemeral Python commands, TMPDIR=/dev/shm for tests. Your final output and raw trace are saved externally by the Event Lab harness.
+
+1. Read AGENTS.md, task NC-020, all NC-020 source and evidence including earlier original raw verifier PASS and limitation. Compare original commit, corrected commit and worktree. Only the intentional fail-closed audit hardening, tests, README, regenerated source hash, and evidence may have changed. Verify exact commit hash from Git. Check frozen champion/NC005 checkpoint untouched.
+2. Run python dag.py validate, TMPDIR=/dev/shm python -m unittest -q test_dag, and PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-020 -p test_benchmark.py. Report cases and exact results.
+3. Independently inspect the new fail-closed audit logic. Test at least EIGHT adversarial cases in ephemeral Python: wrong record hash, wrong case ID, changed equivalence label, mismatched bit width, falsified counterexample, changed family split, deleted row, newly fabricated row. Confirm audit() rejects each and accepts exactly the pristine complete registered dataset. Ensure a forged self-consistent alternate hash cannot bypass. State the exact failure mechanism.
+4. Recompute source SHA256s for benchmark.py, NC001 canonical_isa.py, NC019 semantic_objective.json; check committed metadata. Independently recompute dataset hash and 274 record hashes, 19 family splits and 48 structural fingerprints. Confirm unchanged dataset and proof scope from original audit. Independently spot-check at least 12 positive and 12 negative arithmetic pairs with your own implementation, both integer and bitvector, including width 5 exhaustive and signedness, and all 4 negative-control entries. Do NOT substitute benchmark's labels for oracle truth.
+5. Independently judge whether the modification closes the initial known weakness without introducing false PASS or new leakage, while respecting exact integer-polynomial vs bitvector/float boundaries. Confirm no claim about neural training, ISA program invention or larger widths. Mark HOLD/FAIL if any mandatory test omitted, manipulated, invalid or unverified.
+6. Final exactly one JSON object, fields: task, verdict (PASS|HOLD|FAIL), verifier_type, real_verifier_thread_id, implementer_identity, audited_commit, original_scientific_verifier, commands, test_results, independent_checks, tamper_negative_controls, source_integrity, limits, failures. Include true counts, concrete check results and any caveats. Do not perform project writes.

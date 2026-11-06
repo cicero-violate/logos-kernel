@@ -1,0 +1,156 @@
+{
+  "champion_promoted": false,
+  "checks": {
+    "benchmark_tests": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 14
+    },
+    "dag": {
+      "events": 55,
+      "nodes": 29,
+      "status": "PASS"
+    },
+    "dag_tests": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 19
+    },
+    "dataset_integrity": {
+      "case_id_failures": 0,
+      "case_ids_recomputed": 274,
+      "case_set_hash_matches_audit": true,
+      "case_set_sha256": "eccdd5b5fb43666750ad00b7a028d6b7f28a581d7c2cc290e7d04f8d23d6e733",
+      "dataset_hash_matches_metadata": true,
+      "dataset_sha256": "8a944ada4b2ab323433f1a7f10e63fb2244822d318cda89966ab164eed0328bd",
+      "dataset_unchanged_from_original_commit": true,
+      "families": 19,
+      "family_cross_split_leaks": 0,
+      "fingerprint_cross_split_leaks": 0,
+      "record_hash_failures": 0,
+      "record_hashes_recomputed": 274,
+      "structural_fingerprint_failures": 0,
+      "structural_fingerprints_recomputed": 274,
+      "unique_structural_fingerprints": 48
+    },
+    "frozen_nc005_checkpoints": {
+      "hashes_checked": 42,
+      "manifest_entries": 42,
+      "mismatches": 0,
+      "unchanged_by_correction_commit": true
+    },
+    "frozen_rlt_champion": {
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "unchanged": true
+    },
+    "tamper_controls": {
+      "changed_equivalence_label": {
+        "error": "NC020_UNREGISTERED_OR_MODIFIED_BENCHMARK_CASES",
+        "rejected": true
+      },
+      "changed_family_split": {
+        "error": "NC020_UNREGISTERED_OR_MODIFIED_BENCHMARK_CASES",
+        "rejected": true
+      },
+      "deleted_row": {
+        "error": "NC020_UNREGISTERED_OR_MODIFIED_BENCHMARK_CASES",
+        "rejected": true
+      },
+      "falsified_counterexample": {
+        "error": "NC020_UNREGISTERED_OR_MODIFIED_BENCHMARK_CASES",
+        "rejected": true
+      },
+      "forged_self_consistent_alternate_hash": {
+        "error": "NC020_UNREGISTERED_OR_MODIFIED_BENCHMARK_CASES",
+        "explanation": "Recomputing record_sha256 after altering a label does not help because audit compares the entire supplied list against independently regenerated canonical records, not merely against caller-controlled hashes.",
+        "rejected": true
+      },
+      "mismatched_bit_width": {
+        "error": "NC020_UNREGISTERED_OR_MODIFIED_BENCHMARK_CASES",
+        "rejected": true
+      },
+      "newly_fabricated_row": {
+        "error": "NC020_UNREGISTERED_OR_MODIFIED_BENCHMARK_CASES",
+        "rejected": true
+      },
+      "wrong_case_id": {
+        "error": "NC020_UNREGISTERED_OR_MODIFIED_BENCHMARK_CASES",
+        "rejected": true
+      },
+      "wrong_record_hash": {
+        "error": "NC020_UNREGISTERED_OR_MODIFIED_BENCHMARK_CASES",
+        "rejected": true
+      }
+    }
+  },
+  "compiled_by": "agent-event-lab session:1db9edb983ff4df9933612e7c826e55f",
+  "created_utc": "2026-11-06T04:57:24.451189+00:00",
+  "dataset": {
+    "case_set_sha256": "eccdd5b5fb43666750ad00b7a028d6b7f28a581d7c2cc290e7d04f8d23d6e733",
+    "proof_method_counts": {
+      "concrete_floating_counterexample": 2,
+      "finite_exhaustive": 126,
+      "polynomial_normal_form": 144,
+      "strict_type_rejection": 2
+    },
+    "schema": "logos.semantic-equivalence/1",
+    "seed": 20261105,
+    "sha256": "8a944ada4b2ab323433f1a7f10e63fb2244822d318cda89966ab164eed0328bd",
+    "source_sha256": {
+      "generator": "0c254d70d1319a0f9406fa900b9879289222ed65a77083cfedaff5e5f6802485",
+      "isa": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+      "semantic_objective": "964f40d9d20a0333f7d8a6982045e3219866008a2a0ddc02464083857f9970c1"
+    },
+    "split_case_counts": {
+      "test": 94,
+      "train": 108,
+      "validation": 72
+    },
+    "total_cases": 274
+  },
+  "dependencies": [
+    "Python 3 standard library",
+    "artifacts/NC-020/benchmark.py",
+    "artifacts/NC-020/test_benchmark.py",
+    "artifacts/NC-001/canonical_isa.py",
+    "artifacts/NC-019/semantic_objective.json",
+    "frozen NC-000 RLT original champion hash; no model loaded"
+  ],
+  "neural_training": false,
+  "proof_audit_initial_status": "NOT_YET_VERIFIED in generated preregistration report; independent PASS is supplied by the separate, immutable verifier records and this hash-bound release receipt.",
+  "receipt_is": "implementer-assembled binding to raw separate read-only Codex runtime evidence; not a self-generated independent verifier verdict",
+  "schema": "logos.independent-evidence/1",
+  "scope": [
+    "Integer claims are limited to exact polynomial equality over unbounded mathematical integers for the committed +, -, and * ASTs.",
+    "Bitvector claims are limited to exhaustive X,Y output-bit behavior at widths 3, 4 and 5; they do not cover flags, PC, HALT, full machine state or larger widths.",
+    "Floating-point evidence consists of two concrete Python binary64 counterexamples, not a universal floating-point theorem.",
+    "The two type-mismatch controls are strict rejections, not equivalence-class negative examples.",
+    "Family and structural-fingerprint separation is established only for this generated benchmark; historical training or pretraining independence is NOT_ESTABLISHED.",
+    "No neural model was trained or evaluated here, and there is no claim of neural learning, ISA program invention, continual learning, larger-width generalization, champion promotion or AGI."
+  ],
+  "status": "PASS",
+  "task": "NC-020",
+  "verifications": {
+    "corrected": {
+      "audited_commit": "d8ea312c6ef20d2bcb15f9a76251a9176ddf3579",
+      "final_file": "artifacts/NC-020/codex_verifier_v2_final.json",
+      "final_sha256": "6be0a2fd2188ee0df29c555931ced332fbf564f80993eb2b48199202f2353b22",
+      "trace_file": "artifacts/NC-020/codex_verifier_v2_trace.jsonl",
+      "trace_sha256": "93f3cedddbf22e60b805529ba37f20506e30152c0bbfd7ae07a9e970fa648183",
+      "verdict": "PASS",
+      "verifier": "codex-cli:01a1af34-6560-7950-9349-2aec2566732a",
+      "verifier_made_project_changes": false
+    },
+    "original": {
+      "audited_commit": "715b71a0568aecc1c0e68660f2a697bd11829b84",
+      "final_file": "artifacts/NC-020/codex_verifier_final.json",
+      "final_sha256": "6305d6cb6d360215d7cc7be01eb253f8a0dd94c7b62355ec0257d9f03587029a",
+      "limitation_remedied": "Original report summarizer did not reject mutated caller-provided cases.",
+      "trace_file": "artifacts/NC-020/codex_verifier_trace.jsonl",
+      "trace_sha256": "ca0a61ad59b0d44f361bee7945f521191df9ad770118e9bf600dfb07b8f76e47",
+      "verdict": "PASS",
+      "verifier": "codex-cli:01a1af2e-1690-7bd2-93a7-cb2c2e6916bc"
+    }
+  }
+}
