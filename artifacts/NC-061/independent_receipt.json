@@ -1,0 +1,80 @@
+{
+  "acceptance_assessment": {
+    "budget_usage_integrity": "FAIL",
+    "compounding_requires_growth_in_improvement_rate": "FAIL",
+    "equal_CPU_budget_for_improvement": "FAIL",
+    "known_good_constant_random_leak_regressed_controls": "PASS",
+    "tamper_commitment": "PASS",
+    "training_only_memorizer": "PASS control yields NO_IMPROVEMENT"
+  },
+  "baseline_results": {
+    "NC061_candidate_unit_tests": "PASS 14/14; broker job 56b7f2899ab0ea48",
+    "NC061_control_replay": "PASS expected known-good, constant, random, leak, regression, memorizer, budget-cheat classifications; job 56b7f2899ab0ea48",
+    "additional_reviewer_adversarial_controls": "PASS reproduction of 3 defects; broker jobs a24ed9d5ec1b3768 and dd46b456c669c8f7",
+    "commit_reveal_negative": "PASS seed, nonce, generator, and thresholds tampering rejected; broker job a24ed9d5ec1b3768",
+    "kernel_dag_validate": "PASS 886 nodes 1021 events before reviewer claim",
+    "kernel_unit_tests": "PASS 19/19 dag; 20/20 pull"
+  },
+  "candidate_path": "artifacts/NC-061/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "4bd00d3e2f138d7461b314d3eec64643e927acd5",
+  "candidate_sha256": "ad0a0674331493ea0ea3e02414ceb9e851cd7107382959b6b5cee5e3a9838d35",
+  "canonical_isa_sha256": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+  "counterexamples": [
+    {
+      "candidate_function": "scoreboard.compare",
+      "id": "cpu-budget-not-gated",
+      "input": "3 previous rows 0.01 CPU seconds, 0% solve; 3 current rows 3600 CPU seconds, 100% solve; equal candidates_used 3 and retention 1.0",
+      "observed": "IMPROVEMENT, 360000x CPU use accepted",
+      "reproduction": "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-061/reviewer_negative_controls.py",
+      "required": "reject/not establish improvement on unmatched CPU budgets, not merely equal candidate counts",
+      "severity": "acceptance-gate violation"
+    },
+    {
+      "candidate_function": "scoreboard.score_candidate",
+      "id": "candidate-cost-negative-or-zero",
+      "input": "3 sealed goals, known-correct answers, spent=-1 or 0 and budget=1",
+      "observed": "3/3 solved, 0 over-budget goals and candidates_used=-3 or 0",
+      "required": "check spent is a finite positive integer <= budget, and prevent forged self-declared compute usage",
+      "severity": "budget control evasion"
+    },
+    {
+      "candidate_function": "scoreboard.compounding",
+      "id": "false-compounding-flat-gain",
+      "input": "three IMPROVEMENT labels with gains [0.05,0.05,0.05]",
+      "observed": "COMPOUNDING despite flat improvement rate",
+      "required": "only assert accelerated improvement when improvement rate increases, or rename metric to nondecreasing gains",
+      "severity": "definition/claim mismatch"
+    }
+  ],
+  "evidence_pins": {
+    "control_results.json": "df4933db9f308989fba1c8cf33493049c0d06beda0dc1b12eb940ebe3c7f2f0f",
+    "scoreboard_spec.json": "f16c095cd297797731358605431901f056440c3a8ad6ebdfca0493cc4c8b90a8"
+  },
+  "next_action": "Rework owner must enforce independently measured equal CPU budgets, validate candidate usage values, and define/measure compounding as rate growth; add regression tests and republish a new pinned candidate for an independent review.",
+  "other_limits": [
+    "Local same-UID closure can read truth-table answers; known_good uses goal answers in its closure. True secrecy requires process/permissions boundary and candidate freeze; a hash only detects reveal modification.",
+    "Training overlap is supplied by the candidate caller, not independently attested.",
+    "CPU seconds per solve is measured but ignored by compare; runtime budgets are not enforced.",
+    "Proof scope is 4-bit bounded goals, not general intelligence or self-improving deployment.",
+    "This review never edited candidate code, source, scoreboard thresholds, champion or another ticket."
+  ],
+  "owner": "claude-code-turn-0f97bfac6651402eba375336293883b0",
+  "pinned_candidate_git_bytes": "PASS: exact candidate source, tests, manifest, and implementer evidence from candidate commit, checked independently",
+  "proof_scope": "Independent audit of pinned local 4-bit scoreboard and 14 candidate tests, expected controls, commit/reveal checks, plus constructed fresh adversarial inputs. FAIL demonstrates reproducible false-positive improvement/computational-budget and compounding labels. This does not allege a live trainer, or suggest modification of independently owned candidate during review.",
+  "reviewed_at_utc": "2026-11-06T14:25:44.257752+00:00",
+  "reviewer_negative_control_sha256": "a1116a12ccf513c02a8cbe3c379d5f51cda5528aba93e26273ae05381321e94f",
+  "reviewer_owned_files": [
+    "artifacts/NC-061/reviewer_negative_controls.py",
+    "artifacts/NC-061/independent_receipt.json"
+  ],
+  "schema": "logos-kernel-nc061-independent-verification-v1",
+  "source_pins": {
+    "README.md": "d41572febbc9daf5ac79a03c0778bf52bece85f482a49cf07275b14d96b0ec84",
+    "controls.py": "68d5d041fe6e412906f185ec83ef69952d5480b5df564d08ef8f78ab635b7bcd",
+    "scoreboard.py": "e0c0f4a681e75f99bc81866120dd31469f4f88efacc5ce449c82ea524e7d196b",
+    "test_scoreboard.py": "425c5e6f35ea448994cfc68ecc4a60ad6bf686ab4042117ce187c6d5f46a1223"
+  },
+  "task": "NC-061",
+  "verdict": "FAIL",
+  "verifier": "turn-d8f5aaf8cc684bcaa9ceea0c9011fee7"
+}
