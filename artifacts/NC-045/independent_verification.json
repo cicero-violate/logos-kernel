@@ -1,0 +1,115 @@
+{
+  "acceptance_assessment": {
+    "checkpoint_idempotency_and_lineage": "PASS for candidate byte identity and caller-provided optimizer/RNG digest; not semantic checkpoint inspection",
+    "crash_commit_failure_recovery": "PASS in 19-test independent replay of candidate test suite, not separate fault-injection of hardware crash",
+    "cross_project_write_boundary": "PASS for trainer CLI pathname restrictions; not OS-level same-UID confinement",
+    "operator_ready_prompt_no_false_worker_claim": "PASS; TAB_PROMPT explicitly excludes resident worker",
+    "original_champion_and_NC044_dependency_pins": "PASS, matching SHA-256 at audit",
+    "separate_trainer_git_history_and_own_ledger": "PASS",
+    "stateless_recovery_and_exclusive_ownership": "PASS for local CLI and unstarted episodes",
+    "versioned_chain_complete_task_priority_snapshot": "PASS"
+  },
+  "candidate_evidence_hashes": {
+    "stateless_recovery_receipt.json": "cfcb28b3b39eb76a719ac00316ae194fc7efc6bcdda7044710aa9a796f64d0e8",
+    "trainer_ledger_contract.json": "a4cc17d48fd9a4d3bb6b63f15901cd762a41d244d27d3e5b3340614a30839793"
+  },
+  "candidate_path": "artifacts/NC-045/MANIFEST.json",
+  "candidate_revision": "4d92876f460a19ccfa20f17a38cd8f66c1046991",
+  "candidate_sha256": "b591d3ebe023d7df481266eeca5c53af5f57d6eebd955b59df7cfc2fb54fefd4",
+  "fresh_negative_controls": {
+    "checkpoint_content_addressed_registration": "PASS",
+    "conflicting_same_step_checkpoint": "REFUSED",
+    "cross_project_checkpoint_source": "REFUSED",
+    "cross_project_task_plan": "REFUSED",
+    "exclusive_claim_other_owner_hold": "PASS",
+    "identical_checkpoint_retry_no_duplicate": "PASS",
+    "independent_genesis_and_separate_git_root": "PASS",
+    "real_ledger_byte_tamper": "REFUSED with record hash mismatch",
+    "same_owner_replay_idempotent": "PASS",
+    "symlink_source_escape": "REFUSED",
+    "sync_tampered_ledger": "REFUSED",
+    "unapproved_training_task_blocked": "PASS"
+  },
+  "frozen_external_hashes_checked": {
+    "champion": {
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    "nc044_independent_receipt": {
+      "path": "artifacts/NC-044/independent_verification.json",
+      "sha256": "0f87729f0ffe0cb715e58c53a7188a43921c27cce173f3c1776f439b26b7b9b3"
+    },
+    "nc044_manifest": {
+      "path": "artifacts/NC-044/MANIFEST.json",
+      "sha256": "6ec7932ced69cb286cc8ac5a2af337d48b18ea5c2bd3a0c0632bf393df607e98"
+    }
+  },
+  "independent_tests": [
+    {
+      "command": "cd /workspace/experiments/logos-kernel && python dag.py validate",
+      "result": "PASS, 170 nodes and 286 events before reviewer assignment"
+    },
+    {
+      "command": "cd /workspace/experiments/logos-kernel && python -m unittest -q test_dag",
+      "result": "PASS, 19/19"
+    },
+    {
+      "command": "cd /workspace/experiments/logos-kernel && python -m unittest -q test_pull",
+      "result": "PASS, 20/20"
+    },
+    {
+      "command": "cd /workspace/experiments/logos-trainer && python trainer_dag.py validate",
+      "result": "PASS, ledger seq 4, 2 tasks, git_synced true, resident_worker false, head f3c3e3406154b68a9cedfb40dbedd4920a35a0ed81c119dc2a304609c7419043"
+    },
+    {
+      "command": "cd /workspace/experiments/logos-trainer && python -m unittest -q test_trainer_dag",
+      "result": "PASS, 19/19 in 30.316 s; broker job 01de82d9794e247c"
+    },
+    {
+      "command": "cd /workspace/experiments/logos-trainer && python -m py_compile trainer_dag.py test_trainer_dag.py",
+      "result": "PASS"
+    },
+    {
+      "command": "fresh standalone temporary Git-root subprocess tests; broker job bf4937249459281c",
+      "result": "10/10 executed negative/positive probes PASS; eleventh attempted ledger mutation did not change bytes, therefore invalid test, not a product failure"
+    },
+    {
+      "command": "fresh actual JSONL byte mutation and sync refusal in separate temporary Git root; broker job 5713f8afa616a56d",
+      "result": "PASS: changed TR-001 to TR-009, validate REFUSED record hash mismatch, sync REFUSED"
+    }
+  ],
+  "limitations": [
+    "No training worker, actual gradient steps, scheduler, heartbeat or user service was installed/started.",
+    "Unapproved TR-002 stays dependency- and operator-gated; TR-001 is only a synthetic protocol canary with zero provenance pins.",
+    "Optimizer/RNG digest and claimed operator evidence are caller-provided values, not semantic attestation.",
+    "External same-UID processes can write outside this CLI; no OS-enforced filesystem sandbox is claimed.",
+    "Two-hour takeover is safe only while no real running worker exists; NC-046 must add independently verified liveness before worker startup.",
+    "A crash before accepted checkpoint can repeat physical computation; accepted identity is idempotent, not physical exactly once.",
+    "Git/hash chain protects accidental corruption and local prefix integrity, not hostile full-history rewrites or authenticated reviewer identity.",
+    "Checkpoint payloads are outside Git and need backup for real durability.",
+    "Other workers can append legitimate unrelated Logos Kernel events concurrently; this review made no modifications to their artifacts or original champion."
+  ],
+  "owner": "turn-237e86c72be347d9a2f28e16be3b318b",
+  "proof_scope": "Independent local review of pinned NC-045 source, independent trainer Git root and four-record hash-chained ledger, fresh temporary-Git subprocess negative controls, and candidate 19-case test suite. PASS establishes protocol and CLI admission/replay behavior only. This is not proof of a running neural trainer, exactly-once physical gradient execution, authenticated operator identity, tamper-proof Git, arbitrary same-UID sandbox confinement, model/optimizer/RNG semantic completeness, dataset licensing, scientific learning performance, or champion promotion.",
+  "reviewed_at_utc": "2026-11-06T14:17:06.149014+00:00",
+  "reviewer_owned_files": [
+    "artifacts/NC-045/independent_verification.json"
+  ],
+  "schema": "logos-kernel-nc045-independent-review-v1",
+  "source_git_pin_verification": "PASS: exact bytes for 8 trainer paths at pinned trainer Git commit, 2 evidence files and manifest at pinned kernel candidate commit",
+  "task": "NC-045",
+  "trainer_repository": "/workspace/experiments/logos-trainer",
+  "trainer_source_and_ledger_hashes": {
+    ".gitignore": "b28f8c40bdd683a06260cfe3e43e3b608fb3a5fa783eb5b684b67c0ee4d94d0e",
+    "AGENTS.md": "e77873b5cce0273c75e6886f6e053980cc83938515d0f0c6de4882ecb8bf4a41",
+    "README.md": "12bf62eecdafcea57f0921aa66e010d40e6abd76f7a7a0c8708b2e281b37488a",
+    "SCHEDULE.md": "8c8eb4d5d54cd639a45194ac0e6d3405774a0d1e653b278efdccbcec03a8b031",
+    "TAB_PROMPT.md": "d5f55ff2f58e114024b5e21af95f1a1e264133d3ff2eb03109e7ab4d9c5c6601",
+    "test_trainer_dag.py": "7ee3a1fd3684e65a07d171b1137be303d89dffc8ea486728edef61f67dd39245",
+    "trainer_dag.py": "22294bd65cb15bd86731fae6b53a0b9fe18e91b12051a19e3354c30cc8950865",
+    "training.jsonl": "11d92fa32b8197cb0fabef994f475426a613753beb00a0c9e645e04ea0c00955"
+  },
+  "trainer_source_git_revision": "ac5946bd58f12205235b1d5dd4d053a579c54e35",
+  "verdict": "PASS",
+  "verifier": "turn-05a8d275c7a14f75adb708a403f8595b"
+}
