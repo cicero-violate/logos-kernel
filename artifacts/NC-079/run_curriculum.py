@@ -28,10 +28,11 @@ class Ladder:
         return ("LINEAR", rng.randrange(1, self.top + 1), rng.randrange(0, self.top + 1))
 
 
-def run_arm(arm, seed, a, x, y):
+def run_arm(arm, seed, a, x, y, real_libraries=None):
+    """Returns rows and the library grown after each generation. The random arm copies the sizes of the real arm's libraries."""
     hard = s.ArithmeticWorld(seed)
     other = random.Random(f"curriculum|{arm}|{seed}|library")
-    solutions, library, seen, retention, rows = [], [], set(), [], []
+    solutions, library, seen, retention, rows, grown = [], [], set(), [], [], []
     for generation in range(a.generations):
         sealed = s.draw_goals(hard, s.exam_rng("curriculum", seed, generation, "sealed"), a.sealed_goals, "sealed")
         solved, used, cpu = 0, 0, 0.0
@@ -57,8 +58,9 @@ def run_arm(arm, seed, a, x, y):
                 if len(retention) < a.retention_goals:
                     retention.append(goal)
         real = s.harvest(solutions)
-        library = [] if arm == "none" else s.random_library(other, real) if arm == "random_library" else real
-    return rows
+        grown.append(real)
+        library = [] if arm == "none" else s.random_library(other, real_libraries[generation]) if arm == "random_library" else real
+    return rows, grown
 
 
 def main():
@@ -72,10 +74,14 @@ def main():
     p.add_argument("--out", type=Path, default=HERE / "curriculum_results.json")
     a = p.parse_args()
     x, y = s.probes()
-    runs = {}
+    runs, real_libraries = {}, {}
     for arm in ARMS:
         for seed in a.seeds:
-            rows = run_arm(arm, seed, a, x, y)
+            rows, grown = run_arm(arm, seed, a, x, y, real_libraries.get(seed))
+            if arm == "library":
+                real_libraries[seed] = grown
+            elif arm == "random_library":
+                s.assert_matched_sizes(runs["library"][str(seed)], rows)
             runs.setdefault(arm, {})[str(seed)] = rows
             print("CURRICULUM", arm, seed, [round(r["solve_rate"], 2) for r in rows], "lib", rows[-1]["library_size"], "big", max(r["largest_solution"] for r in rows), "cpu", round(sum(r["cpu_seconds"] for r in rows), 1), flush=True)
     def at(arm, g):

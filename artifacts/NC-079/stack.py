@@ -242,6 +242,13 @@ def random_library(rng, like):
     return [build(size(e)) for e in like]
 
 
+def assert_matched_sizes(real_rows, random_rows):
+    """The random arm's library must match the real arm's size at every generation of the same world and seed."""
+    for real, fake in zip(real_rows, random_rows, strict=True):
+        if real["library_size"] != fake["library_size"]:
+            raise ValueError(f"generation {real['generation']}: real library {real['library_size']}, random {fake['library_size']}")
+
+
 def exam_rng(world_name, seed, generation, kind):
     """Goals never depend on the arm, so every arm of a seed faces the same sealed exam and training goals."""
     return random.Random(f"{world_name}|{seed}|{generation}|{kind}")

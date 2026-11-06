@@ -82,6 +82,25 @@ class StackTests(unittest.TestCase):
             expr = ("SHL", expr)
         return expr
 
+    def test_random_arm_matches_the_real_arm_at_every_generation(self):
+        """Regression: the random arm once copied sizes from its own solutions, which fall behind the real arm's."""
+        import argparse
+        import run_compounding as rc
+        import run_curriculum as cu
+        x, y = s.probes()
+        a = argparse.Namespace(generations=4, budget=3000, train_goals=10, sealed_goals=3, retention_goals=3)
+        for world in (s.StructuredWorld, s.UnstructuredWorld):
+            real, grown = rc.run_arm(world, "library", 11, a, x, y)
+            fake, _ = rc.run_arm(world, "random_library", 11, a, x, y, grown)
+            s.assert_matched_sizes(real, fake)
+        real, grown = cu.run_arm("library", 11, a, x, y)
+        fake, _ = cu.run_arm("random_library", 11, a, x, y, grown)
+        s.assert_matched_sizes(real, fake)
+        self.assertGreater(real[-1]["library_size"], 0, "the check must not pass on empty libraries")
+        real[-1] = {**real[-1], "library_size": real[-1]["library_size"] + 1}
+        with self.assertRaises(ValueError):
+            s.assert_matched_sizes(real, fake)
+
     def test_every_arm_gets_the_same_exam(self):
         # Reviewer counterexample: arms shared only 0 to 3 of 30 goals.
         for cls in (s.StructuredWorld, s.ArithmeticWorld, s.UnstructuredWorld):

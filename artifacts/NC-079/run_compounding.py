@@ -16,11 +16,12 @@ ARMS = ("library", "none", "random_library")
 THRESHOLDS = dict(s.sb.THRESHOLDS)
 
 
-def run_arm(world_cls, arm, seed, a, x, y):
+def run_arm(world_cls, arm, seed, a, x, y, real_libraries=None):
+    """Returns rows and the library grown after each generation. The random arm copies the sizes of the real arm's libraries."""
     world = world_cls(seed)
     other = random.Random(f"{arm}|{seed}|library")
     solutions, library, seen, rows = [], [], set(), []
-    retention_goals = []
+    retention_goals, grown = [], []
     for generation in range(a.generations):
         row, learned = s.run_generation(world, library, a.budget, s.exam_rng(world.name, seed, generation, "sealed"),
                                         s.exam_rng(world.name, seed, generation, "train"), x, y, a.train_goals, a.sealed_goals, seen)
@@ -30,10 +31,11 @@ def run_arm(world_cls, arm, seed, a, x, y):
         rows.append(row)
         solutions += learned
         real = s.harvest(solutions)
-        library = real if arm == "library" else [] if arm == "none" else s.random_library(other, real)
+        grown.append(real)
+        library = real if arm == "library" else [] if arm == "none" else s.random_library(other, real_libraries[generation])
         if arm == "library":
             retention_goals = solutions[:a.retention_goals]
-    return rows
+    return rows, grown
 
 
 def main():
@@ -49,10 +51,15 @@ def main():
     x, y = s.probes()
     runs = {}
     for world_cls in WORLDS:
+        real_libraries = {}
         for arm in ARMS:
             for seed in a.seeds:
                 began = time.process_time()
-                rows = run_arm(world_cls, arm, seed, a, x, y)
+                rows, grown = run_arm(world_cls, arm, seed, a, x, y, real_libraries.get(seed))
+                if arm == "library":
+                    real_libraries[seed] = grown
+                elif arm == "random_library":
+                    s.assert_matched_sizes(runs[world_cls.name]["library"][str(seed)], rows)
                 runs.setdefault(world_cls.name, {}).setdefault(arm, {})[str(seed)] = rows
                 print(world_cls.name, arm, seed, "rates", [round(r["solve_rate"], 2) for r in rows], "lib", rows[-1]["library_size"], "big", rows[-1]["largest_solution"], "cpu", round(time.process_time() - began, 1), flush=True)
     analysis = {}
