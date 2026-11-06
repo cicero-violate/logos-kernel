@@ -1,0 +1,204 @@
+{
+  "acceptance_proof_scope": "3 fresh-process trials per arm; 128 fixed 8-bit addition cases; 5 timed repeats each; post-prediction exact oracle; no training or calibrated power measurements.",
+  "baseline_summary": {
+    "carry_gru_champion_seed11": {
+      "accuracy": 1.0,
+      "model_disk_bytes": 30866,
+      "peak_rss_kib_max": 263556,
+      "verified_answers_per_cpu_s_total": 87407.426089396
+    },
+    "dense_gemm_control": {
+      "accuracy": 1.0,
+      "model_disk_bytes": 0,
+      "peak_rss_kib_max": 257192,
+      "verified_answers_per_cpu_s_total": 89058.21907403409
+    },
+    "rlt_trained_seed11": {
+      "accuracy": 1.0,
+      "model_disk_bytes": 117461,
+      "peak_rss_kib_max": 272740,
+      "verified_answers_per_cpu_s_total": 12356.972388847196
+    },
+    "scalar_recurrence_control": {
+      "accuracy": 1.0,
+      "model_disk_bytes": 0,
+      "peak_rss_kib_max": 251664,
+      "verified_answers_per_cpu_s_total": 528390.8242731368
+    },
+    "sparse_local_control": {
+      "accuracy": 1.0,
+      "model_disk_bytes": 0,
+      "peak_rss_kib_max": 252968,
+      "verified_answers_per_cpu_s_total": 319202.2603510108
+    }
+  },
+  "cpu_fingerprint": {
+    "affinity_cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "cpu_cgroup_quota": null,
+    "cpuinfo_sha256": "1d2b10b6cb0b450dea26a31a10ef6605eef57ccdd209148af569d6f3b3388997",
+    "memory_cgroup_limit": null,
+    "model_name": "Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz",
+    "platform": [
+      "Linux",
+      "archlinux",
+      "6.12.10-1-lts",
+      "#1 SMP PREEMPT_DYNAMIC Mon, 20 Jan 2025 06:22:02 +0000",
+      "x86_64",
+      ""
+    ],
+    "python": "3.14.6 (main, Jun 15 2026, 11:36:54) [GCC 16.1.1 20260430]",
+    "python_executable_sha256": "2700be1aabe3687bd597f21b0eac3b9bbdf7417e93035255a9286c67935b59bd",
+    "torch": "2.12.1",
+    "torch_init_sha256": "d9dfff4b75d46e4c75572200a3466b70231d05b0318e38ac1bd121789165fb49"
+  },
+  "declared_task_outputs": [
+    "artifacts/NC-029/cpu_baseline.json",
+    "artifacts/NC-029/measurement_protocol.json"
+  ],
+  "dependencies": {
+    "code": "bench_cpu.py, host_probe.py, validate_results.py, test_bench_cpu.py",
+    "gpu": "not used",
+    "network": "none used",
+    "original_repo": "/workspace/experiments/rlt_split_algorithms_ablation_v1",
+    "runtime": "Linux Python>=3.10, PyTorch CPU build, Git",
+    "task_history": "dag.py, instructions.jsonl, artifacts/NC-000/inventory.json",
+    "upstream_code_and_weights": "all SHA-256 entries in source_dependency_provenance"
+  },
+  "independent_verifier": null,
+  "limitations": [
+    "Exact symbolic controls contain the binary addition law; they are not learned, trained, or parameter-matched with RLT.",
+    "Dense 16-state matrix control is not a benchmark of a full dense Transformer; compare kernels only, no generalized architectural efficiency claim.",
+    "Only 128 8-bit tasks; not 16/32-bit transfer, not a statistical power/performance claim.",
+    "Repeated timing trials on one host can be affected by system load/cache/turbo and are not independent learning seeds.",
+    "CUDA disabled but no OS-enforced CPU isolation or calibrated power meter.",
+    "No new neural model trained; training energy, training time, and training data cost not measured.",
+    "Original task JSONL outputs declare measurement_protocol.json and cpu_baseline.json but no independent receipt path; suggested independent_verification.json is a reviewer-only path, not claimed as an original declared output.",
+    "No independent reviewer receipt or verdict exists at publication."
+  ],
+  "measured_arcs": [
+    "dense_gemm_control",
+    "sparse_local_control",
+    "scalar_recurrence_control",
+    "rlt_trained_seed11",
+    "carry_gru_champion_seed11"
+  ],
+  "negative_controls": [
+    "XOR1 corruption of outputs causes correctness failure in all 3 analytic controls",
+    "altering one recorded correctness metric causes validate_results.py to reject it"
+  ],
+  "original_champion_bundle_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+  "owner": "turn-a03cef0c859c4bcaa4f8cf0760d99e72",
+  "reproduce_exact_commands": [
+    "python dag.py validate",
+    "python -m unittest -q test_dag",
+    "python -m unittest -q test_pull",
+    "PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python -m unittest -q artifacts/NC-029/test_bench_cpu.py",
+    "PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python artifacts/NC-029/validate_results.py",
+    "PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python artifacts/NC-029/bench_cpu.py --run --output artifacts/NC-029/replay_local.json"
+  ],
+  "reviewer_receipt_present": false,
+  "schema_version": 1,
+  "source_dependency_provenance": {
+    "checkpoints": {
+      "carry_gru_champion_seed11": {
+        "bytes": 30866,
+        "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/outputs/new16/carry_recurrence_seed11.pt",
+        "sha256": "b3467d7bdc851ba478a4237ca1f9edbdd7fc193ff3df1a48f93ddd3367ef6b42"
+      },
+      "rlt_trained_seed11": {
+        "bytes": 117461,
+        "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/task_conditioned_rlt_v1/multitask_train_v1/outputs/seed11/seed11_conditioned_step640.pt",
+        "sha256": "47b7b494a8a7b39947ba8be8a52b3fa04337037db4367d91f912071741f4a884"
+      }
+    },
+    "inventory_sha256": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+    "original_rlt_revision": "3bcdc2489bd933d2f94fb2b2a86040e859f85ebb",
+    "sources": {
+      "algorithms/carry_recurrence/module.py": {
+        "bytes": 1144,
+        "sha256": "fb72523ea89f0990bb3fbe6dee1f62ee534bbf3287f76a3e4eff5e9e45118669"
+      },
+      "config.json": {
+        "bytes": 5209,
+        "sha256": "ca0ec6367535ea01264ccd00ffe1a32f4ebd65aaee364705e173193daf88ec83"
+      },
+      "rlt_core.py": {
+        "bytes": 6601,
+        "sha256": "3c4abc18752236d3118487213fcfa1cf4a18e52e2ceb17ad52a0cdec141013c7"
+      },
+      "snapshots/current_unified_v3.pt": {
+        "bytes": 1519075,
+        "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+      },
+      "task_conditioned_rlt.py": {
+        "bytes": 5398,
+        "sha256": "99f70b03e2e864d1635ffdbd3ce56598d915bcc1673e1492964d3322714335fb"
+      }
+    }
+  },
+  "source_files_and_evidence_sha256": {
+    "artifacts/NC-029/REVIEW.md": {
+      "bytes": 3668,
+      "sha256": "f79a8dd863a42ad74054825b60634dbea5ff65e57f4f4fa136adfc886110fd19"
+    },
+    "artifacts/NC-029/bench_cpu.py": {
+      "bytes": 17168,
+      "sha256": "40973809ea03c6b4e7a9b676eadb53c37bcbc6577b1444b5d99d834d409d72f7"
+    },
+    "artifacts/NC-029/cpu_baseline.json": {
+      "bytes": 21441,
+      "sha256": "3c2a0c90e34e727ce2f8912a1d0f19c712839ab186b5edee9d9755055f23ca51"
+    },
+    "artifacts/NC-029/host_environment.json": {
+      "bytes": 4126,
+      "sha256": "dee73a3c64c582bedfe64f41023978d9033fe6149c9d5d58a7a70a4584820e0f"
+    },
+    "artifacts/NC-029/host_probe.py": {
+      "bytes": 2202,
+      "sha256": "2d8eb703fd06c5f0cf4abe4b023412affdc49917ae66b7771d4a83aec7608b0d"
+    },
+    "artifacts/NC-029/measurement_protocol.json": {
+      "bytes": 2926,
+      "sha256": "ecdccae8569e461021d934c27825a1590308a734c4b78ffb0a84b3d6b060135e"
+    },
+    "artifacts/NC-029/test_bench_cpu.py": {
+      "bytes": 2468,
+      "sha256": "f04a1d4d21b972180b4513fe86bbdbcdb6eee47cb13ee6331da2c02484b3296d"
+    },
+    "artifacts/NC-029/validate_results.py": {
+      "bytes": 4250,
+      "sha256": "66d239b62a4252c5b7d7a7c0cb0a5c917b6f1320a0be046b4a130f60d4c72c57"
+    }
+  },
+  "source_scope": "read_only_original_models_and_frozen_checkpoints",
+  "status": "IMPLEMENTER_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+  "suggested_independent_reviewer_receipt": "artifacts/NC-029/independent_verification.json",
+  "task": "NC-029",
+  "tasks": {
+    "cases": 128,
+    "dataset_seed": 29062026,
+    "pair_sha256": "f6e418663334227ceeddbba4215ad745b3d02166a7d5109a690f093a8fac8090",
+    "repetitions_per_trial": 5,
+    "same_cases_across_trials": true,
+    "timing_trials": 3,
+    "unique_pairs": 128,
+    "width": 8
+  },
+  "within_class_pareto": {
+    "fixed_symbolic_carry_circuit": [
+      "scalar_recurrence_control"
+    ],
+    "frozen_trained_neural_model": [
+      "carry_gru_champion_seed11"
+    ]
+  }
+}

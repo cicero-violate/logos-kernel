@@ -1,0 +1,48 @@
+{
+  "avoid_comparing_symbolic_exactness_to_neural_learning": true,
+  "controls_are_not_neural_models": true,
+  "dataset_seed": 29062026,
+  "dense_gemm": "16-state dense carry-transition matrices, exactly specified from binary addition rules",
+  "environment": "CPU-only, threads=1, CUDA_VISIBLE_DEVICES blank, PYTHONDONTWRITEBYTECODE=1",
+  "limitations": [
+    "Exact symbolic controls contain the binary addition law; they are not learned, trained, or parameter-matched with RLT.",
+    "Dense 16-state matrix control is not a benchmark of a full dense Transformer; compare kernels only, no generalized architectural efficiency claim.",
+    "Only 128 8-bit tasks; not 16/32-bit transfer, not a statistical power/performance claim.",
+    "Repeated timing trials on one host can be affected by system load/cache/turbo and are not independent learning seeds.",
+    "CUDA disabled but no OS-enforced CPU isolation or calibrated power meter.",
+    "No new neural model trained; training energy, training time, and training data cost not measured."
+  ],
+  "measurement": {
+    "accuracy": "correct predictions / 128 same tasks; timed repeats share labels, not independent samples",
+    "cold_first_forward_wall_s": "first model call before warmups",
+    "cold_process": "fresh Python worker per arm/trial; outer worker_launch_wall_s includes startup plus full run",
+    "cpu_s": "time.process_time() includes execution and reference verification, excludes startup/load",
+    "energy_joules": "null; no calibrated RAPL/external sensor was used",
+    "load_wall_s": "within fresh worker after importing torch until model ready",
+    "peak_rss_kib": "Linux resource.getrusage(RUSAGE_SELF).ru_maxrss; includes Python/PyTorch runtime",
+    "warm_timed": "2 warmup calls then 5 full-batch forward + postprediction exact checks"
+  },
+  "neural": "frozen trained 7-task RLT/addition and frozen active carry GRU seed11",
+  "repetitions_per_trial": 5,
+  "scalar": "single binary carry using boolean recurrence, exact symbolic rules",
+  "scientific_scope": "8-bit unsigned modular addition, 128 fixed operand pairs",
+  "source_inputs": [
+    "artifacts/NC-000/inventory.json",
+    "config.json",
+    "rlt_core.py",
+    "task_conditioned_rlt.py",
+    "algorithms/carry_recurrence/module.py",
+    "snapshots/current_unified_v3.pt",
+    "task_conditioned_rlt_v1/multitask_train_v1/outputs/seed11/seed11_conditioned_step640.pt",
+    "outputs/new16/carry_recurrence_seed11.pt"
+  ],
+  "sparse_local": "two carry lanes with input-local sparse state transition, exact symbolic rules",
+  "status": "PREREGISTERED_WITH_BENCHMARK_SOURCE",
+  "task": "NC-029",
+  "task_cases": 128,
+  "task_generation": "64 fixed ordered edge pairs + 64 seeded random ordered pairs; repeats are timings, not independent novel examples",
+  "task_sha256": "f6e418663334227ceeddbba4215ad745b3d02166a7d5109a690f093a8fac8090",
+  "trials": 3,
+  "version": 1,
+  "width_bits": 8
+}
