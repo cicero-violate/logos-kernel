@@ -1,0 +1,229 @@
+{
+  "arguments": {
+    "random8": 4096,
+    "seeds": [
+      11,
+      19,
+      29
+    ]
+  },
+  "champion_smoke": {
+    "samples": [
+      {
+        "command": "python run.py add 7 9 --width 8",
+        "expected": 16,
+        "model_route": "carry_recurrence",
+        "passed": true,
+        "predicted": 16
+      },
+      {
+        "command": "python run.py --seed 19 core sub 7 9 --width 8",
+        "expected": 254,
+        "model_route": "task_conditioned_rlt_TRAINED_640",
+        "passed": true,
+        "predicted": 254
+      }
+    ],
+    "status": "PASS"
+  },
+  "environment": {
+    "cuda": false,
+    "device": "cpu",
+    "python": "3.14.6",
+    "torch": "2.12.1"
+  },
+  "inventory": {
+    "errors": [],
+    "files_checked": 60,
+    "sha256": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f",
+    "status": "PASS"
+  },
+  "is_independent_agent_verification": false,
+  "limits": [
+    "Source verifier imports original model and independent host replay; it is not a separate-agent proof.",
+    "Fixed 8-op ROM and Python state control; no neural invention of multiplication.",
+    "Only exhaustive over 4-bit pairs; 8-bit samples do not establish all 65,536 pairs.",
+    "Original seven-operation RLT champion was not jointly trained with ISA specialist.",
+    "Historical v1 standalone controller fails 8/14 cases; v2 passes.",
+    "Independent agent must inspect code, rerun tests, and issue a separate baseline_receipt.json."
+  ],
+  "pass_event_authorized": false,
+  "role": "IMPLEMENTER_REPLAY_NOT_INDEPENDENT_AGENT",
+  "shared_isa": {
+    "full_8bit_space_exhaustive": false,
+    "mode": "one shared RLT causal-attention Transformer, task heads and fixed ROM host",
+    "no_older_pretraining_disjointness_proof": true,
+    "same_seeded_random_pairs": true,
+    "seed_results": [
+      {
+        "arm": "jointly_tuned",
+        "checkpoint_sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951",
+        "eightbit_sampled": {
+          "correct": 4217,
+          "edge_pairs": 121,
+          "random_pairs": 4096,
+          "tested": 4217
+        },
+        "fourbit_exhaustive": {
+          "correct": 256,
+          "tested": 256
+        },
+        "local_truth": {
+          "correct": 320,
+          "tested": 320
+        },
+        "pass": true,
+        "seed": 11,
+        "syntax": {
+          "correct": 320,
+          "tested": 320
+        }
+      },
+      {
+        "arm": "jointly_tuned",
+        "checkpoint_sha256": "1ca7edc7358d2132aa6ffedf17e281cfa060f989defffffeb9520945470ea1d0",
+        "eightbit_sampled": {
+          "correct": 4217,
+          "edge_pairs": 121,
+          "random_pairs": 4096,
+          "tested": 4217
+        },
+        "fourbit_exhaustive": {
+          "correct": 256,
+          "tested": 256
+        },
+        "local_truth": {
+          "correct": 320,
+          "tested": 320
+        },
+        "pass": true,
+        "seed": 19,
+        "syntax": {
+          "correct": 320,
+          "tested": 320
+        }
+      },
+      {
+        "arm": "jointly_tuned",
+        "checkpoint_sha256": "97e14244736759f2377433ef38ede534c25b414daf6f836bf2eb2ac72cf37e68",
+        "eightbit_sampled": {
+          "correct": 4217,
+          "edge_pairs": 121,
+          "random_pairs": 4096,
+          "tested": 4217
+        },
+        "fourbit_exhaustive": {
+          "correct": 256,
+          "tested": 256
+        },
+        "local_truth": {
+          "correct": 320,
+          "tested": 320
+        },
+        "pass": true,
+        "seed": 29,
+        "syntax": {
+          "correct": 320,
+          "tested": 320
+        }
+      }
+    ],
+    "source_program_learned": false,
+    "status": "PASS"
+  },
+  "standalone_isa": {
+    "controllers": [
+      {
+        "checkpoint_sha256": "44ccbfa69922129af8056c798c3df40baa34fd73692496a64d873669454c9cee",
+        "correct": 6,
+        "failed_cases": [
+          {
+            "a": 13,
+            "b": 11,
+            "halted": false,
+            "predicted": 143,
+            "steps": 75,
+            "target": 143
+          },
+          {
+            "a": 7,
+            "b": 9,
+            "halted": false,
+            "predicted": 63,
+            "steps": 75,
+            "target": 63
+          },
+          {
+            "a": 3,
+            "b": 2,
+            "halted": false,
+            "predicted": 6,
+            "steps": 75,
+            "target": 6
+          },
+          {
+            "a": 0,
+            "b": 0,
+            "halted": false,
+            "predicted": 0,
+            "steps": 75,
+            "target": 0
+          },
+          {
+            "a": 1,
+            "b": 0,
+            "halted": false,
+            "predicted": 0,
+            "steps": 75,
+            "target": 0
+          },
+          {
+            "a": 0,
+            "b": 255,
+            "halted": false,
+            "predicted": 0,
+            "steps": 75,
+            "target": 0
+          },
+          {
+            "a": 2,
+            "b": 3,
+            "halted": false,
+            "predicted": 6,
+            "steps": 75,
+            "target": 6
+          },
+          {
+            "a": 15,
+            "b": 15,
+            "halted": false,
+            "predicted": 225,
+            "steps": 75,
+            "target": 225
+          }
+        ],
+        "mode": "Transformer controller + frozen MLP arithmetic",
+        "tested": 14,
+        "version": "v1"
+      },
+      {
+        "checkpoint_sha256": "85a35a6d50b8a14eb7b202a482835736f7ee1abfc466ecf92f0b142a6a2c6df1",
+        "correct": 14,
+        "failed_cases": [],
+        "mode": "Transformer controller + frozen MLP arithmetic",
+        "tested": 14,
+        "version": "v2"
+      }
+    ],
+    "historical_v1_failure_is_expected": true,
+    "mlp": {
+      "checkpoint_sha256": "e39e973b8da75ad20f9d509221f3faabbb000dc5a92e34bef4096b3f5efb5d85",
+      "correct": 10,
+      "tested": 10
+    },
+    "mode": "standalone causal NeuralISA MLP + separate v1/v2 Transformer controllers",
+    "status": "PASS"
+  },
+  "status": "IMPLEMENTER_REPLAY_PASS",
+  "task": "NC-000"
+}
