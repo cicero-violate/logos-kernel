@@ -1,0 +1,355 @@
+{
+  "evidence_files": {
+    "README.md": {
+      "bytes": 4704,
+      "path": "artifacts/NC-003/README.md",
+      "sha256": "f69da3f0aa60c93c0a2ec16bc4edfd1b8326a667ee10df8ce91f3be79febf551"
+    },
+    "codex_verifier_final.json": {
+      "bytes": 10995,
+      "path": "artifacts/NC-003/codex_verifier_final.json",
+      "sha256": "63d9c75f1cce5bfeda5eafe4a726de5d06a2beb8567888af0e6f88f7f9c8e2d8"
+    },
+    "codex_verifier_trace.jsonl": {
+      "bytes": 156161,
+      "path": "artifacts/NC-003/codex_verifier_trace.jsonl",
+      "sha256": "6c6f502beaaffada872ce1d9d5165873f5dd8b1d3c2293bd4a6401b95e7f008a"
+    },
+    "host_leakage_audit.json": {
+      "bytes": 10462,
+      "path": "artifacts/NC-003/host_leakage_audit.json",
+      "sha256": "6e2518a5c36e55a543e50c0f2d77b93f9e82ff8323aa2dd5a745c08dd9f7aac4"
+    },
+    "host_leakage_audit.py": {
+      "bytes": 8589,
+      "path": "artifacts/NC-003/host_leakage_audit.py",
+      "sha256": "618e4ca09bc9e2a5e7f9f007f70c9279b7172282398049da73db599c03a4b9e1"
+    },
+    "replay_independent.py": {
+      "bytes": 15406,
+      "path": "artifacts/NC-003/replay_independent.py",
+      "sha256": "687da1a0b253eb4ac060f7af237e625f80f51d1f884e6230020923595127b8ee"
+    },
+    "test_replay.py": {
+      "bytes": 7305,
+      "path": "artifacts/NC-003/test_replay.py",
+      "sha256": "1d17c7ed048fd324674d60aaa36825950faa5d831d1352409cfc4ab473399eac"
+    },
+    "verification.json": {
+      "bytes": 44088,
+      "path": "artifacts/NC-003/verification.json",
+      "sha256": "f2432e950afff2b09654f82147bb62c35b5591240e7829892b38c77a85f62327"
+    },
+    "verifier_prompt.txt": {
+      "bytes": 3886,
+      "path": "artifacts/NC-003/verifier_prompt.txt",
+      "sha256": "9b28e1b5101eeb44a545517f79d5ff3ca5733572fa6f309d69d8896a5e0db323"
+    }
+  },
+  "exact_verifier_commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python dag.py validate",
+      "head_sha256": "db26b330bb036e5cb6f37c6f926e1037d794d85106a685d032fc545b32f2bedc",
+      "reported_events": 34,
+      "reported_nodes": 19,
+      "result": "PASS"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q test_dag",
+      "errors": 0,
+      "failed": 0,
+      "passed": 17
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-003 -p test_replay.py",
+      "errors": 0,
+      "failed": 0,
+      "passed": 8
+    },
+    {
+      "command": "Fresh-process Python replay importing unified_shared_v1.verify_shared.load, verify_shared.local_oracle, and verify_hybrid_independent.independent; verify_shared.verify was not invoked",
+      "result": "completed",
+      "writes": false
+    },
+    {
+      "command": "Fresh-process direct SHA-256 recomputation over all NC-000 inventory entries and all six training receipts/checkpoints/source-hash sets",
+      "result": "completed",
+      "writes": false
+    },
+    {
+      "command": "git diff --exit-code 96328340e14fb15d8884117b4198d6773922968f -- audited NC-003 files",
+      "result": "clean"
+    }
+  ],
+  "exhaustive_65536_plan_only": {
+    "acceptance_scope": "Full 65,536 operand-pair enumeration would still not prove all arbitrary machine/register/CFG states, general math reasoning, or autonomous program synthesis",
+    "arms": [
+      "jointly_tuned"
+    ],
+    "branch_coverage_plan": "Instrument PC=0 JZ_B, PC=2 JZ_T with zero/nonzero values, explicit PC=6 loop, PC=7 HALT; include off-distribution register snapshots for all eight PCs and both branch directions, with PC/flag correctness and 75-step bounds",
+    "counterexample_handling": "Persist every failure with operands, full trace and hash; any failed/unhalted case blocks whole-arm unconditional correctness and champion promotion",
+    "domain": "unsigned 8-bit ordered operand pairs (a,b), total=256*256=65536",
+    "enumeration": "index 0..65535 -> a=floor(index/256), b=index mod 256",
+    "pairs_per_shard": 1024,
+    "seeds": [
+      11,
+      19,
+      29
+    ],
+    "shards": 64,
+    "status": "PROPOSED_NOT_EXECUTED",
+    "teacher_forcing_leakage_plan": "Cross-check train/validation controller state hashes, exclude known train pairs, create unseen combinations of PC, registers, and branch directions; report pretraining overlap as UNKNOWN until recovered",
+    "verify_fields": [
+      "checkpoint/source SHA",
+      "predicted register result",
+      "neural halted",
+      "cycle_count <=75",
+      "predicted opcode/PC trace",
+      "postprediction oracle"
+    ]
+  },
+  "failed_cases_in_excluded_arm": [
+    {
+      "actual": 19293,
+      "arm": "frozen_shared",
+      "disposition": "FAIL and EXCLUDED",
+      "expected": 13629,
+      "halted": true,
+      "pair": [
+        177,
+        77
+      ],
+      "score": "4216/4217",
+      "seed": 19
+    }
+  ],
+  "failed_cases_in_qualified_arm": [],
+  "implementation": {
+    "commit": "96328340e14fb15d8884117b4198d6773922968f",
+    "source_hashes": {
+      "artifacts/NC-003/README.md": "f69da3f0aa60c93c0a2ec16bc4edfd1b8326a667ee10df8ce91f3be79febf551",
+      "artifacts/NC-003/host_leakage_audit.json": "6e2518a5c36e55a543e50c0f2d77b93f9e82ff8323aa2dd5a745c08dd9f7aac4",
+      "artifacts/NC-003/host_leakage_audit.py": "618e4ca09bc9e2a5e7f9f007f70c9279b7172282398049da73db599c03a4b9e1",
+      "artifacts/NC-003/replay_independent.py": "687da1a0b253eb4ac060f7af237e625f80f51d1f884e6230020923595127b8ee",
+      "artifacts/NC-003/test_replay.py": "1d17c7ed048fd324674d60aaa36825950faa5d831d1352409cfc4ab473399eac",
+      "artifacts/NC-003/verification.json": "f2432e950afff2b09654f82147bb62c35b5591240e7829892b38c77a85f62327"
+    }
+  },
+  "implementer": "1db9edb983ff4df9933612e7c826e55f",
+  "independent_measured_results": {
+    "branch_probes": {
+      "checkpoint": "jointly_tuned seed11",
+      "results": [
+        {
+          "B": 0,
+          "current_PC": 0,
+          "decoded_next_PC": 7,
+          "decoded_opcode": 0
+        },
+        {
+          "B": 3,
+          "current_PC": 0,
+          "decoded_next_PC": 1,
+          "decoded_opcode": 0
+        },
+        {
+          "T": 0,
+          "current_PC": 2,
+          "decoded_next_PC": 4,
+          "decoded_opcode": 2
+        },
+        {
+          "T": 1,
+          "current_PC": 2,
+          "decoded_next_PC": 3,
+          "decoded_opcode": 2
+        }
+      ],
+      "scope": "Confirms zero/nonzero behavior for four selected PC0/PC2 states only; it is not proof over all branch/register states."
+    },
+    "dataset": {
+      "construction": "Python random.Random(12043148), 4096 ordered draws using randrange(256) for each operand, followed by the 11x11 cross-product of edges [0,1,2,3,7,15,31,63,127,128,255]",
+      "duplicate_evaluations": 133,
+      "eight_bit_domain": 65536,
+      "evaluations": 4217,
+      "four_bit_construction": "all ordered pairs a,b in range(16)",
+      "four_bit_exhaustive": "256/256",
+      "same_pair_list_for_all_seeds": true,
+      "unique_coverage_fraction": "4084/65536",
+      "unique_ordered_pairs": 4084
+    },
+    "fresh_source_host_measurements": {
+      "frozen_shared": {
+        "seed11": {
+          "four_bit_MUL": "256/256",
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "sampled_edge_8bit_MUL": "4217/4217"
+        },
+        "seed19": {
+          "four_bit_MUL": "256/256",
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "sampled_edge_8bit_MUL": "4216/4217",
+          "status": "EXCLUDED"
+        },
+        "seed29": {
+          "four_bit_MUL": "256/256",
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "sampled_edge_8bit_MUL": "4217/4217"
+        }
+      },
+      "host": "verify_hybrid_independent.independent",
+      "jointly_tuned": {
+        "seed11": {
+          "four_bit_MUL": "256/256",
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "sampled_edge_8bit_MUL": "4217/4217"
+        },
+        "seed19": {
+          "four_bit_MUL": "256/256",
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "sampled_edge_8bit_MUL": "4217/4217"
+        },
+        "seed29": {
+          "four_bit_MUL": "256/256",
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "sampled_edge_8bit_MUL": "4217/4217"
+        }
+      },
+      "loader": "verify_shared.load",
+      "local_oracle": "constructed directly by verify_shared.local_oracle"
+    },
+    "interventions": {
+      "all_six_checkpoints": {
+        "flipped_decoded_next_PC": "0/8 each",
+        "unmodified": "8/8 each",
+        "zero_arithmetic": "0/8 each"
+      },
+      "cases": [
+        [
+          13,
+          11
+        ],
+        [
+          255,
+          255
+        ],
+        [
+          37,
+          63
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          127,
+          128
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "causal_result": "Both interventions degraded every arm/seed relative to its unmodified probe result."
+    },
+    "promotion": "No default or champion promotion authorized.",
+    "runtime_boundary": {
+      "host": "Python performs decoded-op dispatch, bit indexing, register routing, the 75-cycle loop, and supplies the fixed eight-instruction shift-and-add ROM.",
+      "neural": "Frozen SharedRLTISA logits decode opcode, next PC, HALT, local arithmetic bits, and opcode meaning. The controller forward receives fixed ROM embeddings, four register tensors, and current PC; teacher next-PC and teacher opcode are not forward inputs.",
+      "oracle": "The reference product a*b is computed after rollout for scoring and was not substituted into inference.",
+      "training": {
+        "controller_supervision": "Teacher-generated controller states supervised opcode, next-PC, and HALT with cross-entropy.",
+        "integration_direct_MUL_answer_targets": 0,
+        "interpretation": "No claim of pristine multiplication-disjoint training, autonomous program invention, or absence of all training contamination is supported.",
+        "jointly_tuned_local_supervision": "All 320 primitive truth-table rows were replayed.",
+        "source_pretraining": "The earlier task-conditioned RLT checkpoint included MUL training."
+      }
+    },
+    "selected_arm": "jointly_tuned",
+    "selected_arm_gate": "All registered selected-arm checks reproduced for seeds 11, 19, and 29.",
+    "test_totals": {
+      "ledger_validation": "PASS",
+      "unittest_errors": 0,
+      "unittest_failed": 0,
+      "unittest_passed": 25
+    }
+  },
+  "limitations": [
+    "The 4217 eight-bit evaluations contain only 4084 unique ordered pairs and are not exhaustive over 65536 pairs.",
+    "The operand list is reused across seeds, so the three seeds are not three independent datasets.",
+    "All 320 local primitive patterns were supervised; 320/320 is retention of a trained truth table, not novel Boolean-rule reasoning.",
+    "Controller training used teacher-generated fixed-ROM states and labels; this verification does not prove absence of train-state contamination.",
+    "The pretrained RLT already included multiplication supervision.",
+    "The Python host supplies the fixed program ROM, decoded-op dispatch, bit indexing, register routing, and iteration loop.",
+    "The branch probes cover four PC0/PC2 states, not all reachable or arbitrary machine states.",
+    "PASS applies only to the qualified jointly_tuned registered checks. frozen_shared seed19 remains excluded.",
+    "No general-reasoning, program-invention, exhaustive eight-bit, arbitrary-CFG, or champion-promotion claim is made.",
+    "The required follow-up is enumeration of index 0..65535 as a=floor(index/256), b=index mod 256, preferably in 64 shards of 1024 per jointly_tuned seed, retaining every failed or unhalted trace and separately expanding branch-state coverage."
+  ],
+  "negative_control_result": {
+    "counterexample": {
+      "actual": 19293,
+      "arm": "frozen_shared",
+      "disposition": "FAIL and EXCLUDED",
+      "expected": 13629,
+      "halted": true,
+      "pair": [
+        177,
+        77
+      ],
+      "score": "4216/4217",
+      "seed": 19
+    },
+    "status": "FAIL_EXCLUDED"
+  },
+  "neural_host_oracle_boundary": {
+    "host": "Python performs decoded-op dispatch, bit indexing, register routing, the 75-cycle loop, and supplies the fixed eight-instruction shift-and-add ROM.",
+    "neural": "Frozen SharedRLTISA logits decode opcode, next PC, HALT, local arithmetic bits, and opcode meaning. The controller forward receives fixed ROM embeddings, four register tensors, and current PC; teacher next-PC and teacher opcode are not forward inputs.",
+    "oracle": "The reference product a*b is computed after rollout for scoring and was not substituted into inference.",
+    "training": {
+      "controller_supervision": "Teacher-generated controller states supervised opcode, next-PC, and HALT with cross-entropy.",
+      "integration_direct_MUL_answer_targets": 0,
+      "interpretation": "No claim of pristine multiplication-disjoint training, autonomous program invention, or absence of all training contamination is supported.",
+      "jointly_tuned_local_supervision": "All 320 primitive truth-table rows were replayed.",
+      "source_pretraining": "The earlier task-conditioned RLT checkpoint included MUL training."
+    }
+  },
+  "no_champion_promotion": true,
+  "result": "PASS",
+  "schema": 1,
+  "scope": "independent selected-arm registered baseline verification with disqualified frozen negative arm",
+  "source_inventory": {
+    "champion_checkpoint": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+    "champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "champion_unchanged": true,
+    "experiment_checkpoint_count": 6,
+    "mismatches": [],
+    "verified_file_count": 60
+  },
+  "task": "NC-003",
+  "verdict": "INDEPENDENT_VERIFIER_PASS_WITH_EXPLICIT_EXCLUDED_NEGATIVE_ARM",
+  "verifier": "codex-cli:01a1aeb1-7637-7352-87ec-1151dfce9c1c",
+  "verifier_identity_provenance": {
+    "distinct_real_agent": true,
+    "source": "artifacts/NC-003/codex_verifier_trace.jsonl",
+    "thread_started": {
+      "thread_id": "01a1aeb1-7637-7352-87ec-1151dfce9c1c",
+      "type": "thread.started"
+    },
+    "turn_completed": true
+  }
+}

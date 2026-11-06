@@ -1,0 +1,262 @@
+{
+  "task": "NC-003",
+  "verdict": "PASS",
+  "verifier_type": {
+    "role": "different_real_independent_Codex_CLI_scientific_verifier",
+    "runtime_thread_started_identity": "01a1aeb1-7637-7352-87ec-1151dfce9c1c",
+    "implementer_claim_owner": "1db9edb983ff4df9933612e7c826e55f",
+    "identity_distinct": true,
+    "read_only": true,
+    "trained_models": false,
+    "dag_mutated": false,
+    "files_written": false
+  },
+  "audited_commit": {
+    "commit": "96328340e14fb15d8884117b4198d6773922968f",
+    "subject": "Reproduce NC-003 frozen neural ISA 3-seed baselines and leakage boundaries",
+    "checked_out_files_match_commit": true,
+    "files": {
+      "artifacts/NC-003/replay_independent.py": "687da1a0b253eb4ac060f7af237e625f80f51d1f884e6230020923595127b8ee",
+      "artifacts/NC-003/host_leakage_audit.py": "618e4ca09bc9e2a5e7f9f007f70c9279b7172282398049da73db599c03a4b9e1",
+      "artifacts/NC-003/test_replay.py": "1d17c7ed048fd324674d60aaa36825950faa5d831d1352409cfc4ab473399eac",
+      "artifacts/NC-003/verification.json": "f2432e950afff2b09654f82147bb62c35b5591240e7829892b38c77a85f62327",
+      "artifacts/NC-003/host_leakage_audit.json": "6e2518a5c36e55a543e50c0f2d77b93f9e82ff8323aa2dd5a745c08dd9f7aac4",
+      "artifacts/NC-003/README.md": "f69da3f0aa60c93c0a2ec16bc4edfd1b8326a667ee10df8ce91f3be79febf551"
+    }
+  },
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python dag.py validate",
+      "result": "PASS",
+      "reported_nodes": 19,
+      "reported_events": 34,
+      "head_sha256": "db26b330bb036e5cb6f37c6f926e1037d794d85106a685d032fc545b32f2bedc"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest -q test_dag",
+      "passed": 17,
+      "failed": 0,
+      "errors": 0
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-003 -p test_replay.py",
+      "passed": 8,
+      "failed": 0,
+      "errors": 0
+    },
+    {
+      "command": "Fresh-process Python replay importing unified_shared_v1.verify_shared.load, verify_shared.local_oracle, and verify_hybrid_independent.independent; verify_shared.verify was not invoked",
+      "result": "completed",
+      "writes": false
+    },
+    {
+      "command": "Fresh-process direct SHA-256 recomputation over all NC-000 inventory entries and all six training receipts/checkpoints/source-hash sets",
+      "result": "completed",
+      "writes": false
+    },
+    {
+      "command": "git diff --exit-code 96328340e14fb15d8884117b4198d6773922968f -- audited NC-003 files",
+      "result": "clean"
+    }
+  ],
+  "independent_checks": {
+    "test_totals": {
+      "unittest_passed": 25,
+      "unittest_failed": 0,
+      "unittest_errors": 0,
+      "ledger_validation": "PASS"
+    },
+    "dataset": {
+      "construction": "Python random.Random(12043148), 4096 ordered draws using randrange(256) for each operand, followed by the 11x11 cross-product of edges [0,1,2,3,7,15,31,63,127,128,255]",
+      "evaluations": 4217,
+      "unique_ordered_pairs": 4084,
+      "duplicate_evaluations": 133,
+      "eight_bit_domain": 65536,
+      "unique_coverage_fraction": "4084/65536",
+      "same_pair_list_for_all_seeds": true,
+      "four_bit_construction": "all ordered pairs a,b in range(16)",
+      "four_bit_exhaustive": "256/256"
+    },
+    "fresh_source_host_measurements": {
+      "host": "verify_hybrid_independent.independent",
+      "loader": "verify_shared.load",
+      "local_oracle": "constructed directly by verify_shared.local_oracle",
+      "jointly_tuned": {
+        "seed11": {
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "four_bit_MUL": "256/256",
+          "sampled_edge_8bit_MUL": "4217/4217"
+        },
+        "seed19": {
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "four_bit_MUL": "256/256",
+          "sampled_edge_8bit_MUL": "4217/4217"
+        },
+        "seed29": {
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "four_bit_MUL": "256/256",
+          "sampled_edge_8bit_MUL": "4217/4217"
+        }
+      },
+      "frozen_shared": {
+        "seed11": {
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "four_bit_MUL": "256/256",
+          "sampled_edge_8bit_MUL": "4217/4217"
+        },
+        "seed19": {
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "four_bit_MUL": "256/256",
+          "sampled_edge_8bit_MUL": "4216/4217",
+          "status": "EXCLUDED"
+        },
+        "seed29": {
+          "local_binary": "320/320",
+          "meaning": "320/320",
+          "four_bit_MUL": "256/256",
+          "sampled_edge_8bit_MUL": "4217/4217"
+        }
+      }
+    },
+    "interventions": {
+      "cases": [
+        [13, 11],
+        [255, 255],
+        [37, 63],
+        [128, 128],
+        [16, 16],
+        [7, 9],
+        [127, 128],
+        [3, 2]
+      ],
+      "all_six_checkpoints": {
+        "unmodified": "8/8 each",
+        "flipped_decoded_next_PC": "0/8 each",
+        "zero_arithmetic": "0/8 each"
+      },
+      "causal_result": "Both interventions degraded every arm/seed relative to its unmodified probe result."
+    },
+    "branch_probes": {
+      "checkpoint": "jointly_tuned seed11",
+      "results": [
+        {
+          "current_PC": 0,
+          "B": 0,
+          "decoded_opcode": 0,
+          "decoded_next_PC": 7
+        },
+        {
+          "current_PC": 0,
+          "B": 3,
+          "decoded_opcode": 0,
+          "decoded_next_PC": 1
+        },
+        {
+          "current_PC": 2,
+          "T": 0,
+          "decoded_opcode": 2,
+          "decoded_next_PC": 4
+        },
+        {
+          "current_PC": 2,
+          "T": 1,
+          "decoded_opcode": 2,
+          "decoded_next_PC": 3
+        }
+      ],
+      "scope": "Confirms zero/nonzero behavior for four selected PC0/PC2 states only; it is not proof over all branch/register states."
+    },
+    "runtime_boundary": {
+      "neural": "Frozen SharedRLTISA logits decode opcode, next PC, HALT, local arithmetic bits, and opcode meaning. The controller forward receives fixed ROM embeddings, four register tensors, and current PC; teacher next-PC and teacher opcode are not forward inputs.",
+      "host": "Python performs decoded-op dispatch, bit indexing, register routing, the 75-cycle loop, and supplies the fixed eight-instruction shift-and-add ROM.",
+      "oracle": "The reference product a*b is computed after rollout for scoring and was not substituted into inference.",
+      "training": {
+        "integration_direct_MUL_answer_targets": 0,
+        "jointly_tuned_local_supervision": "All 320 primitive truth-table rows were replayed.",
+        "controller_supervision": "Teacher-generated controller states supervised opcode, next-PC, and HALT with cross-entropy.",
+        "source_pretraining": "The earlier task-conditioned RLT checkpoint included MUL training.",
+        "interpretation": "No claim of pristine multiplication-disjoint training, autonomous program invention, or absence of all training contamination is supported."
+      }
+    },
+    "selected_arm": "jointly_tuned",
+    "selected_arm_gate": "All registered selected-arm checks reproduced for seeds 11, 19, and 29.",
+    "promotion": "No default or champion promotion authorized."
+  },
+  "negative_control_failures": [
+    {
+      "arm": "frozen_shared",
+      "seed": 19,
+      "pair": [177, 77],
+      "actual": 19293,
+      "expected": 13629,
+      "halted": true,
+      "score": "4216/4217",
+      "disposition": "FAIL and EXCLUDED"
+    }
+  ],
+  "provenance": {
+    "NC000_inventory": {
+      "independently_rehashed_files": 60,
+      "matched": 60,
+      "mismatched": 0,
+      "selected_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "selected_champion_unchanged": true
+    },
+    "training_receipts": {
+      "jointly_tuned_seed11": {
+        "receipt_sha256": "4029ad9858f25214500a0cd636e420fa71c5194099f8b9a41d7ef72590cd580d",
+        "checkpoint_sha256": "da56fd1b088360a5fae28b0ad3002bee7a945c4e88ca8584305c5e70611cf951",
+        "checkpoint_match": true,
+        "source_hashes": "8/8"
+      },
+      "jointly_tuned_seed19": {
+        "receipt_sha256": "20dddee683090c2b67794fa4b113a41385fc81300737506c9f43461677e1b6f5",
+        "checkpoint_sha256": "1ca7edc7358d2132aa6ffedf17e281cfa060f989defffffeb9520945470ea1d0",
+        "checkpoint_match": true,
+        "source_hashes": "8/8"
+      },
+      "jointly_tuned_seed29": {
+        "receipt_sha256": "2dc187c287a54bd53448d2050cea0a187659e1440778a9a3b9eced80dafbb569",
+        "checkpoint_sha256": "97e14244736759f2377433ef38ede534c25b414daf6f836bf2eb2ac72cf37e68",
+        "checkpoint_match": true,
+        "source_hashes": "8/8"
+      },
+      "frozen_shared_seed11": {
+        "receipt_sha256": "3663e98360cb2cc562cb7abf2c308675bdf38bdce05198bd73b732650b8d1cdc",
+        "checkpoint_sha256": "cbe423063da42c1a7bc6bc30c490790a1edc47d99af04079f674529d0faddf93",
+        "checkpoint_match": true,
+        "source_hashes": "8/8"
+      },
+      "frozen_shared_seed19": {
+        "receipt_sha256": "7ec5e8b94782685016cb05c3b016df3d0a1300e80ef1699014871e4e583938b0",
+        "checkpoint_sha256": "00460f45a207f8e2a12f57abbf5318ffb9545ade30340b712c9b463d52b096e1",
+        "checkpoint_match": true,
+        "source_hashes": "8/8"
+      },
+      "frozen_shared_seed29": {
+        "receipt_sha256": "ad51490ac06a671e6b290dff803786a2b0e0f96f9649f42b730b1cc5814b78aa",
+        "checkpoint_sha256": "feccba2875cb1b3ba68b3e57b8e64a66199c0d7e8af4ed7b99c213370b1846df",
+        "checkpoint_match": true,
+        "source_hashes": "8/8"
+      }
+    }
+  },
+  "limitations": [
+    "The 4217 eight-bit evaluations contain only 4084 unique ordered pairs and are not exhaustive over 65536 pairs.",
+    "The operand list is reused across seeds, so the three seeds are not three independent datasets.",
+    "All 320 local primitive patterns were supervised; 320/320 is retention of a trained truth table, not novel Boolean-rule reasoning.",
+    "Controller training used teacher-generated fixed-ROM states and labels; this verification does not prove absence of train-state contamination.",
+    "The pretrained RLT already included multiplication supervision.",
+    "The Python host supplies the fixed program ROM, decoded-op dispatch, bit indexing, register routing, and iteration loop.",
+    "The branch probes cover four PC0/PC2 states, not all reachable or arbitrary machine states.",
+    "PASS applies only to the qualified jointly_tuned registered checks. frozen_shared seed19 remains excluded.",
+    "No general-reasoning, program-invention, exhaustive eight-bit, arbitrary-CFG, or champion-promotion claim is made.",
+    "The required follow-up is enumeration of index 0..65535 as a=floor(index/256), b=index mod 256, preferably in 64 shards of 1024 per jointly_tuned seed, retaining every failed or unhalted trace and separately expanding branch-state coverage."
+  ],
+  "failures": []
+}
