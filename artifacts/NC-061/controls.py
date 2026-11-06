@@ -2,6 +2,7 @@
 import json
 import random
 import sys
+import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -23,13 +24,24 @@ def matches(body, examples):
     return True
 
 
+def spin(seconds=0.005):
+    """Fixed CPU work, so cheap controls differ in results and not in timer noise."""
+    end = time.process_time() + seconds
+    while time.process_time() < end:
+        pass
+
+
 def known_good(goals):
     """Holds the answers, so it should solve everything. It stands in for a strong candidate."""
     answers = {sb.canonical(g["examples"]): g["answer"] for g in goals}
-    return lambda examples, budget: (answers[sb.canonical(examples)], 1)
+    def run(examples, budget):
+        spin()
+        return answers[sb.canonical(examples)], 1
+    return run
 
 
 def constant(examples, budget):
+    spin()
     return [{"op": "LOADI", "dst": "R", "imm": 0}], 1
 
 

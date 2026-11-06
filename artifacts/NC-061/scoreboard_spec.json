@@ -1,14 +1,13 @@
 {
  "schema": "logos.nc061.spec/1",
  "generator": "logos.nc061.goals/1",
- "scoreboard_source_sha256": "5b08cb63d58134434f58800ee39d857dc3bbf1dcfaf36497c8805fff71003733",
+ "scoreboard_source_sha256": "34fcdecd35e05547e7ea562882426bd54a5f39c828cbb8f3a32275e3511412fe",
  "thresholds": {
   "min_seeds": 3,
   "improvement_margin": 0.05,
   "retention_floor": 0.95,
   "budget_tolerance": 0.1,
   "cpu_tolerance": 0.25,
-  "cpu_noise_floor_seconds": 0.05,
   "contamination_limit": 0.0,
   "compounding_generations": 3,
   "compounding_min_growth": 0.01,
@@ -46,6 +45,6 @@
   "Retention is supplied by the caller and must be independently reproduced by the reviewer.",
   "Thresholds are preregistered judgement calls, not derived from a power analysis.",
   "CPU measured in-process can undercount work a candidate does in other processes, and a candidate's reported candidate count is only range-checked, so real runs need independent process metering.",
-  "Below the 0.05 second noise floor, CPU differences are treated as unmeasurable, so a very cheap candidate could use a large multiple of an even cheaper baseline within that 0.05 seconds."
+  "Very cheap runs are dominated by timer noise and may fail the CPU gate; this errs toward NO_IMPROVEMENT, so experiments need measurable CPU per seed."
  ]
 }

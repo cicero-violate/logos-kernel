@@ -126,8 +126,8 @@ class CompareTests(unittest.TestCase):
         # Second reviewer counterexample: 900 times the CPU passed through an additive floor.
         cheap = [row(0.0, used=3, cpu=0.001)] * 3
         self.assertEqual(sb.compare(cheap, [row(1.0, used=3, cpu=0.9)] * 3)["verdict"], "NO_IMPROVEMENT")
-        self.assertEqual(sb.compare(cheap, [row(1.0, used=3, cpu=0.051)] * 3)["verdict"], "NO_IMPROVEMENT")
-        self.assertEqual(sb.compare(cheap, [row(1.0, used=3, cpu=0.049)] * 3)["verdict"], "IMPROVEMENT")
+        self.assertEqual(sb.compare(cheap, [row(1.0, used=3, cpu=0.049)] * 3)["verdict"], "NO_IMPROVEMENT")  # Third review.
+        self.assertEqual(sb.compare(cheap, [row(1.0, used=3, cpu=0.00125)] * 3)["verdict"], "IMPROVEMENT")
         self.assertEqual(sb.compare([row(0.0, cpu=100.0)] * 3, [row(1.0, cpu=125.0)] * 3)["verdict"], "IMPROVEMENT")
         self.assertEqual(sb.compare([row(0.0, cpu=100.0)] * 3, [row(1.0, cpu=126.0)] * 3)["verdict"], "NO_IMPROVEMENT")
 
