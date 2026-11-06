@@ -1,0 +1,213 @@
+{
+  "task": "NC-007",
+  "verdict": "PASS",
+  "verifier_type": "second independent real Codex CLI scientific re-auditor; read-only",
+  "real_verifier_thread_id": "01a1af4a-91ec-73d2-8480-0486190f7a41",
+  "audited_commit": "97426e53aaffa6541540753c2fdf2b5e6ad0e042",
+  "prior_hold_preserved": {
+    "preserved": true,
+    "verdict": "HOLD",
+    "verifier_thread_id": "01a1af45-0681-73f0-b8ee-8ee54ee8cf90",
+    "preservation_commit": "e523ae7a0613a09d9eb5279c68dd53256a82195d",
+    "final_sha256": "00a04c422b8fba98af430e1fbb44658e75239eadf23144bca954c938db3f33d8",
+    "trace_sha256": "084ed1d518d30386624b9698479f6a812537e4c30fe7e908b2f0e060fa83fe94",
+    "prompt_sha256": "9cc493d69f67bea68a87c11a78a85d4f72547ba16aba66851e8c8ed19006a3f",
+    "reinterpretation_as_pass": false
+  },
+  "commands": [
+    {
+      "command": "python dag.py validate",
+      "result": "PASS; 29 nodes, 57 events"
+    },
+    {
+      "command": "TMPDIR=/dev/shm python -m unittest -q test_dag",
+      "result": "19/19 passed"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-007 -p test_composition.py",
+      "result": "14/14 passed"
+    },
+    {
+      "command": "git diff --exit-code 97426e53aaffa6541540753c2fdf2b5e6ad0e042 -- eight tracked NC-007 implementation paths",
+      "result": "no differences"
+    },
+    {
+      "command": "independent ephemeral in-memory Python integrity, provenance, controller, trace, neural-inference and negative-control audit",
+      "result": "completed without project writes"
+    }
+  ],
+  "source_integrity": {
+    "head": "97426e53aaffa6541540753c2fdf2b5e6ad0e042",
+    "head_matches_audited_commit": true,
+    "tracked_nc007_implementation_files_matching_commit": "8/8",
+    "controller_checkpoint_sha256": {
+      "seed11": "6ec7dfdbb7fe47c05d1eb470d915d0e963de731009bc317ab87e0ffad27464d6",
+      "seed19": "5bb0a9b523f618972153e83eea38221eaa745f233aa1c529c24d35653a6fb92f",
+      "seed29": "92da66944c2353dae90e0381160e89646c9f0ad6052f4c66f8c3e8014feedc74"
+    },
+    "frozen_stage06_checkpoint_sha256": {
+      "new_only_seed11": "6675f6a040132e6cbf7a601334685a8eb7691f991abf19ee9034140328911e4a",
+      "new_only_seed19": "b93aed6b333d5d88d175539e36e76e71b9bba3b3a6bb1c1e64e78ad05bad41bf",
+      "new_only_seed29": "ecedf4f9ad4ced022a8f77dce5e9097523e4a7273a428df0ff8d6679a4e4b9c7",
+      "rehearsal_seed11": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
+      "rehearsal_seed19": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
+      "rehearsal_seed29": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e"
+    },
+    "all_six_stage06_hashes_match_manifest": true,
+    "accepted_library_sha256": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+    "accepted_library_records_recomputed": 30,
+    "accepted_library_records_bound_to_expected_stage06_checkpoints": "30/30",
+    "accepted_zero16_records": "3/3 separately recognized as the registered full-width predicate",
+    "source_sha256": {
+      "NC001_canonical_isa": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+      "NC005_checkpoint_manifest": "b721b1a6c3a7d39fc02d0b3c787c4f559a8ccb94d4af249df57c7a0f4afe4624",
+      "NC005_curriculum": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d",
+      "NC006_accepted_library": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+      "NC006_library_manifest": "3de331da820d66f7c7e8e80adcf3badd2dae9de342ba7760d9ec2263d1d178d7",
+      "NC007_compose": "3fb777f2cb8e1ab8dee5fff3f78893d5515f679fdcc8742a7bdf15a1b7e66e00",
+      "NC007_receipt": "2f37cb7030e4d39b31ab970bd1045b33d8689381ac1ab15ea47c3199f587b431",
+      "NC007_traces": "ea68cd98bebb5eefa19b32f5ab8a480bff5810529d32bd32ae7b7d6c95a0fc9b"
+    },
+    "original_rlt_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+    "original_champion_matches_manifest": true,
+    "nc005_or_nc006_tracked_changes_between_original_and_correction": false,
+    "checkpoint_or_champion_promotion_detected": false,
+    "auditor_project_modifications": 0
+  },
+  "provenance_corruption_controls": {
+    "actual_frozen_rehearsal_models_loaded_by_hash": [
+      11,
+      19,
+      29
+    ],
+    "pristine_two_operation_program": "ADD_XX, ADD_RX, HALT",
+    "pristine_outputs_per_seed": [
+      9,
+      65533
+    ],
+    "pristine_neural_calls_per_seed": 2,
+    "rejected_before_first_step_numeric_call_for_all_three_models": {
+      "fake_checkpoint_sha": true,
+      "wrong_arm_new_only": true,
+      "symbolic_implementation_mode": true,
+      "wrong_opcode_metadata": true,
+      "wrong_seed": true,
+      "changed_proof_source_id": true,
+      "second_operation_corruption_after_valid_first_operation": true,
+      "raw_model_without_pinned_provenance": true,
+      "self_consistent_registry_forge_with_manipulated_id_and_checkpoint_hash": true
+    },
+    "step_numeric_calls_for_each_rejected_variant": 0,
+    "failure_mode": "NC007_UNVERIFIED_PRIMITIVE_PROVENANCE or NC007_MODEL_WITHOUT_VERIFIED_PROVENANCE",
+    "reference_or_symbolic_fallback_observed": false
+  },
+  "independent_neural_checks": {
+    "registered_traces": 36,
+    "unique_case_ids_per_seed": {
+      "11": 256,
+      "19": 256,
+      "29": 256
+    },
+    "registered_numeric": {
+      "correct": 8448,
+      "tested": 8448,
+      "errors": 0
+    },
+    "registered_host_loop": {
+      "correct": 768,
+      "tested": 768,
+      "errors": 0
+    },
+    "trace_binding_issues": 0,
+    "source_reuse_matches_receipt": true,
+    "fresh_evaluation": {
+      "pairs_per_seed_per_goal": 30,
+      "seeds": 3,
+      "goals_per_seed": 11,
+      "tested": 990,
+      "correct": 990,
+      "errors": 0,
+      "operand_pairs_excluded_from_registered_heldout_sets": true,
+      "execution": "real frozen neural inference driven by controller-generated action tokens",
+      "oracle": "independently written uint16 modular arithmetic and Boolean formulas; compose.reference_values and NC-001 were not used"
+    },
+    "negative_controls": {
+      "wrong_program_changed_outputs": "4/5",
+      "no_halt_rejected": true,
+      "early_halt_rejected": true,
+      "bad_opcode_rejected": true,
+      "unknown_token_rejected": true
+    },
+    "timing_ns": {
+      "all_positive": true,
+      "minimum": 2969800,
+      "maximum": 16827931,
+      "sum": 288847853
+    },
+    "code_length_distribution": {
+      "1": 9,
+      "2": 24
+    },
+    "code_lengths_nonzero": true,
+    "reused_proof_counts_nonzero": true
+  },
+  "controller_checks": {
+    "architecture": "21,103-parameter goal, previous-action and position embedding MLP",
+    "seeds": [
+      11,
+      19,
+      29
+    ],
+    "strict_model_state_loads": "3/3",
+    "checkpoint_seed_matches": "3/3",
+    "optimizer_state_present": "3/3",
+    "python_rng_state_present": "3/3",
+    "numpy_rng_state_present": "3/3",
+    "torch_rng_state_present": "3/3",
+    "action_vocabulary_matches": "3/3",
+    "goal_vocabulary_matches": "3/3",
+    "teaching_rows_hash_matches": "3/3",
+    "source_hash_matches": "3/3",
+    "supervised_target_programs_recalled": {
+      "seed11": "11/11",
+      "seed19": "11/11",
+      "seed29": "11/11"
+    },
+    "fresh_untrained_exact_programs": {
+      "seed11": "0/11",
+      "seed19": "0/11",
+      "seed29": "0/11"
+    },
+    "training_rows_per_seed": 30,
+    "operand_values_or_fields_in_controller_training": false,
+    "causal_input_perturbations_changed_logits": {
+      "goal": true,
+      "previous_action": true,
+      "position": true
+    },
+    "interpretation": "supervised recipe recall for 11 fixed macro goal IDs, not discovery, invention or unseen-goal generalization"
+  },
+  "graph_and_scope": {
+    "data_dependency_dags": "33/33 acyclic",
+    "runtime_cfg_records": 3,
+    "runtime_cfg_cycle_present": true,
+    "runtime_cfg_host_controlled": true,
+    "runtime_cfg_model_generated": false,
+    "task_dag_cycle_detected": false,
+    "learned_pc": false,
+    "learned_halt": false,
+    "learned_loop_control": false,
+    "transformer_learning": false,
+    "operation_invention": false,
+    "scope": "finite sampled uint16 executions using locally training-seen neural primitive patterns and 11 supervised macro IDs"
+  },
+  "failures": [],
+  "limitations": [
+    "The provenance binding is enforced inside one trusted Python process and attached to a mutable model object; it is not cryptographic runtime isolation, process attestation or protection from malicious code that can mutate both model internals and trusted provenance.",
+    "The 990 fresh outputs and 9,216 registered outputs are bounded samples, not exhaustive coverage of all 2^32 uint16 operand pairs.",
+    "Local neural primitive feature patterns were training-seen in NC-005.",
+    "Goal recipes, typed action vocabulary, register routing, constants, bit iteration, carry propagation, HALT decoding and loop control remain host-defined.",
+    "The controller demonstrates supervised recall only; it is not a Transformer, unified shared-weight model, learned PC, learned HALT, algorithm invention or autonomous discovery.",
+    "This verifier verdict does not append a DAG PASS event, modify approvals or push Git; closure remains the implementer's responsibility after separate verification."
+  ]
+}

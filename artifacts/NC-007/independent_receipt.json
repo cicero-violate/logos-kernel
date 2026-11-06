@@ -1,0 +1,222 @@
+{
+  "code_dependencies": [
+    "Python 3",
+    "PyTorch",
+    "NumPy",
+    "artifacts/NC-007/compose.py",
+    "artifacts/NC-007/test_composition.py",
+    "artifacts/NC-005/curriculum.py",
+    "artifacts/NC-006/accepted_library.json",
+    "artifacts/NC-001/canonical_isa.py",
+    "artifacts/NC-005/checkpoint_manifest.json"
+  ],
+  "compiled_by": "agent-event-lab:1db9edb983ff4df9933612e7c826e55f",
+  "corrected_scientific_pass": {
+    "audited_commit": "97426e53aaffa6541540753c2fdf2b5e6ad0e042",
+    "controller_checks": {
+      "action_vocabulary_matches": "3/3",
+      "architecture": "21,103-parameter goal, previous-action and position embedding MLP",
+      "causal_input_perturbations_changed_logits": {
+        "goal": true,
+        "position": true,
+        "previous_action": true
+      },
+      "checkpoint_seed_matches": "3/3",
+      "fresh_untrained_exact_programs": {
+        "seed11": "0/11",
+        "seed19": "0/11",
+        "seed29": "0/11"
+      },
+      "goal_vocabulary_matches": "3/3",
+      "interpretation": "supervised recipe recall for 11 fixed macro goal IDs, not discovery, invention or unseen-goal generalization",
+      "numpy_rng_state_present": "3/3",
+      "operand_values_or_fields_in_controller_training": false,
+      "optimizer_state_present": "3/3",
+      "python_rng_state_present": "3/3",
+      "seeds": [
+        11,
+        19,
+        29
+      ],
+      "source_hash_matches": "3/3",
+      "strict_model_state_loads": "3/3",
+      "supervised_target_programs_recalled": {
+        "seed11": "11/11",
+        "seed19": "11/11",
+        "seed29": "11/11"
+      },
+      "teaching_rows_hash_matches": "3/3",
+      "torch_rng_state_present": "3/3",
+      "training_rows_per_seed": 30
+    },
+    "final_path": "artifacts/NC-007/codex_verifier_v2_final.json",
+    "final_sha256": "b587ede161909283f0996ec34c9270f7a2e3e3b7dedbe00cf1d0ad4704eac399",
+    "graph_and_scope": {
+      "data_dependency_dags": "33/33 acyclic",
+      "learned_halt": false,
+      "learned_loop_control": false,
+      "learned_pc": false,
+      "operation_invention": false,
+      "runtime_cfg_cycle_present": true,
+      "runtime_cfg_host_controlled": true,
+      "runtime_cfg_model_generated": false,
+      "runtime_cfg_records": 3,
+      "scope": "finite sampled uint16 executions using locally training-seen neural primitive patterns and 11 supervised macro IDs",
+      "task_dag_cycle_detected": false,
+      "transformer_learning": false
+    },
+    "independent_neural_checks": {
+      "code_length_distribution": {
+        "1": 9,
+        "2": 24
+      },
+      "code_lengths_nonzero": true,
+      "fresh_evaluation": {
+        "correct": 990,
+        "errors": 0,
+        "execution": "real frozen neural inference driven by controller-generated action tokens",
+        "goals_per_seed": 11,
+        "operand_pairs_excluded_from_registered_heldout_sets": true,
+        "oracle": "independently written uint16 modular arithmetic and Boolean formulas; compose.reference_values and NC-001 were not used",
+        "pairs_per_seed_per_goal": 30,
+        "seeds": 3,
+        "tested": 990
+      },
+      "negative_controls": {
+        "bad_opcode_rejected": true,
+        "early_halt_rejected": true,
+        "no_halt_rejected": true,
+        "unknown_token_rejected": true,
+        "wrong_program_changed_outputs": "4/5"
+      },
+      "registered_host_loop": {
+        "correct": 768,
+        "errors": 0,
+        "tested": 768
+      },
+      "registered_numeric": {
+        "correct": 8448,
+        "errors": 0,
+        "tested": 8448
+      },
+      "registered_traces": 36,
+      "reused_proof_counts_nonzero": true,
+      "source_reuse_matches_receipt": true,
+      "timing_ns": {
+        "all_positive": true,
+        "maximum": 16827931,
+        "minimum": 2969800,
+        "sum": 288847853
+      },
+      "trace_binding_issues": 0,
+      "unique_case_ids_per_seed": {
+        "11": 256,
+        "19": 256,
+        "29": 256
+      }
+    },
+    "limits": [
+      "The provenance binding is enforced inside one trusted Python process and attached to a mutable model object; it is not cryptographic runtime isolation, process attestation or protection from malicious code that can mutate both model internals and trusted provenance.",
+      "The 990 fresh outputs and 9,216 registered outputs are bounded samples, not exhaustive coverage of all 2^32 uint16 operand pairs.",
+      "Local neural primitive feature patterns were training-seen in NC-005.",
+      "Goal recipes, typed action vocabulary, register routing, constants, bit iteration, carry propagation, HALT decoding and loop control remain host-defined.",
+      "The controller demonstrates supervised recall only; it is not a Transformer, unified shared-weight model, learned PC, learned HALT, algorithm invention or autonomous discovery.",
+      "This verifier verdict does not append a DAG PASS event, modify approvals or push Git; closure remains the implementer's responsibility after separate verification."
+    ],
+    "negative_controls": {
+      "actual_frozen_rehearsal_models_loaded_by_hash": [
+        11,
+        19,
+        29
+      ],
+      "failure_mode": "NC007_UNVERIFIED_PRIMITIVE_PROVENANCE or NC007_MODEL_WITHOUT_VERIFIED_PROVENANCE",
+      "pristine_neural_calls_per_seed": 2,
+      "pristine_outputs_per_seed": [
+        9,
+        65533
+      ],
+      "pristine_two_operation_program": "ADD_XX, ADD_RX, HALT",
+      "reference_or_symbolic_fallback_observed": false,
+      "rejected_before_first_step_numeric_call_for_all_three_models": {
+        "changed_proof_source_id": true,
+        "fake_checkpoint_sha": true,
+        "raw_model_without_pinned_provenance": true,
+        "second_operation_corruption_after_valid_first_operation": true,
+        "self_consistent_registry_forge_with_manipulated_id_and_checkpoint_hash": true,
+        "symbolic_implementation_mode": true,
+        "wrong_arm_new_only": true,
+        "wrong_opcode_metadata": true,
+        "wrong_seed": true
+      },
+      "step_numeric_calls_for_each_rejected_variant": 0
+    },
+    "real_codex_thread_id": "01a1af4a-91ec-73d2-8480-0486190f7a41",
+    "source_integrity": {
+      "accepted_library_records_bound_to_expected_stage06_checkpoints": "30/30",
+      "accepted_library_records_recomputed": 30,
+      "accepted_library_sha256": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+      "accepted_zero16_records": "3/3 separately recognized as the registered full-width predicate",
+      "all_six_stage06_hashes_match_manifest": true,
+      "auditor_project_modifications": 0,
+      "checkpoint_or_champion_promotion_detected": false,
+      "controller_checkpoint_sha256": {
+        "seed11": "6ec7dfdbb7fe47c05d1eb470d915d0e963de731009bc317ab87e0ffad27464d6",
+        "seed19": "5bb0a9b523f618972153e83eea38221eaa745f233aa1c529c24d35653a6fb92f",
+        "seed29": "92da66944c2353dae90e0381160e89646c9f0ad6052f4c66f8c3e8014feedc74"
+      },
+      "frozen_stage06_checkpoint_sha256": {
+        "new_only_seed11": "6675f6a040132e6cbf7a601334685a8eb7691f991abf19ee9034140328911e4a",
+        "new_only_seed19": "b93aed6b333d5d88d175539e36e76e71b9bba3b3a6bb1c1e64e78ad05bad41bf",
+        "new_only_seed29": "ecedf4f9ad4ced022a8f77dce5e9097523e4a7273a428df0ff8d6679a4e4b9c7",
+        "rehearsal_seed11": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
+        "rehearsal_seed19": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
+        "rehearsal_seed29": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e"
+      },
+      "head": "97426e53aaffa6541540753c2fdf2b5e6ad0e042",
+      "head_matches_audited_commit": true,
+      "nc005_or_nc006_tracked_changes_between_original_and_correction": false,
+      "original_champion_matches_manifest": true,
+      "original_rlt_champion_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "source_sha256": {
+        "NC001_canonical_isa": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+        "NC005_checkpoint_manifest": "b721b1a6c3a7d39fc02d0b3c787c4f559a8ccb94d4af249df57c7a0f4afe4624",
+        "NC005_curriculum": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d",
+        "NC006_accepted_library": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+        "NC006_library_manifest": "3de331da820d66f7c7e8e80adcf3badd2dae9de342ba7760d9ec2263d1d178d7",
+        "NC007_compose": "3fb777f2cb8e1ab8dee5fff3f78893d5515f679fdcc8742a7bdf15a1b7e66e00",
+        "NC007_receipt": "2f37cb7030e4d39b31ab970bd1045b33d8689381ac1ab15ea47c3199f587b431",
+        "NC007_traces": "ea68cd98bebb5eefa19b32f5ab8a480bff5810529d32bd32ae7b7d6c95a0fc9b"
+      },
+      "tracked_nc007_implementation_files_matching_commit": "8/8"
+    },
+    "trace_path": "artifacts/NC-007/codex_verifier_v2_trace.jsonl",
+    "trace_sha256": "5b83751da08b69a1e232c5d8f671e4f075250deb4f903162053096ad8f677200",
+    "verdict": "PASS"
+  },
+  "created_utc": "2026-11-06T05:22:53.081969+00:00",
+  "generated_programs": 33,
+  "host_loop_correct": 768,
+  "host_loop_tested": 768,
+  "implementation_report_sha256": "2f37cb7030e4d39b31ab970bd1045b33d8689381ac1ab15ea47c3199f587b431",
+  "implementation_trace_sha256": "ea68cd98bebb5eefa19b32f5ab8a480bff5810529d32bd32ae7b7d6c95a0fc9b",
+  "model_training_source": "Only separate task-local 21,103-param controllers, not original RLT or frozen NC005/NC006 neural primitives.",
+  "no_champion_promotion": true,
+  "numeric_correct": 8448,
+  "numeric_tested": 8448,
+  "original_hold": {
+    "audited_commit": "2ff9c53b3a3b4b93070e808fbfc97a4d54be36a3",
+    "failure": "Corrupt provenance metadata (checkpoint SHA, arm, mode, operation) was accepted by original executor.",
+    "final_path": "artifacts/NC-007/codex_verifier_final.json",
+    "final_sha256": "00a04c422b8fba98af430e1fbb44658e75239eadf23144bca954c938db3f33d8",
+    "preservation_commit": "e523ae7a0613a09d9eb5279c68dd53256a82195d",
+    "real_codex_thread_id": "01a1af45-0681-73f0-b8ee-8ee54ee8cf90",
+    "trace_path": "artifacts/NC-007/codex_verifier_trace.jsonl",
+    "trace_sha256": "084ed1d518d30386624b9698479f6a812537e4c30fe7e908b2f0e060fa83fe94",
+    "verdict": "HOLD"
+  },
+  "receipt_is": "Implementer-assembled SHA256 binding to independent real Codex runtime evidence, NOT an independent verdict by the implementer.",
+  "schema": "logos.nc007.independent-evidence/1",
+  "source_commit": "97426e53aaffa6541540753c2fdf2b5e6ad0e042",
+  "status": "PASS",
+  "task": "NC-007"
+}
