@@ -81,8 +81,8 @@
     "Repeated timing trials on one host can be affected by system load/cache/turbo and are not independent learning seeds.",
     "CUDA disabled but no OS-enforced CPU isolation or calibrated power meter.",
     "No new neural model trained; training energy, training time, and training data cost not measured.",
-    "Original task JSONL outputs declare measurement_protocol.json and cpu_baseline.json but no independent receipt path; suggested independent_verification.json is a reviewer-only path, not claimed as an original declared output.",
-    "No independent reviewer receipt or verdict exists at publication."
+    "Task output record remains immutable and lacks a dedicated reviewer output; current DAG authorizes the canonical independent_verification.json receipt as an additional reviewer-only path, not a task-output rewrite.",
+    "Earlier independent HOLD receipt reported scoped scientific replay PASS but was not an admissible PASS; fresh independent reviewer approval is outstanding."
   ],
   "measured_arcs": [
     "dense_gemm_control",
@@ -96,7 +96,16 @@
     "altering one recorded correctness metric causes validate_results.py to reject it"
   ],
   "original_champion_bundle_sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
-  "owner": "turn-a03cef0c859c4bcaa4f8cf0760d99e72",
+  "owner": "turn-52f50baa098341bf8440910c8f98b79e",
+  "previous_review": {
+    "event_seq": 168,
+    "reason": "Previously undeclared independent receipt path was refused by DAG. No scientific failure was found in the reviewer replay.",
+    "receipt_path": "artifacts/NC-029/independent_verification.json",
+    "receipt_sha256": "15172ff41782c7a78fd6c49f30b8fb1278098a060cbfc4b8e588b122dc04545f",
+    "reviewer": "turn-723503c3aca84553afdf88269a2cedae",
+    "scientific_replay": "PASS_WITH_SCOPED_LIMITS",
+    "verdict": "HOLD"
+  },
   "reproduce_exact_commands": [
     "python dag.py validate",
     "python -m unittest -q test_dag",
@@ -105,6 +114,13 @@
     "PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python artifacts/NC-029/validate_results.py",
     "PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python artifacts/NC-029/bench_cpu.py --run --output artifacts/NC-029/replay_local.json"
   ],
+  "review_protocol": {
+    "admissibility": "Current dag.py permits the canonical verifier-owned task receipt even when not listed as a task output.",
+    "historical_task_outputs_unchanged": true,
+    "integrity_requirement": "Fresh independent reviewer must recheck pinned source and dataset, and own the next signed-off receipt; previous HOLD is not PASS.",
+    "protocol_fix_git_commit": "4e41c025fe91c5198f945a7d83f8fae1811aeee9",
+    "standard_independent_receipt": "artifacts/NC-029/independent_verification.json"
+  },
   "reviewer_receipt_present": false,
   "schema_version": 1,
   "source_dependency_provenance": {
@@ -180,7 +196,7 @@
     }
   },
   "source_scope": "read_only_original_models_and_frozen_checkpoints",
-  "status": "IMPLEMENTER_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+  "status": "REWORK_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
   "suggested_independent_reviewer_receipt": "artifacts/NC-029/independent_verification.json",
   "task": "NC-029",
   "tasks": {
