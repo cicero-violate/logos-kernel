@@ -1,0 +1,72 @@
+{
+  "acceptance": {
+    "checkpoint_and_source_integrity": "PASS: exact manifest SHA-256, 5 candidate source and 6 evidence blobs frozen+working hashes, 3 upstream source hashes, benchmark file hash, 3 checkpoint model tensors reproduced exactly after new in-memory training",
+    "elapsed_compute_accounting": "PASS WITH SCOPE: search CPU/wall, ranker CPU and training CPU recorded; per-case clocks exclude initial root frontier expansion and policy setup; complete experiment wall observed by candidate but independent rerun does not reproduce latency distribution under matched host load",
+    "no_unverified_acceptance": "PASS within the finite, typed NC-020 contract: candidate audit replays all 960 proof proposals and 85 invalid/non-equivalent controls; separate arithmetic evaluator cross-checks selected outputs and 85 negative cases",
+    "preregistration_and_seeds": "PASS: PROTOCOL.md pinned before candidate commit; NC-020 family-disjoint train/validation/test; seeds 11/19/29; train 36 cases, validation 12 and test 15; 4 arms with <=6 proof checks per case and pool cap 40",
+    "three_seed_matched_controls": "PASS: trained neural, untrained equal architecture, deterministic heuristic, seeded random; matched allowed rewrite rules, proof checks, search frontier cap; neural 24/45 improved test runs, heuristic 24/45, random 19/45, untrained 16/45",
+    "verified_search_quality": "PASS: neural test output DAG ops 158 vs heuristic 159, random 168, untrained 173; no strict improvement in success counts or total CPU, so NO_GAIN"
+  },
+  "candidate_evidence_sha256": {
+    "neural_proposal_traces.jsonl": "4355e66780a940aa86b2e679874090367f4e7a463ac2dabdc286ec729f34775a",
+    "ranker_seed11.pt": "6c4294e037611d9330ad1f6344bb3f9a3e37034aaea0bb6a99a336f103e943e4",
+    "ranker_seed19.pt": "0427374d263ced911583159306d896ac206f882c7bc25f61d25b79737f7cd9b3",
+    "ranker_seed29.pt": "4002a97ab8e507f083e62b5fe711514149a9d10ac81634ed9284c92eb6cb84be",
+    "search_policy_ablation.json": "773fdf98418ce8e455c3931d5435cd3767ffde528fcc418b7ffce29df2ed3b9c",
+    "tests.log": "4743e340562201447d752d0a06ee7b16ec948a2f37d75a82374573eb9afb4b41"
+  },
+  "candidate_path": "artifacts/NC-024/CANDIDATE_MANIFEST.json",
+  "candidate_revision": "62be4ab4ed49ad0e1d3ac2ffd052cc4084c84679",
+  "candidate_sha256": "16a5c0b58e82513f76c83758aa29705f8b8a160d4405431c9e48d0dc8d7d3eee",
+  "independent_scientific_result": "NO_GAIN",
+  "limitations": [
+    "The candidate model ranks NC-023 symbolic rewrites; it does not invent rewriting rules or represent the original RLT champion",
+    "NO_GAIN; 24/45 neural test improvements equals deterministic heuristic count, and neural incurs extra CPU including 1.494408s training",
+    "Static DAG ops estimate is not physical hardware runtime; per-case timing excludes initial pool expansion and policy loading",
+    "Independent integer brute checks are finite samples, not universal polynomial proof; exact universal claim relies on frozen NC-020 normalization",
+    "Bitvector output proof covers 3/4/5-bit X/Y and not R/T register state or ALU flags",
+    "Three matched seeds and small heldout tasks do not establish universal neural reasoning",
+    "Git and JSONL reviewer IDs are unauthenticated labels; same-user/privileged adversaries are outside proof",
+    "No actual model promotion, always-on service, algorithm invention, or AGI"
+  ],
+  "negative_controls": [
+    "training feature function independent of RHS target and fixed train dataset",
+    "mutated invalid rewrite cannot be promoted",
+    "81 altered inequivalent cases have concrete independent numeric witness",
+    "2 invalid width/sign cases refused",
+    "2 float rounding/reassociation counterexamples independently reproduced",
+    "training checkpoint reproduces with fresh gradient descent",
+    "all typed accepted proposals rechecked against frozen exact oracle"
+  ],
+  "next_action": "A distinct subsequent turn may FINALIZE NC-024 via dag.py pass with this receipt; do not self-finalize. NO_GAIN remains the research result.",
+  "owner": "turn-5a39bec034be4d108cd4933be0d16d26",
+  "proof_scope": "Independent NC-024 audit of frozen version-pinned candidate: three fresh-retrained RLT-style PyTorch CPU checkpoints match exact original tensor values; four rewrite-ranking arms across disjoint NC-020 heldout validation/test families, 324 search rows, 960 proof-record proposal replays and 85 negative controls. A separate arithmetic evaluator checked 98,640 numeric assignments: all X/Y raw bitpatterns for tested 3/4/5-bit outputs, 125 integer samples per candidate; universal integer identities additionally use frozen NC-020 polynomial-normal-form oracle. The conclusion is NO_GAIN versus deterministic search under specified proposal/proof budgets. This does not certify unrestricted semantic equivalence, broad mathematical invention, machine-state flags, superior speed, model independence from all historical data, or optimal architecture.",
+  "reproduction": {
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-023 -p test_symbolic_search.py": "10/10 PASS",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -q -s artifacts/NC-024 -p test_search_policy.py": "5/5 PASS",
+    "PYTHONDONTWRITEBYTECODE=1 python artifacts/NC-024/audit_ablation.py": "PASS; 324 rows, 960 proofs, 85 controls, 3 checkpoints, 5 source hashes",
+    "fresh in-memory PyTorch training seeds 11, 19, 29": "PASS: exactly 48 gradient updates per seed, exact max parameter difference 0.0 across 16 state keys",
+    "python -m unittest -q test_dag": "19/19 PASS",
+    "python -m unittest -q test_pull": "20/20 PASS",
+    "python dag.py validate": "PASS: 887 nodes, 1058 events after current review claim",
+    "separate finite arithmetic evaluator": "PASS: 98,640 evaluations; 144 integer rows (125 sampled assignments each) and 180 bitvector rows (complete X/Y width-specific enumeration); 81 inequivalent witness cases, 2 type invalid and 2 floating negative controls",
+    "separate independent summary aggregation of 324 report rows": "PASS; 4 arms x 2 splits, scores, costs, generated and verified proposals, proof budgets match report"
+  },
+  "source_sha256": {
+    "PROTOCOL.md": "729a7c3dc043036122ff79d200e46dc2e375388a5377701fdf1a2bff974cbf7f",
+    "audit_ablation.py": "ff3db59cb36948ea74ba2f7c6bd2c99253570dab946fbc421a2c06a87a6b54bf",
+    "run_ablation.py": "ae7ae9e6e82f7b2ad73c9a5548d7a5e04b8d54a8b67b26d1c42d422c29472a79",
+    "search_policy.py": "fbb20be679019e8f72bc0d46bc67ef51ff73850dde28026ae5ab71c9b316d44c",
+    "test_search_policy.py": "a5d52bce366e05c0b6082b31c114a076bac05fb7af8c25b36939145f3717318f"
+  },
+  "task": "NC-024",
+  "upstream_sha256": {
+    "benchmark.py": "0c254d70d1319a0f9406fa900b9879289222ed65a77083cfedaff5e5f6802485",
+    "canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+    "run_ablation.py": "ae7ae9e6e82f7b2ad73c9a5548d7a5e04b8d54a8b67b26d1c42d422c29472a79",
+    "search_policy.py": "fbb20be679019e8f72bc0d46bc67ef51ff73850dde28026ae5ab71c9b316d44c",
+    "symbolic_search.py": "078cf38ceea8306e2e238b5149d0e48a73f55e2d5f7cba1ee0ac3eeef2095011"
+  },
+  "verdict": "PASS",
+  "verifier": "turn-c4731ab3c3ce45b69d1d11fae93b55da"
+}
