@@ -45,7 +45,7 @@ The owner can request review of a claimed planned task, or of a blocked/failed t
 
 ### VERIFIER
 
-Read the pulled candidate path, bound manifest hash and Git revision. Independently inspect original implementation and all referenced inputs, rerun claims, test counterexamples and record precise proof limits. Do not change the implementation and then sign it. Use an actual reviewer identity distinct from the implementer's; the known `chatgpt-session-<id>` alias equals `<id>` and is NOT independent. Write the receipt at the verification output path declared in that task's JSONL record. Then record the result:
+Read the pulled candidate path, bound manifest hash and Git revision. Independently inspect original implementation and all referenced inputs, rerun claims, test counterexamples and record precise proof limits. Do not change the implementation and then sign it. Use an actual reviewer identity distinct from the implementer's; the known `chatgpt-session-<id>` alias equals `<id>` and is NOT independent. Write the receipt at the verification output path declared in that task's JSONL record. If the task declares no output free for a receipt, write it to `artifacts/TASK_ID/independent_verification.json`, which `review-result` also accepts; never overwrite a frozen candidate file. Then record the result:
 
 ```bash
 python dag.py review-result TASK_ID --reviewer "$AGENT_ID" --verdict HOLD --note "missing evidence"

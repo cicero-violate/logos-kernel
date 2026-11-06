@@ -30,6 +30,7 @@ TRANS = {
 PLACEHOLDERS = {"YOUR_AGENT_ID", "INDEPENDENT_VERIFIER_ID", "worker-1", "agent-name"}
 # A claim with no published candidate is presumed live for this long.
 CLAIM_LEASE_SECONDS = 2 * 3600
+STANDARD_RECEIPT = "independent_verification.json"
 
 
 def canon(obj):
@@ -331,7 +332,9 @@ def validate_event(ev, tasks):
             raise ValueError("review note must be text")
         if verdict == "PASS":
             evidence = _review_path(task_id, ev.get("evidence"))
-            if evidence not in item["record"]["outputs"]:
+            # Some task records declare only candidate files, which a reviewer must not overwrite.
+            if (evidence not in item["record"]["outputs"]
+                    and evidence != f"artifacts/{task_id}/{STANDARD_RECEIPT}"):
                 raise ValueError("PASS receipt must be a declared task output")
             _review_sha(ev.get("evidence_sha256"))
             review["evidence"] = evidence

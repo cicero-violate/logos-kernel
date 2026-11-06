@@ -338,6 +338,37 @@ class StatelessContinuationTests(unittest.TestCase):
         self.assertEqual(dag._takeover_reason("t", task_state, "turn-2",
                                               now + dag.CLAIM_LEASE_SECONDS + 60), "stale_claim")
 
+    def _passing_review(self, receipt_name):
+        """A task declaring only frozen candidate files, reviewed with a receipt at receipt_name."""
+        body = task("t")
+        body["outputs"] = ["artifacts/t/candidate.json"]
+        row = {"seq": 1, "event": body}
+        full = {**row, "prev_sha256": dag.ZERO, "sha256": dag.hash_event(dag.ZERO, row)}
+        (self.root / "instructions.jsonl").write_text(dag.canon(full) + "\n")
+        subprocess.run(["git", "-C", str(self.root), "add", "--", "instructions.jsonl"], check=True)
+        subprocess.run(["git", "-C", str(self.root), "commit", "-q", "-m", "fixture"], check=True)
+        dag.pull("author")
+        digest = event_request(self.root, "author")
+        dag.pull("reviewer")
+        receipt = self.root / "artifacts" / "t" / receipt_name
+        receipt.write_text('{"verdict":"PASS"}')
+        return {"kind": "review_result", "id": "t", "reviewer": "reviewer", "candidate_sha256": digest,
+                "verdict": "PASS", "evidence": f"artifacts/t/{receipt_name}",
+                "evidence_sha256": hashlib.sha256(receipt.read_bytes()).hexdigest()}
+
+    def test_task_with_no_free_output_can_use_the_standard_receipt_and_finish(self):
+        dag.append(self._passing_review("independent_verification.json"))
+        turn = dag.pull("turn-2")
+        self.assertEqual((turn["role"], turn["evidence"]),
+                         ("FINALIZER", "artifacts/t/independent_verification.json"))
+        dag.append({"kind": "status", "id": "t", "status": "passed", "agent": "turn-2",
+                    "verifier": "reviewer", "evidence": turn["evidence"]})
+        self.assertEqual(self.state()["status"], "passed")
+
+    def test_other_undeclared_receipt_paths_are_still_refused(self):
+        with self.assertRaisesRegex(ValueError, "declared task output"):
+            dag.append(self._passing_review("my_receipt.json"))
+
     def test_finished_task_cannot_be_taken_over(self):
         self.reviewed("PASS")
         turn = dag.pull("turn-2")
