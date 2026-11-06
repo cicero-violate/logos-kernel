@@ -1,0 +1,155 @@
+{
+  "task": "NC-007",
+  "verdict": "HOLD",
+  "verifier_type": "independent real Codex CLI scientific auditor; read-only",
+  "verifier_runtime_thread_id": "01a1af45-0681-73f0-b8ee-8ee54ee8cf90",
+  "implementer_identity": "Event Lab session 1db9edb983ff4df9933612e7c826e55f",
+  "audited_commit": "2ff9c53b3a3b4b93070e808fbfc97a4d54be36a3",
+  "commands": [
+    "python dag.py validate",
+    "TMPDIR=/dev/shm python -m unittest -q test_dag",
+    "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-007 -p test_composition.py",
+    "independent read-only Python controller/checkpoint/provenance audit",
+    "independent read-only Python neural evaluation on new uint16 samples",
+    "git diff --exit-code 2ff9c53b3a3b4b93070e808fbfc97a4d54be36a3 -- audited paths"
+  ],
+  "independent_neural_test": {
+    "model": "real frozen 5,981-parameter ExpandedISA neural model",
+    "seeds": [
+      11,
+      19,
+      29
+    ],
+    "macros_per_seed": 11,
+    "new_unreported_operand_pairs_per_macro_seed": 80,
+    "tested": 2640,
+    "correct": 2640,
+    "failures": 0,
+    "corners_and_overflow_included": true,
+    "oracle": "independently written uint16 modular arithmetic and Boolean interpreter; neither NC-001 nor compose.reference_values used",
+    "symbolic_fallback": false,
+    "reported_trace_recomputation": {
+      "records": 36,
+      "unique_records": 36,
+      "missing": 0,
+      "numeric": "8448/8448",
+      "host_loop": "768/768",
+      "operand_cases_per_record": 256,
+      "trace_binding_issues": 0,
+      "code_lengths": {
+        "1": 9,
+        "2": 24
+      },
+      "duration_ns_sum": 300326257,
+      "duration_ns_min": 2906779,
+      "duration_ns_max": 18923304,
+      "reuse_matches_receipt": true
+    }
+  },
+  "controller_learning": {
+    "architecture": "21,103-parameter goal/position/previous-action embedding MLP",
+    "checkpoint_exact_recipe_recall": {
+      "seed11": "11/11",
+      "seed19": "11/11",
+      "seed29": "11/11"
+    },
+    "fresh_untrained_controls": {
+      "seed11": "0/11",
+      "seed19": "0/11",
+      "seed29": "0/11"
+    },
+    "training": {
+      "seeds": 3,
+      "updates_per_seed": 350,
+      "teacher_rows_per_update": 30,
+      "row_exposures_per_seed": 10500,
+      "operand_values_used_for_controller_training": 0,
+      "local_primitive_feature_tuples_preseen_in_NC005": 64
+    },
+    "saved_state": {
+      "model_topology_and_state_dict": "present and strict-loadable for 3/3",
+      "optimizer_state": "present for 3/3",
+      "python_rng": "present for 3/3",
+      "numpy_rng": "present for 3/3",
+      "torch_rng": "present for 3/3"
+    },
+    "causal_inputs": {
+      "goal_changed_logits_all_seeds": true,
+      "position_changed_logits_all_seeds": true,
+      "previous_predicted_action_changed_logits_all_seeds": true,
+      "target_action_passed_at_inference": false
+    },
+    "interpretation": "supervised recall of 11 fixed teacher recipes, not algorithm invention or unseen-goal generalization"
+  },
+  "integrity": {
+    "ledger_validation": "PASS; 29 nodes, 57 events",
+    "test_dag": "19/19 passed, 0 failures",
+    "test_composition": "12/12 passed, 0 failures",
+    "head_matches_audited_commit": true,
+    "audited_paths_diff_from_commit": false,
+    "manifest_files_rehashed": 159,
+    "manifest_files_matching": 159,
+    "manifest_mismatches": 0,
+    "accepted_library_entries": "30/30 exact seed, rehearsal arm, neural-inference mode, operation ID and checkpoint binding",
+    "source_hashes": {
+      "compose.py": "f82f30931ae5422884b9f6099d8aa84b0438c083080516fea4bd67415fe7c315",
+      "composition_receipt.json": "9daecad44da63150568bef95de65c2edecfa8eaaade11d111fbd8a2ac9c18498",
+      "composition_traces.jsonl": "b3f2a2e2efa9a82e0ee719748b601a462345f2ab926e2df673287ac92f9a1db5",
+      "NC005_curriculum.py": "76ace59870e5814fde6aa9276f92fc471aad210bb4c89ec8528790b5193fd24d",
+      "NC005_checkpoint_manifest.json": "b721b1a6c3a7d39fc02d0b3c787c4f559a8ccb94d4af249df57c7a0f4afe4624",
+      "NC006_accepted_library.json": "4693fd35e194b46f5ba949ced21305ce99bcf6d106eca9145efc9a4a28326cd1",
+      "NC006_library_manifest.json": "3de331da820d66f7c7e8e80adcf3badd2dae9de342ba7760d9ec2263d1d178d7",
+      "NC001_canonical_isa.py": "27488c84073d86a3ef8efe9fb97a825ad09b2daa73f9e4a28c970f8a8306d35c",
+      "original_RLT_champion": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    "controller_checkpoint_hashes": {
+      "seed11": "7f9eabc6b59dd6814cae84fc8ed5e93f4052929858cb1a81e49e7e49b7c8fd45",
+      "seed19": "5a00aca8ddebbc58c62460bcdd500bd6cdf490188087f16ee234d6f05246f454",
+      "seed29": "c87d07f4955e3fbe0f2f7afdef9eafdfc6ece58d9821b8c113a86436ec5abe2c"
+    },
+    "frozen_stage06_checkpoint_hashes": {
+      "seed11": "26c2969af8987fd1c6a9bc52c9529cf03ab14b7b495e84858002778859e62751",
+      "seed19": "2359fbb866255e0cbabb4279ebab5b43fcef71c414071538e0b7acc2df66fa4e",
+      "seed29": "cc9128cdbf961589219dd386b0833140f628a6347250ef20d9b9486d98f19f0e"
+    },
+    "project_modifications_by_auditor": 0
+  },
+  "failure_controls": {
+    "wrong_program_changed_numeric_outputs": "3/4",
+    "malformed_no_halt_rejected": true,
+    "unknown_action_rejected": true,
+    "early_halt_rejected": true,
+    "uint16_double_65535": 65534,
+    "provenance_corruption_rejection": {
+      "fake_checkpoint_sha": false,
+      "new_only_arm": false,
+      "standalone_implementation_mode": false,
+      "wrong_opcode_metadata": false
+    },
+    "discrepancy": "execute_neural accepts a registry entry after its checkpoint SHA, arm, implementation mode, or opcode metadata is corrupted in memory. It uses only the entry ID for reporting and does not revalidate the primitive binding at execution."
+  },
+  "graphs": {
+    "data_dependency_DAGs": "33/33 acyclic",
+    "runtime_CFGs": 3,
+    "runtime_CFG_cycle_present": true,
+    "runtime_CFG_host_controlled": true,
+    "runtime_CFG_model_generated": false,
+    "learned_PC_or_loop_control": false
+  },
+  "evidence_scope": "The numeric computation and fixed valid manifests support bounded neural composition of 11 supervised recipes over frozen accepted primitives. Exact committed hashes, all 30 accepted entries, all 36 traces, controller inference, optimizer/RNG persistence, timings, code lengths and circuit reuse were independently checked.",
+  "limitations": [
+    "Teacher-provided GOALS and per-token ACTIONS define the recipes and fixed vocabulary.",
+    "Bit indexing, carry propagation, constants, register routing, HALT decoding and loop control are host mechanisms.",
+    "No arbitrary algorithm invention, unseen primitive-feature generalization, unseen goal generalization, learned loop/PC, Transformer/RLT learning, unified shared-weight model or AGI is demonstrated.",
+    "The new evaluation covers 2,640 sampled macro executions, not exhaustive 2^32 uint16 operand pairs.",
+    "The controller is trained only on action-token rows, while its frozen local primitives previously saw all 64 local feature tuples."
+  ],
+  "failures": [
+    {
+      "severity": "HOLD",
+      "check": "mandatory fail-closed versioned primitive provenance controls",
+      "observed": "0/4 corrupted metadata variants were rejected",
+      "required_resolution": "Execution must validate each selected registry entry's exact operation, seed, rehearsal arm, neural-inference mode and frozen checkpoint SHA before invoking the primitive; add independent negative tests for all four corruptions."
+    }
+  ]
+}
