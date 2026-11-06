@@ -1,0 +1,71 @@
+NC-022 SECOND DISTINCT REAL CODEX CLI — COMMITTED CLOSURE VERIFIER.
+Your actual runtime identity is the NEW thread.started ID from this trace.
+Implementer Event Lab ID: 1db9edb983ff4df9933612e7c826e55f.
+Independent scientific Codex PASS ID: 01a1af63-1343-7ed3-a7d4-2f15f714ee80.
+YOUR ID must differ from both. Never fabricate provenance.
+
+Project /workspace/experiments/logos-kernel
+Target COMMITTED release/receipt revision:
+  7bb57acbecc25a54a3d3c0b7782935a9c4cbd81a
+Scientific source audited:
+  6d20b0183a8c081ad0ebb292fef08e6406786f3e
+Scientific evidence preserved:
+  45527cce0c611ae746ea0748e4bdf5e382289a51
+Corrected receipt:
+  7bb57acbecc25a54a3d3c0b7782935a9c4cbd81a
+
+READ ONLY: no project writes/commits, ledger status, source/checkpoint
+changes, training, promotion, data-regeneration, review edits or approvals.
+Only inspect committed source and run tests in read-only process;
+TMPDIR=/dev/shm for temporary Python modules.
+
+MANDATORY:
+1. Read AGENTS.md, full NC-022 task record in instructions.jsonl, source
+PROTOCOL.json, README.md, independent_receipt.json, original scientific
+codex_verifier_final.json, the FIRST thread.started line of the RAW
+codex_verifier_trace.jsonl. Verify independent scientific verdict actually
+PASS from DISTINCT REAL Codex runtime on exact 6d20b018 source commit.
+Verify original bytes SHA256 of Codex final/trace match receipt values.
+Implementer receipt is not its own independent verdict.
+2. HEAD EXACT 7bb57ac..., compare all NC-022 tracked files and evidence
+against Git commit. Inspect Git ancestry: preregistered protocol
+01a1eb2 -> implementation 6d20b01 -> scientific evidence 45527cc ->
+honest receipt correction 7bb57ac. No original fail history to erase.
+Ensure generated dataset and all source checkpoint files unchanged
+since scientific source audit, and no unrelated staged/untracked files
+are inadvertently counted as NC-022 modifications.
+3. Independently check committed receipt truthfulness: 79,200 saved
+predictions, exactly 62,237 correct, 16,963 WRONG model predictions, all
+raw wrong examples available in per-record trace, including multiplication
+poor accuracy; no misleading claim that model is correct or AGI.
+Scientific controls PASS while strict learning result is NO_GAIN.
+Check 1,845 evaluation cells, 45 full stage model/optimizer/RNG checkpoints,
+3 seeds/3 arms/five stages, 1,296 optimizer updates/62,208 examples.
+Check exact matched task-operand-width exposures for rehearsal vs
+blocked replay and differing new-only exposure.
+4. Recompute SHA256 hashes of ALL checkpoint and raw eval files from
+checkpoint_manifest.json, source SHA256s pinned to original RLT champion
+and model source, independent receipt and scientific final/raw trace.
+Recompute a representative subset of exact arithmetic and compare
+RLT neural predictions via clean-process reload of source weights to
+demonstrate identity; do not use any symbolic output fallback.
+5. Run and report actual commands and exit status:
+   python dag.py validate
+   TMPDIR=/dev/shm python -m unittest -q test_dag
+   PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-022 -p test_rlt_retention.py
+Required 19/19 and 11/11 PASS. Confirm event count 59 before closure.
+6. Confirm scope: pretraining on seven tasks means no newly invented task
+IDs; no prior training-set independence established, host composition not
+neural program invention, 8/16/32 sampled observations only, width32 OOD,
+poor multiplication and parity, no champion promotion and no RLT source
+or weight modification.
+
+A scientific PASS alone is not a DAG PASS, and your closure verdict does not
+append any DAG event. Any mandatory check incomplete => HOLD. Any forged
+provenance or source mismatch => FAIL.
+
+Return EXACTLY ONE JSON object with:
+task, verdict(PASS|HOLD|FAIL), real_closure_thread_id, implementer,
+scientific_verifier_identity, audited_commit, commands, source_integrity,
+checkpoint_and_trace_integrity, independent_receipt_provenance, observed_model_errors,
+strict_scientific_outcome, scope_and_limitations, failures.

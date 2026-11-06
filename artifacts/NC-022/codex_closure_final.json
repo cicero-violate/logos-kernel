@@ -1,0 +1,148 @@
+{
+  "task": "NC-022",
+  "verdict": "HOLD",
+  "real_closure_thread_id": "01a1af69-127d-7600-b080-9cf8ab6c6ecb",
+  "implementer": "1db9edb983ff4df9933612e7c826e55f",
+  "scientific_verifier_identity": "01a1af63-1343-7ed3-a7d4-2f15f714ee80",
+  "audited_commit": "6d20b0183a8c081ad0ebb292fef08e6406786f3e",
+  "commands": [
+    {
+      "command": "python dag.py validate",
+      "exit_status": 0,
+      "result": "PASS; 40 nodes, 71 events"
+    },
+    {
+      "command": "TMPDIR=/dev/shm python -m unittest -q test_dag",
+      "exit_status": 0,
+      "result": "19/19 PASS"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -m unittest discover -q -s artifacts/NC-022 -p test_rlt_retention.py",
+      "exit_status": 0,
+      "result": "11/11 PASS"
+    },
+    {
+      "command": "read-only manifest SHA-256 recomputation",
+      "exit_status": 0,
+      "result": "45/45 checkpoints, 45/45 raw evaluation files, all six source dependencies, and all report/ledger hashes matched"
+    },
+    {
+      "command": "clean-process stage-4 checkpoint reload and independent 8-bit multiplication comparison",
+      "exit_status": 0,
+      "result": "Fresh neural outputs exactly matched saved outputs for 12/12 sampled records; only 3/12 matched independently computed arithmetic; no symbolic output fallback"
+    }
+  ],
+  "source_integrity": {
+    "target_head": "7bb57acbecc25a54a3d3c0b7782935a9c4cbd81a",
+    "head_exact": true,
+    "tracked_nc022_files_match_target_commit": true,
+    "scientific_files_unchanged_since_source_audit": true,
+    "protocol_preregistered_bytes_unchanged": true,
+    "ancestry": [
+      "01a1eb2fdf143e9344026518949b8d8c379af3d9",
+      "6d20b0183a8c081ad0ebb292fef08e6406786f3e",
+      "45527cce0c611ae746ea0748e4bdf5e382289a51",
+      "7bb57acbecc25a54a3d3c0b7782935a9c4cbd81a"
+    ],
+    "original_fail_history_found": false,
+    "unrelated_worktree_files_counted_as_nc022_changes": false,
+    "nc022_untracked_closure_harness_files_excluded": [
+      "artifacts/NC-022/closure_prompt.txt",
+      "artifacts/NC-022/codex_closure_stderr.txt",
+      "artifacts/NC-022/codex_closure_trace.jsonl"
+    ],
+    "source_sha256": {
+      "protocol": "152a2435601083c663c8c4ec3c25caf0d3bcb5f3a977cb19f9cf4dddaf690a9f",
+      "experiment": "2d07d82b1659320356addd8a0f54e130ad200891b6a1990fbed073ce79f96ded",
+      "architecture": "99f70b03e2e864d1635ffdbd3ce56598d915bcc1673e1492964d3322714335fb",
+      "backbone": "3c4abc18752236d3118487213fcfa1cf4a18e52e2ceb17ad52a0cdec141013c7",
+      "snapshot": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683",
+      "inventory": "4da921340fe625555c7c478ee56f0d99a15b1121f19c415160e573fc9864ff3f"
+    },
+    "original_champion_or_rlt_source_modified": false,
+    "promotion_performed": false
+  },
+  "checkpoint_and_trace_integrity": {
+    "checkpoint_hashes_verified": 45,
+    "raw_evaluation_hashes_verified": 45,
+    "evaluation_cells": 1845,
+    "full_model_optimizer_rng_packages": 45,
+    "nonempty_trained_optimizer_states": 36,
+    "expected_empty_stage0_optimizer_states": 9,
+    "seeds": 3,
+    "arms": 3,
+    "stages": 5,
+    "optimizer_updates": 1296,
+    "training_examples": 62208,
+    "examples_per_seed_arm": 6912,
+    "rehearsal_vs_blocked_replay_exact_task_operand_width_match": true,
+    "new_only_exposure_intentionally_different": true,
+    "retention_matrix_sha256": "870f744cf2695025623c05b4d84287c86499e598a318744f4ba441d36169de55",
+    "exposure_ablation_sha256": "e18fa1d03ad336cc0f333c7c7d4cc7ac3af71c6fc6f233c744ee5edb7eb44cec",
+    "train_holdout_ledger_sha256": "1c60767d692e09587293cdb964e0b40919905ac78b1c47aaf7eafaa042da94a3"
+  },
+  "independent_receipt_provenance": {
+    "scientific_verdict": "PASS",
+    "scientific_source_commit_exact": true,
+    "first_raw_thread_started_id": "01a1af63-1343-7ed3-a7d4-2f15f714ee80",
+    "scientific_verifier_distinct_from_implementer": true,
+    "closure_verifier_distinct_from_both": true,
+    "raw_final_sha256": "d5914f494a46dc60415291bbd2685c02cca4d9147078b0a46ecdff225da88716",
+    "raw_trace_sha256": "75929316cf8a27fb14cd3db1a8378cc286e178745763f7c3f9cc212403e79781",
+    "receipt_hash_bindings_match": true,
+    "implementer_receipt_treated_as_independent_verdict": false,
+    "receipt_role": "Implementer-assembled binding to the preserved distinct Codex scientific verdict"
+  },
+  "observed_model_errors": {
+    "predictions_tested": 79200,
+    "correct": 62237,
+    "wrong": 16963,
+    "all_wrong_predictions_available_in_raw_traces": true,
+    "micro_accuracy": 0.7858207070707071,
+    "direct_mul": {
+      "correct": 1428,
+      "tested": 10080,
+      "accuracy": 0.14166666666666666
+    },
+    "direct_parity_and": {
+      "correct": 4753,
+      "tested": 10080,
+      "accuracy": 0.47152777777777777
+    },
+    "representative_counterexample": {
+      "seed": 11,
+      "arm": "new_only",
+      "operation": "mul",
+      "width": 8,
+      "a": 188,
+      "b": 158,
+      "expected": 8,
+      "observed": 252
+    },
+    "claim_of_model_correctness_or_agi": false
+  },
+  "strict_scientific_outcome": {
+    "audit_controls": "PASS",
+    "strict_learning_result": "NO_GAIN",
+    "reason": "Rehearsal did not consistently outperform exactly exposure-matched blocked replay across seeds and stages.",
+    "dag_pass_appended": false,
+    "closure_verdict_appended": false
+  },
+  "scope_and_limitations": [
+    "All seven task IDs were already present during pretraining; this is re-exposure, not invention of new operations.",
+    "Independence from the original pretraining set was not established.",
+    "Host-wired composition uses neural calls but is not neural program invention.",
+    "Results are sampled observations at widths 8, 16, and 32, not exhaustive arithmetic correctness.",
+    "Width 32 is out-of-distribution extrapolation.",
+    "Multiplication and parity accuracy are poor.",
+    "No champion promotion, RLT source modification, or original-weight modification occurred.",
+    "Scientific PASS is not itself a DAG PASS."
+  ],
+  "failures": [
+    {
+      "mandatory_check": "Confirm event count 59 before closure",
+      "observed": "The audited scientific source commit contains 59 events, but the required validation at exact target HEAD 7bb57acbecc25a54a3d3c0b7782935a9c4cbd81a reports 71 events.",
+      "impact": "The current closure state does not satisfy the explicitly required 59-event count; therefore the verdict is HOLD despite otherwise valid scientific evidence and integrity checks."
+    }
+  ]
+}

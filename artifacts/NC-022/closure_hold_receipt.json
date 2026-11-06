@@ -1,0 +1,28 @@
+{
+  "champion_modified": false,
+  "compiled_by": "eventlab owner 1db9edb983ff4df9933612e7c826e55f",
+  "created_utc": "2026-11-06T05:56:37.793528+00:00",
+  "live_integrity_after_hold": {
+    "NC022_claim_owner_unchanged": "1db9edb983ff4df9933612e7c826e55f",
+    "NC022_tests": "11/11 PASS",
+    "dag_events": 71,
+    "dag_nodes": 40,
+    "dag_tests": "19/19 PASS",
+    "dag_validation": "PASS",
+    "git_ledger_commit_prefix": "exact full committed HEAD match",
+    "sha256_head": "9d618a3d9fcf87fded6863a1ef7d014a2f2266756d2578c2ac5e32b4ce415d8e"
+  },
+  "original_scientific_source_commit": "6d20b0183a8c081ad0ebb292fef08e6406786f3e",
+  "original_target_commit": "7bb57acbecc25a54a3d3c0b7782935a9c4cbd81a",
+  "prohibited_interpretation": "DO NOT treat this HOLD as a scientific failure or as an approval. Must preserve it unmodified and obtain another independent closure verifier.",
+  "raw_final_file": "artifacts/NC-022/codex_closure_final.json",
+  "raw_final_sha256": "b4654fd04f1d1e28ced8b9c37aec0fe6f4ac97ffe86c9ae941ef8d7d61f0eb55",
+  "raw_trace_file": "artifacts/NC-022/codex_closure_trace.jsonl",
+  "raw_trace_sha256": "cc664e7fae1127a77b3916b7f65cc4f5796fa752c4259bdb7ca30698deb685e7",
+  "real_independent_codex_thread_id": "01a1af69-127d-7600-b080-9cf8ab6c6ecb",
+  "reason": "Closure audit prompt incorrectly required 59 ledger events, while legitimate append-only tasks and priorities increased the valid ledger to 71 events.",
+  "schema": "logos.nc022.closure-hold/1",
+  "scientific_outcome": "NO_GAIN",
+  "task": "NC-022",
+  "verdict": "HOLD"
+}
