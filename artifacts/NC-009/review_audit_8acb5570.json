@@ -1,0 +1,45 @@
+{
+  "candidate_owner": "claude-code-turn-6fab0d6a43294c558ed9b1c62f2f0d92",
+  "candidate_revision": "5c500ef39b4df052a16325effc24e457e15201cf",
+  "candidate_sha256": "de5439880b4913fb2ad2198447744d34d57831aaa5e270a8bfa5912a6f212a3a",
+  "evidence_sha256": {
+    "operator_promotions.jsonl": "64644db1894cf369c7769d1076ffb177dba6b8aada7e20cb153d98d906c52db9",
+    "promotion_audit.json": "2fd7d0d661675ef5db74a59f1d14e6a97da9ca04288e0b7d56e9841e2b3c6c45"
+  },
+  "frozen_pairs_per_operator": 131082,
+  "independent_evaluator_pair_checks": 524328,
+  "nc008_checkpoint_hashes_verified": {
+    "BOOLEAN_COMPOSITE": "ea1fc09c17bd50bf0bc7bad37b2df6a053e19d76655bfd046ef30e26ffe0868a",
+    "DOUBLE": "9d1becd50cdee64da033cdbd9e4b2421e5935bb743bd977185c682623890c9f5",
+    "INC": "4214a00cb0d8c70325ead9949f329f7012ef9763135aeae23c4a3eaa6afe55c8",
+    "SHIFT_COMPOSITE": "167d80bbef32e2ca59c62e1b4262368487594b309f5c1a365fa84f55da6ba8d4"
+  },
+  "nc008_proposals_sha256": "4f12d3b4c90a7753e8ca0f984f4958e42c1c6b6926ea988989c247815965c4a4",
+  "negative_controls": {
+    "dead_write": "CANONICALIZED",
+    "edit": "REJECTED",
+    "forge_hash": "REJECTED",
+    "nested": "REJECTED",
+    "none": "REJECTED",
+    "number": "REJECTED",
+    "reorder": "REJECTED",
+    "repeat_halt": "REJECTED",
+    "repeat_registry": "NO_APPEND",
+    "trailing_bad": "REJECTED",
+    "trailing_valid": "REJECTED",
+    "truncate_first": "REJECTED",
+    "wrong_operator": "REJECTED_WITH_COUNTEREXAMPLE"
+  },
+  "original_program_equivalence_checks": 524328,
+  "scope": "Finite symbolic 8-bit exhaustion + 10 corners + seeded 16-bit sample. No global 16-bit proof, neural execution, signed external registry authentication or novel primitive.",
+  "source_sha256": {
+    "README.md": "ae747dab3427aa5cfb0a19744b74626531a4ac625455c1f3cec944f6bc91de45",
+    "promote.py": "15d2f80c7ddac13dc0fa6fa6830827d7dec113754aa0e54b339a4a85d4036600",
+    "test_promote.py": "b49e6071decf480f9d8f95d794a5e988848d66d9323e78b903f570b844e010ad"
+  },
+  "stored_registry_chain_recomputed": "PASS",
+  "task": "NC-009",
+  "unique_operator_ids": 4,
+  "verdict": "PASS",
+  "verifier": "turn-8acb5570fb9e4d9e967243e77a31ff3d"
+}
