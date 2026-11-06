@@ -1,0 +1,133 @@
+{
+  "acceptance_assessment": {
+    "champion_immutability": "PASS; SHA256 agrees with frozen original before/after probes",
+    "checkpoint_restart": "PASS; 12-test suite covers pause/resume optimizer and RNG replay, reject tampering, prevent cancelled restart",
+    "cpu_memory_wall_disk_limits": "PASS for bounded canary; RLIMIT_AS, RLIMIT_CPU, RLIMIT_FSIZE and wall termination tested; aggregate cgroups not implemented",
+    "dataset_authorization": "NOT TESTED; untrusted --input hashes prove integrity but not independently authorized provenance; NC-046 must gate ingestion",
+    "identity_and_concurrent_roles": "PASS for local run IDs, worker IDs, PID/UID evidence, output disjointness and exclusive run lock; no identity attestation asserted",
+    "isolation_and_host_write_denials": "PASS; bwrap read-only inputs, no host repo mount, output-only writable bind, fresh write denials",
+    "neural_training": "NOT TESTED; training episodes delegated to NC-046",
+    "verifier_evidence_write_denial": "PASS; independently observed sandbox cannot write declared reviewer receipt or DAG via host paths"
+  },
+  "candidate_path": "artifacts/NC-044/MANIFEST.json",
+  "candidate_revision": "408a3262b595a0618c9e479f59ff3dc2ba78a56d",
+  "candidate_sha256": "6ec7932ced69cb286cc8ac5a2af337d48b18ea5c2bd3a0c0632bf393df607e98",
+  "changed_impl_files": [],
+  "downstream_boundary": [
+    "NC-045 separate trainer DAG",
+    "NC-046 genuine training/replay/data authorization/retention"
+  ],
+  "frozen_external_inputs": [
+    {
+      "kind": "champion",
+      "path": "/workspace/experiments/rlt_split_algorithms_ablation_v1/snapshots/current_unified_v3.pt",
+      "sha256": "4c42d13fd46f57ac0db6eccbaef35e99c4cefcec393a3a3a4faf146645e8f683"
+    },
+    {
+      "kind": "nc022_receipt",
+      "path": "artifacts/NC-022/independent_receipt.json",
+      "sha256": "79d2f8dbb60ac18b2df2c84f85104b1d25bd8c0d63c424f922f2a8360dca9825"
+    }
+  ],
+  "independent_negative_control_source": "artifacts/NC-044/reviewer_negative_controls.py",
+  "independent_negative_control_source_sha256": "cdef19cf46869b28b0e68a25152d52b423699578f10f53bff844598410539503",
+  "independent_tests": [
+    {
+      "command": "python dag.py validate",
+      "initial_events": 148,
+      "initial_nodes": 69,
+      "result": "PASS"
+    },
+    {
+      "command": "python -m unittest -q test_dag",
+      "count": 19,
+      "result": "PASS"
+    },
+    {
+      "command": "python -m unittest -q test_pull",
+      "count": 17,
+      "result": "PASS"
+    },
+    {
+      "command": "python -m unittest discover -s artifacts/NC-044 -p 'test_isolation.py' -q",
+      "count": 12,
+      "elapsed_seconds": 5.632,
+      "result": "PASS"
+    },
+    {
+      "command": "python artifacts/NC-044/reviewer_negative_controls.py",
+      "fresh_checks": {
+        "control_hashes_after": "UNCHANGED",
+        "external_tcp_to_198_51_100_1_443": "DENIED",
+        "missing_source": "REFUSED",
+        "source_mutation": "REFUSED",
+        "write_to_six_protected_namespace_paths": "DENIED"
+      },
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "Per-process rlimits and polling do not impose cgroup-wide memory, process, CPU or aggregate disk bounds",
+    "Exact source, checkpoint and dataset hashes are not authorization or identity attestation",
+    "Candidate is a deterministic canary; no real model weights trained or promoted",
+    "Crash with orphan checkpoint fails closed; restart requires verified prior report",
+    "Concurrent same-UID host writers may mutate parent filesystem; Git records are not cryptographic identity proofs",
+    "Independent output binds versioned local artifacts; no claim of authenticated off-host verifier or all possible escapes"
+  ],
+  "negative_controls": [
+    "Six forbidden host paths and immutable input files denied write inside real bwrap",
+    "Attempted TCP connection to TEST-NET-2 port 443 failed in unshared network namespace",
+    "Tampered source hash rejected before sandbox execution",
+    "Missing source rejected before sandbox execution",
+    "Official tests rejected mutated dataset hashes, symlink ancestry, traversal, altered checkpoints, and overlapping run locks"
+  ],
+  "owner": "turn-246279f7a8f445569a0742634a5d4e13",
+  "proof_scope": "Local Linux bubblewrap isolation for one deterministic CPU probe worker and single active-run lock, with frozen champion/NC-022/source hashes and no host writes observed. Does not prove arbitrary neural training quality, host actor identity authentication, independently authorized datasets, malicious same-UID host isolation, aggregate multi-process CPU/RAM/file/process quotas, guaranteed network denial across all destinations, transactional crash resume, or service liveliness. Reviewer is distinct ledger agent ID but not OS-attested person.",
+  "reviewed_at_utc": "2026-11-06T13:39:57.064835+00:00",
+  "reviewer_owned_files": [
+    "artifacts/NC-044/reviewer_negative_controls.py",
+    "artifacts/NC-044/independent_verification.json"
+  ],
+  "schema": "logos-kernel-nc044-independent-review-v1",
+  "source_and_evidence_git_commit_hashes": [
+    {
+      "git_blob_equal": true,
+      "path": "artifacts/NC-044/MANIFEST.json",
+      "sha256": "6ec7932ced69cb286cc8ac5a2af337d48b18ea5c2bd3a0c0632bf393df607e98",
+      "working_copy_equal": true
+    },
+    {
+      "git_blob_equal": true,
+      "path": "artifacts/NC-044/isolation_tests.json",
+      "sha256": "430054928b0f368728dbe4a72c64a2449e7fa7ab107f439313554a63c370f7b1",
+      "working_copy_equal": true
+    },
+    {
+      "git_blob_equal": true,
+      "path": "artifacts/NC-044/probe_worker.py",
+      "sha256": "1d091270b67f79f07a95260d908dd55f6fdf19c85872bf07029b7a2879f34bf9",
+      "working_copy_equal": true
+    },
+    {
+      "git_blob_equal": true,
+      "path": "artifacts/NC-044/test_isolation.py",
+      "sha256": "8105cd7ded206b166e8765997dc28b54dec944b658d73b0db95e6c97c72f58ff",
+      "working_copy_equal": true
+    },
+    {
+      "git_blob_equal": true,
+      "path": "artifacts/NC-044/trainer_isolation.py",
+      "sha256": "2cd516666e0c183aa60c3059c642ad06ad73df0a452f6906ef07c19b042909e5",
+      "working_copy_equal": true
+    },
+    {
+      "git_blob_equal": true,
+      "path": "artifacts/NC-044/trainer_isolation_contract.json",
+      "sha256": "4ecae26cb8dbfdfd51816f289546dfee0e5c5d5e42e3f50ee108092f8472bfc3",
+      "working_copy_equal": true
+    }
+  ],
+  "task": "NC-044",
+  "verdict": "PASS",
+  "verifier": "turn-d70c4494e90749c19589dd59191b3f53"
+}
