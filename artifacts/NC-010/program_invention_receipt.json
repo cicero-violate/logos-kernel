@@ -1,0 +1,2227 @@
+{
+ "schema": "logos.nc010.results/1",
+ "config": {
+  "seeds": [
+   11,
+   19,
+   29
+  ],
+  "programs": 60000,
+  "steps": 6000,
+  "batch": 64,
+  "budget": 4096,
+  "reuse_checkpoints": true,
+  "out": "artifacts/NC-010"
+ },
+ "held_out_combinations": [
+  [
+   "ADD",
+   "SHL"
+  ],
+  [
+   "XOR",
+   "SHL"
+  ],
+  [
+   "ADD",
+   "SHR"
+  ],
+  [
+   "OR",
+   "SHL"
+  ]
+ ],
+ "sanity_goals": [
+  "SUB_SHL_0",
+  "AND_SHR_255",
+  "XOR_SHR_0",
+  "OR_SHR_1",
+  "ADD_None_0",
+  "AND_SHL_255"
+ ],
+ "seeds": {
+  "11": {
+   "skeletons": {
+    "data": {
+     "programs": 60000,
+     "dropped_for_held_out_behaviour": 0,
+     "tries": 111503
+    },
+    "training": {
+     "reused_checkpoint": true,
+     "steps": 6000,
+     "parameters": 438614
+    },
+    "goals": {
+     "ADD_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 447,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 388,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "ADD_SHR": {
+      "solved": true,
+      "candidates": 551,
+      "malformed": 38,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "OR",
+        6,
+        3,
+        2,
+        0
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        6,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        6,
+        5,
+        0
+       ],
+       [
+        "JZ",
+        5,
+        0,
+        0,
+        6
+       ],
+       [
+        "ADD",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "OR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 1042,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "SUB_SHL_0": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        0
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        7,
+        1
+       ],
+       [
+        "JZ",
+        0,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        0,
+        7,
+        5,
+        0
+       ],
+       [
+        "JZ",
+        5,
+        0,
+        0,
+        6
+       ],
+       [
+        "SUB",
+        2,
+        1,
+        2,
+        0
+       ],
+       [
+        "SHL",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "AND_SHR_255": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        255
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        7,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        7,
+        4,
+        0
+       ],
+       [
+        "JZ",
+        4,
+        0,
+        0,
+        6
+       ],
+       [
+        "AND",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "XOR_SHR_0": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        0
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        7,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        7,
+        4,
+        0
+       ],
+       [
+        "JZ",
+        4,
+        0,
+        0,
+        6
+       ],
+       [
+        "XOR",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "OR_SHR_1": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        1
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        5,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        5,
+        4,
+        0
+       ],
+       [
+        "JZ",
+        4,
+        0,
+        0,
+        6
+       ],
+       [
+        "OR",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "ADD_None_0": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        0
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        6,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        8
+       ],
+       [
+        "AND",
+        1,
+        6,
+        4,
+        0
+       ],
+       [
+        "JZ",
+        4,
+        0,
+        0,
+        6
+       ],
+       [
+        "ADD",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "AND_SHL_255": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        255
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        7,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        7,
+        4,
+        0
+       ],
+       [
+        "JZ",
+        4,
+        0,
+        0,
+        6
+       ],
+       [
+        "AND",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "SHL",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     }
+    },
+    "checkpoint_sha256": "fcaf89ae691ad1e0e7d40157c00a84a6aba061a695b0290a54dd8252daab966a",
+    "other_goal_examples_control": {
+     "ADD_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 362,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 239,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "ADD_SHR": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 1039,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "OR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 1,
+      "fit_but_wrong": 0,
+      "program": null
+     }
+    },
+    "neural_machine": {
+     "ADD_SHR": {
+      "correct": 4217,
+      "total": 4217
+     }
+    }
+   },
+   "random_programs_only": {
+    "data": {
+     "programs": 60000,
+     "dropped_for_held_out_behaviour": 0,
+     "tries": 2164862
+    },
+    "training": {
+     "reused_checkpoint": true,
+     "steps": 6000,
+     "parameters": 438614
+    },
+    "goals": {
+     "ADD_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 15,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 18,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "ADD_SHR": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 22,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "OR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 15,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "SUB_SHL_0": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 28,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "AND_SHR_255": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 36,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHR_0": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 29,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "OR_SHR_1": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 12,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "ADD_None_0": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 14,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "AND_SHL_255": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 16,
+      "fit_but_wrong": 0,
+      "program": null
+     }
+    },
+    "checkpoint_sha256": "e0926a37de2bcaacbeb05ad00c63c4d3d3ef935a4069497825541dfe09e9777f"
+   },
+   "random_programs_control": {
+    "ADD_SHL": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    },
+    "XOR_SHL": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    },
+    "ADD_SHR": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    },
+    "OR_SHL": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    }
+   }
+  },
+  "19": {
+   "skeletons": {
+    "data": {
+     "programs": 60000,
+     "dropped_for_held_out_behaviour": 0,
+     "tries": 111925
+    },
+    "training": {
+     "reused_checkpoint": true,
+     "steps": 6000,
+     "parameters": 438614
+    },
+    "goals": {
+     "ADD_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 299,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHL": {
+      "solved": true,
+      "candidates": 8,
+      "malformed": 1,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        5,
+        1
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        0
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        5,
+        6,
+        0
+       ],
+       [
+        "JZ",
+        6,
+        0,
+        0,
+        6
+       ],
+       [
+        "XOR",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "SHL",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "ADD_SHR": {
+      "solved": true,
+      "candidates": 124,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        7,
+        1
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        0
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        7,
+        6,
+        0
+       ],
+       [
+        "JZ",
+        6,
+        0,
+        0,
+        6
+       ],
+       [
+        "ADD",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "OR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 268,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "SUB_SHL_0": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        0
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        3,
+        1
+       ],
+       [
+        "JZ",
+        0,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        0,
+        3,
+        4,
+        0
+       ],
+       [
+        "JZ",
+        4,
+        0,
+        0,
+        6
+       ],
+       [
+        "SUB",
+        2,
+        1,
+        2,
+        0
+       ],
+       [
+        "SHL",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "AND_SHR_255": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        255
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        5,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        5,
+        6,
+        0
+       ],
+       [
+        "JZ",
+        6,
+        0,
+        0,
+        6
+       ],
+       [
+        "AND",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "XOR_SHR_0": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        0
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        5,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        5,
+        6,
+        0
+       ],
+       [
+        "JZ",
+        6,
+        0,
+        0,
+        6
+       ],
+       [
+        "XOR",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "OR_SHR_1": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        1
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        5,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        5,
+        6,
+        0
+       ],
+       [
+        "JZ",
+        6,
+        0,
+        0,
+        6
+       ],
+       [
+        "OR",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "ADD_None_0": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        0
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        6,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        8
+       ],
+       [
+        "AND",
+        1,
+        6,
+        7,
+        0
+       ],
+       [
+        "JZ",
+        7,
+        0,
+        0,
+        6
+       ],
+       [
+        "ADD",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "AND_SHL_255": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        255
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        5,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        5,
+        6,
+        0
+       ],
+       [
+        "JZ",
+        6,
+        0,
+        0,
+        6
+       ],
+       [
+        "AND",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "SHL",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     }
+    },
+    "checkpoint_sha256": "244c0ecfd47e9ea59543dce4e19b00474cbb3cab344b4f6fd599d90c3eafb0be",
+    "other_goal_examples_control": {
+     "ADD_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 277,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 2,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "ADD_SHR": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 248,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "OR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 2,
+      "fit_but_wrong": 0,
+      "program": null
+     }
+    },
+    "neural_machine": {
+     "XOR_SHL": {
+      "correct": 4217,
+      "total": 4217
+     },
+     "ADD_SHR": {
+      "correct": 4217,
+      "total": 4217
+     }
+    }
+   },
+   "random_programs_only": {
+    "data": {
+     "programs": 60000,
+     "dropped_for_held_out_behaviour": 0,
+     "tries": 2176413
+    },
+    "training": {
+     "reused_checkpoint": true,
+     "steps": 6000,
+     "parameters": 438614
+    },
+    "goals": {
+     "ADD_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 13,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 13,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "ADD_SHR": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 13,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "OR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 11,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "SUB_SHL_0": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 19,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "AND_SHR_255": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 23,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHR_0": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 11,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "OR_SHR_1": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 18,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "ADD_None_0": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 15,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "AND_SHL_255": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 37,
+      "fit_but_wrong": 0,
+      "program": null
+     }
+    },
+    "checkpoint_sha256": "3d6a6a7d37700a7e043578337c68dfb45bda7cdef8002e090df6169342f08ea6"
+   },
+   "random_programs_control": {
+    "ADD_SHL": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    },
+    "XOR_SHL": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    },
+    "ADD_SHR": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    },
+    "OR_SHL": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    }
+   }
+  },
+  "29": {
+   "skeletons": {
+    "data": {
+     "programs": 60000,
+     "dropped_for_held_out_behaviour": 0,
+     "tries": 111103
+    },
+    "training": {
+     "reused_checkpoint": true,
+     "steps": 6000,
+     "parameters": 438614
+    },
+    "goals": {
+     "ADD_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 482,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 466,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "ADD_SHR": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 486,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "OR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 470,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "SUB_SHL_0": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        0
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        5,
+        1
+       ],
+       [
+        "JZ",
+        0,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        0,
+        5,
+        6,
+        0
+       ],
+       [
+        "JZ",
+        6,
+        0,
+        0,
+        6
+       ],
+       [
+        "SUB",
+        2,
+        1,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "SHL",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "AND_SHR_255": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        255
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        3,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        3,
+        7,
+        0
+       ],
+       [
+        "JZ",
+        7,
+        0,
+        0,
+        6
+       ],
+       [
+        "AND",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "XOR_SHR_0": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        0
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        5,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        5,
+        4,
+        0
+       ],
+       [
+        "JZ",
+        4,
+        0,
+        0,
+        6
+       ],
+       [
+        "XOR",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "OR_SHR_1": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        1
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        3,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        3,
+        7,
+        0
+       ],
+       [
+        "JZ",
+        7,
+        0,
+        0,
+        6
+       ],
+       [
+        "OR",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "SHR",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "ADD_None_0": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        0
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        6,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        8
+       ],
+       [
+        "AND",
+        1,
+        6,
+        7,
+        0
+       ],
+       [
+        "JZ",
+        7,
+        0,
+        0,
+        6
+       ],
+       [
+        "ADD",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     },
+     "AND_SHL_255": {
+      "solved": true,
+      "candidates": 1,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": [
+       [
+        "LOADI",
+        0,
+        0,
+        2,
+        255
+       ],
+       [
+        "LOADI",
+        0,
+        0,
+        5,
+        1
+       ],
+       [
+        "JZ",
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        "AND",
+        1,
+        5,
+        3,
+        0
+       ],
+       [
+        "JZ",
+        3,
+        0,
+        0,
+        6
+       ],
+       [
+        "AND",
+        2,
+        0,
+        2,
+        0
+       ],
+       [
+        "SHR",
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        "SHL",
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        "JMP",
+        0,
+        0,
+        0,
+        2
+       ],
+       [
+        "HALT",
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     }
+    },
+    "checkpoint_sha256": "6995cb0ece77136f71c8b47fc7e89ab0bc921c43e278cdaa5f26c7ff0d6538e6",
+    "other_goal_examples_control": {
+     "ADD_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 442,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 434,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "ADD_SHR": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 480,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "OR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 0,
+      "fit_but_wrong": 0,
+      "program": null
+     }
+    },
+    "neural_machine": {}
+   },
+   "random_programs_only": {
+    "data": {
+     "programs": 60000,
+     "dropped_for_held_out_behaviour": 0,
+     "tries": 2183409
+    },
+    "training": {
+     "reused_checkpoint": true,
+     "steps": 6000,
+     "parameters": 438614
+    },
+    "goals": {
+     "ADD_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 10,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 15,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "ADD_SHR": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 9,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "OR_SHL": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 19,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "SUB_SHL_0": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 14,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "AND_SHR_255": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 41,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "XOR_SHR_0": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 6,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "OR_SHR_1": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 9,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "ADD_None_0": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 16,
+      "fit_but_wrong": 0,
+      "program": null
+     },
+     "AND_SHL_255": {
+      "solved": false,
+      "candidates": 4096,
+      "malformed": 19,
+      "fit_but_wrong": 0,
+      "program": null
+     }
+    },
+    "checkpoint_sha256": "8aab1049c003f8550201dd18056462a3c517580e34791551bb4bbdc4c4bcc255"
+   },
+   "random_programs_control": {
+    "ADD_SHL": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    },
+    "XOR_SHL": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    },
+    "ADD_SHR": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    },
+    "OR_SHL": {
+     "solved": false,
+     "candidates": 4096,
+     "malformed": 0,
+     "fit_but_wrong": 0,
+     "program": null
+    }
+   }
+  }
+ }
+}

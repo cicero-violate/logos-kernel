@@ -1,0 +1,88 @@
+{
+ "schema_version": 1,
+ "task": "NC-010",
+ "owner": "claude-code-turn-24d7e13d00554014bf4bedb2396a9e64",
+ "outcome": "NO_GENERALIZATION on multiplication: 0 of 3 seeds within 4,096 candidates. Partial recombination: 3 of 12 held-out goal runs solved, against 0 of 12 without skeletons, 0 of 12 on another goal's examples, and 0 of 12 for random programs. Goals from trained combinations: 18 of 18, against 0 of 18 without skeletons.",
+ "tally": {
+  "held": {
+   "11": [
+    "ADD_SHR"
+   ],
+   "19": [
+    "XOR_SHL",
+    "ADD_SHR"
+   ],
+   "29": []
+  },
+  "sanity": {
+   "11": 6,
+   "19": 6,
+   "29": 6
+  },
+  "control": {
+   "11": [],
+   "19": [],
+   "29": []
+  },
+  "random_only_held": {
+   "11": [],
+   "19": [],
+   "29": []
+  },
+  "random_only_sanity": {
+   "11": 0,
+   "19": 0,
+   "29": 0
+  },
+  "random_control": {
+   "11": [],
+   "19": [],
+   "29": []
+  }
+ },
+ "source_sha256": {
+  "invent.py": "6720db0f6b394c2ec0072eed59ae5fb2b34a3cb97800ea0c2eeb5b0c9442a30c",
+  "test_invent.py": "0f75640761824fa551cea5f86934ba2748addd7a3e459b98975b77056e09f9c6",
+  "README.md": "2fe4e7ccca342ed11b454f620edfceef130e00e4c6d9459d127a1e9f6312a9f6"
+ },
+ "evidence_sha256": {
+  "program_invention_receipt.json": "b8ae9c7f1febd3f4cd65d5ad1de1fad762f7bbe6bde74167d75fa36bcb3b5cdf",
+  "generated_programs.jsonl": "2005fbe161e0ab4b4565b3832c0942323a688c9da46eb69edbc300f458a9e14d"
+ },
+ "checkpoint_sha256": {
+  "writer_skeletons_seed11.pt": "fcaf89ae691ad1e0e7d40157c00a84a6aba061a695b0290a54dd8252daab966a",
+  "writer_skeletons_seed19.pt": "244c0ecfd47e9ea59543dce4e19b00474cbb3cab344b4f6fd599d90c3eafb0be",
+  "writer_skeletons_seed29.pt": "6995cb0ece77136f71c8b47fc7e89ab0bc921c43e278cdaa5f26c7ff0d6538e6",
+  "writer_random_programs_only_seed11.pt": "e0926a37de2bcaacbeb05ad00c63c4d3d3ef935a4069497825541dfe09e9777f",
+  "writer_random_programs_only_seed19.pt": "3d6a6a7d37700a7e043578337c68dfb45bda7cdef8002e090df6169342f08ea6",
+  "writer_random_programs_only_seed29.pt": "8aab1049c003f8550201dd18056462a3c517580e34791551bb4bbdc4c4bcc255"
+ },
+ "review_output_path": "artifacts/NC-010/independent_verification.json",
+ "reproduction": [
+  "See README.md."
+ ],
+ "negative_controls": [
+  "same model on another goal's examples",
+  "random programs on the same budget",
+  "a model trained with no skeletons",
+  "a program wrong on one pair is rejected",
+  "a held-out behaviour never enters training"
+ ],
+ "dependencies": [
+  "Python 3",
+  "PyTorch CPU",
+  "artifacts/NC-080",
+  "artifacts/NC-082"
+ ],
+ "limitations": [
+  "Multiplication failed on every seed, so the task's request to invent shift-and-add multiplication is not met. Partial acceptance at most: reviewers should weigh this directly.",
+  "Skeletons are the same shape as the multiplication loop, so a held-out solve shows recombination inside a taught template. The arm without skeletons solved nothing, on any goal.",
+  "Solves depend on the seed: 1, 2 and 0 of 4 held-out goals. Three seeds cannot estimate that rate.",
+  "Held-out exclusion uses behaviour on 16 examples and construction, plus comparison to canonical programs; the reference programs exist only for the exam and neural machine check.",
+  "A type mask supplies the instruction format, so the model chooses opcodes, registers and immediates, not the layout.",
+  "Budget is 4,096 candidates per goal, which is not a proof that a larger budget would fail.",
+  "The receipt's checkpoints were evaluated with --reuse-checkpoints after a crash in the random control, so it records no training loss or CPU. Results matched the first run's log line by line on all goals logged there, and full retraining is left to review.",
+  "Neural machine runs cover 4,217 pairs, not all 65,536, and NC-082 has not yet passed review.",
+  "CPU was not compared with any baseline here; enumeration at this program length was not attempted."
+ ]
+}
